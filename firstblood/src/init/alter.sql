@@ -1,0 +1,1 @@
+alter table etc_peopleinfo add peoplestatus enum("在职","停职","离职","孕假") default "在职";

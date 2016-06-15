@@ -1,0 +1,54 @@
+//---- UTF8 编码 ----
+<!-- BEGIN: main --><?xml version="1.0" encoding="UTF-8"?>
+{main.doc_type}
+<?xml-stylesheet type="text/xsl" href="/style/purchase_details.xsl?ver={main.doc_version}"?>
+<html version="{main.doc_version}">
+	<head>
+		<Title>{main.title}</Title>
+		<meta name="keywords" content="{main.keywords}" />
+		<meta name="description" content="{main.description}" />
+		<em company_id="{main.company_id}" staff_id="{main.staff_id}" login_name="{main.login_name}" permit="{main.permit}" program="{main.request_url}"/>
+	</head>
+	<Body>
+		<dir><![CDATA[ 您的位置：{main.this_location}]]></dir>
+		<menu>
+			<big>{main.big_menu}</big>
+			<small>
+				<!-- BEGIN: list_menu --><a class="{list_menu.class}" href="{list_menu.link}">{list_menu.name}</a><!-- END: list_menu -->
+			</small>
+		</menu>
+		<section>
+			{main.user_info}
+			
+		</section>
+		<purchase>
+		<ul>
+			<select_value>{main.supplier}</select_value>
+			<!-- BEGIN:purchasesupplier -->
+			<li><value>{purchasesupplier.id}</value><text>{purchasesupplier.name}</text></li>
+			<!-- END:purchasesupplier -->
+		</ul>
+		</purchase>
+		<store>
+			<select_value>{main.store_id}</select_value>
+			<ul>
+				<!-- BEGIN:store_info -->
+				<li><value>{store_info.id}</value><text>{store_info.name}</text></li>
+				<!-- END:store_info -->
+			</ul>
+		</store>
+		<money>
+			<ul>
+			<li><value>One</value><text>未付款</text></li>
+			<li><value>Two</value><text>已付款</text></li>
+			</ul>
+		</money>
+		<purchase_main>
+			<action_date>{main.action_date}</action_date>
+			<name>{main.name}</name>
+		</purchase_main>
+	</Body>
+
+
+</html>
+<!-- END: main -->

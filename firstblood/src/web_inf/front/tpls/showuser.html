@@ -1,0 +1,138 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3c.org/TR/1999/REC-html401-19991224/loose.dtd">
+<HTML xmlns="http://www.w3.org/1999/xhtml"><HEAD id=Head1><title>北京外麦王人事系统</title>
+<META http-equiv=Content-Type content="text/html; charset=utf-8">
+<LINK href="/css/Style.css" type=text/css rel=stylesheet>
+<LINK href="/css/Manage.css" type=text/css rel=stylesheet>
+<LINK href="/css/allinfo.css" type=text/css rel=stylesheet>
+<SCRIPT language=javascript src="/js/jquery-1.8.3.min.js"></SCRIPT>
+<BODY>
+<TABLE cellSpacing=0 cellPadding=0 width="98%" border=0>
+  <TBODY>
+  <TR>
+    <TD width=15><IMG src="/images/new_019.jpg" border=0></TD>
+    <TD width="100%" background=/images/new_020.jpg height=20></TD>
+    <TD width=15><IMG src="/images/new_021.jpg" 
+  border=0></TD></TR></TBODY></TABLE>
+<TABLE cellSpacing=0 cellPadding=0 width="98%" border=0>
+  <TBODY>
+  <TR>
+    <TD width=15 background=/images/new_022.jpg><IMG 
+      src="/images/new_022.jpg" border=0> </TD>
+    <TD vAlign=top width="100%" bgColor=#ffffff>
+      <TABLE cellSpacing=0 cellPadding=5 width="100%" border=0>
+        <TR>
+          <TD class=manageHead style="border-right: 0px;">当前位置: &gt; 管理员列表
+          </TD>
+          <td style="text-align:right; border-left: 0px;" class=manageHead>
+            <a href="changeuser.php" style="">添加用户</a>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          </td>
+        </TR>
+    </TD>
+
+    </TABLE>
+      <TABLE borderColor=#cccccc cellSpacing=0 cellPadding=0 width="100%" 
+      align=center border=0>
+        <TBODY>
+        <tr><td height="8px"></td></tr>
+        <TR>
+          <TD>
+            <TABLE id=grid 
+            style="BORDER-TOP-WIDTH: 0px; FONT-WEIGHT: normal; BORDER-LEFT-WIDTH: 0px; BORDER-LEFT-COLOR: #cccccc; BORDER-BOTTOM-WIDTH: 0px; BORDER-BOTTOM-COLOR: #cccccc; WIDTH: 100%; BORDER-TOP-COLOR: #cccccc; FONT-STYLE: normal; BACKGROUND-COLOR: #cccccc; BORDER-RIGHT-WIDTH: 0px; TEXT-DECORATION: none; BORDER-RIGHT-COLOR: #cccccc" 
+            cellSpacing=1 cellPadding=2 rules=all border=0>
+              <TBODY>
+              <TR 
+              style="FONT-WEIGHT: bold; FONT-STYLE: normal; BACKGROUND-COLOR: #eeeeee; TEXT-DECORATION: none;text-align: center">
+                <TD>账号</TD>
+                <TD >操作</TD>
+              </TR>  
+              {foreach from=$list item=temp}          
+              <TR 
+              style="FONT-WEIGHT: normal; FONT-STYLE: normal; BACKGROUND-COLOR: white; TEXT-DECORATION: none;text-align: center; height:40px;" uid="{$temp['id']}" id="asd">
+                <TD>{$temp['username']}</TD>
+                <TD>
+                
+                <A href="javascript:void(0)" class="xiu">修改密码</A> 
+                <div style="position:absolute;display:none; left:30%;top:30%; background-color:#ccc; padding:20px;width:200px;height:100px;" class="tan">
+                  <span>新&nbsp;&nbsp;密&nbsp;&nbsp;码:</span>
+                  <input type="password" flag="{$temp['id']}" id="pass1"><br>
+                  <div>&nbsp;&nbsp;&nbsp;&nbsp;</div>
+                  <span>确认密码:</span>
+                  <input type="password" class="repass" ><br>
+                  <div>&nbsp;&nbsp;&nbsp;&nbsp;</div>
+                  <a class="gai" style="cursor: pointer">修改</a>&nbsp;&nbsp;&nbsp;
+                  <a class="guan" style="cursor: pointer">关闭</a>               
+                </div>
+                <A href="javascript:void(0)" class="delete">删除</A>
+                <A href="roleassign.php?uid={$temp['id']}" >角色分配</A>
+                </TD>
+
+                </TR>
+                {/foreach}
+               </TBODY>
+               </TABLE>
+            </TD>
+       </TR>
+        <TR>
+          <TD><SPAN id=pagelink>
+            </SPAN></TD></TR></TBODY></TABLE></TD>
+    <TD width=15 background=/images/new_023.jpg><IMG 
+      src="/images/new_023.jpg" border=0> </TD></TR></TBODY></TABLE>
+<TABLE cellSpacing=0 cellPadding=0 width="98%" border=0>
+  <TBODY>
+  <TR>
+    <TD widtht=15><IMG src="/images/new_024.jpg" border=0></TD>
+    <TD align=middle width="100%" background=/images/new_025.jpg 
+    height=15></TD>
+    <TD width=15><IMG src="/images/new_026.jpg" 
+  border=0></TD></TR></TBODY></TABLE>
+</BODY>
+{literal}
+<script type="text/javascript">
+$(".xiu").click(function(){
+  $(this).next("div").css('display',"block")
+})
+$(".guan").click(function(){
+  $('.tan').css("display","none");
+  
+})
+
+$(".gai").click(function(){
+    var password=$(this).parent().find("input").eq(0).val();
+    var id=$(this).closest("tr").attr('uid');
+    var repass=$(this).parent().find("input").eq(1).val();
+    if(password=="" || repass == ""){
+      alert("密码不能为空");
+        return false;
+    }else if(password==repass){
+        $.post("uppass.php",{id:id,password:password},function(data){
+            if (data==1) {
+            $('.tan').css("display","none");
+            alert("修改成功!")
+            }else{
+            $('.tan').css("display","none");
+            alert("修改失败!")
+            }  
+
+        },"html");
+    }else{
+      alert("两次密码不一样")
+    }
+
+})
+
+$(".delete").click(function(){
+  var id=$(this).closest("tr").attr('uid');
+  $(this).addClass("shan");
+  $.post("deladmin.php",{id:id},function(data){
+        if(data=="yes"){
+          $(".shan").closest('tr').remove();
+          alert("删除成功!")
+        }else{
+          alert("删除失败!")
+        }
+        },"html");
+})
+</script>
+{/literal}
+</HTML>

@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>外麦王云平台</title>
+        <link rel="stylesheet" type="text/css" href="/css/main2/base.css"/>
+        <link rel="stylesheet" type="text/css" href="/css/main2/labor/labor_management.css"/>
+    </head>
+    <body>
+        <?php include("header.html");?>
+        <div class="section">
+            <div class="wmain">
+                <ul class="wmainlist">
+                    <li class="wllevel1">
+                    <a href="" class="wllevel1active"><span></span>平台管理<p class="wlrightarrow"></p></a>
+                    </li>
+                </ul>
+                <div class="wmaincontent">
+                    <h1 class="wmch1">|&nbsp;平台管理</h1>
+                    <div class="filterbox">
+                        <div class="searchdiv">
+                            <form action="" method="get">
+                            <input type="text" class="carsearch" name="company" value="<?=$company?>"  placeholder="公司名称" />
+                            <button></button>
+                            </form>
+                        </div>
+                    </div>
+                    <?php
+                    if(!empty($data)){
+                    $num = 1;
+                    foreach($data as $v){
+                        echo "<div class='carmtable'>";
+                            echo "<div class='carmtr'>";
+                                echo "<div class='carmtop'>";
+                                    echo "<div class='input-groupc'>";
+                                        echo "<label>平台&nbsp;:</label><span>".$v['name']."</span>";
+                                    echo "</div>";
+                                    echo "<h4>操作</h4>";
+                                echo "</div>";
+                                echo "<div class='carmtrcontent'>";
+                                    echo "<span class='serialnum'>".($num++)."</span>";
+                                    echo "<div class='cartrinf'>";
+                                        echo "<div class='input-groupc'>";
+                                            echo "<label><p>负责人&nbsp;:&nbsp;&nbsp;</p></label>";
+                                            echo "<span class='brand'>".$v['linkman']."</span>";
+                                        echo "</div>";
+                                        echo "<div class='input-groupc'>";
+                                            echo "<label><p>手机号&nbsp;:&nbsp;&nbsp;</p></label>";
+                                            echo "<span>".$v['linkmono']."</span>";
+                                        echo "</div>";
+                                    echo "</div>";
+                                    echo "<div class='cartrope'>";
+                                        echo "<div >接收车辆:&nbsp;".$v['receive']."<span class='receive' attr='{$v['platformid']}'>&nbsp;&nbsp;查看</span></div>";
+                                        echo "<div style='margin-left:-36px;'>可查看自有车辆:&nbsp;".$v['owner']."<span class='owner' attr='{$v['platformid']}'>&nbsp;&nbsp;查看</span></div>";
+                                    echo "</div>";
+                                echo "</div>";
+                            echo "</div>";
+                        echo "</div>";
+                    }
+                    }
+                    ?>
+                    <div class="page">
+                        <span>每页&nbsp;:</span>
+                        <select  name="pagenum">
+                            <option <?php if($_SESSION['page']===10){echo "selected";}?> value='10'>10</option>
+                            <option <?php if($_SESSION['page']===20){echo "selected";}?> value='20'>20</option>
+                            <option <?php if($_SESSION['page']===30){echo "selected";}?> value='30'>30</option>
+                            <option <?php if($_SESSION['page']===40){echo "selected";}?> value='40'>40</option>
+                            <option <?php if($_SESSION['page']===50){echo "selected";}?> value='50'>50</option>
+                            <option <?php if($_SESSION['page']===60){echo "selected";}?> value='60'>60</option>
+                            <option <?php if($_SESSION['page']===70){echo "selected";}?> value='70'>70</option>
+                            <option <?php if($_SESSION['page']===80){echo "selected";}?> value='80'>80</option>
+                            <option <?php if($_SESSION['page']===90){echo "selected";}?> value='90'>90</option>
+                            <option <?php if($_SESSION['page']===100){echo "selected";}?> value='100'>100</option>
+                        </select>&nbsp;
+                        <a href="/platform.php?<?php if(empty(!$_GET['company'])){echo "company=".$_GET['company']."&";} ?>num=1" >首页</a>
+                        <a href="/platform.php?<?php if(empty(!$_GET['company'])){echo "company=".$_GET['company']."&";} ?>num=<?php if(!$_GET['num'] || $_GET['num']==1 ||$pageAll==0){echo 1;}else{echo ($_GET['num']-1);}?>" >上一页</a>
+                        <span>第</span>
+                        <input type="text" maxlength="5" class="nowpage carpagetext" value="<?php if($_GET['num']){echo $_GET['num'];}else{echo 1;}?>"/>
+                        <span>页</span>
+                        <span>(共</span>
+                        <span class="pageallnum"><?php if($pageAll) echo $pageAll; else echo 0;?></span>
+                        <span>页,</span>
+                        <span><?php if($total) echo $total; else echo 0;?></span>
+                        <span>条)</span>
+                        <a href="/platform.php?<?php if(empty(!$_GET['company'])){echo "company=".$_GET['company']."&";} ?>num=<?php if(empty($_GET['num']) && $pageAll !=0 && $pageAll != 1){echo 2;}elseif($pageAll==0 || $pageAll ==1){echo 1;}else{if($_GET['num']==$pageAll){echo $pageAll;}else{echo ($_GET['num']+1);}}?>" >下一页</a>
+                        <a href="/platform.php?<?php if(empty(!$_GET['company'])){echo "company=".$_GET['company']."&";} ?>num=<?php if($pageAll==0){echo 1;}else{echo $pageAll;}?>" >末页</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <?php include('footer.html');?>
+        <script src="/js/jquery-1.11.0.js"></script>
+        <script type="text/javascript" src="/js/main2/common.js"></script>
+        <script type="text/javascript" src="/js/labor/labor_labor.js"></script>
+        <script type="text/javascript" src="/js/util.js"></script>
+    </body>
+</html>

@@ -1,0 +1,159 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3c.org/TR/1999/REC-html401-19991224/loose.dtd">
+<HTML xmlns="http://www.w3.org/1999/xhtml"><HEAD id=Head1><title>北京外麦王人事系统</title>
+<META http-equiv=Content-Type content="text/html; charset=utf-8">
+<LINK href="/css/Style.css" type=text/css rel=stylesheet>
+<LINK href="/css/Manage.css" type=text/css rel=stylesheet>
+<link href="/css/changeclass.css" type="text/css" rel="stylesheet">
+<SCRIPT language=javascript src="/js/jquery-1.8.3.min.js"></SCRIPT>
+<META content="MSHTML 6.00.2900.3492" name=GENERATOR></HEAD>
+<BODY>
+<TABLE cellSpacing=0 cellPadding=0 width="98%" border=0>
+  <TBODY>
+  <TR>
+    <TD width=15><IMG src="/images/new_019.jpg" border=0></TD>
+    <TD width="100%" background=/images/new_020.jpg height=20></TD>
+    <TD width=15><IMG src="/images/new_021.jpg" 
+  border=0></TD></TR></TBODY></TABLE>
+<TABLE cellSpacing=0 cellPadding=0 width="98%" border=0>
+  <TBODY>
+  <TR>
+    <TD width=15 background=/images/new_022.jpg><IMG 
+      src="/images/new_022.jpg" border=0> </TD>
+    <TD vAlign=top width="100%" bgColor=#ffffff>
+      <TABLE cellSpacing=0 cellPadding=5 width="100%" border=0>
+        <TR>
+          <TD class=manageHead>当前位置：管理首页 &gt; 角色管理 &nbsp;> 权限分配</div></TD>
+        </TR>
+        <TR>
+          <TD height=2>
+          	当前角色:<b style="color:red;">{$rname}</b>
+          </TD></TR></TABLE>
+      <TABLE borderColor=#cccccc cellSpacing=0 cellPadding=0 width="100%" 
+      align=center border=0>
+        <TBODY>
+        <TR>
+          <TD>
+            <TABLE id=grid 
+            style="BORDER-TOP-WIDTH: 0px; FONT-WEIGHT: normal; BORDER-LEFT-WIDTH: 0px; BORDER-LEFT-COLOR: #cccccc; BORDER-BOTTOM-WIDTH: 0px; BORDER-BOTTOM-COLOR: #cccccc; WIDTH: 100%; BORDER-TOP-COLOR: #cccccc; FONT-STYLE: normal; BACKGROUND-COLOR: #cccccc; BORDER-RIGHT-WIDTH: 0px; TEXT-DECORATION: none; BORDER-RIGHT-COLOR: #cccccc" 
+            cellSpacing=1 cellPadding=2 rules=all border=0>
+              <TBODY>
+              <TR 
+              style="FONT-WEIGHT: bold; FONT-STYLE: normal; BACKGROUND-COLOR: #eeeeee; TEXT-DECORATION: none;text-align: center">
+                <TD>权限</TD>
+                <TD>操作</TD>
+
+              </TR>
+
+             <form action="addauth.php?rid={$rid}" method="post">     
+             {foreach from=$new_arr key=$k item=temp}
+             <TR 
+              style="FONT-WEIGHT: normal; FONT-STYLE: normal; BACKGROUND-COLOR: white; TEXT-DECORATION: none;text-align: center; height:40px" rid="{$temp['id']}">
+                <TD> 
+                   <span>{$temp['info']}</span>
+                </TD>
+                <TD>
+                   <input type="checkbox" name="{$k}" {if $temp['haveauth']}checked="checked"{/if} value="{$temp['auth']}">
+                </TD>
+               </TR>
+            {/foreach}
+               <TR 
+              style="FONT-WEIGHT: normal; FONT-STYLE: normal; BACKGROUND-COLOR: white; TEXT-DECORATION: none;text-align: right; height:40px" rid="{$temp['id']}">
+                <TD colspan="2" style="padding-right:90px;">
+                   <button>提交</button>
+                </TD>
+               </TR>
+               
+               </form>
+               </TBODY>
+               </TABLE>
+            </TD>
+       </TR>
+       </TBODY></TABLE></TD>
+    <TD width=15 background=/images/new_023.jpg><IMG 
+      src="/images/new_023.jpg" border=0> </TD></TR></TBODY></TABLE>
+<TABLE cellSpacing=0 cellPadding=0 width="98%" border=0>
+  <TBODY>
+  <TR>
+    <TD width=15><IMG src="/images/new_024.jpg" border=0></TD>
+    <TD align=middle width="100%" background=/images/new_025.jpg 
+    height=15></TD>
+    <TD width=15><IMG src="/images/new_026.jpg" 
+  border=0></TD></TR></TBODY></TABLE>
+</BODY>
+{literal}
+<script>
+     $("#delrole").live("click",function(){
+         if(confirm("确定删除吗")){
+           $(this).closest("tr").addClass("del");
+           var rid=$(".del").attr("rid");
+           $.ajax({
+             type: "POST",
+             url: "delrole.php",
+             data: {
+                    "rid":rid
+                  },
+             success: function(msg){
+
+                 if(msg == "删除成功"){
+                   $(".del").closest("TR").remove();
+                   $(".del").removeClass("del");
+                   alert(msg);
+                 }else{
+                 	$(".del").removeClass("del");
+                 	alert(msg);
+                 }
+             },
+             error: function(){
+               alert("ajax请求失败")
+            }
+          });
+         }
+      })
+     // //部门重命名
+     // $(":input[name='name']").focus(function(){
+     // 	  $(this).css('border','1px solid #979797');
+     // }).blur(function(){
+     //      $(this).closest("tr").addClass("changename");
+     //        var rid=$(".changename").attr("rid");
+     //      $(this).css('border','none');         
+     //      $(".changename").removeClass("changename");
+     //      $.ajax({
+     //         type: "POST",
+     //         url: "changename.php",
+     //         data: "rolename="+$(this).val()+"&rid="+rid,
+     //         success: function(msg){
+     //        }
+     //      });
+     // })
+     //添加角色
+        var rolename=$("input[name='rolename']");
+       $("#addrole").live("click",function(){
+           if(rolename.val()==""){
+               alert("部门名称不能为空");
+               return false;
+           }else{
+               $.ajax({
+                   type: "POST",
+                   url: "addrole.php",
+                   data: {
+                        "rolename":rolename.val()
+                      },
+                   success: function(msg){
+                      if(msg == "no"){
+                          alert("添加失败");
+                      }else{
+                         var str="";
+                             str+="<tr rid="+msg+"><td style='background-color:white;height:40px;text-align:center;'>"+rolename.val()+"</td>";
+                             str+="<td style='background-color:white;height:40px;text-align:center;'><A href='javascript:void(0)' id='delrole'>删除</A>&nbsp;<A href='showjob.php?rid="+msg+"&bname="+rolename.val()+"'>分配权限</A></td></tr>";
+                          $(str).insertBefore($("#role"));
+                      }
+                   },
+                   error: function(){
+                     alert("ajax请求失败")
+                  }
+                });
+           }
+       })
+</script>
+{/literal}
+</HTML>

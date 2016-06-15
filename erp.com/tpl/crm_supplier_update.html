@@ -1,0 +1,68 @@
+//---- UTF8 编码 ----
+<!-- BEGIN: main --><?xml version="1.0" encoding="UTF-8"?>
+{main.doc_type}
+<?xml-stylesheet type="text/xsl" href="/style/crm_supplier_update.xsl?ver={main.doc_version}"?>
+<html version="{main.doc_version}">
+	<head>
+		<Title>{main.title}</Title>
+		<meta name="keywords" content="{main.keywords}" />
+		<meta name="description" content="{main.description}" />
+		<em company_id="{main.company_id}" staff_id="{main.staff_id}" login_name="{main.login_name}" permit="{main.permit}" program="{main.request_url}"/>
+	</head>
+	<Body>
+		<dir><![CDATA[ 您的位置： {main.this_location}]]></dir>
+		<menu>
+			<big>{main.big_menu}</big>
+			<small>
+				<!-- BEGIN: list_menu --><a class="{list_menu.class}" href="{list_menu.link}">{list_menu.name}</a><!-- END: list_menu -->
+			</small>
+		</menu>
+		
+		<supplierMsg>
+			<id>{main.id}</id>
+			<number>{main.number}</number>
+			<name>{main.name}</name>
+			<website>{main.website}</website>
+			<state_id>{main.state_id}</state_id>
+			<city_id>{main.city_id}</city_id>
+			<district_id>{main.district_id}</district_id>
+			<address>{main.address}</address>
+			<post_code>{main.post_code}</post_code>
+			<contact_name>{main.contact_name}</contact_name>
+			<phone>{main.phone}</phone>
+			<mobile>{main.mobile}</mobile>
+			<email>{main.email}</email>
+			<tax>{main.tax}</tax>
+			<fax>{main.fax}</fax>
+			<bank_name>{main.bank_name}</bank_name>
+			<bank_number>{main.bank_number}</bank_number>
+			<content>{main.content}</content>
+			<type>
+				<select_value>{main.type}</select_value>
+				<ul>
+					<li><value>Finished</value><text>成品供货商</text></li>
+					<li><value>Materials</value><text>原材料供货商</text></li>
+				</ul>
+			</type>
+			<level>
+				<select_value>{main.level}</select_value>
+				<ul>
+					<li><value>Primary</value><text>主选供货商</text></li>
+					<li><value>Alternative</value><text>备选供货商</text></li>
+					<li><value>Eliminate</value><text>淘汰供货商</text></li>
+				</ul>
+			</level>
+		</supplierMsg>
+		<goodsMsg>
+			<ul>
+				<!-- BEGIN: list_product -->
+				<li>
+					<goods_name>{list_product.name}</goods_name>
+					<goods_price>{list_product.price}</goods_price>
+				</li>
+				<!-- END: list_product -->
+			</ul>
+		</goodsMsg>
+	</Body>
+</html>
+<!-- END: main -->

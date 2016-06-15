@@ -1,0 +1,75 @@
+//---- UTF8 编码 ----
+<!-- BEGIN: main --><?xml version="1.0" encoding="UTF-8"?>
+{main.doc_type}
+<?xml-stylesheet type="text/xsl" href="/style/stock_commodity_status.xsl?ver={main.doc_version}"?>
+<html version="{main.doc_version}">
+<head>
+	<Title>{main.title}</Title>
+	<meta name="keywords" content="{main.keywords}" />
+	<meta name="description" content="{main.description}" />
+	<em company_id="{main.company_id}" staff_id="{main.staff_id}" login_name="{main.login_name}" permit="{main.permit}" program="{main.request_url}"/>
+</head>
+<Body>
+	<dir><![CDATA[ 您的位置： {main.this_location}]]></dir>
+	<menu>
+		<big>{main.big_menu}</big>
+		<small>
+			<!-- BEGIN: list_menu --><a class="{list_menu.class}" href="{list_menu.link}">{list_menu.name}</a><!-- END: list_menu -->
+		</small>
+	</menu>
+	<real>
+		<ul total='{main.total}'>
+			<!-- BEGIN:list_store -->
+			<li>
+				<id>{list_store.id}</id>
+				<num>{list_store.num}</num>
+				<name>{list_store.name}</name>
+				<total>{list_store.total}</total>
+				<image>{list_store.image}</image>
+				<number>{list_store.number}</number>
+				<format_1>{list_store.format_1}</format_1>
+				<format_2>{list_store.format_2}</format_2>
+				<format_3>{list_store.format_3}</format_3>
+				<format_4>{list_store.format_4}</format_4>
+				<format_5>{list_store.format_5}</format_5>
+				<price_total>{list_store.price_total}</price_total>
+				<price_purchase>{list_store.price_purchase}</price_purchase>
+			</li>
+			<!-- END:list_store -->
+		</ul>
+	</real>
+	<store_info>
+		<ul>
+			<!-- BEGIN:store_info -->
+			<li>
+				<value>{store_info.id}</value><text>{store_info.name}</text>
+			</li>
+			<!-- END:store_info -->
+		</ul>
+	</store_info>
+	<product>
+		<ul>
+			<!-- BEGIN:product_category -->
+			<li>
+				<value>{product_category.id}</value><text>{product_category.name}</text>
+			</li>
+			<!-- END:product_category -->
+		</ul>
+	</product>
+	<brandList>
+		<ul>
+			<!-- BEGIN: brand -->
+				<li id="{brand.id}" parent_id="{brand.parent_id}" level="{brand.level}">{brand.name}</li>
+			<!-- END: brand -->
+		</ul>
+	</brandList>
+	<total_zong>{main.total_zong}</total_zong>
+	<price_zong>{main.price_zong}</price_zong>
+	<find>{main.find}</find>
+	<brand>{main.brand}</brand>
+	<classification>{main.classification}</classification>
+	<sales_status>{main.sales_status}</sales_status>
+	{main.page_info}
+</Body>
+</html>
+<!-- END: main -->

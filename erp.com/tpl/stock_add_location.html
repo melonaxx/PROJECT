@@ -1,0 +1,53 @@
+//---- UTF8 编码 ----
+<!-- BEGIN: main -->
+<html>
+<head>
+<title>添加{main.location_name}</title>
+<link type="text/css" rel="stylesheet" href="/style/bootstrap.min.css?ver={main.doc_version}"/>
+<link type="text/css" rel="stylesheet" href="/style/style.css?ver={main.doc_version}"/>
+<style>
+body,table,form,input		{font-size:12px; padding:0; margin:0; text-align:left}
+body	{min-width:200px}
+.form-control	{display:inline-block}
+</style>
+<script type="text/javascript" charset="UTF-8" src="/js_encode/jquery-1.9.1.min.js"></script>
+<script type="text/javascript" charset="UTF-8" src="/js_encode/bootstrap.min.js"></script>
+<body>
+	<form class="form-inline supplierMsg" method="post" action="/stock/stock_add_location.php">
+		<input type="hidden" name="location" value="{main.location_type}"/>
+		<input type="hidden" name="store_id" value="{main.store_id}"/>
+		<input type="hidden" name="area_id" value="{main.area_id}"/>
+		<input type="hidden" name="shelves_id" value="{main.shelves_id}"/>
+		<div class="form-group">
+			<label>&#160;&#160; &#160;&#160; 所属仓库：</label>
+			<input type="text" readonly="true" class="form-control input-sm" value="{main.store_name}"/>
+		</div>
+		<!-- BEGIN: display_area -->
+		<div class="form-group">
+			<label>&#160;&#160; &#160;&#160; 所属库区：</label>
+			<input type="text" readonly="true" class="form-control input-sm" value="{display_area.name}"/>
+		</div>
+		<!-- END: display_area -->
+		<!-- BEGIN: display_shelves -->
+		<div class="form-group">
+			<label>&#160;&#160; &#160;&#160; 所属货架：</label>
+			<input type="text" readonly="true" class="form-control input-sm" value="{display_shelves.name}"/>
+		</div>
+		<!-- END: display_shelves -->
+		<div class="form-group">
+			<label>&#160;&#160; &#160;&#160; {main.location_name}编码：</label>
+			<input type="text" name="name" class="form-control input-sm" placeholder="请输入{main.location_name}编码" />
+		</div>
+		<div class="form-group">
+			<label>&#160;&#160; &#160;&#160; {main.location_name}备注：</label>
+			<input type="text" name="body" class="form-control input-sm merger_two_row_3"/>
+		</div>
+		<p>
+			&#160;&#160; &#160;&#160; <input class="btn btn-default btn-sm btn_margin" type="submit" value="提交"/>
+			<input class="btn btn-default btn-sm" type="button" value="关闭" onclick="parent.$('#MessageBox').modal('hide')" />
+		</p>
+	</form>
+</body>
+</html>
+
+<!-- END: main -->

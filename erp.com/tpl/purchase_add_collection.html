@@ -1,0 +1,113 @@
+//---- UTF8 编码 ----
+<!-- BEGIN: main -->
+<html>
+<head>
+<title>查看记录</title>
+<link type="text/css" rel="stylesheet" href="/style/bootstrap.min.css?ver={main.doc_version}"/>
+<link type="text/css" rel="stylesheet" href="/style/style.css?ver={main.doc_version}"/>
+<style>
+body {
+	text-align:left;
+	min-width:600px;
+	overflow-y:hidden;
+	padding:0;
+}
+.form-inline .form-control {
+	display: inline-block;
+	vertical-align: middle;
+}
+.form-inline .form-group {
+	display: inline-block;
+	vertical-align: middle;
+}
+.read{
+	border:1px solid red;
+}
+</style>
+<script type="text/javascript" src="/js_encode/jquery-1.9.1.min.js"></script>
+<script type="text/javascript" src="/js_encode/jquery.area.three.js"></script>
+<script type="text/javascript" src="/js_encode/jquery.validate.js"></script>
+<script type="text/javascript" src="/js_encode/stock_edit_factory.js"></script>
+<!-- <script type="text/javascript" charset="UTF-8" src="/js_encode/bootstrap.min.js"></script> -->
+<body>
+	<div>
+		<form class="form-inline supplierMsg" method="post">
+			<div class="form-group">
+				<label>　供应商：</label>
+				<select class="form-control input-sm" name="supplier">
+					<!-- BEGIN: purchase_add -->
+					<option value="{purchase_add.id}">{purchase_add.name}</option>
+					<!-- END: purchase_add -->
+				</select>
+			</div>
+			<div class="form-group">
+				<label class="margin_left_2">采购单编号：</label><input type="text" name="number" class="form-control input-sm" onkeyup="this.value=this.value.replace(/\D/g,'')"/>
+			</div>
+			<div class="form-group">
+				<label>收款金额：</label>
+				<div class="form-group" style="margin-top:-38px;margin-left:247px;">
+					<div class="input-group col-xs-7" style="margin-top:12px;margin-left:-183px;">
+						<div class="input-group-addon">￥</div>
+						<input type="text" class="form-control input-sm cont" name="money" style="width:110px;"/>
+					</div>
+				</div>
+			</div> 
+			
+				
+			<br/>
+			<div class="float_left form-group">
+				<span class="float_left" style="margin:15px 0 0 24px;">备注：</span>
+				<textarea class="form-control input-sm merger_two_row_4 body" name='body' rows="2" style="width:500px;" >{main.body}</textarea>
+			</div>
+			<p>
+				<input class="btn btn-default btn-sm submit" type="button" value="提交"/>
+				<input class="btn btn-default btn-sm" type="button" value="关闭" onclick="parent.$('#MessageBox').modal('hide')" />
+			</p>
+		</form>
+	</div>
+</body>
+<script>
+	$(".submit").click(function(){
+		var number = $("input[name='number']").val();
+		var supplier = $("select[name='supplier']").val();
+		var money = $("input[name='money']").val();
+		if(number.length == 0){
+			$("input[name='number']").addClass("read");
+			return false;
+		}else{
+			$("input[name='number']").removeClass("read");
+		}
+		if(money.length == 0){
+			$("input[name='money']").addClass("read");
+			return false;
+		}else{
+			$("input[name='money']").removeClass("read");
+		}
+		var body = $(".body").val();
+		$.ajax({
+			type:'POST',
+			 url:'/purchase/purchase_add_collection.php',
+		   async:true,
+			data:{"number":number,"supplier":supplier,"money":money,"body":body},
+		dataType:'json',
+		 success:function(data){
+				if(data == '0'){
+					alert("对不起，找不到该采购单！");
+				}else{
+					parent.$('#MessageBox').modal('hide');
+					top.location.reload("/purchase/purchase_collection.php");
+				}
+			}
+		})
+	})
+	
+	$(".cont").keyup(function(){
+	    	this.value = this.value.replace(/[^\d.]/g,"");
+			this.value = this.value.replace(/^\./g,"");
+			this.value = this.value.replace(/\.{2,}/g,".");
+			this.value = this.value.replace(".","$#$").replace(/\./g,"").replace("$#$",".");
+  		});
+</script>
+</html>
+
+<!-- END: main -->

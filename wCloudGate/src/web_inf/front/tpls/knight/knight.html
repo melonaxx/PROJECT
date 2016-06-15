@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>外麦王云平台</title>
+	<link rel="stylesheet" type="text/css" href="/css/main2/base.css"/>
+	<link rel="stylesheet" type="text/css" href="/css/main2/knight/knight_management.css"/>
+</head>
+<body>
+    <?php include("header.html")?>
+	<div class="section">
+	<div class="scrolltop"></div>
+		<div class="wmain">
+			<ul class="wmainlist">
+				<li class="wllevel1">
+					<a href="/knight.php" class="wllevel1active"><span></span>骑士管理<p class="wlrightarrow"></p></a>
+				</li>
+				<li class="wllevel1">
+					<a href="/knightadd.php"><span></span>添加骑士<p></p></a>
+				</li>				
+			</ul>
+			<div class="wmaincontent">
+				<h1 class="wmch1">|&nbsp;骑士管理</h1>
+				<div class="filterbox">
+					<button class="operatebtn groupmanage gmanage">分组管理</button>
+					<form action="/knight.php" method="get">
+					<div class="searchdiv carinfright">
+						<input class="carsearch" type="text" placeholder="请输入骑士名称" name="name" value="<?php if($_GET['name']) echo $_GET['name'] ?>" />
+						<button class="searchbutton" type="submit"></button>
+					</div>	
+					<select class="sgsel" name="gid">
+						<option class="ktgsel" value="">选择分组</option>
+						<?php
+							if($pdata) {
+								$opt = '';
+								for($i = 0; $i < count($pdata); $i++) {
+									if($pdata[$i]['id'] == $_GET['gid']) {
+										$selected = " selected ";
+									}else {
+										$selected = "";
+									}
+									$opt .= "<option ".$selected." value='".$pdata[$i]['id'] . "'";
+									$opt .= " >".$pdata[$i]['name']."</option>";
+								}
+								echo $opt;
+							}
+						?>
+					</select>
+					</form>
+				</div>
+
+<?php
+$datatr = '';
+if($data) {
+	for($i = 0; $i < count($data); $i++ ) {
+	$datatr .= '<div class="carmtable">';
+	$datatr .= '	<div class="carmtr">';
+	$datatr .= '		<div class="carmtop">';
+	$datatr .= '			<div class="input-groupc">';
+	$datatr .= '				<label>骑士&nbsp;:</label>';
+	$datatr .= "				<span>".$data[$i]['name']."</span>";
+	$datatr .= '			</div>';
+	$datatr .= '			<h4>操作</h4>';
+	$datatr .= '		</div>';
+	$datatr .= '		<div class="carmtrcontent">';
+	$datatr .= '			<span class="serialnum">'.($i+1).'</span>';
+	$datatr .= '			<div class="cartrinf">';
+	$datatr .= '				<div class="input-groupc">';
+	$datatr .= '					<label><p>电话&nbsp;:&nbsp;&nbsp;</p></label>';
+	$datatr .= "					<span>".$data[$i]['mobileno']."</span>";
+	$datatr .= '				</div>';
+	$datatr .= '				<div class="input-groupc">';
+	$datatr .= '					<label><p>账号状态&nbsp;:&nbsp;&nbsp;</p></label>';
+		if($data[$i]['status'] == -2 || $data[$i]['status'] == 1){
+			$datatr .= "<span>未完善信息</span>";
+		}else{
+			$datatr .= "<span>正常</span>";
+		}
+	$datatr .= '				</div>';
+	$datatr .= '				<div class="input-groupc">';
+	$datatr .= '					<label><p>分组&nbsp;:&nbsp;&nbsp;</p></label>';
+	$datatr .= "					<span><i>".$data[$i]['kgname']."</i>";
+	$datatr .= "<a class='modifygroup tablea modgroup'>修改</a>";
+	$datatr .= "</span>";
+	$datatr .= '				</div>';
+	$datatr .= '				<div class="input-groupc">';
+	$datatr .= '					<label><p>分配状态&nbsp;:&nbsp;&nbsp;</p></label>';
+	if($data[$i]['seqno']) {
+	$datatr .= "					<span>已分配</span>";}else{
+	$datatr .= "					<span>未分配</span>";}
+	$datatr .= '				</div>';
+	$datatr .= '				<div class="input-groupc">';
+	$datatr .= '					<label class="spelabel"><p>电动车序列号&nbsp;:&nbsp;&nbsp;</p></label>';
+	$datatr .= "					<span>".$data[$i]['seqno']."</span>";
+	$datatr .= '				</div>';
+	$datatr .= '			</div>';
+	$datatr .= "			<div class='cartrope' ebikeid=".$data[$i]['ebikeid']." knightid=".$data[$i]['id'].">";
+	if($data[$i]['seqno']) {
+		$datatr .= '				<a class="canceldistribut unempcheck">取消分配</a>';
+		$datatr .= "				<a href='/gotomap.php?inttype=lkseqno&seqno=".$data[$i]['seqno']."'>查看定位</a>";}else {
+		$datatr .= '				<a class="canceldistribut empcheck">分配车辆</a>';}
+	$datatr .= '				<a class="delete del">删除</a>';
+	$datatr .= '			</div>';
+	$datatr .= '		</div>';
+	$datatr .= '	</div>';
+	$datatr .= '</div>';
+
+		}
+		echo $datatr;
+	}
+?>
+
+				<div class="page">
+				<span>每页&nbsp;:</span>
+				<select class="nowpagesel" name="pagenum">
+					<option <?php if ($_GET['page'] == 10) echo selected?> >10</option>
+					<option <?php if ($_GET['page'] == 20) echo selected?> >20</option>
+					<option <?php if ($_GET['page'] == 30) echo selected?> >30</option>
+					<option <?php if ($_GET['page'] == 40) echo selected?> >40</option>
+					<option <?php if ($_GET['page'] == 50) echo selected?> >50</option>
+					<option <?php if ($_GET['page'] == 60) echo selected?> >60</option>
+					<option <?php if ($_GET['page'] == 70) echo selected?> >70</option>
+					<option <?php if ($_GET['page'] == 80) echo selected?> >80</option>
+					<option <?php if ($_GET['page'] == 90) echo selected?> >90</option>
+					<option <?php if ($_GET['page'] == 100) echo selected?> >100</option>
+				</select>&nbsp;
+				<a href="/knight.php?name=<?=$_GET['name']?>&gid=<?=$_GET['gid']?>&num=1&pageall=<?=$pageall?>&page=<?=$page?>" >首页</a>
+				<a href="/knight.php?name=<?=$_GET['name']?>&gid=<?=$_GET['gid']?>&num=<?php echo $num-1;?>&pageall=<?=$pageall?>&page=<?=$page?>" >上一页</a>
+				<span>第</span>
+				<input type="text" maxlength="5" class="nowpage carpagetext" value="<?php if($num) echo $num; else echo 1;?>"/>
+				<span>页</span>
+				<span>(共</span>
+				<span class="pageallnum"><?php if($pageall) echo $pageall; else echo 0;?></span>
+				<span>页,</span>
+				<span><?php if($data) echo $count; else echo 0;?></span>
+				<span>条)</span>
+				<a href="/knight.php?name=<?=$_GET['name']?>&gid=<?=$_GET['gid']?>&num=<?php echo $num+1; ?>&pageall=<?=$pageall?>&page=<?=$page?>" >下一页</a>
+				<a href="/knight.php?name=<?=$_GET['name']?>&gid=<?=$_GET['gid']?>&num=<?=$pageall?>&pageall=<?=$pageall?>&page=<?=$page?>" >末页</a>
+				</div>
+
+			</div>
+		</div>
+	</div>
+	
+	<!-- 添加分组 -->
+	<div class="modal modalmodgroup kaddgroup" id="modaladdgroup">
+		<div class="cover"></div>
+		<div class="modalbox">
+			<div class="choicegroup input-group">
+				<label style="float:left;">分组名称&nbsp;:&nbsp;&nbsp;</label>
+				<input type="text" name="groupname" placeholder="填写分组名称" value=""/>
+			</div>
+			<div class="btns">
+				<button class="mgsure groupadd">确认</button>
+				<button class="mgcancel groupaddcancel">取消</button>
+			</div>
+		</div>
+	</div>	
+
+	<!-- 骑士分组模态框 -->
+	<div class="modal modalmodgroup addknighttog" id="modalmodgroup">
+		<div class="cover"></div>
+		<div class="modalbox">
+			<div class="choicegroup knighttogsel input-group">
+				<label >分组名称&nbsp;:&nbsp;&nbsp;</label>
+				<select name="knighttog">
+					
+				</select>
+			</div>
+			<div class="btns">
+				<button class="mgsure togroup">确认</button>
+				<button class="mgcancel togroupcancel">取消</button>
+			</div>
+		</div>
+	</div>
+
+	<!-- 分组管理 -->
+	<div class="modal modalgmanage" id="modalgroupmanag">
+		<div class="cover"></div>
+		<div class="modalbox">
+			<div class="outtable2 tablediv">
+			<button class="operatebtn addgroup gmanageadd" style="margin-bottom: 17px;">添加分组</button>
+				<table class="gmanagetab">
+					<thead>
+						<tr>
+							<td>序号</td>
+							<td width="177px;">分组名称</td>
+							<td>成员</td>
+							<td>操作</td>
+						</tr>
+					</thead>
+					<tbody class="showkp">
+					</tbody>
+				</table>
+			</div>
+			<div class="btns"><center>
+				<button class="gmsure">完成</button></center>
+			</div>
+		</div>
+	</div>
+
+	<!-- 分配车辆 -->
+	<div class="modal modald labormodal" id="modaldistcar">
+		<div class="cover"></div>
+		<div class="modalbox">
+			<div class="outtable tablediv">
+				<div style="color: red;" class="kmsg" ></div>
+				<br/>
+				<table clas="disttab" >                                      
+					<thead>
+						<tr>
+						<td>序号</td>
+						<td>车辆序列号</td>
+						<td>添加状态</td>
+						<td>操作</td>
+						</tr>
+					</thead>
+					<tbody>
+
+					</tbody>
+				</table>
+			</div>
+			<div class="finishdiv">
+				<button class="finish finishbtn">
+				<a href="">完成</a>
+				</button>
+			</div>
+		</div>
+	</div>
+
+	<!-- 删除骑士 -->
+	<div class="modal delmodal" id="modaldelete">
+		<div class="cover"></div>
+		<div class="modalbox">
+			<div class="btns delbtns">
+				<p>确认解除绑定骑士吗？</p>
+				<button class="surede suredel">确认</button>
+				<button class="cancelde canceldel">取消</button>
+			</div>
+		</div>
+	</div>
+
+	<!-- 取消骑士分配电动车 -->
+	<div class="modal carmodal" id="modalcanceldist">
+		<div class="cover"></div>
+		<div class="modalbox">
+			<div class="btns cardelbtns">
+				<p>确认解除绑定电动车吗？</p>
+				<button class="surede carsuredel">确认</button>
+				<button class="cancelde canceldel">取消</button>
+			</div>
+		</div>
+	</div>
+
+    <?php include("footer.html"); ?>
+    <script src="/js/jquery-1.11.0.js"></script>
+    <script src="/js/main2/common.js"></script>
+	<script src="/js/util.js"></script>
+	<script src="/js/knight/knight.js"></script>	
+
+</body>
+</html>

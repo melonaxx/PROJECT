@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>外麦王云平台</title>
+        <link rel="stylesheet" type="text/css" href="/css/main2/base.css"/>
+        <link rel="stylesheet" type="text/css" href="/css/main2/labor/labor_management.css"/>
+    </head>
+    <body>
+        <?php include('header.html');?>
+        <div class="section">
+            <div class="wmain">
+                <ul class="wmainlist">
+                    <li class="wllevel1">
+                    <a href="" class="wllevel1active"><span></span>劳务方管理<p class="wlrightarrow"></p></a>
+                    </li>
+                </ul>
+                <div class="wmaincontent">
+                    <h1 class="wmch1">|&nbsp;劳务方管理</h1>
+                    <div class="filterbox">
+                        <form method="get" action="labormanage.php">
+                        <div class="searchdiv">
+                             <input type="text" name="laborname" value="<?php echo $name?$name:"" ?>" class="carsearch" placeholder="请输入劳务方名称" />
+                            <button></button>
+                        </div>
+                        </form>
+                    </div>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>序号</th>
+                                <th>劳务方</th>
+                                <th>车辆数量</th>
+                                <th>操作</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        <?php
+                            if(!empty($arr)){
+                                for($i=0;$i<count($arr);$i++){
+                                    if(count($arr[$i])>0){
+                                    echo "<tr>"; 
+                                    echo "<td attr='{$arr[$i]['laborid']}'>".($i+1)."</td>"; 
+                                    echo "<td>".$arr[$i]['name']."</td>" ;                                                               
+                                    echo "<td>".$arr[$i]['sum']."</td>" ;                                             
+                                    echo "<td class='opetd'><a href='/gotomap.php?inttype=plall&laborid={$arr[$i]['laborid']}'>查看定位</a><a href='/platform/carmanagement.php?labour={$arr[$i]['laborid']}'>车辆信息</a></td> ";
+                                    echo "</tr>";
+                                    }
+                                }
+                            }
+                        ?> 
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <?php include('footer.html');?>
+        <script src="/js/jquery-1.11.0.js"></script>
+        <script type="text/javascript" src="/js/main2/common.js"></script>
+    </body>
+</html>

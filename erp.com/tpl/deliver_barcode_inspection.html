@@ -1,0 +1,55 @@
+//---- UTF8 编码 ----
+<!-- BEGIN: main --><?xml version="1.0" encoding="UTF-8"?>
+{main.doc_type}
+<?xml-stylesheet type="text/xsl" href="/style/deliver_barcode_inspection.xsl?ver={main.doc_version}"?>
+<html version="{main.doc_version}">
+<head>
+	<Title>{main.title}</Title>
+	<meta name="keywords" content="{main.keywords}" />
+	<meta name="description" content="{main.description}" />
+	<em company_id="{main.company_id}" staff_id="{main.staff_id}" login_name="{main.login_name}" permit="{main.permit}" program="{main.request_url}"/>
+</head>
+<Body>
+<!-- <dir><![CDATA[ 您的位置：{main.this_location}]]></dir> -->
+<dir><![CDATA[ 您的位置： <a href="/">首页</a> &raquo;  <a href="/deliver/">发货</a> &raquo; 条码验货]]></dir>
+<menu>
+	<big>{main.big_menu}</big>
+	<small>
+		<!-- BEGIN: list_menu --><a class="{list_menu.class}" href="{list_menu.link}">{list_menu.name}</a><!-- END: list_menu -->
+	</small>
+</menu>
+	<total>{main.total}</total>
+	<nick>
+		<type>
+			<ul>
+				<!-- BEGIN: arr -->
+				<li>
+					<value>{arr.number}</value>
+					<text>{arr.nick}</text>
+				</li>
+				<!-- END: arr -->
+			</ul>
+		</type>
+	</nick>
+
+	<tiaojian>
+		<type>
+			<ul>
+				<li>
+					<value>D</value>
+					<text>订单编号</text>
+				</li>
+				<li>
+					<value>K</value>
+					<text>快递单号</text>
+				</li>
+			</ul>
+		</type>
+	</tiaojian>
+
+
+</Body>
+
+
+</html>
+<!-- END: main -->

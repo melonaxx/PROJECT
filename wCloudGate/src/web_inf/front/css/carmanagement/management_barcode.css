@@ -1,0 +1,26 @@
+/* -----------------内容----------------- */
+section{width:100%;background: #eaeef2;padding-top: 20px;padding-bottom: 73px;}
+.content{width:1048px;margin:0 auto;overflow: hidden;border:1px solid #ccc;background: #fff;}
+.maintop{background: #ddd;border-bottom: 1px solid #ccc;width:100%;height:58px;}
+.maintop li{float:left;font-size: 24px;line-height: 58px;width:134px;text-align: center;}
+.maintop .manageract{background: #fff;color:#358ecb;border-top:3px solid #358ecb;height: 56px;line-height:55px;border-right: 1px solid #ccc;border-left:1px solid #ccc;}
+.maintop .manageract a{color:#358ecb;}
+.maintop a{color:#333;}
+.elecaract{padding:30px 20px 42px;} 
+.activestatus{height:30px;width:100%;}
+.activestatus li{float:left;font-size: 20px;}
+.activestatus a{color:#333;}
+.activationact{border-bottom: 2px solid #368ecb;}
+.activationact a{color:#368ecb;}
+.bar{margin:0 10px;}
+.carsernum{height:33px;width:100%;margin:30px 0 20px;}
+.carsernum li{float:left;font-size: 16px;margin-right: 10px;}
+.carsernum a{color:#fd4400;}
+.sernumact{border-bottom: 2px solid #368ecb;}
+.sernumact a{color:#368ecb;}
+.barcode{width:100%;height: 58px;border:1px solid #ccc;font-size: 30px;text-align: center;line-height: 58px;letter-spacing: 26px;}
+.instructon{width:100%;font-size: 14px;height: 20px;color:#999;margin:10px 0 20px 0;}
+.elecartab{width:100%;overflow: hidden;border-collapse:collapse ;}
+.elecartab thead{width:100%;height:60px;background: #70b0dc;color:#fff;font-size: 18px;line-height: 60px;}
+.elecartab td{width:25%;text-align: center;}
+.elecartab tbody tr{height:58px;border-bottom: 2px dotted #ccc;font-size: 14px;}

@@ -1,0 +1,46 @@
+//---- UTF8 编码 ----
+<!-- BEGIN: main --><?xml version="1.0" encoding="UTF-8"?>
+{main.doc_type}
+<?xml-stylesheet type="text/xsl" href="/style/purchase_waiting_payment.xsl?ver={main.doc_version}"?>
+<html version="{main.doc_version}">
+	<head>
+		<Title>{main.title}</Title>
+		<meta name="keywords" content="{main.keywords}" />
+		<meta name="description" content="{main.description}" />
+		<em company_id="{main.company_id}" staff_id="{main.staff_id}" login_name="{main.login_name}" permit="{main.permit}" program="{main.request_url}"/>
+	</head>
+	<Body>
+		<dir><![CDATA[ 您的位置： {main.this_location}]]></dir>
+		<menu>
+			<big>{main.big_menu}</big>
+			<small>
+				<!-- BEGIN: list_menu --><a class="{list_menu.class}" href="{list_menu.link}">{list_menu.name}</a><!-- END: list_menu -->
+			</small>
+		</menu>
+		<logs>
+			<ul total='{main.total}'>
+				<!-- BEGIN: logs -->
+				<li>
+					<no>{logs.no}</no>
+					<id>{logs.id}</id>
+					<type>{logs.type}</type>
+					<body>{logs.body}</body>
+					<money>{logs.money}</money>
+					<number>{logs.number}</number>
+					<bank_id>{logs.bank_id}</bank_id>
+					<info_id>{logs.info_id}</info_id>
+					<subject>{logs.subject}</subject>
+					<amount_date>{logs.amount_date}</amount_date>
+					<payment_remain>{logs.payment_remain}</payment_remain>
+					<payment_return>{logs.payment_return}</payment_return>
+					<payment_already>{logs.payment_already}</payment_already>
+				</li>
+				<!-- END: logs -->
+			</ul>
+		</logs>
+		<type>{main.type}</type>
+		<date>{main.date}</date>
+		{main.page_info}
+	</Body>
+</html>
+<!-- END: main -->

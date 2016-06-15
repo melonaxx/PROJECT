@@ -1,0 +1,117 @@
+<!-- BEGIN: main --><?xml version="1.0" encoding="UTF-8"?>
+{main.doc_type}
+<?xml-stylesheet type="text/xsl" href="/style/deliver_design_deliver.xsl?ver={main.doc_version}"?>
+<html version="{main.doc_version}">
+<head>
+	<Title>{main.title}</Title>
+	<meta name="keywords" content="{main.keywords}" />
+	<meta name="description" content="{main.description}" />
+	<em company_id="{main.company_id}" staff_id="{main.staff_id}" login_name="{main.login_name}" permit="{main.permit}" program="{main.request_url}"/>
+</head>
+<Body>
+	<menu>
+		<big>{main.big_menu}</big>
+		<small>
+			<!-- BEGIN: list_menu --><a class="{list_menu.class}" href="{list_menu.link}">{list_menu.name}</a><!-- END: list_menu -->
+		</small>
+	</menu>
+	<deliver_template>
+		<!-- BEGIN: deliver_template -->
+		<item>
+			<id>{deliver_template.id}</id>
+			<name>{deliver_template.name}</name>
+		</item>	
+		<!-- END: deliver_template -->
+	</deliver_template>
+	<page_info>
+		<!-- BEGIN: page_info -->
+		<template_id>{page_info.template_id}</template_id>
+		<template_name>{page_info.template_name}</template_name>
+		<template_image>{page_info.template_image}</template_image>
+		<print_orient>{page_info.print_orient}</print_orient>
+		<page_top>{page_info.page_top}</page_top>
+		<page_left>{page_info.page_left}</page_left>
+		<page_width>{page_info.page_width}</page_width>
+		<page_height>{page_info.page_height}</page_height>
+		<border>{page_info.border}</border>
+		<!-- END: page_info -->
+	</page_info>
+
+	<deliver>
+		<!-- BEGIN: deliver -->
+		<item>
+			<id>{deliver.id}</id>
+			<item_id>{deliver.item_id}</item_id>
+			<name>{deliver.name}</name>
+			<english>{deliver.english}</english>
+			<item_top>{deliver.item_top}</item_top>
+			<item_left>{deliver.item_left}</item_left>
+			<item_width>{deliver.item_width}</item_width>
+			<item_height>{deliver.item_height}</item_height>
+			<item_font_size>{deliver.item_font_size}</item_font_size>
+			<item_font_bold>{deliver.item_font_bold}</item_font_bold>
+			<item_type>{deliver.item_type}</item_type>
+			<item_content>{deliver.item_content}</item_content>
+		</item>	
+		<!-- END: deliver -->
+
+	</deliver>	
+	<table>
+		<!-- BEGIN: table -->
+		<item>
+			<id>{table.id}</id>
+			<item_id>{table.item_id}</item_id>
+			<name>{table.name}</name>
+			<english>{table.english}</english>
+			<item_top>{table.item_top}</item_top>
+			<item_left>{table.item_left}</item_left>
+			<item_width>{table.item_width}</item_width>
+			<item_height>{table.item_height}</item_height>
+			<item_font_size>{table.item_font_size}</item_font_size>
+			<item_font_bold>{table.item_font_bold}</item_font_bold>
+			<item_type>{table.item_type}</item_type>
+			<item_content>{table.item_content}</item_content>
+		</item>	
+		<!-- END: table -->
+	</table>
+	<title>
+		<!-- BEGIN: title -->
+		<item>
+			<id>{title.id}</id>
+			<item_id>{title.item_id}</item_id>
+			<name>{title.name}</name>
+			<english>{title.english}</english>
+			<item_top>{title.item_top}</item_top>
+			<item_left>{title.item_left}</item_left>
+			<item_width>{title.item_width}</item_width>
+			<item_height>{title.item_height}</item_height>
+			<item_font_size>{title.item_font_size}</item_font_size>
+			<item_font_bold>{title.item_font_bold}</item_font_bold>
+			<item_type>{title.item_type}</item_type>
+			<item_content>{title.item_content}</item_content>
+		</item>
+		<!-- END: title -->
+	</title>
+
+	<code>
+		<!-- BEGIN: code -->
+		<item>
+			<id>{code.id}</id>
+			<item_id>{code.item_id}</item_id>
+			<name>{code.name}</name>
+			<english>{code.english}</english>
+			<item_top>{code.item_top}</item_top>
+			<item_left>{code.item_left}</item_left>
+			<item_width>{code.item_width}</item_width>
+			<item_height>{code.item_height}</item_height>
+			<item_font_size>{code.item_font_size}</item_font_size>
+			<item_font_bold>{code.item_font_bold}</item_font_bold>
+			<item_type>{code.item_type}</item_type>
+			<item_content>{code.item_content}</item_content>
+		</item>
+		<!-- END: code -->
+	</code>
+
+</Body>
+</html>
+<!-- END: main -->

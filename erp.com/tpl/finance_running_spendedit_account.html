@@ -1,0 +1,100 @@
+//---- UTF8 编码 ----
+<!-- BEGIN: main -->
+<html>
+<head>
+<title>修改支出科目</title>
+<link type="text/css" rel="stylesheet" href="/style/bootstrap.min.css?ver={main.doc_version}"/>
+<link type="text/css" rel="stylesheet" href="/style/style.css?ver={main.doc_version}"/>
+<style>
+body,table,form,input		{font-size:12px; padding:0; margin:0}
+body	{min-width:100px}
+.form-control	{display:inline-block}
+</style>
+<script type="text/javascript" charset="UTF-8" src="/js_encode/jquery-1.9.1.min.js"></script>
+<script type="text/javascript" charset="UTF-8" src="/js_encode/bootstrap.min.js"></script>
+
+<script>
+if(typeof getObject != 'function')
+{
+	function getObject(objName)
+	{
+		if(document.getElementById)
+		{
+			return eval('document.getElementById("' + objName + '")');
+		}
+		else if(document.layers)
+		{
+			return eval("document.layers['" + objName +"']");
+		}
+		else
+		{
+			return eval('document.all.' + objName);
+		}
+	}
+}
+function close_btn()
+{
+	parent.$('#MessageBox').modal('hide');
+}
+function click_checkbox(chk_id, box_id)
+{
+	if(getObject(chk_id).value == "Y")
+	{
+		getObject(chk_id).value	= "N";
+		getObject(box_id).className	= "checkbox";
+	}
+	else
+	{
+		getObject(chk_id).value	= "Y";
+		getObject(box_id).className	= "checkbox_ok";
+	}
+}
+</script>
+</head>
+<body>
+
+<center>
+
+<form method="post" action="/finance/finance_running_spendedit_account.php" autocomplete="off" >
+<input type="hidden" name="id" value="{main.id}" />
+{main.error}
+
+<table align="center">
+<tr height="40">
+	<td width="400" class="form-group">
+		<label>上级科目：</label>
+		<select name="parent_id" class="form-control input-sm"{main.permit_change}>
+			<option value="0">-- 无 --</option>
+			<!-- BEGIN: list_group -->
+			<option value="{list_group.id}"{list_group.sel}>{list_group.name}</option>
+			<!-- END: list_group -->
+		</select>
+		&#160;
+		<!-- BEGIN: disable_change -->
+		<a href="#" onclick="alert('对于含有下属部门的，不允许变更上级部门。\n\n若要修改，请先将下属部门移动到其他部门。'); return false"><img width="16" height="16" src="/images/space.gif" style="background:url(/images/icons.png) -32px -64px"/></a>
+		<!-- END: disable_change -->
+	</td>
+</tr>
+<tr height="40">
+	<td class="form-group">
+		<label>科目名称：</label>
+		<input class="form-control input-sm" id="staff_name" name="name" value="{main.name}" maxlength="32" /> <font color="red">*</font>
+	</td>
+</tr>
+<tr height="60">
+	<td colspan="2">
+		<input class="btn btn-default btn-sm btn_margin" type="submit" value="提交" />
+		&#160;&#160;
+		<input class="btn btn-default btn-sm" type="button" value="取消" onclick="close_btn()" />
+	</td>
+</tr>
+</table>
+
+</form>
+
+
+</center>
+
+</body>
+</html>
+<!-- END: main -->

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>外麦王云平台</title>
+	<link rel="stylesheet" type="text/css" href="/css/main2/base.css"/>
+	<link rel="stylesheet" type="text/css" href="/css/main2/car/car_activation.css"/>
+</head>
+<body>
+	<?php include("header.html"); ?>
+	<div class="section">
+		<div class="wmain">
+			<ul class="wmainlist">
+				<li class="wllevel1 manageract">
+					<a href="/platform/carmanagement.php" ><span></span>车辆管理<p></p></a>
+					<ul class="wllevel2">
+						<li class="mlsonactive cactive"><a href="/platform/carmanagement.php">所有车辆</a></li>
+						<li><a href="/platform/carabnormal.php">异常车辆</a></li>
+					</ul>
+				</li>
+				<li class="wllevel1" <?=$operation['caractive']?> >
+					<a class="wllevel1active" href="/caronceadd.php"><span></span>车辆添加<p></p></a>
+					<ul class="wllevel2">
+						<li <?=$operation['caractive']?> ><a href="/caronceadd.php">普通添加</a></li>
+						<li class="mlsonactive" class="mlsonactive" <?=$operation['caractive']?> ><a href="/platform/caractive.php">车辆激活</a></li>
+					</ul>
+				</li>
+			</ul>
+
+			<div class="wmaincontent caractive">
+				<h1 class="wmch1">|&nbsp;车辆激活</h1>
+				<h2 class="carnumh2">电动车序列号</h2>
+				<textarea class="activationbox" placeholder="多个序列号添加时请以回车隔开" name="active"></textarea>
+				<div class="error-message acmsg">
+				</div>
+				<div class="btns2">
+					<button class="activation activebtn" type="button" >添加</button>
+				</div>
+				<br/>
+				<div class="activresult activemsg">
+					<div class="arsummary activenum">
+						添加成功:<span></span>辆&nbsp;&nbsp;&nbsp;&nbsp;添加失败:<span></span>辆
+					</div>
+					<div class="tablediv ctablediv">
+						<table>
+							<thead>
+								<tr>
+									<th>序号</th>
+									<th>序列号</th>
+									<th>状态</th>
+								</tr>
+							</thead>
+							<tbody>
+		
+							</tbody>
+						</table>
+					</div>
+				</div>
+
+			</div>			
+
+		</div>
+	</div>
+
+
+
+	<div class="modal modalsure">
+		<div class="cover"></div>
+		<div class="modalbox">
+			<p>是否确定添加？</p>
+			<div class="btns">
+				<button class="add">确定</button>
+				<button class="cancela">取消</button>
+			</div>
+		</div>
+	</div>
+
+	<?php include("footer.html"); ?>
+	<script src="/js/jquery-1.8.2.min.js"></script>	
+	<script src="/js/main2/common.js"></script>
+	<script src="/js/util.js"></script>
+	<script src="/js/car/caractivate.js"></script>
+
+</body>
+</html>

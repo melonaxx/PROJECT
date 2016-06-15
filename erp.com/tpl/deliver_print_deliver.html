@@ -1,0 +1,589 @@
+//---- UTF8 编码 ----
+<!-- BEGIN: main -->
+<html>
+<head>
+<title>打印预览与设计</title>
+<link type="text/css" rel="stylesheet" href="/style/bootstrap.min.css?ver={main.doc_version}"/>
+<link type="text/css" rel="stylesheet" href="/style/style.css?ver={main.doc_version}"/>
+<style>
+body,table,form,input		{font-size:12px; padding:0; margin:0}
+body	{min-width:100px}
+.form-control	{display:inline-block}
+</style>
+<script type="text/javascript" charset="UTF-8" src="/js_encode/jquery-1.9.1.min.js"></script>
+<script type="text/javascript" charset="UTF-8" src="/js_encode/bootstrap.min.js"></script>
+<script type="text/javascript" src="/js_encode/LodopFuncs.js"></script>
+
+<body style="margin-top:0;padding:0px">
+<!-- 控件安装提示 -->
+<div id="confirm" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" style="display: none;width:268px;margin:0px auto">
+	<div class="modal-content">
+		<div class="modal-header">
+			<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+			<h4 class="modal-title" id="myModalLabel">提示</h4>
+		</div>
+		<div class="modal-body" style="margin-left:20px"></div>
+		<div class="modal-footer"><button type="button" class="btn btn-default btn-sm ok" data-dismiss="modal">确定</button></div>
+	</div>
+</div>
+<!-- 打印预览与设计界面 -->
+<div id="contain" style="width:950px">
+	
+<div class="modal-body" style="margin-top:0px auto;width:950px">
+	<table border="0" class="table tab_select table-bordered table-hover" style="table-layout:fixed; overflow:hidden;" width="880" height="80">
+		<tr>
+			<th width="90">单据类型</th>
+			<th width="100" class="aria-hidden">默认打印机</th>
+			<th width="120">打印模板</th>
+			<th width="20">份</th>
+			<th>自动校验：批量打印时调整纸张</th>
+		</tr>
+		<tr>
+			<td>发货单</td>
+			<td><a id="printer" href="javascript:;">点击选择打印机</a></td>
+			<td>
+				<a href="javascript:;" id="deliver_template" >点击选择打印模板</a>
+				<select name="deliver_template" style="display:none" >
+					<option value="{template_default_id}">默认模板</option>
+					<!-- BEGIN: deliver_template -->
+					<option value="{deliver_template.id}">{deliver_template.name}</option>
+					<!-- END: deliver_template -->
+				</select>
+			</td>
+			<td ><a id="print_num" href="javascript:;">1</a></td>
+			<td>每打印
+				<input type="text" value="0" id="adjust_print" style="width:20px;"/>
+				份，　　偏 <a href="javascript:;" class="reduce"> 上（-） </a> <input type="text" id="top_bottom" value="0" style="width:20px;"/><a href="javascript:;" class="add"> （+）下 </a>,　　
+				偏 <a href="javascript:;" class="reduce"> 左（-） </a><input type="text" value="0" id="left_right" style="width:20px;" /><a href="javascript:;" class="add"> （+）右 </a>　　（单位mm）
+			</td>
+		</tr>
+	</table>
+</div>
+<div class="modal-footer" style="text-align:center;">
+	<!-- <a class="btn btn-default btn-sm" data-dismiss="modal" href="#">保存设置</a> -->
+	<a class="btn btn-default btn-sm" id="print_preview" href="javascript:;">打印预览</a>
+	<!-- <a class="btn btn-default btn-sm" data-dismiss="modal"  data-toggle="modal" id="doprint" href="#print_state">打印</a> -->
+	<a class="btn btn-default btn-sm" data-dismiss="modal" href="#print_state" data-toggle="modal" id="doprint">打印</a>
+	
+	<a class="btn btn-default btn-sm" data-dismiss="modal" id="print_design" target="blank" href="/deliver/deliver_design_deliver.php" >设计模板</a>
+	<a class="btn btn-default btn-sm" href="#print_state" data-toggle="modal" id="check_print">查看打印状态</a>
+	
+
+	<div id="print_state" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" style="display:none;margin:0px auto;width:360px;">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+				<h4 class="modal-title" id="myModalLabel">打印状态</h4>
+			</div>
+			<div class="modal-body" style="text-align: left">
+				<label class="margin_left_0" style="margin-left:30px">打印任务名：</label>
+				<span id="print_name"></span>
+				<br/>
+				<label class="margin_left_1" style="margin-left:42px">状态描述：</label>
+				<span id="print_state_text"></span>
+				<br/>
+				<label class="margin_left_2" style="margin-left:54px">待打印：</label>
+				<font size="3px" color="red" id="print_wait_pages"></font ><font></font size="3px">/<font size="3px" color="blue" id="print_total_pages"></font>页
+			</div>
+			<div class="modal-footer" style="text-align: center">
+				<!-- <button class="btn btn-default btn-sm" id="pirnt_pause" data-dismiss="">暂停打印</button>
+				<button class="btn btn-default btn-sm" id="print_resume">恢复打印</button>
+				<button class="btn btn-default btn-sm" id="print_purge" data-dismiss="modal">取消打印</button> -->
+				<button class="btn btn-default btn-sm" id="print_purge" data-dismiss="modal">取消打印</button>
+			</div>
+		</div>
+	</div>
+</div>
+				
+	<div id="print_deliver_content" style="display:none" value="{list_print_order.print_total_num}">		
+		<!-- BEGIN: list_print_order -->
+		<div id="{list_print_order.printi}">
+			<span class="order_id" style="display:hidden">{list_print_order.id}</span>
+			<span class="shop_name">{list_print_order.shop_name}</span>
+			<span class="bind_number">{list_print_order.bind_number}</span>
+			<span class="order_date">{list_print_order.order_date}</span>
+			<span class="user_name">{list_print_order.user_name}</span>
+			<span class="user_mobile">{list_print_order.user_mobile}</span>
+			<span class="product_total_price">{list_print_order.product_total_price}元</span>
+			<span class="post_fee">{list_print_order.post_fee}元</span>
+			<span class="total_discount">{list_print_order.discount}元</span>
+			<span class="theory_amount">{list_print_order.theory_amount}元</span>
+			<span class="real_amount">{list_print_order.real_amount}元</span>
+			<span class="product_total_num">{list_print_order.product_total_num}</span>
+
+			<table>
+				<!-- BEGIN: product_info -->
+				<tr>
+					<td align="center" class="product_id">{product_info.product_id}</td>
+					<td align="center" class="product_number">{product_info.product_number}</td>
+					<td class="product_name">{product_info.product_name}</td>
+					<td align="center" class="total">{product_info.total}</td>
+					<td align="center" class="price">{product_info.price}</td>
+					<td align="center" class="discount">{product_info.discount}</td>
+					<td align="center" class="payment">{product_info.payment}</td>
+					<td align="center" class="bar_code">{product_info.bar_code}</td>
+				</tr>
+				<!-- END: product_info -->
+			</table>
+		</div>
+		<!-- END: list_print_order -->
+	</div>
+
+	<object  id="LODOP_OB" classid="clsid:2105C259-1E0C-4534-8141-A753534CB4CA" width="0" height="0"> 
+       <embed id="LODOP_EM" type="application/x-print-lodop" width="0" height="0"></embed>
+	</object>
+</div>	
+<script>
+$(function(){
+	var LODOP,jobid;
+    // 获取系统打印机信息
+	$("body").on('click','#printer',function(){	
+		LODOP=getLodop(document.getElementById('LODOP_OB'),document.getElementById('LODOP_EM'));  
+	    var printer_count =  LODOP.get_printer_count();
+	    var printer_name = new Array();
+		var inval = $(this).html();
+		var td = $(this).parent();
+　　	td.html('');
+		td.append("<select name='printer_select' style='width:80px'><option></option></select>")
+       	for(var i=0;i<printer_count;i++){
+			printer_name[i] = LODOP.get_printer_name(i);
+			$("select[name=printer_select]").append("<option value="+i+">"+printer_name[i]+"</option>")
+		}
+		
+		$("select[name=printer_select]").change(function(){
+			var ta = $("select[name=printer_select] option:selected").text();
+			td.html("<a id='printer' style='width:100px;display:inline-block;text-overflow:ellipsis;white-space:nowrap;overflow:hidden;'  href='javascript:;'>"+ta+"</a>");
+		});
+    });
+	
+	// 选择打印模板
+	$("body").on('click','#deliver_template',function(){	
+		var td = $(this).parents("td");
+		$(this).remove();
+		td.find("select").attr("style","display:block");
+		td.find("select option").click(function(){
+			var ta = $("select[name=deliver_template] option:selected").text();
+			td.find("select").attr("style","display:none");
+			td.find("a").remove();
+			td.append("<a id='deliver_template' href='javascript:;'>"+ta+"</a>");
+		});
+    });
+
+
+	// 修改打印数量
+	$("body").on("click","#print_num",function(){	
+		var default_num = $(this).html();
+		var td = $(this).parent();
+　　	td.html('');
+		td.append("<input name='print_num' style='width:20px' type='text' value='1' />");
+		
+		$("input[name=print_num]").blur(function(){
+			var new_num = $(this).val();
+			td.html("<a id='print_num' href='javascript:;'>"+new_num+"</a>");
+		
+		});
+    });
+
+    var href = $("#print_design").attr('href');
+    $("#print_design").click(function() {
+    	var template_id = $("select[name=deliver_template]").val();
+   		$(this).attr("href",href+"?template_id="+template_id);
+    });
+
+
+	// 禁用bootstrap 点击外面关闭窗口
+    // $('#print_state').modal({backdrop: 'static', keyboard: false});
+
+	// 订单id
+	var orderid="";
+	$('.order_id').each(function(){
+		orderid+=$(this).text()+",";
+	});
+	function CreatePage3(action) {	
+		// 打印模板 id
+		var template_id = $("select").val();
+		// 设置打印份数
+		var num = $("#print_num").text()?$("#print_num").text():1;
+		$.ajax({
+			url: '/deliver/deliver_print_deliver.php',
+			type: 'POST',
+			datatype:'json',
+			async:false,
+			data: {template_id:template_id,num:num,action:action,order_id:orderid}
+		}).always(function(data) {
+			LODOP=getLodop();  
+			// LODOP.PRINT_INIT("发货单打印--");
+			// 选择打印机
+			if(data!="empty"){
+				var template =  JSON.parse(data);
+				// 打印项
+				var template_item = new Array();
+				for(var k in template){
+					// 根据是否有id来判断是否是打印项（非打印项用于设计整体布局）
+					if(template[k]['id']){
+						template_item[k] = template[k];
+					}
+				}
+
+				var	print_total = $("#print_deliver_content").attr("value");
+				var every_print = 30;	// 每个任务的打印数量(单次打印数量过多时，会造成浏览器卡死的状态)
+				// var loop=Math.floor(print_total/every_print); 
+				var loop=print_total/every_print; 
+				var r = print_total%every_print;
+				for(var c=0;c<loop;c++){
+					if(c != Math.floor(loop) ){
+						print_total_num = every_print;
+					}else{
+						print_total_num = r;
+					}
+					printer = $("select[name=printer_select]").val()?$("select[name=printer_select]").val():-1;
+					LODOP.PRINT_INITA(template['page_top']+"mm",template['page_left']+"mm",800,600,"");
+					LODOP.SET_PRINTER_INDEX(printer);
+					// 打印份数
+					LODOP.SET_PRINT_COPIES(num);
+
+					// var	print_total_num = $("#print_deliver_content").attr("value");
+					var border = template['border'];
+					// 设置纸张大小 和 类型
+					LODOP.SET_PRINT_PAGESIZE(template['print_orient'],parseInt(template['page_width'])*10,parseInt(template['page_height'])*10,"");
+					
+					var adjust_print = $("#adjust_print").val()!="0"?parseInt($("#adjust_print").val()):print_total_num;
+					var top_bottom=$("#top_bottom").val()!="0" || isNaN($("#top_bottom").val())?parseInt($("#top_bottom").val()):0;
+					var left_right=$("#left_right").val()!="0" || isNaN($("#left_right").val())?parseInt($("#left_right").val()):0;
+					// 每打印 adjust_print页，调整距离
+					var aa=Math.floor(print_total_num/adjust_print);
+					var bb=print_total_num%adjust_print;
+					
+					var top=0,left=0,i=1+every_print*c;
+					for(var m=0;m<aa;m++,top+=top_bottom,left+=left_right){
+						for(var b=1;b<=adjust_print;b++,i++){
+							// 整体修改附加偏移
+							// LODOP.SET_PRINT_STYLEA('PRINT_INIT','Top','20mm');
+			      			// LODOP.SET_PRINT_STYLEA('PRINT_INIT','Left','20mm');
+
+							LODOP.NewPageA(); //强行分页
+							// 显示页码（仅预览）
+							preview_num = print_total>30 ? "前30条" : "";
+							LODOP.ADD_PRINT_HTM("10","70%",500,30,"<font color='#0000ff'><span tdata='pageNO'>第##页</span>/<span tdata='pageCount'> 共##页(仅预览"+preview_num+")</span></font>")
+							LODOP.SET_PRINT_STYLEA(0,"ItemType",1);
+							LODOP.SET_PRINT_STYLEA(0,"PreviewOnly",1);	
+
+							var table=new Array();
+							var n=0;
+							for(var k in template_item){
+								if(template_item[k]['type'] == 'code'){
+									LODOP.ADD_PRINT_BARCODE(parseInt(template_item[k]['top'])+top,parseInt(template_item[k]['left'])+left,parseInt(template_item[k]['width']),parseInt(template_item[k]['height']),"128B",template_item[k]['content']);
+									LODOP.SET_PRINT_STYLEA(0,"ShowBarText",template_item[k]['font_bold']);
+								}
+
+								if(template_item[k]['type'] == 'title'){
+									LODOP.ADD_PRINT_TEXTA(template_item[k]['english'],parseInt(template_item[k]['top'])+top,parseInt(template_item[k]['left'])+left,parseInt(template_item[k]['width']),parseInt(template_item[k]['height']),template_item[k]['content']);
+									LODOP.SET_PRINT_STYLEA(template_item[k]['english'],"FontSize",template_item[k]['font_size']);
+									LODOP.SET_PRINT_STYLEA(template_item[k]['english'],"Bold",template_item[k]['font_bold']);
+									LODOP.SET_PRINT_STYLEA(template_item[k]['english'],"ItemType",1);
+									LODOP.SET_PRINT_STYLEA(0,"LinkedItem",-1);
+								}
+								
+								if(template_item[k]['type'] == 'other'){
+
+									LODOP.ADD_PRINT_TEXTA(template_item[k]['english'],parseInt(template_item[k]['top'])+top,parseInt(template_item[k]['left'])+left,parseInt(template_item[k]['width']),parseInt(template_item[k]['height']),template_item[k]['content']+"："+$("#print"+i+" ."+template_item[k]['english']).text());
+									LODOP.SET_PRINT_STYLEA(template_item[k]['english'],"FontSize",template_item[k]['font_size']);
+									LODOP.SET_PRINT_STYLEA(template_item[k]['english'],"Bold",template_item[k]['font_bold']);
+								}
+								// 商品列表
+								if(template_item[k]['type'] == 'table'){
+									table[n] = k;
+									n++;
+								}
+							}
+							if(table.length>0){
+								var table_header=new Array();
+								for(var a=0;a<table.length;a++){
+									table_header[a]=new Array();
+									table_header[a]=template_item[table[a]];
+								}
+								table_header=table_header.sort(keysrt("left",false));
+								// console.log(table_header);
+								var	strhtml = '<table style="font-size:12px;border:'+border+'px solid #000;border-collapse:collapse;line-height:20px" border="'+border+'" cellspacing="0" cellpadding="4"><thead><tr>';
+								for(var k=0;k<table_header.length;k++){
+									strhtml += "<th width="+table_header[k]['width']+">"+table_header[k]['content']+"</th>";
+								}	
+								strhtml += "</thead></tr>";
+
+								// 每条订单的商品数量
+								var	tr_length = $("#print"+i+" table tr").length;
+								for (var j = 0; j < tr_length; j++) {
+									strhtml+="<tr>";
+									for(var k=0;k<table_header.length;k++){
+										strhtml += "<td align='center'>"+$("#print"+i+" table tr").eq(j).find('td.'+table_header[k]['english']).text()+"</td>";
+									}
+									strhtml+="</tr>";				
+								}
+								strhtml+='</table>';
+								// LODOP.ADD_PRINT_HTM(table_header[0]['top'],table_header[0]['left'],"100%","100%",strhtml);
+								LODOP.ADD_PRINT_TABLE(parseInt(table_header[0]['top'])+top,parseInt(table_header[0]['left'])+left,"RightMargin:0cm","BottomMargin:10mm",strhtml);
+								LODOP.SET_PRINT_STYLEA(0,"Offset2Top",-80)
+							}
+
+						}	
+						
+					}
+
+					for(var p=1;p<=bb;p++,i++){
+						LODOP.NewPageA(); //强行分页
+						// 显示页码（仅预览）
+						LODOP.ADD_PRINT_HTM(1,600,500,100,"总页号：<font color='#0000ff'><span tdata='pageNO'>第##页</span>/<span tdata='pageCount'>共##页</span></font>")
+						LODOP.SET_PRINT_STYLEA(0,"ItemType",1);
+						// LODOP.SET_PRINT_STYLE("PreviewOnly",1);	
+
+						var table=new Array();
+						var n=0;
+						for(var k in template_item){
+							if(template_item[k]['type'] == 'code'){
+								LODOP.ADD_PRINT_BARCODE(parseInt(template_item[k]['top'])+top,parseInt(template_item[k]['left'])+left,parseInt(template_item[k]['width']),parseInt(template_item[k]['height']),"128B",template_item[k]['content']);
+								LODOP.SET_PRINT_STYLEA(0,"ShowBarText",template_item[k]['font_bold']);
+								}
+							if(template_item[k]['type'] == 'title'){
+								LODOP.ADD_PRINT_TEXTA(template_item[k]['english'],parseInt(template_item[k]['top'])+top,parseInt(template_item[k]['left'])+left,parseInt(template_item[k]['width']),parseInt(template_item[k]['height']),template_item[k]['content']);
+								LODOP.SET_PRINT_STYLEA(template_item[k]['english'],"FontSize",template_item[k]['font_size']);
+								LODOP.SET_PRINT_STYLEA(template_item[k]['english'],"Bold",template_item[k]['font_bold']);
+								LODOP.SET_PRINT_STYLEA(template_item[k]['english'],"ItemType",1);
+								LODOP.SET_PRINT_STYLEA(0,"LinkedItem",-2);
+							}
+							
+							if(template_item[k]['type'] == 'other'){
+
+								LODOP.ADD_PRINT_TEXTA(template_item[k]['english'],parseInt(template_item[k]['top'])+top,parseInt(template_item[k]['left'])+left,parseInt(template_item[k]['width']),parseInt(template_item[k]['height']),template_item[k]['content']+"："+$("#print"+i+" ."+template_item[k]['english']).text());
+								LODOP.SET_PRINT_STYLEA(template_item[k]['english'],"FontSize",template_item[k]['font_size']);
+								LODOP.SET_PRINT_STYLEA(template_item[k]['english'],"Bold",template_item[k]['font_bold']);
+							}
+							// 商品列表
+							if(template_item[k]['type'] == 'table'){
+								table[n] = k;
+								n++;
+							}
+						}
+						if(table.length>0){
+							var table_header=new Array();
+							for(var a=0;a<table.length;a++){
+								table_header[a]=new Array();
+								table_header[a]=template_item[table[a]];
+							}
+							table_header=table_header.sort(keysrt("left",false));
+							// console.log(table_header);
+							var	strhtml = '<table style="font-size:12px;border:1px solid #000;border-collapse:collapse;line-height:20px" width="90%" border="1" cellspacing="0" cellpadding="4"><thead><tr>';
+							for(var k=0;k<table_header.length;k++){
+								strhtml += "<th width="+table_header[k]['width']+">"+table_header[k]['content']+"</th>";
+							}	
+							strhtml += "</thead></tr>";
+
+							// 每条订单的商品数量
+							var	tr_length = $("#print"+i+" table tr").length;
+							for (var j = 0; j < tr_length; j++) {
+								strhtml+="<tr>";
+								for(var k=0;k<table_header.length;k++){
+									strhtml += "<td align='center'>"+$("#print"+i+" table tr").eq(j).find('td.'+table_header[k]['english']).text()+"</td>";
+								}
+								strhtml+="</tr>";				
+							}
+							strhtml+='</table>';
+							// LODOP.ADD_PRINT_HTM(table_header[0]['top'],table_header[0]['left'],"100%","100%",strhtml);
+							LODOP.ADD_PRINT_TABLE(parseInt(table_header[0]['top'])+top,parseInt(table_header[0]['left'])+left,"RightMargin:0cm","BottomMargin:10mm",strhtml);
+							LODOP.SET_PRINT_STYLEA(0,"Offset2Top",-80)
+						}
+					}	
+
+
+					if(action=="doprint"){
+						LODOP.SET_PRINT_MODE("CATCH_PRINT_STATUS",true);
+						LODOP.SET_PRINT_MODE("CUSTOM_TASK_NAME","发货单--"+print_total_num);
+						jobid=LODOP.PRINT();
+					}else{
+						LODOP.PREVIEW();
+						return;
+					}
+				}
+			}
+		});
+
+			// jobid=LODOP.PRINT();
+	};
+	$("#print_preview").click(function(){
+		var action="preview";
+		if($("select[name=deliver_template]").val()==""){
+			// alert("请先选择模板 或 设置默认模板！");
+			$("#confirm .modal-body").html('请先选择相关快递模板 或 设置默认模板！！<br/><a href="/setting/setting_deliver_template.php" target="_blank">模板设置</a>');
+    		$("#confirm").modal('show');
+			return false;
+		}
+		CreatePage3(action);
+		// LODOP.SET_SHOW_MODE("HIDE_PBUTTIN_PREVIEW",1); //关闭
+		// LODOP.SET_SHOW_MODE("HIDE_SBUTTIN_PREVIEW",1); //设置
+		// LODOP.SET_SHOW_MODE("HIDE_QBUTTIN_PREVIEW",1); //关闭
+		// LODOP.PREVIEW();
+	});
+
+	// 打印
+	$("#doprint").click(function(){
+		var action="doprint";
+		if($("select[name=deliver_template]").val()==""){
+			// alert("请先选择模板 或 设置默认模板！");
+			$("#confirm .modal-body").html('请先选择相关快递模板-- 或 设置默认模板！！<br/><a href="/setting/setting_deliver_template.php" target="_blank">模板设置</a>');
+    		$("#confirm").modal('show');
+			return false;
+		}
+		CreatePage3(action);
+		// LODOP.SET_PRINT_MODE("CATCH_PRINT_STATUS",true);
+		// document.getElementById("jobid").value=LODOP.PRINT();
+		// jobid=LODOP.PRINT();
+		var total_pages = $("#print_deliver_content").attr("value");
+		$("#print_total_pages").text(total_pages);
+		var get_print_state = setInterval(function(){
+			// jobid=LODOP.PRINT();
+			var print_name=LODOP.GET_VALUE('PRINT_STATUS_DOCNAME',jobid);
+			var pages_printed=LODOP.GET_VALUE('PRINT_STATUS_PAGES_PRINTED',jobid);
+			var print_state_text=LODOP.GET_VALUE('PRINT_STATUS_TEXT',jobid);
+			// console.log(jobid);
+			$("#print_wait_pages").text(total_pages-pages_printed);
+			var print_wait_pages=LODOP.GET_VALUE('PRINT_STATUS_PAGES_PRINTED',jobid);
+			// $("#print_wait_pages").text(print_wait_pages);
+			$("#print_state_text").text(print_state_text);
+			$("#print_name").text(print_name);
+
+			if(print_state_text="打印结束" && !LODOP.GET_VALUE('PRINT_STATUS_BUSY',jobid)){
+				clearInterval(get_print_state);
+				parent.window.location.reload();
+			}
+		},1000);
+	});
+
+
+	$("#check_print").click(function(){
+		var get_print_state = setInterval(function(){
+			var print_name=LODOP.GET_VALUE('PRINT_STATUS_DOCNAME',jobid);
+			var total_pages=LODOP.GET_VALUE('PRINT_STATUS_TOTAL_PAGES',jobid);
+			var pages_printed=LODOP.GET_VALUE('PRINT_STATUS_PAGES_PRINTED',jobid);
+			var print_state_text=LODOP.GET_VALUE('PRINT_STATUS_TEXT',jobid);
+			$("#print_wait_pages").text(total_pages-pages_printed);
+			$("#print_total_pages").text(total_pages);
+			$("#print_state_text").text(print_state_text);
+			$("#print_name").text(print_name);
+
+		},1000);
+
+		if(print_state_text="打印结束" && !jobid){
+			setTimeout(function(){
+				clearInterval(get_print_state);
+			},2000);
+		}
+	});
+//打印任务-==================================================================================
+// js 数组排序
+function keysrt(key,desc) {
+  	return function(a,b){
+	   return desc ? ~~(a[key] - b[key]) : ~~(a[key] - b[key]);
+	}
+}
+	
+	// 暂停打印
+	
+	$("#pirnt_pause").click(function(){
+		ControlPrinterPAUSE(jobid);
+	})
+
+	// 恢复打印
+	$("#print_resume").click(function(){
+		ControlPrinterRESUME(jobid);
+	})
+	
+	// 清除打印任务
+	$("#print_purge").click(function(){
+		if(jobid){
+			ControlPrinterPURGE(jobid);
+		}
+	})
+
+	//从JOB代码找出打印机序号：
+	function GetPrinterIDfromJOBID(jobid){
+		var intPos=jobid.indexOf("_");
+		if (intPos<0) {return jobid;} else {return jobid.substr(0,intPos);}
+	}
+	
+	//暂停打印:
+	function ControlPrinterPAUSE(jobid){
+		strPrinterID=GetPrinterIDfromJOBID(jobid);
+		LODOP=getLodop();
+		var strResult=LODOP.SET_PRINT_MODE("CONTROL_PRINTER:"+strPrinterID,"PAUSE");
+		alert("暂停结果:"+strResult);
+	}
+	//恢复打印:
+	function ControlPrinterRESUME(jobid){
+		strPrinterID=GetPrinterIDfromJOBID(jobid);
+		LODOP=getLodop();
+		var strResult=LODOP.SET_PRINT_MODE("CONTROL_PRINTER:"+strPrinterID,"RESUME");
+		alert("恢复结果:"+strResult);
+	}
+	//清理打印任务:
+	function ControlPrinterPURGE(jobid){
+		strPrinterID=GetPrinterIDfromJOBID(jobid);
+		LODOP=getLodop();
+		var strResult=LODOP.SET_PRINT_MODE("CONTROL_PRINTER:"+strPrinterID,"PURGE");
+		alert("清理结果:"+strResult);
+	}
+	
+	//如下过程本例没用到，但或许对您有用：
+	function getStatuMessage(statusID) {
+		var messages="";
+		if (statusID & 1) messages += "已暂停 -";
+		if (statusID & 2) messages += "错误 -";
+		if (statusID & 4) messages += "正删除 -";
+		if (statusID & 8) messages += "进入队列 -";
+		if (statusID & 16) messages += "正在打印 -";
+		if (statusID & 32) messages += "脱机 -";
+		if (statusID & 64) messages += "缺纸 -";
+		if (statusID & 128) messages += "打印结束 -";
+		if (statusID & 256) messages += "已删除 -";
+		if (statusID & 512) messages += "堵了 -";
+		if (statusID & 1024) messages += "用户介入 -";
+		if (statusID & 2048) messages += "正在重新启动 -";
+		return messages;
+	}
+
+	// 是否立即执行打印
+	window.onload = function(){
+		var do_print = sessionStorage.getItem("go_print");
+	    if(do_print == 'ok') {
+	       setTimeout(function(){ $("#doprint").trigger("click")},50);
+	        sessionStorage.setItem("go_print",""); //销毁 from 防止在b页面刷新 依然触发$('#xxx').click()
+	    } 
+	}
+
+	$(".add").click(function(){
+		var num = $(this).prev().val();
+		if(!isNaN(num)){
+			num = parseInt(num);
+		}else{
+			num = 0;
+		}
+		$(this).prev().val(++num);
+	});
+
+	$(".reduce").click(function(){
+		var num = $(this).next().val();
+		if(!isNaN(num)){
+			num = parseInt(num);
+		}else{
+			num = 0;
+		}
+		$(this).next().val(--num);
+	});
+
+
+})	
+</script>		
+
+
+</body>
+</html>
+
+<!-- END: main -->

@@ -1,0 +1,78 @@
+//---- UTF8 编码 ----
+<!-- BEGIN: main --><?xml version="1.0" encoding="UTF-8"?>
+{main.doc_type}
+<?xml-stylesheet type="text/xsl" href="/style/stock_check.xsl?ver={main.doc_version}"?>
+<html version="{main.doc_version}">
+<head>
+	<Title>{main.title}</Title>
+	<meta name="keywords" content="{main.keywords}" />
+	<meta name="description" content="{main.description}" />
+	<em company_id="{main.company_id}" staff_id="{main.staff_id}" login_name="{main.login_name}" permit="{main.permit}" program="{main.request_url}"/>
+</head>
+<Body>
+<dir><![CDATA[ 您的位置：{main.this_location}]]></dir>
+<menu>
+	<big>{main.big_menu}</big>
+	<small>
+		<!-- BEGIN: list_menu --><a class="{list_menu.class}" href="{list_menu.link}">{list_menu.name}</a><!-- END: list_menu -->
+	</small>
+</menu>
+<stock_info>
+	<ul total='{main.total}'>
+		<!-- BEGIN: list_store -->
+		<li>
+			<id>{list_store.id}</id>
+			<num>{list_store.num}</num>
+			<name>{list_store.name}</name>
+			<image>{list_store.image}</image>
+			<format>{list_store.format}</format>
+			<number>{list_store.number}</number>
+			<total>{list_store.total}</total>
+		</li>
+		<!-- END:list_store -->
+	</ul>
+</stock_info>
+<store_ware>
+	<ul>
+		<!-- BEGIN:store_ware -->
+		<li>
+			<value>{store_ware.id}</value><text>{store_ware.name}</text>
+		</li>
+		<!-- END:store_ware -->
+	</ul>
+</store_ware>
+<product_category>
+	<ul>
+		<!-- BEGIN:product_category -->
+		<li>
+			<value>{product_category.id}</value><text>{product_category.name}</text>
+		</li>
+		<!-- END:product_category -->
+	</ul>
+</product_category>
+<brandList>
+	<ul total="{main.brand_total}">
+		<!-- BEGIN: brand -->
+			<li id="{brand.id}" parent_id="{brand.parent_id}" level="{brand.level}">{brand.name}</li>
+		<!-- END: brand -->
+	</ul>
+</brandList>
+<store>
+	<ul>
+		<!-- BEGIN:store -->
+		<li>
+			<value>{store.id}</value><text>{store.name}</text>
+		</li>
+		<!-- END:store -->
+	</ul>
+</store>
+{main.page_info}
+<find>{main.find}</find>
+<warehouse>{main.warehouse}</warehouse>
+<classification>{main.classification}</classification>
+<brand>{main.brand}</brand>
+</Body>
+
+
+</html>
+<!-- END: main -->

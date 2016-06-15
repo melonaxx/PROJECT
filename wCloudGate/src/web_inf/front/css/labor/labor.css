@@ -1,0 +1,95 @@
+/* -----------------内容----------------- */
+section{width:100%;background: #eaeef2;padding-top: 20px;}
+.content{width:1048px;margin:0 auto 40px;overflow: hidden;border:1px solid #ccc;background: #fff;}
+.maintop{background: #ddd;border-bottom: 1px solid #ccc;width:100%;height:58px;}
+.maintop li{float:left;font-size: 24px;line-height: 58px;width:154px;text-align: center;}
+.maintop .laboract{background: #fff;color:#358ecb;border-top:3px solid #358ecb;height: 56px;line-height:55px;border-right: 1px solid #ccc;}
+.maintop .laboract a{color:#358ecb;}
+.maintop a{color:#333;}
+.mainlabor{width:1008px;padding:0 20px 30px;}
+.sortmethod{width:100%;height:30px;}
+.sortmethod li{float:left;font-size: 20px;margin-right: 10px;}
+.sortmethod a{color:#333;}
+.sortact{border-bottom:2px solid #358ecb;}
+.sortact a{color:#358ecb;}
+.abovetab{width:100%;height:70px;}
+.carcondition{width:64px;height:20px;font-size: 16px;float:left;border-bottom: 2px solid #358ecb;margin-top:30px;}
+.employees{width:150px;height:38px;padding-left:10px;font-size:16px;border:1px solid #ccc;float:right;margin:20px 20px 0 0;}
+.employees option{height:24px;padding-top: 3px;}
+.carinfright{float:right;width:201px;height:40px;margin-top:20px;}
+.carsearch{float:left;width:150px;height:38px;border:1px solid #ccc;border-right: none;font-size: 16px;padding-left: 10px;}
+.searchbtn{float:left;width:24px;height:24px;background: #358dcd;padding:8px; cursor:pointer;}
+/* -----------------车辆表格----------------- */
+.outtab{width:100%;}
+.elecartab{width:100%;overflow: hidden;border-collapse:collapse ;}
+.elecartab thead{width:100%;height:60px;background: #70b0dc;color:#fff;font-size: 18px;line-height: 60px;}
+.elecartab td{text-align: center;}
+.laborthead img{margin-right:4px;margin-bottom:-4px;width:22px;height:21px;}
+.elecartab .laborthead .opeimg{margin-right:4px;margin-bottom:-6px;width:18px;height:25px;}
+.laborthead td:nth-of-type(1){width:102px;}
+.laborthead td:nth-of-type(2){width:110px;}
+.laborthead td:nth-of-type(3){width:134px;}
+.laborthead td:nth-of-type(4){width:120px;}
+.laborthead td:nth-of-type(5){width:200px;}
+.elecartab tbody tr{height:58px;border-bottom: 2px dotted #ccc;font-size: 14px;}
+.opetd div{float:left;width:52px;height:16px;margin-right: 10px;}
+.opetd div:nth-of-type(1){margin-left:42px;}
+.opetd div img{float:left;}
+.opetd div a{color:#333;margin-top: -2px;float:right;}
+.opetd .opeact{color:#358ecb;}
+.separatea{width:80px;height: 22px;border-radius: 8px;background: #358ecb;color:#fff;line-height: 22px;font-size: 12px;floar:left;display: inline-block;}
+.sepatatea:nth-of-type(1){margin-right: 10px;}
+.opetd a{margin:0 5px;}
+/* -------------------模态窗------------------ */
+.modal{display:none;}
+.cover{width:100%;height:100%;background: #000;opacity: 0.6;filter: alpha(opacity=60);z-index: 99;position: fixed; _position:absolute;left:0;top:0;}
+.modalbox{width:798px;padding:50px;padding-bottom:0;margin:auto;left:0;top:80px;right:0;background: #fff;opacity: 1;filter: alpha(opacity=100);z-index:1000;position: fixed; _position:absolute;}
+.close{cursor:pointer;width:40px;height:40px;position: absolute;right:20px;top:20px;}
+.addclassify{width:200px;height:30px;font-size: 20px;margin:;}
+.addclassify li{float:left;}
+.addclassify a{color:#333;}
+.bar{margin:0 10px;}
+.addact{border-bottom: 2px solid #358ecb;}
+.addact a{color:#358ecb;}
+.slnump{color:#358ecb;font-size:16px;margin:30px 0 20px;}
+.barcode{width:100%;height:58px;border:1px solid #ccc;line-height: 58px;font-size: 30px;letter-spacing: 30px;text-align: center;}
+.instructon{width:100%;font-size: 14px;height: 20px;color:#999;margin:10px 0 20px 0;}
+.addtab{width:100%;border-collapse:collapse ;}
+.addtab thead{width:100%;height:60px;background: #70b0dc;color:#fff;font-size: 18px;line-height: 60px;}
+.addtab td{width:25%;text-align: center;}
+.addtab tbody{clear:both;}
+.addtab tbody tr{height:58px;border-bottom: 2px dotted #ccc;font-size: 14px;}
+.finishdiv{text-align: center;margin-bottom: 50px;}
+.addfinish,.suredel,.canceldel,.sureemp,.cancelemp{width:100px;height:40px;line-height: 40px;text-align: center;color:#fff;background: #f40;font-size: 18px;border:none;margin-top:30px;cursor:pointer;}
+.addfinish a{color:#fff;}
+.outtable2{height:354px;overflow: auto;width:100%;}
+/* --------------手动添加模态框----------------- */
+.distribtn{display: block;width:100px;height:38px;border:1px solid #ccc;font-size: 16px;line-height: 40px;text-align: center;color:#333;float:left;margin-top:20px;}
+.addtab2{width:100%;border-collapse:collapse ;}
+.addtab2 thead{width:100%;height:60px;background: #70b0dc;color:#fff;font-size: 18px;line-height: 60px;}
+.addtab2 td{text-align: center;height:58px;}
+.addtab2 td:nth-of-type(1){width:60px;}
+.addtab2 td:nth-of-type(2){width:100px;}
+.addtab2 td:nth-of-type(3){width:100px;}
+.addtab2 td:nth-of-type(4){width:100px;}
+.addtab2 td:nth-of-type(5){width:100px;}
+.outtable2{clear:both;margin-top:20px;}
+.addtab2 tbody tr{height:58px;border-bottom: 2px dotted #ccc;font-size: 14px;}
+.modalright{display: none;}
+/* -----------------------确认删除模态框---------------- */
+ .modaldel{display: none;} 
+.modalboxd{width:300px;height:180px;overflow:auto;padding:50px;padding-bottom:0;margin:auto;left:0;top:0;right:0;bottom:0;background: #fff;opacity: 1;filter: alpha(opacity=100);z-index:1000;position: fixed; _position:absolute;}
+.modalboxd p{font-size: 12px;}
+.modalboxd span{width:100%;height:20px;text-align: left;display: block;margin-top: 20px;}
+.suredel{margin:30px 0 0 50px;float:left;font-size: 12px;height:30px;line-height: 30px;width:80px;}
+.canceldel{float:left;margin:30px 0 0 40px;background: #ccc;color:#333;font-size: 12px;height:30px;line-height: 30px;width:80px;}
+/* ----------------------所属员工修改------------------- */
+.empnum{margin:0 10px;}
+.modalmodnum{display: none;}
+.modalboxn{width:250px;height:170px;padding:50px;padding-bottom:0;margin:auto;left:0;top:200px;right:0;background: #fff;opacity: 1;filter: alpha(opacity=100);z-index:1000;position: fixed; _position:absolute;}
+.input-group{width:100%;font-size: 16px;heihgt:40px;}
+.input-group label{width:90px;float:left;line-height: 40px;margin-left: 10px;}
+.input-group select{width:140px;height:40px;float: left;padding-left: 10px;}
+.input-group option{height:24px;line-height: 24px;padding-top: 6px;}
+.sureemp{margin:44px 0 0 18px;float:left;}
+.cancelemp{margin:44px 0 0 20px;float:left;background:#ccc;color:#333;}

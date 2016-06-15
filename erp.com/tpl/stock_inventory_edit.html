@@ -1,0 +1,307 @@
+//---- UTF8 编码 ----
+<!-- BEGIN: main -->
+<html>
+<head>
+<title>修改盘点后数量</title>
+<link type="text/css" rel="stylesheet" href="/style/bootstrap.min.css?ver={main.doc_version}"/>
+<link type="text/css" rel="stylesheet" href="/style/style.css?ver={main.doc_version}"/>
+<style>
+body {
+	text-align:left;
+	min-width:500px;
+	padding:0
+}
+.form-inline .form-control {
+	display: inline-block;
+	vertical-align: middle;
+}
+.form-inline .form-group {
+	display: inline-block;
+	vertical-align: middle;
+}
+</style>
+<script type="text/javascript" charset="UTF-8" src="/js_encode/jquery-1.9.1.min.js"></script>
+<script type="text/javascript" src="/js_encode/stock_inventory_edit.js"></script>
+<script>
+function getObject(objName)
+{
+	if(document.getElementById)
+	{
+		return eval('document.getElementById("' + objName + '")');
+	}
+	else if(document.layers)
+	{
+		return eval("document.layers['" + objName +"']");
+	}
+	else
+	{
+		return eval('document.all.' + objName);
+	}
+}
+//---- N级联动 ----
+function multi_select(source_data, obj_list, current_level, total_level, val)
+{
+	for(var lv=current_level+1; lv<total_level; lv++)
+	{
+		obj_list[lv].length		= 0;
+		var opt		= document.createElement("OPTION");
+		opt.value   = 0;
+		obj_list[lv].options[obj_list[lv].length] = opt;
+	}
+	var next	= obj_list[current_level + 1];
+	for(var k=0; k<source_data.length; k++)
+	{
+		if(source_data[k]['parent_id'] == val)
+		{
+			var opt		= document.createElement("OPTION");
+			opt.text    = source_data[k]['name'];
+			opt.value   = source_data[k]['id'];
+			next.options[next.length] = opt;
+		}
+	}
+}
+//---- 初始化第一级 ----
+function init_select(source_data, obj)
+{
+	obj.length	= 0;
+	var opt		= document.createElement("OPTION");
+	opt.value   = 0;
+	obj.options[obj.length] = opt;
+	for(var k=0; k<source_data.length; k++)
+	{
+		if(source_data[k]['parent_id'] == 0)
+		{
+			var opt		= document.createElement("OPTION");
+			opt.text    = source_data[k]['name'];
+			opt.value   = source_data[k]['id'];
+			obj.options[obj.length] = opt;
+		}
+	}
+} 
+var store_list	= new Array();
+<!-- BEGIN: list_location -->
+store_list[store_list.length]	= {'id':{list_location.id}, 'parent_id':{list_location.parent_id}, 'name':'{list_location.name}'};
+<!-- END: list_location -->
+function change_level(level, index, val)
+{
+	//---- 需要处理的select控件 ----
+	var obj_list	= new Array();
+	obj_list[0]		= getObject("store_id_" + index);
+	obj_list[1]		= getObject("area_id_" + index);
+	obj_list[2]		= getObject("shelves_id_" + index);
+	obj_list[3]		= getObject("location_id_" + index);
+	//---- 总共 4 级 ----
+	multi_select(store_list, obj_list, level, 4, val);
+}
+// --- 当前的是第三个 ---
+var current_index = 3;
+//--- 创建一个新的 ---
+function aa(cc){
+	current_index++;	//动态加载
+	var store_obj = document.createElement("TR");	//创建tr标签
+	// -- 第一个td：序号 --
+	var title = document.createElement("TD");	//创建一个td标签
+	title.className	= "center";
+	
+	store_obj.appendChild(title);	//在tr后面把td放上
+	
+	// -- 第二个td：checkbox --
+	var title = document.createElement("TD");	//创建一个td标签
+	title.className	="center";	//设置class为center
+	var input = document.createElement("INPUT");	//创建一个input标签
+	input.type="checkbox";	//设置他的type为checkbox
+	input.name="select_one";//设置他的name为select_one
+	title.appendChild(input);//在td后面加上input
+	store_obj.appendChild(title);	//在tr后面把td给加上
+	
+	// -- 第三个td：仓库 --
+	var title = document.createElement("TD");
+	var select_obj	= document.createElement("SELECT");//创建select标签
+	select_obj.setAttribute("ix", current_index);
+	select_obj.id	= "store_id_" + current_index;	//id做动态加载
+	select_obj.name	= "store_id[" + current_index + "]";	//name名做动态加载
+	select_obj.className="form_no_border form-control input-sm";
+	select_obj.onchange	= function()//change事件
+	{
+		change_level(0, this.getAttribute("ix"), this.value)
+	};
+	var opt		= document.createElement("OPTION");	//在里面创建option标签
+	opt.text    = "";	//option标签里面放置请选择
+	opt.value   = 0;	//value=0
+	select_obj.options[select_obj.length] = opt;
+	title.appendChild(select_obj);
+	store_obj.appendChild(title);
+	
+	// -- 第四个td:库区 -- 
+	var title = document.createElement("TD");
+	var select_obj = document.createElement("SELECT");//创建SELECT标签
+	select_obj.setAttribute("ix", current_index);
+	select_obj.id	= "area_id_" + current_index;
+	select_obj.name	= "area_id[" + current_index + "]";
+	select_obj.className="form_no_border form-control input-sm";
+	select_obj.onchange	= function()
+	{
+		change_level(1, this.getAttribute("ix"), this.value)
+	};
+	var opt		= document.createElement("OPTION");
+	opt.text    = "";
+	opt.value   = 0;
+	select_obj.options[select_obj.length] = opt;
+	title.appendChild(select_obj);
+	store_obj.appendChild(title);
+	
+	//----------------------------------
+	// --- 第五个td：货位 ----
+	var title = document.createElement("TD");
+	var select_obj = document.createElement("SELECT");	//创建SELECT标签
+	select_obj.setAttribute("ix", current_index);
+	select_obj.id	= "shelves_id_" + current_index;
+	select_obj.name	= "shelves_id[" + current_index + "]";
+	select_obj.className="form_no_border form-control input-sm";
+	select_obj.onchange	= function()
+	{
+		change_level(2, this.getAttribute("ix"), this.value)
+	};
+	var opt		= document.createElement("OPTION");
+	opt.text    = "";
+	opt.value   = 0;
+	select_obj.options[select_obj.length] = opt;
+	title.appendChild(select_obj);
+	store_obj.appendChild(title);
+	
+	// --- 第六个td：货架 ---
+	var title = document.createElement("TD");
+	var select_obj = document.createElement("SELECT");	//创建SELECT标签
+	select_obj.setAttribute("ix", current_index);
+	select_obj.id	= "location_id_" + current_index;
+	select_obj.name	= "location_id[" + current_index + "]";
+	select_obj.className= "form_no_border form-control input-sm"
+	select_obj.onchange	= function()
+	{
+		change_level(3, this.getAttribute("ix"), this.value)
+	};
+	var opt		= document.createElement("OPTION");
+	opt.text    = "";
+	opt.value   = 0;
+	select_obj.options[select_obj.length] = opt;
+	title.appendChild(select_obj);
+	store_obj.appendChild(title);
+	
+	//--- 第七个td:数量 ---
+	var title = document.createElement("TD");
+	var select_obj = document.createElement("INPUT");
+	select_obj.type = "text";
+	select_obj.style.width = "100px";
+	select_obj.onkeyup = "value=value.replace(/[^\d]/g,'')";
+	select_obj.name = "number["+ current_index +"]";
+	select_obj.className = 'form-control form_no_border input-sm';
+	title.appendChild(select_obj);
+	store_obj.appendChild(title);
+	
+	getObject(cc).appendChild(store_obj);
+
+	init_select(store_list, getObject("store_id_" + current_index));
+}
+
+</script>
+<body>
+	<p>
+		<input class="btn btn-default btn-sm btn_margin add" onclick="aa('new_list')" type="button" value="添加"/>
+		<input class="btn btn-default btn-sm btn_margin delete" type="button" value="删除"/>
+	</p>
+	<form action="/stock/stock_num_setup.php" method="post">
+		<div class="form-inline" style="margin-top:12px;">
+			<table class="table tab_select table-bordered table-hover" width="1000" style="table-layout:fixed">
+			<tbody id="new_list">
+				<tr>
+					<th width="150" class="table_th_number">序号</th>
+					<th width="150" class="table_th_checkbox center"><input type="checkbox" name="sel_all"/></th>
+					<th width="150">仓库</th>
+					<th width="150">库区</th>
+					<th width="150">货架</th>
+					<th width="150">货位</th>
+					<th width="100">数量</th>
+				</tr>
+				<tr>
+					<td class="center">1</td>
+					<td class="center"><input type="checkbox" name="select_one"/></td>
+					<td>
+						<select id="store_id_1" name="store_id[1]" class="form_no_border form-control input-sm" onchange="change_level(0, 1, this.value)">
+						</select>
+					</td>
+					<td>
+						<select id="area_id_1" name="area_id[1]" class="form_no_border form-control input-sm" onchange="change_level(1, 1, this.value)">
+						</select>
+					</td>
+					<td>
+						<select id="shelves_id_1" name="shelves_id[1]" class="form_no_border form-control input-sm" onchange="change_level(2, 1, this.value)">
+						</select>
+					</td>
+					<td>
+						<select id="location_id_1" name="location_id[1]" class="adf form_no_border form-control input-sm">
+						</select>
+					</td>
+					<td><input type="text" style="width:100px;" onkeyup="value=value.replace(/[^\d]/g,'')" name="number[1]" class="form-control form_no_border input-sm"/></td>
+					<input type="hidden" value="{main.id}" name="id"/>
+				</tr>
+				<tr>
+					<td class="center">2</td>
+					<td class="center"><input type="checkbox" name="select_one"/></td>
+					<td>
+						<select id="store_id_2" name="store_id[2]" class="form-control form_no_border input-sm" onchange="change_level(0, 2, this.value)">
+						</select>
+					</td>
+					<td>
+						<select id="area_id_2" name="area_id[2]" class="form-control form_no_border input-sm" onchange="change_level(1, 2, this.value)">
+						</select>
+					</td>
+					<td>
+						<select id="shelves_id_2" name="shelves_id[2]" class="form-control form_no_border input-sm" onchange="change_level(2, 2, this.value)">
+						</select>
+					</td>
+					<td>
+						<select id="location_id_2" name="location_id[2]" class="sdf form-control form_no_border input-sm">
+						</select>
+					</td>
+					<td><input type="text" style="width:100px;" onkeyup="value=value.replace(/[^\d]/g,'')" name="number[2]" class="form-control form_no_border input-sm"/></td>
+					<input type="hidden" value="{main.id}" name="id"/>
+				</tr>
+				<tr>
+					<td class="center">3</td>
+					<td class="center"><input type="checkbox" name="select_one"/></td>
+					<td>
+						<select id="store_id_3" name="store_id[3]" class="form-control form_no_border input-sm" onchange="change_level(0, 3, this.value)">
+						</select>
+					</td>
+					<td>
+						<select id="area_id_3" name="area_id[3]" class="form-control form_no_border input-sm" onchange="change_level(1, 3, this.value)">
+						</select>
+					</td>
+					<td>
+						<select id="shelves_id_3" name="shelves_id[3]" class="form-control form_no_border input-sm" onchange="change_level(2, 3, this.value)">
+						</select>
+					</td>
+					<td>
+						<select id="location_id_3" name="location_id[3]" class="form-control form_no_border input-sm"> 
+						</select>
+					</td>
+					<td><input style="width:100px;" type="text" onkeyup="value=value.replace(/[^\d]/g,'')" name="number[3]" class="form-control form_no_border input-sm"/></td>
+					<input type="hidden" name="id" value="{main.id}"/>
+				</tr>
+			</tbody>
+			</table>
+			<p>
+				<input class="btn btn-default btn-sm btn_margin" type="submit" value="保存"/>
+				<input class="btn btn-default btn-sm" type="button" value="取消" onclick="parent.$('#MessageBox').modal('hide')" />
+			</p>
+		</div>
+	</form>
+	<script>
+		init_select(store_list, getObject("store_id_1"));
+		init_select(store_list, getObject("store_id_2"));
+		init_select(store_list, getObject("store_id_3"));
+	</script>
+	</body>
+</html>
+
+<!-- END: main -->

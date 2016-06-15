@@ -1,0 +1,26 @@
+.rprogress .circle{border:4px solid #358ecb;}
+.rprogress .hbar{color:#358ecb;border-bottom: 4px solid #358ecb;}
+.active{color:#358ecb;border-bottom: 3px solid #358ecb;}
+.address{width:193px;height:38px;border:1px solid #ccc;line-height: 38px;margin:10px 0;}
+.address:nth-of-type(1){margin-right: 10px;}
+.divideline{width:200%;margin-left:-50%;border-bottom: 1px dashed #ccc;margin-top: 10px;margin-bottom: 10px;}
+.license-group{width:100%;height:120px;margin:10px 0;}
+.license-group label p{line-height: 80px;}
+.picarea{float:left;width:118px;height:118px;border:1px solid #ccc;}
+.picarea p{text-align: center;width:100%;}
+.picarea p:nth-of-type(1){margin:40px 0 10px;}
+.picinstruct{float:left;font-size: 12px;width:268px;margin-left:10px;}
+.picinstruct p{line-height: 22px;margin-top: 3px;}
+.picinstruct .uploadbtn{width:100px;height:20px;cursor:pointer;border:none;background: #fc0;margin: 9px 0 0 0;text-align: center;line-height: 16px;color:#fff;}
+.enterwcloud,.epcertify{width:300px;position: absolute;left:50%;margin-left: -150px;margin-top: 20px;}
+#submaudit{width:400px;height:40px;border:none;margin-top: 40px;}
+/* -----------audit------------ */
+.auditmain{width:100%;height:300px;position: relative;}
+.auditwaitimg{width:73px;height:73px;background: url(/image/main2/integrate.png) no-repeat 0 -36px;position: absolute;left:50%;margin-left: -36px;margin-top: 100px;}
+.auditmain p{position:absolute;width:100%;height:29px;text-align: center;font-size: 18px;margin-top:220px;}
+.auditsuccess p{margin-top: 200px;}
+.auditsuccess button{margin-top:258px;}
+.auditfailimg{width:60px;height:60px;background: url(/image/main2/integrate.png) no-repeat -84px -42px;position: absolute;left:50%;margin-left: -30px;margin-top: 100px;}
+#auditfail p:nth-of-type(1){margin-top:200px;}
+#auditfail p:nth-of-type(2){margin-top:250px;}
+#auditfail button{margin-top:306px;}

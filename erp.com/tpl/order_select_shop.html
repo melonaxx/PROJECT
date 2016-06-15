@@ -1,0 +1,44 @@
+//---- UTF8 编码 ----
+<!-- BEGIN: main -->
+<html>
+<head>
+<title>选择店铺</title>
+<link type="text/css" rel="stylesheet" href="/style/bootstrap.min.css?ver={main.doc_version}"/>
+<link type="text/css" rel="stylesheet" href="/style/style.css?ver={main.doc_version}"/>
+<script type="text/javascript" charset="UTF-8" src="/js_encode/jquery-1.9.1.min.js"></script>
+<style>
+body {
+	text-align:left;
+	min-width:600px;
+	overflow-y:hidden;
+	padding:0;
+}
+.form-inline .form-control {
+	display: inline-block;
+	vertical-align: middle;
+}
+.form-inline .form-group {
+	display: inline-block;
+	vertical-align: middle;
+}
+</style>
+<body>
+	<div>
+		<form class="form-inline supplierMsg" method="post" action="order_select_shop.php">
+			<div class="form-group">
+				<label>选择店铺：</label>
+				<select class="form-control input-sm" name="user_id">
+					<!-- BEGIN: arr -->
+					<option value="{arr.user_id}">{arr.name}</option>
+					<!-- END: arr -->
+				</select>
+			</div><br/>
+			<p>
+				<input class="btn btn-default btn-sm btn_margin" type="submit" name="submit" value="确定"/>
+				<input class="btn btn-default btn-sm" type="reset" value="重置"/>
+			</p>
+		</form>
+	</div>
+</body>
+</html>
+<!-- END: main -->

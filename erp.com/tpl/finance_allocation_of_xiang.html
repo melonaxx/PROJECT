@@ -1,0 +1,66 @@
+//---- UTF8 编码 ----
+<!-- BEGIN: main -->
+<html>
+<head>
+<title></title>
+<link type="text/css" rel="stylesheet" href="/style/bootstrap.min.css?ver={main.doc_version}"/>
+<link type="text/css" rel="stylesheet" href="/style/style.css?ver={main.doc_version}"/>
+<style>
+body,table,form,input		{font-size:12px; padding:0; margin:0}
+body {
+	min-width:100px;
+	overflow-y:auto;
+	overflow-x:auto;
+}
+</style>
+<script type="text/javascript" charset="UTF-8" src="/js_encode/jquery-1.9.1.min.js"></script>
+<script type="text/javascript" charset="UTF-8" src="/js_encode/bootstrap.min.js"></script>
+<script type="text/javascript" src="/js_encode/home_system_announcement_notice.js"></script>
+
+<form class="margin_top">
+	<div style="width:440px;">
+
+		<div class="float_left form-group ">
+			<span class="float_left" style="margin:5px 0 0 5px;">业务日期：</span>
+			<input type="text" id="business_date" readonly="readonly" name="business_date" class="form-control input-sm" style="width:147px;float:left;" value="{allocation.business_date}">
+		</div>
+
+		<span class="float_left" style="margin:5px 0 0 44px;">金额：</span>
+		<div class="input-group ">
+			<span class="input-group-addon input-sm">￥</span>
+		 	<input type="text" name="money" readonly="readonly" value='{allocation.money}' class="form-control input-sm float_left" aria-label="Amount (to the nearest dollar)" style="width:114px;">
+		</div>
+		<br>
+
+
+		<div class="float_left form-group">
+			<span class="float_left" style="margin:5px 0 0 5px;">转出账户：</span>
+			<input type="text" name="money" readonly="readonly" value='{allocation.output_bank_id}' class="form-control input-sm float_left" aria-label="Amount (to the nearest dollar)">
+		</div>
+
+		<div class="float_left form-group">
+			<span class="float_left" style="margin:5px 0 0 20px;">转入账户：</span>
+			<input type="text" name="money" readonly="readonly" value='{allocation.input_bank_id}' class="form-control input-sm float_left" aria-label="Amount (to the nearest dollar)">
+		</div>
+
+
+
+		<div class="form-group float_left">
+			<span class="float_left" style="margin:20px 0px 0px 29px;">备注：</span>
+			<textarea class="float_left form-control" rows="3" readonly="readonly" name = "body" style="width:374px; resize: none;margin:-2px 0px -2px 0;">{allocation.body}</textarea>
+		</div>
+	</div>
+
+</div>
+	<div class="form-group float_left" style="margin:0 0px 0px 4px;">
+		<div class="table_operate_block">
+			<input class="btn btn-default btn-sm" type="button" value="返回" onclick="parent.$('#MessageBox').modal('hide')" />
+		</div>
+	</div>
+</form>
+
+</body>
+</html>
+
+<!-- END: main -->
+

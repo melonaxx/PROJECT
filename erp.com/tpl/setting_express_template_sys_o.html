@@ -1,0 +1,45 @@
+//---- UTF8 编码 ----
+<!-- BEGIN: main --><?xml version="1.0" encoding="UTF-8"?>
+{main.doc_type}
+<?xml-stylesheet type="text/xsl" href="/style/setting_express_template_sys_o.xsl?ver={main.doc_version}"?>
+<html version="{main.doc_version}">
+<head>
+	<Title>{main.title}</Title>
+	<meta name="keywords" content="{main.keywords}" />
+	<meta name="description" content="{main.description}" />
+	<em company_id="{main.company_id}" staff_id="{main.staff_id}" login_name="{main.login_name}" permit="{main.permit}" program="{main.request_url}"/>
+</head>
+<Body>
+	<dir><![CDATA[ 您的位置： <a href="/">首页</a> &raquo; 设置公司信息]]></dir>
+
+	<menu>
+		<big>{main.big_menu}</big>
+		<small>
+			<!-- BEGIN: list_menu --><a class="{list_menu.class}" href="{list_menu.link}">{list_menu.name}</a><!-- END: list_menu -->
+		</small>
+	</menu>
+	<find>{main.find}</find>
+	<expressInfo total='{main.total}'>
+		<!-- BEGIN: expressList -->
+		<item>
+			<id>{expressList.id}</id>
+			<express_id>{expressList.express_id}</express_id>
+			<name>{expressList.name}</name>
+			<image>{expressList.image}</image>
+			<pub_date>{expressList.pub_date}</pub_date>
+			<print_orient>{expressList.print_orient}</print_orient>
+			<paper_width>{expressList.paper_width}</paper_width>
+			<paper_height>{expressList.paper_height}</paper_height>
+			<paper_left>{expressList.paper_left}</paper_left>
+			<paper_top>{expressList.paper_top}</paper_top>
+			<border>{expressList.border}</border>
+		</item>
+		<!-- END: expressList -->
+	</expressInfo>
+
+
+	{main.page_info}
+
+</Body>
+</html>
+<!-- END: main -->

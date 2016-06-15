@@ -1,0 +1,131 @@
+//---- UTF8 编码 ----
+<!-- BEGIN: main -->
+<html>
+<head>
+<title>选择仓库</title>
+<link type="text/css" rel="stylesheet" href="/style/bootstrap.min.css?ver={main.doc_version}"/>
+<link type="text/css" rel="stylesheet" href="/style/style.css?ver={main.doc_version}"/>
+<style>
+body {
+	text-align:left;
+	min-width:370px;
+	/*height:360px;*/
+	/*overflow-y:hidden;*/
+	padding:0;
+}
+.all:hover{
+	cursor:pointer;
+}
+input[type="checkbox"]{
+	width:20px;
+	height:20px;
+}
+
+</style>
+<script type="text/javascript" src="/js_encode/jquery-1.9.1.min.js"></script>
+<script type="text/javascript" charset="UTF-8" src="/js_encode/jquery.smallslider.js"></script>
+
+<script type="text/javascript" charset="UTF-8" src="/js_encode/bootstrap.min.js"></script>
+
+
+
+<body>
+
+
+
+
+	<div>
+		<div style="height:300px;overflow: auto;">
+			<div style='height:24px;'>
+				<span class='all' style='height:24px;margin:5px 0 7px 20px;font-size:13px;' name='all_Check'>全选</span>
+				<span class='all' style='margin:5px 0 7px 20px;font-size:13px;' name='all_No'>全不选</span>
+				<span class='all' style='margin:5px 0 7px 20px;font-size:13px;' name='all_Reverse'>反选</span>
+			</div>
+			
+			<!-- BEGIN: list_store -->
+			<div style="margin-left:50px;width:150px;float:left;margin-top:10px;"><input type="checkbox" name="{list_store.id}"><span style="font-size:13px;position:relative;top:3px;">{list_store.name}</span></div>
+			<!-- END: list_store -->
+			
+			<!-- BEGIN: store_arr -->
+			<div class="store_checked" style="display:none;">{store_arr.id}</div>
+			<!-- END: store_arr -->
+		</div>
+		<div class="modal-footer">
+			<input class="btn btn-default btn-sm" data-dismiss="modal" id="area_confirm" type="submit" value='确定' />
+			<input class="btn btn-default btn-sm"  onclick="parent.$('#MessageBox').modal('hide')" data-dismiss="modal" type="button" onclick='fun()' value='取消' />
+		</div>
+	</div>	
+
+<script>
+
+$(function(){
+	//点击全选
+	$("span[name=all_Check]").click(function(){
+		$('span[name=all_No]').prop('checked',false);
+		$('span[name=all_Reverse]').prop('checked',false);
+		$('input[type=checkbox]').prop('checked',true);
+	})
+	//点击全不选
+	$("span[name=all_No]").click(function(){
+		$('span[name=all_Check]').prop('checked',false);
+		$('span[name=all_Reverse]').prop('checked',false);
+		$('input[type=checkbox]').prop('checked',false);
+	})
+	//点击反选
+	$("span[name=all_Reverse]").click(function () {//反选  
+        $("input[type='checkbox']").each(function () {  
+            $(this).prop("checked", !$(this).prop("checked"));  
+        });  
+    });
+
+});
+
+//提交处理
+$("#area_confirm").click(function(){
+	var len = $("input[type='checkbox']").length;
+	var list = [];
+	var list_name = [];
+	$("input[type='checkbox']").each(function(){
+		if($(this).prop("checked")==true){
+			list.push($(this).attr("name"));
+			list_name.push($(this).siblings("span").html());
+		}
+	})
+	//仓库名称
+	var str = "";
+	for(var i=0;i<list_name.length;i++){
+		str += "<div style='float:left;overflow:auto;font-size:13px;border:1px solid #ddd;text-align:center;width:210px;height:34px;margin-left:10px;margin-bottom:15px;' class='cangku' >";
+		str += "<span style='line-height:30px;padding-left:10px;padding-right:10px;'>"+list_name[i]+"</span>";
+		str += "<input style='display:none;' type='text' name='store_id[]' value='"+list[i]+"'>";
+		str +="</div>";
+	}
+	
+	parent.$('#test1').html(str);
+	parent.$('#MessageBox').modal('hide');
+	parent.$('.store_selec').remove();
+});
+
+</script>
+
+<script type="text/javascript">
+
+		
+				$(".store_checked").each(function(){
+					nu2 = $(this).html();
+					
+					
+						$("input[type='checkbox']").each(function(){
+							nu1 = $(this).attr('name');
+							if(nu2 == nu1){
+								$(this).prop('checked',true);
+							}
+
+						});
+					
+				});
+			
+	
+</script>
+</body>
+</html>
+<!-- END: main -->

@@ -1,0 +1,15 @@
+.addc{
+	width:80px;
+	height:25px;
+	text-align: center;
+	font-size: 12px;
+	background-color:#ECECEC;
+	display:inline-block;
+	border-radius:5px;
+	line-height:25px;
+	border:1px solid black;
+	cursor:pointer;
+}
+input{
+	border:0;
+}

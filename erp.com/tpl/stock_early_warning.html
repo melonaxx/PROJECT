@@ -1,0 +1,61 @@
+//---- UTF8 编码 ----
+<!-- BEGIN: main --><?xml version="1.0" encoding="UTF-8"?>
+{main.doc_type}
+<?xml-stylesheet type="text/xsl" href="/style/stock_early_warning.xsl?ver={main.doc_version}"?>
+<html version="{main.doc_version}">
+<head>
+	<Title>{main.title}</Title>
+	<meta name="keywords" content="{main.keywords}" />
+	<meta name="description" content="{main.description}" />
+	<em company_id="{main.company_id}" staff_id="{main.staff_id}" login_name="{main.login_name}" permit="{main.permit}" program="{main.request_url}"/>
+</head>
+<Body>
+<!-- <dir><![CDATA[ 您的位置：{main.this_location}]]></dir> -->
+<menu>
+	<big>{main.big_menu}</big>
+	<small>
+		<!-- BEGIN: list_menu --><a class="{list_menu.class}" href="{list_menu.link}">{list_menu.name}</a><!-- END: list_menu -->
+	</small>
+</menu>
+<id>{main.id}</id>
+<name>{main.name}</name>
+<store_id>
+	<ul>
+		<!-- BEGIN: store_id -->
+		<li>
+			<id>{store_id.id}</id>
+			<name>{store_id.name}</name>
+		</li>
+		<!-- END: store_id -->
+	</ul>
+</store_id>
+<warning>
+	<ul num="{main.num}">
+		<!-- BEGIN: warning -->
+		<li>
+			<no>{warning.no}</no>
+			<name>{warning.name}</name>
+			<image>{warning.image}</image>
+			<upper>{warning.upper}</upper>
+			<lower>{warning.lower}</lower>
+			<warning>{warning.warning}</warning>
+			<bar_code>{warning.bar_code}</bar_code>
+			<store_id>{warning.store_id}</store_id>
+			<format_1>{warning.value_id_1}</format_1>
+			<format_2>{warning.value_id_2}</format_2>
+			<format_3>{warning.value_id_3}</format_3>
+			<format_4>{warning.value_id_4}</format_4>
+			<format_5>{warning.value_id_5}</format_5>
+			<total_way>{warning.total_way}</total_way>
+			<product_id>{warning.product_id}</product_id>
+			<total_lock>{warning.total_lock}</total_lock>
+			<total_real>{warning.total_real}</total_real>
+			<total_available>{warning.total_available}</total_available>
+		</li>
+		<!-- END: warning -->
+	</ul>
+</warning>
+{main.page_info}
+</Body>
+</html>
+<!-- END: main -->

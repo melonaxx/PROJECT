@@ -1,0 +1,69 @@
+//---- UTF8 编码 ----
+<!-- BEGIN: main -->
+<html>
+<head>
+<title></title>
+<link type="text/css" rel="stylesheet" href="/style/bootstrap.min.css?ver={main.doc_version}"/>
+<link type="text/css" rel="stylesheet" href="/style/style.css?ver={main.doc_version}"/>
+<!-- 时间日期 -->
+<!-- <link type="text/css" rel="stylesheet" href="/style/admin.css" /> -->
+<link rel="stylesheet" type="text/css" href="/style/jquery-ui.css" />
+
+<style>
+body,table,form,input		{font-size:12px; padding:0; margin:0}
+body {
+	min-width:100px;
+	overflow-y:hidden;
+	overflow-x:hidden;
+}
+#end_date{
+	width:165px;
+}
+</style>
+<script type="text/javascript" charset="UTF-8" src="/js_encode/jquery-1.9.1.min.js"></script>
+<script type="text/javascript" charset="UTF-8" src="/js_encode/bootstrap.min.js"></script>
+<script type="text/javascript" src="/js_encode/home_system_announcement_notice.js"></script>
+
+<!-- 时间日期 -->
+<script type="text/javascript" src="/js_encode/jquery-ui-1.10.4.custom.min.js"></script>
+<script type="text/javascript" src="/js_encode/jquery.ui.datepicker-zh-CN.js"></script>
+<script type="text/javascript" src="/js_encode/jquery-ui-timepicker-addon.js"></script>
+<script type="text/javascript" src="/js_encode/jquery-ui-timepicker-zh-CN.js"></script>
+
+<form class=" margin_top" method="post" action="/home/home_agency_matters_add.php">
+		<div >
+		<div class="form-group float_left" style="margin:0 20px 12px 0;">
+			<span class="float_left margin_left_5">截止日期：</span>
+			<input type="text" name="end_date" value="{main.rq}" class="form-control float_left" id = "end_date">
+		</div>
+		<div class="float_left">
+			<span class="float_left margin_left_8">标题：</span>
+			<input type="text" name="name" class="form-control float_left" style="width:580px;">
+		</div>
+		<div class="form-group float_left">
+			<span class="float_left" style="margin:50px 0px 0px 28px;">内容：</span>
+			<textarea class="float_left  margin_top_3 form-control" name="body" rows="6" style="width:580px; resize: none;"></textarea>
+		</div>
+		<div class="form-group float_left" style="margin:-2px 0 12px 0;">
+			<span class="float_left margin_left_5">参与人员：</span>
+		<input type="text" name="person" class="form-control float_left" style="width:580px;font-size:12px;" placeholder="输入名字获取部门用逗号隔开">
+		</div>
+		<div class="form-group float_left" >
+			<div class="table_operate_block">
+			<div class="table_operate_block " style="float:left;">
+				<input class="btn btn-default btn-sm btn_margin  margin_left_5" type="submit" value="保存" />
+				<input class="btn btn-default btn-sm  margin_left_5" type="reset" value="取消" />
+			</div>
+			</div>
+		</div>
+	</div>
+</form>
+
+</body>
+<script type="text/javascript">
+	$( "input[name='end_date']" ).datetimepicker();
+</script>
+</html>
+
+<!-- END: main -->
+

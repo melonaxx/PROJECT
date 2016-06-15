@@ -1,0 +1,205 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3c.org/TR/1999/REC-html401-19991224/loose.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+ <head id="Head1">
+  <title>北京外麦王人事系统</title> 
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" /> 
+  <link href="/css/Style.css" type="text/css" rel="stylesheet" /> 
+  <link href="/css/Manage.css" type="text/css" rel="stylesheet" /> 
+  <link href="/css/changeclass.css" type="text/css" rel="stylesheet" /> 
+  <script language="javascript" src="/js/jquery-1.8.3.min.js"></script> 
+  <meta content="MSHTML 6.00.2900.3492" name="GENERATOR" />
+ </head> 
+ <body> 
+  <form id="form1" name="form1" action="YHChannelApply.aspx?pages=4&amp;item=&amp;client=&amp;flag=0&amp;start=&amp;end=&amp;channel=" method="post"> 
+   <table cellspacing="0" cellpadding="0" width="98%" border="0"> 
+    <tbody> 
+     <tr> 
+      <td width="15"><img src="/images/new_019.jpg" border="0" /></td> 
+      <td width="100%" background="/images/new_020.jpg" height="20"></td> 
+      <td width="15"><img src="/images/new_021.jpg" border="0" /></td>
+     </tr>
+    </tbody>
+   </table> 
+   <table cellspacing="0" cellpadding="0" width="98%" border="0"> 
+    <tbody> 
+     <tr> 
+      <td width="15" background="/images/new_022.jpg"><img src="/images/new_022.jpg" border="0" /> </td> 
+      <td valign="top" width="100%" bgcolor="#ffffff"> 
+       <table cellspacing="0" cellpadding="5" width="100%" border="0"> 
+        <tbody>
+         <tr> 
+          <td class="manageHead">当前位置：管理首页 &gt; 资产分类管理</td> 
+         </tr> 
+         <tr> 
+          <td height="2"></td>
+         </tr>
+        </tbody>
+       </table> 
+       <table bordercolor="#cccccc" cellspacing="0" cellpadding="0" width="100%" align="center" border="0"> 
+        <tbody> 
+         <tr> 
+          <td> 
+           <table id="grid" style="BORDER-TOP-WIDTH: 0px; FONT-WEIGHT: normal; BORDER-LEFT-WIDTH: 0px; BORDER-LEFT-COLOR: #cccccc; BORDER-BOTTOM-WIDTH: 0px; BORDER-BOTTOM-COLOR: #cccccc; WIDTH: 100%; BORDER-TOP-COLOR: #cccccc; FONT-STYLE: normal; BACKGROUND-COLOR: #cccccc; BORDER-RIGHT-WIDTH: 0px; TEXT-DECORATION: none; BORDER-RIGHT-COLOR: #cccccc" cellspacing="1" cellpadding="2" rules="all" border="0"> 
+            <tbody> 
+             <tr style="FONT-WEIGHT: bold; FONT-STYLE: normal; BACKGROUND-COLOR: #eeeeee; TEXT-DECORATION: none;text-align: center"> 
+              <td>物品分类</td>
+              <td>编号</td>
+              <td>操作</td> 
+             </tr> 
+             {foreach from=$capital_class_list item=temp} 
+             <tr style="FONT-WEIGHT: normal; FONT-STYLE: normal; BACKGROUND-COLOR: white; TEXT-DECORATION: none;text-align: center; height:40px" cid="{$temp['id']}"> 
+              <td>
+                  <input type="text" style="text-align:center;" name="name" value="{$temp['classname']}" />
+              </td>
+              <td>
+                  <input type="text" style="text-align:center;" name="" value="{$temp['prefix']}" />
+              </td>
+              <td>
+                  <a href="javascript:void(0)" id="deleteclass">删除</a>
+              </td> 
+             </tr> 
+             {/foreach} 
+             <tr style="FONT-WEIGHT: normal; FONT-STYLE: normal; BACKGROUND-COLOR: white; TEXT-DECORATION: none;text-align: center; height:40px" id="capital_class"> 
+              <td width="600px">
+                  <input type="text" name="classname" style="text-align:center; border:0px solid;width:80px;height:20px;border-color:#979797;" placeholder="分类名称" />
+              </td>
+              <td width="200px">
+                  <input type="text" name="prefix" style="text-align:center; border:0px solid;width:80px;height:20px;border-color:#979797;" placeholder="编号" />
+              </td> 
+              <td>
+                  <a href="javascript:void(0)" id="addclass">添加分类</a>
+              </td> 
+             </tr> 
+            </tbody> 
+           </table> </td> 
+         </tr> 
+         <tr> 
+          <td></td>
+         </tr>
+        </tbody>
+       </table></td> 
+      <td width="15" background="/images/new_023.jpg"><img src="/images/new_023.jpg" border="0" /> </td>
+     </tr>
+    </tbody>
+   </table> 
+   <table cellspacing="0" cellpadding="0" width="98%" border="0"> 
+    <tbody> 
+     <tr> 
+      <td width="15"><img src="/images/new_024.jpg" border="0" /></td> 
+      <td align="middle" width="100%" background="/images/new_025.jpg" height="15"></td> 
+      <td width="15"><img src="/images/new_026.jpg" border="0" /></td>
+     </tr>
+    </tbody>
+   </table> 
+  </form>  
+  <script type="text/javascript" src="/js/util.js"></script> 
+{literal} 
+<script>
+ $("#deleteclass").live("click",function() {
+  if (confirm("确定删除吗")) {
+    $(this).closest("tr").addClass("del");
+    var cid = $(".del").attr("cid");
+    $.ajax({
+      type: "POST",
+      url: "deletecapital_class.php",
+      data: {
+        "cid": cid
+      },
+      success: function(msg) {
+        if(msg == '{"errno":4031,"errmsg":"You have no permission"}'){
+           alert(msg);
+        }else if (msg == "yes") {
+          $(".del").closest("TR").remove();
+          $(".del").removeClass("del");
+          alert("删除成功");
+        } else {
+          $(".del").removeClass("del");
+          alert("删除失败");
+        }
+      },
+      error: function() {
+        alert("ajax请求失败")
+      }
+    });
+  }
+})
+// //部门重命名
+// $(":input[name='name']").focus(function() {
+//   $(this).css('border', '1px solid #979797');
+// }).blur(function() {
+//   $(this).closest("tr").addClass("changename");
+//   var cid = $(".changename").attr("cid");
+//   $(this).css('border', 'none');
+//   $(".changename").removeClass("changename");
+//   $.ajax({
+//     type: "POST",
+//     url: "changename.php",
+//     data: {
+//       "classname": $(this).val(),
+//       "cid": cid
+//     },
+//     success: function(msg) {}
+//   });
+// })
+$(":input").focus(function(){
+  $(this).css('border', '1px solid #979797');
+}).blur(function(){
+  $(this).css('border', '0px solid #979797');
+})
+
+var classname = $("input[name='classname']");
+var prefix = $("input[name='prefix']");
+$("#addclass").live("click",
+function() {
+  if (classname.val() == "") {
+    alert("分类名称不能为空");
+    return false;
+  } else if (prefix.val().match(/^[A-Z]+$/)==null) {
+    alert("编号输入1-4位的大写字母");
+    return false;
+  } else{
+    var cname = classname.val();
+    if(prefix.val().length==1){
+       prefix_name = prefix.val()+"000";
+    }else if(prefix.val().length==2){
+       prefix_name = prefix.val()+"00";
+    }else if(prefix.val().length==3){
+       prefix_name = prefix.val()+"0";
+    }else if(prefix.val().length==4){
+       prefix_name = prefix.val();
+    }
+
+    $.ajax({
+      type: "POST",
+      url: "addcapital_class.php",
+      data: {
+        "cname": cname,
+        "prefix_name":prefix_name
+      },
+      success: function(msg) {
+        if (msg == "no") {
+          alert("添加失败");
+        } else if (msg == '{"errno":4031,"errmsg":"You have no permission"}') {
+          alert(msg);
+        } else if(msg == "重复"){
+           alert("已有的编号");
+        } else {
+          var str = "";
+          str += "<tr cid=" + msg + "><td style='background-color:white;height:40px;text-align:center;'>" + util.htmlEncode(cname) + "</td>";
+          str += "<td style='background-color:white;height:40px;text-align:center;'>" + util.htmlEncode(prefix_name) + "</td>";
+          str += "<td style='background-color:white;height:40px;text-align:center;'><A href='javascript:void(0)' id='deleteclass'>删除</A></td></tr>";
+          $(str).insertBefore($("#capital_class"));
+        }
+      },
+      error: function() {
+        alert("ajax请求失败")
+      }
+    });
+    classname.val("");
+    prefix.val("");
+  }
+})
+</script>
+{/literal}  
+ </body>
+</html>

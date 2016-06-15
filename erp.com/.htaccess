@@ -1,0 +1,48 @@
+AddDefaultCharset UTF-8
+RewriteEngine On
+Options FollowSymLinks
+
+RewriteRule ^$					application/home/index.php [L]
+RewriteRule ^index.php			application/home/index.php [L]
+
+RewriteRule ^home/?$			application/home/index.php [L]
+RewriteRule ^home/(.+)			application/home/$1 [QSA]
+
+RewriteRule ^login/?$			application/login/index.php [L]
+RewriteRule ^login/(.+)			application/login/$1 [QSA]
+
+RewriteRule ^order/?$			application/order/index.php [L]
+RewriteRule ^order/(.+)			application/order/$1 [QSA]
+
+RewriteRule ^deliver/?$			application/deliver/index.php [L]
+RewriteRule ^deliver/(.+)		application/deliver/$1 [QSA]
+
+RewriteRule ^search/?$			application/search/index.php [L]
+RewriteRule ^search/(.+)		application/search/$1 [QSA]
+
+RewriteRule ^stock/?$			application/stock/index.php [L]
+RewriteRule ^stock/(.+)			application/stock/$1 [QSA]
+
+RewriteRule ^product/?$			application/product/index.php [L]
+RewriteRule ^product/(.+)		application/product/$1 [QSA]
+
+RewriteRule ^purchase/?$		application/purchase/index.php [L]
+RewriteRule ^purchase/(.+)		application/purchase/$1 [QSA]
+
+RewriteRule ^crm/?$				application/crm/index.php [L]
+RewriteRule ^crm/(.+)			application/crm/$1 [QSA]
+
+RewriteRule ^finance/?$			application/finance/index.php [L]
+RewriteRule ^finance/(.+)		application/finance/$1 [QSA]
+
+RewriteRule ^person/?$			application/person/index.php [L]
+RewriteRule ^person/(.+)		application/person/$1 [QSA]
+
+RewriteRule ^apps/?$			application/apps/index.php [L]
+RewriteRule ^apps/(.+)			application/apps/$1 [QSA]
+
+RewriteRule ^setting/?$			application/setting/index.php [L]
+RewriteRule ^setting/(.+)		application/setting/$1 [QSA]
+
+RewriteRule ^style/(.+)			application/read_style.php?file=$1 [QSA]
+RewriteRule ^tpl/(.+)			404.php [QSA]

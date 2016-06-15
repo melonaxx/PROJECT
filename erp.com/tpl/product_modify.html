@@ -1,0 +1,126 @@
+//---- UTF8 编码 ----
+<!-- BEGIN: main -->
+<html>
+<head>
+<title>修改商品对应关系</title>
+<link type="text/css" rel="stylesheet" href="/style/bootstrap.min.css?ver={main.doc_version}"/>
+<link type="text/css" rel="stylesheet" href="/style/style.css?ver={main.doc_version}"/>
+<script type="text/javascript" src="/js_encode/jquery-1.9.1.min.js"></script>
+<script>
+$(function(){
+	$('input[name=find]').blur(function(){
+		var t = $(this);
+		var v = t.val();
+		$.ajax({
+			url:'product_modify.php',
+			type:'get',
+			data:{'name':v},
+			dataType:'json',
+			success:function(data){
+				if(data){
+					var str = "";
+					for(var i=0;i<data.length;i++){
+					    str += "<option value="+data[i]['id']+">"+data[i]['name']+","+data[i]['value_id_1']+","+data[i]['value_id_2']+","+data[i]['value_id_3']+","+data[i]['value_id_4']+","+data[i]['value_id_5']+"</option>";
+					}
+					t.parents('tr').find('.images').attr("src",data[0]['image']);
+					t.parents('tr').find('.bigimg').attr("src",data[0]['image']);
+					t.parents('tr').find('.price').html("￥"+data[0]['price_display']);
+					t.parent().next().find('select:first').append(str);
+
+				}
+			}
+		})
+	})
+
+	$('.find').change(function(){
+		var t = $(this);
+		var v = t.val();
+		$.ajax({
+			url:'product_modify.php',
+			type:'get',
+			data:{'change':v},
+			dataType:'json',
+			success:function(data){
+				if(data){
+					console.log(data);
+					t.parent().next().find('select:first').empty();
+    				var str = "<option value="+data['id']+">"+data['name']+"</option>";
+					t.parent().next().find('select:first').append(str);
+					t.parents('tr').find('.images').attr("src",data['image']);
+					t.parents('tr').find('.bigimg').attr("src",data['image']);
+					t.parents('tr').find('.price').html("￥"+data['price_display']);
+				}
+			}
+		})
+	})
+
+	$('.images').hover(function(){
+		var t = $(this).position().top - 60 + 'px';
+		var l = $(this).position().left + 20 + 'px';
+		$(this).next().css("display","block");
+		$(this).next().css("top",t);
+		$(this).next().css("left",l);
+	},function(){
+		$(this).next().css("display","none");
+	})
+})
+</script>
+<style>
+body {
+	text-align:left;
+	min-width:600px;
+	overflow-y:hidden;
+	padding:0;
+}
+.form-inline .form-control {
+	display: inline-block;
+	vertical-align: middle;
+}
+.form-inline .form-group {
+	display: inline-block;
+	vertical-align: middle;
+}
+</style>
+</head>
+<body>
+	<div>
+		<form class="form-inline supplierMsg" method="post" action="product_modify.php">
+			<input type="hidden" name="id" value="{main.id}">
+			<table style="width:470px" class="table table-bordered table-hover">
+				<tbody>
+					<tr>
+						<th class="table_th_number">图片</th>
+						<th style="width:100px;">搜索</th>
+						<th style="width:250px;" width="315px">商品名称与规格</th>
+						<th style="width:80px;">单价</th>
+					</tr>
+					<tr class="tr">
+						<td class="center">
+							<img src="" width="20" height="20" class="images center">
+							<img src="" width="200" height="200" style="display:none;position:absolute" class="bigimg center">
+						</td>
+						<td class="order_add_td_2">
+							<input type="text" name="find" class="form-control input-sm form_no_border search">
+						</td>
+						<td class="order_add_td_2">
+							<select class="form-control input-sm form_no_border find" name="product_id" placeholder="必填" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="最少选择一个商品">
+							</select>
+						</td>
+						<td class="order_add_td_2" align="left">
+							<div class="input-group">
+							<div class="input-group-addon price">￥</div>
+							</div>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+			<p>
+				<input class="btn btn-default btn-sm btn_margin" style="margin:0 30px 0 40px" name="made" type="submit" value="提交"/>
+				<input class="btn btn-default btn-sm" type="button" value="关闭" onclick="parent.$('#MessageBox').modal('hide')" />
+			</p>
+		</form>
+	</div>
+</body>
+</html>
+{main.pageinfo}
+<!-- END: main -->

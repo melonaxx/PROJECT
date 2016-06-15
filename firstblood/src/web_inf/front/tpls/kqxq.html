@@ -1,0 +1,276 @@
+﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3c.org/TR/1999/REC-html401-19991224/loose.dtd">
+<HTML xmlns="http://www.w3.org/1999/xhtml"><HEAD id=Head1><title>北京外麦王人事系统</title>
+<META http-equiv=Content-Type content="text/html; charset=utf-8">
+<LINK href="/css/Style.css" type=text/css rel=stylesheet>
+<LINK href="/css/Manage.css" type=text/css rel=stylesheet>
+<LINK href="/css/allinfo.css" type=text/css rel=stylesheet>
+<style>
+  .ttrr:hover{
+    font-weight: bold;
+  }
+</style>
+<SCRIPT language=javascript src="/js/FrameDiv.js"></SCRIPT>
+
+<SCRIPT language=javascript src="/js/Common.js"></SCRIPT>
+<SCRIPT language=javascript src="/js/jquery-1.8.3.min.js"></SCRIPT>
+<META content="MSHTML 6.00.2900.3492" name=GENERATOR></HEAD>
+<BODY>
+<TABLE cellSpacing=0 cellPadding=0 width="98%" border=0>
+  <TBODY>
+  <TR>
+    <TD width=15><IMG src="/images/new_019.jpg" border=0></TD>
+    <TD width="100%" background=/images/new_020.jpg height=20></TD>
+    <TD width=15><IMG src="/images/new_021.jpg" 
+  border=0></TD></TR></TBODY></TABLE>
+<TABLE cellSpacing=0 cellPadding=0 width="98%" border=0>
+  <TBODY>
+  <TR>
+    <TD width=15 background=/images/new_022.jpg><IMG 
+      src="/images/new_022.jpg" border=0> </TD>
+    <TD vAlign=top width="100%" bgColor=#ffffff>
+      <TABLE cellSpacing=0 cellPadding=5 width="100%" border=0>
+        <TR>
+          <TD class=manageHead>当前：管理首页 &gt; 考勤管理 &gt; &nbsp;&nbsp;&nbsp;<b style="color:red">{$name}的考勤</b></TD></TR>
+    </TD>
+        <TR>
+          <TD height=2></TD></TR></TABLE>
+      <TABLE borderColor=#cccccc cellSpacing=0 cellPadding=0 width="100%" 
+      align=center border=0>
+        <TBODY>
+        <TR>
+          <TD height=25>
+            <TABLE cellSpacing=0 cellPadding=2 border=0>
+              <TBODY>
+              <TR>
+                <TD>时间:</TD>
+                <TD>
+                <form action="selmonth.php?uid={$uid}&name={$name}" method="post">
+                    <select name="year">
+                      <option value="2016" {if {$year eq 2016}}selected{/if}>2016</option>
+                      <option value="2017" {if {$year eq 2017}}selected{/if}>2017</option>
+                      <option value="2018" {if {$year eq 2018}}selected{/if}>2018</option>
+                      <option value="2019" {if {$year eq 2019}}selected{/if}>2019</option>
+                      <option value="2020" {if {$year eq 2020}}selected{/if}>2020</option>
+                    </select>
+                    <select name="month">
+                      <option value="01" {if {$month eq 1}}selected{/if}>01</option>
+                      <option value="02" {if {$month eq 2}}selected{/if}>02</option>
+                      <option value="03" {if {$month eq 3}}selected{/if}>03</option>
+                      <option value="04" {if {$month eq 4}}selected{/if}>04</option>
+                      <option value="05" {if {$month eq 5}}selected{/if}>05</option>
+                      <option value="06" {if {$month eq 6}}selected{/if}>06</option>
+                      <option value="07" {if {$month eq 7}}selected{/if}>07</option>
+                      <option value="08" {if {$month eq 8}}selected{/if}>08</option>
+                      <option value="09" {if {$month eq 9}}selected{/if}>09</option>
+                      <option value="10" {if {$month eq 10}}selected{/if}>10</option>
+                      <option value="11" {if {$month eq 11}}selected{/if}>11</option>
+                      <option value="12" {if {$month eq 12}}selected{/if}>12</option>
+                    </select>
+                    <input type="submit" value="查询">
+                </form>
+                </TD>
+                <td>
+                    <b style="background-color:#EDB337;font-size:13px;">正常天数:{$array['day1']}天</b>
+                    <b style="background-color:#79B81C;font-size:13px;">周末:{$array['day2']}天</b>
+                    <b style="background-color:#E00850;font-size:13px;">全天请假:{$array['day3']}次</b>
+                    <b style="background-color:#43B2A7;font-size:13px;">上午请假:{$array['day4']}次</b>
+                    <b style="background-color:#558B86;font-size:13px;">下午请假:{$array['day5']}次</b>
+                    <b style="background-color:#F50FC1;font-size:13px;">旷工:{$array['day6']}次</b>
+                    <b style="background-color:#A55A8B;font-size:13px;">迟到:{$array['day7']}次</b>
+                    <b style="background-color:#8B2E6C;font-size:13px;">早退:{$array['day8']}次</b>
+                    <b style="background-color:#DB670D;font-size:13px;">加班:{$array['day9']}次</b>
+                    <b style="background-color:#F4A6A6;font-size:13px;">调休:{$array['day10']}次</b>
+               </td>
+              </TR>
+              </TBODY>
+            </TABLE>
+            </TD>
+        </TR>
+        <TR>
+          <TD>
+            <TABLE id=grid 
+            style="BORDER-TOP-WIDTH: 0px; FONT-WEIGHT: normal; BORDER-LEFT-WIDTH: 0px; BORDER-LEFT-COLOR: #cccccc; BORDER-BOTTOM-WIDTH: 0px; BORDER-BOTTOM-COLOR: #cccccc; WIDTH: 100%; BORDER-TOP-COLOR: #cccccc; FONT-STYLE: normal; BACKGROUND-COLOR: #cccccc; BORDER-RIGHT-WIDTH: 0px; TEXT-DECORATION: none; BORDER-RIGHT-COLOR: #cccccc" 
+            cellSpacing=1 cellPadding=2 rules=all border=0>
+              <TBODY>
+
+              <TR 
+              style="FONT-WEIGHT: bold; FONT-STYLE: normal; BACKGROUND-COLOR: #eeeeee; TEXT-DECORATION: none;text-align: center">
+                <TD width="80px">日期</TD>
+                <TD>最早时间</TD>
+                <TD>最晚时间</TD>
+                <TD width="250px">状态</TD>
+              </TR>    
+              {foreach from=$result item=temp}  
+              <TR 
+              style=" FONT-STYLE: normal; BACKGROUND-COLOR:{if $temp['status'] eq 1}
+              #EDB337
+              {elseif $temp['status'] eq 2}
+              #79B81C
+              {elseif $temp['status'] eq 3}
+              #E00850
+              {elseif $temp['status'] eq 4}
+              #43B2A7
+              {elseif $temp['status'] eq 5}
+              #558B86
+              {elseif $temp['status'] eq 6}
+              #F50FC1
+              {elseif $temp['status'] eq 7}
+              #A55A8B
+              {elseif $temp['status'] eq 8}
+              #8B2E6C
+              {elseif $temp['status'] eq 9}
+              #DB670D
+              {elseif $temp['status'] eq 10}
+              #F4A6A6
+              {/if}; TEXT-DECORATION: none;text-align: center; height:40px;" uid="{$temp['date']}" pid="{$temp['id']}" class="ttrr" >
+                <TD>{$temp['date']}</TD>
+                <TD><input type="text" name="start_time" value="{$temp['firsttime']}"></TD>
+                <TD><input type="text" name="stop_time" value="{$temp['lasttime']}"></TD>
+                <td>
+                    <select name="status" class="status">
+                    <option value="1" {if {$temp['status'] eq 1}}selected{/if}><span>正常</span></option>
+                    <option value="2" {if {$temp['status'] eq 2}}selected{/if}><span>周末</span></option>
+                    <option value="3" {if {$temp['status'] eq 3}}selected{/if}><span>全天请假</span></option>
+                    <option value="4" {if {$temp['status'] eq 4}}selected{/if}><span>上午请假</span></option>
+                    <option value="5" {if {$temp['status'] eq 5}}selected{/if}><span>下午请假</span></option>
+                    <option value="6" {if {$temp['status'] eq 6}}selected{/if}><span>旷工</span></option>
+                    <option value="7" {if {$temp['status'] eq 7}}selected{/if}><span>迟到</span></option>
+                    <option value="8" {if {$temp['status'] eq 8}}selected{/if}><span>早退</span></option>
+                    <option value="9" {if {$temp['status'] eq 9}}selected{/if}><span>加班</span></option>
+                    <option value="10" {if {$temp['status'] eq 10}}selected{/if}><span>调休</span></option>
+                    </select>
+                    {if $temp['status'] eq 3 || $temp['status'] eq 4 || $temp['status'] eq 5}
+                    <select name="" class="select">
+                        <option value="">--假期类别--</option>
+                        <option value="1" {if {$temp['holiday'] eq 1}}selected{/if}>病假</option>
+                        <option value="2" {if {$temp['holiday'] eq 2}}selected{/if}>事假</option>
+                        <option value="3" {if {$temp['holiday'] eq 3}}selected{/if}>丧假</option>
+                        <option value="4" {if {$temp['holiday'] eq 4}}selected{/if}>婚假</option>
+                        <option value="5" {if {$temp['holiday'] eq 5}}selected{/if}>产假</option>
+                        <option value="6" {if {$temp['holiday'] eq 6}}selected{/if}>工伤假</option>
+                    </select>
+                    {/if}
+                </td>
+              </TR>
+              {/foreach}
+               </TBODY>
+               </TABLE>
+            </TD>
+       </TR>
+        </TBODY></TABLE></TD>
+    <TD width=15 background=/images/new_023.jpg><IMG 
+      src="/images/new_023.jpg" border=0> </TD></TR></TBODY></TABLE>
+<TABLE cellSpacing=0 cellPadding=0 width="98%" border=0>
+  <TBODY>
+  <TR>
+    <TD widtht=15><IMG src="/images/new_024.jpg" border=0></TD>
+    <TD align=middle width="100%" background=/images/new_025.jpg 
+    height=15></TD>
+    <TD width=15><IMG src="/images/new_026.jpg" 
+  border=0></TD></TR></TBODY></TABLE>
+</BODY>
+{literal}
+<script type="text/javascript">
+     $(".status").change(function(){
+      ob = $(this);
+      var status=$(this).val();
+      var date = $(this).closest("tr").attr("uid");
+      var id = $(this).closest("tr").attr("pid");
+
+      var str="";
+          str+=" <select class='sel'>";
+          str+=" <option value='' selected='selected'>--假期类别--</option>";
+          str+=" <option value='1'>病假</option>";
+          str+=" <option value='2'>事假</option>";
+          str+=" <option value='3'>丧假</option>";
+          str+=" <option value='4'>婚假</option>";
+          str+=" <option value='5'>产假</option>";
+          str+=" <option value='6'>工伤假</option>";
+          str+=" </select>";
+       $.post("upstatu.php",{status:status,date:date,id:id},function(data){
+            if(data==1){
+                if(status == 1){
+                    ob.closest("tr").css("background-color","#EDB337");
+                    ob.next("select").remove();
+                }else if(status == 2){
+                    ob.closest("tr").css("background-color","#79B81C");
+                    ob.next("select").remove();
+                }else if(status == 3){
+                    ob.closest("tr").css("background-color","#E00850");
+                    ob.next("select").remove();
+                    $(str).insertAfter(ob);
+                    ob.find("select").remove();
+                    $(".sel").change(function(){
+                        holiday = $(this).val();
+                        $.post("changeholiday.php",{holiday:holiday,id:id},function(data){
+                        })
+                    });
+                }else if(status == 4){
+                    ob.closest("tr").css("background-color","#43B2A7");
+                    ob.next("select").remove();
+                    $(str).insertAfter(ob);
+                    ob.find("select").remove();
+                    $(".sel").change(function(){
+                        holiday = $(this).val();
+                        $.post("changeholiday.php",{holiday:holiday,id:id},function(data){
+                        })
+                    });
+                }else if(status == 5){
+                    ob.closest("tr").css("background-color","#558B86");
+                    ob.next("select").remove();
+                    $(str).insertAfter(ob);
+                    ob.find("select").remove();
+                    $(".sel").change(function(){
+                        holiday = $(this).val();
+                        $.post("changeholiday.php",{holiday:holiday,id:id},function(data){
+                        })
+                    });
+                }else if(status == 6){
+                    ob.next("select").remove();
+                    ob.closest("tr").css("background-color","#F50FC1");
+                }else if(status == 7){
+                    ob.next("select").remove();
+                    ob.closest("tr").css("background-color","#A55A8B");
+                }else if(status == 8){
+                    ob.next("select").remove();
+                    ob.closest("tr").css("background-color","#8B2E6C");
+                }else if(status == 9){
+                    ob.next("select").remove();
+                    ob.closest("tr").css("background-color","#DB670D");
+                }else if(status == 10){
+                    ob.next("select").remove();
+                    ob.closest("tr").css("background-color","#F4A6A6");
+                }
+            }
+      },"html");
+     })
+    
+     $(":input[name='start_time']").blur(function(){
+        var time = $(this).val();
+        var id = $(this).closest("tr").attr("pid");
+
+        $.post("updatetime.php", { time: time, id: id , start_or_stop:"firsttime"},
+          function(data){
+             
+          });
+     })
+
+     $(":input[name='stop_time']").blur(function(){
+        var time = $(this).val();
+        var id = $(this).closest("tr").attr("pid");
+
+        $.post("updatetime.php", { time: time, id: id , start_or_stop:"lasttime"},
+          function(data){
+             
+          });
+     })
+
+       $(".select").change(function(){
+           holiday = $(this).val();
+           var id = $(this).closest("tr").attr("pid");
+          $.post("changeholiday.php",{holiday:holiday,id:id},function(data){
+          })
+      });
+</script>
+{/literal}
+</HTML>

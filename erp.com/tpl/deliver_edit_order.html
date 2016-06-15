@@ -1,0 +1,175 @@
+//---- UTF8 编码 ----
+<!-- BEGIN: main --><?xml version="1.0" encoding="UTF-8"?>
+{main.doc_type}
+<?xml-stylesheet type="text/xsl" href="/style/deliver_edit_order.xsl?ver={main.doc_version}"?>
+<html version="{main.doc_version}">
+	<head>
+		<Title>{main.title}</Title>
+		<meta name="keywords" content="{main.keywords}" />
+		<meta name="description" content="{main.description}" />
+		<em company_id="{main.company_id}" staff_id="{main.staff_id}" login_name="{main.login_name}" permit="{main.permit}" program="{main.request_url}"/>
+	</head>
+	<Body>
+		<dir><![CDATA[ 您的位置：{main.this_location}]]></dir>
+		<menu>
+			<big>{main.big_menu}</big>
+			<small>
+				<!-- BEGIN: list_menu --><a class="{list_menu.class}" href="{list_menu.link}">{list_menu.name}</a><!-- END: list_menu -->
+			</small>
+		</menu>
+		<sheng>130000</sheng>
+		<shi>130500</shi>
+		<xian>130522</xian>
+		<riqi>{main.rq}</riqi>
+		<supplierMsg>
+			<type>
+				<ul>
+					<!-- BEGIN: arr -->
+					<li>
+						<is_audit>{arr.is_audit}</is_audit>
+						<audit>{arr.audit}</audit>
+						<id>{arr.order_id}</id>
+						<time>{arr.order_date}</time>
+						<text>{arr.bind_number}</text>
+						<name>{arr.name}</name>
+						<relatedorder>{arr.related_order}</relatedorder>
+						<mobile>{arr.mobile}</mobile>
+						<phone>{arr.phone}</phone>
+						<companyname>{arr.company_name}</companyname>
+						<postcode>{arr.post_code}</postcode>
+						<postfee>{arr.post_fee}</postfee>
+						<freight_buyer>{arr.freight_buyer}</freight_buyer>
+						<number>{arr.number}</number>
+						<weight>{arr.weight}</weight>
+						<bank>{arr.bank_id}</bank>
+						<bank_id>{arr.bank_id}</bank_id>
+
+						<express>{arr.express_id}</express>
+
+						<ordertext>{arr.order_text}</ordertext>
+						<customer>{arr.customer_text}</customer>
+						<address>{arr.address}</address>
+						<bindtype>{arr.bind_type}</bindtype>
+						<btype>{arr.type}</btype>
+						<zong>{arr.zong}</zong>
+						<theory>{arr.theory_amount}</theory>
+						<real>{arr.real_amount}</real>
+						<arrears>{arr.arrears}</arrears>
+						<sheng>{arr.state_id}</sheng>
+						<shi>{arr.city_id}</shi>
+						<xian>{arr.district_id}</xian>
+						<invoice>{arr.need_invoice}</invoice>
+						<tax_type>{arr.tax_type}</tax_type>
+						<pay>{arr.payment_status}</pay>
+						<paystatus>{arr.pay_status}</paystatus>
+						<discount>{arr.discount}</discount>
+						<total>{arr.tt}</total>
+						<total_amount>{arr.total_amount}</total_amount>
+
+						<tax_text>{arr.tax_text}</tax_text>
+						<tax_title>{arr.tax_title}</tax_title>
+						<tax_number>{arr.tax_number}</tax_number>
+						<tax_bank_name>{arr.tax_bank_name}</tax_bank_name>
+						<tax_bank_number>{arr.tax_bank_number}</tax_bank_number>
+
+						<shop>{arr.user_id}</shop>
+						<shop_name>{arr.shop_name}</shop_name>
+
+						<body>{arr.body}</body>
+						<c_total>{arr.total}</c_total>
+						<status>{arr.status}</status>
+						<status_name>{arr.status_name}</status_name>
+					</li>
+					<!-- END: arr -->
+				</ul>
+			</type>
+		</supplierMsg>
+		<kdgs>
+			<type>
+				<ul>
+					<!-- BEGIN: list_deliver -->
+					<li><value>{list_deliver.express_id}</value><text>{list_deliver.name}</text></li>
+					<!-- END: list_deliver -->
+				</ul>
+			</type>
+		</kdgs>
+		<buy>
+			<type>
+				<ul>
+					<!-- BEGIN: list_qudao -->
+					<li><value>{list_qudao.id}</value><text>{list_qudao.name}</text></li>
+					<!-- END: list_qudao -->
+				</ul>
+			</type>
+		</buy>
+		<store>
+			<type>
+				<ul>
+					<!-- BEGIN: list_store -->
+					<li><value>{list_store.id}</value>
+					<text>{list_store.name}</text></li>
+					<!-- END: list_store -->
+				</ul>
+			</type>
+		</store>
+		<shop>
+			<type>
+				<ul>
+					<!-- BEGIN: list_shop -->
+					<li><value>{list_shop.user_id}</value><text>{list_shop.shop_name}</text></li>
+					<!-- END: list_shop -->
+				</ul>
+			</type>
+		</shop>
+		<product>
+				<type>
+					<ul>
+						<!-- BEGIN: product -->
+						<li>
+							<t>{product.sum}</t>
+							<unit>{product.part_name}</unit>
+							<name>{product.name}</name>
+							<format>{product.format}</format>
+							<num>{product.num}</num>
+							<id>{product.product_id}</id>
+							<total>{product.total}</total>
+							<price>{product.price}</price>
+							<discount>{product.discount}</discount>
+							<content>{product.content}</content>
+							<payment>{product.payment}</payment>
+							<store_id>{product.store_id}</store_id>
+							<img>{product.image}</img>
+						</li>
+						<!-- END: product -->
+					</ul>
+				</type>
+		</product>
+		<invoiceMsg>
+			<type>
+		    	<ul>
+			  		<li><value>VAT</value><text>普通</text></li>
+
+			   		<li><value>Normal</value><text>增值税</text></li>
+
+				</ul>
+			 </type>
+		</invoiceMsg>
+
+		<account>
+			<type>
+				<ul>
+					<!-- BEGIN: list_account -->
+					<li>
+					<value>{list_account.id}</value>
+					<text>{list_account.name}</text>
+					<is_default>{list_account.is_default}</is_default>
+					</li>
+					<!-- END: list_account -->
+				</ul>
+			</type>
+		</account>
+	</Body>
+
+
+</html>
+<!-- END: main -->

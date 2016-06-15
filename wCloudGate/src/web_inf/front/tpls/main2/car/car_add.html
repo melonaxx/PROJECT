@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>外麦王云平台</title>
+	<link rel="stylesheet" type="text/css" href="/css/main2/base.css"/>
+	<link rel="stylesheet" type="text/css" href="/css/main2/car/car_add.css"/>
+</head>
+<body>
+	<header>
+		<div class="header">
+			<div class="topleft">
+				<div class="logo">
+					<a class="img"><img src="/image/main2/logo.png"/></a>
+				</div>
+				<ul class="nav">
+					<li><a href="">首页</a><p></p></li>
+					<li><a href="">地图定位</a><p></p></li>
+					<li class="navactive"><a href="">车辆管理</a><p></p></li>
+					<li><a href="">劳务方</a><p></p></li>
+					<li><a href="">员工</a><p></p></li>
+				</ul>
+			</div>
+			<div class="useroper">
+				<a class="rolename" href="">百度外卖</a>
+				<ul class="useroperul">
+					<li class="useractive"><a href="">我的消息</a></li>
+					<li><a href="">认证信息</a></li>
+					<li><a href="">账号设置</a></li>
+					<li><a href="">退出</a></li>
+				</ul>
+			</div>
+		</div>
+	</header>
+	<div class="section">
+		<div class="wmain">
+			<ul class="wmainlist">
+				<li class="wllevel1">
+					<a href=""><span></span>车辆管理<p class="wlrightarrow"></p></a>
+					<ul class="wllevel2">
+						<li><a href="">所有车辆</a></li>
+						<li><a href="">异常车辆</a></li>
+					</ul>
+				</li>
+				<li class="wllevel1">
+					<a href="" class="wllevel1active"><span></span>车辆添加<p></p></a>
+					<ul class="wllevel2">
+						<li class="mlsonactive"><a href="">普通添加</a></li>
+						<li><a href="">整车添加</a></li>
+					</ul>
+				</li>
+			</ul>
+			<div class="wmaincontent">
+				<h1 class="wmch1">|&nbsp;普通添加</h1>
+				<ul class="caraddlist">
+					<li>
+						<h2>1</h2>
+						<div class="carinf">
+							<div class="input-groupc">
+								<label>车辆品牌&nbsp;:&nbsp;&nbsp;</label>
+								<input type="text" />
+							</div>
+							<div class="input-groupc">
+								<label>车辆号码&nbsp;:&nbsp;&nbsp;</label>
+								<input type="text" />
+							</div>
+							<div class="input-groupc">
+								<label>定位器号&nbsp;:&nbsp;&nbsp;</label>
+								<input type="text" />
+							</div>								
+							<div class="input-groupc">
+								<label>车辆型号&nbsp;:&nbsp;&nbsp;</label>
+								<input type="text" />
+							</div>
+							<div class="input-groupc">
+								<label>车辆备注&nbsp;:&nbsp;&nbsp;</label>
+								<input type="text" />
+							</div>
+						</div>
+						<a class="operate">删除</a>
+					</li>
+					<li>
+						<h2>2</h2>
+						<div class="carinf">
+							<div class="input-groupc">
+								<label>车辆品牌&nbsp;:&nbsp;&nbsp;</label>
+								<input type="text" />
+							</div>
+							<div class="input-groupc">
+								<label>车辆号码&nbsp;:&nbsp;&nbsp;</label>
+								<input type="text" />
+							</div>
+							<div class="input-groupc">
+								<label>定位器号&nbsp;:&nbsp;&nbsp;</label>
+								<input type="text" />
+							</div>								
+							<div class="input-groupc">
+								<label>车辆型号&nbsp;:&nbsp;&nbsp;</label>
+								<input type="text" />
+							</div>
+							<div class="input-groupc">
+								<label>车辆备注&nbsp;:&nbsp;&nbsp;</label>
+								<input type="text" />
+							</div>
+						</div>
+						<a class="operate">继续添加</a>
+					</li>
+				</ul>
+				<button class="addcarbtn">添加车辆</button>
+			</div>
+		</div>
+	</div>
+	
+	<div class="modal" id="modaladdcar">
+		<div class="cover"></div>
+		<div class="modalbox">
+			<p>添加成功！</p>
+			<div class="btns">
+				<button class="goonaddbtn">继续添加</button>
+				<button>查看车辆</button>
+			</div>
+		</div>
+	</div>
+
+	<footer id="footer">
+		<ul>
+			<li><a href="javascript:void(0)">公司简介</a></li>
+			<li class="vbar">|</li>
+			<li><a href="javascript:void(0)">联系我们</a></li>
+			<li class="vbar">|</li>
+			<li><a href="javascript:void(0)">加入我们</a></li>
+			<li class="vbar">|</li>
+			<li><a href="javascript:void(0)">新闻中心</a></li>
+		</ul>
+		<div><a href="javascript:void(0)">北京外麦王科技有限公司版权所有&nbsp;京ICP备09092621号-3</a></div>
+	</footer>
+	<script src="/js/jquery-1.11.0.js"></script>
+	<script type="text/javascript" src="/js/main2/common.js"></script>
+	<script>
+		$(".addcarbtn").on("click",function(){
+			$("#modaladdcar").show();
+		})
+		$(".goonaddbtn").on("click",function(){
+			$("#modaladdcar").hide();
+		})
+	</script>
+</body>
+</html>

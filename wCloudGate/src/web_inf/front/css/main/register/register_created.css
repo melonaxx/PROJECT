@@ -1,0 +1,10 @@
+.formtop{font-size: 30px;color:#333;width：450px;height:40px;margin:0 0 50px 90px;}
+.formtop p{float:left;}
+.formtop span{float:left;margin:0 10px;}
+#rccontent label{float:left;display: inline-block;}
+#rccontent input{float:left;display: inline-block;}
+.registerbtn2{width:450px;height:54px;line-height: 54px;text-align: center;background: #358ecb;color:#fff;font-size:18px;margin:30px 0 146px 28px;cursor:pointer;}
+.content2 p{font-size: 18px;margin-bottom: 30px;}
+.rega{color:#f40;}
+.registerbtn{margin-bottom: 146px;}
+.registerbtn2 a{color:#fff;}

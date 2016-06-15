@@ -1,0 +1,54 @@
+//---- UTF8 编码 ----
+<!-- BEGIN: main --><?xml version="1.0" encoding="UTF-8"?>
+{main.doc_type}
+<?xml-stylesheet type="text/xsl" href="/style/order_sale_list.xsl?ver={main.doc_version}"?>
+<html version="{main.doc_version}">
+<head>
+	<Title>{main.title}</Title>
+	<meta name="keywords" content="{main.keywords}" />
+	<meta name="description" content="{main.description}" />
+	<em company_id="{main.company_id}" staff_id="{main.staff_id}" login_name="{main.login_name}" permit="{main.permit}" program="{main.request_url}"/>
+</head>
+<Body>
+<dir><![CDATA[ 您的位置：{main.this_location}]]></dir>
+<menu>
+	<big>{main.big_menu}</big>
+	<small>
+		<!-- BEGIN: list_menu--><a class="{list_menu.class}" href="{list_menu.link}">{list_menu.name}</a><!-- END: list_menu -->
+	</small>
+</menu>
+<find>{main.find}</find>
+		<sales>
+			<ul total="{main.total}">
+				<!-- BEGIN: arr -->
+				<li>
+					<topic_name>{arr.topic_name}</topic_name>
+					<order_id>{arr.order_id}</order_id>
+					<id>{arr.id}</id>
+					<service_type>{arr.service_name}</service_type>
+					<payment>{arr.payment}</payment>
+					<name>{arr.name}</name>
+					<phone>{arr.phone}</phone>
+					<e_name>{arr.e_name}</e_name>
+					<number>{arr.number}</number>
+					<staff_name>{arr.staff_name}</staff_name>
+					<shop_name>{arr.shop_name}</shop_name>
+				</li>
+				<!-- END: arr -->
+			</ul>
+		</sales>
+
+		<supplierMsg>
+			<ul>
+				<li><value></value><text>所有</text></li>
+				<li><value>N</value><text>待处理</text></li>
+				<li><value>Y</value><text>已解决</text></li>
+				<li><value>D</value><text>已关闭</text></li>
+			</ul>
+		</supplierMsg>
+		{main.page_info}
+</Body>
+
+
+</html>
+<!-- END: main -->

@@ -1,0 +1,36 @@
+//---- UTF8 编码 ----
+<!-- BEGIN: main -->
+<html>
+<head>
+<title>修改{main.location_name}信息</title>
+<link type="text/css" rel="stylesheet" href="/style/bootstrap.min.css?ver={main.doc_version}"/>
+<link type="text/css" rel="stylesheet" href="/style/style.css?ver={main.doc_version}"/>
+<style>
+body,table,form,input		{font-size:12px; padding:0; margin:0; text-align:left}
+body	{min-width:200px}
+.form-control	{display:inline-block}
+</style>
+<script type="text/javascript" charset="UTF-8" src="/js_encode/jquery-1.9.1.min.js"></script>
+<script type="text/javascript" charset="UTF-8" src="/js_encode/bootstrap.min.js"></script>
+<body>
+	<form class="form-inline supplierMsg" method="post" action="/stock/stock_edit_location.php">
+		<input type="hidden" name="id" value="{main.id}"/>
+		<div class="form-group">
+			<label>&#160;&#160; &#160;&#160; 所属仓库：</label>
+			<input type="text" readonly="true" class="form-control input-sm" value="{main.store_name}"/>
+		</div>
+		<div class="form-group">
+			<label>&#160;&#160; &#160;&#160; {main.location_name}编码：</label><input type="text" name="name" class="form-control input-sm" value="{main.name}" />
+		</div>
+		<div class="form-group">
+			<label>&#160;&#160; &#160;&#160; {main.location_name}备注：</label><input type="text" name="body" class="form-control input-sm merger_two_row_3" value="{main.body}"/>
+		</div>
+		<p>
+			&#160;&#160; &#160;&#160; <input class="btn btn-default btn-sm btn_margin" type="submit" value="提交"/>
+			<input class="btn btn-default btn-sm" type="button" value="关闭" onclick="parent.$('#MessageBox').modal('hide')" />
+		</p>
+	</form>
+</body>
+</html>
+
+<!-- END: main -->

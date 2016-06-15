@@ -1,0 +1,50 @@
+//---- UTF8 编码 ----
+<!-- BEGIN: main -->
+<html>
+<head>
+<title>查看盘点前数量</title>
+<link type="text/css" rel="stylesheet" href="/style/bootstrap.min.css?ver={main.doc_version}"/>
+<link type="text/css" rel="stylesheet" href="/style/style.css?ver={main.doc_version}"/>
+<style>
+body {
+	text-align:left;
+	min-width:450px;
+	padding:0;
+}
+.form-inline .form-control {
+	display: inline-block;
+	vertical-align: middle;
+}
+.form-inline .form-group {
+	display: inline-block;
+	vertical-align: middle;
+}
+</style>
+<script type="text/javascript" charset="UTF-8" src="/js_encode/jquery-1.9.1.min.js"></script>
+<body>
+	<div class="goodsMsg">
+		<form class="form-inline">
+			<table class="table table-bordered table-hover">
+				<tr>
+					<th>仓库</th>
+					<th>库区</th>
+					<th>货架</th>
+					<th>货位</th>
+					<th>数量</th>
+				</tr>
+				<!-- BEGIN:store-->
+				<tr>
+					<td>{store.store_id}</td>
+					<td>{store.area_id}</td>
+					<td>{store.shelves_id}</td>
+					<td>{store.location_id}</td>
+					<td>{store.total}</td>
+				</tr>
+				<!-- END:store-->
+			</table>
+		</form>
+	</div>
+</body>
+</html>
+
+<!-- END: main -->

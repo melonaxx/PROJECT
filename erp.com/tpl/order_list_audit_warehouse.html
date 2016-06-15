@@ -1,0 +1,85 @@
+//---- UTF8 编码 ----
+<!-- BEGIN: main -->
+<html>
+<head>
+<title></title>
+<link type="text/css" rel="stylesheet" href="/style/bootstrap.min.css?ver={main.doc_version}"/>
+<link type="text/css" rel="stylesheet" href="/style/style.css?ver={main.doc_version}"/>
+<style>
+body,table,form,input		{font-size:12px; padding:0; margin:0}
+body {
+	text-align:left;
+	min-width:100px;
+	overflow-y:hidden;
+	overflow-x:hidden;
+}
+</style>
+<script type="text/javascript" charset="UTF-8" src="/js_encode/jquery-1.9.1.min.js"></script>
+<script>
+	$(function(){
+		$('input[name=submit]').click(function(){
+			parent.$('#MessageBox').modal('hide');
+			parent.$('#confirm .modal-body').html('数据加载中，请等待...');
+			parent.$('#confirm').modal('show');
+			parent.$('#print-menu').hide();
+			var level = $('select option:selected').val();
+			var orderId = $('input[name=orderId]').val();
+			$.ajax({
+				url:'order_list_audit_warehouse.php',
+				type:'post',
+				dataType:'json',
+				data:{'level':level,'orderId':orderId},
+				success:function(data){
+					if (typeof(data) == 'object') {
+						var express = "";
+						// k 是订单id
+						// v 是商品id数组
+						$.each(data,function(k,v){
+							// i 是数组的01下标
+							// n 是商品的id
+							var ostr = '';
+							ostr = ostr+'订单号：'+k+'中，';
+							var pstr = '';
+							$.each(v,function(i,n){
+								pstr = pstr+'商品：'+n+'不存在该仓库中！';
+							})
+							express = express+ostr+pstr+'<br/>';
+						})
+						parent.$('#MessageBox').modal('hide');
+						parent.$('#proConfirm .modal-body').html(express);
+						parent.$('#proConfirm').modal('show');
+						parent.$('#print-menu').hide();
+						parent.$('#confirm').modal('hide');
+						parent.$('#print-menu').hide();
+					}else if(data == 1) {
+						parent.$('#MessageBox').modal('hide');
+						parent.$('#confirm .modal-body').html("仓库修改成功！");
+					}
+				}
+			});
+		});
+	})
+</script>
+
+<form class="warehouse" method="post" action="">
+	<div class="float_left">
+		<span class="float_left margin_top_4" >选择仓库：</span>
+		<div class="form-group float_left margin_top_0">
+			<select class="form-control input-sm" name="level">
+				<!-- BEGIN: list_store -->
+				<option value="{list_store.id}">{list_store.name}</option>
+				<!-- END: list_store -->
+			</select>
+			<input type="hidden" name='orderId' value="{list_store.orderId}">
+		</div>
+	</div>
+</form>
+<div class="float_left btn_margin margin_top_3">
+	<input class="btn btn-default btn-sm  margin_left_0" type="submit" name="submit" value="确定" />
+	<input class="btn btn-default btn-sm margin_left_0"  onclick="parent.$('#MessageBox').modal('hide')" type="reset" value="取消" />
+</div>
+</body>
+</html>
+
+<!-- END: main -->
+

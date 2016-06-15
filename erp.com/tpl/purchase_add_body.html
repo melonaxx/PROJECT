@@ -1,0 +1,43 @@
+//---- UTF8 编码 ----
+<!-- BEGIN: main -->
+<html>
+<head>
+<title>添加备注</title>
+<link type="text/css" rel="stylesheet" href="/style/bootstrap.min.css?ver={main.doc_version}"/>
+<link type="text/css" rel="stylesheet" href="/style/style.css?ver={main.doc_version}"/>
+<style>
+body {
+	text-align:left;
+	min-width:600px;
+	overflow-y:hidden;
+	padding:0;
+}
+.form-inline .form-control {
+	display: inline-block;
+	vertical-align: middle;
+}
+.form-inline .form-group {
+	display: inline-block;
+	vertical-align: middle;
+}
+</style>
+<script type="text/javascript" src="/js_encode/jquery-1.9.1.min.js"></script>
+<script type="text/javascript" src="/js_encode/jquery.area.three.js"></script>
+<script type="text/javascript" src="/js_encode/jquery.validate.js"></script>
+<body>
+	<div>
+		<form class="form-inline supplierMsg" method="post" action="/purchase/purchase_add_body.php">
+			<div class="form-group">
+				<label>备注：</label><textarea class="form-control input-sm merger_two_row_4" name="body" rows="3"></textarea>
+				<input type="hidden" name="main_id" value="{main.addon}"/>
+			</div>
+			<p>
+				<input class="btn btn-default btn-sm btn_margin" name="made" type="submit" value="提交"/>
+				<input class="btn btn-default btn-sm" type="button" value="关闭" onclick="parent.$('#MessageBox').modal('hide')" />
+			</p>
+		</form>
+	</div>
+</body>
+</html>
+
+<!-- END: main -->

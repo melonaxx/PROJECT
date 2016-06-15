@@ -1,0 +1,43 @@
+.wmainlist .wllevel1 span{float:left;width:17px;height:21px;margin-top:10px;margin-right:10px;}
+.wmainlist .wllevel1:nth-of-type(1) span{background: url(/image/main2/integrate2.png) no-repeat 0 0;}
+.wmainlist .wllevel1:nth-of-type(2) span{background: url(/image/main2/integrate2.png) no-repeat -27px 0;}
+.allcarnump{line-height: 22px;}
+.allcarnump span{color:#dd1718;border-bottom: 1px solid #dd1718;margin:0 4px;}
+.filterbox{width:100%;height:30px;margin:30px 0 20px;}
+.page{float: right;margin-top: 16px;}
+.page select{height:26px;margin:0 4px 0 2px;}
+.page a{margin:0 2px;}
+.page input{width:64px;height:24px;border:1px solid #ccc;text-align: center;}
+.nowpagesel{width:68px;height:22px;}
+/*----------分配操作模态框----------*/
+#modaldistribute .modalbox{padding:40px;width:700px;height: 546px;}
+/*----------解除激活操作模态框----------*/
+#modalactivation .modalbox{padding:40px;width:200px;height: 100px;margin-top: 200px;}
+#modalactivation p{width:100%;text-align: center;font-size: 18px;margin-bottom: 30px;}
+/*----------------------*/
+.modalmodnum .modalbox{width:330px;height: 210px;margin-top: 200px;}
+.modalmodnum .btns{margin-top: 120px;}
+.htable thead th:nth-of-type(2){word-break:break-all;}
+.htable tbody tr td:nth-of-type(2){width:86px;word-break:break-all;text-align: center;padding:0 15px;}
+.htable thead th:nth-of-type(3){width:90px;word-break:break-all;}
+.htable tbody tr td:nth-of-type(3){width:86px;word-break:break-all;text-align: center;padding:0 15px;}
+#modalnote .modalbox{padding:50px 40px;width:376px;height:164px;margin-top: 200px;}
+#modalnote .input-group{height: 80px;top:0;}
+#modalnote .input-group label{line-height: 80px;}
+.cancelnote{margin-top: 130px;}
+/* -----------table------------ */
+.carmtop div{width:632px;}
+.carmtop h4{width:148px;float: left;text-align: center;}
+.carmtop .input-groupc label{width:40px;}
+.carmtrcontent{height:142px;}
+.serialnum{width:70px;line-height:142px;}
+.cartrinf{width:558px;height: 122px;padding:10px 0 10px 20px;}
+.cartrope{float:left;width:150px;height: 100%;}
+.cartrope a{display:block;width:100%;text-align: center;}
+.cartrope a:nth-of-type(1){margin-top: 26px;}
+.input-groupc{width:278px;}
+.brand{width:120px;height:30px;overflow: hidden;float: left;}
+.platform{width:174px;height:30px;overflow: hidden;float: left;}
+/*----------------------------*/
+.sensormsg{width:100%;font-size: 14px;text-align: center;margin:100px 0 20px;color:red;height: 18px;}
+.sensor .modalbox{width:360px;height:230px;margin-top: 200px;}

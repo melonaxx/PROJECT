@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>外麦王云平台</title>
+        <link rel="stylesheet" type="text/css" href="/css/main2/base.css"/>
+        <link rel="stylesheet" type="text/css" href="/css/main2/accountset/accountset.css"/>
+    </head>
+    <body>
+        <?php include('header.html');?>
+        <div class="section">
+            <div class="wmain">
+                <ul class="wmainlist">
+                    <li class="wllevel1">
+                    <a href="" class="wllevel1active"><span></span>账号设置<p class="wlrightarrow"></p></a>
+                    </li>
+                </ul>
+                <div class="wmaincontent">
+                    <input type="hidden" name="usertype" value="<?=$usertype?>" />
+                    <h1 class="wmch1">|&nbsp;账号设置</h1>
+                    <div class="accountset">
+                        <div class="as-group">
+                        <form action="/accountset/forgotpassword.php" method="post">
+                            <label><span>手机号</span></label>
+                            <input type="text" disabled value="<?=$info['mobileno']?>"/>
+                            <input type="hidden" value="<?=$info['mobileno']?>" name="mobileno" /> 
+                            <input  type="hidden" name="userid" value="<?=$userid?>"/>                              
+                            <input style="display:none;" type="submit" value="submit"/>
+                            <a class="modpassword">修改密码</a>
+                        </form>
+                        </div>
+                        <div class="as-group">
+                            <label><span>用户名</span></label>
+                            <input type="text" name="name"  value="<?=$info['name']?>" disabled />
+                            <a class="editoruser">编辑</a>
+                        </div>
+                        <div class="as-group">
+                            <label><span>邮箱</span></label>
+                            <input type="text" name="email" value="<?=$info['email']?>" disabled />
+                            <a class="editoremail">编辑</a>
+                        </div>
+                        <div class="as-group">
+                            <label><span>公司名称</span></label>
+                            <input type="text" disabled value="<?=$info['company']?>" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 编辑用户名 -->
+        <div class="modal modalu" id="modaleusername">
+            <div class="cover"></div>
+            <div class="modalbox">
+                <div class="input-group">
+                    <label>用户名&nbsp;:&nbsp;&nbsp;</label>
+                    <input type="text" name="username" maxlength="10"/>
+                </div>
+                <div class="btns">
+                    <div>
+                        <span class="hide-content errorname"></span>
+                    </div>
+                    <button class="sureuname addu">确定</button>
+                    <button class="canceluname cancelu">取消</button>
+                </div>
+            </div>
+        </div>
+        <!-- 编辑邮箱 -->
+        <div class="modal modale" id="modaleemail">
+            <div class="cover"></div>
+            <div class="modalbox">
+                <div class="input-group">
+                    <label>邮箱&nbsp;:&nbsp;&nbsp;</label>
+                    <input type="text" name="useremail" maxlength="20"/>
+                </div>
+                <div class="btns">
+                    <div>
+                        <span class="hide-content erroremail"></span>
+                    </div>
+                    <button class="suremail add">确定</button>
+                    <button class="cancelmail cancela">取消</button>
+                </div>
+            </div>
+        </div>
+
+        <?php include("footer.html");?>
+        <script src="/js/jquery-1.11.0.js"></script>
+        <script type="text/javascript" src="/js/main2/common.js"></script>
+        <script src="/js/accountset/accountset.js"></script>
+        <script src="/js/util.js"></script>
+    </body>
+</html>

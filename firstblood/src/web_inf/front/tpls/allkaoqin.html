@@ -1,0 +1,172 @@
+﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3c.org/TR/1999/REC-html401-19991224/loose.dtd">
+<HTML xmlns="http://www.w3.org/1999/xhtml"><HEAD id=Head1><title>北京外麦王人事系统</title>
+<META http-equiv=Content-Type content="text/html; charset=utf-8">
+<LINK href="/css/Style.css" type=text/css rel=stylesheet>
+<LINK href="/css/Manage.css" type=text/css rel=stylesheet>
+<LINK href="/css/allinfo.css" type=text/css rel=stylesheet>
+<SCRIPT language=javascript src="/js/FrameDiv.js"></SCRIPT>
+
+<SCRIPT language=javascript src="/js/Common.js"></SCRIPT>
+<SCRIPT language=javascript src="/js/jquery-1.8.3.min.js"></SCRIPT>
+<META content="MSHTML 6.00.2900.3492" name=GENERATOR></HEAD>
+<BODY>
+<TABLE cellSpacing=0 cellPadding=0 width="98%" border=0>
+  <TBODY>
+  <TR>
+    <TD width=15><IMG src="/images/new_019.jpg" border=0></TD>
+    <TD width="100%" background=/images/new_020.jpg height=20></TD>
+    <TD width=15><IMG src="/images/new_021.jpg" 
+  border=0></TD></TR></TBODY></TABLE>
+<TABLE cellSpacing=0 cellPadding=0 width="98%" border=0>
+  <TBODY>
+  <TR>
+    <TD width=15 background=/images/new_022.jpg><IMG 
+      src="/images/new_022.jpg" border=0> </TD>
+    <TD vAlign=top width="100%" bgColor=#ffffff>
+      <TABLE cellSpacing=0 cellPadding=5 width="100%" border=0>
+        <TR>
+          <TD class=manageHead>当前：管理首页 &gt; 档案管理</TD></TR>
+    </TD>
+        </TABLE>
+      <TABLE borderColor=#cccccc cellSpacing=0 cellPadding=0 width="100%" 
+      align=center border=0>
+        <TBODY>
+        <TR>
+          <TD height=25>
+              <TABLE cellSpacing=0 cellPadding=2 border=0>
+              <TBODY>
+              <TR>
+                <TD>按部门筛选数据：</TD>
+                <TD>
+                  <form action="kaoqin.php" method="get">
+                      <input type="text" name="name"  placeholder="输入员工姓名" value="{$smarty.get.name}">
+                      <input type="hidden" name="cid" value="{$cid}" id="cid">
+                      <input type="submit" value="搜索">
+                  </form>
+                </TD>
+              </TR>
+              </TBODY>
+            </TABLE>
+            <TABLE cellSpacing=0 cellPadding=2 border=0>
+              <TBODY>
+              </TBODY>
+            </TABLE>
+            </TD>
+        </TR>
+        <TR>
+          <TD>
+            <TABLE id=grid 
+            style="BORDER-TOP-WIDTH: 0px; FONT-WEIGHT: normal; BORDER-LEFT-WIDTH: 0px; BORDER-LEFT-COLOR: #cccccc; BORDER-BOTTOM-WIDTH: 0px; BORDER-BOTTOM-COLOR: #cccccc; WIDTH: 100%; BORDER-TOP-COLOR: #cccccc; FONT-STYLE: normal; BACKGROUND-COLOR: #cccccc; BORDER-RIGHT-WIDTH: 0px; TEXT-DECORATION: none; BORDER-RIGHT-COLOR: #cccccc" 
+            cellSpacing=1 cellPadding=2 rules=all border=0>
+              <TBODY>
+
+              <TR 
+              style="FONT-WEIGHT: bold; FONT-STYLE: normal; BACKGROUND-COLOR: #eeeeee; TEXT-DECORATION: none;text-align: center">
+                <TD>姓名</TD>
+                <TD>操作</TD>
+              </TR>    
+                {foreach from=$list item=temp}  
+              <TR 
+              style="FONT-WEIGHT: normal; FONT-STYLE: normal; BACKGROUND-COLOR: white; TEXT-DECORATION: none;text-align: center; height:40px;" uid="{$temp['id']}">
+                <TD>{$temp['name']}</TD>
+                <TD>
+                <a href="showkq.php?id={$temp['id']}&name={$temp['name']}" >考勤</a>
+                </TD>
+              </TR>
+              {/foreach}
+               </TBODY>
+               </TABLE>
+            </TD>
+       </TR>
+         <TR>
+          <TD><SPAN id=pagelink>
+            <DIV 
+            style="LINE-HEIGHT: 20px; HEIGHT: 20px; TEXT-ALIGN: right">
+              [<A href="#">{$firstpage}][{$prevpage}</A>]
+              [<A class="" href="#">{$nextpage}][{$lastpage}</A>] 
+              共[{$num}]条记录 第[{$nowpage}]页 共[{$maxpage}]页
+            </DIV></SPAN>
+          </TD>
+        </TR>
+        </TBODY></TABLE></TD>
+    <TD width=15 background=/images/new_023.jpg><IMG 
+      src="/images/new_023.jpg" border=0> </TD></TR></TBODY></TABLE>
+<TABLE cellSpacing=0 cellPadding=0 width="98%" border=0>
+  <TBODY>
+  <TR>
+    <TD widtht=15><IMG src="/images/new_024.jpg" border=0></TD>
+    <TD align=middle width="100%" background=/images/new_025.jpg 
+    height=15></TD>
+    <TD width=15><IMG src="/images/new_026.jpg" 
+  border=0></TD></TR></TBODY></TABLE>
+</BODY>
+{literal}
+<script>
+      $("#delete").live("click",function(){
+         if(confirm("确定删除吗")){
+           $(this).closest("tr").addClass("del");
+           var pid=$(".del").attr("uid");
+           $.ajax({
+             type: "POST",
+             url: "delone.php",
+             data: {"id":pid},
+             success: function(msg){
+               if(msg=="yes"){
+                 alert("删除成功");
+                 $(".del").closest("tr").remove();
+                 $(".del").removeClass("del");
+               }else{
+                 alert("删除失败"); 
+                 $(".del").removeClass("del");
+               }
+             },
+             error: function(){
+               alert("ajax请求失败")
+            }
+          });
+         }
+      })
+
+      $("#sel").live("focus",function(){
+          $("select option:first-child").attr("disabled","disabled");
+          ob=$(this);
+          $.ajax({
+             type: "POST",
+             url: "selname.php",
+             dataType: "json",
+             async: true,
+             success: function(data){
+               var str="";
+               for(var i=0;i<data.length;i++){
+                      str+="<option id='xxx' value="+data[i].id+">"+data[i].class_name+"</option>";
+                  var str1=str; 
+                  }
+               ob.empty().append(str);
+             },
+             error: function(){
+               alert("ajax请求失败")
+            }
+          });
+      }).live("blur",function(){
+              $(this).closest("tr").addClass("sele");
+              var pid=$(".sele").attr("uid"); 
+              $(".sele").removeClass("sele");
+              var bid=this.options[this.selectedIndex].value;
+              // $(this).find("option[value="+bid+"]").attr("selected",true);
+              
+              $.ajax({
+               type: "POST",
+               url: "upsel.php",
+               data: {"pid":pid,"bid":bid},
+               error: function(){
+                 alert("ajax请求失败")
+              }
+            });
+      })
+function tosubmit(){
+  var myform=document.getElementById("form1");
+  myform.submit();
+  }
+</script>
+{/literal}
+</HTML>

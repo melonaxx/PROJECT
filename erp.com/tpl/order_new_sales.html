@@ -1,0 +1,299 @@
+//---- UTF8 编码 ----
+<!-- BEGIN: main -->
+<html>
+<head>
+<title>新建售后单</title>
+<link type="text/css" rel="stylesheet" href="/style/bootstrap.min.css?ver={main.doc_version}"/>
+<link type="text/css" rel="stylesheet" href="/style/style.css?ver={main.doc_version}"/>
+<style>
+body {
+	text-align:left;
+	min-width:600px;
+	overflow-y:auto;
+	padding:0;
+}
+.form-inline .form-control {
+	display: inline-block;
+	vertical-align: middle;
+}
+.form-inline .form-group {
+	display: inline-block;
+	vertical-align: middle;
+}
+</style>
+<script type="text/javascript" src="/js_encode/jquery-1.9.1.min.js"></script>
+<script type="text/javascript" src="/js_encode/jquery.area.three.js"></script>
+<!-- <script type="text/javascript" src="/js_encode/stock_add_factory.js"></script> -->
+<!-- <script type="text/javascript" charset="UTF-8" src="/js_encode/bootstrap.min.js"></script> -->
+<script>
+	$(function(){
+		//---- 售后类型 ----
+		$('.souhou').change(function(){
+			var v = $(this).val();
+			//补发
+			if (v == 'Delivery') {
+				$('.no_need').hide();
+				$('.backGoods').show();
+				$('.goBackProduct').text('补发商品');
+				$('.goBackNum').text('补发数量');
+				$('.goBackAvailable').text('可补发数量');
+			}
+			//仅退款
+			if(v == "Refunds"){
+				$('.no_need').hide();
+				$('.backGoods').hide();
+				$('.goBackProduct').text('退回商品');
+				$('.goBackNum').text('退回数量');
+				$('.goBackAvailable').text('可退回数量');
+			}
+			//退货与换货和维修
+			if(v == 'Return' || v == 'Exchange' || v == 'Repair') {
+				$('.no_need').show();
+				$('.backGoods').show();
+				$('.goBackProduct').text('退回商品');
+				$('.goBackNum').text('退回数量');
+				$('.goBackAvailable').text('可退回数量');
+			}
+
+		})
+
+		//退回数量的验证及合计数量
+		$('.table input[name="back_num[]"]').keyup(function(){
+			sum = 0;
+			var v = parseInt($(this).val());
+			var total = $(this).parents('tr').find('td:nth-child(7)').html();
+			if(v > total){
+				v = total;
+				$(this).val(v);
+			}
+			$('.table input[name="back_num[]"]').each(function(){
+				var v = parseInt($(this).val());
+				sum = parseInt(sum) + v;
+			})
+			$('.table .heji').find('td:nth-child(3)').html(sum);
+		})
+
+		//快递单的查询；
+		$('.post').keyup(function(){
+			var sdata = $(this).val();
+			$.ajax({
+				'url': '/order/order_new_sales.php',
+	        	'async':true,
+	        	'type': "POST",
+	        	'data': {"sdata":sdata},
+	        	'dataType': 'json',
+	        	'success': function(data){
+	        		var option = '';
+	        		var lens = data.length;
+	        		if(data){
+						for(var i = 0; i < lens; i++){
+							option += '<option value='+data[i]['id']+'>'+data[i]['name']+'</option>'
+						}
+						$(".wre").html(option);
+					}
+				}
+			})
+		})
+		//快递的改变
+		$(".wre").change(function(){
+			var bb = $(this).children("option:selected").text();
+			$(".post").val(bb);
+		})
+
+		//提交时的验证
+		$('.form-inline').submit(function(){
+			//退回金额
+			var back_money = $('input[name=back_money]').val();
+			if(!back_money){
+				$('input[name=back_money]').css({'border-color':'#e74c3c'});
+				return false;
+			}
+			$('input[name=back_money]').css({'border':''});
+			// 退回快递
+			// var posts = $('.post').val();
+			// if(!posts){
+			// 	$('.post').css({'border-color':'#e74c3c'});
+			// 	return false;
+			// }
+			$('.post').css({'border':''});
+			// 退回单号
+			// var back_number = $('input[name=back_number]').val();
+			// if(!back_number){
+			// 	$('input[name=back_number]').css({'border-color':'#e74c3c'});
+			// 	return false;
+			// }
+			$('input[name=back_number]').css({'border':''});
+
+			//售后的类型
+			var afterSale = $('.souhou').val();
+			if (afterSale != 'Refunds') {
+				//---- 退回数量 ----
+				var b_flag = 0;//选中个数
+				var e_flag = 0;//没选中的个数
+				var a_flag = 0;//总次数
+				$('.table input[name="back_num[]"]').each(function(){
+					var v = $(this).val();
+					//---- 判断是否全是空的 ----
+					a_flag++;
+					if(!v) {
+						b_flag++;
+					}else{
+						e_flag++;
+					}
+				})
+
+				if (parseInt(b_flag) == parseInt(a_flag)) {
+					alert('退回数量不能为空！');
+					return false;
+				}
+			}
+
+
+			//---- 对是否付款进行判断 ----
+			var zong_pay = parseInt($('input[name=zong_pay]').val());
+			if (!zong_pay) {
+				alert('该订单没有付款不能进行售后！');
+				return false;
+			}
+			return true;
+		})
+
+	})
+</script>
+<body>
+	<div>
+		<form class="form-inline supplierMsg" method="post" action="" >
+			<h4>售后信息</h4>
+			<div class="form-group">
+				<label>售后类型：</label>
+				<select class="form-control input-sm souhou" name="sale_type">
+					<option value="Return">退货退款</option>
+					<option value="Exchange">换货</option>
+					<option value="Delivery">补发</option>
+					<option value="Refunds">仅退款</option>
+					<option value="Repair">维修</option>
+				</select>
+			</div>
+			<div class="form-group">
+				<label>订单编号：</label>
+				<input type="hidden" name="order_id" value="{product.order_id}">
+				<input type="text" name="bind_number" value="{product.bind_number}" readonly class="form-control input-sm"/>
+			</div><br/>
+			<div class="form-group">
+				<label>售后分类：</label>
+				<select class="form-control input-sm" name="sale_id">
+					<!-- BEGIN: arr -->
+					<option value="{arr.id}">{arr.name}</option>
+					<!-- END: arr -->
+				</select>
+			</div>
+			<div class="form-group">
+				<label>退款账号：</label>
+				<input type="hidden" name="bankId" value="{main.bankId}">
+				<input type="text" name="bankName" value="{main.bankName}" readonly class="form-control input-sm"/>
+			</div>
+			<div class="form-group">
+				<label>退款金额：</label>
+				<div class="input-group">
+					<div class="input-group-addon">￥</div>
+					<input type="text" class="form-control input-sm" name="back_money" style="width:100px;" onbeforepaste="clipboardData.setData('text',clipboardData.getData('text').replace(/[^\d\.]/g,''))" onkeyup ="value = value.replace(/[^\d\.]/,'')"/>
+				</div>
+			</div>
+			<div class="form-group">
+				<label>售后描述：</label>
+				<textarea class="form-control input-sm" name="sale_text" style="width:740px;height:80px;"></textarea>
+			</div>
+			<div class="no_need">
+				<h4>快递信息</h4>
+				<div class="form-group">
+					<label>退回快递：</label><input type="text" class="form-control input-sm post" placeholder="搜索快递公司"/>
+
+					<!-- <select class="form-control input-sm" name="back_express"> -->
+						<!-- BEGIN: list_deliver -->
+							<!-- <option value="{list_deliver.express_id}">{list_deliver.name}</option> -->
+						<!-- END: list_deliver -->
+					<!-- </select> -->
+				</div>
+				<div class="form-group">
+					<label>对应快递：</label><select name="express_id" class="form-control input-sm wre" data-toggle="tooltip" data-placement="bottom" data-original-title="必选"></select>
+				</div><br/>
+				<div class="form-group">
+					<label>退回单号：</label><input type="text" class="form-control input-sm" name="back_number"/>
+				</div>
+				<div class="form-group">
+					<label>运费承担：</label><select class="form-control input-sm" name="fee_type">
+						<option value="Customer">客户</option>
+						<option value="Company">本公司</option>
+
+					</select>
+				</div>
+				<div class="form-group">
+					<label>运费金额：</label>
+					<div class="input-group">
+						<div class="input-group-addon">￥</div>
+						<input type="text" class="form-control input-sm" name="post_fee" style="width:100px;" onkeyup ="value = value.replace(/[^\d\.]/,'')" onbeforepaste="clipboardData.setData('text',clipboardData.getData('text').replace(/[^\d\.]/g,''))"/>
+					</div>
+				</div>
+			</div>
+			<div class="backGoods">
+				<h4 class='goBackProduct'>退回商品</h4>
+				<table style="width:800px;" class="table table-bordered margin_left_0">
+					<tr>
+						<th class="table_th_number">序号</th>
+						<!-- <th class="table_th_number">操作</th> -->
+						<th class="table_th_number" >图片</th>
+
+						<th style="width:90px;" class="goBackNum">退回数量</th>
+						<th style="width:150px;">商品名称</th>
+						<th style="width:150px;">商品规格</th>
+						<th style="width:90px;">单价</th>
+						<th style="width:80px" class="goBackAvailable">可退回数量</th>
+						<th style="width:90px;">数量</th>
+						<!-- <th style="width:190px;">实付金额</th> -->
+					</tr>
+					<!-- BEGIN: product -->
+					<tr>
+						<td class="center table_th_number">
+							{product.numbers}
+						</td>
+						<!-- <td class="center table_th_number"><a href="javascript:;">删除</a></td> -->
+						<td></td>
+						<td>
+							<input type="hidden" name="product_id[]" value="{product.product_id}">
+							<input type="text" onkeyup="value=value.replace(/[^\d]/g,'')" onbeforepaste="clipboardData.setData('text',clipboardData.getData('text').replace(/[^\d]/g,''))" class="form-control input-sm form_no_border" name="back_num[]">
+							<input type="hidden" name="price[]" value="{product.price}">
+
+						</td>
+						<td>{product.name}</td>
+						<td>{product.format}</td>
+						<td>￥{product.price}</td>
+
+						<td>{product.ru}</td>
+
+						<td>{product.total}</td>
+						<!-- <td>￥{product.payment}</td> -->
+					</tr>
+
+						<!-- END: product -->
+
+					<tr class='heji'>
+						<td class="center">合计</td>
+						<td></td>
+						<td></td>
+						<td colspan="4"></td>
+						<td>{main.zong}</td>
+						<!-- <td>￥{main.zong_pay}</td> -->
+						<input type="hidden" name="zong_pay" value="{main.zong_pay}">
+					</tr>
+				</table>
+			</div>
+			<div style="margin-top:15px">
+				<input class="btn btn-default btn-sm btn_margin" name="send" type="submit" value="确定"/>
+				<input class="btn btn-default btn-sm" type="button" value="取消" onclick="parent.$('#MessageBox').modal('hide')" />
+			</div>
+		</form>
+	</div>
+</body>
+</html>
+
+<!-- END: main -->

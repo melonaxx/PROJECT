@@ -1,0 +1,16 @@
+html,body,header,section,footer,div,ul,li,p,a,span,img,h1,h2,h3,h4,h5,h6,input,button, select, textarea{margin:0;padding:0;}
+h1,h2,h3,h4,h5,h6{font-size:12px;font-weight:normal;}
+i{font-style: normal;}
+ul,li{list-style:none;}
+html,body{width:100%;height:100%;}
+html{position: relative;}
+body{color:#222;font-family:"Microsoft YaHei";font-size:12px;}
+a{color:#08c;text-decoration:none;cursor: pointer;}
+a:hover{text-decoration: none;}
+a {outline: none;}
+a:active {star:expression(this.onFocus=this.blur());}
+a:focus { outline:0; }
+html,body{height:100%;}
+section{min-height:73%;height:auto!important;height:73%;margin:0 auto -74px;}
+footer{height:74px;clear:both;padding-bottom:2px;}
+.push{height:74px;clear:both;}

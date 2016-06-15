@@ -1,0 +1,42 @@
+<!-- BEGIN: main --><?xml version="1.0" encoding="UTF-8"?>
+{main.doc_type}
+<?xml-stylesheet type="text/xsl" href="/style/setting_deliver_template.xsl?ver={main.doc_version}"?>
+<html version="{main.doc_version}">
+<head>
+	<Title>{main.title}</Title>
+	<meta name="keywords" content="{main.keywords}" />
+	<meta name="description" content="{main.description}" />
+	<em company_id="{main.company_id}" staff_id="{main.staff_id}" login_name="{main.login_name}" permit="{main.permit}" program="{main.request_url}"/>
+</head>
+<Body>
+	<dir><![CDATA[ 您的位置： <a href="/">首页</a> &raquo; 设置公司信息]]></dir>
+
+	<menu>
+		<big>{main.big_menu}</big>
+		<small>
+			<!-- BEGIN: list_menu --><a class="{list_menu.class}" href="{list_menu.link}">{list_menu.name}</a><!-- END: list_menu -->
+		</small>
+	</menu>
+	<find>{main.find}</find>
+	<deliverInfo total='{main.total}'>
+		<!-- BEGIN: deliverList -->
+		<item>
+			<id>{deliverList.id}</id>
+			<name>{deliverList.name}</name>
+			<image>{deliverList.image}</image>
+			<print_orient>{deliverList.print_orient}</print_orient>
+			<pub_date>{deliverList.pub_date}</pub_date>
+			<paper_width>{deliverList.paper_width}</paper_width>
+			<paper_height>{deliverList.paper_height}</paper_height>
+			<paper_left>{deliverList.paper_left}</paper_left>
+			<paper_top>{deliverList.paper_top}</paper_top>
+			<border>{deliverList.border}</border>
+			<is_default>{deliverList.is_default}</is_default>
+		</item>
+		<!-- END: deliverList -->
+	</deliverInfo>
+	{main.page_info}
+
+</Body>
+</html>
+<!-- END: main -->

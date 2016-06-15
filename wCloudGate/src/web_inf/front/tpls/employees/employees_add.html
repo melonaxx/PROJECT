@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>外麦王云平台</title>
+	<link rel="stylesheet" type="text/css" href="/css/main2/base.css"/>
+	<link rel="stylesheet" type="text/css" href="/css/main2/employees/employees_add.css"/>
+</head>
+<body>
+	<?php include("header.html")?>
+	<div class="section">
+		<div class="wmain">
+			<ul class="wmainlist">
+				<li class="wllevel1">
+					<a href="/employees.php"><span></span>员工管理<p class="wlrightarrow"></p></a>
+				</li>
+				<li class="wllevel1">
+					<a href="/employeesadd.php" class="wllevel1active"><span></span>员工添加<p></p></a>
+				</li>
+			</ul>
+			<div class="wmaincontent">
+				<h1 class="wmch1">|&nbsp;员工添加</h1>
+				<div class="filterbox">
+					<div class="searchdiv">
+						<input type="text" class="carsearch" placeholder="请输入11位手机号" name="carsearch" maxlength="11"/>
+						<button class="searchbtn"></button>
+					</div>
+				</div>
+				<div class="infnum searchnum" style="display: none;">
+					共搜索到<span class="number">0</span>条信息
+				</div>
+				<table class="elecartab outtab" style="display: none;">
+					<thead>
+						<tr class="laborthead">
+							<th>序号</th>
+							<th>员工</th>
+							<th>手机号</th>
+							<th>邮箱</th>
+							<th>操作</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr class='searchresult'></tr>
+					</tbody>
+				</table>
+				<div class="noinf zeroinf" style="display: none;">
+					当前账号<span class="addmobileno"></span>未注册，是否继续添加？
+					<a class="addemployee addaccount">添加</a>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- 添加 -->
+	<div class="modal addcheck" id="modaladd">
+		<div class="cover"></div>
+		<div class="modalbox">
+			<p>您确定添加吗？</p>
+			<div class="btns">
+				<button class="sure add">确定</button>
+				<button class="cancel cancela">取消</button>
+			</div>
+		</div>
+	</div>
+
+	<!-- 添加成功 -->
+	<div class="modal succkeck" id="modaladdsuccess">
+		<div class="cover"></div>
+		<div class="modalbox">
+			<p>添加成功！</p>
+			<div class="btns">
+				<button class="addempa">查看员工管理</button>
+				<button class="goonaddbtn cancela">继续添加</button>
+			</div>
+		</div>
+	</div>
+
+    <?php include("footer.html"); ?>
+
+    <script src="/js/jquery-1.11.0.js"></script>
+	<script src="/js/util.js"></script>
+	<script src="/js/employees/employeesadd.js"></script>
+	<script src="/js/main2/common.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,42 @@
+/* ------------内容------------ */
+section{width:100%;background: #eaeef2;padding: 10px 0 148px;}
+.content{width:1050px;margin:0 auto;overflow: hidden;}
+.contentleft{float:left;width:198px;height:1090px;overflow: hidden;border:1px solid #ccc;background: #fff;}
+.searchbox{width:100%;height:40px;background: #358ecb;box-sizing:border-box;padding:10px 30px;}
+.search{width:100%;height:100%;border:1px solid #d6d6d6; border-radius: 3px;}
+.search input{width:79%;height:20px;line-height:20px;border:none;background: #358ecb;color:#fff;padding-left:10px;opacity:0.5;filter:alpha(opacity=50); }
+.search img{cursor: pointer;}
+.sort{width:90%;padding:0 5%;height: 20px;margin:20px 0;font-size: 14px;}
+.sort li:nth-of-type(1){float:left;}
+.sort li:nth-of-type(2){float:right;}
+.sortchoice{border-bottom: 1px solid #358ecb;color:#358ecb;}
+.sortmain{padding:0 20px;}
+.rolebox{width:100%;height:30px;border-radius: 8px;color:#fff;line-height: 30px;padding-left: 32px;background: #70b0dc;box-sizing:border-box;margin-bottom: 20px;}
+.rolebox img{margin-top:6px;float:left;}
+.rolebox p{margin-left:13px;font-size: 18px;float:left;}
+.rolebox a{color:#fff;letter-spacing: 6px;}
+.rolebox1 p{margin-left:10px;font-size: 12px;}
+/* ------------右部内容----------- */
+.contentright{float:left;width:820px;overflow:hidden;margin-left:30px;}
+.crtop{width:810px;height:40px;color:#fff;background: #358ecb;margin-bottom:10px;line-height: 40px;padding-left:10px;font-size: 14px;}
+.vehicle{width:100%;height:200px;margin-bottom: 10px;overflow: hidden;}
+.vehicle li{width:200px;height:200px;padding:10px 10px 20px;box-sizing:border-box;border:1px solid #ccc;float:left;margin-right:6px;background: #fff;}
+.vehicle li:nth-of-type(4){margin-right: 0;}
+.carnum{height:80px;clear:left; float:left;margin:0; padding:0; position:relative; left:50%; text-align:center;}
+.num{float:left;font-size: 72px;}
+.carnum p{float:left;font-size:18px;width:20px;height:24px;margin-top:56px;}
+.middle{ float:left; width:100%;overflow:hidden; position:relative; } 
+.middleli{ display:block; float:left;margin:0; padding:0; position:relative; right:50%; }
+.carp{width:100%;text-align: center;font-size: 18px;height:20px;margin:20px 0 30px;}
+.carbtn{width:100%;height:22px;margin-top:;}
+.carbtn div{width:80px;height:22px;background:#358ecb;border-radius: 8px;text-align: center;color:#fff;line-height: 22px;}
+.carinf{float:left;}
+.checkpos{float:right;}
+.carbtn a{color:#fff;}
+/* -------------右下部分内容----------- */
+.datanews{width:100%;overflow: hidden;}
+.datacontent{float:left;width:100%;overflow:hidden;background: #fff;}
+.datatitle{width:100%;height:32px;margin:30px 0 20px;font-size: 23px;}
+.datatitle li{float:left;}
+.datatitle li:nth-of-type(1),.datatitle li:nth-of-type(3){width:35%;border-top: 1px solid #358ecb;margin-top:15px;}
+.datatitle li:nth-of-type(2){width:30%;color:#358ecb;text-align: center;}

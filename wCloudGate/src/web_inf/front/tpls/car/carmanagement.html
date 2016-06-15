@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>外麦王云平台</title>
+	<link rel="stylesheet" type="text/css" href="/css/main2/base.css"/>
+	<link rel="stylesheet" type="text/css" href="/css/main2/car/car_management.css"/>
+</head>
+<body>
+	<?php include("header.html"); ?>
+	<div class="section">
+		<div class="scrolltop"></div>
+		<div class="wmain">
+			<ul class="wmainlist">
+				<li class="wllevel1 manageract">
+					<a href="/platform/carmanagement.php" class="wllevel1active"><span></span>车辆管理<p class="wlrightarrow"></p></a>
+					<ul class="wllevel2">
+						<li class="mlsonactive"><a href="/platform/carmanagement.php">所有车辆</a></li>
+						<li><a href="/platform/carabnormal.php">异常车辆</a></li>
+					</ul>
+				</li>
+				<li class="wllevel1" <?=$operation['caractive']?> >
+					<a href="/caronceadd.php"><span></span>车辆添加<p></p></a>
+					<ul class="wllevel2">
+						<li <?=$operation['caractive']?> ><a href="/caronceadd.php">普通添加</a></li>
+						<li <?=$operation['caractive']?> ><a href="/platform/caractive.php">车辆激活</a></li>
+					</ul>
+				</li>
+			</ul>
+			<div class="wmaincontent">
+				<h1 class="wmch1">|&nbsp;所有车辆</h1>
+				<p class="allcarnump">
+				<span></span>
+				</p>
+				<div class="filterbox">
+				<form action="/platform/carmanagement.php" method="get">
+					<input type="hidden" name="num" value="<?=$num?>" />
+					<input type="hidden" name="page" value="<?=$page?>" />
+					<select name="status">
+						<option <?php if ($_GET['status'] == 0) echo selected?> value="0">运行状态</option>
+						<option <?php if ($_GET['status'] == 1) echo selected?> value="1">正在运行</option>
+						<option <?php if ($_GET['status'] == 2) echo selected?> value="2">正在休息</option>
+					</select>					
+					<select name="belong">
+						<option <?php if ($_GET['belong'] == 0) echo selected?> value="0">所有车辆</option>
+						<option <?php if ($_GET['belong'] == 1) echo selected?> value="1">自有车辆</option>
+						<option <?php if ($_GET['belong'] == 2) echo selected?> value="2">其它车辆</option>
+					</select>					
+					<select name="allocation" <?php if(!$usertype) echo "style='display:none;'"; ?> >
+						<option <?php if ($_GET['allocation'] == 0) echo selected?> value="0">分配状况</option>
+						<option <?php if ($_GET['allocation'] == 1) echo selected?> value="1">已分配</option>
+						<option <?php if ($_GET['allocation'] == -1) echo selected?> value="-1">未分配</option>
+					</select>
+					<?php
+					$opt = '';
+					if($usertype == 2 ) {
+						$opt .= "<select name='labour'><option value='0'>平台</option>";
+					}else {
+						$opt .= "<select name='labour'><option value='0'>劳务方</option>";
+					}
+					if($labour1) {
+					foreach($labour1 as $k => $v) {
+						if ($_GET['labour'] == $k) {
+							$selected = "selected ";
+						} else {
+							$selected = '';
+						}
+						$opt .= "<option ".$selected."value=".$k." name=".$k.">".$v."</option>";
+					}
+					}
+					$opt .= "</select>";
+					echo $opt;
+					?>
+					<select name="abnormal">
+						<option value="0" >车辆状态</option>
+						<option <?php if ($_GET['abnormal'] == 4) echo selected?> value="4" >异常车辆</option>
+						<option <?php if ($_GET['abnormal'] == 1) echo selected?> value="1">被盗报警</option>
+<!-- 						<option <?php if ($_GET['abnormal'] == 2) echo selected?> value="2">电量报警</option> -->
+						<option <?php if ($_GET['abnormal'] == 3) echo selected?> value="3">失去联系</option>
+					</select>					
+					<div class="searchdiv carinfright">
+						<input type="text" class="carsearch" name="carsearch" placeholder="序列号" value="<?php if($_GET['carsearch']) echo $_GET['carsearch']?>"/>
+						<button type="submit" class="searchbutton"></button>
+					</div>
+
+				</form>
+				</div>
+<?php
+	if($data) {
+	$status = array("-1" => "未分配" , "1" => "已分配");
+	$exception = array("0" => "无异常" , "1" => "被盗报警" , "2" => "电量报警" , "3" => "失去联系");
+	for($i = 0; $i < count($data); $i++) {
+		echo '<div class="carmtable">';
+		echo '		<div class="carmtr">';
+		echo '			<div class="carmtop">';
+		echo '				<div class="input-groupc">';
+		echo '					<label>编号&nbsp;:</label>';
+		echo '			<span class="carseqno">'.$data[$i]['seqno'].'</span>';
+		echo '				</div>';
+		echo '				<h4>操作</h4>';
+		echo '			</div>';
+		echo '			<div class="carmtrcontent">';
+		echo '				<span class="serialnum">'.($i+1).'</span>';
+		echo '				<div class="cartrinf">';
+		echo '					<div class="input-groupc">';
+		echo '					<label><p>品牌&nbsp;:&nbsp;&nbsp;</p></label>';
+		echo '			<span class="brand">'.$data[$i]['brand'].'</span>';
+		echo '					</div>';
+		echo '					<div class="input-groupc">';
+		echo '				<label><p>定位器号&nbsp;:&nbsp;&nbsp;</p></label>';
+		echo '				<span>'.$data[$i]['imei'].'&nbsp;<a ebikeid="'.$data[$i]['id'].'" class="updatesensor" ';
+		if($usertype == 0) echo 'style="display: none;"';
+		echo '>修改</a></span>';
+		echo '					</div>';
+		echo '					<div class="input-groupc">';
+		echo '					<label><p>型号&nbsp;:&nbsp;&nbsp;</p></label>';
+		echo '						<span>'.$data[$i]['mobel'].'</span>';
+		echo '					</div>';
+		echo '					<div class="input-groupc">';
+		echo '				<label><p>拥有方&nbsp;:&nbsp;&nbsp;</p></label>';
+		echo '						<span>'.$data[$i]['name'].'</span>';
+		echo '					</div>';
+		echo '					<div class="input-groupc">';
+		echo '				<label><p>状态&nbsp;:&nbsp;&nbsp;</p></label>';
+		if($usertype == 2) {
+			echo "<span>".$status[$data[$i]['allot']]."</span>";
+		}else {
+			echo "<span>".$status[$data[$i]['distribute']]."</span>";
+		}
+		echo '					</div>';
+		echo '					<div class="input-groupc">';
+		if($usertype == 2) {
+			echo '<label><p>骑士&nbsp;:&nbsp;&nbsp;</p></label>';
+		}else {
+			echo '<label><p>劳务方&nbsp;:&nbsp;&nbsp;</p></label>';
+		}
+		if($usertype == 2) {
+			echo "<span>".$data[$i]['knight']."</span>";
+		}else {
+			if($data[$i]['owner'] == 0) {
+				echo "<span>".$data[$i]['name']."</span>";
+			}else {
+				echo "<span>".$data[$i]['labor']."</span>";
+			}
+		}
+		echo '					</div>';
+		echo '					<div class="input-groupc">';
+		echo '				<label><p>异常情况&nbsp;:&nbsp;&nbsp;</p></label>';
+		echo '			<span>'.$exception[$data[$i]['exception']].'</span>';
+		echo '					</div>';		
+		if($usertype == 2) {
+			echo '<div class="input-groupc">';
+			echo '<label><p>平台查看&nbsp;:&nbsp;&nbsp;</p></label>';
+			if($data[$i]['owner'] == 1) {			
+				echo "<span ebikeid='".$data[$i]['id']."' class='platform' >".$data[$i]['labor']."&nbsp;<a class='lookplatform'>修改</a></span>";
+			}else {
+				echo "<span>".$data[$i]['labor']."</span>";
+			}
+			echo '</div>';
+		}
+		echo '				</div>';
+		echo "<div class='cartrope'>";
+		echo "					<a href='/gotomap.php?inttype=lcall&seqno=".$data[$i]['seqno']."'>查看定位</a>";
+		if($data[$i]['owner'] == 0) {
+			echo "";
+		}else {
+			echo "<a ".$operation['cardeactive']." class='deactive'>删除车辆</a>";
+		}
+		echo "					<a remark='".$data[$i]['remarks']."' class='lookremark'>查看备注</a>";
+		echo '				</div>';
+		echo '			</div>';
+		echo '		</div>';
+		echo '	</div>';
+		}
+	}
+?>
+
+				<div class="page">
+				<span>每页&nbsp;:</span>
+				<select class="nowpagesel" name="pagenum">
+					<option <?php if ($_GET['page'] == 10) echo selected?> >10</option>
+					<option <?php if ($_GET['page'] == 20) echo selected?> >20</option>
+					<option <?php if ($_GET['page'] == 30) echo selected?> >30</option>
+					<option <?php if ($_GET['page'] == 40) echo selected?> >40</option>
+					<option <?php if ($_GET['page'] == 50) echo selected?> >50</option>
+					<option <?php if ($_GET['page'] == 60) echo selected?> >60</option>
+					<option <?php if ($_GET['page'] == 70) echo selected?> >70</option>
+					<option <?php if ($_GET['page'] == 80) echo selected?> >80</option>
+					<option <?php if ($_GET['page'] == 90) echo selected?> >90</option>
+					<option <?php if ($_GET['page'] == 100) echo selected?> >100</option>
+				</select>&nbsp;
+				<a href="/platform/carmanagement.php?carsearch=<?=$_GET['carsearch']?>&abnormal=<?=$_GET['abnormal']?>&allocation=<?=$_GET['allocation']?>&belong=<?=$_GET['belong']?>&labour=<?=$_GET['labour']?>&status=<?=$_GET['status']?>&num=1&pageall=<?=$pageall?>&page=<?=$page?>" >首页</a>
+				<a href="/platform/carmanagement.php?carsearch=<?=$_GET['carsearch']?>&abnormal=<?=$_GET['abnormal']?>&allocation=<?=$_GET['allocation']?>&belong=<?=$_GET['belong']?>&labour=<?=$_GET['labour']?>&status=<?=$_GET['status']?>&num=<?php echo $num-1;?>&pageall=<?=$pageall?>&page=<?=$page?>" >上一页</a>
+				<span>第</span>
+				<input type="text" maxlength="5" class="nowpage carpagetext" value="<?php if($num) echo $num; else echo 1;?>"/>
+				<span>页</span>
+				<span>(共</span>
+				<span class="pageallnum"><?php if($pageall) echo $pageall; else echo 0;?></span>
+				<span>页,</span>
+				<span><?php if($data) echo $count; else echo 0;?></span>
+				<span>条)</span>
+				<a href="/platform/carmanagement.php?carsearch=<?=$_GET['carsearch']?>&abnormal=<?=$_GET['abnormal']?>&allocation=<?=$_GET['allocation']?>&belong=<?=$_GET['belong']?>&labour=<?=$_GET['labour']?>&status=<?=$_GET['status']?>&num=<?php echo $num+1; ?>&pageall=<?=$pageall?>&page=<?=$page?>" >下一页</a>
+				<a href="/platform/carmanagement.php?carsearch=<?=$_GET['carsearch']?>&abnormal=<?=$_GET['abnormal']?>&allocation=<?=$_GET['allocation']?>&belong=<?=$_GET['belong']?>&labour=<?=$_GET['labour']?>&status=<?=$_GET['status']?>&num=<?=$pageall?>&pageall=<?=$pageall?>&page=<?=$page?>" >末页</a>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="modal modalmodnum platmodal">
+		<div class="cover"></div>
+        <div class="modalboxn modalbox">
+            <div class="input-group">
+				<label>平台查看&nbsp;:&nbsp;&nbsp;</label>
+				<select name="staff">
+            	</select>
+        	</div>
+        	<div class="btns">
+				<button class="sureemp platformlook">确认</button>
+				<button class="cancelemp">取消</button>
+			</div>
+		</div>
+	</div>
+
+	<div class="modal modalsure modalunwrap" id="modalactivation">
+		<div class="cover"></div>
+		<div class="modalboxs modalbox delcar">
+			<p>确定删除电动车吗？</p>
+			<div class="btns">
+				<button class="add addunw">确定</button>
+				<button class="cancela">取消</button>
+			</div>
+		</div>
+	</div>	
+
+	<div class="modal sensor ">
+		<div class="cover"></div>
+		<div class="modalboxs modalbox sensorattr">
+			<div class="input-group">
+				<label>定位器号：</label>
+				<input type="text" value="" name="sensor" />
+			</div>
+			<div class="sensormsg" ></div>
+			<div class="btns">
+				<button class="add editsensor">确定</button>
+				<button class="cancela">取消</button>
+			</div>
+		</div>
+	</div>
+
+	<div class="modal remark " id="modalnote">
+		<div class="cover"></div>
+		<div class="modalboxs modalbox ">
+			<div class="input-group">
+				<label>备注&nbsp;:&nbsp;&nbsp;</label>
+				<textarea class="ebikeremark"></textarea>
+			</div>
+			<button class="finishbtn cancelnote">取消</button>
+		</div>
+	</div>
+
+	<?php include("footer.html"); ?>
+	<script src="/js/jquery-1.8.2.min.js"></script>
+	<script src="/js/main2/common.js"></script>
+	<script src="/js/util.js"></script>
+	<script src="/js/car/carmanagement.js"></script>
+
+</body>
+</html>

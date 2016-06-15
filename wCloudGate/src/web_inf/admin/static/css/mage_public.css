@@ -1,0 +1,7 @@
+/*头部与body的整体布局*/
+body{height: 100%;width: 100%;margin: auto;color: #554f4f;background: #f7fafc;font-size: 12px;font-family: Microsoft Yahei, "Helvetica Neue", Helvetica, Arial, sans-serif;}
+.body {height: 100%;width: 100%;}
+
+/*内容容器*/
+.dashboard {width: 100%;height: 92.2%;float: left;padding-top: 2px;}
+.DashContent {width: 100%;height: 100%;}

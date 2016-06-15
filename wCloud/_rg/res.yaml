@@ -1,0 +1,176 @@
+#!import "./module.yaml"
+
+reusable:
+    - !R.vars  &u_demo_svc 
+        API_PROXY:      ""  
+    - !R.vars  &u_online_svc 
+        API_PROXY:      ""  
+
+    - !R.vars  &u_svc_mode
+        USER:           "online"
+        PRJ_ROOT:       "/home/q/system/wCloud/"
+
+__env:
+    cache: !R.vars  &u_cache
+        API_PROXY:      "http://127.0.0.1:8086"
+                  
+    debug: !R.vars  &u_debug
+        PHP_ERROR:      "E_ALL & ~E_NOTICE"
+        PYL_LOG_MODE :  "DEBUG"
+        DEBUG        : 1 
+        OPCACHE_ENABLE: "0"
+        DAEMON_USER : "${USER}"
+
+    ndebug: !R.vars  &u_ndebug
+        PHP_ERROR:      "E_ERROR"
+        PYL_LOG_MODE :  "ONLINE"
+        DEBUG        : 
+        OPCACHE_ENABLE: "1"
+        DAEMON_USER : "search"
+
+    dev: !R.env
+        res:
+            - !R.using 
+                refs:
+                    - *u_demo_svc
+                    - *u_debug
+            - !R.vars 
+                ENV:            "dev"
+                DOMAIN_PREFIX:  "${USER}."
+                PRJ_ROOT:       "${HOME}/devspace/wCloud/"
+                DB_NAME     :   "wcloud_test"
+                DB_USER     :   "root"
+                DB_PWD      :   "waimaiw"
+                DB_HOST     :   "127.0.0.1"
+                SSDB_HOST   :   "172.16.1.38"
+                SSDB_PORT   :   "8888"
+                REDIS_HOST  :   "127.0.0.1:6379"
+                WOREO_API_SVC:  "caijiajia.api.ccps.waimaiw.net"
+                ZK_LIST     :   "172.16.1.40:2181"    
+                ZK_TOPIC    :   "test1"
+                ZK_SUBSCRIBER:  "dy"    
+                INTERVAL:       "600"
+                DELAY_TIME:     "300"
+    demo: !R.env
+        res:
+            - !R.using 
+                refs:
+                    - *u_ndebug
+                    - *u_demo_svc
+                    - *u_svc_mode
+            - !R.vars 
+                ENV:            "demo"
+                DOMAIN_PREFIX:  "demo."
+                DB_NAME     :   "wcloud_demo"
+                DB_USER     :   "root"
+                DB_PWD      :   "waimaiw"
+                DB_HOST     :   "127.0.0.1"
+                WOREO_API_SVC:  "demo.api.ccps.waimaiw.net"
+
+    online: !R.env
+        res:
+            - !R.using 
+                refs:
+                    - *u_ndebug
+                    - *u_online_svc
+                    - *u_svc_mode
+                    - *u_cache
+            - !R.vars 
+                ENV:            "online"
+                DOMAIN_PREFIX:  ""
+                DB_NAME     :   "wcloud_online"
+                DB_USER     :   "wCloud"
+                DB_PWD      :   "OXhbkfvGsr"
+                DB_HOST     :   "10.24.200.158:3306" 
+                SSDB_HOST   :   "10.24.200.158"
+                SSDB_PORT   :   "8888"
+                REDIS_HOST  :   "10.24.200.158:6379"
+                WOREO_API_SVC:  "api.ccps.waimaiw.net"
+                ZK_LIST     :   "10.24.190.136:2181"    
+                ZK_TOPIC    :   "footprint"
+                ZK_SUBSCRIBER:  "wcloud"    
+                INTERVAL:       "600"
+                DELAY_TIME:     "300"
+
+__prj: !R.prj
+       res: 
+        - !R.vars 
+                PRJ_NAME:       "wCloud"
+                PRJ_KEY:        "wCloud"
+                SUNDIAL:        "/home/q/php/sundial"
+                MODULES:        "${PRJ_ROOT}/src/logic" 
+        - !R.path 
+            dst :  "${PRJ_ROOT}/conf/used/"
+        - !R.path 
+            dst :  "${PRJ_ROOT}/tmp/"
+
+
+__sys:
+
+
+
+    api: !R.system
+            res: 
+                - !R.vars
+                    APP_SYS         : "api"
+                    DOMAIN          : "${DOMAIN_PREFIX}api.yun.waimaiw.net" 
+                    API_PORT        : "8060"
+                    TPL_API_DIR     : "${PRJ_ROOT}/src/web_inf/api/tpls"
+                    MODULES         : "${MODULES}:${PRJ_ROOT}/src/apps/api" 
+                    PHP_INI:        "${PRJ_ROOT}/conf/used/${APP_SYS}_php.ini"
+                - !R.file_tpl
+                    tpl : "${PRJ_ROOT}/conf/options/tpl_php.ini" 
+                    dst : "${PHP_INI}"
+                - !R.using
+                    ref :  *sundial_action
+
+    console :  !R.system
+            res: 
+                - !R.vars
+                    APP_SYS         : "console"  
+                    MODULES         : "${MODULES}:${PRJ_ROOT}/src/apps/console:/home/q/php/hydra_sdk" 
+                    PHP_INI:        "${PRJ_ROOT}/conf/used/${APP_SYS}_php.ini"
+                - !R.file_tpl
+                    tpl : "${PRJ_ROOT}/conf/options/tpl_php.ini" 
+                    dst : "${PHP_INI}"
+                - !R.daemon_php                                      
+                    name: "assisant"                                   
+                    worker : 1                                       
+                    user: "${DAEMON_USER}"
+                    script: "${PRJ_ROOT}/src/apps/console/assisant.php"
+                    reloadat : "3 3 * * *"
+                - !R.daemon_php                                      
+                    name: "distance"                                   
+                    worker : 1                                       
+                    user: "${DAEMON_USER}"
+                    script: "${PRJ_ROOT}/src/apps/console/cnt_distance.php"
+                    reloadat : "3 3 * * *"
+                - !R.daemon_php                                      
+                    name: "delayfreq"                                   
+                    worker : 1                                       
+                    user: "${DAEMON_USER}"
+                    script: "${PRJ_ROOT}/src/apps/console/delay_freq.php"
+                    reloadat : "3 3 * * *"
+                - !R.daemon_php                                      
+                    name: "monitor"                                   
+                    worker : 1                                       
+                    user: "${DAEMON_USER}"
+                    script: "${PRJ_ROOT}/src/apps/console/monitor.php"
+                    reloadat : "3 3 * * *"
+                - !R.using 
+                    ref : *sundial_php
+
+    test:  !R.system
+            res: 
+                - !R.vars
+                    APP_SYS: "test"  
+                    DOMAIN          : "${DOMAIN_PREFIX}api.yun.waimaiw.net" 
+                    PRJ_INCLUDE: "${PRJ_ROOT}/conf:${PRJ_ROOT}/src/apps/console/:${PRJ_ROOT}/src/"
+                    MODULES         : "${MODULES}:${PRJ_ROOT}/test/:/usr/local/php/lib/php" 
+                    PHP_INI:        "${PRJ_ROOT}/conf/used/${APP_SYS}_php.ini"
+                    TEST_SUFFIX :   "test.php"
+                - !R.file_tpl
+                    tpl : "${PRJ_ROOT}/conf/options/tpl_php.ini" 
+                    dst : "${PHP_INI}"
+                - !R.using 
+                    ref : *sundial_php

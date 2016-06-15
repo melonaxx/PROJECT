@@ -1,0 +1,35 @@
+<!-- BEGIN: main --><?xml version="1.0" encoding="UTF-8"?>
+{main.doc_type}
+<?xml-stylesheet type="text/xsl" href="/style/setting_add_permission.xsl?ver={main.doc_version}"?>
+<html version="{main.doc_version}">
+<head>
+	<Title>{main.title}</Title>
+	<meta name="keywords" content="{main.keywords}" />
+	<meta name="description" content="{main.description}" />
+	<em company_id="{main.company_id}" staff_id="{main.staff_id}" login_name="{main.login_name}" permit="{main.permit}" program="{main.request_url}"/>
+</head>
+<Body>
+	<dir><![CDATA[ 您的位置： <a href="/">首页</a> &raquo; 权限管理]]></dir>
+
+	<menu>
+		<big>{main.big_menu}</big>
+		<small>
+			<!-- BEGIN: list_menu --><a class="{list_menu.class}" href="{list_menu.link}">{list_menu.name}</a><!-- END: list_menu -->
+		</small>
+	</menu>
+
+	<!-- BEGIN: list_channel -->
+	<dl id="{list_channel.id}" name="{list_channel.name}">
+		<!-- BEGIN: list_program -->
+		<dd id="{list_program.id}" name="{list_program.name}">
+			<!-- BEGIN: list_menu -->
+			<li id="{list_menu.id}" name="{list_menu.name}" url="{list_menu.url}">{list_menu.check}</li>
+			<!-- END: list_menu -->
+		</dd>
+		<!-- END: list_program -->
+	</dl>
+	<!-- END: list_channel -->
+
+</Body>
+</html>
+<!-- END: main -->

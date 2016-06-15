@@ -1,0 +1,125 @@
+//---- UTF8 编码 ----
+<!-- BEGIN: main -->
+<html>
+<head>
+<title></title>
+<link type="text/css" rel="stylesheet" href="/style/bootstrap.min.css?ver={main.doc_version}"/>
+<link type="text/css" rel="stylesheet" href="/style/style.css?ver={main.doc_version}"/>
+<style>
+body,table,form,input		{font-size:12px; padding:0; margin:0}
+body {
+	min-width:100px;
+	overflow-y:auto;
+	overflow-x:auto;
+}
+.border_color{
+	border:1px solid #E74C3C;
+}
+</style>
+<script type="text/javascript" charset="UTF-8" src="/js_encode/jquery-1.9.1.min.js"></script>
+
+
+<form class="margin_top" method="post" action="/stock/stock_warning_set.php">
+	<div style="width:395px;">
+		<input type="hidden" name="ware" value="{main.ware}"/>
+		<input type="hidden" name="box" value="{main.box}"/>
+		<!-- <input type="hidden" name="setup" value="{main.setup}"/> -->
+		<div class="float_left form-group" style="width:100%;height:20px;">
+			<div style="float:left;"><h4>预警数量</h4></div>
+		</div>
+		<div class="float_left form-group" style="width:100%;height:20px;">
+			<label class='float_left'><input type="radio" name='type' value='all' checked='checked' style='margin-bottom:5px;' /><span style="margin-left:5px;">修改全部</span></label>
+			<label class='float_left' style="margin-left:15px;"><input type="radio" name='type' value='low' style='margin-bottom:5px;' /><span style='margin-left:5px;'>修改下限</span></label>
+			<label class='float_left' style="margin-left:15px;"><input type="radio" name='type' value='up' style='margin-bottom:5px;' /><span style='margin-left:5px;'>修改上限</span></label>
+		</div>
+		<div class="float_left form-group">
+			<span class="float_left" style="margin:5px 0 0 0;">下限：</span>
+			<input type="text" name="lower" class="form-control input-sm float_left">
+		</div>
+		<div class="float_left form-group">
+			<span class="float_left" style="margin:5px 0 0 20px;">上限：</span>
+			<input type="text" name="upper" class="form-control input-sm float_left">
+		</div>
+	</div>
+	<div class="form-group float_left" style="margin:0 0px 0 4px;">
+		<div class="table_operate_block">
+			<input class="btn btn-default btn-sm btn_margin  float_left" type="submit" name = 'made' value="确定" />
+			<input class="btn btn-default btn-sm goodsDeleteaa float_left" type="reset" value="取消" onclick="parent.$('#MessageBox').modal('hide')" />
+		</div>
+	</div>
+</form>
+
+</body>
+<script>
+	$('input[name=lower],input[name=upper]').on('keyup',function(){
+		var val = $(this).val();
+		var re  = /^[0-9]*[1-9][0-9]*$/;
+		if(!re.test(val))
+		{
+			$(this).val('');
+			return false;
+		}
+	})
+	$('input[name=type]').on('click',function(){
+		var val = $(this).val();
+		if(val=='low')
+		{
+			$('input[name=lower]').removeAttr('readonly');
+			$('input[name=upper]').attr('readonly','readonly');
+		}
+		if(val=='up')
+		{
+			$('input[name=upper]').removeAttr('readonly');
+			$('input[name=lower]').attr('readonly','readonly');
+		}
+		if(val=='all')
+		{
+			$('input[name=lower]').removeAttr('readonly');
+			$('input[name=upper]').removeAttr('readonly');
+		}
+	})
+	$('.margin_top').submit(function(){
+		var ty = $('input[name=type]:checked').val();
+		var lo = $('input[name=lower]').val();
+		var up = $('input[name=upper]').val();
+		if(ty=='all')
+		{
+			if(lo<=0 && up>0)
+			{
+				alert('请输入下限值！');
+				return false;
+			}
+			if(lo>0 && up <=0)
+			{
+				alert('请输入上限值！');
+				return false;
+			}
+			if(lo<=0 && up<=0)
+			{
+				alert('请先输入上下限值！');
+				return false;
+			}
+		}
+		if(ty=='low')
+		{
+			if(lo<=0)
+			{
+				alert('请输入下限值！');
+				return false;
+			}
+		}
+		if(ty=='up')
+		{
+			if(up<=0)
+			{
+				alert('请输入上限值！');
+				return false;
+			}
+		}
+	})
+</script>
+
+</html>
+
+<!-- END: main -->
+

@@ -1,0 +1,48 @@
+//---- UTF8 编码 ----
+<!-- BEGIN: main -->
+<html>
+<head>
+<title>修改属性值</title>
+<link type="text/css" rel="stylesheet" href="/style/bootstrap.min.css?ver={main.doc_version}"/>
+<link type="text/css" rel="stylesheet" href="/style/style.css?ver={main.doc_version}"/>
+<style>
+body {
+	text-align:left;
+	min-width:600px;
+	padding:0;
+}
+.form-inline .form-control {
+	display: inline-block;
+	vertical-align: middle;
+}
+.form-inline .form-group {
+	display: inline-block;
+	vertical-align: middle;
+}
+</style>
+<script type="text/javascript" src="/js_encode/jquery-1.9.1.min.js"></script>
+<body>
+	<div>
+		<table width="680" class="table table-bordered table-hover">
+			<tr>
+				<th>子商品</th>
+				<th>零售价</th>
+				<th>数量</th>
+				<!-- <th>组合单价</th> -->
+				<th>单位</th>
+			</tr>
+			<!-- BEGIN:product_combination -->
+			<tr>
+				<td width="170">{product_combination.sub_id}</td>
+				<td width="170">{product_combination.price_display}</td>
+				<td width="170">{product_combination.total}</td>
+				<!-- <td width="170">{product_combination.price_combination}</td> -->
+				<td width="170">{product_combination.parts_id}</td>
+			</tr>
+			<!-- END:product_combination -->
+		</table>
+	</div>
+</body>
+</html>
+
+<!-- END: main -->

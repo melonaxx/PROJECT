@@ -1,0 +1,40 @@
+<!-- BEGIN: main --><?xml version="1.0" encoding="UTF-8"?>
+{main.doc_type}
+<?xml-stylesheet type="text/xsl" href="/style/setting_express_postfee.xsl?ver={main.doc_version}"?>
+<html version="{main.doc_version}">
+	<head>
+		<Title>{main.title}</Title>
+		<meta name="keywords" content="{main.keywords}" />
+		<meta name="description" content="{main.description}" />
+		<em company_id="{main.company_id}" staff_id="{main.staff_id}" login_name="{main.login_name}" permit="{main.permit}" program="{main.request_url}"/>
+	</head>
+	<Body>
+		<dir><![CDATA[ 您的位置： {main.this_location}]]></dir>
+		<menu>
+			<big>{main.big_menu}</big>
+			<small>
+				<!-- BEGIN: list_menu --><a class="{list_menu.class}" href="{list_menu.link}">{list_menu.name}</a><!-- END: list_menu -->
+			</small>
+		</menu>
+		<content>
+		<![CDATA[
+		{main.html_body}
+		]]>
+		</content>
+		<default_rule>{main.default_rule}</default_rule>
+		<express_id>{main.express_id}</express_id>
+		<weight_fee>
+			<!-- BEGIN: weight_fee -->
+			<tr>
+				<area_id>{weight_fee.area_id}</area_id>
+				<area_name>{weight_fee.area_name}</area_name>
+				<store_id>{weight_fee.store_id}</store_id>
+				<store_name>{weight_fee.store_name}</store_name>
+				<num>{weight_fee.num}</num>
+				<rule>{weight_fee.rule}</rule>
+			</tr>
+			<!-- END: weight_fee -->
+		</weight_fee>
+	</Body>
+</html>
+<!-- END: main -->

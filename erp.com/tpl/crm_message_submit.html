@@ -1,0 +1,84 @@
+//---- UTF8 编码 ----
+<!-- BEGIN: main -->
+<html>
+<head>
+<title>订单</title>
+<link type="text/css" rel="stylesheet" href="/style/bootstrap.min.css?ver={main.doc_version}"/>
+<link type="text/css" rel="stylesheet" href="/style/style.css?ver={main.doc_version}"/>
+<style>
+body {
+	text-align:left;
+	min-width:600px;
+	overflow-y:auto;
+	padding:0; 
+}
+.form-inline .form-control {
+	display: inline-block;
+	vertical-align: middle;
+}
+.form-inline .form-group {
+	display: inline-block;
+	vertical-align: middle;
+}
+</style>
+<script type="text/javascript" src="/js_encode/jquery-1.9.1.min.js"></script>
+<script type="text/javascript">
+	$(function(){
+		$('.supplierMsg').submit(function(){
+			$('.a').css('display','none');
+			$('.b').css('display','block');
+		})
+	})
+</script>
+<body>
+	<div class="a" style="display:block;">
+		<form class="form-inline supplierMsg" target="_blank" method="get" action="https://mapi.alipay.com/gateway.do?_input_charset=utf-8">
+			<input type="hidden" name="_input_charset" value="utf-8"/>
+			<input type="hidden" name="service" value="{main.service}"/>
+			<input type="hidden" name="partner" value="{main.partner}"/>
+			<input type="hidden" name="seller_id" value="{main.seller_id}"/>
+			<input type="hidden" name="payment_type" value="{main.payment_type}"/>
+			<input type="hidden" name="notify_url" value="{main.notify_url}"/>
+			<input type="hidden" name="return_url" value="{main.return_url}"/>
+			<input type="hidden" name="out_trade_no" value="{main.out_trade_no}"/>
+			<input type="hidden" name="subject" value="{main.subject}"/>
+			<input type="hidden" name="total_fee" value="{main.total_fee}"/>
+			<input type="hidden" name="show_url" value="{main.show_url}"/>
+			<input type="hidden" name="sign" value="{main.sign}"/>
+			<input type="hidden" name="sign_type" value="MD5"/>
+
+			<div class="form-group">
+				<label>公司名称：</label>
+				{main.company_name}
+			</div><br>
+			<div class="form-group">
+				<label>订单编号：</label>{main.out_trade_no}
+			</div><br>
+			<div class="form-group">
+				<label>套餐信息：</label>{main.subject}
+			</div><br>
+			<div class="form-group">
+				<label>应付金额：</label>{main.total_fee}元
+			</div>
+			<div style="margin-top:15px">
+				<input class="btn btn-default btn-sm btn_margin" type="submit" value="去支付宝付款"/>
+				<input class="btn btn-default btn-sm" type="button" value="取消" onclick="parent.$('#MessageBox').modal('hide')" />
+			</div>
+		</form>
+	</div>
+	<div class="b" style="display:none">
+
+		<div style="margin:10px 0 0 45px;font-size:16px;"><b>请在支付宝页面完成付款</b></div>
+			<div style="width:250px;margin:30px 0 0 45px;font-size:14px;">付款完成前请不要关闭此窗口.
+			付款完成后请根据情况点击以下按钮!</div>
+
+			<div style="margin:30px 0 0 45px;">
+				<input type="button" class="btn btn-default btn-sm btn_margin" value="完成付款" />
+				<input type="button" class="btn btn-default btn-sm btn_margin" value="付款遇到问题"/>
+			</div>
+	</div>
+</body>
+</html>
+
+<!-- END: main -->
+

@@ -1,0 +1,172 @@
+//---- UTF8 编码 ----
+<!-- BEGIN: main -->
+<html>
+<head>
+<title>设置配送地区</title>
+<link type="text/css" rel="stylesheet" href="/style/bootstrap.min.css?ver={main.doc_version}"/>
+<link type="text/css" rel="stylesheet" href="/style/style.css?ver={main.doc_version}"/>
+<style>
+body {
+	text-align:left;
+	min-width:370px;
+	/*height:360px;*/
+	/*overflow-y:hidden;*/
+	padding:0;
+}
+.error_color{
+	border:1px solid red;
+}
+</style>
+<script type="text/javascript" src="/js_encode/jquery-1.9.1.min.js"></script>
+<body>
+
+<form class='form-inline' action="" method="post">
+	<div class="goodsMsg">
+		<h4>商品信息</h4>
+		<div class="table_operate_block">
+			<input class="btn btn-default btn-sm btn_margin goodsAdd" type="button" value="添加" />
+			<input class="btn btn-default btn-sm goodsDelete" type="button" value="删除" />
+		</div>
+		<table width="1180" class="table table-bordered table-hover" id="tab">
+			<tr>
+				<th class="" width="46px">序号</th>
+				<th class="table_th_checkbox center" width="38px"><input type="checkbox" name="select_all" /></th>
+				<th width="170px">搜索</th>
+				<th width="46px">图片</th>
+				<th width="450px">商品名称和规格</th>
+				<th width="100px">单位</th>
+			</tr>
+			<tr>
+				<td class="center">1</td>
+				<td class="center"><input type="checkbox" name="select_one" /></td>
+				<td><input type="text" class="form-control input-sm form_no_border find" /></td>
+				<td><img src="" style="width:20px;height:20px;" class='images center' ></td>
+				<td style="width:433px;">
+					<select class="form-control input-sm form_no_border guige" name="product_id[]">
+						<option value='' style='display:none;'>请选择商品</option>
+					</select>
+		  		</td>
+				<td width='90px'></td>
+			</tr>
+		</table>
+		<p>
+			<input class="btn btn-default btn-sm btn_margin" name="send" type="submit" value="提交" />
+			<input class="btn btn-default btn-sm" type="reset" value="返回" onclick="parent.$('#MessageBox').modal('hide')" />
+		</p>
+	</div>
+</form>
+<script>
+	//全选
+	$('.goodsMsg input[name="select_all"]').click(function () {
+	    if(this.checked){
+    		$('.goodsMsg input[name="select_one"]').each(function () {
+    			$(this).prop("checked",true);
+    		});
+	    }else{
+    		$('.goodsMsg input[name="select_one"]').each(function () {
+    			$(this).prop("checked",false);
+    		});
+	    }
+	});
+	var trStr = $('.goodsMsg table tr').eq(1).prop("outerHTML");
+	//添加
+	$(document).on('click','.goodsAdd',function () {
+		$('.goodsMsg table').append(trStr);
+		//重置下标
+		$('.goodsMsg table tr').each(function(index, value) {
+			if (index > 0) {
+				$(value).find('td').eq(0).html(index);
+			}
+		});
+	});
+	//删除选中行
+	$(document).on('click','.goodsDelete',function () {
+		$('.goodsMsg input[name="select_one"]:checked').parent().parent().remove();
+		$('.goodsMsg table tr').each(function (index, value) {
+			if (index > 0) {
+				$(value).find('td').eq(0).html(index);
+			}
+		});
+	});
+	//按商品进行搜索
+	$(document).on('focus','.find',function(){
+		var t = $(this);
+		//获取焦点时原有值
+		sou = t.val();
+		//失去焦点事件
+		t.blur(function(){
+			//失去焦点时的新值
+			var newsou = t.val();
+			//判断,如果新的值与原值不同则修改相应商品信息
+			if(newsou != sou)
+			{
+				val = new Array();
+				$('.goodsMsg table tr').find('select').each(function(){
+		            var a = $(this).val();
+		            if(a != null){
+		                val.push(a);
+		            }
+		        })
+		        arr = val.join(",");
+				$.ajax({
+					type:'POST',
+					url:'/stock/stock_product_setup.php',
+					async:true,
+					data:{"value":newsou,'bb':arr},
+					dataType:'json',
+					'success':function(data){
+						if(data){
+		                    t.parents('tr').find('select[name="product_id[]"]').empty();
+		                    var str = "";
+		                    for(var i=0;i<data.length;i++){
+		                        str += "<option value="+data[i]['id']+">"+data[i]['name']+""+data[i]['format']+"</option>";
+		                    }
+		                    t.parents('tr').find('select[name="product_id[]"]').append(str);
+		                    t.parents('tr').find('td:nth-child(6)').html(data[0]['part_name']);
+		                    t.parent().next().find('img').attr('src',data[0]['image']);
+		                }
+					}
+				});
+			}
+
+		});
+    });
+    //商品改变事件
+	$(document).on("change",".guige",function(){
+		var a = $(this);
+		var value = a.val();
+		$.ajax({
+			url:"/stock/stock_product_setup.php",
+    		type:'post',
+    		data:{'guige':value},
+    		dataType:'json',
+    		success:function(data){
+    			if(data){
+    				a.parents('tr').find('td:nth-child(6)').html(data['unit']);
+    				a.parents('tr').find('img').attr('src',data['image']);
+    			}
+    		}
+		})
+
+	});
+	//提交事件判断数量是否为填写
+	$('.form-inline').submit(function(){
+		var cc = new Array();
+		$(".goodsMsg").find("select[name='product_id[]']").each(function(){
+			var aa = $(this).val();
+			if(aa)
+			{
+				cc.push(aa);
+			}
+		})
+		if(cc.length<1)
+		{
+			return false;
+		}
+	})
+
+</script>
+
+</body>
+</html>
+<!-- END: main -->

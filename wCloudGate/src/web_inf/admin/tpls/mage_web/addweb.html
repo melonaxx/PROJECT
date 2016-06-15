@@ -1,0 +1,42 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>外麦王云平台</title>
+        <link rel="stylesheet" type="text/css" href="/css/common.css"/>
+        <link rel="stylesheet" href="//cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="/css/web.css"/>
+    </head>
+    <body>
+        <?php include('mage_header.html');?>
+        <section>
+        <?php include('mage_left.html');?>
+            <div class="right">
+                <div class="content">
+                    <div class="tab-content">
+
+                        <div class="caractive">                                                               
+                            <ul class="carsernum">                                                            
+                                <li class="sernumact"><a href="javascript:void(0);">新增公告</a></li>     
+                            </ul>                                                                             
+                            <form action="/doweb.php" method="post">
+                                <textarea class="activationbox" placeholder="请输入公告消息内容" name="notice"></textarea>
+                                <input type="submit" value="insert" style="display:none;">
+                            </form>
+                            <div class="not"></div>
+                            <div class="btnss">                                   
+                                <button class="activation noticebtn" >确定</button>             
+                                <button class="cancel cancelbtn">取消</button>                                          
+                            </div>                                                                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <script src="//cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
+        <script src="//cdn.bootcss.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+        <script src="/js/header.js"></script>
+        <script src="/js/util.js"></script>
+        <script src="/js/web.js"></script>
+    </body>
+</html>

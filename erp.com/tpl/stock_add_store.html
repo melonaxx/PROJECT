@@ -1,0 +1,110 @@
+//---- UTF8 编码 ----
+<!-- BEGIN: main -->
+<html>
+<head>
+<title>添加仓库</title>
+<link type="text/css" rel="stylesheet" href="/style/bootstrap.min.css?ver={main.doc_version}"/>
+<link type="text/css" rel="stylesheet" href="/style/style.css?ver={main.doc_version}"/>
+<style>
+body {
+	text-align:left;
+	min-width:600px;
+	overflow-y:hidden;
+	padding:0;
+}
+.form-inline .form-control {
+	display: inline-block;
+	vertical-align: middle;
+}
+.form-inline .form-group {
+	display: inline-block;
+	vertical-align: middle;
+}
+</style>
+<script type="text/javascript" src="/js_encode/jquery-1.9.1.min.js"></script>
+<script type="text/javascript" src="/js_encode/jquery.area.three.js"></script>
+<script type="text/javascript" src="/js_encode/jquery.validate.js"></script>
+<script>
+$(function(){
+areaSelect.createSelect('.supplierMsg .shengDiv','.supplierMsg .shiDiv','.supplierMsg .xianDiv','<label class="margin_left_2">省份：</label>','<label>市（区）：</label>','<label>区（县）：</label>'); $('.form-inline').validate({ rules:{ name:{ required:true, }, }, messages:{ name:{ required:'', }, } });
+
+	var def = '{main.default}';
+	if(def=='No')
+	{
+		$('#def_Y').css('display','none');
+		$('#def_N').css('display','block');
+	}
+})
+</script>
+
+<body>
+	<div>
+		<form class="form-inline supplierMsg" method="post" action="/stock/stock_add_store.php">
+			<div class="form-group" id='def_N' style='display:none;'>
+				当前为公司第一个仓库，自动设为默认仓库！
+			</div>
+			<div class="form-group"  style='width:100%;' id='def_Y' >
+				<label>默认仓库：</label>
+				<input type="radio" name='is_default' value='Y' />&nbsp;&nbsp;是
+				&nbsp;&nbsp;&nbsp;&nbsp;
+				<input type="radio" name='is_default' value='N' checked />&nbsp;&nbsp;否
+				<span style="margin-left:25px;">当前默认账户为：{main.default}</span>
+			</div>
+			<div class="form-group">
+				<label>仓库类型：</label><select class="form-control input-sm" name="store_type"><option value="Sales">销售仓</option><option value="Defective">次品仓</option><option value="Customer">售后仓</option><option value="Purchase">采购仓</option></select>
+			</div><br/>
+			<div class="form-group">
+				<label>仓库编码：</label><input type="text" name="number" class="form-control input-sm" placeholder="默认自动生成" />
+			</div>
+			<div class="form-group">
+				<label>仓库名称：</label><input type="text" name="name" placeholder="必填" data-toggle="tooltip" data-placement="bottom" title="必填" class="form-control input-sm merger_two_row_4"/>
+			</div><br/>
+			<div class="form-group">
+				<label class="margin_left_1">联系人：</label><input name="contact_name" type="text" class="form-control input-sm"/>
+			</div>
+			<div class="form-group">
+				<label>手机号码：</label><input onkeyup="value=value.replace(/[^\d]/g,'')" class="form-control input-sm" name="mobile" onbeforepaste="clipboardData.setData('text',clipboardData.getData('text').replace(/[^\d]/g,''))">
+			</div>
+			<div class="form-group">
+				<label>固定电话：</label><input onkeyup="value=value.replace(/[^\d]/g,'')" class="form-control input-sm" name="telphone" onbeforepaste="clipboardData.setData('text',clipboardData.getData('text').replace(/[^\d]/g,''))">
+			</div>
+			<div class="form-group shengDiv"></div>
+			<div class="form-group shiDiv"></div>
+			<div class="form-group xianDiv"></div><br/>
+			<div class="form-group">
+				<label>详细地址：</label><input type="text" name="address" class="form-control input-sm merger_three_row_8"/>
+			</div>
+			<div class="form-group">
+				<label>仓库备注：</label><input type="text" name="body" class="form-control input-sm merger_three_row_8"/>
+			</div>
+			<p>
+				<input class="btn btn-default btn-sm btn_margin" name="send" type="submit" value="提交"/>
+				<input class="btn btn-default btn-sm" type="button" value="关闭" onclick="parent.$('#MessageBox').modal('hide')" />
+			</p>
+		</form>
+	</div>
+</body>
+<script>
+	$('input[name=name]').blur(function(){
+		var name = $(this).val();
+		$.ajax({
+			type:'POST',
+			url:'/stock/stock_add_store.php',
+			async:true,
+			data:{"data":name},
+			'success':function(data){
+				if(data==1){
+				 	alert('仓库名称已存在！');
+				 	$('input[name=name]').val('');
+				 	return false;
+				 }
+			}
+		})
+	})
+	$('.form-inline').submit(function(){
+		$('input[name=name]').trigger('blur');
+	})
+</script>
+</html>
+
+<!-- END: main -->

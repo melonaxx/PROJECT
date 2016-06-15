@@ -1,0 +1,13 @@
+.role{font-size: 30px;margin-bottom: 41px;height:44px;text-align: center;width:84%;margin-left:8%;}
+.role li{float:left;margin-right: 20px;}
+.active{color:#378ece;border-bottom: 3px solid #378ece;}
+.form-group .address{width:220px;float:left;height:54px;padding-left: 10px;}
+.address:nth-of-type(1){margin-right: 10px;}
+.dash{width:1050px;border-top:1px dashed #ccc;margin:0 auto;}
+.license-group label p{line-height: 80px;}
+.picarea{float:left;width:118px;height:78px;border:1px solid #ccc;}
+.picarea p{text-align: center;width:100%;}
+.picarea p:nth-of-type(1){margin:16px 0 10px;}
+.picarea1{float:left;font-size: 12px;width:330px;margin-left:10px;}
+.picarea1 .uploadbtn{width:100px;height:20px;background: #fece00;border:1px solid #f00;margin-top: 9px;text-align: center;line-height: 16px;color:#fff;}
+.registerbtn{margin-bottom: 50px;}

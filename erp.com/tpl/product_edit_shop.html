@@ -1,0 +1,59 @@
+//---- UTF8 编码 ----
+<!-- BEGIN: main -->
+<html>
+<head>
+<title>修改</title>
+<link type="text/css" rel="stylesheet" href="/style/bootstrap.min.css?ver={main.doc_version}"/>
+<link type="text/css" rel="stylesheet" href="/style/style.css?ver={main.doc_version}"/>
+<style>
+body{
+	text-align:left;
+	min-width:450px;
+	padding:0;
+}
+.form-inline .form-control {
+	display: inline-block;
+	vertical-align: middle;
+}
+.form-inline .form-group {
+	display: inline-block;
+	vertical-align: middle;
+}
+</style>
+<script type="text/javascript" charset="UTF-8" src="/js_encode/jquery-1.9.1.min.js"></script>
+<body>
+	<div>
+		<form class="form-inline">
+			<div class="form-group">
+				<label>系统名称：</label><input type="text" class="btn_margin form-control input-sm"/>
+				<input class="btn btn-default btn-sm" type="button" value="查询"/>
+			</div>
+			
+			<div>
+				<table style="width:620px;" class="table tab-sel table-bordered table-hover">
+					<tr>
+						<th class="table_th_number">序号</th>
+						<th style="width:50px;" class="center">单选</th>
+						<th>图片</th>
+						<th>系统名称</th>
+						<th>规格</th>
+					</tr>
+					<tr>
+						<td class="center">1</td>
+						<td class="table_th_checkbox center"><input type="radio" name="a"/></td>
+						<td><img src="./img"/></td>
+						<td>测试商品001</td>
+						<td>白色：12GB</td>
+					</tr>
+				</table>
+			</div>
+		</form> 
+	</div>
+	<p>
+		<input class="btn btn-default btn-sm btn_margin" type="button" value="保存"/>
+		<input class="btn btn-default btn-sm" type="button" value="取消" onclick="parent.$('#MessageBox').modal('hide')" />
+	</p>
+</body>
+</html>
+
+<!-- END: main -->

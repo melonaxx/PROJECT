@@ -1,0 +1,185 @@
+//---- UTF8 编码 ----
+<!-- BEGIN: main -->
+<html>
+<head>
+<title>设置配送地区</title>
+<link type="text/css" rel="stylesheet" href="/style/bootstrap.min.css?ver={main.doc_version}"/>
+<link type="text/css" rel="stylesheet" href="/style/style.css?ver={main.doc_version}"/>
+<style>
+body {
+	text-align:left;
+	min-width:370px;
+	/*height:360px;*/
+	/*overflow-y:hidden;*/
+	padding:0;
+}
+
+.error_color{
+	border:1px solid red;
+}
+label { font-weight:100;
+    	margin-bottom: 0px;}
+._input{overflow-x: hidden; overflow-y: visible; width: 100%;height:100%; line-height:30px;cursor:text}
+ .table tr th,td{text-align: center}
+.dropdown_body{line-height:25px;display:none;margin-left:50px;}
+.car_left{width:25px;height:25px;margin-top:2px;border-radius: 3px;line-height: 1;padding: 4px 5px;}
+.car_left:hover{background:#bbb;border:1px solid lightblue;}
+.dropdown .checkbox{margin-bottom:7px;display:inline-block;}
+.dropbody label{display: block}
+</style>
+<script type="text/javascript" src="/js_encode/jquery-1.9.1.min.js"></script>
+<script type="text/javascript" charset="UTF-8" src="/js_encode/jquery.smallslider.js"></script>
+<script type="text/javascript" charset="UTF-8" src="/js_encode/bootstrap.min.js"></script>
+<body>
+
+<div id="area_setting" >
+	<div class="modal-body" style="height:300px;overflow: auto;">
+		<!-- BEGIN: provinceList -->
+		<div class="dropdown" >
+			<div class="dropdown_header" >
+		    	<span class="car_left"><span class="caret"></span></span><label for="{provinceList.id}"><input type="checkbox" class="checkbox" id="{provinceList.id}" value="{provinceList.id}" />  {provinceList.name}</label>
+			</div>
+			<div class="dropdown_body">
+				<!-- BEGIN: cityList -->
+				<label for="{cityList.id}" style="margin-right: 5px;"><input type="checkbox" class="checkbox" id="{cityList.id}" value="{cityList.id}" />  {cityList.name}</label>
+				<!-- END: cityList -->
+			</div>
+		</div>
+		<!-- END: provinceList -->
+	</div>
+	<div class="modal-footer">
+		<button class="btn btn-default btn-sm" data-dismiss="modal" id="area_confirm">确定</button>
+		<button class="btn btn-default btn-sm"  onclick="parent.$('#MessageBox').modal('hide')" data-dismiss="modal">取消</button>
+	</div>
+</div>
+<script>
+
+$(function(){
+$(".car_left").click(function(){
+	$(this).parents(".dropdown").find(".dropdown_body").slideToggle();
+});
+
+// 全选
+$(".dropdown_header .checkbox").click(function(){
+	if(this.checked){
+		$(this).parents(".dropdown").find(".dropdown_body .checkbox").prop("checked",true);
+	}else{
+		$(this).parents(".dropdown").find(".dropdown_body .checkbox").prop("checked",false);
+	}
+});
+
+$(".dropdown_body .checkbox").click(function(){
+	var  sheng = $(this).parents(".dropdown").find(".dropdown_header .checkbox");
+	var  shi = $(this).parents(".dropdown").find(".dropdown_body .checkbox");
+	var  all_checked = true;
+	shi.each(function(){
+		if(this.checked){
+			return true;
+		}else{
+			all_checked = false;
+			return false;
+		}
+	});
+	if(all_checked==false){
+		sheng.prop("checked",false);
+	}else{
+		sheng.prop("checked",true);
+	}
+});
+
+// 提交地区
+$("#area_confirm").click(function(){
+	var area_str_text 	= "";
+	var area_str_id 	= "";
+	$("#area_setting .dropdown .dropdown_header .checkbox").each(function(){
+		if(this.checked){
+			area_str_text += $(this).parent().text()+",";
+			area_str_id  += $(this).attr("id")+",";
+			$(this).parents(".dropdown").find(".dropdown_body .checkbox").each(function(){
+				if(this.checked){
+					area_str_id  += $(this).attr("id")+",";
+				}
+			});
+		}else{
+			$(this).parents(".dropdown").find(".dropdown_body .checkbox").each(function(){
+				if(this.checked){
+					area_str_text += $(this).parent().text()+",";
+					area_str_id  += $(this).attr("id")+",";
+				}
+			});
+		}
+
+	});
+	area_str_text = area_str_text.substring(0,area_str_text.length-1)
+	area_str_id = area_str_id.substring(0,area_str_id.length-1)
+	var area_store_repeat = false;
+	parent.$("#weight .area").each(function(a){
+		var area_id = [];
+		var area_str = $(this).attr("area_id");
+		area_id = area_str.split(",");
+		var str_id = [];
+		str_id = area_str_id.split(",");
+		for (var i=0,iLen=area_id.length; i<iLen; i++){
+            for (var j=0,jLen=str_id.length; j<jLen; j++){
+                // 除了单前行 其他行没有所选的地区
+                // 正在操作的行  b
+				var b = parent.area_setting.parents("table tr").index();
+                if (area_id[i]===str_id[j] && str_id[j]!="" && a+1 != b){
+                	// 并且当前行所选仓库不与其他行重复
+                	var store_ids_b = parent.area_setting.parents("table").find("tr:eq("+b+") .store").attr("store_id");
+                	var store_ids_a = parent.area_setting.parents("table").find("tr:eq("+parseInt(a+1)+") .store").attr("store_id");
+					var ids_b = [];
+					var ids_a = [];
+					ids_b = store_ids_b.split(",");
+					ids_a = store_ids_a.split(",");
+                	for (var p=0,pLen=ids_b.length; p<pLen; p++){
+           				for (var q=0,qLen=ids_a.length; q<qLen; q++){
+           					if(ids_b[p] === ids_a[q]){
+           						// console.log(ids_b[p]);
+           						// console.log(ids_a[q]);
+       							alert("地区/仓库与第"+parseInt(a+1)+"行重复！");
+       							area_store_repeat = true;
+       						    return false;
+           					}
+           				}
+           			}
+
+                }
+            }
+        }
+
+	});
+
+	if(area_store_repeat == false){
+		// 返回值
+		parent.area_setting.parents("td").find(".area").text(area_str_text);
+		parent.area_setting.parents("td").find(".area").attr("area_id",area_str_id);
+		if(area_str_text!=""){
+			index_tr = parent.area_setting.parents("tr").index();
+			var len = parent.$('#weight table tr').length;
+			if(index_tr==len-1){
+				parent.$("#weight table").append(parent.tr);
+		        for(var i = 1;i<len;i++){
+					var len = parent.$('#weight table tr').length;
+		            parent.$('#weight table tr:eq('+i+') td:first').text(i);
+		      	}
+			}
+		}
+		parent.$('#MessageBox').modal('hide');
+	}
+});
+
+var area_ids = parent.area_setting.parents("td").find(".area").attr("area_id");
+$(".checkbox").each(function(){
+	var area_id = $(this).attr("value");
+	if(area_ids.indexOf(area_id) != -1){
+		$(this).prop("checked","checked");
+	}
+});
+
+});
+
+</script>
+</body>
+</html>
+<!-- END: main -->

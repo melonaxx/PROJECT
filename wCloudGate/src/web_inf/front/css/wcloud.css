@@ -1,0 +1,275 @@
+.main {
+    margin-top: 68px;
+}
+
+a {
+    text-decoration: none;
+}
+
+a:hover {
+    background-color: #56ABEE;
+    text-decoration: none;
+    background: none;
+}
+
+.welcome {
+    width: 360px;
+    font-size: 60px;
+    margin: auto;
+    color: #0285dd;
+    padding-bottom: 20px;
+}
+
+.login {
+    width: 360px;
+    margin: auto;
+}
+
+.check {
+    font-size: 14px;
+    margin-bottom: 15px;
+    float: right;
+}
+
+.code{
+    float: right;
+    border: 0;
+    font-size: 12px;
+    color: #fff;
+    background: #0285dd;
+    line-height: 36px;
+    border-radius: 4px;
+    margin-left: 17px;
+    padding-top: 2px;
+    padding-bottom: 2px;
+    padding-right: 11px;
+    padding-left: 11px;
+}
+
+.loginbtn{
+    font-size: 14px;
+    float: right;
+    margin-bottom: 7px;
+}
+
+.getnum1 {
+    margin-top: 18px;
+    height: 41px;
+}
+
+.getnum {
+    margin: 15px 0;
+    height: 41px;
+}
+
+.LoginInput {
+    height: 41px;
+    margin-bottom: 15px;
+}
+
+.LoginInput4 {
+    width: 208px;
+    height: 41px;
+    float: left;
+}
+
+.LoginInput2 {
+    height: 41px;
+    margin-bottom: 18px;
+}
+
+.LoginInput3 {
+    height: 41px;
+    margin: 15px 0;
+}
+
+.LoginInput5 {
+    height: 41px;
+    margin: 15px 0;
+}
+
+.code {
+    float: left;
+}
+
+.ranks {
+    width: 300px;
+    height: 23px;
+}
+
+.rank {
+    width: 80px;
+    height: 22px;
+    color: #fff;
+    float: left;
+    text-align: center;
+    padding-top: 2px;
+    margin-right: 13px;
+}
+
+.rank1 {
+    background: #ccc;
+}
+
+.LoginBtn {
+    width: 360px;
+    border: 0;
+    font-size: 15px;
+    background: #5bb8ff;
+    line-height: 36px;
+    border-radius: 4px;
+    color: #fff;
+}
+
+.LoginBtn:hover {
+    background-color: #56ABEE;
+}
+
+.agreement {
+    width: 210px;
+    font-size: 12px;
+    margin-top: 13px;
+    float: left;
+}
+
+.reg {
+    width: 270px;
+    margin-top: 13px;
+    float: left;
+}
+
+.help {
+    width: 70px;
+    margin-top: 13px;
+    float: right;
+}
+
+.msg {
+    width: 220px;
+    height: 40px;
+    float: left;
+    color: red;
+    font-size: 14px;
+    margin-top: 7px;
+}
+
+.LoginFooter a {
+    color: #787878;
+    text-decoration: none;
+}
+
+.LoginFooter a:hover {
+    color: #555;
+    text-decoration: none;
+}
+
+.footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    color: #aebdc9;
+    text-align: center;
+    line-height: 42px;
+}
+
+.footer .dot {
+    margin: 0 3px;
+}
+
+.ShowLogo {
+    height: 76px;
+    color: #fff;
+    font-size: 30px;
+    padding: 0;
+    text-align: center;
+    line-height: 80px;
+    background: #15a4fa;
+    margin-bottom: 20px;
+}
+
+
+
+
+.Showlist a {
+    line-height: 76px;
+    font-size: 16px;
+    color: #ffffff;
+}
+
+.ListMenu:hover {
+    background: #28303e;
+}
+
+.ListMenu2:hover {
+    background: #28303e;
+}
+
+
+.UserCenter {
+    width: 180px;
+    margin-left: 20px;
+    float: left;
+}
+
+.MapData {
+    line-height: 30px;
+}
+
+.SelPos{
+    font-size: 16px;
+    margin-top: 20px;
+    line-height: 40px;
+}
+
+.SelBtn{
+    margin-top: 12px;
+}
+
+.inu {
+    width: 270px;
+}
+
+.MapSeaBtn{
+    height: 32px;
+    font-size: 12px;
+    border-radius: 4px;
+    width: 60px;
+    margin-right: 10px;
+    border: 1px solid #cccccc;
+    background-color: inherit;
+}
+
+.MapLogin{
+    margin-top: 102px;
+}
+
+.activation{
+    width: 280px;
+    float: left;
+    margin: 27px;
+}
+
+.ShowTop{
+    height: 320px;
+    width: 100%;
+}
+
+.MarBot{
+    width: 110px;
+    float: left;
+}
+
+.StoUse{
+    margin-right: 20px;
+}
+
+.search{
+    float: right;
+    margin-bottom: 12px;
+}
+
+.mod{
+    font-size: 16px;
+}
+
+

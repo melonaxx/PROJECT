@@ -1,0 +1,223 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3c.org/TR/1999/REC-html401-19991224/loose.dtd">
+<HTML xmlns="http://www.w3.org/1999/xhtml"><HEAD id=Head1><title>北京外麦王人事系统</title>
+<META http-equiv=Content-Type content="text/html; charset=utf-8">
+<LINK href="/css/Style.css" type=text/css rel=stylesheet>
+<LINK href="/css/Manage.css" type=text/css rel=stylesheet>
+<LINK href="/css/allinfo.css" type=text/css rel=stylesheet>
+<SCRIPT language=javascript src="/js/jquery-1.8.3.min.js"></SCRIPT>
+<META content="MSHTML 6.00.2900.3492" name=GENERATOR></HEAD>
+<style>
+	 input{
+	 	width:50px;
+	 }
+	 .price{
+	 	background-color:#64B51F;
+	 }
+	 .one{
+	 	background-color:orange;
+	 }
+	 .two{
+	 	background-color:#239ABF;
+	 }
+	 .three{
+	 	background-color:#C674C1;
+	 }
+	 .four{
+	 	background-color:#F0AD34;
+	 }
+	 .five{
+	 	background-color:#F74E1E;
+	 }
+	 .sex{
+	 	background-color:#FA9315;
+	 }
+</style>
+<BODY>
+<TABLE cellSpacing=0 cellPadding=0 width="98%" border=0>
+  <TBODY>
+  <TR>
+    <TD width=15><IMG src="/images/new_019.jpg" border=0></TD>
+    <TD width="100%" background=/images/new_020.jpg height=20></TD>
+    <TD width=15><IMG src="/images/new_021.jpg" 
+  border=0></TD></TR></TBODY></TABLE>
+<TABLE cellSpacing=0 cellPadding=0 width="98%" border=0>
+  <TBODY>
+  <TR>
+    <TD width=15 background=/images/new_022.jpg><IMG 
+      src="/images/new_022.jpg" border=0> </TD>
+    <TD vAlign=top width="100%" bgColor=#ffffff>
+      <TABLE cellSpacing=0 cellPadding=5 width="100%" border=0>
+        <TR>
+          <TD class=manageHead>当前位置：管理首页 &gt; 薪资添加</TD></TR>
+    </TD>
+        <TR>
+          <TD height=2></TD></TR></TABLE>
+      <TABLE borderColor=#cccccc cellSpacing=0 cellPadding=0 width="100%" 
+      align=center border=0 id="info">
+        <TBODY>
+        <TR>
+          <TD>
+            <TABLE id=grid 
+            style="BORDER-TOP-WIDTH: 0px; FONT-WEIGHT: normal; BORDER-LEFT-WIDTH: 0px; BORDER-LEFT-COLOR: #cccccc; BORDER-BOTTOM-WIDTH: 0px; BORDER-BOTTOM-COLOR: #cccccc; WIDTH: 100%; BORDER-TOP-COLOR: #cccccc; FONT-STYLE: normal; BACKGROUND-COLOR: #cccccc; BORDER-RIGHT-WIDTH: 0px; TEXT-DECORATION: none; BORDER-RIGHT-COLOR: #cccccc" 
+            cellSpacing=1 cellPadding=2 rules=all border=0>
+            <TBODY>
+             <TR 
+              style="FONT-WEIGHT: bold; FONT-STYLE: normal; BACKGROUND-COLOR: #eeeeee; TEXT-DECORATION: none;text-align: center">
+                <TD class="five">姓名</TD>
+                <TD class="five">评分</TD>
+                <TD class="five">部门</TD>
+                <td class="four">时间</td>
+                <TD class="four" height="20px">工资</TD>
+                <td class="four">假期工资</td>
+                <td class="four">加班费</td>
+                <td class="four">迟到</td>
+                <td class="four">早退</td>
+                <td class="four">旷工</td>
+                <TD class="four">总绩效</TD>
+                <TD class="four">工龄总工资</TD>
+                <TD class="four">公积金</TD>
+                <TD class="four">保险</TD>
+                <TD class="four">房补</TD>
+                <TD class="four">补贴</TD>
+                <TD class="four">奖惩</TD>
+                <TD class="four">微调</TD>
+                <TD class="four">薪酬合计</TD>
+                <TD class="four">预付</TD>
+                <TD class="four">应付</TD>
+                <td class="sex">银行卡(支付宝)</td>     
+                <td class="sex">电话号</td>     
+                <td>操作</td>     
+             </TR>
+              {foreach from=$list item=temp}
+             <TR 
+              style="FONT-WEIGHT: bold; FONT-STYLE: normal; BACKGROUND-COLOR: #eeeeee; TEXT-DECORATION: none;text-align: center" id="{$temp['id']}">
+                <TD class="five" >
+                   {$temp['name']}
+                </TD>
+                <TD class="five" >
+                   {$temp['score']}
+                </TD>
+                <TD class="five" >
+                   {$temp['classname']}
+                </TD>
+                <TD class="four" width="80px">
+                  <span id="time1">{$temp['ctime']}</span>
+                </TD>
+                <TD class="four" height="20px">
+                  <span id="price1">{$temp['price']}</span>
+                </TD>
+                <td class="four" height="20px">
+                  <span id="price1">{$temp['toleave']}</span>
+                </td>
+                <TD class="four" height="20px">
+                  <span id="price1">{$temp['overtimepay']}</span>
+                </TD>
+                <TD class="four" height="20px">
+                  <span id="price1">{$temp['late']}</span>
+                </TD>                
+                <TD class="four" height="20px">
+                  <span id="price1">{$temp['earlyleave']}</span>
+                </TD>                
+                <TD class="four" height="20px">
+                  <span id="price1">{$temp['absent']}</span>
+                </TD>
+                <TD class="four">
+                  <span id="zongjixiao1">{$temp['kpi']}</span>
+                </TD>
+                <TD class="four">
+                  <span id="agemoney1">{$temp['agemoney']}</span>
+                </TD>
+                <TD class="four">
+                  <span id="gongjijin1">{$temp['fund']}</span>
+                </TD>
+                <TD class="four">
+                  <span id="safe1">{$temp['safe']}</span>
+                </TD>
+                <TD class="four">
+                  <span id="safe1">{$temp['houseprice']}</span>
+                </TD>
+                <TD class="four">
+                  <span id="safe1">{$temp['subsidyprice']}</span>
+                </TD>
+                <TD class="four">
+                  <span id="jiangcheng1">{$temp['reward']}</span>
+                </TD>
+                <TD class="four">
+                  <span id="little">{$temp['little']}</span>
+                </TD>
+                <TD class="four">
+                  <span id="countwages1">{$temp['countwages']}</span>
+                </TD>
+                <TD class="four">
+                  <span id="yufu1">{$temp['ypay']}</span>
+                </TD>
+                <TD class="four">
+                  <span id="yingfu1">{$temp['rpay']}</span>
+                </TD>
+                <td class="sex">{$temp['banknumber']}</td>
+                <td class="sex">{$temp['phone']}</td>
+                <td>
+                    <A href="javascript:void(0)" id="delete">删除</A>
+                </td>
+             </TR> 
+             {/foreach}     
+           </TBODY>
+           </TABLE>
+        </TD>
+       </TR>
+       <TR>
+          <TD><SPAN id=pagelink>
+            <DIV 
+            style="LINE-HEIGHT: 20px; HEIGHT: 20px; TEXT-ALIGN: right">
+              [<A href="#">{$firstpage}][{$prevpage}</A>]
+              [<A class="" href="#">{$nextpage}][{$lastpage}</A>] 
+              [{$num}]条记录 第[{$nowpage}]页 共[{$maxpage}]页 
+            </DIV></SPAN>
+          </TD>
+        </TR>
+       </TBODY></TABLE></TD>
+    <TD width=15 background=/images/new_023.jpg><IMG 
+      src="/images/new_023.jpg" border=0></TD></TR></TBODY></TABLE>
+<TABLE cellSpacing=0 cellPadding=0 width="98%" border=0>
+  <TBODY>
+  <TR>
+    <TD widtht=15><IMG src="/images/new_024.jpg" border=0></TD>
+    <TD align=middle width="100%" background=/images/new_025.jpg 
+    height=15></TD>
+    <TD width=15><IMG src="/images/new_026.jpg" 
+  border=0></TD></TR></TBODY></TABLE>
+
+</BODY>
+{literal}
+<script>
+        $("#delete").live("click",function(){
+         if(confirm("确定删除吗")){
+           $(this).closest("tr").addClass("del");
+           var id=$(".del").attr("id");
+           $.ajax({
+             type: "POST",
+             url: "delslip.php",
+             data: {
+                    "id":id
+                    },
+             success: function(msg){
+              if(msg=="yes"){
+                 alert("删除成功");
+                 $(".del").closest("tr").remove();
+                 $(".del").removeClass("del");
+               }else{
+                 alert("删除失败"); 
+                 $(".del").removeClass("del");
+               }
+             },
+             error: function(){
+               alert("aja请求失败")
+            }
+          });
+         }
+      })
+
+
+</script>
+{/literal}
+</HTML>

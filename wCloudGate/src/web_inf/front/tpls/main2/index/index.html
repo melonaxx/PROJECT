@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>外麦王云平台</title>
+	<link rel="stylesheet" type="text/css" href="/css/main2/base.css"/>
+	<link rel="stylesheet" type="text/css" href="/css/main2/index/index.css"/>
+</head>
+<body>
+	<header>
+		<div class="header">
+			<div class="topleft">
+				<div class="logo">
+					<a class="img"><img src="/image/main2/logo.png"/></a>
+				</div>
+				<ul class="nav">
+					<li class="navactive"><a href="">首页</a><p></p></li>
+					<li><a href="">地图定位</a><p></p></li>
+					<li><a href="">车辆管理</a><p></p></li>
+					<li><a href="">劳务方</a><p></p></li>
+					<li><a href="">员工</a><p></p></li>
+				</ul>
+			</div>
+			<div class="useroper" style="display:none;">
+				<a class="rolename" href="">百度外卖</a>
+				<p class="useborderl"></p>
+				<ul class="useroperul">
+					<li class="useractive"><a href="">我的消息</a></li>
+					<li><a href="">认证信息</a></li>
+					<li><a href="">账号设置</a></li>
+					<li><a href="">退出</a></li>
+				</ul>
+			</div>
+			<div class="loginregister">
+				<a>登录</a>
+				<span>|</span>
+				<a>注册</a>
+			</div>
+		</div>
+	</header>
+	<div class="section">
+		<div class="wmain">
+			<ul class="wmainlist">
+				<li class="wmainlistall">
+					<span></span>
+					<p>总览</p>
+					<span class="search"></span>
+				</li>
+				<li class="wmainlistsearch" style="display: none;">
+					<div class="wmainliststop">
+						<span></span>
+						总览
+					</div>
+					<div class="searchlabor">
+						<input type="text" class="searchinput inputother"/>
+						<button></button>
+					</div>
+				</li>
+				<li class="sortmethod">
+					<div class="sortmethodactive"><h4>按平台</h4><span></span></div>
+					<div><h4>按分组</h4><span></span></div>
+				</li>
+				<div id="scrollDiv">
+					<ul class="companylist">
+						<li class="wllevel">
+							<a href="" class="wllevel1active"><span>1.</span><span class="laborname">北京百度外卖有限公司</span><p></p></a>
+						</li>
+						<li class="wllevel">
+							<a href=""><span>2.</span><span class="laborname">北京百度外卖有限公司</span><p></p></a>
+						</li><li class="wllevel">
+							<a href="" class="wllevel1active"><span>1.</span><span class="laborname">北京百度外卖有限公司</span><p></p></a>
+						</li>
+						<li class="wllevel">
+							<a href=""><span>2.</span><span class="laborname">北京百度外卖有限公司</span><p></p></a>
+						</li><li class="wllevel">
+							<a href="" class="wllevel1active"><span>1.</span><span class="laborname">北京百度外卖有限公司</span><p></p></a>
+						</li>
+						<li class="wllevel">
+							<a href=""><span>2.</span><span class="laborname">北京百度外卖有限公司</span><p></p></a>
+						</li><li class="wllevel">
+							<a href="" class="wllevel1active"><span>1.</span><span class="laborname">北京百度外卖有限公司</span><p></p></a>
+						</li>
+						<li class="wllevel">
+							<a href=""><span>2.</span><span class="laborname">北京百度外卖有限公司</span><p></p></a>
+						</li><li class="wllevel">
+							<a href="" class="wllevel1active"><span>1.</span><span class="laborname">北京百度外卖有限公司</span><p></p></a>
+						</li>
+						<li class="wllevel">
+							<a href=""><span>2.</span><span class="laborname">北京百度外卖有限公司</span><p></p></a>
+						</li><li class="wllevel">
+							<a href="" class="wllevel1active"><span>1.</span><span class="laborname">北京百度外卖有限公司</span><p></p></a>
+						</li>
+						<li class="wllevel">
+							<a href=""><span>2.</span><span class="laborname">北京百度外卖有限公司</span><p></p></a>
+						</li><li class="wllevel">
+							<a href=""><span>2.</span><span class="laborname">北京百度外卖有限公司</span><p></p></a>
+						</li>
+					</ul>
+				</div>
+				<div class="scroltit">
+					<span id="but_up"></span>
+					<span id="but_down"></span>
+				</div>
+			</ul>
+			<div class="wmaincontent">
+				<div class="wmnotice">
+					<span></span>
+					<div class="noticedivm">
+						<marquee direction="left" onMouseOut="this.start()" onMouseOver="this.stop()" scrollamount="5">
+							<b class="notice">今日通知：近期连续强降雨，部分路段湿滑</b>
+						</marquee>
+						<i class="closenoticem">&times;</i>
+					</div>
+					<div class="noticediv">
+						<p class="notices"><b class="noticetext">今日通知：近期连续强降雨，部分路段湿滑</b></p>
+						<i class="closenotice">&times;</i>
+					</div>
+				</div>
+				<div class="cartitle topcartitle">
+					<svg class="nc-icon outline" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="24px" height="24px" viewBox="0 0 24 24">
+						<g transform="translate(0, 0)">
+						<path fill="none" stroke="#666" stroke-width="2" stroke-linecap="round" stroke-miterlimit="10" d="M3,17V7c0-1.1,0.9-2,2-2h14
+							c1.1,0,2,0.9,2,2v10" stroke-linejoin="round"></path>
+						<path fill="none" stroke="#666" stroke-width="2" stroke-linecap="round" stroke-miterlimit="10" d="M23,17L23,17
+							c0,1.1-0.9,2-2,2H3c-1.1,0-2-0.9-2-2v0H23z" stroke-linejoin="round"></path>
+						<line data-color="color-2" fill="none" stroke="#666" stroke-width="2" stroke-linecap="round" stroke-miterlimit="10" x1="12" y1="14" x2="12" y2="8" stroke-linejoin="round"></line>
+						<line data-color="color-2" fill="none" stroke="#666" stroke-width="2" stroke-linecap="round" stroke-miterlimit="10" x1="16" y1="14" x2="16" y2="10" stroke-linejoin="round"></line>
+						<line data-color="color-2" fill="none" stroke="#666" stroke-width="2" stroke-linecap="round" stroke-miterlimit="10" x1="8" y1="14" x2="8" y2="12" stroke-linejoin="round"></line>
+						</g>
+					</svg>
+					车辆统计
+				</div>
+				<ul class="abnstadiv">
+					<li class="allcar">
+						<div class="circle">
+							<span class="vaimg"></span>
+							<span class="carnum">1230</span>
+							<div class="pie_left"><div class="left"></div></div>
+	    					<div class="pie_right"><div class="right"></div></div>
+	    					<div class="mask"><span class="percent" style="display: none">70</span></div>
+						</div>
+						<p class="abnstatp">所有车辆</p>
+						<div class="hidediv">
+							<p>所有车辆</p>
+							<div class="hideope">
+								<a class="opeactive">查看定位</a>
+								<a>车辆信息</a>
+							</div>
+						</div>
+					</li>
+					<li class="runcar">
+						<div class="circle">
+							<span class="vaimg"></span>
+							<span class="carnum">834</span>
+							<div class="pie_left"><div class="left"></div></div>
+	    					<div class="pie_right"><div class="right"></div></div>
+	    					<div class="mask"><span class="percent" style="display: none">50</span></div>
+						</div>
+						<div class="percentborder"></div>
+						<p class="abnstatp">正在运行</p>
+						<div class="hidediv">
+							<p>正在运行</p>
+							<div class="hideope">
+								<a class="opeactive">查看定位</a>
+								<a>车辆信息</a>
+							</div>
+						</div>
+					</li>
+					<li class="poweralarm">
+						<div class="circle">
+							<span class="vaimg"></span>
+							<span class="carnum">57</span>
+							<div class="pie_left"><div class="left"></div></div>
+	    					<div class="pie_right"><div class="right"></div></div>
+	    					<div class="mask"><span class="percent" style="display: none">40</span></div>
+						</div>
+						<div class="percentborder"></div>
+						<p class="abnstatp">电量报警</p>
+						<div class="hidediv">
+							<p>电量报警</p>
+							<div class="hideope">
+								<a class="opeactive">查看定位</a>
+								<a>车辆信息</a>
+							</div>
+						</div>
+					</li>
+					<li class="restcar">
+						<div class="circle">
+							<span class="vaimg"></span>
+							<span class="carnum">5</span>
+							<div class="pie_left"><div class="left"></div></div>
+	    					<div class="pie_right"><div class="right"></div></div>
+	    					<div class="mask"><span class="percent" style="display: none">10</span></div>
+						</div>
+						<div class="percentborder"></div>
+						<p class="abnstatp">正在休息</p>
+						<div class="hidediv">
+							<p>正在休息</p>
+							<div class="hideope">
+								<a class="opeactive">查看定位</a>
+								<a>车辆信息</a>
+							</div>
+						</div>
+					</li>
+				</ul>
+				<div class="cartitle">
+					<svg class="nc-icon outline" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="24px" height="24px" viewBox="0 0 24 24">
+						<g transform="translate(0, 0)">
+						<path fill="none" stroke="#666666" stroke-width="2" stroke-linecap="round" stroke-miterlimit="10" d="M3,17V7c0-1.1,0.9-2,2-2h14
+							c1.1,0,2,0.9,2,2v10" stroke-linejoin="round"></path>
+						<path fill="none" stroke="#666666" stroke-width="2" stroke-linecap="round" stroke-miterlimit="10" d="M23,17L23,17
+							c0,1.1-0.9,2-2,2H3c-1.1,0-2-0.9-2-2v0H23z" stroke-linejoin="round"></path>
+						<polyline data-cap="butt" data-color="color-2" fill="none" stroke="#666666" stroke-width="2" stroke-miterlimit="10" points="17,9 12,14 9,11 7,13
+							" stroke-linejoin="round" stroke-linecap="round"></polyline>
+						<polyline data-color="color-2" fill="none" stroke="#666666" stroke-width="2" stroke-linecap="round" stroke-miterlimit="10" points="
+							14,9 17,9 17,12 " stroke-linejoin="round"></polyline>
+						</g>
+					</svg>
+					<p>车辆数据统计</p>
+                </div>
+				<input type="hidden" name="power" value="<?=$power?>">
+                <input type="hidden" name="total" value="<?=$total?>">
+                <input type="hidden" name="excep" value="<?=$excep?>">
+				<div class="datanews">
+					<div class="datacontent">
+						<div id="carvalarm" style="width: 760px;height:250px;padding-bottom:0;margin-left:10px;"></div>
+						<!-- <div id="carpalarm" style="width: 760px;height:250px;padding-bottom:0;margin-left:10px;" style="display: none;"></div> -->
+						<div id="carlostcon" style="width: 760px;height:250px;padding-bottom:0;margin-left:10px;"></div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="scrolltop"></div>
+	<footer id="footer">
+		<ul>
+			<li><a href="javascript:void(0)">公司简介</a></li>
+			<li class="vbar">|</li>
+			<li><a href="javascript:void(0)">联系我们</a></li>
+			<li class="vbar">|</li>
+			<li><a href="javascript:void(0)">加入我们</a></li>
+			<li class="vbar">|</li>
+			<li><a href="javascript:void(0)">新闻中心</a></li>
+		</ul>
+		<div><a href="javascript:void(0)">北京外麦王科技有限公司版权所有&nbsp;京ICP备09092621号-3</a></div>
+	</footer>
+	<script src="/js/jquery-1.11.0.js"></script>
+	<script src="/js/main/echarts.common.min.js"></script>
+	<script type="text/javascript" src="/js/main2/common.js"></script>
+	<script src="/js/statistics.js"></script>
+	<script type="text/javascript">
+		$(".search").on("click",function(){
+			$(".wmainlistall").hide();
+			$(".wmainlistsearch").show();
+		})
+		$(".abnstadiv li").hover(function(){
+			$(this).css({"box-shadow":"0 0 4px #a9a9a9"});
+			$(this).find(".abnstatp").hide();
+			$(this).find(".hidediv").stop().animate({top:100},100);
+		},
+		function(){
+			$(this).css({"box-shadow":"none"});
+			$(this).find(".abnstatp").show();
+			$(this).find(".hidediv").stop().animate({top:200},100);
+		})	
+  		$('.circle').each(function() {
+            var num = $(this).find('.percent').text() * 3.6;
+            if (num<=180) {
+                $(this).find('.right').css({'transform':"rotate(" + num + "deg)"});
+            } else {
+                $(this).find('.right').css('transform', "rotate(180deg)");
+                $(this).find('.left').css('transform', "rotate(" + (num - 180) + "deg)");
+            };
+        });
+        $.fn.extend({
+            Scroll:function(opt,callback){
+                //参数初始化
+                if(!opt) var opt={};
+                var _btnUp = $("#"+ opt.up);//Shawphy:向上按钮
+                var _btnDown = $("#"+ opt.down);//Shawphy:向下按钮
+                var timerID;
+                var _this=this.eq(0).find("ul:first");
+                var     lineH=_this.find("li:first").height(), //获取行高
+                        line=opt.line?parseInt(opt.line,10):parseInt(this.height()/lineH,10), //每次滚动的行数，默认为一屏，即父容器高度
+                        speed=opt.speed?parseInt(opt.speed,10):500; //卷动速度，数值越大，速度越慢（毫秒）
+                if(line==0) line=1;
+                var upHeight=0-line*lineH;
+                //滚动函数
+                var scrollUp=function(){
+                    _btnUp.unbind("click",scrollUp); //Shawphy:取消向上按钮的函数绑定
+                    _this.animate({
+                        marginTop:upHeight
+                    },speed,function(){
+                        for(i=1;i<=line;i++){
+                            _this.find("li:first").appendTo(_this);
+                        }
+                        _this.css({marginTop:0});
+                        _btnUp.bind("click",scrollUp); //Shawphy:绑定向上按钮的点击事件
+                    });
+
+                }
+                //Shawphy:向下翻页函数
+                var scrollDown=function(){
+                    _btnDown.unbind("click",scrollDown);
+                    for(i=1;i<=line;i++){
+                        _this.find("li:last").show().prependTo(_this);
+                    }
+                    _this.css({marginTop:upHeight});
+                    _this.animate({
+                        marginTop:0
+                    },speed,function(){
+                        _btnDown.bind("click",scrollDown);
+                    });
+                }
+                //鼠标事件绑定
+                _btnUp.css("cursor","pointer").click( scrollUp );//Shawphy:向上向下鼠标事件绑定
+                _btnDown.css("cursor","pointer").click( scrollDown );
+
+            }
+        })
+        $("#scrollDiv").Scroll({line:1,speed:300,up:"but_up",down:"but_down"});
+        // 通知
+        /*if($(".notice").width()>740){
+        	$(".noticediv").show();
+        	$(".notices").hide();
+        	$(".wmnotice").hover(function(){
+        		$(".closenotice").show();
+        		$(".closenotice").on("click",function(){
+        			$(".wmnotice").hide();
+        			$(".topcartitle").css("margin-top","20px");
+        		})
+        	},function(){
+        		$(".closenotice").hide();
+        	});
+        }else{
+        	$(".noticediv").hide();
+        	$(".notices").show();
+        }*/
+        /*if($(".notice").width()<740 || $(".notices").width()<740){
+        	$(".noticedivm").hide();
+        	$(".noticediv").show();       	
+        }else{
+        	$("noticedivm").show();
+        	$(".noticediv").hide();
+        }
+        $(".noticedivm").hover(function(){
+    		$(".closenoticem").show();
+    	},function(){
+    		$(".closenoticem").hide();
+    	});
+    	$(".noticediv").hover(function(){
+    		$(".closenotice").show();
+    	},function(){
+    		$(".closenotice").hide();
+    	});
+    	$(".closenoticem").on("click",function(){
+			$(".wmnotice").hide();
+			$(".topcartitle").css("margin-top","20px");
+		});
+		$(".closenotice").on("click",function(){
+			$(".wmnotice").hide();
+			$(".topcartitle").css("margin-top","20px");
+		});*/
+		var notWid=$(".notice").width();
+		/*if(notWid>720){
+        	(function am(){
+        		$(".noticetext").css({marginLeft:"740px"});
+				$(".noticetext").animate({marginLeft:-notWid},20000,function(){
+					$(".noticetext").css({marginLeft:"740px"});
+					$(".noticetext").animate({marginLeft:-notWid},20000,am); 
+				});
+			})();
+        }
+        $(".noticediv").hover(function(){
+    		$(".closenotice").show();
+    		$(".closenotice").on("click",function(){
+    			$(".wmnotice").hide();
+    			$(".topcartitle").css("margin-top","20px");
+    		})
+    	},function(){
+    		$(".closenotice").hide();
+    	});*/
+    	if(notWid<720){
+    		$("marquee").width(0);
+    		$(".noticedivm").width(0);
+    		$(".noticedivm").hide();
+    		$(".noticediv").show();
+    	}else{
+    		$(".noticedivm").show();
+    		$(".noticediv").hide();
+    	}
+    	$(".noticedivm").on("mouseover",function(){
+    		$(".closenoticem").show();
+    	})
+    	$(".noticedivm").on("mouseout",function(){
+    		$(".closenoticem").hide();
+    	})
+    	$(".noticediv").on("mouseover",function(){
+    		$(".closenotice").show();
+    	})
+    	$(".noticediv").on("mouseout",function(){
+    		$(".closenotice").hide();
+    	})
+    	$(".closenoticem").on("click",function(){
+			$(".wmnotice").hide();
+			$(".topcartitle").css("margin-top","20px");
+		});
+		$(".closenotice").on("click",function(){
+			$(".wmnotice").hide();
+			$(".topcartitle").css("margin-top","20px");
+		});
+	</script>
+</body>
+</html>

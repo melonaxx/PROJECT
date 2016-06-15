@@ -1,0 +1,210 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3c.org/TR/1999/REC-html401-19991224/loose.dtd">
+<HTML xmlns="http://www.w3.org/1999/xhtml"><HEAD id=Head1><title>北京外麦王人事系统</title>
+<META http-equiv=Content-Type content="text/html; charset=utf-8">
+<LINK href="/css/Style.css" type=text/css rel=stylesheet>
+<LINK href="/css/Manage.css" type=text/css rel=stylesheet>
+<link href="/css/changeclass.css" type="text/css" rel="stylesheet">
+<SCRIPT language=javascript src="/js/jquery-1.8.3.min.js"></SCRIPT>
+<META content="MSHTML 6.00.2900.3492" name=GENERATOR></HEAD>
+<BODY>
+<FORM id=form1 name=form1 
+action=YHChannelApply.aspx?pages=4&amp;item=&amp;client=&amp;flag=0&amp;start=&amp;end=&amp;channel= 
+method=post>
+<TABLE cellSpacing=0 cellPadding=0 width="98%" border=0>
+  <TBODY>
+  <TR>
+    <TD width=15><IMG src="/images/new_019.jpg" border=0></TD>
+    <TD width="100%" background=/images/new_020.jpg height=20></TD>
+    <TD width=15><IMG src="/images/new_021.jpg" 
+  border=0></TD></TR></TBODY></TABLE>
+<TABLE cellSpacing=0 cellPadding=0 width="98%" border=0>
+  <TBODY>
+  <TR>
+    <TD width=15 background=/images/new_022.jpg><IMG 
+      src="/images/new_022.jpg" border=0> </TD>
+    <TD vAlign=top width="100%" bgColor=#ffffff>
+      <TABLE cellSpacing=0 cellPadding=5 width="100%" border=0>
+        <TR>
+          <TD class=manageHead>当前位置：管理首页 &gt; 薪酬等级</TD>
+        </TR>
+        <TR>
+          <TD height=2></TD></TR></TABLE>
+      <TABLE borderColor=#cccccc cellSpacing=0 cellPadding=0 width="100%" 
+      align=center border=0>
+        <TBODY>
+        <TR>
+          <TD>
+            <TABLE id=grid 
+            style="BORDER-TOP-WIDTH: 0px; FONT-WEIGHT: normal; BORDER-LEFT-WIDTH: 0px; BORDER-LEFT-COLOR: #cccccc; BORDER-BOTTOM-WIDTH: 0px; BORDER-BOTTOM-COLOR: #cccccc; WIDTH: 100%; BORDER-TOP-COLOR: #cccccc; FONT-STYLE: normal; BACKGROUND-COLOR: #cccccc; BORDER-RIGHT-WIDTH: 0px; TEXT-DECORATION: none; BORDER-RIGHT-COLOR: #cccccc" 
+            cellSpacing=1 cellPadding=2 rules=all border=0>
+              <TBODY>
+              <TR 
+              style="FONT-WEIGHT: bold; FONT-STYLE: normal; BACKGROUND-COLOR: #eeeeee; TEXT-DECORATION: none;text-align: center">
+                <TD cid="{$cid}" id="cid">薪酬等级</TD>
+                <TD>最低薪酬</TD>
+                <TD>最高薪酬</TD>
+                <TD>操作</TD>
+              </TR>    
+              {foreach from=$list item=temp}     
+              <TR 
+              style="FONT-WEIGHT: normal; FONT-STYLE: normal; BACKGROUND-COLOR: white; TEXT-DECORATION: none;text-align: center; height:40px" id="{$temp['id']}">
+                <TD><input type="text" style="text-align:center;" name="heartname" value="{$temp['heartname']}"></TD>
+                <td><input type="text" style="text-align:center;" name="lowpay" value="{$temp['lowpay']}">&nbsp;&nbsp;(元)</td>
+                <td><input type="text" style="text-align:center;" name="highpay" value="{$temp['highpay']}">(元)</td>
+                <TD> 
+                <A href="javascript:void(0)" id="deleteclass">删除</A>
+                </TD>
+               </TR>
+              {/foreach}
+               <TR 
+              style="FONT-WEIGHT: normal; FONT-STYLE: normal; BACKGROUND-COLOR: white; TEXT-DECORATION: none;text-align: center; height:40px" id="addheart">
+                <TD><input type="text" name="heart" style="text-align:center; border:1px solid;width:20%;height:20px;border-color:#979797;"></TD>
+                <td><input type="text" name="addlow" style="text-align:center; border:1px solid;width:10%;height:20px;border-color:#979797;">(元)</td>
+                <td><input type="text" name="addhigh" style="text-align:center; border:1px solid;width:10%;height:20px;border-color:#979797;">(元)</td>
+                <TD> 
+                <A href="javascript:void(0)" id="addclass">添加等级</A>
+                </TD>
+               </TR>
+               </TBODY>
+               </TABLE>
+            </TD>
+       </TR>
+        <TR>
+          <TD></TD></TR></TBODY></TABLE></TD>
+    <TD width=15 background=/images/new_023.jpg><IMG 
+      src="/images/new_023.jpg" border=0> </TD></TR></TBODY></TABLE>
+<TABLE cellSpacing=0 cellPadding=0 width="98%" border=0>
+  <TBODY>
+  <TR>
+    <TD width=15><IMG src="/images/new_024.jpg" border=0></TD>
+    <TD align=middle width="100%" background=/images/new_025.jpg 
+    height=15></TD>
+    <TD width=15><IMG src="/images/new_026.jpg" 
+  border=0></TD></TR></TBODY></TABLE>
+</FORM>
+</BODY>
+<script type="text/javascript" src="/js/util.js"></script>
+{literal}
+<script>
+     var cid=$("#cid").attr("cid");
+     $("#deleteclass").live("click",function(){
+         if(confirm("确定删除吗")){
+           $(this).closest("tr").addClass("del");
+           var id=$(".del").attr("id");
+           $.ajax({
+             type: "POST",
+             url: "removeheart.php",
+             data: {"id":id},
+             success: function(msg){
+                 if(msg == "删除成功"){
+                   $(".del").closest("TR").remove();
+                   $(".del").removeClass("del");
+                   alert(msg);
+                 }else{
+                 	$(".del").removeClass("del");
+                 	alert(msg);
+                 }
+             },
+             error: function(){
+               alert("ajax请求失败")
+            }
+          });
+         }
+      })
+     //星级重命名
+     $(":input[name='heartname']").focus(function(){
+     	  $(this).css('border','1px solid #e5e5e5');
+     }).blur(function(){
+          $(this).closest("tr").addClass("changename");
+            var id=$(".changename").attr("id");
+          $(this).css('border','none');         
+          $(".changename").removeClass("changename");
+          $.ajax({
+             type: "POST",
+             url: "changeheartname.php",
+             data: {"heartname":$(this).val(),"id":id},
+             success: function(msg){
+             }
+          });
+     })
+     //添加星级
+       var heart=$("input[name='heart']");
+       var addlow=$("input[name='addlow']");
+       var addhigh=$("input[name='addhigh']");
+       $("#addclass").live("click",function(){
+           if(heart.val()==""){
+               alert("薪酬等级不能为空");
+               return false;
+           }else if(addlow.val()==""){
+               alert("最低薪酬不能为空");
+               return false;
+           }else if(addhigh.val()==""){
+               alert("最高薪酬不能为空");
+               return false;
+           }else{
+               $.ajax({
+                   type: "POST",
+                   url: "addheart.php",
+                   data: {"heart":heart.val(),"cid":cid,"lowpay":addlow.val(),"highpay":addhigh.val()},
+                   success: function(msg){
+                      console.log(msg);
+                      if(msg == "no"){
+                          alert("添加失败");
+                      }else if(msg=='{"errno":4031,"errmsg":"You have no permission"}'){
+                          alert(msg);
+                      }else{
+                         var str="";
+                             str+="<tr id="+msg+"><td style='background-color:white;height:40px;text-align:center;'>"+util.htmlEncode(heart.val())+"</td>";
+                             str+="<td style='background-color:white;height:40px;text-align:center;'>"+util.htmlEncode(addlow.val())+"&nbsp;&nbsp;&nbsp;(元)</td>";
+                             str+="<td style='background-color:white;height:40px;text-align:center;'>"+util.htmlEncode(addhigh.val())+"&nbsp;&nbsp;&nbsp;(元)</td>";
+                             str+="<td style='background-color:white;height:40px;text-align:center;'><A href='javascript:void(0)' id='deleteclass'>删除</A></td></tr>";
+                          $(str).insertBefore($("#addheart"));
+                      }
+                   },
+                   error: function(){
+                     alert("ajax请求失败")
+                  }
+                });
+             }
+         })
+        //薪酬范围
+         $(":input[name='lowpay']").focus(function(){
+            $(this).css('border','1px solid #e5e5e5');
+         }).blur(function(){
+              $(this).css('border','none');
+              $(this).closest("tr").addClass("changewages");
+              var id=$(".changewages").attr("id");          
+              $(".changewages").removeClass("changewages");
+              var wage=$(this).attr("name");  //获得要修改的是基本工资还是职位奖金
+              var price=$(this).val();
+              $.ajax({
+                 type: "POST",
+                 url: "change.php",
+                 data: {"id":id,"wages":wage,"price":price},
+                 error: function(){
+                   alert("ajax请求失败")
+                }
+              });
+         })
+
+        $(":input[name='highpay']").focus(function(){
+            $(this).css('border','1px solid #e5e5e5');
+         }).blur(function(){
+              $(this).css('border','none');
+              $(this).closest("tr").addClass("changewages");
+              var id=$(".changewages").attr("id");          
+              $(".changewages").removeClass("changewages");
+              var wage=$(this).attr("name");  //获得要修改的是基本工资还是职位奖金
+              var price=$(this).val();
+              $.ajax({
+                 type: "POST",
+                 url: "change.php",
+                 data: {"id":id,"wages":wage,"price":price},
+                 error: function(){
+                   alert("ajax请求失败")
+                }
+              });
+         })
+</script>
+{/literal}
+</HTML>

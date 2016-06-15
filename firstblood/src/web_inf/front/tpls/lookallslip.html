@@ -1,0 +1,299 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3c.org/TR/1999/REC-html401-19991224/loose.dtd">
+<HTML xmlns="http://www.w3.org/1999/xhtml"><HEAD id=Head1><title>北京外麦王人事系统</title>
+<META http-equiv=Content-Type content="text/html; charset=utf-8">
+<LINK href="/css/Style.css" type=text/css rel=stylesheet>
+<LINK href="/css/Manage.css" type=text/css rel=stylesheet>
+<LINK href="/css/allinfo.css" type=text/css rel=stylesheet>
+<SCRIPT language=javascript src="/js/jquery-1.8.3.min.js"></SCRIPT>
+<META content="MSHTML 6.00.2900.3492" name=GENERATOR></HEAD>
+<style>
+	 input{
+	 	width:50px;
+	 }
+	 .price{
+	 	background-color:#64B51F;
+	 }
+	 .one{
+	 	background-color:orange;
+	 }
+	 .two{
+	 	background-color:#239ABF;
+	 }
+	 .three{
+	 	background-color:#C674C1;
+	 }
+	 .four{
+	 	background-color:#F0AD34;
+	 }
+	 .five{
+	 	background-color:#F74E1E;
+	 }
+	 .sex{
+	 	background-color:#FA9315;
+	 }
+</style>
+<BODY>
+<TABLE cellSpacing=0 cellPadding=0 width="98%" border=0>
+  <TBODY>
+  <TR>
+    <TD width=15><IMG src="/images/new_019.jpg" border=0></TD>
+    <TD width="100%" background=/images/new_020.jpg height=20></TD>
+    <TD width=15><IMG src="/images/new_021.jpg" 
+  border=0></TD></TR></TBODY></TABLE>
+<TABLE cellSpacing=0 cellPadding=0 width="98%" border=0>
+  <TR>
+    <TD width=15 background=/images/new_022.jpg><IMG src="/images/new_022.jpg" border=0></TD>
+    <TD vAlign=top width="100%" bgColor=#ffffff>
+      <TABLE cellSpacing=0 cellPadding=5 width="100%" border=0>
+        <TR>
+          <TD class=manageHead>当前位置：管理首页 &gt; 薪资查看</TD>
+        </TR>
+    </TD>
+  </TR>
+    <TR>
+      <TD height=25>
+        <TABLE cellSpacing=0 cellPadding=2 border=0>
+          <TBODY>
+          <form action="lookslip.php" method="get" id="form">
+          <TR>
+            <TD>筛选数据：
+            <select name="syear">
+                     <option value="">--选择年--</option>
+                     <option value="2016" {if $year eq '2016'}selected{/if}>2016年</option>
+                     <option value="2017" {if $year eq '2017'}selected{/if}>2017年</option>
+                     <option value="2018" {if $year eq '2018'}selected{/if}>2018年</option>
+                     <option value="2019" {if $year eq '2019'}selected{/if}>2019年</option>
+                     <option value="2020" {if $year eq '2020'}selected{/if}>2020年</option>
+            </select>
+            <select name="smonth">
+                     <option value="">--选择月--</option>
+                     <option value="01" {if $month eq '01'}selected{/if}>1月</option>
+                     <option value="02" {if $month eq '02'}selected{/if}>2月</option>
+                     <option value="03" {if $month eq '03'}selected{/if}>3月</option>
+                     <option value="04" {if $month eq '04'}selected{/if}>4月</option>
+                     <option value="05" {if $month eq '05'}selected{/if}>5月</option>
+                     <option value="06" {if $month eq '06'}selected{/if}>6月</option>
+                     <option value="07" {if $month eq '07'}selected{/if}>7月</option>
+                     <option value="08" {if $month eq '08'}selected{/if}>8月</option>
+                     <option value="09" {if $month eq '09'}selected{/if}>9月</option>
+                     <option value="10" {if $month eq '10'}selected{/if}>10月</option>
+                     <option value="11" {if $month eq '11'}selected{/if}>11月</option>
+                     <option value="12" {if $month eq '12'}selected{/if}>12月</option>
+            </select>
+            <select name="bid" id="section">
+                 <option value="">--选择部门--</option>
+
+            </select>
+            <input type="text" name="name" style="width:100px" placeholder="输入员工姓名" value="{$smarty.get.name}">
+            <input type="submit" value="搜索" id="search">
+           </TD> 
+           <td style="font-size:14px;"><b>薪酬合计:{$sumwages['countwagenum']}</b></td>
+           <td style="font-size:14px;"><b>预付合计:{$sumwages['ypaynum']}</b></td>
+           <td style="font-size:14px;"><b>应付合计:{$sumwages['rpaynum']}</b></td>
+           <td>&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;<button id="out"><b>导出Excel</b></button></td>
+          </TR>
+          </form>
+          </TBODY>
+        </TABLE>
+      </TD>
+    </TR>
+      <TR><TD height=2></TD>
+    </TR>
+</TABLE>
+      <TABLE borderColor=#cccccc cellSpacing=0 cellPadding=0 width="100%" 
+      align=center border=0>
+        <TBODY>
+        <TR>
+          <TD>
+            <TABLE id="grid" 
+            style="BORDER-TOP-WIDTH: 0px; FONT-WEIGHT: normal; BORDER-LEFT-WIDTH: 0px; BORDER-LEFT-COLOR: #cccccc; BORDER-BOTTOM-WIDTH: 0px; BORDER-BOTTOM-COLOR: #cccccc; WIDTH: 100%; BORDER-TOP-COLOR: #cccccc; FONT-STYLE: normal; BACKGROUND-COLOR: #cccccc; BORDER-RIGHT-WIDTH: 0px; TEXT-DECORATION: none; BORDER-RIGHT-COLOR: #cccccc" 
+            cellSpacing=1 cellPadding=2 rules=all border=0>
+            <TBODY>
+             <TR 
+              style="FONT-WEIGHT: bold; FONT-STYLE: normal; BACKGROUND-COLOR: #eeeeee; TEXT-DECORATION: none;text-align: center">
+                <TD class="five">姓名</TD>
+                <TD class="five">部门</TD>
+                <TD class="five">评分</TD>
+                <td class="four">时间</td>
+                <TD class="four" height="20px">工资</TD>
+                <TD class="four" height="20px">加班费</TD>
+                <td class="four">迟到</td>
+                <td class="four">早退</td>
+                <td class="four">旷工</td>
+                <TD class="four">总绩效</TD>
+                <TD class="four">工龄工资</TD>
+                <TD class="four">公积金</TD>
+                <TD class="four">保险</TD>
+                <TD class="four">房补</TD>
+                <TD class="four">补贴</TD>
+                <TD class="four">奖惩</TD>
+                <TD class="four">假期工资</TD>
+                <TD class="four">微调</TD>
+                <TD class="four">薪酬合计</TD>
+                <TD class="four">预付</TD>
+                <TD class="four">应付</TD>
+                <td class="sex">银行卡(支付宝)</td>     
+                <td class="sex">电话号</td>      
+             </TR>
+             {foreach from=$list item=$temp}
+             <TR 
+              style="FONT-WEIGHT: bold; FONT-STYLE: normal; BACKGROUND-COLOR: #eeeeee; TEXT-DECORATION: none;text-align: center" id="{$temp['payid']}">
+                <TD class="five" >
+                   {$temp['name']}
+                </TD>
+                <TD class="five" >
+                   {$temp['classname']}
+                </TD>
+                <TD class="five">{$temp['score']}</TD>
+                <TD class="four" width="80px">
+                  <span id="time1">{$temp['ctime']}</span>
+                </TD>
+                <TD class="four" height="20px">
+                  <span id="price1">{$temp['price']}</span>
+                </TD>
+                <TD class="four" height="20px">
+                  <span id="price1">{$temp['overtimepay']}</span>
+                </TD>
+                <TD class="four" height="20px">
+                  <span id="price1">{$temp['late']}</span>
+                </TD>                
+                <TD class="four" height="20px">
+                  <span id="price1">{$temp['earlyleave']}</span>
+                </TD>                
+                <TD class="four" height="20px">
+                  <span id="price1">{$temp['absent']}</span>
+                </TD>
+                <TD class="four">
+                  <span id="zongjixiao1">{$temp['kpi']}</span>
+                </TD>
+                <TD class="four">
+                  <span id="agemoney1">{$temp['agemoney']}</span>
+                </TD>
+                <TD class="four">
+                  <span id="gongjijin1">{$temp['fund']}</span>
+                </TD>
+                <TD class="four">
+                  <span id="safe1">{$temp['safe']}</span>
+                </TD>
+                <TD class="four">
+                  <span id="safe1">{$temp['houseprice']}</span>
+                </TD>
+                <TD class="four">
+                  <span id="safe1">{$temp['subsidyprice']}</span>
+                </TD>
+                <TD class="four">
+                  <span id="jiangcheng1">{$temp['reward']}</span>
+                </TD>
+                <TD class="four">
+                  <span>{$temp['toleave']}</span>
+                </TD>
+                <TD class="four">
+                  <span>{$temp['little']}</span>
+                </TD>
+                <TD class="four">
+                  <span id="countwages1">{$temp['countwages']}</span>
+                </TD>
+                <TD class="four">
+                  <span id="yufu1">{$temp['ypay']}</span>
+                </TD>
+                <TD class="four">
+                  <span id="yingfu1">{$temp['rpay']}</span>
+                </TD>
+                <td class="sex">{$temp['banknumber']}</td>
+                <td class="sex">{$temp['phone']}</td>
+             </TR> 
+             {/foreach}
+           </TBODY>
+           </TABLE>
+        </TD>
+       </TR>
+       <TR>
+          <TD><SPAN id=pagelink>
+            <DIV 
+            style="LINE-HEIGHT: 20px; HEIGHT: 20px; TEXT-ALIGN: right">
+              [<A href="#">{$firstpage}][{$prevpage}</A>]
+              [<A class="" href="#">{$nextpage}][{$lastpage}</A>] 
+              [{$num}]条记录 第[{$nowpage}]页 共[{$maxpage}]页 
+            </DIV></SPAN>
+          </TD>
+        </TR>
+       </TBODY></TABLE></TD>
+    <TD width=15 background=/images/new_023.jpg><IMG 
+      src="/images/new_023.jpg" border=0> </TD></TR></TBODY></TABLE>
+<TABLE cellSpacing=0 cellPadding=0 width="98%" border=0>
+  <TBODY>
+  <TR>
+    <TD widtht=15><IMG src="/images/new_024.jpg" border=0></TD>
+    <TD align=middle width="100%" background=/images/new_025.jpg 
+    height=15></TD>
+    <TD width=15><IMG src="/images/new_026.jpg" 
+  border=0></TD></TR></TBODY></TABLE>
+
+</BODY>
+{literal}
+<script>
+        $("#delete").live("click",function(){
+         if(confirm("确定删除吗")){
+           $(this).closest("tr").addClass("del");
+           var id=$(".del").attr("id");
+           $.ajax({
+             type: "POST",
+             url: "delslip.php",
+             data: {"id":id},
+             success: function(msg){
+               if(msg=='{"errno":4031,"errmsg":"You have no permission"}'){
+                  alert(msg);
+               }else if(msg=="yes"){
+                 alert("删除成功");
+                 $(".del").closest("tr").remove();
+                 $(".del").removeClass("del");
+               }else{
+                 alert("删除失败"); 
+                 $(".del").removeClass("del");
+               }
+             },
+             error: function(){
+               alert("aja请求失败");
+            }
+          });
+         }
+      })
+
+
+              //所有部门
+      $("#section").live("focus",function(){
+          ob=$(this);
+          $.ajax({
+             type: "POST",
+             url: "selname.php",
+             dataType: "json",
+             async: true,
+             success: function(data){
+                if(data.errmsg=="You have no permission"){
+                    return false;
+                }else{
+                 var str="";
+                     str+="<option value=''>--选择部门--</option>";
+                 for(var i=0;i<data.length;i++){
+                        str+="<option id='xxx' value="+data[i].id+">"+data[i].class_name+"</option>";
+                    var str1=str; 
+                    }
+                 ob.empty().append(str);
+                }
+             },
+             error: function(){
+               alert("ajax请求失败")
+            }
+          });
+      })
+
+
+ $("#out").click(function(){
+     var xxx = $("#form").attr("action","outwage.php");
+ })
+ $("#search").click(function(){
+     var xxx = $("#form").attr("action","lookslip.php");
+ })
+</script>
+{/literal}
+</HTML>

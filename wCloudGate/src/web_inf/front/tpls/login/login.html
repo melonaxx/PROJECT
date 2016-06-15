@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>外麦王云平台</title>
+	<link rel="stylesheet" type="text/css" href="/css/main2/base.css"/>
+	<link rel="stylesheet" type="text/css" href="/css/main2/login/login.css"/>
+</head>
+<body>
+	<header>
+		<div class="header">
+			<div class="topleft">
+				<div class="logo">
+					<a href="/index.php" class="img"><img src="/image/main2/logo.png"/></a>
+				</div>
+				<p></p>
+				<p>欢迎登录</p>
+			</div>
+		</div>
+	</header>
+	<section>
+		<div class="main">
+			<div class="loginform">
+			<ul class="loginmethod loginchoice">
+				<li class="lmactive lline"><a>普通登录</a></li>
+				<span class="sepborder"></span>
+				<li class="pline "><a>手机动态码登录</a></li>
+			</ul>
+
+			<div class="form login">
+				<div class="msg" style="display:none;margin-bottom: 10px;color:red;"></div>
+				<input type="text" placeholder="请输入您的手机号" maxlength="11" name="pphone" />
+				<div class="error-message">
+				</div>
+				<input type="password" placeholder="请输入您的密码" name="ppassword"/>
+				<div class="error-message">
+				</div>
+				<div class="checkdiv">
+					<input type="checkbox" name="checkbox1" /><div></div>
+					<p>七天内自动登录</p>
+				</div>
+				<div></div>
+				<button class="agreenbtn loginbtn">登录</button>
+				<div class="otherope">
+					<div>还没有外麦云账户？<a href="/register.php">免费注册</a></div>
+					<!-- <a href="javascript:void(0)" class="forgotpw">忘记密码？</a> -->
+				</div>
+			</div>			
+
+			<div class="form login_phone"  style="display: none;" >
+				<div class="msg" style="display:none;margin-bottom: 10px;color:red;"></div>
+				<div>
+				<input type="text" placeholder="请输入您的手机号" maxlength="11" name="phone" /></div>
+				<div class="error-message">
+				</div>
+				<div class="verifycode">
+					<input type="text" placeholder="请输入图中正确验证码"  maxlength="4" name="captcha" />
+					<img class="imgCaptcha" src="/captcha.php?l=login&=<?=time()?>" />
+				</div>
+				<div class="error-message">
+				</div>
+				<div class="dynamiccode">
+					<button class="smscodebtn">获取动态码</button>
+					<div class="codetimes" style="display:none;">
+						<span class="nums">60</span>&nbsp;秒后重新获取动态码
+					</div>
+				</div>
+				<div>
+				<input type="text" placeholder="请输入手机动态码" maxlength="4" name="smscode"/></div>
+				<div class="error-message">
+				</div>
+				<div class="checkdivp">
+					<input type="checkbox" name="checkbox2"/><div></div>
+					<p>七天内自动登录</p>
+				</div>
+				<div></div>
+				<button class="agreenbtn loginphonebtn">登录</button>
+				<div class="otheropep">
+					<div>还没有外麦云账户？<a href="/register.php">免费注册</a></div>
+					<!-- <a href="javascript:void(0)" class="forgotpw">忘记密码？</a> -->
+				</div>
+			</div>
+
+			</div>
+		</div>
+	</section>
+
+	<?php include("footer.html"); ?>
+	<script src="/js/jquery-1.8.2.min.js"></script>
+	<script src="/js/main2/common.js"></script> 
+	<script src="/js/util.js"></script>
+	<script src="/js/login/login.js"></script>
+	<script src="/js/login/loginphone.js"></script>
+	
+</body>
+</html>

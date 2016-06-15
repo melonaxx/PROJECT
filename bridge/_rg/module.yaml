@@ -1,0 +1,40 @@
+modules: 
+    - !R.module &base_svc
+        name: "base_svc"
+        res:
+            - !R.nginx
+                sudo : True 
+
+    - !R.module &smarty_tpl
+        name: "smarty_tpl"
+        res:
+            - !R.vars
+                RENDERER    : "Smarty"
+                REND_ENGINE : "/usr/local/lib/smarty/libs"
+                SMARTY_CONFIG : ""
+
+    - !R.module &sundial_action
+        name: "sundial_action"
+        res:
+            - !R.nginx
+                sudo : True 
+            - !R.vars
+                RUN_PATH    : "${PRJ_ROOT}/run/${APP_SYS}"
+            - !R.nginx_conf_tpl  
+                tpl: "${PRJ_ROOT}/conf/options/tpl_${APP_SYS}_ngx.conf" 
+                dst: "${PRJ_ROOT}/conf/used/${USER}_${PRJ_KEY}_${APP_SYS}_ngx.conf" 
+                sudo: True
+            - !R.fpm_svc
+                fpm_conf: "${ENV}"
+            - !R.autoload 
+                src:  "${SUNDIAL}/:${MODULES}"
+            - !R.action
+                src: "${PRJ_ROOT}/src/apps/${APP_SYS}"
+
+    - !R.module &sundial_php        
+        name: "sundial_php"
+        res:
+            - !R.vars
+                RUN_PATH    : "${PRJ_ROOT}/run/${APP_SYS}"
+            - !R.autoload 
+                src:  "${SUNDIAL}/:${MODULES}"

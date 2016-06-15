@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>外麦王云平台</title>
+        <link rel="stylesheet" type="text/css" href="/css/main2/base.css"/>
+        <link rel="stylesheet" type="text/css" href="/css/main2/labor/labor_management.css"/>
+    </head>
+    <body>
+        <?php include("header.html"); ?>
+        <div class="section">
+            <div class="wmain">
+                <ul class="wmainlist">
+                    <li class="wllevel1">
+                    <a href="/labor/labormanage.php" class="wllevel1active"><span></span>劳务方管理<p class="wlrightarrow"></p></a>
+                    </li>
+                    <li class="wllevel1" <?=$operation['laboradd']?> >
+                    <a href="/labor/addlabor.php"><span></span>添加劳务方<p></p></a>
+                    </li>
+                </ul>
+                <div class="wmaincontent">
+                    <h1 class="wmch1">|&nbsp;劳务方管理</h1>
+                    <div class="filterbox">
+                        <form method="get" action="labormanage.php">
+                            <div class="searchdiv">  
+                                <button  style="float: right;"></button>      
+                                <input style="float: right;" type="text" name="laborname" value="<?php echo $namer?$namer:"" ?>" placeholder="请输入劳务方名称" class="carsearch"/>                                
+                                <select class="employee" name="employee" <?php if($usertype === "0"){echo "disabled style='display:none;'";}?>>
+                                    <option value="">所属员工</option>
+                                    <?php
+                                    for($i=0;$i<count($emp);$i++){
+
+                                    if($employeeid === $emp[$i]['id']){
+                                        $val = "selected";
+                                    }else{
+                                        $val = "";
+                                    }
+                                    if($emp[$i]['name'] == ""){
+                                        $name = $emp[$i]['mobileno'];
+                                    }else{
+                                        $name = $emp[$i]['name'];
+                                    }        
+                                    echo "<option value='{$emp[$i]['id']}'".$val." >".$name."</option>";
+                                    }
+                                    ?>
+                                </select>
+                            </div>
+                        </form>
+                    </div>
+                    <?php
+                        if(!empty($arr)){
+                            for($i=0;$i<count($arr);$i++){
+                                if(empty($arr[$i]['username'])){$name=$arr[$i]['mobileno'];}else{$name=$arr[$i]['username'];}
+                                if($name === 0){$name="";}
+                                if($arr[$i]['ebikenum'] === NULL){$num = $arr[$i]['sum'];}else{$num = $arr[$i]['ebikenum'];}    
+                                echo "<div class='carmtable'>";
+                                echo "<div class='carmtr'>";
+                                echo "<div class='carmtop'>";   
+                                echo "<div class='inputi-groupc'>";   
+                                    echo "<labor>劳务方:&nbsp;</labor>";                
+                                    echo "<span>".$arr[$i]['name']."</span>";
+                                echo "</div>";
+                                echo "<h4>操作</h4>";
+                                echo "</div>";
+                                echo "<div class='carmtrcontent'>";
+                                echo "<span class='serialnum'>".($i+1)."</span>";
+                                echo "<div class='cartrinf'>";
+                                    echo "<div class='input-groupc'>";
+                                        echo "<label><p>所属员工&nbsp;:&nbsp;&nbsp;</p></label>";
+                                        echo "<span class='brand' attr='{$arr[$i]['userid']}' laborid='{$arr[$i]['laborid']}'>".$name."<a class='modifyemp tablea empnum'>修改</a></span>";
+                                    echo "</div>";
+                                        echo "<label><p>负责人&nbsp;:&nbsp;&nbsp;".$arr[$i]['linkman']."</p></label>";
+                                        echo "<span class='brand'>手机号:".$arr[$i]['linkmono']."</a></span>";
+                                    echo "<div class='input-groupc'>";
+                                        echo "<label><p>车辆数量&nbsp;:&nbsp;&nbsp;</p></label>";
+                                        echo "<span>".$num."<a ".$operation['labornocar']."class='see' attr='{$arr[$i]['laborid']}'>查看</a></span>";
+                                    echo "</div>";        
+                                echo "</div>";
+                                echo "<div class='cartrope'>";
+                                    echo "<a href='/gotomap.php?inttype=plall&laborid={$arr[$i]['laborid']}'>查看定位</a>";
+                                    echo "<a href='/platform/carmanagement.php?labour={$arr[$i]['laborid']}'>车辆信息</a>";
+                                    echo "<a ".$operation['laborcar']." class='add' attr='{$arr[$i]['laborid']}'>分配车辆</a>";
+                                    echo "<a class='del' ".$operation['labordel']." attr='{$arr[$i]['laborid']}'>删除</a>";
+                                echo "</div>";
+                                echo "</div>";
+                                echo "</div>";
+                                }
+                        }
+                    ?>
+                    <div class="page">
+                        <span>每页&nbsp;:</span>
+                        <select  name="pagenum">
+                            <option <?php if($_SESSION['page']===10){echo "selected";}?> value='10'>10</option>
+                            <option <?php if($_SESSION['page']===20){echo "selected";}?> value='20'>20</option>
+                            <option <?php if($_SESSION['page']===30){echo "selected";}?> value='30'>30</option>
+                            <option <?php if($_SESSION['page']===40){echo "selected";}?> value='40'>40</option>
+                            <option <?php if($_SESSION['page']===50){echo "selected";}?> value='50'>50</option>
+                            <option <?php if($_SESSION['page']===60){echo "selected";}?> value='60'>60</option>
+                            <option <?php if($_SESSION['page']===70){echo "selected";}?> value='70'>70</option>
+                            <option <?php if($_SESSION['page']===80){echo "selected";}?> value='80'>80</option>
+                            <option <?php if($_SESSION['page']===90){echo "selected";}?> value='90'>90</option>
+                            <option <?php if($_SESSION['page']===100){echo "selected";}?> value='100'>100</option>
+                        </select>&nbsp;
+                        <a href="/labor/labormanage.php?<?php if(empty(!$_GET['laborname'])){echo "laborname=".$_GET['laborname']."&";} if(!empty($_GET['employee'])){echo "&employee=".$_GET['employee']."&";}?>num=1" >首页</a>
+                        <a href="/labor/labormanage.php?<?php if(empty(!$_GET['laborname'])){echo "laborname=".$_GET['laborname']."&";} if(!empty($_GET['employee'])){echo "&employee=".$_GET['employee']."&";}?>num=<?php if(!$_GET['num'] || $_GET['num']==1 ||$pageAll==0){echo 1;}else{echo ($_GET['num']-1);}?>" >上一页</a>
+                        <span>第</span>
+                        <input type="text" maxlength="5" class="nowpage carpagetext" value="<?php if($_GET['num']){echo $_GET['num'];}else{echo 1;}?>"/>
+                        <span>页</span>
+                        <span>(共</span>
+                        <span class="pageallnum"><?php if($pageAll) echo $pageAll; else echo 0;?></span>
+                        <span>页,</span>
+                        <span><?php if($total) echo $total; else echo 0;?></span>
+                        <span>条)</span>
+                        <a href="/labor/labormanage.php?<?php if(empty(!$_GET['laborname'])){echo "laborname=".$_GET['laborname']."&";} if(!empty($_GET['employee'])){echo "&employee=".$_GET['employee']."&";}?>num=<?php if(empty($_GET['num']) && $pageAll !=0 && $pageAll != 1){echo 2;}elseif($pageAll==0 || $pageAll ==1){echo 1;}else{if($_GET['num']==$pageAll){echo $pageAll;}else{echo ($_GET['num']+1);}}?>" >下一页</a>
+                        <a href="/labor/labormanage.php?<?php if(empty(!$_GET['laborname'])){echo "laborname=".$_GET['laborname']."&";} if(!empty($_GET['employee'])){echo "&employee=".$_GET['employee']."&";}?>num=<?php if($pageAll==0){echo 1;}else{echo $pageAll;}?>" >末页</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div style="display:none;"  class="laborid"></div>
+        <!-- 所属员工修改 -->
+        <div class="modal modalmodnum" id="modalmodemp">
+            <div class="cover"></div>
+            <div class="modalbox">
+            <form action="updatelabor.php" method="get">
+                <input name="userrid" class="userrid"  type="hidden"/>
+                <input name="laborid" class="laborid"  type="hidden"/>
+                <div class="input-group">
+                    <label>所属员工&nbsp;:&nbsp;&nbsp;</label>
+                    <select name="staff">
+                        <option value="">无</option>
+                        <?php
+                        for($i=0;$i<count($emp);$i++){
+                        if(empty($emp[$i]['name'])){$name=$emp[$i]['mobileno'];}else{$name=$emp[$i]['name'];}
+                        echo "<option value='{$emp[$i]['id']}'>".$name."</option>";
+                        }
+                        ?>
+                    </select>
+                </div>
+                <input type="submit" class="updatelabor" style="display:none;"  value="提交"/>
+             </form>
+                <div class="btns">
+                    <button class="suremodemp sureemp">确定</button>
+                    <button class="cancelmodemp cancelemp">取消</button>
+                </div>
+            </div>
+        </div>
+        <!-- 分配车辆操作 -->
+        <div class="modal modall" id="modaldistribute">
+            <div class="cover"></div>
+            <div class="modalbox">
+<!--                <button class="operatebtn distribtn">分配</button>-->
+                <img src="/image/main2/cencel.jpg" class="close"/>
+                <div class="tablediv">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th><input type="checkbox" class="choiceall checkall"/></th>
+                                <th>序号</th>
+                                <th>序列号</th>
+                                <th>状态</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!--<tr>
+                                <td><input type="checkbox" name="distcheckbox"/></td>
+                                <td>1</td>
+                                <td>1462345701433532</td>
+                                <td>成功</td>
+                                <td><a>取消</a></td>
+                            </tr>
+                            <tr>
+                                <td><input type="checkbox" name="distcheckbox"/></td>
+                                <td>1</td>
+                                <td>1462345701433532</td>
+                                <td></td>
+                                <td><a>分配</a></td>
+                            </tr>-->
+                        </tbody>
+                    </table>
+                </div>
+                <div class="btns">                                   
+                    <button class="suredistcar">分配</button>        
+                    <button class="canceldistcar">取消</button>      
+                </div>                                               
+            </div>
+        </div>
+        <!-- 分配车辆操作点击分配按钮无选中 -->
+<!--        <div class="modal" id="modalnoselect">-->
+<!--            <div class="cover coverson"></div>-->
+<!--            <div class="modalbox">-->
+<!--                <p>请选择要分配的车辆</p>-->
+<!--                <button class="finishbtn suresel">确定</button>-->
+<!--            </div>-->
+<!--        </div>-->
+        <!-- 删除操作 -->
+        <div class="modal modaldel" id="modaldelete">
+            <div class="cover"></div>
+            <div class="modalbox">
+                <p>删除该劳务方后，由您公司分配的车辆将回到您公司未分配的车辆中。</p>
+                <p>确定删除吗？</p>
+                <div class="btns">
+                    <button class="suredel">确定</button>
+                    <button class="canceldel">取消</button>
+                </div>
+            </div>
+        </div>
+        <!-- 查看拥有车辆 -->
+        <div class="modal modalcar" id="modaldistribute">
+            <div class="cover"></div>
+            <div class="modalbox">
+                <img src="/image/main2/cencel.jpg" class="close"/>
+                <div class="tablediv">
+                    <table class="see-ebike">
+                        <thead>
+                            <tr>
+                                <th>序号</th>
+                                <th>序列号</th>
+                                <th>状态</th>
+                                <th>操作</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!--<tr>
+                                <td><input type="checkbox" name="distcheckbox"/></td>
+                                <td>1</td>
+                                <td>1462345701433532</td>
+                                <td>成功</td>
+                                <td><a>取消</a></td>
+                            </tr>
+                            <tr>
+                                <td><input type="checkbox" name="distcheckbox"/></td>
+                                <td>1</td>
+                                <td>1462345701433532</td>
+                                <td></td>
+                                <td><a>分配</a></td>
+                            </tr>-->
+                        </tbody>
+                    </table>
+                </div>
+                <div class="finishdiv"><button class="finishbtn">确定</button></div>
+            </div>
+        </div>
+         <?php include("footer.html"); ?>
+        <script src="/js/jquery-1.11.0.js"></script>
+        <script type="text/javascript" src="/js/main2/common.js"></script>
+        <script src="/js/labor/labor.js"></script>
+        <script src="/js/util.js"></script>
+    </body>
+</html>

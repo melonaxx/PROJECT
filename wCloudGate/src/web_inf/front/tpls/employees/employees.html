@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>外麦王云平台</title>
+	<link rel="stylesheet" type="text/css" href="/css/main2/base.css"/>
+	<link rel="stylesheet" type="text/css" href="/css/main2/employees/employees_management.css"/>
+</head>
+<body>
+	<?php include("header.html")?>
+	<div class="section">
+		<div class="wmain">
+			<ul class="wmainlist">
+				<li class="wllevel1">
+					<a href="/employees.php" class="wllevel1active"><span></span>员工管理<p class="wlrightarrow"></p></a>
+				</li>
+				<li class="wllevel1" <?=$operation['employeeadd']?>>
+					<a href="/employeesadd.php"><span></span>员工添加<p></p></a>
+				</li>
+			</ul>
+			<div class="wmaincontent">
+				<h1 class="wmch1">|&nbsp;员工管理</h1>
+				<div class="filterbox">
+					<div class="searchdiv">
+						<form action="/employees.php" method="get">
+				        <input type="text" class="carsearch" name="name" placeholder="请输入员工名称" value="<?php if($_GET['name']) echo $_GET['name'] ?>" />
+						<button type="submit" class="searchbutton"></button>
+						</form>
+					</div>
+				</div>
+
+
+<!-- 				<table class="htable" >
+					<thead>
+						<tr>
+							<th>序号</th>
+							<th>员工</th>
+							<th>电话</th>
+							<th>邮箱</th>
+							<th>状态</th>
+							<?php if($usertype == 1) echo "
+							<th>劳务方数量</th>
+							<th>车辆数量</th>
+							<th>操作</th>
+							" ?>
+						</tr>
+					</thead>
+					<tbody>
+					<?php
+						$datatr = '';
+						if($data) {
+							for($i = 0; $i < count($data); $i++ ) {
+								$datatr .= "<tr >";
+								$datatr .= "<td >".($i+1)."</td>";
+								$datatr .= "<td>".$data[$i]['name']."</td>";
+								$datatr .= "<td>".$data[$i]['mobileno']."</td>";
+								$datatr .= "<td>".$data[$i]['email']."</td>";
+								if($data[$i]['status'] == -2){
+									$datatr .= "<td>未完善信息</td>";
+								}else{
+									$datatr .= "<td>正常</td>";
+								}
+								if($usertype == 1) {
+									$datatr .= "<td>".$data[$i]['labnum']."</td>";
+									$datatr .= "<td>".$data[$i]['cnt'];
+									if($data[$i]['cnt']) {
+									$datatr .= "&nbsp;<a class='emcar'>查看</a></td>";
+									}
+									
+									$datatr .= "<td employeid=".$data[$i]['id']." permission=".$data[$i]['authority'].">
+									<a class='addlabor ' >分配劳务方</a>&nbsp;";
+									
+									$datatr .= "<a class='distperm' >分配权限</a>&nbsp;<a class='showcar' >分配车辆</a>&nbsp;";
+									$datatr .= "<a ".$operation['employeedel']." class='del'>删除</a></td>";
+								}
+								$datatr .= "</tr>";
+							}								
+							echo $datatr;
+						}else {
+							echo $datatr;
+						}
+					?>
+
+					</tbody>
+				</table> -->
+
+
+<?php
+$datatr = '';
+if($data) {
+	for($i = 0; $i < count($data); $i++ ) {
+	$datatr .= '		<div class="carmtable">';
+	$datatr .= '			<div class="carmtr">';
+	$datatr .= '				<div class="carmtop">';
+	$datatr .= '					<div class="input-groupc">';
+	$datatr .= "						<label>员工&nbsp;:</label>";
+	$datatr .= "						<span>".$data[$i]['name']."</span>";
+	$datatr .= "					</div>";
+	$datatr .= '					<div class="input-groupc topinputg2">';
+	$datatr .= "						<label><p>电话&nbsp;:&nbsp;&nbsp;</p></label>";
+	$datatr .= "						<span>".$data[$i]['mobileno']."</span>";
+	$datatr .= "					</div>";
+	if($usertype == 1) {
+	$datatr .= "					<h4>操作</h4>";
+	}
+	$datatr .= "				</div>";
+	$datatr .= "				<div class='carmtrcontent'>";
+	$datatr .= "					<span class='serialnum'>".($i+1)."</span>";
+	$datatr .= "					<div class='cartrinf'>";
+	$datatr .= "						<div class='input-groupc'>";
+	$datatr .= "							<label><p>状态&nbsp;:&nbsp;&nbsp;</p></label>";
+		if($data[$i]['status'] == -2){
+			$datatr .= "<span>未完善信息</span>";
+		}else{
+			$datatr .= "<span>正常</span>";
+		}
+	$datatr .= "						</div>";
+	if($usertype == 1) {
+	$datatr .= '						<div class="input-groupc">';
+	$datatr .= "							<label><p>车辆数量&nbsp;:&nbsp;&nbsp;</p></label>";
+	$datatr .= "							<span>".$data[$i]['cnt'];
+	if($data[$i]['cnt']) 
+	$datatr .= '<a class="check tablea emcar">查看</a>';
+	$datatr .= "						</span></div>";
+	}
+	$datatr .= '						<div class="input-groupc">';
+	$datatr .= "							<label><p>邮箱&nbsp;:&nbsp;&nbsp;</p></label>";
+	$datatr .= "							<span>".$data[$i]['email']."</span>";
+	$datatr .= "						</div>";
+	if($usertype == 1) {
+	$datatr .= '						<div class="input-groupc">';
+	$datatr .= '							<label class="spelabel"><p>劳务方数量&nbsp;:&nbsp;&nbsp;</p></label>';
+	$datatr .= "							<span>".$data[$i]['labnum']."</span>";
+	$datatr .= "						</div>";
+	}
+	$datatr .= "					</div>";
+	if($usertype == 1) {
+	$datatr .= '					<div class="cartrope">';
+	$datatr .= '						<div class="distriopea">';
+	$datatr .= "							<a>分配</a>";
+	$datatr .= "							<ul>";
+	$datatr .= '								<li><a class="distriright distperm">权限</a></li>';
+	$datatr .= '								<li><a class="districar showcar">车辆</a></li>';
+	$datatr .= '								<li employeid="'.$data[$i]['id'].'" permission="'.$data[$i]['authority'].'" ><a class="distrilabor addlabor">劳务方</a></li>';
+	$datatr .= "							</ul>";
+	$datatr .= "						</div>";
+	$datatr .= '						<a class="delete del">删除</a>';
+	$datatr .= "					</div>";
+	}
+	$datatr .= "				</div>";
+	$datatr .= "			</div>";
+	$datatr .= "		</div>";
+	}}
+	echo $datatr;
+?>
+
+
+				<div class="page">
+				<span>每页&nbsp;:</span>
+				<select class="nowpagesel" name="pagenum">
+					<option <?php if ($_GET['page'] == 10) echo selected?> >10</option>
+					<option <?php if ($_GET['page'] == 20) echo selected?> >20</option>
+					<option <?php if ($_GET['page'] == 30) echo selected?> >30</option>
+					<option <?php if ($_GET['page'] == 40) echo selected?> >40</option>
+					<option <?php if ($_GET['page'] == 50) echo selected?> >50</option>
+					<option <?php if ($_GET['page'] == 60) echo selected?> >60</option>
+					<option <?php if ($_GET['page'] == 70) echo selected?> >70</option>
+					<option <?php if ($_GET['page'] == 80) echo selected?> >80</option>
+					<option <?php if ($_GET['page'] == 90) echo selected?> >90</option>
+					<option <?php if ($_GET['page'] == 100) echo selected?> >100</option>
+				</select>&nbsp;
+				<a href="/employees.php?name=<?=$_GET['name']?>&num=1&pageall=<?=$pageall?>&page=<?=$page?>" >首页</a>
+				<a href="/employees.php?name=<?=$_GET['name']?>&num=<?php echo $num-1;?>&pageall=<?=$pageall?>&page=<?=$page?>" >上一页</a>
+				<span>第</span>
+				<input type="text" maxlength="5" class="nowpage carpagetext" value="<?php if($num) echo $num; else echo 1;?>"/>
+				<span>页</span>
+				<span>(共</span>
+				<span class="pageallnum"><?php if($pageall) echo $pageall; else echo 0;?></span>
+				<span>页,</span>
+				<span><?php if($data) echo $count; else echo 0;?></span>
+				<span>条)</span>
+				<a href="/employees.php?name=<?=$_GET['name']?>&num=<?php echo $num+1; ?>&pageall=<?=$pageall?>&page=<?=$page?>" >下一页</a>
+				<a href="/employees.php?name=<?=$_GET['name']?>&num=<?=$pageall?>&pageall=<?=$pageall?>&page=<?=$page?>" >末页</a>
+				</div>
+
+
+			</div>
+		</div>
+	</div>
+	
+	<!-- 查看拥有车辆 -->
+	<div class="modal modalcar" id="modalcheck">
+		<div class="cover"></div>
+		<div class="modalbox lookemcar">
+			<div class="tablediv tablecheck">
+				<table>
+					<thead>
+						<tr>
+							<th>序号</th>
+							<th>序列号</th>
+							<th>状态</th>
+							<th>操作</th>
+						</tr>
+					</thead>
+					<tbody>
+	
+					</tbody>
+				</table>
+			</div>
+			<button class="finishbtn finishcheck">完成</button>
+		</div>
+	</div>
+
+	<!-- 权限 -->
+	<div class="modal permission" id="modaldistright">
+		<div class="cover"></div>
+		<div class="modalbox">
+			<h1>分配权限</h1>
+			<h2>车辆管理</h2>
+			<div class="distrcheck ">
+				<div><input type="checkbox" name="1" value="" />添加</div>
+				<div><input type="checkbox" name="1" value="" />删除</div>
+			</div>
+			<h2>劳务方管理</h2>
+			<div class="distrcheck distrcheck1 ">
+				<div><input type="checkbox" name="2" value="" />添加劳务方</div>
+				<div><input type="checkbox" name="2" value="" />删除劳务方</div>
+				<div><input type="checkbox" name="2" value="" />劳务方的分配车辆</div>
+				<div><input type="checkbox" name="2" value="" />劳务方的取消分配</div>
+			</div>
+			<h2>员工管理</h2>
+			<div class="distrcheck distrcheck1 ">
+				<div><input type="checkbox" name="4" value="" />添加员工</div>
+			</div>
+			<div class="btns distrbtns">
+				<button class="suredistr permissionbtn">确定</button>
+				<button class="canceldistr cancel">取消</button>
+			</div>
+		</div>
+	</div>
+
+    <!-- 分配车辆操作 -->
+    <div class="modal modall" id="modaldistcar">
+        <div class="cover"></div>
+        <div class="modalbox showcartab">
+            <div class="tablediv laborcartab">
+                <table>
+                    <thead>
+                        <tr>
+                            <th><input type="checkbox" class="choiceall checkall"/></th>
+                            <th>序号</th>
+                            <th>序列号</th>
+                            <th>分配状态</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php
+                        if($ebike) {
+                        for($i=0;$i<count($ebike);$i++){
+                        	echo "<tr ebikeid=".$ebike[$i]['id'].">";
+                            echo "<td><input class='checktd' type='checkbox'/></td>";
+                            echo "<td>".($i+1)."</td>"; 
+                            echo "<td>".$ebike[$i]['seqno']."</td>"; 
+                            echo "<td></td>"; 
+                            echo "</tr>";
+                        }}
+                        ?>
+                    </tbody>
+                </table>
+            </div>
+            <div class="btns">
+				<button class="suredistlab emdistribtn">分配</button>
+				<button class="canceldistlab finishdistlabor">取消</button>
+			</div>
+            <!-- <div class="finishdiv">
+            <button class="finishbtn ">完成</button>
+            </div> -->
+        </div>
+    </div>
+
+	<!-- 分配劳务方 -->
+	<div class="modal labormodal" id="modaldistlabor">
+		<div class="cover"></div>
+		<div class="modalbox disttab">
+			<div class="tablediv labortab">
+				<table>
+					<thead>
+						<tr>
+							<th><input type="checkbox" class="choiceall checkall"/></th>
+							<th>序号</th>
+							<th>劳务方</th>
+							<th>分配状态</th>
+						</tr>
+					</thead>
+					<tbody>
+
+					</tbody>
+				</table>
+			</div>
+			<div class="btns">
+				<button class="suredistlab distribtn">分配</button>
+				<button class=" canceldistlab  finishdistlabor">取消</button>
+			</div>
+		</div>
+	</div>
+
+	<!-- 删除 -->
+	<div class="modal delmodal" id="modaldelete">
+		<div class="cover"></div>
+		<div class="modalbox">
+			<p>删除后该员工的由您公司分配的车辆将回到您公司未分配的车辆中。</p>
+			<p>确定删除吗？</p>
+			<div class="btns">
+				<button class="suredel ">确定</button>
+				<button class="canceldel">取消</button>
+			</div>
+		</div>
+	</div>
+
+    <?php include("footer.html"); ?>
+    <script src="/js/jquery-1.11.0.js"></script>
+	<script src="/js/main2/common.js"></script>
+	<script src="/js/util.js"></script>
+	<script src="/js/employees/employees.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>外麦王云平台</title>
+	<link rel="stylesheet" type="text/css" href="/css/main/common.css"/>
+	<link rel="stylesheet" type="text/css" href="/css/main/commonsector.css"/>
+	<link rel="stylesheet" type="text/css" href="/css/main/management/management.css"/>
+</head>
+<body>
+	<header>
+		<div class="header">
+			<div class="topleft">
+				<div class="logo">
+					<img src="/image/main/yunlogo.png"/>
+				</div>
+				<ul class="topul">
+					<li><a href="javascript:void(0)">首页</a></li>
+					<li><a href="javascript:void(0)">地图定位</a></li>
+					<li class="active"><a href="javascript:void(0)">车辆管理</a></li>
+					<li><a href="javascript:void(0)">劳务方</a></li>
+					<li><a href="javascript:void(0)">员工</a></li>
+				</ul>
+			</div>
+			<div class="topright">
+				<p><a href="javascript:void(0)">天天外卖</a></p>
+				<P>|</P>
+				<p><a href="javascript:void(0)">退出</a></p>
+			</div>
+		</div>
+	</header>
+
+	<section>
+		<div class="content">
+			<ul class="maintop">
+				<li class="manageract"><a href="management.html">车辆管理</a></li>
+				<li><a href="management_active.html">车辆激活</a></li>
+			</ul>
+			<div class="elecarmanage">
+				<ul class="carserious">
+					<li class="carser actcarser"><a href="management.html">所有车辆</a></li>
+					<li class="carbar">|</li>
+					<li class="carser"><a href="management_abnormal.html">异常车辆</a></li>
+				</ul>
+				<div class="elecarclassify">
+					<div class="carinf" id="carinf">
+						<div class="carinfleft">
+							<P>共</P>
+							<p class="allcarnum">33</p>
+							<p>辆</p>
+						</div>
+						<div class="carinfright">
+							<input type="text" class="carsearch"/>
+							<div class="searchbtn">
+								<img src="/image/main/msearch.png"/>
+							</div>
+						</div>
+						<select>
+							<option>无异常</option>
+							<option>振动报警</option>
+							<option>电量报警</option>
+							<option>失去联系</option>
+						</select>
+						<select>
+							<option>劳务方</option>
+							<option>劳务方1</option>
+							<option>劳务方2</option>
+							<option>劳务方3</option>
+						</select>
+						<select>
+							<option>分配状况</option>
+							<option>已分配</option>
+							<option>未分配</option>
+						</select>
+					</div>
+					<table class="elecartab">
+						<thead>
+							<tr>
+								<td>序号</td>
+								<td>序列号</td>
+								<td>状态</td>
+								<td>异常情况</td>
+								<td>品牌</td>
+								<td>型号</td>
+								<td>拥有方</td>
+								<td>劳务方</td>
+								<td>操作</td>								
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>1</td>
+								<td>212121212</td>
+								<td>已分配</td>
+								<td>无异常</td>
+								<td>外卖王</td>
+								<td>wmw</td>
+								<td>天天外卖</td>
+								<td>天天外卖</td>
+								<td class="operatd">
+									<a href="" >解除绑定</a>
+									<a href="">解除激活</a>
+									<a href="">查看定位</a>
+								</td>
+							</tr>
+							<tr>
+								<td>2</td>
+								<td>212121212</td>
+								<td>未分配</td>
+								<td>坐标异常</td>
+								<td>外卖王</td>
+								<td>wmw</td>
+								<td>天天外卖</td>
+								<td>天天外卖</td>
+								<td class="operatd">
+									<a class="distribution">分配</a>
+									<a class="distribution">解除激活</a>
+									<a class="distribution">查看定位</a>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+	</section>
+	<div class="modal">
+		<div class="cover"></div>
+		<div class="modalbox">
+			<div class="carinfright" style="margin-bottom: 20px;">
+				<input type="text" class="carsearch" placeholder="请输入劳务方名称" />
+				<div class="searchbtn">
+					<img src="/image/main/msearch.png"/>
+				</div>
+			</div>
+			<div class="tablecont">
+				<table class="labortab">
+					<thead>
+						<tr class="laborthead">
+							<td><img src="/image/main/labor1.png"/>序号</td>
+							<td><img src="/image/main/labor2.png"/>劳务方</td>
+							<td><img src="/image/main/labor3.png"/>车辆数量</td>
+							<td><img src="/image/main/labor4.png"/>骑士数量</td>	
+							<td><img src="/image/main/labor6.png" class="opeimg"/>操作</td>								
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>1</td>
+							<td>天天外卖有限公司</td>
+							<td>120</td>
+							<td>88</td>
+							<td class="opetd">
+								<a class="districar">分配车辆</a>
+							</td>
+						</tr>
+						<tr>
+							<td>2</td>
+							<td>天天外卖有限公司</td>
+							<td>120</td>
+							<td>88</td>
+							<td class="opetd">
+								<a class="districar">分配车辆</a>
+							</td>
+						</tr>
+						<tr>
+							<td>3</td>
+							<td>天天外卖有限公司</td>
+							<td>120</td>
+							<td>88</td>
+							<td class="opetd">
+								<a class="districar">分配车辆</a>
+							</td>
+						</tr>						
+					</tbody>
+				</table>
+			</div>
+			<button class="finish">完成</button>
+		</div>
+	</div>
+	<div class="push"></div>
+	<footer>
+		<ul>
+			<li><a href="javascript:void(0)">公司简介</a></li>
+			<li class="vbar">|</li>
+			<li><a href="javascript:void(0)">联系我们</a></li>
+			<li class="vbar">|</li>
+			<li><a href="javascript:void(0)">加入我们</a></li>
+			<li class="vbar">|</li>
+			<li><a href="javascript:void(0)">新闻中心</a></li>
+		</ul>
+		<div><a href="javascript:void(0)">版权信息</a></div>
+	</footer>	
+	<script src="/js/jquery-1.11.0.js"></script>			
+	<script>
+		$(function(){
+			$(".distribution").on("click",function(){
+				$(".modal").show();
+			})
+			$(".finish").on("click",function(){
+				$(".modal").hide();
+			})
+		})
+	</script>	
+</body>
+</html>

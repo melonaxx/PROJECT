@@ -1,0 +1,45 @@
+stock_product_match//---- UTF8 编码 ----
+<!-- BEGIN: main --><?xml version="1.0" encoding="UTF-8"?>
+{main.doc_type}
+<?xml-stylesheet type="text/xsl" href="/style/stock_product_match.xsl?ver={main.doc_version}"?>
+<html version="{main.doc_version}">
+<head>
+	<Title>{main.title}</Title>
+	<meta name="keywords" content="{main.keywords}" />
+	<meta name="description" content="{main.description}" />
+	<em company_id="{main.company_id}" staff_id="{main.staff_id}" login_name="{main.login_name}" permit="{main.permit}" program="{main.request_url}"/>
+</head>
+<Body>
+	<dir><![CDATA[ 您的位置： {main.this_location}]]></dir>
+	<menu>
+		<big>{main.big_menu}</big>
+		<small>
+			<!-- BEGIN: list_menu --><a class="{list_menu.class}" href="{list_menu.link}">{list_menu.name}</a><!-- END: list_menu -->
+		</small>
+	</menu>
+	<store_id>{main.store_id}</store_id>
+	<location_id>{main.location_id}</location_id>
+	<area_name>{main.area_name}</area_name>
+	<store_name>{main.store_name}</store_name>
+	<shelves_name>{main.shelves_name}</shelves_name>
+	<location_name>{main.location_name}</location_name>
+	<product>
+		<ul>
+			<!-- BEGIN: product -->
+			<li>
+				<no>{product.no}</no>
+				<name>{product.name}</name>
+				<image>{product.image}</image>
+				<store>{product.store_id}</store>
+				<parts>{product.parts_id}</parts>
+				<format>{product.format}</format>
+				<product>{product.product_id}</product>
+				<location>{product.location_id}</location>
+			</li>
+			<!-- END: product -->
+		</ul>
+	</product>
+	<store_id>{main.store_id}</store_id>
+</Body>
+</html>
+<!-- END: main -->

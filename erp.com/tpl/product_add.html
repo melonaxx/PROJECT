@@ -1,0 +1,85 @@
+//---- UTF8 编码 ----
+<!-- BEGIN: main --><?xml version="1.0" encoding="UTF-8"?>
+{main.doc_type}
+<?xml-stylesheet type="text/xsl" href="/style/product_add.xsl?ver={main.doc_version}"?>
+<html version="{main.doc_version}">
+<head>
+	<Title>{main.title}</Title>
+	<meta name="keywords" content="{main.keywords}" />
+	<meta name="description" content="{main.description}" />
+	<em company_id="{main.company_id}" staff_id="{main.staff_id}" login_name="{main.login_name}" permit="{main.permit}" program="{main.request_url}"/>
+</head>
+<Body>
+<dir><![CDATA[ 您的位置：{main.this_location}]]></dir>
+<menu>
+	<big>{main.big_menu}</big>
+	<small>
+		<!-- BEGIN: list_menu --><a class="{list_menu.class}" href="{list_menu.link}">{list_menu.name}</a><!-- END: list_menu -->
+	</small>
+</menu>
+
+<format_name v1="{main.format_1}" v2="{main.format_2}" v3="{main.format_3}" v4="{main.format_4}" v5="{main.format_5}">
+	<!-- BEGIN: format_name --><li id="{format_name.id}">{format_name.name}</li><!-- END: format_name -->
+</format_name>
+<format_value>
+	<!-- BEGIN: format_value --><li name_id="{format_value.name_id}" id="{format_value.id}">{format_value.name}</li><!-- END: format_value -->
+</format_value>
+
+<attrib_name>
+	<!-- BEGIN: attrib_name --><li id="{attrib_name.id}"><name>{attrib_name.name}</name></li><!-- END: attrib_name -->
+</attrib_name>
+
+<attrib_value>
+	<!-- BEGIN: attrib_value --><li attrib_id="{attrib_value.attrib_id}" value_id="{attrib_value.value_id}">{attrib_value.body}</li><!-- END: attrib_value -->
+</attrib_value>
+
+<brand>
+	<!-- BEGIN: list_brand --><li id="{list_brand.id}" current="{list_brand.current}">{list_brand.name}</li><!-- END: list_brand -->
+</brand>
+
+<category>
+	<!-- BEGIN: list_category --><li id="{list_category.id}" current="{list_brand.current}">{list_category.name}</li><!-- END: list_category -->
+</category>
+
+<shop>
+	<!-- BEGIN: list_shop --><li id="{list_shop.id}">{list_shop.name}</li><!-- END: list_shop -->
+</shop>
+
+<product_type>
+	<li name="Real">实体产品</li>
+	<li name="Virtual">虚拟产品</li>
+	<li name="Packaged">套装产品</li>
+	<li name="Materials">原材料</li>
+</product_type>
+
+<product_quality>
+	<li name="New">全新</li>
+	<li name="Used">二手</li>
+</product_quality>
+
+<product_sale>
+	<li name="Onsell">在售</li>
+	<li name="Soldout">下架</li>
+	<li name="Stop">停产</li>
+	<li name="Stockout">缺货</li>
+</product_sale>
+
+<parts>
+	<!-- BEGIN: list_parts -->
+	<li id="{list_parts.id}">{list_parts.name}</li>
+	<!-- END: list_parts -->
+</parts>
+
+<store>
+	<!-- BEGIN: list_store -->
+	<li>
+		<store_id>{list_store.id}</store_id>	
+		<store_name>{list_store.name}</store_name>	
+	</li>
+	<!-- END: list_store -->
+</store>
+
+
+</Body>
+</html>
+<!-- END: main -->

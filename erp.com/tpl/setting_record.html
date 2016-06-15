@@ -1,0 +1,49 @@
+//---- UTF8 编码 ----
+<!-- BEGIN: main --><?xml version="1.0" encoding="UTF-8"?>
+{main.doc_type}
+<?xml-stylesheet type="text/xsl" href="/style/setting_record.xsl?ver={main.doc_version}"?>
+<html version="{main.doc_version}">
+<head>
+	<Title>{main.title}</Title>
+	<meta name="keywords" content="{main.keywords}" />
+	<meta name="description" content="{main.description}" />
+	<em company_id="{main.company_id}" staff_id="{main.staff_id}" login_name="{main.login_name}" permit="{main.permit}" program="{main.request_url}"/>
+</head>
+<Body>
+<!-- <dir><![CDATA[ 您的位置：{main.this_location}]]></dir> -->
+<dir><![CDATA[ 您的位置： <a href="/">首页</a> &raquo;<a href="/setting/setting_attendance_record.php">考勤记录</a> &raquo; 考勤记录表]]></dir>
+<menu>
+	<big>{main.big_menu}</big>
+	<small>
+		<!-- BEGIN: list_menu --><a class="{list_menu.class}" href="{list_menu.link}">{list_menu.name}</a><!-- END: list_menu -->
+	</small>
+</menu>
+<companystaffgroup>
+	<ul>
+		<!-- BEGIN:companystaffgroup -->
+		<li><text>{companystaffgroup.name}</text><value>{companystaffgroup.id}</value></li>
+		<!-- END:companystaffgroup -->
+	</ul>
+</companystaffgroup>
+<staff>
+	<!-- BEGIN: list_staff -->
+	<li id="{list_staff.id}">{list_staff.name}</li>
+	<!-- END: list_staff -->
+</staff>
+<attend_ance>
+	<!-- BEGIN: attend_ance -->
+	<li id="{attend_ance.staff_id}">
+		<am id="{attend_ance.am_id}">{attend_ance.am_text}</am>
+		<pm id="{attend_ance.pm_id}">{attend_ance.pm_text}</pm>
+	</li>
+	<!-- END: attend_ance -->
+</attend_ance>
+<total>{main.total}</total>
+<action_date>{main.action_date}</action_date>
+<group_id>{main.group_id}</group_id>
+{main.page_info}
+</Body>
+
+
+</html>
+<!-- END: main -->

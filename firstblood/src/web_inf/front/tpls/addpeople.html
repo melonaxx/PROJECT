@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>北京外麦王人事系统</title>
+    <link href="/css/addinfo.css" type="text/css" rel="stylesheet">
+    <SCRIPT language=javascript src="/js/jquery-1.8.3.min.js"></SCRIPT>
+    <script language="javaScript" src="/js/mydate.js"></script>
+</head>
+<style>
+     body{
+     	background-color:#86C2E7;
+     }
+	 .info{
+	 	font-weight:bold;
+	 	font-size:14px;
+	 }
+	 .val{
+	 	font-size:15px;
+	 }
+ 	 #non{
+	 	display:block;
+	 	width:1100px;
+	 }
+	 ul li{
+	 	margin:7px;
+	 }
+</style>
+<body>
+<center>
+	<a id="non">
+        <form id="form">
+	    <table class="ftable" cellspacing="0" border="1px" >
+	    	  <tr>
+	    	  	 <td class="info">姓&nbsp;&nbsp;名:</td>
+	    	  	 <td class="val">
+	    	  	 <input type="text" name="name">
+	    	  	 </td>
+	    	  	 <td class="info">部门</td>
+	    	  	 <td class="val">
+	    	  	 	<select name="bid" id="sel">
+	    	  	 		 <option value="0">--请选择--</option>
+                         {foreach from=$list item=temp}
+	    	  	 		 <option value="{$temp['id']}">{$temp['class_name']}</option>
+	    	  	 		 {/foreach}
+	    	  	 	</select>
+	    	  	 </td>
+	    	  	 <td class="info">性&nbsp;&nbsp;别:</td>
+	    	  	 <td class="val">
+	    	  	 <input type="radio" name="sex" value="男">男
+	    	  	 <input type="radio" name="sex" value="女">女
+	    	  	 </td>
+	    	  </tr>
+			  <tr>
+	    	  	 <td class="info">婚&nbsp;&nbsp;否:</td>
+	    	  	 <td class="val">
+	    	  	 <input type="radio" name="wed" value="未婚">未婚
+	    	  	 <input type="radio" name="wed" value="已婚">已婚
+	    	  	 </td>
+	    	  	 <td class="info">学&nbsp;&nbsp;历:</td>
+	    	  	 <td class="val">
+	    	  	 <select name="education" id="">
+	    	  	 	   <option value="初中">初中</option>
+	    	  	 	   <option value="高中">高中</option>
+	    	  	 	   <option value="专科">专科</option>
+	    	  	 	   <option value="本科">本科</option>
+	    	  	 	   <option value="硕士">硕士</option>
+	    	  	 	   <option value="博士">博士</option>
+	    	  	 </select>
+	    	  	 </td>
+	    	  	 <td class="info">生&nbsp;&nbsp;日:</td>
+	    	  	 <td class="val">
+	    	  	     <input type="text" name="birth" id="birth" onfocus="MyCalendar.SetDate(this)">
+	    	  	 </td>
+	    	  </tr>
+		  	  <tr>
+	    	  	 <td class="info">联系方式</td>
+	    	  	 <td class="val">
+	    	  	 <input type="text" name="phone" id="phone" >
+	    	  	 </td>
+	    	  	 <td class="info">紧急联系人</td>
+	    	  	 <td class="val">
+	    	  	 <input type="text" name="actphone" id="actphone" >
+	    	  	 </td>
+ 	    	  	 
+   	    	  	 <td class="info">现住址:</td>
+	    	  	 <td class="val">
+                     <input type="text" name="nowaddress" id="nowaddress" >
+	    	  	 </td>
+	    	  </tr>
+			  <tr>
+	    	  	 <td class="info">是否住宿</td>
+	    	  	 <td class="val">
+ 	    	  	 <input type="radio" name="lodge" value="是">是
+	    	  	 <input type="radio" name="lodge" value="否" checked="checked">否
+	    	  	 </td>
+	    	  	 <td class="info">保险:</td>
+	    	  	 <td class="val">
+	    	  	 <input type="radio" name="safe" value="有">有
+	    	  	 <input type="radio" name="safe" value="无" checked="checked">无
+	    	  	 </td>
+ 	    	  	 <td class="info">驾照:</td>
+	    	  	 <td class="val">
+	    	  	 <input type="radio" name="drive" value="有">有	    	  	 
+	    	  	 <input type="radio" name="drive" value="无" checked="checked">无
+ 	    	  	 </td>
+	    	  </tr>
+	    	  <tr>
+   	    	  	 <td class="info">公积金:</td>
+	    	  	 <td class="val">
+	    	  	 <input type="radio" name="cpf" value="有">有	    	  	 
+	    	  	 <input type="radio" name="cpf" value="无" checked="checked">无
+ 	    	  	 </td>
+	    	  	 <td class="info">毕业院校:</td>
+	    	  	 <td class="val">
+	    	  	 <input type="text" name="graduate">
+	    	  	 </td>
+	 	 		 <td class="info">专业:</td>
+	    	  	 <td class="val">
+	    	  	 <input type="text" name="specialty">
+	    	  	 </td>
+	    	  </tr>
+	    	  
+	    	  <tr>
+	    	  	 <td class="info">合同:</td>
+	    	  	 <td class="val" colspan="2">
+	    	  	 <select name="pact">
+	    	  	 	 <option value="北京福润一生科技有限公司">北京福润一生科技有限公司</option>
+	    	  	 	 <option value="北京外麦王科技有限公司">北京外麦王科技有限公司</option>
+	    	  	 	 <option value="北京爱米欢科技有限公司">北京爱米欢科技有限公司</option>
+	    	  	 	 <option value="保定文岩商贸有限公司">保定文岩商贸有限公司</option>
+	    	  	 	 <option value="市场拓展协议">市场拓展协议</option>
+	    	  	 </select>
+	    	  	 </td>
+	    	  	 <td class="info">合同时间</td>
+	    	  	 <td class="val" colspan="2">
+	    	  	 <select name="pacttime" id="pacttime">
+	    	  	 	 <option value="合同未签">合同未签</option>
+	    	  	 	 <option value="1年" >1年</option>
+	    	  	 	 <option value="2年" >2年</option>
+	    	  	 	 <option value="3年" >3年</option>
+	    	  	 	 <option value="4年" >4年</option>
+	    	  	 	 <option value="5年" >5年</option>
+	    	  	 	 <option value="6年" >6年</option>
+	    	  	 	 <option value="无固定期">无固定期</option>
+	    	  	 </select>
+	    	  	 </td>
+	    	  </tr>
+	  	  	  <tr>
+	    	  	 <td class="info">试用期:</td>
+	    	  	 <td class="val">
+ 	    	  	 <select name="try">
+	    	  	 	 <option value="1月">1月</option>
+	    	  	 	 <option value="2月">2月</option>
+	    	  	 	 <option value="3月">3月</option>
+	    	  	 	 <option value="4月">4月</option>
+	    	  	 	 <option value="5月">5月</option>
+	    	  	 	 <option value="6月">6月</option>
+
+	    	  	 </select>
+	    	  	 </td>
+
+	    	  	 <td class="info">合同签订日期</td>
+	    	  	 <td class="val">
+	    	  	 	<input type="text" name="pactsigntime" id="pactsigntime" onfocus="MyCalendar.SetDate(this)">
+	    	  	 </td>
+
+ 	    	  	 <td class="info">合同到期日:</td>
+	    	  	 <td class="val">
+	    	  	 <input type="text" id="pactover" name="pactover" style="color:red;">
+	    	  	 </td>
+	    	  </tr>
+	  		  <tr>
+	    	  	 <td class="info">入职时间:</td>
+	    	  	 <td colspan="2"  class="val">
+	    	  	 <input id="hiredate" type="text" name="hiredate" onfocus="MyCalendar.SetDate(this)">
+	    	  	 </td>
+	    	  	 <td class="info">邮箱:</td>
+	    	  	 <td class="val" colspan="2">
+	    	  	 	<input type="text" name="email"></td>
+	    	  	 </td>
+	    	  </tr>
+  	  		  <tr>
+	    	  	 <td class="info">身份证号:</td>
+	    	  	 <td class="val" colspan="2">
+	    	  	    <input type="text" name="idnumber" id="idnumber" maxLength=18></td>
+ 	    	  	 <td class="info">银行卡号(支付宝帐号):</td>
+	    	  	 <td class="val" colspan="2">
+	    	  	    <input type="text" name="banknumber" id="banknumber">
+	    	  	 </td>
+	    	  </tr>
+		   		 <tr>
+	    	  	   <td class="info" colspan="1" style="height:250px;">特殊技能:</td>
+	    	  	   <td class="val" colspan="5" style="height:250px; text-align:left;">
+	                       <ul>
+	                       	   <li>
+	                       	   	   <input type="text" id="skillname">&nbsp;&nbsp;&nbsp;&nbsp;<b style="color:black;cursor:pointer;" onclick="addskill()">添加</b>
+	                       	   </li>
+	                       </ul>
+		    	  	   </td>
+		    	  </tr>
+  		    	  <tr>
+		    	  	   <td class="info" colspan="1" style="height:250px;">工作经验:</td>
+		    	  	   <td class="val" colspan="5" id="addexper" style="height:250px; text-align:left;">
+                           <table>
+                           	   <tr>
+                                   <td width="90px" style="color:black;">时间:</td>
+                                   <td>
+                                       <input type="text" id="sotime">
+                                   </td>
+                           	   </tr>
+                           	   <tr>
+                           	       <td style="color:black;">工作描述:</td>
+                           	       <td>
+                           	           <textarea id="expercontent" cols="60" rows="10"></textarea>
+                           	           <b style="color:black;cursor:pointer;" onclick="addexper()">添加</b>
+                           	       </td>
+                       	       </tr>
+                           </table>
+		    	  	   </td>
+		    	  </tr>
+		    	  <tr>
+		    	  	  <td class="info" colspan="1" style="height:250px;">备注:</td>
+		    	  	  <td class="val" colspan="5" style="height:250px; text-align:left;">
+	                       <ul>
+	                       	   <li>
+	                       	   	   <input type="text" id="addremark">&nbsp;&nbsp;&nbsp;&nbsp;<b style="color:black;cursor:pointer;" onclick="addmark()">添加</b>
+	                       	   </li>
+	                       </ul>
+		    	  	  </td>
+		    	  </tr>
+	    	  <tr>
+	    	  	 <td  colspan="6" style="text-align:right;">  	   
+	    	  	 	<a id="update" style="cursor:pointer;">确认添加</a>
+	    	  	 	 &nbsp;&nbsp;&nbsp;&nbsp;
+	    	  	 </td>
+	    	  </tr>
+	    </table>
+	    </form>
+	    </a> 
+</center> 	    
+</body>
+<script type="text/javascript" src="/js/util.js"></script>
+{literal}
+<script>
+
+     //添加技能
+	  function addskill(){
+	  	  var ob = $("#skillname");
+	  	      var str = "";
+	  	          str += "<li><input type='text' style='background-color:#86C2E7;' readonly='readonly' value="+util.htmlEncode(ob.val())+" name='skillname[]'/>&nbsp;&nbsp;&nbsp;&nbsp;<b id='remove'>移除</b><hr/></li>";
+	  	      if(ob.val() == ""){
+	  	      	 alert("技能内容不能为空");
+	  	      	 return false;
+	  	      }
+	  	      $(str).prependTo(ob.closest("ul"));
+	  	      $("#remove").click(function(){
+	  	      	  $(this).parent("li").remove();
+	  	      })
+	  	      ob.val("");
+	  }
+	  //添加工作经历
+	  function addexper(){
+	  	  var expercontent = $("#expercontent");
+	  	  var sotime = $("#sotime");
+	  	  var ob = $("#addexper");
+	  	  var str1 = "";
+	  	      str1 +="<table><tr><td width='90px' style='color:black;'>时间:</td><td><input type='text' name='sotime[]' readonly='readonly' style='background-color:#86C2E7' value="+util.htmlEncode(sotime.val())+"></td><td><b id='remo'>移除</b></td></tr>";
+	  	      str1 +="<tr><td style='color:black;'>工作描述:</td><td><p>"+util.htmlEncode(expercontent.val())+"</p><input type='hidden' name='expercontent[]' value="+util.htmlEncode(expercontent.val())+"></td></tr></table>";
+	  	   if(sotime.val() == ""){
+	  	   	   alert("工作时间不能为空");
+	  	      	 return false;
+	  	   }else if(expercontent.val() == ""){
+   	  	   	   alert("工作描述不能为空");
+	  	      	 return false;
+	  	   }
+	  	   $(str1).prependTo(ob);
+	  	   $("#expercontent").val("");
+	  	   sotime.val("");
+  	       $("#remo").click(function(){
+  	      	  $(this).closest("table").remove();
+  	       })
+	  }
+	  //添加备注
+    function addmark(){
+	  	  var ob = $("#addremark");
+	  	      var str = "";
+	  	          str += "<li><input type='text' style='background-color:#86C2E7;' readonly='readonly' value="+util.htmlEncode(ob.val())+" name='remark[]'/>&nbsp;&nbsp;&nbsp;&nbsp;<b id='re'>移除</b><hr/></li>";
+	  	      if(ob.val() == ""){
+	  	      	 alert("备注内容不能为空");
+	  	      	 return false;
+	  	      }
+	  	      $(str).prependTo(ob.closest("ul"));
+	  	      $("#re").click(function(){
+	  	      	  $(this).parent("li").remove();
+	  	      })
+	  	      ob.val("");
+	  }
+
+	  	      var pacttime=$("#pacttime option:selected");
+		  	   // 合同时间
+	           var pacttime=$("#pacttime");
+	           // 合同到期
+	           var pactover=$("#pactover");
+	           
+	           var pactover1=$("input[name='pactover']");
+
+	           $("#pactsigntime").mousemove(function(){
+
+	           	if($(pacttime).val() != "合同未签" && $(pacttime).val() != "无固定期"){
+	               //签订年
+		           var year=parseInt($("#pactsigntime").val().slice(0,4));
+		           //签订日
+		           var day=$("#pactsigntime").val().slice(4,10);
+
+		           //合同年
+		           var ptime=parseInt($(pacttime).val());
+                 
+		           if($(pactover1).val(year+ptime+day) != "NaN"){
+		           	  $(pactover1).val(year+ptime+day);
+		           }
+		        }
+	           })
+         
+			 $("#update").click(function(){
+			 	var bid = $("#sel").val(); //部门id
+			 	var phone = $("#phone").val(); //电话
+			 	var result1 = phone.match(/^\d+$/);
+			 	var idnumber = $("#idnumber").val(); //身份证号
+			 	var result3 = idnumber.match(/^\w+$/);
+              if(result1==null){
+                 alert("联系方式有误");
+                 return false;
+		      }else if(result3==null){
+                 alert("身份证号输入有误");
+                 return false;
+		      }else if(bid == 0){
+		      	 alert("请选择部门");
+		      	 return false;
+		      }
+	  	   	  var str=$("#form").serialize(); 
+	  	   	  $.ajax({
+				   type: "POST",
+				   url: "doadd.php",
+				   data: str,
+				   success: function(msg){
+	                    if(msg == "no"){
+	                    	alert("添加人员失败");
+	                    }else if(msg=='{"errno":4031,"errmsg":"You have no permission"}'){
+                            alert(msg); 
+                        }else{
+                        	alert("添加成功");
+                        }
+				   },
+				   error: function(){
+				   	 alert("ajax请求失败")
+				   }
+				});
+	  	   })
+</script>
+{/literal}
+</html>

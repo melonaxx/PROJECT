@@ -1,0 +1,41 @@
+//---- UTF8 编码 ----
+<!-- BEGIN: main -->
+<html>
+<head>
+<title>考勤</title>
+<link type="text/css" rel="stylesheet" href="/style/bootstrap.min.css?ver={main.doc_version}"/>
+<link type="text/css" rel="stylesheet" href="/style/style.css?ver={main.doc_version}"/>
+<style>
+body {
+	text-align:left;
+	min-width:600px;
+	padding:0;
+}
+.form-inline .form-control {
+	display: inline-block;
+	vertical-align: middle;
+}
+.form-inline .form-group {
+	display: inline-block;
+	vertical-align: middle;
+}
+</style>
+<script type="text/javascript" charset="UTF-8" src="/js_encode/jquery-1.9.1.min.js"></script>
+<script type="text/javascript" src="/js_encode/person_add_attendance.js"></script>
+<body>
+	<form action="/setting/setting_add_attendance.php" method="post">
+		<h5><span><span class="attendance"><a href="javascript:;"><input type="radio" value="1" name="content"/>√</span>出勤</a></span><span class="margin_left_1"><span><a href="javascript:;"><input type="radio" value="2" name="content"/>●</span>休假</a></span><span class="margin_left_1"><span><a href="javascript:;"><input type="radio" value="3" name="content"/>○</span>事假</a><span><span class="margin_left_1"><span><a href="javascript:;"><input type="radio" value="4" name="content"/>☆</span>病假</a></span><span class="margin_left_1"><span><a href="javascript:;"><input type="radio" value="5" name="content"/>△</span>外地出差</a></span><span class="margin_left_1"><span><a href="javascript:;"><input type="radio" value="6" name="content"/>×</span>旷工</a></span><span class="margin_left_1"><span><a href="javascript:;"><input type="radio" value="7" name="content"/>※</span>迟到</a></span><span class="margin_left_1"><span><a href="javascript:;"><input type="radio" value="8" name="content"/>◇</span>早退</a></span><span class="margin_left_1"><span><a href="javascript:;"><input type="radio" value="9" name="content"/>◆</span>中途脱岗</a></span><span class="margin_left_1"><span><a href="javascript:;"><input type="radio" value="10" name="content"/>▲</span>市内出差</a></span></h5><br/>
+		<input type="hidden" name="staff_id" value="{main.staff_id}"/>
+		<input type="hidden" name="years" value="{main.years}"/>
+		<input type="hidden" name="month" value="{main.month}"/>
+		<input type="hidden" name="day" value="{main.day}"/>
+		<input type="hidden" name="pam" value="{main.pam}"/>
+		<input type="hidden" name="department" value="{main.department}"/>
+		<input type="hidden" name="attendance" value="{main.attendance}"/>
+		<input type="submit" class="btn btn-default btn-sm btn_margin" name="send" value="提交"/>
+		<input class="btn btn-default btn-sm" type="button" value="关闭" onclick="parent.$('#MessageBox').modal('hide')" />
+	</form>
+</body>
+</html>
+
+<!-- END: main -->

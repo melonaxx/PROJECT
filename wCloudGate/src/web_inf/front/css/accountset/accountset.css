@@ -1,0 +1,21 @@
+.editor{line-height: 54px;margin:0 10px;}
+.modpassword{color:#f40;border-bottom: 1px solid #f40;margin:0 10px;line-height: 54px;}
+section input{background: #ddd;}
+/* ----------------编辑邮箱模态框------------- */
+.modal{display: none;}
+.cover{width:100%;height:100%;background: #000;opacity: 0.6;filter: alpha(opacity=60);z-index: 99;position: fixed; _position:absolute;left:0;top:0;}
+.modalbox{width:310px;height:180px;margin:auto;left:0;top:222px;right:0;background: #fff;opacity: 1;filter: alpha(opacity=100);z-index:1000;position: fixed; _position:absolute;}
+.input-group{width:260px;height:40px;margin:30px 0 0 40px;}
+.input-group label{font-size: 18px;width:60px;height:30px;margin: 40px 0 20px;}
+.input-group input{padding:0 10px;width:146px;height:40px;border:1px solid #ccc;margin-left: 10px;}
+.btns{width:250px;padding:0 35px;height:40px;margin-top:30px;}
+.btns button{float:left;width:100px;height:40px;border:none;font-size: 14px;}
+.btns button:nth-of-type(1){background: #fe4500;margin: 6px 10px 0 14px;color:#fff;}
+.btns button:nth-of-type(2){background: #ccc;margin-top: 6px;}
+/* ----------------编辑用户名模态框------------- */
+.modalu{display: none;}
+.modalu input{padding:0 10px;width:130px;height:40px;border:1px solid #ccc;margin-left: 10px;}
+.btns{width:250px;padding:0 35px;height:40px;margin-top:30px;}
+.btns button{float:left;width:100px;height:40px;border:none;font-size: 14px;cursor: pointer;}
+.btns button:nth-of-type(1){background: #fe4500;margin: 6px 10px 0 14px;color:#fff;}
+.btns button:nth-of-type(2){background: #ccc;margin-top: 6px;}

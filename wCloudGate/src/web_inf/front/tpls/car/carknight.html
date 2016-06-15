@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>外麦王云平台</title>
+	<link rel="stylesheet" type="text/css" href="/css/main2/base.css"/>
+	<link rel="stylesheet" type="text/css" href="/css/main2/car/car_management.css"/>
+</head>
+<body>
+	<?php include("header.html"); ?>
+	<div class="section">
+		<div class="wmain">
+			<ul class="wmainlist">
+				<li class="wllevel1 manageract">
+					<a class="wllevel1active"><span></span>车辆管理<p class="wlrightarrow"></p></a>
+				</li>
+			</ul>
+			<div class="wmaincontent">
+				<h1 class="wmch1">|&nbsp;我的电动车</h1>
+				<p class="allcarnump">
+				<span></span>
+				<!-- 共<span>12</span>辆 -->
+				</p>
+				<div class="filterbox" style="height:0px;"></div>
+				<table class="elecartab">
+					<thead>
+						<tr>
+							<td>&nbsp;电动车序列号</td>
+							<td>品牌</td>
+							<td>型号</td>
+							<td>劳务方</td>
+						</tr>
+					</thead>
+					<tbody>
+						<tr <?php if(!$data) echo "style='display:none;'" ?> >
+							<td><?=$data['seqno']?></td>
+							<td>外麦王</td>
+							<td><?=$data['mobel']?></td>
+							<td><?=$data['labor']?></td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+
+	<?php include("footer.html"); ?>
+	<script src="/js/jquery-1.8.2.min.js"></script>
+	<script src="/js/main2/common.js"></script>
+
+</body>
+</html>

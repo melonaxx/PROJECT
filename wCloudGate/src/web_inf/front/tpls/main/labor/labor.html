@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>外麦王云平台</title>
+	<link rel="stylesheet" type="text/css" href="/css/main/common.css"/>
+	<link rel="stylesheet" type="text/css" href="/css/main/commonsector.css"/>
+	<link rel="stylesheet" type="text/css" href="/css/main/labor/labor.css"/>
+</head>
+<body>
+	<header>
+		<div class="header">
+			<div class="topleft">
+				<div class="logo">
+					<img src="/image/main/yunlogo.png"/>
+				</div>
+				<ul class="topul">
+					<li><a href="javascript:void(0)">首页</a></li>
+					<li><a href="javascript:void(0)">地图定位</a></li>
+					<li><a href="javascript:void(0)">车辆管理</a></li>
+					<li class="active"><a href="javascript:void(0)">劳务方</a></li>
+					<li><a href="javascript:void(0)">员工</a></li>
+				</ul>
+			</div>
+			<div class="topright">
+				<p><a href="javascript:void(0)">天天外卖</a></p>
+				<P>|</P>
+				<p><a href="javascript:void(0)">退出</a></p>
+			</div>
+		</div>
+	</header>
+
+	<section>
+		<div class="content">
+			<ul class="maintop">
+				<li class="laboract"><a href="labor.html">劳务方管理</a></li>
+				<li><a href="labor_addsearch.html">添加劳务方</a></li>
+			</ul>
+			<div class="mainlabor">
+				<!-- <ul class="sortmethod">
+					<li class="sortact"><a href="">按添加时间</a></li>
+					<li><a href="">按车辆数量</a></li>
+				</ul> -->
+				<div class="abovetab">
+					<p class="carcondition"><a href="">车辆状况</a></p>
+					<div class="carinfright">
+						<input type="text" class="carsearch" placeholder="请输入劳务方名称" />
+						<div class="searchbtn">
+							<img src="/image/main/msearch.png"/>
+						</div>
+					</div>
+					<select class="employees">
+						<option>所属员工</option>
+						<option>员工1</option>
+						<option>员工2</option>
+						<option>员工3</option>
+					</select>
+				</div>
+				<div class="outtable3">
+					<table class="elecartab">
+						<thead>
+							<tr class="laborthead">
+								<td><img src="/image/main/labor1.png"/>序号</td>
+								<td><img src="/image/main/labor2.png"/>劳务方</td>
+								<td><img src="/image/main/labor3.png"/>车辆数量</td>
+								<td><img src="/image/main/labor5.png"/>状态</td>	
+								<td><img src="/image/main/labor6.png" class="opeimg"/>操作</td>								
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>1</td>
+								<td>天天外卖有限公司</td>
+								<td>120</td>
+								<td>
+									<a href="" class="separatea">查看定位</a>
+									<a href="/main/management/management.html" class="separatea">车辆信息</a>
+								</td>
+								<td class="opetd">
+									<a class="separatea add">分配车辆</a>
+									<a href="" class="separatea">删除</a>
+								</td>
+							</tr>						
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+	</section>
+	<div class="modal" id="modal-overlay">
+		<div class="cover"></div>
+		<div class="modalbox">
+			<ul class="addclassify">
+				<li class="addact addmanual"><a>手动添加</a></li>
+				<li class="bar">|</li>
+				<li class="addsweep"><a>扫码添加</a></li>
+			</ul>
+			<img class="close" src="/image/main/close.png"/>
+
+			<div class="modalleft">
+				<div class="abovetab">
+					<a class="distribtn">分配</a>
+					<div class="carinfright">
+						<input type="text" class="carsearch" placeholder="请输入劳务方名称" />
+						<div class="searchbtn">
+							<img src="/image/main/msearch.png"/>
+						</div>
+					</div>
+				</div>
+				<div class="outtable2">
+					<table class="addtab2">
+						<thead>
+							<tr>
+								<td><input class="checkall" type="checkbox"/></td>
+								<td>序号</td>
+								<td>序列号</td>
+								<td>添加状态</td>
+								<td>操作</td>								
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td><input class="checktd" type="checkbox"/></td>
+								<td>1</td>
+								<td>212121212</td>
+								<td>成功</td>
+								<td class="operate"><a class="operatea">取消</a></td>
+							</tr>
+							<tr>
+								<td><input class="checktd" type="checkbox"/></td>
+								<td>2</td>
+								<td>212121212</td>
+								<td></td>
+								<td class="operate"><a class="operatea">分配</a></td>
+							</tr>
+							
+						</tbody>
+					</table>
+				</div>
+				<div class="finishdiv">
+					<button class="addfinish">
+						<a href="">完成</a>
+					</button>	
+				</div>
+			</div>
+
+			<div class="modalright">
+				<p class="slnump">电动车序列号</p>
+				<div class="barcode">704790340938409</div>
+				<p class="instructon">请用扫码枪对准电动车条码进行扫码操作</p>
+				<div class="outtable">
+					<table class="addtab">
+						<thead>
+							<tr>
+								<td>序号</td>
+								<td>序列号</td>
+								<td>添加状态</td>
+								<td>备注</td>								
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>1</td>
+								<td>212121212</td>
+								<td>成功</td>
+								<td>已经添加</td>
+							</tr>
+							<tr>
+								<td>2</td>
+								<td>212121212</td>
+								<td>失败</td>
+								<td>重复添加</td>
+							</tr>
+							<tr>
+								<td>3</td>
+								<td>212121212</td>
+								<td>成功</td>
+								<td>已经添加</td>
+							</tr>
+							<tr>
+								<td>4</td>
+								<td>212121212</td>
+								<td>失败</td>
+								<td>重复添加</td>
+							</tr>
+							<tr>
+								<td>5</td>
+								<td>212121212</td>
+								<td>成功</td>
+								<td>已经添加</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+				<div class="finishdiv">
+					<button class="addfinish">
+						<a href="">完成</a>
+					</button>	
+				</div>				
+			</div>
+		</div>
+	</div>
+	<div class="push"></div>
+	<footer>
+		<ul>
+			<li><a href="javascript:void(0)">公司简介</a></li>
+			<li class="vbar">|</li>
+			<li><a href="javascript:void(0)">联系我们</a></li>
+			<li class="vbar">|</li>
+			<li><a href="javascript:void(0)">加入我们</a></li>
+			<li class="vbar">|</li>
+			<li><a href="javascript:void(0)">新闻中心</a></li>
+		</ul>
+		<div><a href="javascript:void(0)">版权信息</a></div>
+	</footer>
+	<script src="/js/jquery-1.11.0.js"></script>		
+	<script>
+		$("input").val("");
+		$("input").prop("checked",false);
+	    $(".add").on("click",function(){
+	    	$(".modal").show();
+	    }) 
+	    $(".close").on("click",function(){
+	    	$(".modal").hide();
+	    })
+	    $(".addfinish").on("click",function(){
+	    	$(".modal").hide();
+	    })  
+	    $(".addsweep").on("click",function(){
+	    	$(".modalleft").hide();
+	    	$(".modalright").show();
+	    	$(".addmanual").removeClass("addact");
+	    	$(this).addClass("addact");
+	    })
+	    $(".addmanual").on("click",function(){
+	    	$(".modalright").hide();
+	    	$(".modalleft").show();
+	    	$(".addsweep").removeClass("addact");
+	    	$(this).addClass("addact");
+	    })
+	    $(".checkall").on("click",function(){
+	    	if($(this).prop("checked")){
+	    		$(".checktd").prop("checked",true);	    		
+	    	}else{
+	    		$(".checktd").prop("checked",false);
+	    	}
+	    })
+	    $(".operatea").on("click",function(){
+	    	if($(this).html()=="分配"){
+	    		$(this).html("取消");
+	    		$(this).parent().prev().html("成功");
+	    	}else{
+	    		$(this).html("分配");
+	    		$(this).parent().prev().html("");
+	    	}
+	    })
+	    $(".distribtn").on("click",function(){
+	    	$(".checktd").each(function(){
+	    		if($(this).prop("checked")){
+	    			$(this).parent().parent().children().eq(3).html("成功");
+	    			$(this).parent().parent().children().eq(4).children().html("取消");
+	    		}
+	    	})
+	    })
+	</script>
+</body>
+</html>

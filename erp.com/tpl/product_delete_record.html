@@ -1,0 +1,38 @@
+//---- UTF8 编码 ----
+<!-- BEGIN: main -->
+<html>
+<head>
+<title>添加属性</title>
+<link type="text/css" rel="stylesheet" href="/style/bootstrap.min.css?ver={main.doc_version}"/>
+<link type="text/css" rel="stylesheet" href="/style/style.css?ver={main.doc_version}"/>
+<style>
+body {
+	text-align:left;
+	min-width:600px;
+	overflow-y:hidden;
+	padding:0;
+}
+.form-inline .form-control {
+	display: inline-block;
+	vertical-align: middle;
+}
+.form-inline .form-group {
+	display: inline-block;
+	vertical-align: middle;
+}
+</style>
+<body>
+	<form method="post" action="/product/product_delete_record.php">
+		确定删除？
+		<br/><br/><br/><br/>
+		<input type="hidden" name="id" value="{main.id}"/>
+		<p>
+			<input class="btn btn-default btn-sm btn_margin" name="send" type="submit" value="提交"/>
+			<input class="btn btn-default btn-sm" type="button" value="关闭" onclick="parent.$('#MessageBox').modal('hide')" />
+		</p>
+	</form>
+</body>
+
+</html>
+
+<!-- END: main -->

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>外麦王云平台</title>
+	<link rel="stylesheet" type="text/css" href="/css/main2/base.css"/>
+	<link rel="stylesheet" type="text/css" href="/css/main2/register/registercommon.css"/>
+	<link rel="stylesheet" type="text/css" href="/css/main2/register/register_created.css"/>
+</head>
+<body>
+	<?php include("register/registertop.html"); ?>
+	<section>
+		<div class="rtop">
+			<div class="rprogress">
+				<div class="circle"></div>
+				<div class="hbar">填写信息</div>
+				<div class="circle"></div>
+				<div class="hbar">创建账户</div>
+				<div class="circle"></div>
+				<div class="hbar">认证账户</div>
+				<div class="circle"></div>
+				<div class="hbar">审核账户</div>
+				<div class="circle"></div>
+			</div>
+		</div>
+	 	<div class="form">
+	 	    <div class="formtop">
+				账号<span><?=$phone?></span>已创建
+			</div>
+			<div class="msg" style="display:none;margin-bottom: 17px;color:red;"></div>
+			<input type="text" placeholder="请输入您的姓名" name="name" maxlength="10" />
+			<div class="error-message errmsg">
+			</div>
+			<input type="text" placeholder="请输入您的邮箱" name="email"/>
+			<div class="error-message errmsg">
+			</div>
+			<!-- <input type="text" placeholder="请输入您的QQ" name="qq"/>
+			<div class="error-message errmsg">
+			</div>
+			<input type="text" placeholder="请输入您的微信" name="wechat"/>
+			<div class="error-message errmsg"> 
+			</div> -->
+			<button class="agreenbtn" name="btn" >下一步</button>
+		</div>
+	</section>
+	<?php include("footer.html"); ?>
+	<script src="/js/jquery-1.11.0.js"></script>
+	<script src="/js/main2/common.js"></script>
+	<script src="/js/util.js"></script>
+	<script src="/js/register/register_created.js"></script>
+
+</body>
+</html>

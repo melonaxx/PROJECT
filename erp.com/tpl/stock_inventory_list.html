@@ -1,0 +1,53 @@
+//---- UTF8 编码 ----
+<!-- BEGIN: main --><?xml version="1.0" encoding="UTF-8"?>
+{main.doc_type}
+<?xml-stylesheet type="text/xsl" href="/style/stock_inventory_list.xsl?ver={main.doc_version}"?>
+<html version="{main.doc_version}">
+<head>
+	<Title>{main.title}</Title>
+	<meta name="keywords" content="{main.keywords}" />
+	<meta name="description" content="{main.description}" />
+	<em company_id="{main.company_id}" staff_id="{main.staff_id}" login_name="{main.login_name}" permit="{main.permit}" program="{main.request_url}"/>
+</head>
+<Body>
+<dir><![CDATA[ 您的位置：{main.this_location}]]></dir>
+<menu>
+	<big>{main.big_menu}</big>
+	<small>
+		<!-- BEGIN: list_menu --><a class="{list_menu.class}" href="{list_menu.link}">{list_menu.name}</a><!-- END: list_menu -->
+	</small>
+</menu>
+<storeinventory>
+		<ul>
+			<!-- BEGIN:storeinventory -->
+			<li>
+				<id>{storeinventory.id}</id>
+				<name>{storeinventory.name}</name>
+				<body>{storeinventory.body}</body>
+				<total>{storeinventory.total}</total>
+				<format>{storeinventory.format}</format>
+				<store_id>{storeinventory.store_id}</store_id>
+				<staff_id>{storeinventory.staff_id}</staff_id>
+				<product_id>{storeinventory.product_id}</product_id>
+				<bill_number>{storeinventory.bill_number}</bill_number>
+				<action_date>{storeinventory.action_date}</action_date>
+			</li>
+			<!-- END:storeinventory -->
+		</ul>
+	</storeinventory>
+	{main.page_info}
+	<storeinfo>
+	<ul>
+		<!-- BEGIN:storeinfo -->
+		<li><value>{storeinfo.id}</value><text>{storeinfo.name}</text></li>
+		<!-- END:storeinfo -->
+	</ul>
+	</storeinfo>
+	<store_id>{main.store_id}</store_id>
+	<date_end>{main.date_end}</date_end>
+	<date_state>{main.date_state}</date_state>
+</Body>
+
+
+</html>
+<!-- END: main -->

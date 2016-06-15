@@ -1,0 +1,41 @@
+//---- UTF8 编码 ----
+<!-- BEGIN: main --><?xml version="1.0" encoding="UTF-8"?>
+{main.doc_type}
+<?xml-stylesheet type="text/xsl" href="/style/finance_billing_open.xsl?ver={main.doc_version}"?>
+<html version="{main.doc_version}">
+	<head>
+		<Title>{main.title}</Title>
+		<meta name="keywords" content="{main.keywords}" />
+		<meta name="description" content="{main.description}" />
+		<em company_id="{main.company_id}" staff_id="{main.staff_id}" login_name="{main.login_name}" permit="{main.permit}" program="{main.request_url}"/>
+	</head>
+	<Body>
+		<dir><![CDATA[ 您的位置： {main.this_location}]]></dir>
+		<menu>
+			<big>{main.big_menu}</big>
+			<small>
+				<!-- BEGIN: list_menu --><a class="{list_menu.class}" href="{list_menu.link}">{list_menu.name}</a><!-- END: list_menu -->
+			</small>
+		</menu>
+		<tax>
+			<ul total='{main.total}'>
+				<!-- BEGIN: tax -->
+				<li>
+					<id>{tax.id}</id>
+					<user_id>{tax.user_id}</user_id>
+					<bind_number>{tax.bind_number}</bind_number>
+					<name>{tax.name}</name>
+					<mobile>{tax.mobile}</mobile>
+					<tax_type>{tax.tax_type}</tax_type>
+					<tax_title>{tax.tax_title}</tax_title>
+					<tax_text>{tax.tax_text}</tax_text>
+					<delivery_status>{tax.delivery_status}</delivery_status>
+				</li>
+				<!-- END: tax -->
+			</ul>
+		</tax>
+		<find>{main.find}</find>
+		{main.page_info}
+	</Body>
+</html>
+<!-- END: main -->

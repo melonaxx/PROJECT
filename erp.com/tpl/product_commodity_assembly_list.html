@@ -1,0 +1,46 @@
+//---- UTF8 编码 ----
+<!-- BEGIN: main --><?xml version="1.0" encoding="UTF-8"?>
+{main.doc_type}
+<?xml-stylesheet type="text/xsl" href="/style/product_commodity_assembly_list.xsl?ver={main.doc_version}"?>
+<html version="{main.doc_version}">
+<head>
+	<Title>{main.title}</Title>
+	<meta name="keywords" content="{main.keywords}" />
+	<meta name="description" content="{main.description}" />
+	<em company_id="{main.company_id}" staff_id="{main.staff_id}" login_name="{main.login_name}" permit="{main.permit}" program="{main.request_url}"/>
+</head>
+<Body>
+	<dir><![CDATA[ 您的位置： <a href="/">首页</a> &raquo; <a href="/product/">商品</a> &raquo; 组合商品]]></dir>
+	<menu>
+		<big>{main.big_menu}</big>
+		<small>
+			<!-- BEGIN: list_menu --><a class="{list_menu.class}" href="{list_menu.link}">{list_menu.name}</a><!-- END: list_menu -->
+		</small>
+	</menu>
+	<productinfo>
+		<ul>
+			<!-- BEGIN:product_info -->
+			<li>
+				<name>{product_info.name}</name>
+				<price_display>{product_info.price_display}</price_display>
+				<category_id>{product_info.category_id}</category_id>
+				<brand_id>{product_info.brand_id}</brand_id>
+				<content>{product_info.content}</content>
+				<id>{product_info.id}</id>
+			</li>
+			<!-- END:product_info -->
+		</ul>
+	</productinfo>
+	<categoryList>
+		<ul total="{main.sort_total}">
+			<!-- BEGIN: category -->
+				<li id="{category.id}" parent_id="{category.parent_id}" level="{category.level}">{category.name}</li>
+			<!-- END: category -->
+		</ul>
+	</categoryList>
+	{main.page_info}
+</Body>
+
+
+</html>
+<!-- END: main -->

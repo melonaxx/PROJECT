@@ -1,0 +1,54 @@
+//---- UTF8 编码 ----
+<!-- BEGIN: main -->
+<html>
+<head>
+<title></title>
+<link type="text/css" rel="stylesheet" href="/style/bootstrap.min.css?ver={main.doc_version}"/>
+<link type="text/css" rel="stylesheet" href="/style/style.css?ver={main.doc_version}"/>
+<style>
+body,table,form,input	{font-size:12px; padding:0; margin:0}
+body { min-width:100px; overflow-y:auto; overflow-x:auto}
+</style>
+<script type="text/javascript" charset="UTF-8" src="/js_encode/jquery-1.9.1.min.js"></script>
+<script type="text/javascript" charset="UTF-8" src="/js_encode/bootstrap.min.js"></script>
+<script>
+function submit_photo()
+{
+}
+</script>
+
+<ul class="nav nav-tabs nav_tabs_margin">
+	<li class="active"><a href="#wait_confirm" data-toggle="tab">网络图片地址</a></li>
+	<li><a href="#wait_customize" data-toggle="tab">上传本地图片</a></li>
+</ul>
+<div class="tab-content">
+	<div class="tab-pane fade in active" id="wait_confirm">
+		<form method="post" action="/product/product_edit_photo.php" onsubmit="submit_photo()">
+		<input type="hidden" name="index" value="{main.index}"/>
+		<input type="hidden" name="product_id" value="{main.product_id}"/>
+		<input class="form-control" id="remote_url" name="remote_url" style="barder: 1px solid;width:450px;margin:15px 0 0 3px;" placeholder="输入网络图片地址" value="{main.remote_url}">
+		<div style="margin:15px 0 0 3px;">
+			<input style="float:left;" id="ok_1" class="btn btn-default btn-sm btn_margin" type="submit" value="确定" />
+			<input style="float:left;" class="btn btn-default btn-sm" type="button" value="取消" onclick="parent.$('#MessageBox').modal('hide');" />
+		</div>
+		</form>
+	</div>
+
+	<div class="tab-pane fade" id="wait_customize">
+		<form method="post" enctype="multipart/form-data" action="/product/product_edit_photo.php" onsubmit="submit_photo()">
+		<input type="hidden" name="index" value="{main.index}"/>
+		<input type="hidden" name="product_id" value="{main.product_id}"/>
+		<div class="form-control" style="barder: 1px solid;width:450px;margin:15px 0 0 3px;"><input type="file" name="uploadFile"/></div>
+		<div style="margin:15px 0 0 3px;">
+			<input style="float:left;" id="ok_2" class="btn btn-default btn-sm btn_margin" type="submit" value="确定" />
+			<input style="float:left;" class="btn btn-default btn-sm" type="button" value="取消" onclick="parent.$('#MessageBox').modal('hide');" />
+		</div>
+		</form>
+	</div>
+</div>
+
+</body>
+</html>
+
+<!-- END: main -->
+

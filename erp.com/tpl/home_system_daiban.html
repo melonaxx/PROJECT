@@ -1,0 +1,44 @@
+//---- UTF8 编码 ----
+<!-- BEGIN: main --><?xml version="1.0" encoding="UTF-8"?>
+{main.doc_type}
+<?xml-stylesheet type="text/xsl" href="/style/home_system_daiban.xsl?ver={main.doc_version}"?>
+<html version="{main.doc_version}">
+<head>
+	<Title>{main.title}</Title>
+	<meta name="keywords" content="{main.keywords}" />
+	<meta name="description" content="{main.description}" />
+	<em company_id="{main.company_id}" staff_id="{main.staff_id}" login_name="{main.login_name}" permit="{main.permit}" program="{main.request_url}"/>
+</head>
+<Body>
+<dir><![CDATA[ 您的位置：{main.this_location}]]></dir>
+<menu>
+	<big>{main.big_menu}</big>
+	<small>
+		<!-- BEGIN: list_menu --><a class="{list_menu.class}" href="{list_menu.link}">{list_menu.name}</a><!-- END: list_menu -->
+	</small>
+</menu>
+<date>{main.date}</date>
+<sta>{main.status}</sta>
+<na>{main.name}</na>
+<schedule>
+	<ul>
+		<!-- BEGIN: schedule -->
+		<li>
+			<no>{schedule.no}</no>
+			<id>{schedule.id}</id>
+			<notice_id>{schedule.notice_id}</notice_id>
+			<name>{schedule.name}</name>
+			<body>{schedule.body}</body>
+			<end_date>{schedule.end_date}</end_date>
+			<action_date>{schedule.action_date}</action_date>
+			<status>{schedule.status}</status>
+			<staff_id>{schedule.staff_id}</staff_id>
+			<source>{schedule.source}</source>
+		</li>
+		<!-- END: schedule -->
+	</ul>
+</schedule>
+{main.page_info}
+</Body>
+</html>
+<!-- END: main -->

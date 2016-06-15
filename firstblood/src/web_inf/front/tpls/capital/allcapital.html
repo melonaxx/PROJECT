@@ -1,0 +1,576 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3c.org/TR/1999/REC-html401-19991224/loose.dtd">
+<HTML xmlns="http://www.w3.org/1999/xhtml"><HEAD id=Head1><title>北京外麦王人事系统</title>
+<META http-equiv=Content-Type content="text/html; charset=utf-8">
+<LINK href="/css/Style.css" type=text/css rel=stylesheet>
+<LINK href="/css/Manage.css" type=text/css rel=stylesheet>
+<LINK href="/css/allinfo.css" type=text/css rel=stylesheet>
+<script language="javaScript" src="/js/mydate.js"></script>
+<SCRIPT language=javascript src="/js/jquery-1.8.3.min.js"></SCRIPT>
+<SCRIPT language=javascript src="/js/jquery.hwLayer.js"></SCRIPT>
+<META content="MSHTML 6.00.2900.3492" name=GENERATOR></HEAD>
+<style>
+   #upload{
+    border:2px solid #F7F7F7;
+    width:400px;
+    height:300px;
+    border-radius:5px;
+    background-color:#F2F2F5;
+    display:none;
+   }
+   #head{
+    width:"100%";
+    height:25px;
+    line-height:25px;
+    font-size:14px;
+    border-bottom:2px solid #FA7F40;
+   }
+   #span{
+    display:block;
+    float:right;
+    margin-right:1px;
+    height:20px;
+    width:25px;
+    background-color:#F2F2F5;
+    color:#696E78;
+   }
+   #span:hover{
+    color:red;
+   }
+   #form_div{
+    width:220px;
+    height:80px;
+    margin-top:60px;
+    margin-left:5px;
+    float:left;
+   }
+   #showphoto{
+    border:2px dotted #C0C0C0;
+    margin-top:20px;
+    margin-right:5px;
+    float:right;
+    width:160px;
+    height:180px;
+   }
+   {literal}
+    .hw-overlay{display:none; position: fixed; top:0;left:0;width:100%;height:100%; background-color: rgba(0,0,0,0.1);z-index:4;}
+    .hw-layer-wrap{box-sizing:border-box; width:570px; height:350px; position:absolute;left:45%;top:50%; margin-left:-205px; border-radius:5px; background-color:#fff; box-shadow:1px 2px 4px 0 rgba(0,0,0,0.12); padding:45px 50px;}
+    .hwLayer-close{position:absolute; right:15px; top:15px; /*width:20px; height:20px; cursor:pointer; font-size:20px; color:#ccc;*/}
+    .hw-layer-wrap .hw-icon{color:#b4d8f3;font-size:86px;text-align:center;}
+    .hw-layer-wrap p{line-height:22px; color:#595d60; text-align:left;}
+    .hw-layer-title{height: 42px;line-height: 42px; font-size: 16px; position: absolute; left: 20px; top: 10px; font-weight: bold;}
+
+    @media (max-width:768px){
+      .hw-layer-wrap{width:350px; margin-left:-175px; margin-top:-200px; padding:45px 50px; text-align:center;}
+    }
+    @media (max-width:400px){
+      .hw-layer-wrap{width:250px; margin-left:-125px;padding:25px 30px;}
+    }
+   {/literal}
+</style>
+<BODY>
+<TABLE cellSpacing=0 cellPadding=0 width="98%" border=0>
+  <TBODY>
+  <TR>
+    <TD width=15><IMG src="/images/new_019.jpg" border=0></TD>
+    <TD width="100%" background=/images/new_020.jpg height=20></TD>
+    <TD width=15><IMG src="/images/new_021.jpg" 
+  border=0></TD></TR></TBODY></TABLE>
+<TABLE cellSpacing=0 cellPadding=0 width="98%" border=0>
+  <TBODY>
+  <TR>
+    <TD width=15 background=/images/new_022.jpg><IMG 
+      src="/images/new_022.jpg" border=0> </TD>
+    <TD vAlign=top width="100%" bgColor=#ffffff>
+      <TABLE cellSpacing=0 cellPadding=5 width="100%" border=0>
+        <TR>
+          <TD class=manageHead style="border-right:0px;">当前位置：管理首页 &gt; 物品管理</TD>
+          <td class=manageHead style="text-align:right;border-right:0px;border-left:0px;">
+             <button type="button" id="addcapital" style="margin-left:60%;" data-show-layer="hw-layer-login" role="button">物品添加</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          </td>
+          </TR>
+    </TD>
+      <TABLE borderColor=#cccccc cellSpacing=0 cellPadding=0 width="100%" 
+      align=center border=0>
+        <TBODY>
+        <TR>
+          <TD height=25>
+            <TABLE cellSpacing=0 cellPadding=2 border=0>
+              <TBODY>
+              <TR>
+                <TD>筛选数据：</TD>
+                <TD>
+                  <form action="allcapital.php" method="get">
+                      <select name="capital_class" id="section">
+                         <option value="">--物品分类--</option>
+                         {foreach from=$capital_class_list item=capitalclass}
+                         <option value="{$capitalclass['id']}" >{$capitalclass['classname']}</option>
+                         {/foreach}
+                      </select>
+                      <input type="text" name="name"  placeholder="输入物品名称" value="{$smarty.get.name}">
+                      <input type="text" name="number" placeholder="输入物品编号" value="{$smarty.get.number}">
+                      <input type="text" name="pname" placeholder="输入使用人" value="{$smarty.get.pname}">
+                      <input type="submit" value="搜索">
+                  </form>
+                </TD>
+              </TR>
+              </TBODY>
+            </TABLE>
+            </TD>
+        </TR>
+        <TR>
+          <TD>
+            <TABLE id="grid" 
+            style="BORDER-TOP-WIDTH: 0px; FONT-WEIGHT: normal; BORDER-LEFT-WIDTH: 0px; BORDER-LEFT-COLOR: #cccccc; BORDER-BOTTOM-WIDTH: 0px; BORDER-BOTTOM-COLOR: #cccccc; WIDTH: 100%; BORDER-TOP-COLOR: #cccccc; FONT-STYLE: normal; BACKGROUND-COLOR: #cccccc; BORDER-RIGHT-WIDTH: 0px; TEXT-DECORATION: none; BORDER-RIGHT-COLOR: #cccccc" 
+            cellSpacing=1 cellPadding=2 rules=all border=0>
+              <TBODY>
+              <TR 
+              style="FONT-WEIGHT: bold; FONT-STYLE: normal; BACKGROUND-COLOR: #eeeeee; TEXT-DECORATION: none;text-align: center">
+                <TD width="200px">编号</TD>
+                <TD>所属分类</TD> 
+                <TD>品牌/名称</TD>
+                <TD>参数/备注</TD>
+                <TD>新增日期</TD> 
+                <td>使用人</td>
+                <TD>操作</TD>
+              </TR>
+              {foreach from=$capitallist item=temp}
+              <TR 
+              style="FONT-WEIGHT: normal; FONT-STYLE: normal; BACKGROUND-COLOR: white; TEXT-DECORATION: none;text-align: center; height:40px;" id="{$temp['id']}">
+                <TD width="130px" height="80px">{$temp['number']}</TD>
+                <TD>{$temp['classname']}</TD>
+                <TD>{$temp['capitalname']}</TD>
+                <TD width="350px"><p>{$temp['argument']}</p></TD>
+                <TD width="100px">{$temp['inputtime']}</TD>
+                {if $temp['pname'] eq ""}
+                <td width="80px"><i style="color:#2EA2E8">暂无</i></td>
+                {else if $temp['pname'] != ""}
+                <td width="80px"><i style="color:red">{$temp['pname']}</i></td>
+                {/if}
+                <TD>
+                   {if $temp['giveout'] eq "T"}
+                    <a href="javascript:void(0)" class="takeback" capitalname="{$temp['pname']}" data-show-layer="hw-layer-giveout">收回</a>
+                   {else if $temp['giveout'] eq "F"}
+                    <a href="javascript:void(0)" class="giveout" data-show-layer="hw-layer-giveout">派发</a>
+                   {/if}
+                    <a href="javascript:void(0)" class="updatecapital" data-show-layer="hw-layer-update" role="button">编辑</a>
+                    <a href="javascript:void(0)" class="delete_capital">删除</a>
+                </TD>
+              </TR>
+              {/foreach}
+               </TBODY>
+               </TABLE>
+            </TD>
+       </TR>
+        <TR>
+          <TD><SPAN id=pagelink>
+            <DIV 
+            style="LINE-HEIGHT: 20px; HEIGHT: 20px; TEXT-ALIGN: right">
+              [<A href="#">{$firstpage}][{$prevpage}</A>]
+              [<A class="" href="#">{$nextpage}][{$lastpage}</A>] 
+              共[{$num}]条记录 第[{$nowpage}]页 共[{$maxpage}]页
+            </DIV></SPAN>
+          </TD>
+        </TR>
+        </TBODY>
+        </TABLE>
+      </TD>
+    <TD width=15 background=/images/new_023.jpg><IMG 
+      src="/images/new_023.jpg" border=0> </TD></TR></TBODY></TABLE>
+<TABLE cellSpacing=0 cellPadding=0 width="98%" border=0>
+  <TBODY>
+  <TR>
+    <TD widtht=15><IMG src="/images/new_024.jpg" border=0></TD>
+    <TD align=middle width="100%" background=/images/new_025.jpg 
+    height=15></TD>
+    <TD width=15><IMG src="/images/new_026.jpg" 
+  border=0></TD></TR></TBODY></TABLE>
+
+      <div class="hw-overlay" id="hw-layer-login">
+        <div class="hw-layer-wrap">
+          <button type="button" class="close hwLayer-close" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <form id="capital_form" >
+                <table>
+                      <tr style="margin:5px;">
+                         <th style="width: 100px;height:30px">分类:</th>
+                         <td>
+                             <select name="captal_class" id="captal_class">
+                                  <option value="">--请选择分类--</option>
+                                  {foreach from=$capital_class_list item=capitalclass}
+                                    <option value="{$capitalclass['id']}">{$capitalclass['classname']}</option>
+                                  {/foreach}
+                             </select>
+                         </td>
+                      </tr>
+                      <tr>
+                         <th style="width: 100px;height:30px;">品牌/名称:</th>
+                         <td>
+                             <input type="text" placeholder="请输入名称/品牌" name='brand'>
+                         </td>
+                      </tr>
+                      <tr>
+                          <th style="width: 100px;height:30px;">数量:</th>
+                          <td>
+                              <input type="text" size=10 name="capital_num" placeholder="请输入数量">
+                          </td>
+                      </tr>
+                      <tr>
+                          <th style="width: 100px;height:30px;">备注/参数:</th>
+                          <td>
+                              <textarea name="argument" id="argument" cols="23" rows="7"></textarea>
+                          </td>
+                      </tr>
+                      <tr>
+                          <th style="width: 100px;height:30px;"></th>
+                          <td>
+                             <button value="确认添加" type="button" id="capital_submit">确认添加</button>
+                          </td>
+                      </tr>
+                </table>
+            </form>
+        </div>
+      </div>
+
+      <div class="hw-overlay" id="hw-layer-update">
+        <div class="hw-layer-wrap">
+          <button type="button" class="close hwLayer-close" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <form id="matter_form" >
+                <table>
+                      <tr style="margin:5px;">
+                         <th style="width: 100px;height:30px">分类:</th>
+                         <td>
+                             <select name="captal_class" id="matter_class">
+                                    
+                             </select>
+                         </td>
+                      </tr>
+                      <tr>
+                          <th style="width: 100px;height:30px;">编号:</th>
+                          <td>
+                              <span id="matter_num"></span>
+                              <input type="hidden" size=10 name="matter_num" >
+                          </td>
+                      </tr>
+                      <tr>
+                         <th style="width: 100px;height:30px;">品牌/名称:</th>
+                         <td>
+                             <input type="text" name='matter_brand' value="">
+                         </td>
+                      </tr>
+                      <tr>
+                          <th style="width: 100px;height:30px;">备注/参数:</th>
+                          <td>
+                              <textarea name="argument" id="matter_argument" cols="23" rows="7"></textarea>
+                              <input type="hidden" name="matter_id" value="">
+                          </td>
+                      </tr>
+                      <tr>
+                          <th style="width: 100px;height:30px;"></th>
+                          <td>
+                             <button value="确认添加" type="button" id="matter_submit">确认修改</button>
+                          </td>
+                      </tr>
+                </table>
+            </form>
+        </div>
+      </div>
+
+      <div class="hw-overlay" id="hw-layer-giveout">
+        <div class="hw-layer-wrap">
+          <button type="button" class="close hwLayer-close" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <form id="matter_form" >
+                <table>
+                     <tr style="margin:5px;">
+                         <td style="padding-right:50px;">
+                             
+                         </td>
+                         <td>
+                             <b><input type="text" name="peoplename" placeholder="输入姓名" style="width:75px;"></b>
+                         </td>
+                      </tr>
+                      <tr style="margin:5px;">
+                         <td style="padding-right:50px;">
+                            <select style="width:120px;" id="choose_class">
+                              <option value="0">选择部门</option>
+                              {foreach from=$peopleclass item=peopletemp}
+                              <option value="{$peopletemp['id']}">{$peopletemp['class_name']}</option>
+                              {/foreach}
+                            </select>
+                         </td>
+                         <td style="padding-right:50px;">
+                            <select multiple style="width:80px;height:250px;" id="people_list">
+                            </select>
+                         </td>
+                      </tr>
+                </table>
+            </form>
+        </div>
+      </div>
+
+</BODY>
+{literal}
+<script>
+    $(function(){
+      $('#addcapital').hwLayer({
+        width: 450,
+        height:350,
+        tapLayer: false,
+        afterClose: function(){
+          // console.log('close');
+        }
+      });
+      
+      $('.updatecapital').hwLayer({
+        width: 450,
+        height:350,
+        tapLayer: false,
+
+        afterClose: function(){
+          // console.log('close');
+        }
+      });
+      $('.updatecapital').click(function(){
+           var id = $(this).closest("tr").attr("id");
+
+           $.ajax({
+               type: "POST",
+               url: "updatecapital.php",
+               dataType:"json",
+               ansyc: false,
+               data: {
+                        "id" : id
+                      },
+               success: function(data){
+                  var option = "<option value="+data.cid+">"+data.classname+"</option>"
+                  $("#matter_class").empty().prepend(option);
+                  $("#matter_num").text(data.number);
+                  $("input[name='matter_num']").val(data.number);
+                  $("input[name='matter_brand']").val(data.capitalname);
+                  $("#matter_argument").val(data.argument);
+                  $("input[name='matter_id']").val(data.capitalid);
+
+                  // $("#matter_class").focus(function(){
+                  //       $.ajax({
+                  //          type: "POST",
+                  //          url: "ajaxcapital_class.php",
+                  //          dataType:"json",
+                  //          success: function(data){
+                  //              var str = "";
+                  //              for(var i=0;i<data.length;i++){
+                  //                  str += "<option value="+data[i].id+">"+data[i].classname+"</option>";
+                  //              }
+                  //              $("#matter_class").empty().prepend(str);
+                  //          }
+                  //       });
+                  // })
+                  $("#matter_submit").click(function(){
+                      if($("input[name='matter_brand']").val() == ""){
+                            alert("请输入品牌/名称");
+                            return false;
+                       }else if($("#matter_argument").val() == ""){
+                            alert("请输入参数");
+                            return false;
+                       }
+                        var info = $("#matter_form").serialize();
+                        $.ajax({
+                           type: "POST",
+                           url: "doupdatecapital.php",
+                           data: info,
+                           success: function(msg){
+                            if(msg == '{"errno":4031,"errmsg":"You have no permission"}'){
+                                  alert(msg);
+                              }else if(msg=="yes"){
+                                   alert("修改成功");
+                                   location.href="allcapital.php";
+                               }else if(msg == "no"){
+                                   alert("修改失败");
+                               }
+                           }
+                        });
+
+                  })
+               }
+            },'html');
+      });
+
+  
+      $("#capital_submit").on("click",function(){
+           var captal_class = $("#captal_class option:checked").val();
+           var brand = $("input[name='brand']").val();
+           var capital_num = $("input[name='capital_num']").val();
+           var capital_argument = $("#argument").val();
+          
+           if(captal_class == ""){
+                alert("请选择分类");
+                return false;
+           }else if(brand == ""){
+                alert("请输入品牌名称");
+                return false;
+           }else if(capital_num == ""){
+                alert("数量不能为空");
+                return false;
+           }else if(capital_num.match(/^\d+$/) == null){
+                alert("数量只能输入数字");
+                return false;
+           }else if(capital_argument == ""){
+                alert("请输入参数");
+                return false;
+           }
+          var str = $("#capital_form").serialize();
+            $.ajax({
+               type: "POST",
+               url: "addcapital.php",
+               data: str,
+               success: function(msg){
+                   if(msg == '{"errno":4031,"errmsg":"You have no permission"}'){
+                       alert(msg);
+                   }else if(msg=="yes"){
+                       alert("添加成功");
+                       location.href="allcapital.php";
+                   }else if(msg == "no"){
+                       alert("添加失败");
+                   }
+               }
+            });
+      })
+
+      $('.giveout').hwLayer({
+        width: 400,
+        height:350,
+        tapLayer: false,
+
+        afterClose: function(){
+          // console.log('close');
+        }
+      });
+      
+      $(".giveout").bind("click",function(){
+             cap_id = $(this).closest("tr").attr("id");
+      })
+ 
+             $("#choose_class").change(function(){
+                 var class_id = $(this).val();
+                 var pname = $("input[name='peoplename']").val();
+                  $.ajax({
+                     type: "POST",
+                     url: "showpeople.php",
+                     dataType:"json",
+                     data: {
+                          "classid": class_id,
+                          "pname": pname
+                     },
+                     success: function(msg){
+                            var str="";
+                        for(var i = 0;i<msg.length;i++){
+                                str += "<option value="+msg[i].id+">"+msg[i].name+"</option>";
+                        }
+                        $("#people_list").empty().prepend(str);
+                     }
+                  });
+             })
+            $("input[name='peoplename']").keyup(function(){
+                  var pname = $(this).val();
+                  var class_id = $("#choose_class").val();
+
+                  $.ajax({
+                     type: "POST",
+                     url: "showpeople.php",
+                     dataType:"json",
+                     data: {
+                          "classid": class_id,
+                          "pname": pname
+                     },
+                     success: function(msg){
+                         // console.log(msg);
+                            var str="";
+                        for(var i = 0;i<msg.length;i++){
+                                str += "<option value="+msg[i].id+">"+msg[i].name+"</option>";
+                        }
+                        $("#people_list").empty().prepend(str);
+                     }
+                  });
+            })
+         $("#people_list").change(function(){
+              // alert(cap_id);
+               var name = $(this).find("option:selected").text();
+               var pid = $(this).find("option:selected").val();
+            if(confirm("确定要把此物品派发给"+name+"吗?")){
+
+                 $.ajax({
+                     type: "POST",
+                     url: "belong.php",
+                     data: {
+                          "cap_id": cap_id,
+                          "pname" : name
+                          // "pid" : pid
+                     },
+                     success: function(msg){
+                         if(msg == '{"errno":4031,"errmsg":"You have no permission"}'){
+                              alert(msg);
+                         }else if(msg=="yes"){
+                             alert("派发成功");
+                             location.href="allcapital.php";
+                         }else if(msg == "no"){
+                             alert("失败");
+                         }
+                     }
+                  });
+            }
+          })
+      $(".hwLayer-close").click(function(){
+           $("#people_list").empty();
+           $("#choose_class").val("");
+      })
+      //删除物品
+      $(".delete_capital").click(function(){
+           ob = $(this);
+           var id = $(this).closest("tr").attr("id");
+         if(confirm("确定要删除吗")){
+             $.ajax({
+                 type: "POST",
+                 url: "delete_capital.php",
+                 data: {
+                          "id":id,
+                        },
+                 success: function(msg){
+                    if(msg == '{"errno":4031,"errmsg":"You have no permission"}'){
+                        alert(msg);
+                    }else if(msg=="yes"){
+                         ob.closest("tr").remove();
+                         alert("删除成功");
+                     }else if(msg == "no"){
+                         alert("删除失败");
+                     }
+                 }
+              });
+           }
+      })
+      //收回物品
+      $(".takeback").click(function(){
+           var id = $(this).closest("tr").attr("id");
+           var capitalname = $(this).attr("capitalname");
+           ob =  $(this);
+           if(confirm("确定要收回吗?")){
+               $.ajax({
+                   type: "POST",
+                   url: "capital_back.php",
+                   data: {
+                            "capitalname":capitalname,
+                            "id":id
+                          },
+                   success: function(msg){
+                       if(msg=="yes"){
+                         alert("收回成功");
+                         location.href="allcapital.php";
+                       }else if(msg == "no"){
+                           alert("收回失败");
+                       }
+                   }
+                });
+           }
+      })
+      //人名
+      
+    });
+</script>
+{/literal}
+</HTML>

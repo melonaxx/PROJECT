@@ -1,0 +1,66 @@
+//---- UTF8 编码 ----
+<!-- BEGIN: main --><?xml version="1.0" encoding="UTF-8"?>
+{main.doc_type}
+<?xml-stylesheet type="text/xsl" href="/style/product_modified_combination_goods.xsl?ver={main.doc_version}"?>
+<html version="{main.doc_version}">
+<head>
+	<Title>{main.title}</Title>
+	<meta name="keywords" content="{main.keywords}" />
+	<meta name="description" content="{main.description}" />
+	<em company_id="{main.company_id}" staff_id="{main.staff_id}" login_name="{main.login_name}" permit="{main.permit}" program="{main.request_url}"/>
+</head>
+<Body>
+	<dir><![CDATA[ 您的位置：{main.this_location}]]></dir>
+	<menu>
+		<big>{main.big_menu}</big>
+		<small>
+			<!-- BEGIN: list_menu --><a class="{list_menu.class}" href="{list_menu.link}">{list_menu.name}</a><!-- END: list_menu -->
+		</small>
+	</menu>
+	<product>
+		<number>{main.number}</number>
+		<name>{main.name}</name>
+		<price_display>{main.price_display}</price_display>
+		<price_group>{main.price_group}</price_group>
+		<content>{main.content}</content>
+	</product>
+	<product_category>
+		<ul>
+			<select_value>{main.category_id}</select_value>
+			<!-- BEGIN:product_category -->
+			<li><value>{product_category.id}</value><text>{product_category.name}</text></li>
+			<!-- END:product_category -->
+		</ul>
+	</product_category>
+	<product_brand>
+		<ul>
+			<select_value>{main.brand_id}</select_value>
+			<!-- BEGIN:product_brand -->
+			<li><value>{product_brand.id}</value><text>{product_brand.name}</text></li>
+			<!-- END:product_brand -->
+		</ul>
+	</product_brand>
+	<productcombination>
+		<ul>
+			<!-- BEGIN:productcombination -->
+			<li>
+				<select_value>{productcombination.subid}</select_value>
+				<text>{productcombination.sub_id}</text><value>{productcombination.id}</value>
+				<total>{productcombination.total}</total>
+				<price_display>{productcombination.price_display}</price_display>
+				<price_group>{productcombination.price_group}</price_group>
+				<name>{productcombination.name}</name>
+				<value_id_1>{productcombination.value_id_1}</value_id_1>
+				<value_id_2>{productcombination.value_id_2}</value_id_2>
+				<value_id_3>{productcombination.value_id_3}</value_id_3>
+				<value_id_4>{productcombination.value_id_4}</value_id_4>
+				<value_id_5>{productcombination.value_id_5}</value_id_5>
+			</li>
+			<!-- END:productcombination -->
+		</ul>
+	</productcombination>
+	<id>{main.id}</id>
+	<sj>{main.sj}</sj>
+</Body>
+</html>
+<!-- END: main -->

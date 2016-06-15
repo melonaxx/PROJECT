@@ -1,0 +1,122 @@
+//---- UTF8 编码 ----
+<!-- BEGIN: main -->
+<html>
+<head>
+<title>退款入帐</title>
+
+<link rel="stylesheet" href="/style/bootstrap-datetimepicker.min.css"></link>
+<link type="text/css" rel="stylesheet" href="/style/bootstrap.min.css?ver={main.doc_version}"/>
+<link type="text/css" rel="stylesheet" href="/style/style.css?ver={main.doc_version}"/>
+<style>
+body,table,form,input		{font-size:12px; padding:0; margin:0;}
+body {
+	min-width:100px;
+	overflow-y:auto;
+	overflow-x:auto;
+}
+.form-group {
+	float:left;
+}
+.margin_left_1{
+	float:left;
+	line-height:28px;
+}
+</style>
+<script type="text/javascript" charset="UTF-8" src="/js_encode/jquery-1.9.1.min.js"></script>
+<!-- 时间插件 -->
+<script type="text/javascript" src="/js_encode/bootstrap-datetimepicker.min.js"></script>
+<script type="text/javascript" src="/js_encode/bootstrap-datetimepicker.zh-CN.js"></script>
+<script type="text/javascript">
+$(function(){
+	$('input[name=date]').datetimepicker({
+		language:'zh-CN',
+		format:'yyyy-mm-dd',
+		autoclose:true,
+		minView:2,
+    });
+
+    $('table tr td:nth-child(2)').on('keyup','input[name="ruku[]"]',function(){
+    	var ru = $(this).val();
+    	var total = $(this).parents('tr').find('td:nth-child(6)').find('input[name=total]').val();
+    	var have = $(this).parents('tr').find('td:nth-child(5)').find('input[name=have]').val();
+    	if(ru == ""){
+    		ru = 0;
+    	}
+    	if(have == ""){
+    		have = 0;
+    	}
+    	if(parseInt(ru) > parseInt(total)){
+    		ru = total;
+    		$(this).val(ru);
+    	}
+    	var total_wait = total-ru;
+    	var cc = parseInt(have)+parseInt(ru);
+    	$(this).parents('tr').find('td:nth-child(5)').find('.have').html(cc);
+    	$(this).parents('tr').find('td:nth-child(6)').find('.total').html(total_wait);
+    	$(this).parents('tr').find('td:nth-child(6)').find('input[name="total_wait[]"]').val(total_wait);
+    })
+
+    //退款记账金额
+    $('input[name=money]').keyup(function(){
+
+    	if($(this).val()){
+    		var money = $(this).val().replace(/[^\d\.]/g,'');
+    	}else{
+    		var money = 0.00;
+    	}
+
+		money = parseFloat(money);
+    	var theory_amount = parseFloat($(this).parent().find('input[name=theory_amount]').val());
+    	money = parseFloat(money.toFixed(2));
+
+    	if(parseFloat(money) >= parseFloat(theory_amount)){
+    		money = theory_amount;
+    		$(this).val(money);
+    	}else if(money == ''){
+    		money = '';
+    		$(this).val(money);
+    	}
+    });
+
+})
+</script>
+<form class="form-inline supplierMsg" method="post" action="">
+	<!-- BEGIN: arr -->
+	<div class="form-group">
+		<label class="margin_left_1">订单编号：</label>
+		<input type="text" name="order_id" value='{arr.bind_number}' readonly="readonly" class="form-control input-sm" style="width:147px;">
+		<input type="hidden" name="order_id" value="{arr.order_id}">
+	</div>
+	<div class="form-group">
+		<label class="margin_left_1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;店铺：</label>
+		<input class="form-control input-sm find" name="" value="{arr.shop_name}" readonly="readonly" >
+	</div>
+	<div class="form-group">
+		<label class="margin_left_1">结帐帐户：</label>
+		<input class="form-control input-sm" readonly="readonly" name="bank_id" type="text" value="{arr.bank_name}">
+		<input type="hidden" name='bank_id' value="{arr.bank_id}">
+	</div>
+	<div class="form-group">
+		<label class="margin_left_1">退款金额：</label>
+		<input class="form-control input-sm" name="money" readonly type="text" value="{arr.payment}" onbeforepaste="clipboardData.setData('text',clipboardData.getData('text').replace(/[^\d\.]/g,''))">
+	</div>
+	<div class="form-group">
+		<label class="margin_left_1">退款日期：</label>
+		<input class="form-control input-sm" name="date" type="text" value="{arr.rq}">
+	</div>
+	<div class="form-group">
+		<label class="margin_left_1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;备注：</label>
+		<input class="form-control input-sm merger_two_row_4 find" type="text" name="body">
+	</div>
+	<div style="clear:both;"></div>
+	<div class="float_left btn_margin margin_top_3">
+		<input class="btn btn-default btn-sm  margin_left_0" type="submit" name="submit" value="确定" />
+		<input class="btn btn-default btn-sm  margin_left_0" type="button" onclick="parent.$('#MessageBox').modal('hide')"  value="取消"/>
+	</div>
+</form>
+
+</body>
+</html>
+
+<!-- END: main -->
+

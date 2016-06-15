@@ -1,0 +1,54 @@
+//---- UTF8 编码 ----
+<!-- BEGIN: main --><?xml version="1.0" encoding="UTF-8"?>
+{main.doc_type}
+<?xml-stylesheet type="text/xsl" href="/style/stock_allocation_list.xsl?ver={main.doc_version}"?>
+<html version="{main.doc_version}">
+	<head>
+		<Title>{main.title}</Title>
+		<meta name="keywords" content="{main.keywords}" />
+		<meta name="description" content="{main.description}" />
+		<em company_id="{main.company_id}" staff_id="{main.staff_id}" login_name="{main.login_name}" permit="{main.permit}" program="{main.request_url}"/>
+	</head>
+	<Body>
+		<dir><![CDATA[ 您的位置： {main.this_location}]]></dir>
+		<menu>
+			<big>{main.big_menu}</big>
+			<small>
+				<!-- BEGIN: list_menu --><a class="{list_menu.class}" href="{list_menu.link}">{list_menu.name}</a><!-- END: list_menu -->
+			</small>
+		</menu>
+		<storemove>
+			<ul total='{main.total}'>
+				<!-- BEGIN:storemove -->
+				<li>
+					<action_date>{storemove.action_date}</action_date>
+					<id>{storemove.id}</id>
+					<output_store_id>{storemove.output_store_id}</output_store_id>
+					<input_store_id>{storemove.input_store_id}</input_store_id>
+					<output_staff_id>{storemove.output_staff_id}</output_staff_id>
+					<body>{storemove.body}</body>
+					<total>{storemove.total}</total>
+				</li>
+				<!-- END:storemove -->
+			</ul>
+		</storemove>
+		<store_info>
+			<ul>
+				<!-- BEGIN:store_info -->
+				<li><text>{store_info.name}</text><value>{store_info.id}</value></li>
+				<!-- END:store_info -->
+			</ul>
+		</store_info>
+		<store_info_ware>
+			<ul>
+				<!-- BEGIN:store_info_ware -->
+				<li><text>{store_info_ware.name}</text><value>{store_info_ware.id}</value></li>
+				<!-- END:store_info_ware -->
+			</ul>
+		</store_info_ware>
+		<date_end>{main.date_end}</date_end>
+		<date_start>{main.date_start}</date_start>
+		{main.page_info}
+	</Body>
+</html>
+<!-- END: main -->

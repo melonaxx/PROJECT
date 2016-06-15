@@ -1,0 +1,141 @@
+//---- UTF8 编码 ----
+<!-- BEGIN: main -->
+<html>
+<head>
+<title></title>
+<link type="text/css" rel="stylesheet" href="/style/bootstrap.min.css?ver={main.doc_version}"/>
+<link type="text/css" rel="stylesheet" href="/style/style.css?ver={main.doc_version}"/>
+<style>
+body,table,form,input	{font-size:13px; padding:0; margin:0}
+body { min-width:100px; overflow-y:auto; overflow-x:auto}
+.nav-tabs {border-bottom:0px;}
+.nav-tabs li{width:50%;}
+.nav-tabs > li.active > a,
+.nav-tabs > li.active > a:focus, 
+.nav-tabs > li.active > a:hover {
+	border-radius: 0 0 0 0;
+    background-color: #fff;
+    border-color: #fff #fff transparent;
+    border-image: none;
+    border-width: 0px;
+    margin-right:0px;
+    margin-left:0px;
+    color: #555;
+}
+.nav-tabs > li > a{border:0px;color:#000;background-color: #eee;border-radius: 0 0 0 0;}
+.nav-tabs > li > a:hover {
+    border-color: #fff #fff #fff;
+    border-width:0px;
+	border-radius: 0 0 0 0;
+    /*background-color: #fff;*/
+}
+
+</style>
+<script type="text/javascript" charset="UTF-8" src="/js_encode/jquery-1.9.1.min.js"></script>
+<script type="text/javascript" charset="UTF-8" src="/js_encode/bootstrap.min.js"></script>
+<script type="text/javascript" charset="UTF-8" src="/js_encode/jquery.zclip.min.js"></script>
+
+
+<ul class="nav nav-tabs nav_tabs_margin">
+	<li class="active"><a href="#invite_link" data-toggle="tab">邀请链接</a></li>
+	<li ><a href="#send_invite" data-toggle="tab">发送邀请</a></li>
+</ul>
+<div class="tab-content">
+	<div class="tab-pane fade in active" id="invite_link" >
+		<div style="width:95%;height:40px;line-height: 38px;margin:20px auto;border:1px solid #ccc; border-radius: 3px;">
+			<input style="float:left;padding-left:10px;line-height: 40px;border:0px;height:38px;width:90%;color:#666" value="www.imihuan.com" readonly="readonly" />
+			<a href="javascript:;" id='copy' style="float:right;margin-right:10px">复制</a>
+		</div>
+	</div>
+	<div class="tab-pane fade " id="send_invite">
+		<div style="width:95%;height:40px;margin:20px auto;border:1px solid #ccc;border-radius: 3px;line-height: 38px;">
+			<input type="hidden" name='name' value="安朋朋">
+			<input style="float:left;padding-left:10px;border:1px;width:90%;height:38px;line-height: 40px" name="address" placeholder="输入手机号或邮箱地址" data-toggle="tooltip" data-placement="bottom" title="必填" />
+			<a href="javascript:;" id="invite" style="float:right;margin-right:10px">邀请</a>
+		</div>
+	</div>
+
+</div>
+<script>
+$(function(){
+	// 一般情况下可使用
+	$("#copy").zclip({ 
+	  path:'/js_encode/ZeroClipboard.swf',  
+	  copy:function(){return $(this).prev('input').attr('value');},  
+	  afterCopy:function(){
+	  	$("<span id='msg' style='margin-top:40px;display:block;' />").insertAfter($('#copy')).text('复制成功')
+	  	setTimeout(function(){
+	  		$("#msg").remove();	
+	  	},1000);
+	  }  
+	});
+
+	// 整个文档加载以前是隐藏的使用 
+	// $('#aaa').on('click', function () {  
+	//     $("#copy").delay(250).queue(function(next){  
+	//        	$(this).zclip('show');  
+	//        	$(this).zclip({ 
+	//        	 	path:'/js_encode/ZeroClipboard.swf',  
+	//        	  	copy:function(){return $(this).prev('input').val();},
+	//        	  	afterCopy:function(){
+	//        	  	$("<span id='msg' style='margin-top:40px;display:block;' />").insertAfter($('#copy')).text('复制成功')
+	//        	  	setTimeout(function(){
+	//        	  		$("#msg").remove();	
+	//        	  	},1000);
+	//        	  }  
+	//        	});  
+	//     });  
+	// });
+	
+	$("#invite").click(function(){
+		var address = $('input[name=address]').val();
+		var email = /^\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/;
+		// var mobile = /^(0|86|17951)?(13[0-9]|15[012356789]|17[678]|18[0-9]|14[57])[	0-9]{8}$/;
+		var mobile = /^\d{11,15}$/;
+		if(email.test(address)){
+			var name=$('input[name=name]').val();
+	
+			$.ajax({
+				url: '/setting/setting_person_invite.php',
+				type: 'post',
+				data: {tomail: address,name:name},
+			})
+			.done(function(data) {
+	
+				if(data == 1){
+					alert('恭喜！邮件发送成功！！');
+				}else{
+					alert('对不起，邮件发送失败！请检查邮箱填写是否有误。');
+				}
+			})
+	
+		}else if(mobile.test(address)){
+			var name=$('input[name=name]').val();
+	
+			$.ajax({
+				url: '/setting/setting_person_invite.php',
+				type: 'post',
+				data: {tomobile: address,name:name},
+			})
+			.done(function(data) {
+				if(data == 1){
+					alert('发送成功！');
+				}else{
+					alert('发送失败！');
+				}
+			})
+		}else{
+			alert('请输入正确的电话号码或邮箱地址！');
+			return false;
+		}
+	
+	});
+
+
+})
+</script>
+</body>
+</html>
+
+<!-- END: main -->
+

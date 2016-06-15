@@ -1,0 +1,15 @@
+/*高德地图右侧区域定位*/
+.citySearch {width: 200px;height: 36px;position: absolute;top: 60px;right: 30px;}
+.cityName {width: 70%;height: 34px;font-size: 14px;float: left;border: oldlace;padding-left: 10px;box-shadow: 0px;}
+.citySearchBtn {
+	width: 30%;
+    height: 34px;
+    float: left;
+    text-align: center;
+    line-height: 34px;
+    font-size: 15px;
+    font-weight: bold;
+    color: white;
+    cursor: pointer;
+    background-color: #15A4FA;
+}

@@ -1,0 +1,7 @@
+.wmainlist .wllevel1 span{float:left;width:18px;height:16px;margin-top:12px;margin-right:10px;background: url(/image/main2/integrate.png) no-repeat -235px -5px;}
+.wmaincontent table{margin-top:52px;}
+table tbody td:nth-of-type(1){width:50px;}
+table tbody td:nth-of-type(2){width:96px;text-align: left;}
+table tbody td:nth-of-type(3){width:380px;text-align: left;}
+table tbody td:nth-of-type(4){width:100px;}
+table tbody td:nth-of-type(3) span{margin:0 8px;}

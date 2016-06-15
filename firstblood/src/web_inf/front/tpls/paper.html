@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>北京外麦王人事系统</title>
+	<SCRIPT language=javascript src="/js/jquery-1.8.3.min.js"></SCRIPT>
+</head>
+<style>
+      *{
+        padding:0px;
+        margin:0px;
+      }
+      body{
+  		background-image:url("/images/bgcolor.jpg");
+      }
+      #first{
+      	width:70%;
+      	background-color:white;
+      	border:2px solid #474747;
+      }
+	  td{
+	  	height:30px;
+	  	font-size:16px;
+	  }
+      a{
+      	text-decoration: none;
+      }
+      .true{
+      	color:#6DB418;
+      }
+      .false{
+      	color:red;
+      }
+</style>
+<body>
+ <center>
+ <div id="first">
+ <form action="checkpaper.php?cid={$cid}" method='post' onsubmit="return test()">
+ <hr/><hr/>
+    <table height=60px>
+	   <tr>
+	   	   <td>姓名:<input type="text" name='uname' id="userid">&nbsp; &nbsp; &nbsp;</td>
+	   	   &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+	   	   <td>&nbsp; &nbsp; &nbsp;电话:<input type="text" name='phone' id="userphone"></td>
+	   </tr>
+    </table>
+	<table width="50%">
+	   <tr>
+	   	    <td><b>一.选择题,下列选择题中答案有一个是正确的.(每题3分)</b></td>
+	   </tr>
+	   {foreach from=$list item=temp}
+		<tr>
+			<td>
+			    <span name="sxuhao"></span>
+			    {$temp['topic']}
+			</td>
+
+		</tr>
+            {foreach from=$temp['as'] item=result}
+			<tr>
+		   		<td>
+		   		   <input type="radio" name="{$temp['tid']}_1" value="{$result['asid']}">
+		           {$result['content']}
+		        </td>
+
+			</tr>
+		    {/foreach}
+	   {/foreach}
+         <hr/><hr/>
+         <tr><td></td></tr>
+  	   <tr>
+	   	    <td><b>二.多选题,下列答案中至少有一个是正确的.(每题4分)</b></td>
+	   </tr>
+	   {foreach from=$list2 item=temp2}
+	   <tr>
+	   	    <td>
+	   	    	<span name="dxuhao"></span>
+	   	    	{$temp2['topic']}
+	   	    </td>
+	   </tr>
+	      {foreach from=$temp2['as'] key=k item=result1}
+		    <tr>
+		   	    <td>
+		   	       <input type="checkbox" name="{$temp2['tid']}_2[{$k}]" value="{$result1['asid']}" />
+		   	       {$result1['content']}
+		   	    </td> 
+		    </tr>
+		  {/foreach}
+	   {/foreach}
+	   <tr><td></td></tr>
+   	   <tr>
+	   	    <td><b>三.判断题,请将你认为对的题打勾,错误的打叉.(每题2分)</b></td>
+	   </tr>
+       {foreach from=$list1 item=temp1}
+	   <tr>
+	   		<td>
+	   		    <span name="judge"></span>
+	   		    <span>{$temp1['content']}</span>&nbsp;&nbsp;&nbsp;
+	   		    <a href="javascript:void(0)" class="true">√</a>&nbsp;&nbsp;
+	   		    <a href="javascript:void(0)" class="false">ㄨ</a>  
+	   		    <input type="hidden" name="{$temp1['tid']}_3" value="">		    
+   		    </td>
+	   </tr>
+	   <tr><td></td></tr>
+       {/foreach}
+  	   <tr>
+	   	    <td>四.<b>填空题,将答案填写至题下方的横线内.</b></td>
+	   </tr>
+       {foreach from=$list4 key=k item=temp4}
+	   <tr>
+	   		<td>
+	   		    <span name="tiankong"></span>
+	   		    {$temp4['as']} 
+	   		</td>
+	   </tr>
+	   <tr><td></td></tr>
+       {/foreach}
+   	   <tr>
+	   	    <td>五.<b>问答题</b></td>
+	   </tr>
+       {foreach from=$list3 key=k item=temp3}
+	   <tr>
+	   		<td>
+	   		    <span name="wenda"></span>
+	   		     {$temp3['topic']}
+   		    </td>
+	   </tr>
+	   <tr>
+   		    <td>
+   		    	<textarea name="{$temp3['tid']}_4" cols="70" rows="8" style="background-color:white; border:1px solid black;color:red;"></textarea>
+   		    </td>
+	   </tr>
+	   {/foreach}
+	   <tr><td></td></tr>
+   	   <tr>
+			<td>
+				<input type="submit" value="提交"><b style="color: red;font-size: 12px;">(检查无误后提交)</b>
+			</td>
+	   </tr>
+	</table>
+ </form>
+ </div>
+</center>
+</body>
+<script>
+       // 给题目添加序号
+       var sxuhao = document.getElementsByName("sxuhao");
+       for(var i=0;i<sxuhao.length;i++){
+            sxuhao[i].innerHTML=(i+1)+".";
+       }
+       var dxuhao = document.getElementsByName("dxuhao");
+       for(var i=0;i<dxuhao.length;i++){
+            dxuhao[i].innerHTML=(i+1)+".";
+       }
+       var judge = document.getElementsByName("judge");
+       for(var i=0;i<judge.length;i++){
+            judge[i].innerHTML=(i+1)+".";
+       }
+       var wenda = document.getElementsByName("wenda");
+       for(var i=0;i<wenda.length;i++){
+            wenda[i].innerHTML=(i+1)+".";
+       }
+       var tiankong = document.getElementsByName("tiankong");
+       for(var i=0;i<tiankong.length;i++){
+            tiankong[i].innerHTML=(i+1)+".";
+       }
+       function test(){
+              var uid = document.getElementById("userid");
+              
+              var userphone = document.getElementById('userphone');
+
+              var uname = uid.value; //答卷人的名字
+              
+              var phone = userphone.value; //答卷人的电话
+
+              if(uname == ""){
+              	  alert("请填写姓名");
+              	  return false;
+              }
+
+              if(phone == ""){
+              	  alert("请留下联系电话");
+              	  return false;
+              }
+       }
+       $(".true").live("click",function(){
+            // $(this).closest("i").css("background-color","red");
+            $(this).prev("span").css("color","#6DB418");
+            $(this).next().next("input").val(1);
+       })
+       $(".false").live("click",function(){
+            // $(this).closest("i").css("background-color","red");
+            $(this).prev().prev().css("color","red");
+            $(this).next("input").val(0);
+       })
+</script>
+</html>

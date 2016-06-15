@@ -1,0 +1,57 @@
+.padd {
+    width: 100%;
+    height: 670px;
+    padding-top: 20px;
+    padding-left: 30px;
+}
+
+.mod{
+    font-size: 16px;
+}
+
+.table {
+    width: 1400px;
+    margin-bottom: 20px;
+}
+
+.table-condensed > tbody > tr > td, .table-condensed > tbody > tr > th,
+.table-condensed > tfoot > tr > td, .table-condensed > tfoot > tr > th,
+.table-condensed > thead > tr > td, .table-condensed > thead > tr > th {
+     padding: 13px;
+}
+
+.top {
+	color: #ccc;
+}
+
+.addsen {
+    width: 150px;
+    height: 40px;
+    font-size: 14px;
+    margin-top: 17px;
+}
+
+.tea {
+    width: 110px;
+    height: 47px;
+    overflow-x: scroll;
+    overflow-y: hidden;
+}
+
+th {
+    width: 220px;
+    background-color: #f9f9f9;
+}
+
+td {
+    align: center;
+}
+
+.ares {
+    width: 997px;
+    height: 540px;
+    border: 1px solid #ccc ;
+    overflow-x: scroll;
+    overflow-y: scroll;
+    padding； 7px;
+}

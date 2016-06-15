@@ -1,0 +1,176 @@
+//---- UTF8 编码 ----
+<!-- BEGIN: main -->
+<html>
+<head>
+<title>新增公司操作员</title>
+<link type="text/css" rel="stylesheet" href="/style/bootstrap.min.css?ver={main.doc_version}"/>
+<link type="text/css" rel="stylesheet" href="/style/style.css?ver={main.doc_version}"/>
+<style>
+body,table,form,input		{font-size:12px; padding:0; margin:0}
+body	{min-width:100px}
+.form-control	{display:inline-block}
+</style>
+<script type="text/javascript" charset="UTF-8" src="/js_encode/jquery-1.9.1.min.js"></script>
+<script type="text/javascript" charset="UTF-8" src="/js_encode/bootstrap.min.js"></script>
+
+<script>
+if(typeof getObject != 'function')
+{
+	function getObject(objName)
+	{
+		if(document.getElementById)
+		{
+			return eval('document.getElementById("' + objName + '")');
+		}
+		else if(document.layers)
+		{
+			return eval("document.layers['" + objName +"']");
+		}
+		else
+		{
+			return eval('document.all.' + objName);
+		}
+	}
+}
+function close_btn()
+{
+	parent.$('#MessageBox').modal('hide');
+}
+function check_staff()
+{
+	var sn		= getObject("staff_name");
+	var nick	= getObject("nick");
+	var number	= getObject("number");
+	if(sn.value.length < 3)
+	{
+		alert("登录账号太短，请设置3-20位的登录账号");
+		sn.focus();
+		return false;
+	}
+	if(nick.value.length < 1)
+	{
+		alert("请设置员工姓名");
+		nick.focus();
+		return false;
+	}
+	if(number.value.length < 3)
+	{
+		alert("请设置员工编号");
+		number.focus();
+		return false;
+	}
+	var pw1	= getObject("pwd_1");
+	var pw2	= getObject("pwd_2");
+	//---- 设置了密码 ----
+	if(pw1.value.length < 5)
+	{
+		alert("密码太短，请设置6-20位的密码");
+		pw1.focus();
+		return false;
+	}
+	if(pw1.value != pw2.value)
+	{
+		alert("密码不一致，请确认密码");
+		pw2.focus();
+		return false;
+	}
+}
+function click_checkbox(chk_id, box_id)
+{
+	if(getObject(chk_id).value == "Y")
+	{
+		getObject(chk_id).value	= "N";
+		getObject(box_id).className	= "checkbox";
+	}
+	else
+	{
+		getObject(chk_id).value	= "Y";
+		getObject(box_id).className	= "checkbox_ok";
+	}
+}
+</script>
+</head>
+<body>
+
+<center>
+
+<form method="post" action="/setting/setting_add_staff.php" autocomplete="off" onsubmit="return check_staff()">
+
+{main.error}
+
+<table align="center">
+<tr height="40">
+	<td width="230" class="form-group">
+		<label>账号类型：</label>
+		普通员工
+	</td>
+	<td width="230" class="form-group">
+		<input type="hidden" id="is_stop" name="is_stop" value="N" />
+		<font id="chk_valid" class="checkbox" onclick="click_checkbox('is_stop', 'chk_valid')">&#160;</font><font id="txt_valid" class="checkbox_text" onclick="click_checkbox('is_stop', 'chk_valid')">停用该账号</font>
+	</td>
+</tr>
+<tr height="40">
+	<td class="form-group">
+		<label>登录账号：</label>
+		<input class="form-control input-sm" id="staff_name" name="name" maxlength="32" /> <font color="red">*</font>
+	</td>
+	<td class="form-group"></td>
+</tr>
+<tr height="40">
+	<td class="form-group">
+		<label>设置密码：</label>
+		<input type="password" class="form-control input-sm" id="pwd_1" autocomplete="off" name="password" maxlength="32" /> <font color="red">*</font>
+	</td>
+	<td class="form-group">
+		<label>确认密码：</label>
+		<input type="password" class="form-control input-sm" id="pwd_2" autocomplete="off" maxlength="32" /> <font color="red">*</font>
+	</td>
+</tr>
+<tr height="40">
+	<td class="form-group">
+		<label>员工姓名：</label>
+		<input class="form-control input-sm" id="nick" name="nick" maxlength="6" /> <font color="red">*</font>
+	</td>
+	<td class="form-group">
+		<label>联系方式：</label>
+		<input class="form-control input-sm" name="mobile" />
+	</td>
+</tr>
+<tr height="40">
+	<td class="form-group">
+		<label>员工编号：</label>
+		<input class="form-control input-sm" id="number" name="number" value="{main.number}" maxlength="6" /> <font color="red">*</font>
+	</td>
+	<td class="form-group">
+		<label>所属部门：</label>
+		<select name="group_id" class="form-control input-sm">
+			<option value="0">-- 无 --</option>
+			<!-- BEGIN: list_group -->
+			<option value="{list_group.id}">{list_group.name}</option>
+			<!-- END: list_group -->
+		</select>
+	</td>
+</tr>
+<tr height="40">
+	<td colspan="2" class="form-group">
+		<label>员工备注：</label>
+		<input class="form-control input-sm merger_two_row_4" name="content" />
+	</td>
+</tr>
+<tr height="60">
+	<td colspan="2">
+		<input class="btn btn-default btn-sm btn_margin" type="submit" value="提交" />
+		&#160;&#160;
+		<input class="btn btn-default btn-sm" type="button" value="取消" onclick="close_btn()" />
+	</td>
+</tr>
+</table>
+
+</form>
+
+
+</center>
+
+</body>
+</html>
+<!-- END: main -->

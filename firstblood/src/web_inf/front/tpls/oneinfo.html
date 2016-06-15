@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>北京外麦王人事系统</title>
+	<link href="/css/oneinfo.css" type="text/css" rel="stylesheet">
+	<SCRIPT language=javascript src="/js/jquery-1.8.3.min.js"></SCRIPT>
+    <script language="javaScript" src="/js/mydate.js"></script>
+</head>
+<style>
+     body{
+     	background-color:#86C2E7;
+     }
+	 .info{
+	 	font-weight:bold;
+	 	font-size:14px;
+	 }
+	 .val{
+	 	font-size:15px;
+	 }
+	 #blo{
+	 	display:block;
+	 	width:1100px;
+	 }
+	 ul li{
+	 	margin:7px;
+	 }
+</style>
+<body>
+<center>
+        {foreach from=$row item=temp}
+        <a id="blo">
+			  <table class="ftable" cellspacing="0" border="1px" >
+		    	  <tr>
+		    	  	 <td class="info">姓&nbsp;&nbsp;名:</td>
+		    	  	 <td colspan="2" class="val">{$temp['info']['name']}</td>
+		    	  	 <td class="info">性&nbsp;&nbsp;别:</td>
+		    	  	 <td colspan="2" class="val">{$temp['info']['sex']}</td>
+		    	  </tr>
+				  <tr>
+		    	  	 <td class="info">婚&nbsp;&nbsp;否:</td>
+		    	  	 <td class="val">{$temp['info']['wed']}</td>
+		    	  	 <td class="info">学&nbsp;&nbsp;历:</td>
+		    	  	 <td class="val">{$temp['info']['education']}</td>
+		    	  	 <td class="info">生&nbsp;&nbsp;日:</td>
+		    	  	 <td class="val">{if $temp['info']['birth'] != "0000-00-00"}{$temp['info']['birth']}{/if}</td>
+		    	  </tr>
+			  	  <tr>
+		    	  	 <td class="info">联系方式</td>
+		    	  	 <td class="val">{$temp['info']['phone']}</td>
+		    	  	 <td class="info">紧急联系人</td>
+		    	  	 <td class="val">{$temp['info']['actphone']}</td>
+    	    	  	 <td class="info">现住址:</td>
+		    	  	 <td class="val">
+	                    {$temp['info']['nowaddress']}
+		    	  	 </td>
+		    	  </tr>
+				  <tr>
+  	    	  	     <td class="info">是否住宿</td>
+		    	  	 <td class="val">
+		    	  	   {$temp['info']['lodge']}
+		    	  	 </td>
+		    	  	 <td class="info">保险:</td>
+		    	  	 <td class="val">{$temp['info']['safe']}</td>
+	 	    	  	 <td class="info">驾照:</td>
+		    	  	 <td class="val">{$temp['info']['drive']}</td>
+		    	  </tr>
+		    	  <tr>
+     	    	  	 <td class="info">公积金:</td>
+		    	  	 <td class="val">
+                      {$temp['info']['cpf']}
+	 	    	  	 </td>
+		    	  	 <td class="info">毕业院校:</td>
+		    	  	 <td class="val">{$temp['info']['graduate']}</td>
+		 	 		 <td class="info">专业:</td>
+		    	  	 <td class="val">{$temp['info']['specialty']}</td>
+		    	  <tr>
+		    	  	 <td class="info">合同:</td>
+		    	  	 <td class="val" colspan="2">{$temp['info']['pact']}</td>
+		    	  	 <td class="info">合同时间</td>
+		    	  	 <td class="val" colspan="2">{$temp['info']['pacttime']}</td>
+		    	  </tr>
+		  	  	  <tr>
+		    	  	 <td class="info">试用期:</td>
+		    	  	 <td class="val">{$temp['info']['try']}</td>
+		    	  	 <td class="info">合同签订日期:</td>
+		    	  	 <td class="val">{if $temp['info']['pactsigntime'] != "0000-00-00"}{$temp['info']['pactsigntime']}{/if}</td>
+	 	    	  	 <td class="info">合同到期日:</td>
+		    	  	 <td class="val" style="color:red"><b>{if $temp['info']['pactover'] != "0000-00-00"}{$temp['info']['pactover']}{/if}</b></td>
+		    	  </tr>
+		  		  <tr>
+  		    	  	 <td class="info">员工状态</td>
+		    	  	 <td class="val">
+		    	  	 	 {$temp['info']['peoplestatus']}
+		    	  	 </td>
+		    	  	 <td class="info">入职时间:</td>
+		    	  	 <td class="val">{$temp['info']['hiredate']}</td>
+	 	    	  	 <td class="info">离职日期:</td>
+		    	  	 <td class="val">{$temp['info']['outtime']}</td>
+		    	  </tr>
+	  	  		  <tr>
+		    	  	 <td class="info">身份证号:</td>
+		    	  	 <td class="val">{$temp['info']['idnumber']}</td>
+		    	  	 <td class="info">邮箱</td>
+		    	  	 <td class="val">{$temp['info']['email']}</td>
+	 	    	  	 <td class="info">银行卡号(支付宝帐号):</td>
+		    	  	 <td class="val">{$temp['info']['banknumber']}</td>
+		    	  </tr>
+		    	
+		    	  <tr>
+		    	  	   <td class="info" colspan="1" style="height:250px;">特殊技能:</td>
+		    	  	   <td class="val" colspan="5" style="height:250px; text-align:left;">
+                           <ul>
+                                {foreach from=$temp['skill'] item=skill}
+
+                           	    		<li>{$skill['skillcontent']}</li><hr/>
+
+                           	    {/foreach}
+                           </ul>
+		    	  	   </td>
+		    	  </tr>
+  		    	  <tr>
+		    	  	   <td class="info" colspan="1" style="height:250px;">工作经验:</td>
+		    	  	   <td class="val" colspan="5" style="height:250px; text-align:left;">
+	    	  	   		  {foreach from=$temp['exper'] item=exper}
+                           <table width="80%">
+                           	   <tr>
+                                   <td width="15%" style="color:black;">时间:</td>
+                                   <td class="val">
+                                   	 {$exper['sotime']}
+                                   </td>
+                           	   </tr>
+                           	   <tr>
+                           	       <td  width="15%" style="color:black;">工作描述:</td>
+                           	       <td class="val"><p style="text-align:left;">&nbsp;&nbsp;&nbsp;{$exper['expercontent']}</p></td>
+                       	       </tr>
+                           </table>
+                           <hr/>
+                           {/foreach}
+		    	  	   </td>
+		    	  </tr>
+		    	  <tr>
+		    	  	  <td class="info" colspan="1" style="height:250px;">备注:</td>
+		    	  	  <td class="val" colspan="5" style="height:250px; text-align:left;">
+                           <ul>
+                              {foreach from=$temp['remark'] item=remark}
+                           	   <li>{$remark['remarkcontent']}</li><hr/>
+                              {/foreach}
+                           </ul>
+		    	  	  </td>
+		    	  </tr>
+  		    	  <tr>
+		    	  	 <td  colspan="6" style="text-align:right;">  	   
+		    	  	 	<a id="fbut" style="cursor:pointer">修改资料</a>
+		    	  	 	 &nbsp;&nbsp;&nbsp;&nbsp;
+		    	  	 </td>
+		    	  </tr>
+		    </table>
+	    </a>
+	    {/foreach} 
+        {foreach from=$row item=temp}   
+        <a id="non">
+        <form id="form">
+	    <table class="ftable" cellspacing="0" border="1px" >
+	    	  <tr>
+	    	  	 <td class="info">姓&nbsp;&nbsp;名:</td>
+	    	  	 <td class="val" colspan="2">
+	    	  	 <input type="text" name="name" value="{$temp['info']['name']}">
+	    	  	 </td>
+	    	  	 <td class="info">性&nbsp;&nbsp;别:</td>
+	    	  	 <td class="val" colspan="2">
+	    	  	 <input type="radio" name="sex" value="男" {if $temp['info']['sex'] eq '男'}checked{/if}>男
+	    	  	 <input type="radio" name="sex" value="女" {if $temp['info']['sex'] eq '女'}checked{/if}>女
+	    	  	 </td>
+	    	  </tr>
+			  <tr>
+	    	  	 <td class="info">婚&nbsp;&nbsp;否:</td>
+	    	  	 <td class="val">
+	    	  	 <input type="radio" name="wed" value="未婚" {if $temp['info']['wed'] eq '未婚'}checked{/if}>未婚
+	    	  	 <input type="radio" name="wed" value="已婚" {if $temp['info']['wed'] eq '已婚'}checked{/if}>已婚
+	    	  	 </td>
+	    	  	 <td class="info">学&nbsp;&nbsp;历:</td>
+	    	  	 <td class="val">
+	    	  	 <select name="education" id="">
+	    	  	 	   <option value="初中" {if $temp['info']['education'] eq '初中'}selected{/if}>初中</option>
+	    	  	 	   <option value="高中" {if $temp['info']['education'] eq '高中'}selected{/if}>高中</option>
+	    	  	 	   <option value="专科" {if $temp['info']['education'] eq '专科'}selected{/if}>专科</option>
+	    	  	 	   <option value="本科" {if $temp['info']['education'] eq '本科'}selected{/if}>本科</option>
+	    	  	 	   <option value="硕士" {if $temp['info']['education'] eq '硕士'}selected{/if}>硕士</option>
+	    	  	 	   <option value="博士" {if $temp['info']['education'] eq '博士'}selected{/if}>博士</option>
+	    	  	 </select>
+	    	  	 </td>
+	    	  	 <td class="info">生&nbsp;&nbsp;日:</td>
+	    	  	 <td class="val">
+	    	  	 <input type="text" name="birth" id="birth" value="{if $temp['info']['birth'] != '0000-00-00'}{$temp['info']['birth']}{/if}" maxLength=10 onfocus="MyCalendar.SetDate(this)">
+	    	  	 </td>
+	    	  </tr>
+		  	  <tr>
+	    	  	 <td class="info">联系方式</td>
+	    	  	 <td class="val">
+	    	  	 <input type="text" name="phone" id="phone" value="{$temp['info']['phone']}">
+	    	  	 </td>
+	    	  	 <td class="info">紧急联系人</td>
+	    	  	 <td class="val">
+	    	  	 <input type="text" name="actphone" id="actphone" value="{$temp['info']['actphone']}">
+	    	  	 </td>
+	    	  	 <td class="info">现住址:</td>
+	    	  	 <td class="val">
+                     <input type="text" name="nowaddress" value="{$temp['info']['nowaddress']}" id="nowaddress" >
+	    	  	 </td>
+	    	  </tr>
+			  <tr>
+  	    	  	 <td class="info">是否住宿</td>
+	    	  	 <td class="val">
+ 	    	  	 <input type="radio" name="lodge" value="是" {if $temp['info']['lodge'] eq '是'}checked{/if}>是
+	    	  	 <input type="radio" name="lodge" value="否" {if $temp['info']['lodge'] eq '否'}checked{/if}>否
+	    	  	 </td>
+	    	  	 <td class="info">保险:</td>
+	    	  	 <td  class="val">
+	    	  	 <input type="radio" name="safe" value="有" {if $temp['info']['safe'] eq '有'}checked{/if}>有
+	    	  	 <input type="radio" name="safe" value="无" {if $temp['info']['safe'] eq '无'}checked{/if}>无
+	    	  	 </td>
+ 	    	  	 <td class="info">驾照:</td>
+	    	  	 <td class="val">
+	    	  	 <input type="radio" name="drive" value="有" {if $temp['info']['drive'] eq '有'}checked{/if}>有	    	  	 
+	    	  	 <input type="radio" name="drive" value="无" {if $temp['info']['drive'] eq '无'}checked{/if}>无
+ 	    	  	 </td>
+	    	  </tr>
+	    	  <tr>
+ 	    	  	 <td class="info">公积金:</td>
+	    	  	 <td class="val">
+	    	  	 <input type="radio" name="cpf" value="有" {if $temp['info']['cpf'] eq '有'}checked{/if}>有	    	  	 
+	    	  	 <input type="radio" name="cpf" value="无" {if $temp['info']['cpf'] eq '无'}checked{/if}>无
+ 	    	  	 </td>
+	    	  	 <td class="info">毕业院校:</td>
+	    	  	 <td class="val">
+	    	  	 <input type="text" name="graduate" value="{$temp['info']['graduate']}">
+	    	  	 </td>
+	 	 		 <td class="info">专业:</td>
+	    	  	 <td class="val">
+	    	  	 <input type="text" name="specialty" value="{$temp['info']['specialty']}">
+	    	  	 </td>
+	    	  </tr>
+	    	  
+	    	  <tr>
+	    	  	 <td class="info">合同:</td>
+	    	  	 <td class="val" colspan=2>
+	    	  	 <select name="pact">
+	    	  	 	 <option value="北京福润一生科技有限公司" {if $temp['info']['pact'] eq '北京福润一生科技有限公司'}selected{/if}>北京福润一生科技有限公司</option>
+	    	  	 	 <option value="北京外麦王科技有限公司" {if $temp['info']['pact'] eq '北京外麦王科技有限公司'}selected{/if}>北京外麦王科技有限公司</option>
+	    	  	 	 <option value="北京爱米欢科技有限公司" {if $temp['info']['pact'] eq '北京爱米欢科技有限公司'}selected{/if}>北京爱米欢科技有限公司</option>
+	    	  	 	 <option value="保定文岩商贸有限公司" {if $temp['info']['pact'] eq '保定文岩商贸有限公司'}selected{/if}>保定文岩商贸有限公司</option>
+	    	  	 	 <option value="市场拓展协议" {if $temp['info']['pact'] eq '市场拓展协议'}selected{/if}>市场拓展协议</option>
+	    	  	 </select>
+	    	  	 </td>
+	    	  	 <td class="info">合同时间</td>
+	    	  	 <td class="val" colspan=2>
+	    	  	 <select name="pacttime" id="pacttime">
+	    	  	 	 <option value="合同未签" {if $temp['info']['pacttime'] eq '合同未签'}selected{/if}>合同未签</option>
+	    	  	 	 <option value="1年" {if $temp['info']['pacttime'] eq '1年'}selected{/if}>1年</option>
+	    	  	 	 <option value="2年" {if $temp['info']['pacttime'] eq '2年'}selected{/if}>2年</option>
+	    	  	 	 <option value="3年" {if $temp['info']['pacttime'] eq '3年'}selected{/if}>3年</option>
+	    	  	 	 <option value="4年" {if $temp['info']['pacttime'] eq '4年'}selected{/if}>4年</option>
+	    	  	 	 <option value="5年" {if $temp['info']['pacttime'] eq '5年'}selected{/if}>5年</option>
+	    	  	 	 <option value="6年" {if $temp['info']['pacttime'] eq '6年'}selected{/if}>6年</option>
+	    	  	 	 <option value="无固定期" {if $temp['info']['pacttime'] eq '无固定期'}selected{/if}>无固定期</option>
+	    	  	 </select>
+	    	  	 </td>
+	    	  </tr>
+	  	  	  <tr>
+	    	  	 <td class="info">试用期:</td>
+	    	  	 <td class="val">
+ 	    	  	 <select name="try">
+	    	  
+	    	  	 	 <option value="1月" {if $temp['info']['try'] eq '1月'}selected{/if}>1月</option>
+	    	  	 	 <option value="2月" {if $temp['info']['try'] eq '2月'}selected{/if}>2月</option>
+	    	  	 	 <option value="3月" {if $temp['info']['try'] eq '3月'}selected{/if}>3月</option>
+	    	  	 	 <option value="4月" {if $temp['info']['try'] eq '4月'}selected{/if}>4月</option>
+	    	  	 	 <option value="5月" {if $temp['info']['try'] eq '5月'}selected{/if}>5月</option>
+	    	  	 	 <option value="6月" {if $temp['info']['try'] eq '6月'}selected{/if}>6月</option>
+	    	  	 	 <option value="已转正" {if $temp['info']['try'] eq '已转正'}selected{/if}>已转正</option>
+
+	    	  	 </select>
+	    	  	 </td>
+	    	  	 <td class="info">合同签订日期</td>
+	    	  	 <td class="val">
+	    	  	 	 <input type="text" id="pactsigntime" name="pactsigntime" id="pactsigntime" value="{if $temp['info']['pactsigntime'] != '0000-00-00'}{$temp['info']['pactsigntime']}{/if}" onfocus="MyCalendar.SetDate(this)">
+	    	  	 </td>
+
+ 	    	  	 <td class="info">合同到期日:</td>
+	    	  	 <td class="val">
+	    	  	     <input type="text" name="pactover" value="{if $temp['info']['pactover'] != '0000-00-00'}{$temp['info']['pactover']}{/if}" style="color:red">
+	    	  	 </td>
+	    	  </tr>
+	  		  <tr>
+	    	  	 <td class="info">员工状态</td>
+	    	  	 <td class="val">
+	    	  	 	 <select name="peoplestatus">
+	    	  	 	 	   <option value="在职" {if $temp['info']['peoplestatus'] eq '在职'}selected{/if}>在职</option>
+	    	  	 	 	   <option value="停职" {if $temp['info']['peoplestatus'] eq '停职'}selected{/if}>停职</option>
+	    	  	 	 	   <option value="离职" {if $temp['info']['peoplestatus'] eq '离职'}selected{/if}>离职</option>
+	    	  	 	 	   <option value="孕假" {if $temp['info']['peoplestatus'] eq '孕假'}selected{/if}>孕假</option>
+	    	  	 	 </select>
+	    	  	 </td>
+	    	  	 <td class="info">入职时间:</td>
+	    	  	 <td class="val">
+	    	  	 <input type="text" name="hiredate" value="{$temp['info']['hiredate']}" style="align:center;" onfocus="MyCalendar.SetDate(this)">
+	    	  	 </td>
+ 	    	  	 <td class="info">离职日期:</td>
+	    	  	 <td class="val">
+	    	  	 <input id="outtime" type="text" name="outtime" value="{$temp['info']['outtime']}">
+	    	  	 </td>
+	    	  </tr>
+  	  		  <tr>
+	    	  	 <td class="info">身份证号:</td>
+	    	  	 <td class="val">
+	    	  	 <input type="text" name="idnumber" id="idnumber" value="{$temp['info']['idnumber']}" maxLength=18></td>
+ 	    	  	 <td class="info">邮箱:</td>
+	    	  	 <td class="val">
+	    	  	 <input type="text" name="email" id="email" value="{$temp['info']['email']}" maxLength=18></td>
+ 	    	  	 <td class="info">银行卡号(支付宝帐号):</td>
+	    	  	 <td class="val">
+	    	  	 <input type="text" name="banknumber" id="banknumber" value="{$temp['info']['banknumber']}">
+	    	  	 <input type="hidden" name="id" value="{$temp['info']['id']}">
+	    	  	 </td>
+	    	  </tr>
+
+		   		 <tr>
+	    	  	   <td class="info" colspan="1" style="height:250px;">特殊技能:</td>
+	    	  	   <td class="val" colspan="5" style="height:250px; text-align:left;">
+	                       <ul>
+	                         {foreach from=$temp['skill'] item=skill}
+	                       	   <li>
+	                       	       <input type="text" style='background-color:#86C2E7;' name="skillname[]" value="{$skill['skillcontent']}">&nbsp;&nbsp;&nbsp;&nbsp;<b class='remove' style="cursor:pointer;">移除</b><hr>
+	                       	   </li>
+	                       	 {/foreach}
+	                       	   <li>
+	                       	   	  <input type="text" id="skillname">&nbsp;&nbsp;&nbsp;<b style="color:black;cursor:pointer" onclick="addskill()">添加</b>
+	                       	   </li>
+	                       </ul>
+		    	  	   </td>
+		    	  </tr>
+  		    	  <tr>
+		    	  	   <td class="info" colspan="1" style="height:250px;">工作经验:</td>
+		    	  	   <td class="val" colspan="5" id="addexper" style="height:250px; text-align:left;">
+    	  	   		       {foreach from=$temp['exper'] item=exper}
+                           <table>
+                           	   <tr>
+                                   <td width="90px" style="color:black;">时间:</td>
+                                   <td class="val">
+                                   <input type='text' name='sotime[]' style='background-color:#86C2E7' value="{$exper['sotime']}"><b class='remo' style="cursor:pointer;">移除</b>
+                                   </td>
+                           	   </tr>
+                           	   <tr>
+                           	       <td style="color:black;">工作描述:</td>
+                           	       <td class="val"><textarea name="expercontent[]" style='background-color:#86C2E7' cols="60" rows="10">{$exper['expercontent']}</textarea></td>
+                       	       </tr>
+                           </table>
+                           {/foreach}
+                           <table>
+                           	   <tr>
+                                   <td width="90px" style="color:black;">时间:</td>
+                                   <td>
+                                       <input type="text" id="sotime">
+                                   </td>
+                           	   </tr>
+                           	   <tr>
+                           	       <td style="color:black;">工作描述:</td>
+                           	       <td>
+                           	           <textarea id="expercontent" cols="60" rows="10"></textarea>
+                           	           <b style="color:black;cursor:pointer;" onclick="addexper()">添加</b>
+                           	       </td>
+                       	       </tr>
+                           </table>
+		    	  	   </td>
+		    	  </tr>
+		    	  <tr>
+		    	  	  <td class="info" colspan="1" style="height:250px;">备注:</td>
+		    	  	  <td class="val" colspan="5" style="height:250px; text-align:left;">
+	                       <ul>
+                              {foreach from=$temp['remark'] item=remark}
+                           	    <li>
+                           	        <input type='text' style='background-color:#86C2E7;' value="{$remark['remarkcontent']}" name='remark[]'/>&nbsp;&nbsp;&nbsp;&nbsp;<b class='re' style="cursor:pointer;">移除</b><hr/>
+                       	        </li>
+                              {/foreach}
+	                       	   <li>
+	                       	   	   <input type="text" id="addremark">&nbsp;&nbsp;&nbsp;&nbsp;<b style="color:black;cursor:pointer;" onclick="addremark()" >添加</b>
+	                       	   </li>
+	                       </ul>
+		    	  	  </td>
+		    	  </tr>
+	    	  <tr>
+	    	  	 <td  colspan="6" style="text-align:right;">  	   
+	    	  	 	<a id="update" style="cursor:pointer">确认修改</a>
+	    	  	 	 &nbsp;&nbsp;&nbsp;&nbsp;
+	    	  	 </td>
+	    	  </tr>
+	    </table>
+	    </form>
+	    </a>  	    
+	    {/foreach}     
+</center>
+</body>
+<script type="text/javascript" src="/js/util.js"></script>
+{literal}
+<script>
+     //添加技能
+	  function addskill(){
+	  	  var ob = $("#skillname");
+	  	      var str = "";
+	  	          str += "<li><input type='text' style='background-color:#86C2E7;' value="+util.htmlEncode(ob.val())+" name='skillname[]'/>&nbsp;&nbsp;&nbsp;&nbsp;<b id='remove'>移除</b><hr/></li>";
+	  	      if(ob.val() == ""){
+	  	      	 alert("技能内容不能为空");
+	  	      	 return false;
+	  	      }
+	  	      $(str).prependTo(ob.closest("ul"));
+	  	      $("#remove").click(function(){
+	  	      	  $(this).parent("li").remove();
+	  	      	  // alert("x");
+	  	      })
+	  	      ob.val("");
+	  }
+	  	      $(".remove").click(function(){
+	  	      	  $(this).parent("li").remove();
+	  	      })
+
+
+   	  //添加工作经历
+	  function addexper(){
+	  	  var expercontent = $("#expercontent");
+	  	  var sotime = $("#sotime");
+	  	  var ob = $("#addexper");
+	  	  var str1 = "";
+	  	      str1 +="<table><tr><td width='90px' style='color:black;'>时间:</td><td><input type='text' name='sotime[]' style='background-color:#86C2E7' value="+util.htmlEncode(sotime.val())+"><b id='remo' style='color:red;'>移除</b></td></tr>";
+	  	      str1 +="<tr><td style='color:black;'>工作描述:</td><td><textarea cols='60' style='background-color:#86C2E7;' rows='10' name='expercontent[]'>"+util.htmlEncode(expercontent.val())+"</textarea></td></tr></table>";
+	  	   if(sotime.val() == ""){
+	  	   	   alert("工作时间不能为空");
+	  	      	 return false;
+	  	   }else if(expercontent.val() == ""){
+   	  	   	   alert("工作描述不能为空");
+	  	      	 return false;
+	  	   }
+	  	   $(str1).prependTo(ob);
+  	       $("#remo").click(function(){
+  	      	  $(this).closest("table").remove();
+  	       })
+  	       expercontent.val("");
+  	       sotime.val("");
+	  }   
+  	       $(".remo").click(function(){
+  	      	  $(this).closest("table").remove();
+  	       })
+
+	  //添加备注
+    function addremark(){
+	  	  var ob = $("#addremark");
+	  	      var str = "";
+	  	          str += "<li><input type='text' style='background-color:#86C2E7;' readonly='readonly' value="+util.htmlEncode(ob.val())+" name='remark[]'/>&nbsp;&nbsp;&nbsp;&nbsp;<b id='re'>移除</b><hr/></li>";
+	  	      if(ob.val() == ""){
+	  	      	 alert("备注内容不能为空");
+	  	      	 return false;
+	  	      }
+	  	      $(str).prependTo(ob.closest("ul"));
+	  	      $("#re").click(function(){
+	  	      	  $(this).parent("li").remove();
+	  	      })
+	  	      ob.val("");
+	  }
+
+	  	      $(".re").click(function(){
+	  	      	  $(this).parent("li").remove();
+	  	      })
+
+
+	  $(function(){
+	  	   $("#fbut").click(function(){
+	  	   	  $("#blo").css("display","none");
+	  	   	  $("#non").css("display","block");
+	  	   })
+
+	  	   var pacttime=$("#pacttime option:selected");
+	  	   // 合同时间
+           var pacttime=$("#pacttime");
+           // 合同到期
+           var pactover=$("#pactover");
+           
+           var pactover1=$("input[name='pactover']");
+           $("#pactsigntime").mousemove(function(){
+           	if($(pacttime).val() != "合同未签" && $(pacttime).val() != "无固定期"){
+               //签订年
+	           var year=parseInt($("#pactsigntime").val().slice(0,4));
+	           //签订日
+	           var day=$("#pactsigntime").val().slice(4,10);
+
+	           //合同年
+	           var ptime=parseInt($(pacttime).val());
+			   
+	           // 合同结束时间
+	           if($(pactover1).val(year+ptime+day) != "NaN"){
+	           	  $(pactover1).val(year+ptime+day);
+	           }
+	         }
+           })
+			 $("#update").click(function(){
+			 	var phone = $("#phone").val(); //电话
+			 	var result1 = phone.match(/^\d+$/);
+			 	var idnumber = $("#idnumber").val(); //身份证号
+			 	var result3 = idnumber.match(/^\w+$/);
+             
+              if(result1==null){
+                 alert("联系方式有误");
+                 return false;
+		      }else if(result3==null){
+                 alert("身份证号输入有误");
+                 return false;
+		      }
+	  	   	  var str=$("#form").serialize(); 
+	  	   	  $.ajax({
+				   type: "POST",
+				   url: "updateinfo.php",
+				   data: str,
+				   success: function(msg){
+				       if(msg=="yes"){
+				       	  alert("修改成功");
+				       }else if(msg=='{"errno":4031,"errmsg":"You have no permission"}'){
+				       	  alert(msg);
+				       }else{
+				       	  alert("修改失败");
+				       }
+				   },
+				   error: function(){
+				   	 alert("ajax请求失败")
+				   }
+				});
+	  	   })
+	  })
+</script>
+{/literal}
+</html>

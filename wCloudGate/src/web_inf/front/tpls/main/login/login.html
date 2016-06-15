@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>外麦王云平台</title>
+	<link rel="stylesheet" type="text/css" href="/css/main/common.css"/>
+	<link rel="stylesheet" type="text/css" href="/css/main/register/registercommon.css"/>
+	<link rel="stylesheet" type="text/css" href="/css/main/login/login.css"/>
+</head>
+<body>
+	<header>
+		<div class="header">
+			<div class="topleft">
+				<div class="logo">
+					<img src="/image/main/logo.png"/>
+				</div>
+				<p></p>
+				<p>欢迎登录</p>
+			</div>
+		</div>
+	</header>
+	<section id="section">
+		<ul class="loginchoice">
+			<li class="active">普通登录</li>
+			<li>手机动态码登录</li>
+		</ul>
+		<form method="get" action="" style="display: none;">
+			<div class="form-group topdiv">
+				<label><p>账户</p></label>
+				<input placeholder="手机号/用户名/邮箱" class="a"/>
+			</div>
+			<div class="hide-content">
+			</div>
+			<div class="form-group">
+				<label><p>密码</p></label>
+				<input placeholder="请输入您的密码" />
+			</div>
+			<div class="hide-content">
+			</div>
+			<div class="checkdiv">
+				<input type="checkbox"/>
+				<p>七天内自动登录</p>
+			</div>
+			<div class="registerbtn">
+				同意以下协议并注册
+			</div>
+			<div class="bottomdiv">
+				<a href="javascript:void(0)">免费注册</a>
+				<a href="javascript:void(0)">忘记密码？</a>
+			</div>
+		</form>
+		<form method="get" action="">
+			<div class="form-group">
+				<label><p>手机号</p></label>
+				<input placeholder="请输入您的手机号"/>
+			</div>
+			<div class="hide-content">
+				请填写正确的手机号码
+			</div>
+			<div class="form-group form-group1">
+				<label><p>验证码</p></label>
+				<input placeholder="请输入图中正确的验证码" />
+				<div>验证码图片</div>
+			</div>
+			<div class="hide-content">
+			</div>
+			<div class="form-group form-group1">
+				<label><p>动态码</p></label>
+				<input placeholder="请输入手机动态码" />
+				<div id="dcode">获取动态码</div>
+			</div>
+			<div class="hide-content">
+			</div>
+			<div class="checkdiv">
+				<input type="checkbox"/>
+				<p>七天内自动登录</p>
+			</div>
+			<div class="registerbtn">
+				登录
+			</div>
+			<div class="bottomdiv">
+				<a href="javascript:void(0)">免费注册</a>
+				<a href="javascript:void(0)">忘记密码？</a>
+			</div>
+		</form>
+	</section>
+	<footer>
+		<ul>
+			<li><a href="javascript:void(0)">公司简介</a></li>
+			<li class="vbar">|</li>
+			<li><a href="javascript:void(0)">联系我们</a></li>
+			<li class="vbar">|</li>
+			<li><a href="javascript:void(0)">加入我们</a></li>
+			<li class="vbar">|</li>
+			<li><a href="javascript:void(0)">新闻中心</a></li>
+		</ul>
+		<div><a href="javascript:void(0)">版权信息</a></div>
+	</footer>
+	<script src="/js/jquery-1.11.0.js"></script>
+	<!-- <script type="text/javascript">
+	$(window).bind("load",function(){
+		var footerHeight = 0,footerTop= 0,$footer= $("footer");
+	        positionFooter();
+		//定义positionFooter function
+		function positionFooter() {
+			//取到div#footer高度
+			footerHeight = $footer.height();
+			//div#footer离屏幕顶部的距离
+			footerTop = ( $(window).scrollTop()+$(window).height()-footerHeight)+"px";
+			if($(window).scrollTop()>0){
+			}else{
+				$footer.css({position:"fixed",bottom:0});
+			}
+		}
+	});
+	</script> -->
+</body>
+</html>

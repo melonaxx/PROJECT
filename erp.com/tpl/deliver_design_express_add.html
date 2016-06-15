@@ -1,0 +1,72 @@
+//---- UTF8 ±àÂë ----
+<!-- BEGIN: main --><?xml version="1.0" encoding="UTF-8"?>
+{main.doc_type}
+<?xml-stylesheet type="text/xsl" href="/style/deliver_design_express_add.xsl?ver={main.doc_version}"?>
+<html version="{main.doc_version}">
+<head>
+	<Title>{main.title}</Title>
+	<meta name="keywords" content="{main.keywords}" />
+	<meta name="description" content="{main.description}" />
+	<em company_id="{main.company_id}" staff_id="{main.staff_id}" login_name="{main.login_name}" permit="{main.permit}" program="{main.request_url}"/>
+</head>
+<Body>
+	<menu>
+		<big>{main.big_menu}</big>
+		<small>
+			<!-- BEGIN: list_menu --><a class="{list_menu.class}" href="{list_menu.link}">{list_menu.name}</a><!-- END: list_menu -->
+		</small>
+	</menu>
+	<company_express>
+		<!-- BEGIN: company_express -->
+		<item>
+			<name>{company_express.name}</name>
+			<express_id>{company_express.express_id}</express_id>
+			<selected>{company_express.selected}</selected>
+		</item>
+		<!-- END: company_express -->
+	</company_express>
+	
+	<express_template>
+		<!-- BEGIN: express_template -->
+		<item>
+			<id>{express_template.id}</id>
+			<name>{express_template.name}</name>
+			<express_id>{express_template.express_id}</express_id>
+			<selected>{express_template.selected}</selected>
+		</item>	
+		<!-- END: express_template -->
+	</express_template>
+	
+	<express_id>{main.express_id}</express_id>
+
+	<page_info>
+		<!-- BEGIN: page_info -->
+		<template_id>{page_info.template_id}</template_id>
+		<template_name>{page_info.template_name}</template_name>
+		<template_image>{page_info.template_image}</template_image>
+		<page_top>{page_info.page_top}</page_top>
+		<page_left>{page_info.page_left}</page_left>
+		<page_width>{page_info.page_width}</page_width>
+		<page_height>{page_info.page_height}</page_height>
+		<!-- END: page_info -->
+	</page_info>
+
+	<express>
+		<!-- BEGIN: express -->
+		<item>
+			<id>{express.id}</id>
+			<item_id>{express.item_id}</item_id>
+			<name>{express.name}</name>
+			<english>{express.english}</english>
+			<item_top>{express.item_top}</item_top>
+			<item_left>{express.item_left}</item_left>
+			<item_width>{express.item_width}</item_width>
+			<item_height>{express.item_height}</item_height>
+			<item_font_size>{express.item_font_size}</item_font_size>
+		</item>	
+		<!-- END: express -->
+
+	</express>	
+</Body>
+</html>
+<!-- END: main -->

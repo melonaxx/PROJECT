@@ -1,0 +1,18 @@
+.rprogress .circle:nth-of-type(1),.rprogress .circle:nth-of-type(3){border:4px solid #358ecb;}
+.rprogress .hbar:nth-of-type(2){color:#358ecb;border-bottom: 4px solid #358ecb;}
+.verifycode{width:400;margin:0;padding:0;height:60px;}
+.verifycode input{width:268px;height:38px;float:left;margin-right: 10px;}
+.verifycode img{margin:10px 0;width:100px;height: 40px;cursor: pointer;}
+.dynamiccode{width:400px;height:30px;margin-bottom: 10px;line-height: 30px;}
+.dynamiccode button{cursor:pointer;float:left;width:100px;height:30px;background: #358ecb;color:#fff;border:none;margin-right: 20px;}
+.dynamiccode div{width:145px;height:30px;float: left;}
+.dynamiccode span{color:#de1717;}
+.passwordstrength{width:400px;height:20px;margin-bottom: 10px;}
+.passwordstrength div{float:left;width:130px;height:20px;text-align: center;line-height: 20px;margin-right: 5px;background: #ccc;color:#666;}
+.passwordstrength div:nth-of-type(3){margin-right: 0px;}
+.passwordstrength .rank1 {background: red;}
+.passwordstrength .rank2 {background: #9ed96a;}
+.passwordstrength .rank3 {background: #f2a755;}
+.deal{display: block;margin-top: 14px;}
+.dynamiccode button{float:left;}
+.codetimes{float:left;width: 140px;height: 22px;margin-top: 1px;}

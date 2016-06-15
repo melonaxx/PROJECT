@@ -1,0 +1,66 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>外麦王云平台</title>
+        <link rel="stylesheet" type="text/css" href="/css/common.css"/>
+        <link rel="stylesheet" href="//cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="/css/web.css"/>
+    </head>
+    <body>
+        <?php include('mage_header.html');?>
+        <section>
+        <?php include('mage_left.html');?>
+            <div class="right">
+                <div class="content">
+                    <div class="tab-content">
+                        <ul class="carsernum">                                                            
+                            <li class="sernumact"><a href="javascript:void(0);">公告消息</a></li>     
+                        </ul>                                                                             
+                        <div class='notice-table'>
+                            <table class="table table-striped table-bordered table-hover">
+                                <thead>
+                                    <tr>
+                                        <td>序号</td>
+                                        <td>公告ID</td>
+                                        <td>内容</td>
+                                        <td>添加时间</td>
+                                        <td>操作</td>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                        <?php
+                                            if(!empty($data)){
+                                                $num = 1;
+                                                foreach($data as $v){
+                                                    echo "<tr>";
+                                                    echo "<td class='notid'>".($num++)."</td>";
+                                                    echo "<td>".$v['id']."</td>";
+                                                    echo "<td>".$v['content']."</td>";
+                                                    echo "<td>".$v['createtime']."</td>";
+                                                    echo "<td>";
+                                                    if($v['status'] === "0"){
+                                                        echo "<a class='use-notice'>使用此公告</a>";
+                                                    }else{
+                                                        echo "正在使用";     
+                                                    }
+                                                    echo "</td>";
+                                                    echo "</tr>";
+                                                }
+                                            }
+                                        ?>
+                                </tbody>
+                            </table>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </section>
+        <script src="//cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
+        <script src="//cdn.bootcss.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+        <script src="/js/header.js"></script>
+        <script src="/js/util.js"></script>
+        <script src="/js/web.js"></script>
+    </body>
+</html>

@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>外麦王云平台</title>
+	<link rel="stylesheet" type="text/css" href="/css/main2/base.css"/>
+	<link rel="stylesheet" type="text/css" href="/css/main2/employees/employees_management.css"/>
+</head>
+<body>
+	<header>
+		<div class="header">
+			<div class="topleft">
+				<div class="logo">
+					<a class="img"><img src="/image/main2/logo.png"/></a>
+				</div>
+				<ul class="nav">
+					<li><a href="">首页</a><p></p></li>
+					<li><a href="">地图定位</a><p></p></li>
+					<li><a href="">车辆管理</a><p></p></li>
+					<li><a href="">劳务方</a><p></p></li>
+					<li class="navactive"><a href="">员工</a><p></p></li>
+				</ul>
+			</div>
+			<div class="useroper">
+				<a class="rolename" href="">百度外卖</a>
+				<p class="useborderl"></p>
+				<ul class="useroperul">
+					<li class="useractive"><a href="">我的消息</a></li>
+					<li><a href="">认证信息</a></li>
+					<li><a href="">账号设置</a></li>
+					<li><a href="">退出</a></li>
+				</ul>
+			</div>
+		</div>
+	</header>
+	<div class="section">
+		<div class="wmain">
+			<ul class="wmainlist">
+				<li class="wllevel1">
+					<a href="" class="wllevel1active"><span></span>员工管理<p class="wlrightarrow"></p></a>
+				</li>
+				<li class="wllevel1">
+					<a href=""><span></span>员工添加<p></p></a>
+				</li>
+			</ul>
+			<div class="wmaincontent">
+				<h1 class="wmch1">|&nbsp;员工管理</h1>
+				<div class="filterbox">
+					<div class="searchdiv">
+						<input type="text" placeholder="请输入员工名称" />
+						<button></button>
+					</div>
+				</div>
+				<!-- <table class="htable">
+					<thead>
+						<tr>
+							<th>序号</th>
+							<th>员工</th>
+							<th>电话</th>
+							<th>邮箱</th>
+							<th>状态</th>
+							<th>劳务方数量</th>
+							<th>车辆数量</th>
+							<th>操作</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>1</td>
+							<td>葫芦娃</td>
+							<td>13024241515</td>
+							<td>13024241515@163.com</td>
+							<td>正常</td>
+							<td></td>
+							<td>0<a class="check">查看</a></td>
+							<td>
+								<a class="distriright">分配权限</a>
+								<a class="districar">分配车辆</a>
+								<a class="distrilabor">分配劳务方</a>
+								<a class="delete">删除</a>
+							</td>
+						</tr>
+					</tbody>
+				</table> -->
+
+				<div class="carmtable">
+					<div class="carmtr">
+						<div class="carmtop">
+							<div class="input-groupc">
+								<label>员工&nbsp;:</label>
+								<span>葫芦娃</span>
+							</div>
+							<div class="input-groupc topinputg2">
+								<label><p>电话&nbsp;:&nbsp;&nbsp;</p></label>
+								<span>13024241515</span>
+							</div>
+							<h4>操作</h4>
+						</div>
+						<div class="carmtrcontent">
+							<span class="serialnum">1</span>
+							<div class="cartrinf">
+								<div class="input-groupc">
+									<label><p>状态&nbsp;:&nbsp;&nbsp;</p></label>
+									<span>正常</span>
+								</div>
+								<div class="input-groupc">
+									<label><p>车辆数量&nbsp;:&nbsp;&nbsp;</p></label>
+									<span>0<a class="check tablea">查看</a></span>									
+								</div>
+								<div class="input-groupc">
+									<label><p>邮箱&nbsp;:&nbsp;&nbsp;</p></label>
+									<span>13024241515@163.com</span>
+								</div>
+								<div class="input-groupc">
+									<label class="spelabel"><p>劳务方数量&nbsp;:&nbsp;&nbsp;</p></label>
+									<span>0</span>
+								</div>
+							</div>
+							<div class="cartrope">
+								<div class="distriopea">
+									<a>分配</a>
+									<ul>
+										<li><a class="distriright">权限</a></li>
+										<li><a class="districar">车辆</a></li>
+										<li><a class="distrilabor">劳务方</a></li>
+									</ul>
+								</div>
+								<a class="delete">删除</a>
+							</div>
+						</div>
+					</div>
+				</div>
+
+
+			</div>
+		</div>
+	</div>
+	
+	<!-- 查看操作 -->
+	<div class="modal" id="modalcheck">
+		<div class="cover"></div>
+		<div class="modalbox">
+			<div class="tablediv tablecheck">
+				<table>
+					<thead>
+						<tr>
+							<th>序号</th>
+							<th>序列号</th>
+							<th>状态</th>
+							<th>操作</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>1</td>
+							<td>1162345701433532</td>
+							<td>已分配</td>
+							<td><a>取消分配</a></td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<button class="finishbtn finishcheck">完成</button>
+		</div>
+	</div>
+	<!-- 分配权限操作 -->
+	<div class="modal" id="modaldistright">
+		<div class="cover"></div>
+		<div class="modalbox">
+			<h1>分配权限</h1>
+			<h2>车辆管理</h2>
+			<div class="distrcheck">
+				<div><input type="checkbox"/>车辆激活</div>
+				<div><input type="checkbox"/>解除车辆激活</div>
+			</div>
+			<h2>劳务方管理</h2>
+			<div class="distrcheck distrcheck1">
+				<div><input type="checkbox"/>添加劳务方</div>
+				<div><input type="checkbox"/>删除劳务方</div>
+				<div><input type="checkbox"/>劳务方的分配车辆</div>
+				<div><input type="checkbox"/>劳务方的取消分配</div>
+			</div>
+			<h2>员工管理</h2>
+			<div class="distrcheck distrcheck1">
+				<div><input type="checkbox"/>添加员工</div>
+				<div><input type="checkbox"/>删除员工</div>
+				<div><input type="checkbox"/>员工的分配车辆</div>
+				<div><input type="checkbox"/>员工的取消分配</div>
+			</div>
+			<div class="btns distrbtns">
+				<button class="suredistr">确定</button>
+				<button class="canceldistr">取消</button>
+			</div>
+		</div>
+	</div>
+	<!-- 分配车辆操作 -->
+	<div class="modal" id="modaldistcar">
+		<div class="cover"></div>
+		<div class="modalbox">
+			<div class="closemodal">&times;</div>
+			<div class="tabledivs">
+				<table>
+					<thead>
+						<tr>
+							<th><input type="checkbox" class="choiceall"/></th>
+							<th>序号</th>
+							<th>序列号</th>
+							<th>添加状态</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td><input type="checkbox" name="distcheckbox"/></td>
+							<td>1</td>
+							<td>1462345701433532</td>
+							<td>成功</td>
+						</tr>
+						<tr>
+							<td><input type="checkbox" name="distcheckbox"/></td>
+							<td>1</td>
+							<td>1462345701433532</td>
+							<td></td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<!-- <button class="finishbtn finishdistcar">完成</button> -->
+			<div class="btns">
+				<button class="suredistcar">分配</button>
+				<button class="canceldistcar">取消</button>
+			</div>
+		</div>
+	</div>
+	<!-- 分配车辆操作点击分配按钮无选中 -->
+	<!-- <div class="modal" id="modalnoselect">
+		<div class="cover coverson"></div>
+		<div class="modalbox">
+			<p>请选择要分配的车辆</p>
+			<button class="finishbtn suresel">确定</button>
+		</div>
+	</div> -->
+	<!-- 分配劳务方操作 -->
+	<div class="modal" id="modaldistlabor">
+		<div class="cover"></div>
+		<div class="modalbox">
+			<div class="closemodal">&times;</div>
+			<div class="tabledivs">
+				<table>
+					<thead>
+						<tr>
+							<th><input type="checkbox" class="choiceall"/></th>
+							<th>序号</th>
+							<th>劳务方</th>
+							<th>添加状态</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td><input type="checkbox" name="distcheckbox"/></td>
+							<td>1</td>
+							<td>饿了没</td>
+							<td>成功</td>
+						</tr>
+						<tr>
+							<td><input type="checkbox" name="distcheckbox"/></td>
+							<td>1</td>
+							<td>饿了没</td>
+							<td></td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<div class="btns">
+				<button class="suredistlab">分配</button>
+				<button class="canceldistlab">取消</button>
+			</div>
+		</div>
+	</div>
+	<!-- 分配劳务方操作点击分配按钮无选中 -->
+	<!-- <div class="modal" id="modalnoselectl">
+			<div class="cover coverson"></div>
+			<div class="modalbox">
+				<p>请选择要分配的劳务方</p>
+				<button class="finishbtn suresell">确定</button>
+			</div>
+		</div> -->	
+	<!-- 删除操作 -->
+	<div class="modal" id="modaldelete">
+		<div class="cover"></div>
+		<div class="modalbox">
+			<p>删除后该员工的由您公司分配的车辆将回到您公司未分配的车辆中。</p>
+			<p>确定删除吗？</p>
+			<div class="btns">
+				<button class="suredel">确定</button>
+				<button class="canceldel">取消</button>
+			</div>
+		</div>
+	</div>
+
+	<footer id="footer">
+		<ul>
+			<li><a href="javascript:void(0)">公司简介</a></li>
+			<li class="vbar">|</li>
+			<li><a href="javascript:void(0)">联系我们</a></li>
+			<li class="vbar">|</li>
+			<li><a href="javascript:void(0)">加入我们</a></li>
+			<li class="vbar">|</li>
+			<li><a href="javascript:void(0)">新闻中心</a></li>
+		</ul>
+		<div><a href="javascript:void(0)">北京外麦王科技有限公司版权所有&nbsp;京ICP备09092621号-3</a></div>
+	</footer>
+	<script src="/js/jquery-1.11.0.js"></script>
+	<script type="text/javascript" src="/js/main2/common.js"></script>
+	<script>
+		// 查看
+		$(".check").on("click",function(){
+			$("#modalcheck").show();
+		})
+		$(".finishcheck").on("click",function(){
+			$("#modalcheck").hide();
+		})
+		// 分配权限操作
+		$(".distriright").on("click",function(){
+			$("#modaldistright").show();
+		})
+		$(".suredistr").on("click",function(){
+			$("#modaldistright").hide();
+		})
+		$(".canceldistr").on("click",function(){
+			$("#modaldistright").hide();
+		})
+		// 分配车辆操作
+		$(".districar").on("click",function(){
+			$("#modaldistcar").show();
+		})
+		$(".suredistcar").on("click",function(){
+			$("#modaldistcar").hide();
+		})
+		$(".canceldistcar").on("click",function(){
+			$("#modaldistcar").hide();
+		})
+		// 分配车辆点击全选按钮
+		$(".choiceall").on("click",function(){
+			if($(this).prop("checked")){
+				$("input[name=distcheckbox]").prop("checked",true);
+			}else{
+				$("input[name=distcheckbox]").prop("checked",false);
+			}
+		})
+		// 分配车辆点击分配按钮
+		/*$(".distcarbtn").on("click",function(){
+			if($('input[type=checkbox][name=distcheckbox]:checked').length==0){
+				$("#modalnoselect").show();
+			}
+		})
+		$(".suresel").on("click",function(){
+			$("#modalnoselect").hide();
+		})*/
+		// 分配劳务方操作
+		$(".distrilabor").on("click",function(){
+			$("#modaldistlabor").show();
+		})
+		$(".suredistlab").on("click",function(){
+			$("#modaldistlabor").hide();
+		})
+		$(".canceldistlab").on("click",function(){
+			$("#modaldistlabor").hide();
+		})
+		// 分配劳务方点击分配按钮
+		/*$(".distlaborbtn").on("click",function(){
+			if($('input[type=checkbox][name=distcheckbox]:checked').length==0){
+				$("#modalnoselectl").show();
+			}
+		})
+		$(".suresell").on("click",function(){
+			$("#modalnoselectl").hide();
+		})*/
+		// 删除操作
+		$(".delete").on("click",function(){
+			$("#modaldelete").show();
+		})
+		$(".suredel").on("click",function(){
+			$("#modaldelete").hide();
+		})
+		$(".canceldel").on("click",function(){
+			$("#modaldelete").hide();
+		})
+	</script>
+</body>
+</html>

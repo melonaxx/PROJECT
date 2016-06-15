@@ -1,0 +1,46 @@
+//---- UTF8 编码 ----
+<!-- BEGIN: main -->
+<html>
+<head>
+<title>异常原因</title>
+<link type="text/css" rel="stylesheet" href="/style/bootstrap.min.css?ver={main.doc_version}"/>
+<link type="text/css" rel="stylesheet" href="/style/style.css?ver={main.doc_version}"/>
+<style>
+body,table,form,input		{font-size:12px; padding:0; margin:0}
+body {
+	text-align:left;
+	min-width:100px;
+	overflow-y:hidden;
+	overflow-x:hidden;
+}
+</style>
+<script type="text/javascript" charset="UTF-8" src="/js_encode/jquery-1.9.1.min.js"></script>
+
+<script type="text/javascript" src="/js_encode/product_specifications_tankuanaga.js"></script>
+
+<form class="sign">
+	<div class="float_left" style="width:315px;">
+		<span class="float_left margin_top_4" >订单标记：</span>
+			<div class="form-group float_left margin_top_0">	
+				<select class="form-control input-sm" name="level">
+					<xsl:for-each select="/html/Body/supplierMsg/level/ul/li">
+						<xsl:element name="option">
+							<xsl:attribute name="value"><xsl:value-of select="value" /></xsl:attribute>
+							<xsl:if test="value=/html/Body/supplierMsg/level/select_value"><xsl:attribute name="selected">selected</xsl:attribute></xsl:if>
+							<xsl:value-of select="text" />
+						</xsl:element>
+					</xsl:for-each>
+				</select>
+			</div><a href="/order/order_setting.php"  target="_blank">
+			<input class="btn btn-default btn-sm customersAddca margin_left_2 float_left margin_top_0" type="button" value="添加标记" /></a>
+	</div>
+	<div class="float_left btn_margin margin_top_3">	
+		<input class="btn btn-default btn-sm  margin_left_0" type="button" value="确定" />
+		<input class="btn btn-default btn-sm margin_left_0" type="reset" value="取消" />
+	</div>	
+</form>
+</body>
+</html>
+
+<!-- END: main -->
+

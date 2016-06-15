@@ -1,0 +1,151 @@
+/*表单用开始*/
+
+.margin_left_add1{
+    margin-left: 18px;
+}
+
+.margin_left_add2{
+    margin-left: 40px;
+}
+
+.margin_left_add3{
+    margin-left: 52px;
+}
+
+.margin_left_add4{
+    margin-left: 64px;
+}
+
+
+
+/*表单用结束*/
+
+.margin_top_add{
+    margin-top: 12px;
+}
+
+.margin_top_add2{
+    margin-top: 20px;
+}
+
+.text_center{
+    text-align: center;
+}
+
+.th_color{
+    background-color: #f5f5f5;
+}
+
+/*
+ * tian
+ */
+.table {
+	margin:0 0 12px 0;
+}
+body,table {
+	color:#333;
+	font-size:12px;
+}
+.mainBody {
+	margin:20px 0;
+}
+.form-control option {
+	padding:0 0 0 12px;
+}
+form label {
+	font-weight:normal;
+}
+.form-inline .form-group {
+	margin:0 20px 12px 0;
+}
+
+/*
+ * luyahe;
+ */
+.margin_left_add5_l{
+    margin-left:20px;
+}
+
+.margin_left_add5_2{
+    margin-left:32px;
+}
+
+.form-inline .form-group_l{
+	margin:0 10px 12px 0;
+}
+
+.input_left_button{
+	margin-left:10px;
+}
+
+/*
+ * float:left;
+ */
+.form-group .form-control {
+	width:147px;
+}
+.form-control {
+	
+}
+.form-group textarea {
+	resize:none;
+}
+.table {
+	margin:0 0 12px 0;
+}
+.table tr th,.table tr td {
+	text-align:left;
+	height:38px;
+	padding:3px 8px !important;
+	vertical-align: middle !important;
+}
+.table tr th {
+	background:#f5f5f5;
+}
+.table tr .center {
+	text-align:center;
+}
+.table tr td a {
+	color:#333;
+}
+.table tr td a:hover {
+	color:#0070CD;
+}
+.table .table_th_checkbox {
+	width:38px;
+}
+.table .table_th_number {
+	width:46px;
+}
+.table .table_th_operate {
+	width:86px;
+}
+.table .table_a_operate {
+	margin:0 10px 0 0;
+}
+h4 {
+	font-size:12px;
+	font-weight:bold;
+	margin:0 0 12px 0;
+	padding:8px 0 0 0;
+}
+.form-inline .form_no_border {
+	width:100%;
+	border:none;
+}
+.site_no_scroll {
+	position:absolute;
+	bottom:0;
+}
+.btn_margin {
+	margin:0 10px 0 0;
+}
+.table_operate_block {
+	margin:0 0 12px 0;
+	overflow:auto;
+	clear:both;
+}
+.clear_both {
+	clear:both;
+}
+

@@ -1,0 +1,61 @@
+//---- UTF8 编码 ----
+<!-- BEGIN: main -->
+<html>
+<head>
+<title>删除收入科目</title>
+<link type="text/css" rel="stylesheet" href="/style/bootstrap.min.css?ver={main.doc_version}"/>
+<link type="text/css" rel="stylesheet" href="/style/style.css?ver={main.doc_version}"/>
+<style>
+body {
+	text-align:left;
+	padding:0;
+}
+.border_color{
+	border:1px solid #E74C3C;
+}
+</style>
+<script type="text/javascript" src="/js_encode/jquery-1.9.1.min.js"></script>
+<script type="text/javascript" charset="UTF-8" src="/js_encode/bootstrap.min.js"></script>
+</head>
+<body>
+
+<form class="margin_top" method="post" action="">
+<div class="float_left">
+	<span class="float_left" style="margin:5px 0 0 0;">发票号码：</span>
+	<input type="text" name="invoice_number" class="form-control input-sm" style="width:150px;" placeholder="必填" data-toggle="tooltip" data-placement="bottom" title="必填">
+</div><br/><br/>
+<div class="table_operate_block" style="margin-top:10px;">
+	<input type="submit" class="btn btn-default btn-sm ok" value="确定" />
+	&#160;
+	<input type="button" class="btn btn-default btn-sm cancel" value="取消" onclick="parent.$('#MessageBox').modal('hide')" />
+</div>
+
+</form>
+
+</body>
+<script type="text/javascript">
+	$('.margin_top').submit(function(){
+		var invoice_number = $('input[name=invoice_number]').val();
+		var reg = /^\d+(\.\d+)?$/;
+		var reg1 =/^[1-9]\d*$|^0$/;
+    	if(invoice_number == '' || invoice_number == 0 ){
+    		$('input[name=invoice_number]').addClass("border_color");
+    		$('input[name=invoice_number]').tooltip("show");
+    		return false;
+    	}else{
+    		if(reg.test(invoice_number)==true || reg1.test(invoice_number)==true){
+    			$('input[name=invoice_number]').removeClass("border_color");
+    		$('input[name=invoice_number]').tooltip("hide");
+			    return true;
+			}else{
+			    $("input[name=invoice_number]").val('');
+			    alert("请出入正确金额");
+			    return false;
+			}
+    	}
+		
+		
+	})
+</script>
+</html>
+<!-- END: main -->

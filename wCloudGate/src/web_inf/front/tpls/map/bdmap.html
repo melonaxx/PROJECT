@@ -1,0 +1,97 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <title>外麦王云平台</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- <link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css"> -->
+    <!-- <link rel="stylesheet" type="text/css" href="/css/common.css"/> -->
+    <!-- <link rel="stylesheet" type="text/css" href="/css/commonsector.css"/> -->
+    <link rel="stylesheet" type="text/css" href="/css/main2/base.css"/>
+
+    <!-- 百度 -->
+    <link rel="stylesheet" href="/css/wcloud_map/map_search.css">
+    <link rel="stylesheet" href="/css/wcloud_map/map.css">
+
+
+    <!-- 百度key :  NmDwD8da7NCbTFC9FiQKjays -->
+    <script type="text/javascript" src="https://api.map.baidu.com/api?v=2.0&ak=fXe3Nsk1pnh6wzvzctnQz4uoqT8cmE5S&s=1">
+    </script>
+    <!-- 路书 -->
+    <script type="text/javascript" src="/js/wcloud_map/LuShu_min.js"></script>
+
+    <!-- 百度聚合图标 -->
+    <script src="/js/wcloud_map/map_markerclusterer.js"></script>
+    <script src="/js/wcloud_map/map_texticonoverlay.js"></script>
+
+
+    <script src="/js/jquery.min.js"></script>
+    <script src="/bootstrap/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+    <?php include('header.html'); ?>
+
+    <div class="dashboard" id="dashboard">
+        <div id="bdMap" class="DashContent"></div>
+    </div>
+    <?php if ($mapusertype != 4) { ?>
+    <!-- 搜索框 -->
+    <!-- <div class="pointSearch">
+        <div class="input-group" id="searchdiv">
+            <input type="text" name='inputData' class="form-control places" autocomplete="off" placeholder="请输入电车序列号">
+            <div class="input-group-btn">
+                <div class="glyphicon glyphicon-search searchIcon"></div>
+            </div>
+        </div>
+    </div> -->
+
+    <!-- 开启五秒实时同步数据和显示电车按钮 -->
+    <div class='controlBtn'>
+        <div class='asyncCurrent'>开启实时同步</div>
+        <!-- <div class='showCar'>显示电车</div> -->
+    </div>
+    <?php }?>
+    <div style="display: none;">
+        <input type="hidden" name='seqno' value="<?php echo $seqno;?>">
+        <span name='plall'><?php echo $plall;?></span>
+        <span name='pcul'><?php echo $pcul;?></span>
+        <span name='pipandect'><?php echo $pipandect;?></span>
+        <span name='uipandect'><?php echo $uipandect;?></span>
+        <span name='liplat'><?php echo $liplat;?></span>
+        <span name='knight'><?php echo $knight;?></span>
+        <span name='ebikepcu'><?php echo $ebikepcu;?></span>
+        <span name='liflat'><?php echo $liflat;?></span>
+        <span name='liftoknt'><?php echo $liftoknt;?></span>
+    </div>
+
+    <!-- 百度 -->
+    <script src="/js/jquery-1.11.0.js"></script>
+    <script src="/js/util.js"></script>
+    <script src="/js/wcloud_map/map_base.js"></script>
+    <script src="/js/wcloud_map/map_customicon.js"></script>
+    <script src="/js/wcloud_map/map_search.js"></script>
+    <script src="/js/wcloud_map/map_controller.js"></script>
+    <script src="/js/wcloud_map/map_async.js"></script>
+
+
+    <script>
+        $(function(){
+            //---显示百度地图 ----
+            showBDMap();
+
+            //----显示高德地图 ----
+            // showLbsMap();
+        })
+
+    </script>
+    <!-- gotpmap -->
+    <script src="/js/main2/common.js"></script>
+    <script src="/js/wcloud_map/gotomap/map_toseqno.js"></script>
+    <script src="/js/wcloud_map/gotomap/map_tolistseqno.js"></script>
+</body>
+</html>
+
+

@@ -1,0 +1,39 @@
+//---- UTF8 编码 ----
+<!-- BEGIN: main -->
+<html>
+<head>
+<title></title>
+<link type="text/css" rel="stylesheet" href="/style/bootstrap.min.css?ver={main.doc_version}"/>
+<link type="text/css" rel="stylesheet" href="/style/style.css?ver={main.doc_version}"/>
+<style>
+body,table,form,input		{font-size:12px; padding:0; margin:0}
+body {
+	text-align:left;
+	min-width:100px;
+	overflow-y:hidden;
+	overflow-x:hidden;
+}
+</style>
+<script type="text/javascript" charset="UTF-8" src="/js_encode/jquery-1.9.1.min.js"></script>
+<form class="express" method="post" action="">
+	<div class="float_left">
+		<span class="float_left margin_top_4" >选择快递：</span>
+			<div class="form-group float_left margin_top_0">
+				<select class="form-control input-sm" name="level">
+				<!-- BEGIN: express -->
+					<option value="{express.express_id}">{express.name}</option>
+				<!-- END: express -->
+				</select>
+
+			</div>
+	</div>
+	<div class="float_left btn_margin margin_top_3">
+		<input class="btn btn-default btn-sm  margin_left_0" name="submit" type="submit" value="确定" />
+		<input class="btn btn-default btn-sm margin_left_0"  onclick="parent.$('#MessageBox').modal('hide')" type="button" value="取消" />
+	</div>
+</form>
+</body>
+</html>
+
+<!-- END: main -->
+

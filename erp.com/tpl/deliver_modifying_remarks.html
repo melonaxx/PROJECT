@@ -1,0 +1,47 @@
+//---- UTF8 编码 ----
+<!-- BEGIN: main -->
+<html>
+<head>
+<title>修改备注</title>
+<link type="text/css" rel="stylesheet" href="/style/bootstrap.min.css?ver={main.doc_version}"/>
+<link type="text/css" rel="stylesheet" href="/style/style.css?ver={main.doc_version}"/>
+<style>
+body {
+	text-align:left;
+	min-width:100px;
+	overflow-y:hidden;
+	overflow-x:hidden;
+	padding:0;
+}
+.form-inline .form-control {
+	display: inline-block;
+	vertical-align: middle;
+}
+.form-inline .form-group {
+	display: inline-block;
+	vertical-align: middle;
+}
+</style>
+<script type="text/javascript" charset="UTF-8" src="/js_encode/jquery-1.9.1.min.js"></script>
+<body>
+	<form class="form-inline" method="post" action="">
+		<div class="form-group">
+			<label>修改方式：</label>
+			<select class="form-control input-sm" name="level">
+				<option value="1">在原备注上追加</option>
+				<option value="0">覆盖原有的备注</option>
+			</select>
+				
+		</div><br/>
+		<div class="form-group">
+			<label>备注内容：</label><textarea class="form-control input-sm merger_two_row_4" rows="3" name="content"></textarea>
+		</div>
+		<p>
+			<button class="btn btn-default btn-sm" type="submit" name='submit'>确定</button>
+			<input class="btn btn-default btn-sm" type="button" value="取消" onclick="parent.$('#MessageBox').modal('hide')" />
+		</p>
+	</form>
+</body>
+</html>
+
+<!-- END: main -->

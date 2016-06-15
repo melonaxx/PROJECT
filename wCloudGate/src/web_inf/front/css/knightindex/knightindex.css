@@ -1,0 +1,56 @@
+/* ------------内容------------ */
+section{width:100%;background: #fff;color:#666;}
+.content{width:1050px;margin:0 auto;overflow: hidden;}
+.contentleft{float:left;width:180px;height:690px;overflow: hidden;border:1px solid #f0f2f5;background: #fff;}
+.searchbox{width:100%;height:40px;box-sizing:border-box;margin:53px 0 10px 0;}
+.search{width:100%;height:100%;}
+.search input{width:100px;height:38px;padding:0 10px;font-size: 14px;border:1px solid #f0f2f5;}
+.search button{cursor: pointer;background: #fff;border:none;border-top:1px solid #f0f2f5;border-bottom:1px solid #f0f2f5;font-size: 14px;line-height: 40px;text-align: center;height:40px;width:58px;text-align: center;float:right;}
+.sort{width:90%;padding:0 5%;height: 20px;margin:20px 0;font-size: 14px;}
+.sort li:nth-of-type(1){float:left;}
+.sort li:nth-of-type(2){float:right;}
+.sortchoice{border-bottom: 1px solid #358ecb;color:#358ecb;}
+.allsort{cursor:pointer;width:160px;height:40px;padding-left:20px;line-height: 40px;font-size: 14px;border-top:1px solid #f0f2f5;border-bottom:1px solid #f0f2f5;}
+.sortbox{height:492px;overflow: auto;}
+.sortbox p{width:160px;height:40px;cursor:pointer;padding-left:20px;line-height: 40px;font-size: 14px;border-bottom:1px solid #f0f2f5;overflow: hidden;white-space: nowrap;text-overflow: ellipsis; }
+.sortactive,.sortbox p:hover{background:#3bb5ed;color:#f0f2f5;}
+.sortactivec{background:#3bb5ed;color:#f0f2f5;}
+/* ------------右部内容----------- */
+.contentright{float:left;width:868px;overflow:hidden;}
+.crtop{width:820px;height:40px;margin:10px 0px;line-height: 40px;padding-left:50px;font-size: 14px;}
+.vehicle{width:100%;height:200px;border:1px solid #f0f2f5;margin-bottom: 27px;overflow: hidden;background: #f4f7fa;}
+.vehicle li{width:212px;height:200px;border-right:1px solid #f0f2f5;padding:10px 10px 20px;box-sizing:border-box;float:left;margin-right:6px;}
+.vehicle li:nth-of-type(4){margin-right: 0;border-right:none;}
+.carnum{clear:left; float:left;margin:0; padding:0; position:relative; left:50%; text-align:center;}
+.num{font-size: 40px;color: #5a6778;text-align: center;width:100%;height:50px;margin-top:27px;}
+/*.carnum p{float:left;font-size:18px;width:20px;height:24px;margin-top:56px;}*/
+.middle{ float:left;margin-top:27px; width:100%;overflow:hidden; position:relative; } 
+.middleli{margin:0; padding:0; position:relative; right:50%; }
+.carp{width:100%;text-align: center;font-size: 14px;color: #5a6778;height:20px;margin:10px 0 10px;}
+.carbtn{width:90%;height:22px;margin-left:5%;}
+.carbtn div{width:80px;height:22px;text-align: center;font-size: 14px;color: #33bc8c;line-height: 22px;}
+.carinf{float:left;}
+.checkpos{float:right;}
+.carbtn a{color:#33bc8c;}
+/* -------------右下部分内容----------- */
+.datanews{width:100%;overflow: hidden;margin-top: 10px}
+.datacontent{width:800px;overflow:hidden;background: #fff;margin-left:30px;}
+.datatitle{width:100%;height:32px;margin:30px 0 20px;font-size: 23px;}
+.datatitle li{float:left;}
+.datatitle li:nth-of-type(1),.datatitle li:nth-of-type(3){width:35%;border-top: 1px solid #358ecb;margin-top:15px;}
+.datatitle li:nth-of-type(2){width:30%;color:#358ecb;text-align: center;}
+.newscontent{float:left;width:197px;height:741px;background: #fff;margin-left: 8px;}
+.newscontent h1{font-size: 14px;color: #333;width:187px;height:34px;line-height: 34px;border-bottom: 1px solid #ccc;padding-left:10px;}
+.newsc{width:177px;padding:10px;}
+.updatenews{height:22px;line-height: 22px;overflow: hidden;white-space: nowrap;text-overflow: ellipsis;}
+.updatenews a{color:#333;font-size: 12px;}
+/* -------------------------- */
+.cartitle{width:500px;height:25px;margin:0 0 19px 16px;}
+.cartitle svg{float:left;}
+.cartitle p{font-size: 18px;float:left;margin-left: 10px;}
+.progressbar{width: 100px;height: 6px; border-radius: 5px;margin:0 0 20px 44px;position: relative;background: #d8e3e6;}
+.pbar1,.pbar2,.pbar3,.pbar4{height: 6px; border-radius: 5px;position: absolute;left:0;top:0;}
+.pbar1{background: #49b6e5;}
+.pbar2{background: #7ed321;}
+.pbar3{background: #fe824c;}
+.pbar4{background: #8b572a;}

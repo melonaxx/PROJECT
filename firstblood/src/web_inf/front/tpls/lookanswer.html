@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>北京外麦王人事系统</title>
+<meta http-equiv="content-type" content="text/html; charset=utf-8">
+<SCRIPT language=javascript src="/js/jquery-1.8.3.min.js"></SCRIPT>
+</head>
+<style>
+      body{
+          background-color:#2A8DC8;
+          text-decoration: none;
+      }
+      .chuti{
+          padding-left:50px;
+          text-decoration: none;
+          color:black;
+          font-size:14px;
+      }
+      .chuti:hover{
+          color:yellow;
+      }
+      a{
+          text-decoration: none;
+          font-size:12px;
+      }
+      td{
+          font-size: 12px;
+      }
+</style>
+<body>
+<center>
+            <b id="timu" style="margin-bottom:10px;display:block;" >题目:{$topic}</b>
+            <TABLE style="WIDTH: 100%; text-decoration:none"cellSpacing=1 cellPadding=2 rules=all border=0>
+              <TR 
+              style="FONT-WEIGHT: bold; FONT-STYLE: normal; BACKGROUND-COLOR: #eeeeee; TEXT-DECORATION: none;text-align: center">
+                <TD>答案</TD>
+                <TD>操作</TD>
+              </TR>
+              {if $type eq 1 || $type eq 2}
+              {foreach from=$list item=temp} 
+              <TR style="BACKGROUND-COLOR:{if $temp['correct'] eq 1}#7AC125{else}#D31F1F{/if};text-align: center; height:40px;" id="{$temp['id']}"
+              val="{$temp['correct']}">      
+                <TD width="70%"><span name="xuhao" class="xuhao"></span>{$temp['content']}</TD>
+                <TD> 
+                <A href="javascript:void(0)" id="delanswer">删除</A>
+                {if $temp['correct'] eq 0}
+                <A href="javascript:void(0)" id="true">设为正确答案</A>
+                {else if $temp['correct'] eq 1}
+                <A href="javascript:void(0)" id="true">设为错误答案</A>
+                {/if}
+                </TD>
+              </TR>
+              {/foreach}
+              {else if $type eq 4}
+              {foreach from=$list item=temp} 
+              <TR style="BACKGROUND-COLOR:#7AC125;text-align: center; height:40px;" id="{$temp['id']}">      
+                <TD width="70%"><span name="xuhao" class="xuhao"></span>{$temp['content']}</TD>
+                <TD> 
+                <A href="javascript:void(0)" id="delanswer">删除</A>
+                </TD>
+              </TR>
+              {/foreach}
+              {/if}
+              <TR style="FONT-WEIGHT: normal; FONT-STYLE: normal; BACKGROUND-COLOR: white; TEXT-DECORATION: none;text-align:center; height:100px;" tid={$tid} id="selc" type={$type}>
+                <TD width="70%">
+                     <textarea id="selname" cols="70" rows="3"></textarea>
+                </TD>
+                <TD>
+
+                <A href="javascript:void(0)" id="addpro">添加答案</A>
+                </TD>
+              </TR>
+            
+               </TABLE>
+</center>
+</body>
+<script type="text/javascript" src="/js/util.js"></script>
+{literal}
+<script>
+       //给题目添加序号
+       var xuhao = document.getElementsByName("xuhao");
+       for(var i=0;i<xuhao.length;i++){
+            xuhao[i].innerHTML=(i+1)+".";
+       }
+       //添加答案
+       var selname=$("#selname");
+       var tid=$("#selc").attr("tid");
+       var type=$("#selc").attr("type");
+       $("#addpro").live("click",function(){
+           if(selname.val()==""){
+               alert("答案不能为空");
+               return false;
+           }else{
+               var pname = selname.val();
+
+             if(type == 1 || type == 2 ){
+                 $.ajax({
+                     type: "POST",
+                     url: "addanswer.php",
+                     data: {
+                        "pname": pname,
+                        "tid": tid,
+                        "type": type
+                             },
+                     success: function(msg){
+                        if(msg == "no"){
+                            alert("添加失败");
+                        }else{
+                           var str="";
+                               str+="<tr style='background-color:#D31F1F;height:40px;text-align:center;' id="+msg+" val='0'><td height:40px;text-align:center;'><span class='xuhao' name='xuhao'></span>"+($(".xuhao").length+1)+"."+util.htmlEncode(pname)+"</td>";
+                               str+="<td><A href='javascript:void(0)' id='delanswer'>删除</A>&nbsp;<A href='javascript:void(0)' id='true'>设为正确答案</A></td></tr>";
+                            $(str).insertBefore($("#selc"));
+                        }
+                     },
+                     error: function(){
+                       alert("ajax请求失败")
+                    }
+                  });
+             }else if(type == 4){
+                 $.ajax({
+                     type: "POST",
+                     url: "addanswer.php",
+                     data: {
+                            "pname": pname,
+                            "tid": tid,
+                            "type": type
+                             },
+                     success: function(msg){
+                        if(msg == "no"){
+                            alert("添加失败");
+                        }else{
+                           var str="";
+                               str+="<tr style='background-color:#7AC125;height:40px;text-align:center;' id="+msg+"><td height:40px;text-align:center;'><span class='xuhao' name='xuhao'></span>"+($(".xuhao").length+1)+"."+util.htmlEncode(pname)+"</td>";
+                               str+="<td><A href='javascript:void(0)' id='delanswer'>删除</A></td></tr>";
+                            $(str).insertBefore($("#selc"));
+                        }
+                     },
+                     error: function(){
+                       alert("ajax请求失败")
+                    }
+                  });
+             }
+             selname.val("");
+           }
+
+       })
+      //删除答案
+       $("#delanswer").live("click",function(){
+           $(this).closest("tr").addClass("del");
+           var id=$(".del").attr("id");
+
+           if(type == 1 || type == 2){
+           
+             $.ajax({
+               type: "POST",
+               url: "delanswer.php",
+               data: {
+                    "id": id
+                     },
+               success: function(msg){
+                   if(msg == "no"){
+                      $(".del").removeClass("del");
+                      alert("删除失败");
+                   }else{
+                     $(".del").closest("TR").remove();
+                     $(".del").removeClass("del");
+                     alert("删除成功");
+                   }
+               },
+               error: function(){
+                 alert("ajax请求失败")
+              }
+            });
+         }else if(type == 4){
+            $.ajax({
+               type: "POST",
+               url: "delask.php",
+              data: {
+                    "id": id
+                     },
+               success: function(msg){
+                   if(msg == "no"){
+                      $(".del").removeClass("del");
+                      alert("删除失败");
+                   }else{
+                     $(".del").closest("TR").remove();
+                     $(".del").removeClass("del");
+                     alert("删除成功");
+                   }
+               },
+               error: function(){
+                 alert("ajax请求失败")
+              }
+            });
+         }
+      })
+       //设置答案的对错
+      $("#true").live("click",function(){
+           ob=$(this);
+           $(this).closest("tr").addClass("del");
+           var id=$(".del").attr("id");
+           var correct=$(".del").attr("val");
+           $.ajax({
+             type: "POST",
+             url: "setanswer.php",
+             data: {
+                    "id": id,
+                    "correct" :correct
+                   },
+             success: function(msg){
+                 if(msg == "yes"){
+                     if(correct=="1"){
+                        $(".del").attr("val","0");
+                        ob.text("设为正确答案");
+                        ob.closest("tr").css("background-color","#D31F1F");
+                     }else if(correct=="0"){
+                        $(".del").attr("val","1");
+                        ob.text("设为错误答案");
+                        ob.closest("tr").css("background-color","#7AC125");
+                     }
+                     $(".del").removeClass("del");
+                 }else{
+                   $(".del").removeClass("del");
+                 }
+             },
+             error: function(){
+               alert("ajax请求失败")
+            }
+          });
+      })
+
+</script>
+{/literal}
+</html>

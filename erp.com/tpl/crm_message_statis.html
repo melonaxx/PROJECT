@@ -1,0 +1,41 @@
+//---- UTF8 编码 ----
+<!-- BEGIN: main --><?xml version="1.0" encoding="UTF-8"?>
+{main.doc_type}
+<?xml-stylesheet type="text/xsl" href="/style/crm_message_statis.xsl?ver={main.doc_version}"?>
+<html version="{main.doc_version}">
+<head>
+	<Title>{main.title}</Title>
+	<meta name="keywords" content="{main.keywords}" />
+	<meta name="description" content="{main.description}" />
+	<em company_id="{main.company_id}" staff_id="{main.staff_id}" login_name="{main.login_name}" permit="{main.permit}" program="{main.request_url}"/>
+</head>
+<Body>
+<dir><![CDATA[ 您的位置：{main.this_location}]]></dir>
+<menu>
+	<big>{main.big_menu}</big>
+	<small>
+		<!-- BEGIN: list_menu --><a class="{list_menu.class}" href="{list_menu.link}">{list_menu.name}</a><!-- END: list_menu -->
+	</small>
+</menu>
+<date_start>{main.date_start}</date_start>
+<date_end>{main.date_end}</date_end>
+<message_remain>{main.message_remain}</message_remain>
+<number>
+	<ul total='{main.total}'>
+		<!-- BEGIN: number -->
+		<li>
+			<id>{number.id}</id>
+			<no>{number.no}</no>
+			<total>{number.total}</total>
+			<shop_id>{number.shop_id}</shop_id>
+			<action_date>{number.action_date}</action_date>
+		</li>
+		<!-- END: number -->
+	</ul>
+</number>
+{main.page_info}
+</Body>
+
+
+</html>
+<!-- END: main -->

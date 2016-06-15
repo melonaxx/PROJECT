@@ -1,0 +1,73 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <title>外麦云</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/wcloud.css">
+    <link rel="stylesheet" href="/css/wcloud_header.css">
+
+    <!-- 百度 -->
+    <link rel="stylesheet" href="/css/wcloud_map/map_search.css">
+
+
+    <!-- 百度key :  NmDwD8da7NCbTFC9FiQKjays -->
+    <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=NmDwD8da7NCbTFC9FiQKjays">
+    </script>
+
+    <!-- 百度聚合图标 -->
+    <script src="/js/wcloud_map/map_markerclusterer.js"></script>
+    <script src="/js/wcloud_map/map_texticonoverlay.js"></script>
+
+
+    <script src="/js/jquery.min.js"></script>
+    <script src="/bootstrap/js/bootstrap.min.js"></script>
+</head>
+<body class="body">
+
+    <?php include('wcloud_header.html'); ?>
+
+    <div class="dashboard">
+        <div id="bdMap" class="DashContent"></div>
+    </div>
+    <!-- 搜索框 -->
+    <div class="pointSearch">
+        <div class="input-group">
+            <input type="text" name='inputData' class="form-control places" style="width:200px;" autocomplete="off" placeholder="请输入电车序列号">
+            <div class="input-group-btn">
+                <div class="glyphicon glyphicon-search searchIcon"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 开启五秒实时同步数据和显示电车按钮 -->
+    <div class='controlBtn'>
+        <div class='asyncCurrent'>开启实时同步</div>
+        <div class='showCar'>显示电车</div>
+    </div>
+
+    <!-- 百度 -->
+    <script src="/js/wcloud_map/map_base.js"></script>
+    <script src="/js/wcloud_map/map_customicon.js"></script>
+    <script src="/js/wcloud_map/map_search.js"></script>
+    <script src="/js/wcloud_map/map_controller.js"></script>
+    <script src="/js/wcloud_map/map_async.js"></script>
+
+
+    <script>
+        $(function(){
+            //---显示百度地图 ----
+            showBDMap();
+
+            //----显示高德地图 ----
+            // showLbsMap();
+        })
+
+    </script>
+</body>
+</html>
+
+

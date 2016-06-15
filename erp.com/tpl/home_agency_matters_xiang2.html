@@ -1,0 +1,94 @@
+//---- UTF8 编码 ----
+<!-- BEGIN: main -->
+<html>
+<head>
+<title></title>
+<link type="text/css" rel="stylesheet" href="/style/bootstrap.min.css?ver={main.doc_version}"/>
+<link type="text/css" rel="stylesheet" href="/style/style.css?ver={main.doc_version}"/>
+<!-- 时间日期 -->
+<!-- <link type="text/css" rel="stylesheet" href="/style/admin.css" /> -->
+<link rel="stylesheet" type="text/css" href="/style/jquery-ui.css" />
+
+<style>
+body,table,form,input		{font-size:12px; padding:0; margin:0}
+body {
+	min-width:100px;
+	overflow-y:auto;
+}
+</style>
+<script type="text/javascript" charset="UTF-8" src="/js_encode/jquery-1.9.1.min.js"></script>
+<script type="text/javascript" charset="UTF-8" src="/js_encode/bootstrap.min.js"></script>
+<!-- <script type="text/javascript" src="/js_encode/home_system_announcement_notice.js"></script> -->
+<!-- 时间日期 -->
+<script type="text/javascript" src="/js_encode/jquery-ui-1.10.4.custom.min.js"></script>
+<script type="text/javascript" src="/js_encode/jquery.ui.datepicker-zh-CN.js"></script>
+<script type="text/javascript" src="/js_encode/jquery-ui-timepicker-addon.js"></script>
+<script type="text/javascript" src="/js_encode/jquery-ui-timepicker-zh-CN.js"></script>
+
+<!-- 时间插件 -->
+<!-- <script type="text/javascript" src="/js_encode/bootstrap-datetimepicker.min.js"></script>
+<script type="text/javascript" src="/js_encode/bootstrap-datetimepicker.zh-CN.js"></script>
+<link rel="stylesheet" href="/style/bootstrap-datetimepicker.min.css"></link> -->
+
+<form class=" margin_top">
+	<div style="width:703px margin:0px 0px 0px 0px;">
+		<div class="form-group float_left" style="margin:0 0 12px 0;">
+			<span class="float_left margin_top_5">通知标题：</span>
+		<input type="text" name="" readonly="readonly" value="{notice.name}" class="form-control float_left" style="width:580px;" >
+		</div>
+		<div class="float_left">
+			<span class="float_left margin_left_10">称呼：</span>
+			<input type="text" name="nick" value="{notice.nick}" class="form-control float_left" style="width:147px;">
+		</div>
+		<div class="float_left">
+			<span class="float_left margin_left_10" style="">会议时间：</span>
+			<input type="text" name="begin_date" value="{notice.begin_date}" class="form-control float_left" style="width:162px;padding-left:10px;">
+				<span class="float_left margin_home_7" style="">到</span>
+			<input type="text" name="end_date" value="{notice.end_date}" class="form-control float_left" style="width:162px;padding-left:10px;">
+		</div>
+		<div class="form-group float_left">
+			<span class="float_left" style="margin:50px 0px 0px 0px;">通知内容：</span>
+			<textarea class="float_left form-control" name="body" rows="6" style="width:580px; resize: none;margin:12 0px -2px 0;">{notice.body}"</textarea>
+		</div>
+	<div class="tianjia">
+		<span class="float_left margin_top_5">通知事项：</span>
+		<!-- BEGIN: not -->
+		<div class="form-group float_right btn-group input-group" role="group"  style="margin:0 16px 12px 0;">
+			<input type="text" name="" value = '{not.body}' class="form-control float_left " style="width:580px;z-index:0;border-radius: 4px;">
+		</div>
+		<!-- END: not -->
+	</div>
+		<div class="form-group float_left" style="margin:0 0 13px 0;">
+			<span class="float_left margin_top_5">相关人员：</span>
+		<input type="text" name="person" class="form-control float_left" id="brand_id" style="width:580px;font-size:12px;" value="{notice.person}">
+		</div>
+		<div class="form-group float_left" style="margin:0 0px 13px 0;">
+			<span class="float_left margin_left_10">署名：</span>
+		<input type="text" name="sign" value="{notice.sign}" class="form-control float_left" style="width:580px;">
+		</div>
+	</div>
+
+	<div class="form-group float_left" style="margin:0 0px 13px 0;">
+		<div class="table_operate_block">
+			<input class="btn btn-default btn-sm btn_margin customersAdd float_left" type="submit" value="完成" />
+			<input class="btn btn-default btn-sm goodsDeleteaa float_left" type="reset" value="取消" onclick="parent.$('#MessageBox').modal('hide')" />
+		</div>
+	</div>
+</form>
+
+</body>
+<script type="text/javascript">
+
+	// $('.tianjia').on('click','.addition',function(){
+	// 	var add= '<div class="input-group form-group float_left btn-group margin_left_9" role="group" aria-label="..."><input type="text" name="number[]" class="form-control float_left" style="width:506px;z-index:0" aplaceholder="Search for..."><span class="input-group-btn float_left" style="z-index:0"><button class="btn btn-default addition" type="button">✚</button><button class="btn btn-default delete" type="button">✖</button></span></div>'
+	// 	var aa= $(this).parent().parent().parent().append(add);
+
+	// })
+	// $('.tianjia').on('click','.delete',function(){
+	// 	var a=$(this).parent().parent().remove();
+	// })
+</script>
+</html>
+
+<!-- END: main -->
+

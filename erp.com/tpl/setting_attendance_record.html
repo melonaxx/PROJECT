@@ -1,0 +1,69 @@
+//---- UTF8 编码 ----
+<!-- BEGIN: main --><?xml version="1.0" encoding="UTF-8"?>
+{main.doc_type}
+<?xml-stylesheet type="text/xsl" href="/style/setting_attendance_record.xsl?ver={main.doc_version}"?>
+<html version="{main.doc_version}">
+<head>
+	<Title>{main.title}</Title>
+	<meta name="keywords" content="{main.keywords}" />
+	<meta name="description" content="{main.description}" />
+	<em company_id="{main.company_id}" staff_id="{main.staff_id}" login_name="{main.login_name}" permit="{main.permit}" program="{main.request_url}"/>
+</head>
+<Body>
+<!-- <dir><![CDATA[ 您的位置：{main.this_location}]]></dir> -->
+<dir><![CDATA[ 您的位置： <a href="/">首页</a> &raquo;<a href="/setting/setting_attendance_record.php">考勤记录</a> &raquo; 考勤表]]></dir>
+<menu>
+	<big>{main.big_menu}</big>
+	<small>
+		<!-- BEGIN: list_menu --><a class="{list_menu.class}" href="{list_menu.link}">{list_menu.name}</a><!-- END: list_menu -->
+	</small>
+</menu>
+<companystaff>
+	<ul>
+		<select_value>{main.group_id}</select_value>
+		<!-- BEGIN:companystaff -->
+		<li><text>{companystaff.name}</text><value>{companystaff.id}</value></li>
+		<!-- END:companystaff -->
+	</ul>
+</companystaff>
+<companystaff_info>
+	<ul>
+		<!-- BEGIN:companystaff_info -->
+		<li>
+			<text>{companystaff_info.nick}</text><id>{companystaff_info.id}</id>
+		</li>
+		<!-- END:companystaff_info -->
+	</ul>
+</companystaff_info>
+<record>
+	<!-- BEGIN: list_record -->
+		<li id="{list_record.staff_id}" day="{list_record.day}">
+			<am>{list_record.am}</am>
+			<pm>{list_record.pm}</pm>
+		</li>
+	<!-- END: list_record -->
+</record>
+<nink>
+	<ul>
+		<!-- BEGIN:nink -->
+		<li>
+			<i>{nink.i}</i>
+			<data>{nink.data}</data>
+		</li>
+		<!-- END:nink -->
+	</ul>
+</nink>
+<companystaffinfo>
+	<!-- BEGIN:companystaffinfo -->
+	<li><value>{companystaffinfo.id}</value><text>{companystaffinfo.nick}</text></li>
+	<!-- END:companystaffinfo -->
+</companystaffinfo>
+<total>{main.total}</total>
+<date>{main.date}</date>
+<mouth>{main.mouth}</mouth>
+<year>{main.year}</year>
+</Body>
+
+
+</html>
+<!-- END: main -->s

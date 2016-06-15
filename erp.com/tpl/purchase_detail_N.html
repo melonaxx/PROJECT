@@ -1,0 +1,65 @@
+//---- UTF8 编码 ----
+<!-- BEGIN: main --><?xml version="1.0" encoding="UTF-8"?>
+{main.doc_type}
+<?xml-stylesheet type="text/xsl" href="/style/purchase_detail_N.xsl?ver={main.doc_version}"?>
+<html version="{main.doc_version}">
+	<head>
+		<Title>{main.title}</Title>
+		<meta name="keywords" content="{main.keywords}" />
+		<meta name="description" content="{main.description}" />
+		<em company_id="{main.company_id}" staff_id="{main.staff_id}" login_name="{main.login_name}" permit="{main.permit}" program="{main.request_url}"/>
+	</head>
+	<Body>
+		<dir><![CDATA[ 您的位置：{main.this_location}]]></dir>
+		<menu>
+			<big>{main.big_menu}</big>
+			<small>
+				<!-- BEGIN: list_menu --><a class="{list_menu.class}" href="{list_menu.link}">{list_menu.name}</a><!-- END: list_menu -->
+			</small>
+		</menu>
+		<details>
+			<ul>
+				<!-- BEGIN:details -->
+				<li>
+
+					<id>{details.id}</id>
+					<body>{details.body}</body>
+					<total>{details.total}</total>
+					<price>{details.price}</price>
+					<brief>{details.brief}</brief>
+					<number>{details.number}</number>
+					<store_id>{details.store_id}</store_id>
+					<staff_id>{details.staff_id}</staff_id>
+					<pay_method>{details.pay_method}</pay_method>
+					<supplier_id>{details.supplier_id}</supplier_id>
+					<action_date>{details.action_date}</action_date>
+					<status_audit>{details.status_audit}</status_audit>
+					<freight_side>{details.freight_side}</freight_side>
+					<freight_amount>{details.freight_amount}</freight_amount>
+					<waybill_number>{details.waybill_number}</waybill_number>
+					<shipping_company>{details.shipping_company}</shipping_company>
+				</li>
+				<!-- END:details -->
+			</ul>
+		</details>
+		<product>
+			<ul>
+				<!-- BEGIN:product -->
+				<li>
+					<no>{product.no}</no>
+					<product_id>{product.product_id}</product_id>
+					<pro>{product.pro}</pro>
+					<total>{product.total}</total>
+					<format>{product.format}</format>
+					<parts_id>{product.parts_id}</parts_id>
+					<price>{product.price}</price>
+					<content>{product.content}</content>
+					<zongjia>{product.zongjia}</zongjia>
+				</li>
+				<!-- END:product -->
+			</ul>
+		</product>
+
+	</Body>
+</html>
+<!-- END: main -->

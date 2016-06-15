@@ -1,0 +1,137 @@
+//---- UTF8 编码 ----
+<!-- BEGIN: main --><?xml version="1.0" encoding="UTF-8"?>
+{main.doc_type}
+<?xml-stylesheet type="text/xsl" href="/style/product_list_update.xsl?ver={main.doc_version}"?>
+<html version="{main.doc_version}">
+<head>
+	<Title>{main.title}</Title>
+	<meta name="keywords" content="{main.keywords}" />
+	<meta name="description" content="{main.description}" />
+	<em company_id="{main.company_id}" staff_id="{main.staff_id}" login_name="{main.login_name}" permit="{main.permit}" program="{main.request_url}"/>
+</head>
+<Body>
+<dir><![CDATA[ 您的位置：{main.this_location}]]></dir>
+<menu>
+	<big>{main.big_menu}</big>
+	<small>
+		<!-- BEGIN: list_menu --><a class="{list_menu.class}" href="{list_menu.link}">{list_menu.name}</a><!-- END: list_menu -->
+	</small>
+</menu>
+<aa>aaaaa</aa>
+
+		<supplierMsg>
+			<type>
+				<select_value>{main.brand_id}</select_value>
+				<ul>
+					<!-- BEGIN: brand -->
+					<li><value>{brand.id}</value><text>{brand.name}</text></li>
+					<!-- END: brand -->
+				</ul>
+			</type>
+			<fenlei>
+				<select_value>{main.category_id}</select_value>
+				<ul>	<!-- BEGIN: category -->
+					<li><value>{category.id}</value><text>{category.name}</text></li>
+						<!-- END: category -->
+				</ul>
+			</fenlei>
+			<product_type>
+				<select_value>{main.product_type}</select_value>
+				<ul>
+					<li><value>Virtual</value><text>虚拟产品</text></li>
+					<li><value>Packaged</value><text>套装产品</text></li>
+					<li><value>Real</value><text>实体产品</text></li>
+					<li><value>Materials</value><text>原材料</text></li>
+
+				</ul>
+			</product_type>
+
+			<product_quality>
+				<select_value>{main.product_quality}</select_value>
+				<ul>
+					<li><value>New</value><text>二手</text></li>
+					<li><value>Used</value><text>全新</text></li>
+				</ul>
+			</product_quality>
+			<unit>
+				<select_value>{main.unit}</select_value>
+				<ul>
+					<!-- BEGIN: supplierList -->
+					<li><value>{supplierList.id}</value><text>{supplierList.name}</text></li>
+					<!-- END: supplierList -->
+				</ul>
+			</unit>
+		</supplierMsg>
+		<format_name v1="{main.format_1}" v2="{main.format_2}" v3="{main.format_3}" v4="{main.format_4}" v5="{main.format_5}">
+			<!-- BEGIN: format_name -->
+			<li id="{format_name.id}">{format_name.name}</li>
+			<!-- END: format_name -->
+		</format_name>
+		<format_value>
+			<!-- BEGIN: format_value -->
+			<li name_id="{format_value.name_id}" id="{format_value.id}">{format_value.name}</li>
+			<!-- END: format_value -->
+		</format_value>
+		<attrib_name>
+
+			<!-- BEGIN: attrib_name -->
+			<li id="{attrib_name.id}"><name>{attrib_name.name}</name></li>
+			<!-- END: attrib_name -->
+
+		</attrib_name>
+		<bao>
+			<ul>
+				<!-- BEGIN:bao -->
+				<li><text>{bao.shop_title}</text><value>{bao.id}</value></li>
+				<!-- END:bao -->
+			</ul>
+		</bao>
+		<attrib_value>
+			<!-- BEGIN: attrib_value -->
+			<li attrib_id="{attrib_value.attrib_id}" value_id="{attrib_value.value_id}">{attrib_value.body}</li>
+			<!-- END: attrib_value -->
+		</attrib_value>
+		<product>
+			<!-- BEGIN:product -->
+			<li><value>{product.id}</value><text>{product.name}</text></li>
+			<!-- END:product -->
+		</product>
+		<product_info>
+			<price_purchase>{main.price_purchase}</price_purchase>
+			<volume>{main.volume}</volume>
+			<weight>{main.weight}</weight>
+			<content>{main.content}</content>
+			<price_display>{main.price_display}</price_display>
+			<name>{main.name}</name>
+			<id>{main.id}</id>
+			<number>{main.number}</number>
+			<bar_code>{main.bar_code}</bar_code>
+		</product_info>
+		<accessory>
+			<ul>
+				<!-- BEGIN:accessory -->
+				<li>
+					<num>{accessory.num}</num>
+					<select_value>{accessory.id}</select_value>
+					<text>{accessory.accessory_id}</text><value>{accessory.id}</value>
+					<total>{accessory.total}</total>
+				</li>
+				<!-- END:accessory -->
+			</ul>
+		</accessory>
+		<likun>
+			<ul>
+				
+				<!-- BEGIN:likun -->
+				<li>
+					<num>{likun.num}</num>
+					<select_value>{likun.id}</select_value>
+					<attrib_id>{likun.attrib_id}</attrib_id>
+					<value_id>{likun.value_id}</value_id>
+				</li>
+				<!-- END:likun -->
+			</ul>
+		</likun>
+	</Body>
+</html>
+<!-- END: main -->

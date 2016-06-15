@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>外麦王云平台</title>
+</head>
+<body>
+<div class="header"></div>
+<div class="main">	
+	<?php
+		if($name) {
+			echo "<p>".$name."</p>";
+			echo "<p>退出</p>";
+		} else {
+			echo "登录";
+		}
+	?>
+<p><a href="/login.php">login</a></p>
+<p><a href="/main.php">main</a></p>
+<p><a href="/platform/carmanagement.php">car</a></p>
+<p><a href="/logout.php">logout</a></p>
+
+</div>
+</body>
+</html>

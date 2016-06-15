@@ -1,0 +1,41 @@
+//---- UTF8 编码 ----
+<!-- BEGIN: main --><?xml version="1.0" encoding="UTF-8"?>
+{main.doc_type}
+<?xml-stylesheet type="text/xsl" href="/style/finance_bank_account.xsl?ver={main.doc_version}"?>
+<html version="{main.doc_version}">
+<head>
+	<Title>{main.title}</Title>
+	<meta name="keywords" content="{main.keywords}" />
+	<meta name="description" content="{main.description}" />
+	<em company_id="{main.company_id}" staff_id="{main.staff_id}" login_name="{main.login_name}" permit="{main.permit}" program="{main.request_url}"/>
+</head>
+<Body>
+<dir><![CDATA[ 您的位置：{main.this_location}]]></dir>
+<menu>
+	<big>{main.big_menu}</big>
+	<small>
+		<!-- BEGIN: list_menu --><a class="{list_menu.class}" href="{list_menu.link}">{list_menu.name}</a><!-- END: list_menu -->
+	</small>
+</menu>
+<finance>
+		<ul>
+			<!-- BEGIN:finance -->
+			<li>
+				<name>{finance.name}</name>
+				<number>{finance.number}</number>
+				<balance>{finance.balance}</balance>
+				<body>{finance.body}</body>
+				<action_date>{finance.action_date}</action_date>
+				<num>{finance.num}</num>
+				<id>{finance.id}</id>
+				<default>{finance.is_default}</default>
+			</li>
+			<!-- END:finance -->
+		</ul>
+</finance>
+{main.page_info}
+</Body>
+
+
+</html>
+<!-- END: main -->

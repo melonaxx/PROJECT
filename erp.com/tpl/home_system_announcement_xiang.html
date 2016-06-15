@@ -1,0 +1,60 @@
+//---- UTF8 编码 ----
+<!-- BEGIN: main -->
+<html>
+<head>
+<title></title>
+<link type="text/css" rel="stylesheet" href="/style/bootstrap.min.css?ver={main.doc_version}"/>
+<link type="text/css" rel="stylesheet" href="/style/style.css?ver={main.doc_version}"/>
+<style>
+body,table,form,input		{font-size:12px; padding:0; margin:0}
+body {
+	min-width:100px;
+	overflow-y:auto;
+	overflow-x:auto;
+}
+</style>
+<script type="text/javascript" charset="UTF-8" src="/js_encode/jquery-1.9.1.min.js"></script>
+<script type="text/javascript" charset="UTF-8" src="/js_encode/bootstrap.min.js"></script>
+<script type="text/javascript" src="/js_encode/jquery.validate.js"></script>
+
+<!-- <div class="mainBody" style="width:100%px;"> -->
+	<div id="myTabContent" class="tab-content">
+		<div class="tab-pane fade in active" id="ware_house">
+			<div class="tab-content" style="color:#666;">
+				<div class="float_left" style="width:100%;background-color:#ffffff">
+					<div class="left-first ">
+						<div style="height:26px;text-align: center;">
+							<div class="margin_home_2">
+								<h4>{notice.name}</h4>
+							</div>
+						</div>
+						<div class="text-left" style="margin:6px 10px 4px 10px;text-align: left;">{notice.nick}</div>
+						<div class="text-left" style="margin:8px 10px 0px 10px;">
+							<span style="margin:0px 0px 0px 24px;"></span>
+							<span style="line-height:26px;">{notice.body}</span>
+						</div>
+						<!-- BEGIN: shixiang -->
+						<div class="margin_home_1 text-left" style="margin-top:8px;"><span style="margin:0px 0px 0px 24px;">{shixiang.body}</div>
+						<!-- END: shixiang -->
+						<div class="margin_home_1 text-left" style="margin-top:8px;">
+							<span style="margin:0px 0px 0px 24px;">参与人员：</span>
+							{notice.person}
+						</div>
+						<div class="margin_home_1 text-left" style="margin-top:8px;">
+							<span style="margin:0px 0px 0px 24px;">会议时间：</span>
+							{notice.begin_date} ~ {notice.end_date}
+						</div>
+						<div class="margin_home_3" style="text-align:right;">{notice.sign}</div>
+						<div class="" style="margin:8px 15px 0px 0px; text-align:right">{notice.action_date}</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+<!-- </div> -->
+</body>
+</html>
+
+<!-- END: main -->
+
+

@@ -1,0 +1,172 @@
+//---- UTF8 编码 ----
+<!-- BEGIN: main -->
+<html>
+<head>
+<style>
+body,table,form,input		{font-size:12px; padding:0; margin:0}
+.login			{border:0; padding:0; margin:0; height:18px; line-height:18px; border:#F67E0D 1px solid; background:#ffffff}
+.btn_delete		{border:0; margin:0; height:24px; padding-left:5px; padding-right:5px; border:#ffffff 1px solid; background:#8b0000; color:#ffffff}
+.btn_ok			{border:0; margin:0; height:24px; padding-left:5px; padding-right:5px; border:#7babdb 1px solid; background:#dddddd}
+.btn_cancel		{border:0; margin:0; height:24px; padding-left:5px; padding-right:5px; border:#7babdb 1px solid; background:#eeeeee}
+input.regist	{background-color:#ffffff; border:#7babdb 1px solid; color:#666666; width:200px; height:24px; line-height:24px}
+label			{line-height:20px}
+a				{color:#336699; text-decoration:none}
+a:hover			{color:#ff5c5c; text-decoration:none}
+a.normal		{color:#333333}
+a.normal:hover	{color:red}
+a.white			{color:#ffffff}
+a.white:hover	{color:#dddddd}
+div,span,img,ul,ol,li,dl,dt,dd,form,p,h2,h3		{margin:0; padding:0; border:0; list-style:none}
+.clear			{clear:both; font-size:1px; visibility:hidden; width:1px; height:3px; line-height:1px!important}
+h1	{font-size:18px}
+a.brief			{color:#aaaaaa}
+img.icon		{width:16px; height:16px; border:0px; margin:0; padding:0; vertical-align:middle; background:url(/images/icons.png)}
+</style>
+<title>{main.title}</title>
+<script>
+if(typeof getObject != 'function')
+{
+	function getObject(objName)
+	{
+		if(document.getElementById)
+		{
+			return eval('document.getElementById("' + objName + '")');
+		}
+		else if(document.layers)
+		{
+			return eval("document.layers['" + objName +"']");
+		}
+		else
+		{
+			return eval('document.all.' + objName);
+		}
+	}
+}
+function error_text()
+{
+	getObject("error_company").innerHTML	= "";
+	getObject("error_name").innerHTML		= "";
+	getObject("error_passwd").innerHTML		= "";
+}
+function close_btn()
+{
+	parent.$('#MessageBox').modal('hide');
+	return false;
+	/*
+	var index = parent.layer.getFrameIndex(window.name);
+	parent.layer.close(index);
+	*/
+}
+</script>
+</head>
+<body bgcolor='#fefefe'>
+<br/>
+<iframe width='0' height='0' frameborder='0' id='ajax_login' name='ajax_login' src='/style/empty.html'></iframe>
+<center>
+
+<form method="post" target="ajax_login" action="/login/login_erp.php" onsubmit="error_text()">
+<table align="center">
+<tr>
+	<th width="50"></th>
+	<th width="350"></th>
+	<th width="50"></th>
+</tr>
+<tr height="40">
+	<td></td>
+	<td colspan="2">
+		公司名称：<input class="regist" name="company_name" />
+		<font color="red" id="error_company"></font>
+	</td>
+</tr>
+<tr height="40">
+	<td></td>
+	<td colspan="2">
+		登录用户：<input class="regist" name="user_name" />
+		<font color="red" id="error_name"></font>
+	</td>
+</tr>
+<tr height="40">
+	<td></td>
+	<td colspan="2">
+		帐号密码：<input class="regist" type="password" name="user_pass" />
+		<font color="red" id="error_passwd"></font>
+	</td>
+</tr>
+<tr height="60">
+	<td></td>
+	<td colspan="2">
+		<input class="btn_ok" type="submit" value="　登录　"/>
+		&#160;&#160;
+		<input class="btn_ok" type="button" value="　取消　" onclick="close_btn()"/>
+		&#160;&#160;
+		<input class="btn_ok" type="button" value="点这里申请注册" onclick="top.location.href='/login/register_erp.php'"/>
+	</td>
+</tr>
+<tr>
+	<td></td>
+	<td colspan="2">
+		采用第三方合作伙伴登录：<br/><br/>
+		<table>
+		<tr height="20">
+			<td width="70">
+				<a target="_top" href="/login/login_taobao.php"><img class="icon" src="/images/space.gif" style="background-position:-32px -464px" /> 淘宝网</a>
+			</td>
+			<td width="70">
+				<a target="_top" href="/login/login_1688.php"><img class="icon" src="/images/space.gif" style="background-position:-16px -464px" /> 1688</a>
+			</td>
+			<td width="70">
+				<a target="_top" href="/login/login_jd.php"><img class="icon" src="/images/space.gif" style="background-position:-16px -496px" /> 京东商城</a>
+			</td>
+			<td width="70">
+				<a target="_top" href="/login/login_qq.php"><img class="icon" src="/images/space.gif" style="background-position:0 -32px" /> QQ登录</a>
+			</td>
+			<td width="70">
+				<a target="_top" href="/login/login_amazon.php" class="brief" onclick="alert('暂无登录接口'); return false"><img class="icon" src="/images/space.gif" style="background-position:0 -480px" /> 亚马逊</a>
+			</td>
+		</tr>
+		<tr height="20">
+			<td>
+				<a target="_top" href="/login/login_dangdang.php"><img class="icon" src="/images/space.gif" style="background-position:-32px -496px" /> 当当网</a>
+			</td>
+			<td>
+				<a target="_top" href="/login/login_vip.php"><img class="icon" src="/images/space.gif" style="background-position:0 -528px" /> 唯品会</a>
+			</td>
+			<td>
+				<a target="_top" href="/login/login_baidu.php"><img class="icon" src="/images/space.gif" style="background-position:-16px -480px" /> 百度</a>
+			</td>
+			<td>
+				<a target="_top" href="/login/login_weixin.php"><img class="icon" src="/images/space.gif" style="background-position:-32px -512px" /> 微信</a>
+			</td>
+			<td>
+				<a target="_top" href="/login/login_renren.php"><img class="icon" src="/images/space.gif" style="background-position:-16px -512px" /> 人人网</a>
+			</td>
+		</tr>
+		<tr height="20">
+			<td>
+				<a target="_top" href="/login/login_sohu.php" class="brief" onclick="alert('暂无登录接口'); return false"><img class="icon" src="/images/space.gif" style="background-position:-32px -480px" /> 搜狐</a>
+			</td>
+			<td>
+				<a target="_top" href="/login/login_weibo.php"><img class="icon" src="/images/space.gif" style="background-position:0 -496px" /> 新浪微博</a>
+			</td>
+			<td>
+				<a target="_top" href="/login/login_360.php" class="brief" onclick="alert('暂无登录接口'); return false"><img class="icon" src="/images/space.gif" style="background-position:0 -512px" /> 奇虎360</a>
+			</td>
+			<td>
+				<a target="_top" href="/login/login_163.php" class="brief" onclick="alert('暂无登录接口'); return false"><img class="icon" src="/images/space.gif" style="background-position:0 -464px" /> 网易</a>
+			</td>
+			<td>
+			</td>
+		</tr>
+		</table><br/>
+	</td>
+</tr>
+</table>
+</form>
+
+
+
+</center>
+
+</body>
+</html>
+<!-- END: main -->

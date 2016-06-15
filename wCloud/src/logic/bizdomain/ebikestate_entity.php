@@ -1,0 +1,38 @@
+<?php
+
+class EbikeState extends Entity
+{
+    /**
+     * getkey方法
+     * @return 主键的名称
+     */
+    public function getkey()
+    {
+        static $primarykey = 'sensorid';
+        return $primarykey;
+    }
+
+    /**
+     * 主键字段是否自增长，默认值是true
+     * @return true: 增长，false: 不增长
+     */
+    public function isAutoKey()
+    {
+        return false;
+    }
+
+    /**
+     * 需要哪些关于时间的字段
+     * @return
+     * 0：没有创建/更新时间的相关字段
+     * Entity::FIELD_CREATETIME：createtime datetime
+     * Entity::FIELD_UPDATETIME：updatetime datetime
+     * 以上数字采用 "|" 操作表示同时存在
+     */
+    public function whichTimeFields()
+    {
+        return Entity::FIELD_CREATETIME | Entity::FIELD_UPDATETIME;
+    }
+}
+
+?>

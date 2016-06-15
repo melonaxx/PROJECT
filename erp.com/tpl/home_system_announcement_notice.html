@@ -1,0 +1,165 @@
+//---- UTF8 编码 ----
+<!-- BEGIN: main -->
+<html>
+<head>
+<title></title>
+<link type="text/css" rel="stylesheet" href="/style/bootstrap.min.css?ver={main.doc_version}"/>
+<link type="text/css" rel="stylesheet" href="/style/style.css?ver={main.doc_version}"/>
+
+<style>
+body,table,form,input		{font-size:12px; padding:0; margin:0}
+body {
+	min-width:100px;
+	overflow-y:auto;
+	padding-bottom: 0px;
+}
+#per{
+	margin-left:24px;
+}
+.border_color{
+	border:1px solid #E74C3C;
+}
+</style>
+<script type="text/javascript" charset="UTF-8" src="/js_encode/jquery-1.9.1.min.js"></script>
+<script type="text/javascript" charset="UTF-8" src="/js_encode/bootstrap.min.js"></script>
+<script type="text/javascript" src="/js_encode/jquery.validate.js"></script>
+
+
+<!-- 时间插件 -->
+<script type="text/javascript" src="/js_encode/bootstrap-datetimepicker.min.js"></script>
+<script type="text/javascript" src="/js_encode/bootstrap-datetimepicker.zh-CN.js"></script>
+<link rel="stylesheet" href="/style/bootstrap-datetimepicker.min.css"></link>
+</head>
+<body>
+<form class="margin_top" method="post" action="/home/home_system_announcement_notice.php"
+onsubmit="return check()">
+	<div style="width:703px;">
+		<div class="form-group float_left" style="margin:0 0 0 0;">
+			<span class="float_left margin_top_5">通知标题：</span>
+			<input type="text" name="name" class="form-control float_left" style="width:260px;" placeholder="必填" data-toggle="tooltip" data-placement="bottom" title="必填">
+		</div>
+		<div class="float_left">
+			<span class="float_left margin_left_10">称呼：</span>
+			<input type="text" name="nick" class="form-control float_left" style="width:260px;">
+		</div>
+		<div class="form-group float_left">
+			<span class="float_left" style="margin:36px 0px 0px 0px;">通知内容：</span>
+			<textarea class="float_left form-control" name="body" rows="3" style="width:580px; resize: none;margin:12 0px -2px 0;"></textarea>
+		</div>
+		<div class="form-group float_left tianjia">
+			<span class="float_left margin_top_5">通知事项：</span>
+			<div class="form-group float_left btn-group input-group" role="group" aria-label="..."  style="margin:0 0 0 0;">
+				<input type="text" name="number[]" class="form-control float_left " style="width:506px;z-index:0;" aplaceholder="Search for...">
+				<span class="input-group-btn float_left">
+					<button class="btn btn-default addition" style="width:38px;height:34px;" type="button">✚</button>
+					<button class="btn btn-default reduce" style="width:38px;height:34px;" type="button">✖</button>
+				</span>
+			</div>
+		</div>
+		<div class="form-group float_left" style="margin:0 24px 13px 0;">
+			<span class="float_left margin_top_5">参与人员：</span>
+		<input type="text" name="person" class="form-control float_left" id="brand_id" style="width:580px;font-size:12px;">
+		</div>
+		<div class="form-group float_left" style="margin:0 16px 13px 0;">
+			<span class="float_left margin_top_5" style="">会议时间：</span>
+			<input type="text" name="begin_date" class="form-control float_left" style="width:147px;" placeholder="" data-toggle="tooltip" data-placement="bottom" title="开始时间不能晚于结束时间">
+				<span class="float_left margin_home_7" style="">到</span>
+			<input type="text" name="end_date" class="form-control float_left" style="width:147px;" placeholder="" data-toggle="tooltip" data-placement="bottom" title="结束时间不能早于开始时间">
+		</div>
+		<div class="form-group float_left">
+			<span class="float_left margin_left_10" style="margin-left:10px;">署名：</span>
+		<input type="text" name="sign" class="form-control float_left" style="width:200px;">
+		</div>
+	</div>
+	<div class="form-group float_left" style="margin:0 0px 0px 0;">
+		<div class="table_operate_block">
+			<input class="btn btn-default btn-sm btn_margin customersAdd float_left" type="submit" value="确定" />
+			<input class="btn btn-default btn-sm goodsDeleteaa float_left" type="reset" value="取消" onclick="parent.$('#MessageBox').modal('hide')" />
+		</div>
+	</div>
+</form>
+</body>
+<script type="text/javascript">
+$(function(){
+
+	// 获取时间
+	$( "input[name='begin_date'],input[name='end_date']" ).datetimepicker({
+		language:'zh-CN',
+		format:'yyyy-mm-dd hh:ii',
+		autoclose:true,
+		pickerPosition:'top-right',
+		minView:0,
+	});
+	
+
+	//员工、部门选择
+	// $('#per ul li a').click(function(){
+	// 	var aa = $(this).text();
+	// 	$('#per button span:eq(0)').text(aa);
+	// })
+	
+	//添加事项
+	$('.tianjia').on('click','.addition',function(){
+		var add= '<div class="input-group form-group float_left btn-group margin_left_9" role="group" aria-label="..." style="margin-top:13px;margin-bottom:0px;"><input type="text" name="number[]" class="form-control float_left" style="width:506px;z-index:0" aplaceholder="Search for..."><span class="input-group-btn float_left" style="z-index:0"><button class="btn btn-default addition" style="width:38px;height:34px;" type="button">✚</button><button class="btn btn-default delete" style="width:38px;height:34px;" type="button">✖</button></span></div>'
+		var aa= $(this).parent().parent().parent().append(add);
+	});
+	$('.tianjia').on('click','.delete',function(){
+		var a=$(this).parent().parent().remove();
+	});
+
+	
+	$('.margin_top').validate({
+		highlight:function (element,errorClass) {
+			$(element).addClass('border_color');
+			$(element).tooltip('show');
+		},
+		unhighlight:function (element,errorClass) {
+			$(element).removeClass('border_color');
+			$(element).tooltip('hide');
+		},
+		rules:{
+			name:{
+				required:true,
+			},
+            'name':{
+                required:true,
+            },
+		},
+		messages:{
+			name:{
+				required:'',
+			},
+            'name':{
+                required:'',
+            },
+		},
+	});
+	//提交事件
+	$('.margin_top').submit(function() {
+		$('input[name=begin_date]').trigger('blur');
+		$('input[name=end_date]').trigger('blur');
+		var endtime = $('input[name=end_date]').val();
+        var starttime = $('input[name=begin_date]').val();
+        //判断会议开始时间不能晚于结束时间
+		if(starttime>endtime){
+			$('input[name=begin_date]').addClass('border_color');
+			$('input[name=begin_date]').tooltip('show');
+			$('input[name=end_date]').addClass('border_color');
+			$('input[name=end_date]').tooltip('show');
+			return false;
+		}else{
+			$('input[name=begin_date]').removeClass('border_color');
+			$('input[name=begin_date]').tooltip('hide');
+			$('input[name=end_date]').removeClass('border_color');
+			$('input[name=end_date]').tooltip('hide');
+			return true;
+		};
+	});
+
+});
+</script>
+
+</html>
+
+<!-- END: main -->
+

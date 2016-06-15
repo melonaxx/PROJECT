@@ -1,0 +1,519 @@
+﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3c.org/TR/1999/REC-html401-19991224/loose.dtd">
+<HTML xmlns="http://www.w3.org/1999/xhtml"><HEAD id=Head1><title>北京外麦王人事系统</title>
+<META http-equiv=Content-Type content="text/html; charset=utf-8">
+<LINK href="/css/Style.css" type=text/css rel=stylesheet>
+<LINK href="/css/Manage.css" type=text/css rel=stylesheet>
+<LINK href="/css/allinfo.css" type=text/css rel=stylesheet>
+<script language="javaScript" src="/js/mydate.js"></script>
+<SCRIPT language=javascript src="/js/jquery-1.8.3.min.js"></SCRIPT>
+<META content="MSHTML 6.00.2900.3492" name=GENERATOR></HEAD>
+<style>
+   #upload{
+    border:2px solid #F7F7F7;
+    width:400px;
+    height:300px;
+    border-radius:5px;
+    background-color:#F2F2F5;
+    display:none;
+   }
+   #head{
+    width:"100%";
+    height:25px;
+    line-height:25px;
+    font-size:14px;
+    border-bottom:2px solid #FA7F40;
+   }
+   #span{
+    display:block;
+    float:right;
+    margin-right:1px;
+    height:20px;
+    width:25px;
+    background-color:#F2F2F5;
+    color:#696E78;
+   }
+   #span:hover{
+    color:red;
+   }
+   #form_div{
+    width:220px;
+    height:80px;
+    margin-top:60px;
+    margin-left:5px;
+    float:left;
+   }
+   #showphoto{
+    border:2px dotted #C0C0C0;
+    margin-top:20px;
+    margin-right:5px;
+    float:right;
+    width:160px;
+    height:180px;
+   }
+</style>
+<BODY>
+<TABLE cellSpacing=0 cellPadding=0 width="98%" border=0>
+  <TBODY>
+  <TR>
+    <TD width=15><IMG src="/images/new_019.jpg" border=0></TD>
+    <TD width="100%" background=/images/new_020.jpg height=20></TD>
+    <TD width=15><IMG src="/images/new_021.jpg" 
+  border=0></TD></TR></TBODY></TABLE>
+<TABLE cellSpacing=0 cellPadding=0 width="98%" border=0>
+  <TBODY>
+  <TR>
+    <TD width=15 background=/images/new_022.jpg><IMG 
+      src="/images/new_022.jpg" border=0> </TD>
+    <TD vAlign=top width="100%" bgColor=#ffffff>
+      <TABLE cellSpacing=0 cellPadding=5 width="100%" border=0>
+        <TR>
+          <TD class=manageHead style="border-right:0px;">当前位置：管理首页 &gt; 档案管理</TD>
+          <td class=manageHead style="text-align:right;border-left:0px">
+            <a href="addp.php" class="addp" >员工添加</a>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          </td></TR>
+    </TD>
+      <TABLE borderColor=#cccccc cellSpacing=0 cellPadding=0 width="100%" 
+      align=center border=0>
+        <TBODY>
+        <TR>
+          <TD height=25>
+            <TABLE cellSpacing=0 cellPadding=2 border=0>
+              <TBODY>
+              <TR>
+                {if $cid eq 0}
+                <TD>筛选数据：</TD>
+                <TD>
+                  <form action="peopleinfo.php" method="get">
+                      <select name="section" id="section">
+                         <option value="">--选择部门--</option>
+                      </select>
+                      <select name="job" id="seljob">
+                         <option value="">--选择岗位--</option>
+                      </select>
+                      <select name="education" >
+                        <option value="">--选择学历--</option>
+                        <option value="初中">初中</option>
+                        <option value="高中">高中</option>
+                        <option value="中专">中专</option>
+                        <option value="大专">大专</option>
+                        <option value="本科">本科</option>
+                        <option value="研究生">研究生</option>
+                        <option value="博士">博士</option>
+                      </select>
+                      <select name="wed">
+                        <option value="">--婚否--</option>
+                        <option value="已婚">已婚</option>
+                        <option value="未婚">未婚</option>
+                      </select>
+                      <select name="safe">
+                        <option value="">--有无保险--</option>
+                        <option value="有">有</option>
+                        <option value="无">无</option>
+                      </select>
+                      <select name="try">
+                        <option value="">--试用期--</option>
+                        <option value="1月">1月</option>
+                        <option value="2月">2月</option>
+                        <option value="3月">3月</option>
+                        <option value="4月">4月</option>
+                        <option value="5月">5月</option>
+                        <option value="6月">6月</option>
+                        <option value="已转正">已转正</option>
+                      </select>
+                      <select name="cpf">
+                        <option value="">--公积金--</option>
+                        <option value="有">有</option>
+                        <option value="无">无</option>
+                      </select>
+                      <select name="lodge">
+                        <option value="">--是否住宿--</option>
+                        <option value="是">是</option>
+                        <option value="否">否</option>
+                      </select>
+                      <select name="pact" width="90px">
+                         <option value="">--选择合同公司--</option>
+                         <option value="北京福润一生科技有限公司">北京福润一生科技有限公司</option>
+                         <option value="北京外麦王科技有限公司">北京外麦王科技有限公司</option>
+                         <option value="北京爱米欢科技有限公司">北京爱米欢科技有限公司</option>
+                         <option value="保定文岩商贸有限公司">保定文岩商贸有限公司</option>
+                         <option value="市场拓展协议">市场拓展协议</option>
+                      </select>
+                      <br/><br/>
+                      <select name="peoplestatus">
+                        <option value="">--人员状态--</option>
+                        <option value="在职">在职</option>
+                        <option value="停职">停职</option>
+                        <option value="离职">离职</option>
+                        <option value="孕假">孕假</option>
+                      </select>
+                      <select name="pacttime" id="pacttime">
+                         <option value="">--合同年限--</option>
+                         <option value="合同未签">合同未签</option>
+                         <option value="1年" >1年</option>
+                         <option value="2年" >2年</option>
+                         <option value="3年" >3年</option>
+                         <option value="4年" >4年</option>
+                         <option value="5年" >5年</option>
+                         <option value="6年" >6年</option>
+                         <option value="无固定期">无固定期</option>
+                       </select>
+
+                      <input type="text" name="name"  placeholder="输入员工姓名" value="{$smarty.get.name}">
+                      <input type="text" name="skill" placeholder="输入特殊技能">
+                      <input type="text" name="signtime" size=11 placeholder="入职日期" onfocus="MyCalendar.SetDate(this)">
+                      <input type="text" name="signtimeover" size=13 placeholder="入职截止日期" onfocus="MyCalendar.SetDate(this)">
+
+                      <input type="text" name="outtime" size=11 placeholder="离职日期" onfocus="MyCalendar.SetDate(this)">
+                      <input type="text" name="outovertime" size=13 placeholder="离职截止日期" onfocus="MyCalendar.SetDate(this)">
+                      &nbsp;&nbsp;&nbsp;
+                      <input type="submit" value="搜索">
+
+                  <br/><br/>
+                  <input type="checkbox" name="birthstart" value="{$birthtime}">(快要生日的员工^_^o~ ！)
+                  &nbsp;&nbsp;&nbsp;
+                  <input type="checkbox" name="pactover" value="{$time}">(合同快要到期的员工-_-。！)</a><br/>
+                  </form>
+                </TD>
+                {/if}
+              </TR>
+              </TBODY>
+            </TABLE>
+            </TD>
+        </TR>
+        <TR>
+          <TD>
+            <TABLE id="grid" 
+            style="BORDER-TOP-WIDTH: 0px; FONT-WEIGHT: normal; BORDER-LEFT-WIDTH: 0px; BORDER-LEFT-COLOR: #cccccc; BORDER-BOTTOM-WIDTH: 0px; BORDER-BOTTOM-COLOR: #cccccc; WIDTH: 100%; BORDER-TOP-COLOR: #cccccc; FONT-STYLE: normal; BACKGROUND-COLOR: #cccccc; BORDER-RIGHT-WIDTH: 0px; TEXT-DECORATION: none; BORDER-RIGHT-COLOR: #cccccc" 
+            cellSpacing=1 cellPadding=2 rules=all border=0>
+              <TBODY>
+              <TR 
+              style="FONT-WEIGHT: bold; FONT-STYLE: normal; BACKGROUND-COLOR: #eeeeee; TEXT-DECORATION: none;text-align: center" id="bid" bid="{$cid}" >
+                <TD>头像</TD>
+                <TD>姓名</TD>
+                <TD>性别</TD>
+                <TD>部门</TD>
+                <TD>岗位</TD>
+                <TD>学历</TD>         
+                <TD>操作</TD>
+              </TR> 
+                 <div id="upload">
+                     <div id="head"><b style="margin-left:10px;">头像设置</b><span id="span"><b onclick="quxiao()" style="cursor:pointer;">✘</b></span></div>
+                      <div id="form_div">
+                         <form action="uploadphoto.php" method="post" enctype= "multipart/form-data" id="photoform">
+                            <input type="file" name="upload" onchange="test()" id="upimg">
+                            <br/><br/><br/>
+                            <input type="submit" value="提交">
+                         </form>
+                      </div>
+                      <div id="showphoto">
+                        <img src="" id='imgshow' width="100%" height="100%">
+                      </div> 
+                  </div>  
+              {foreach from=$list item=temp}     
+              <TR 
+              style="FONT-WEIGHT: normal; FONT-STYLE: normal; BACKGROUND-COLOR: white; TEXT-DECORATION: none;text-align: center; height:40px;" uid="{$temp['peopleid']}">
+                <td style="height:80px;width:100px;">
+                   {if $temp['photo']=="nophoto" && $temp['sex'] == "男"}
+                   <a href="javascript:void(0)" class="upload" >
+                   <img src="http://img.1sheng.com/hr/photo/65804e7323b6f964c45bcc6384b7f064" width="100%" height="100%">
+                   </a>
+                   {else if $temp['photo']=="nophoto" && $temp['sex'] == "女"}
+                   <a href="javascript:void(0)" class="upload" >
+                   <img src="http://img.1sheng.com/hr/photo/c0d741f81390e3fa5f61a78eb60d1cc8" width="100%" height="100%">
+                   </a>
+                   {else}
+                   <a href="javascript:void(0)" class="upload" >
+                   <img src="http://img.1sheng.com/{$temp['photo']}" width="100%" height="100%">
+                   </a>
+                   {/if}
+                </td>
+                <TD width="130px">{$temp['name']}</TD>
+                <TD>{$temp['sex']}</TD>
+                <TD  style="width:130px;">
+                   {if $smarty.session.auth.P_EDIT_BASIC}
+                    <select class="sel" id="sel">
+                       <option value="">{$temp['cname']}</option>
+                    </select>
+                   {else}
+                   {$temp['cname']}
+                   {/if}
+                </TD>
+                <TD style="width:130px;">
+                   {if $smarty.session.auth.P_EDIT_BASIC}
+                    <select class="job" id="job">
+                       <option value="">{$temp['jname']}</option>
+                    </select>
+                   {else}
+                   {$temp['jname']}
+                   {/if}
+                </TD>
+                <TD>{$temp['education']}</TD>
+                <TD width="250px">
+                <A href="oneinfo.php?id={$temp['peopleid']}" >查看</A> 
+                <a href="showadnexa.php?id={$temp['peopleid']}&name={$temp['name']}">附件查看</a>        
+                <A href="javascript:void(0)" id="delete">删除</A>
+                </TD>
+              </TR>
+              {/foreach}
+               </TBODY>
+               </TABLE>
+            </TD>
+       </TR>
+        <TR>
+          <TD><SPAN id=pagelink>
+            <DIV 
+            style="LINE-HEIGHT: 20px; HEIGHT: 20px; TEXT-ALIGN: right">
+              [<A href="#">{$firstpage}][{$prevpage}</A>]
+              [<A class="" href="#">{$nextpage}][{$lastpage}</A>] 
+              共[{$num}]条记录 第[{$nowpage}]页 共[{$maxpage}]页
+            </DIV></SPAN>
+          </TD>
+        </TR>
+        </TBODY>
+        </TABLE>
+      </TD>
+    <TD width=15 background=/images/new_023.jpg><IMG 
+      src="/images/new_023.jpg" border=0> </TD></TR></TBODY></TABLE>
+<TABLE cellSpacing=0 cellPadding=0 width="98%" border=0>
+  <TBODY>
+  <TR>
+    <TD widtht=15><IMG src="/images/new_024.jpg" border=0></TD>
+    <TD align=middle width="100%" background=/images/new_025.jpg 
+    height=15></TD>
+    <TD width=15><IMG src="/images/new_026.jpg" 
+  border=0></TD></TR></TBODY></TABLE>
+
+</BODY>
+{literal}
+<script>
+    $("#delete").live("click",
+function() {
+    if (confirm("确定删除吗")) {
+        $(this).closest("tr").addClass("del");
+        var pid = $(".del").attr("uid");
+        $.ajax({
+            type: "POST",
+            url: "delone.php",
+            data: {
+                "id": pid
+            },
+            success: function(msg) {
+                if (msg == "yes") {
+                    alert("删除成功");
+                    $(".del").closest("tr").remove();
+                    $(".del").removeClass("del");
+                } else if (msg == '{"errno":4031,"errmsg":"You have no permission"}') {
+                    alert(msg);
+                    $(".del").removeClass("del");
+                }
+            },
+            error: function() {
+                alert("aja请求失败")
+            }
+        });
+    }
+})
+
+$("#sel").live("focus",
+function() {
+    ob = $(this);
+    $.ajax({
+        type: "POST",
+        url: "selname.php",
+        dataType: "json",
+        async: true,
+        success: function(data) {
+            if (data.errmsg == "You have no permission") {
+                return false;
+            } else {
+                var str = "";
+                for (var i = 0; i < data.length; i++) {
+                    str += "<option id='xxx' value=" + data[i].id + ">" + data[i].class_name + "</option>";
+                    var str1 = str;
+                }
+                ob.empty().append(str);
+            }
+        },
+        error: function() {
+            alert("ajax请求失败")
+        }
+    });
+}).live("blur",
+function() {
+    $(this).closest("tr").addClass("sele");
+    var pid = $(".sele").attr("uid");
+    $(".sele").removeClass("sele");
+    var bid = this.options[this.selectedIndex].value;
+    $(this).find("option[value=" + bid + "]").attr("selected", true);
+    $.ajax({
+        type: "POST",
+        url: "upsel.php",
+        data: {
+            "pid": pid,
+            "bid": bid
+        },
+        success: function(msg) {},
+        error: function() {
+            alert("ajax请求失败")
+        }
+    });
+})
+
+$("#job").live("focus",
+function() {
+    ob = $(this);
+    $(this).closest("tr").addClass("sele");
+    var pid = $(".sele").attr("uid");
+    $.ajax({
+        type: "POST",
+        url: "setjob.php",
+        dataType: "json",
+        async: true,
+        data: {
+            "pid": pid
+        },
+        success: function(data) {
+            if (data.errmsg == "You have no permission") {
+                return false;
+            } else {
+                var str = "";
+                for (var i = 0; i < data.length; i++) {
+                    str += "<option id='xxx' value=" + data[i].id + ">" + data[i].jobname + "</option>";
+                    var str1 = str;
+                }
+                ob.empty().append(str);
+            }
+        },
+        error: function() {
+            alert("ajax请求失败")
+        }
+    });
+}).live("blur",
+function() {
+    $(this).closest("tr").addClass("sele");
+    var pid = $(".sele").attr("uid");
+    $(".sele").removeClass("sele");
+    var jid = this.options[this.selectedIndex].value;
+    $(this).find("option[value=" + jid + "]").attr("selected", true);
+    $.ajax({
+        type: "POST",
+        url: "upjob.php",
+        data: {
+            "pid": pid,
+            "jid": jid
+        },
+        success: function(msg) {},
+        error: function() {
+            alert("ajax请求失败")
+        }
+    });
+})
+// 选择job
+$("#seljob").live("focus",
+function() {
+    var ob = $(this);
+    $.ajax({
+        type: "POST",
+        url: "setjob.php",
+        dataType: "json",
+        success: function(data) {
+            if (data.errmsg == "You have no permission") {
+                return false;
+            } else {
+                var str = "";
+                str += "<option value=''>--请选择岗位--</option>";
+                for (var i = 0; i < data.length; i++) {
+                    str += "<option id='xxx' value=" + data[i].id + ">" + data[i].jobname + "</option>";
+                    var str1 = str;
+                }
+                ob.empty().append(str);
+            }
+        },
+        error: function() {
+            alert("ajax请求失败")
+        }
+    });
+})
+
+//所有部门
+$("#section").live("focus",
+function() {
+    ob = $(this);
+    $.ajax({
+        type: "POST",
+        url: "selname.php",
+        dataType: "json",
+        async: true,
+        success: function(data) {
+            if (data.errmsg == "You have no permission") {
+                return false;
+            } else {
+                var str = "";
+                str += "<option value=''>--请选择部门--</option>";
+                for (var i = 0; i < data.length; i++) {
+                    str += "<option id='xxx' value=" + data[i].id + ">" + data[i].class_name + "</option>";
+                    var str1 = str;
+                }
+                ob.empty().append(str);
+            }
+        },
+        error: function() {
+            alert("ajax请求失败")
+        }
+    });
+})
+
+upload = document.getElementById("upload");
+
+function tankuang() {
+    $("#upload").fadeIn(800);
+    upload.style.display = "block";
+    upload.style.position = "fixed";
+    upload.style.top = "25%";
+    upload.style.left = "40%";
+    upload.style.marginTop = "-75px";
+    upload.style.marginLeft = "-190px";
+    document.body.style.overflow = "hidden";
+}
+
+$(".upload").click(function() {
+    src = $(this).closest("tr").find("td").find("img").attr("src");
+    $("#imgshow").attr("src", src);
+    var uid = $(this).closest("tr").attr("uid");
+    tankuang();
+    var uid = uid;
+    $("#photoform").find("input[type='hidden']").remove();
+    var hidden = "";
+    hidden = '<input type="hidden" name="uid" value=' + uid + '>';
+    $("#photoform").append(hidden);
+})
+
+function quxiao() {
+    upload.style.display = "none";
+    document.body.style.overflow = "scroll";
+}
+
+//显示传上的头像
+$("#upimg").change(function() {
+    if ($(this).val()) {
+        var url = test(this.files[0]);
+        $("#imgshow").attr("src", url)
+    }
+})
+
+function test(file) {
+    var url = null;
+    if (window.createObjectURL != undefined) {
+        url = window.createObjectURL(file);
+    } else if (window.URL != undefined) {
+        url = window.URL.createObjectURL(file);
+    } else if (window.webkitURL != undefined) {
+        url = window.webkitURL.createObjectURL(file);
+    }
+    return url;
+}
+
+</script>
+{/literal}
+</HTML>

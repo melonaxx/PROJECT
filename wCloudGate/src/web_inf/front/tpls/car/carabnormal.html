@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>外麦王云平台</title>
+	<link rel="stylesheet" type="text/css" href="/css/main2/base.css"/>
+	<link rel="stylesheet" type="text/css" href="/css/main2/car/car_abnormal.css"/>
+</head>
+<body>
+	<?php include("header.html"); ?>
+	<div class="section">
+		<div class="wmain">
+			<ul class="wmainlist" >
+				<li class="wllevel1 manageract">
+					<a href="/platform/carmanagement.php" class="wllevel1active"><span></span>车辆管理<p class="wlrightarrow"></p></a>
+					<ul class="wllevel2">
+						<li ><a href="/platform/carmanagement.php">所有车辆</a></li>
+						<li class="mlsonactive"><a href="/platform/carabnormal.php">异常车辆</a></li>
+					</ul>
+				</li>
+				<li class="wllevel1" <?=$operation['caractive']?> >
+					<a href="/caronceadd.php"><span></span>车辆添加<p></p></a>
+					<ul class="wllevel2">
+						<li <?=$operation['caractive']?> ><a href="/caronceadd.php">普通添加</a></li>
+						<li <?=$operation['caractive']?> ><a href="/platform/caractive.php">车辆激活</a></li>
+					</ul>
+				</li>
+			</ul>
+			<div class="wmaincontent">
+				<h1 class="wmch1">|&nbsp;异常车辆</h1>
+				<div class="filterbox">
+					<h2 class="abnstatistich2">当天异常统计</h2>
+					<select class="laborselect" name="labour">
+					<option name="all">所有车辆</option>
+					<?php
+						$opt = '';
+						foreach($labour as $k => $v) {
+						$opt .= "<option name=".$k.">".$v."</option>";
+						}
+						echo $opt;
+					?>
+					</select>
+				</div>
+				<ul class="abnstadiv">
+					<li class="vibrationalarm">
+						<div class="vaborder">
+							<span class="vaimg"></span>
+							<div class="carnum">
+								<span class="middleli aram">
+									<?php if($aram){echo $aram;}else{echo 0;}; ?>
+								</span>
+								<p class="middleli">辆</p>
+							</div>
+						</div>
+						<p class="abnstatp">被盗报警</p>
+						<div class="hidediv">
+							<p>被盗报警</p>
+							<div class="hideope">
+								<a class='pculalarm' href="/gotomap.php?inttype=pcualarm">查看定位</a>
+								<a href="/platform/carmanagement.php?abnormal=1">查看车辆</a>
+							</div>
+						</div>
+					</li>
+					<!-- <li class="poweralarm">
+						<div class="vaborder">
+							<span class="vaimg"></span>
+							<div class="carnum">
+								<span class="middleli elect">
+									<?php if($elect){echo $elect;}else{echo 0;}; ?>
+								</span>
+								<p class="middleli">辆</p>
+							</div>
+						</div>
+						<p class="abnstatp">电量报警</p>
+						<div class="hidediv">
+							<p>电量报警</p>
+							<div class="hideope">
+								<a class='pculelealarm' href="/gotomap.php?inttype=pcuelealarm">查看定位</a>
+								<a href="/platform/carmanagement.php?abnormal=2">查看车辆</a>							
+							</div>
+						</div>
+					</li> -->
+					<li class="lostcontact">
+						<div class="vaborder">
+							<span class="vaimg"></span>
+							<div class="carnum">
+								<span class="middleli lost">
+									<?php if($lost){echo $lost;}else{echo 0;}; ?>
+								</span>
+								<p class="middleli">辆</p>
+							</div>
+						</div>
+						<p class="abnstatp">失去联系</p>
+						<div class="hidediv">
+							<p>失去联系</p>
+							<div class="hideope">
+								<a class='pcullost' href="/gotomap.php?inttype=pculost">查看定位</a>
+								<a href="/platform/carmanagement.php?abnormal=3">查看车辆</a>							
+							</div>
+						</div>
+					</li>
+				</ul>
+				<input type="hidden" name="alarm" value="<?=$stolen?>" />
+				<input type="hidden" name="palarm" value="<?=$lowpower?>" />
+				<input type="hidden" name="lost" value="<?=$losts?>" />
+				<h2 class="abnstatistich22">最近15天异常统计</h2>			
+				<div class="abncarlinechart">
+					<div id="carvalarm" style="width: 790px;height:240px;margin-left:10px;"></div>
+					<div id="carpalarm" style="display: none;width: 790px;height:240px;margin-left:10px;"></div>
+					<div id="carlostcon" style="width: 790px;height:240px;margin-left:10px;"></div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<?php include("footer.html"); ?>
+	<script src="/js/jquery-1.8.2.min.js"></script>
+	<script src="/js/util.js"></script>	
+	<script src="/js/main/echarts.common.min.js"></script>
+	<script src="/js/car/carabnormal.js" ></script>
+	<script src="/js/main2/common.js"></script>
+	<script> 
+    $(".wmainlist ").css("height" , "888px" );
+	</script>
+
+</body>
+</html>

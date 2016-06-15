@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>外麦王云平台</title>
+	<link rel="stylesheet" type="text/css" href="/css/common.css"/>
+	<link rel="stylesheet" type="text/css" href="/css/register/registercommon.css"/>
+	<link rel="stylesheet" type="text/css" href="/css/register/register_created.css"/>
+</head>
+<body>
+
+	<?php include("register/registertop.html"); ?>
+	
+	<section id="rccontent">
+		<div class="formtop">
+			<p>账号</p>
+			<span class="phone"><?=$phone?></span>
+			<p>已创建</p>
+		</div>
+		<div class="content2">
+			<p>
+				当前账户尚未被邀请或认可，您可以
+				<a href="registerdetailwait.php" class="rega">等待邀请</a>
+				或者去
+				<a href="registertype.php" class="rega">认证企业</a>
+			</p>
+			<a href="registerdetailwait.php" class="registerbtn2 btnwait">继续等待</a>
+			<a href="registertype.php" class="registerbtn2">去认证</a>
+		</div>
+	</section>
+	
+	<div class="footer">
+
+	<?php include("footer.html"); ?>
+
+	</div>
+
+</body>
+</html>

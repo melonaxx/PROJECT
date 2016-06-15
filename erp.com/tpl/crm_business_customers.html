@@ -1,0 +1,49 @@
+//---- UTF8 编码 ----
+<!-- BEGIN: main --><?xml version="1.0" encoding="UTF-8"?>
+{main.doc_type}
+<?xml-stylesheet type="text/xsl" href="/style/crm_business_customers.xsl?ver={main.doc_version}"?>
+<html version="{main.doc_version}">
+	<head>
+		<Title>{main.title}</Title>
+		<meta name="keywords" content="{main.keywords}" />
+		<meta name="description" content="{main.description}" />
+		<em company_id="{main.company_id}" staff_id="{main.staff_id}" login_name="{main.login_name}" permit="{main.permit}" program="{main.request_url}"/>
+	</head>
+	<Body>
+		<dir><![CDATA[ 您的位置： {main.this_location}]]></dir>
+		<menu>
+			<big>{main.big_menu}</big>
+			<small>
+				<!-- BEGIN: list_menu --><a class="{list_menu.class}" href="{list_menu.link}">{list_menu.name}</a><!-- END: list_menu -->
+			</small>
+		</menu>
+		<find>
+			<nick_name>{find.nick_name}</nick_name>
+			<crm_type>{find.crm_type}</crm_type>
+		</find>
+		<customersMsg>
+			<ul>
+				<!-- BEGIN: customerList -->
+				<li>
+					<id>{customerList.id}</id>
+					<crm_user_id>{customerList.crm_user_id}</crm_user_id>
+					<name>{customerList.name}</name>
+					<company_name>{customerList.company_name}</company_name>
+					<nick_name>{customerList.nick_name}</nick_name>
+					<state_id>{customerList.state_id}</state_id>
+					<num>{customerList.num}</num>
+					<city_id>{customerList.city_id}</city_id>
+					<district_id>{customerList.district_id}</district_id>
+					<order_total>{customerList.order_total}</order_total>
+					<money_total>{customerList.money_total}</money_total>
+					<mobile>{customerList.mobile}</mobile>
+					<body>{customerList.body}</body>
+				</li>
+				<!-- END: customerList -->
+			</ul>
+		</customersMsg>
+
+		{main.page_info}		
+	</Body>
+</html>
+<!-- END: main -->

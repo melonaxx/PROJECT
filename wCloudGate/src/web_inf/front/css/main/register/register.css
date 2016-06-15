@@ -1,0 +1,10 @@
+form{margin-bottom:82px;}
+.form-group1 input{width:288px;margin-right: 10px;}
+.form-group1 div{float:left;width:142px;height:52px;border:1px solid #ccc;color:#de1717;text-align: center;line-height: 52px;}
+#dcode{color:#666;background: #ccc;}
+.passwordstrength{width:450px;height:20px;margin:10px 0 0 74px;}
+.passwordstrength div{float:left;width:140px;height:20px;background: #ccc;margin-right:15px;color:#fff; text-align: center;line-height: 20px;}
+.passwordstrength div:nth-of-type(3){margin-right: 0px;}
+.registerbtn{margin-bottom: 10px;}
+.deal{width:450px;margin-left:74px;color:#358dcc;height:14px;}
+.topdiv{margin-top:1px;}

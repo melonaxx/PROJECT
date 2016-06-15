@@ -1,0 +1,49 @@
+//---- UTF8 编码 ----
+<!-- BEGIN: main -->
+<html>
+<head>
+<title>修改备注</title>
+<link type="text/css" rel="stylesheet" href="/style/bootstrap.min.css?ver={main.doc_version}"/>
+<link type="text/css" rel="stylesheet" href="/style/style.css?ver={main.doc_version}"/>
+<style>
+body {
+	text-align:left;
+	min-width:100px;
+	overflow-y:hidden;
+	overflow-x:hidden;
+	padding:0;
+}
+.form-inline .form-control {
+	display: inline-block;
+	vertical-align: middle;
+}
+.form-inline .form-group {
+	display: inline-block;
+	vertical-align: middle;
+}
+</style>
+<script type="text/javascript" charset="UTF-8" src="/js_encode/jquery-1.9.1.min.js"></script>
+<body>
+	<form class="form-inline" method='post' action="">
+		<div class="abnormal" style="width:450px;">
+		<span class="float_left margin_top_4">修改方式：</span>
+			<div class="form-group float_left margin_top_0">	
+				<select class="form-control input-sm" name="level">
+					<option value="1">在原备注上追加</option>
+					<option value="0">覆盖原有的备注</option>
+				</select>
+			</div>
+		</div>
+		<div class="float_left ">
+			<span class="float_left margin_top_2">备注内容：</span>
+			<textarea class="float_left  margin_top_3 form-control" rows="6" style=" resize: none;width:300px;" name="content"></textarea>
+		</div>
+		<div class="float_left btn_margin margin_top_3">	
+			<input class="btn btn-default btn-sm  margin_left_0" type="submit" name="submit" value="确定" />
+			<input class="btn btn-default btn-sm  margin_left_0" type="button" onclick="parent.$('#MessageBox').modal('hide')"  value="取消"/>
+		</div>
+	</form>
+</body>
+</html>
+
+<!-- END: main -->

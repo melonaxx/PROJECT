@@ -1,0 +1,131 @@
+//---- UTF8 编码 ----
+<!-- BEGIN: main -->
+<html>
+<head>
+<title></title>
+<link type="text/css" rel="stylesheet" href="/style/bootstrap.min.css?ver={main.doc_version}"/>
+<link type="text/css" rel="stylesheet" href="/style/style.css?ver={main.doc_version}"/>
+<style>
+body,table,form,input		{font-size:12px; padding:0; margin:0}
+body {
+	min-width:100px;
+	overflow-y:auto;
+	overflow-x:auto;
+}
+</style>
+<script type="text/javascript" charset="UTF-8" src="/js_encode/jquery-1.9.1.min.js"></script>
+<script type="text/javascript" charset="UTF-8" src="/js_encode/bootstrap.min.js"></script>
+<script type="text/javascript" src="/js_encode/jquery.validate.js"></script>
+
+<div class="mainBody">
+<form class="margin_top" method="" action="">
+	<div style='width:100%;float:left;'>
+		<input type="hidden" name='id' value='{info.id}'>
+		<div class="float_left form-group ">
+			<span class="float_left" style="margin:5px 0 0 0px;">单据编号：</span>
+			<input type="text" name="" value='{info.number}' readonly="readonly" class="form-control input-sm" style="width:147px;float:left;">
+		</div>
+		<div class="float_left form-group">
+			<span class="float_left" style="margin:5px 0 0 40px;">操作人：</span>
+			<input class="form-control input-sm form_no_border find" name="" value="{info.input_staff_id}" readonly="readonly" style="float:left;" >
+		</div>
+		<div class="float_left form-group">
+			<span class="float_left" style="margin:5px 0 0 40px;">仓库：</span>
+			<input type="text" name="" value='{info.store_id}' readonly="readonly" class="form-control input-sm" style="width:147px;float:left;">
+		</div><br>
+		<div class="float_left form-group">
+			<span class="float_left" style="margin:5px 0 0 0;">采购单号：</span>
+			<input class="form-control input-sm float_left" name="" value="{info.purchase_id}" readonly="readonly" style="float:left;" >
+		</div>
+		<div class="float_left form-group">
+			<span class="float_left" style="margin:5px 0 0 40px;">供应商：</span>
+			<input type="text" name="" value="{info.supplier_id}" readonly="readonly" class="form-control input-sm float_left" style="width:147px;float:left;">
+		</div>
+		<div class="float_left form-group">
+			<span class="float_left" style="margin:5px 0 0 40px;">日期：</span>
+			<input type="text" name="" value="{info.action_date}" readonly="readonly" class="form-control input-sm float_left" style="width:147px;float:left;">
+		</div>
+	</div>
+	<div style="width:100%;float:left;">
+		<div style="float:left;">
+			<h4 class="padding_clear">商品信息</h4>
+		</div>
+	</div>
+
+	<div class="currentMsg" style="width:851px;float:left;">
+		<table class="table table-bordered table-hover">
+			<tr>
+				<th class="center" width='46px'>序号</th>
+				<th width="140px;">商品名称</th>
+				<th width="140px;">商品规格</th>
+				<th width="80px;">单位</th>
+				<th width="80px;">单价</th>
+				<th width="80px;">数量</th>
+				<th width="80px;">总价</th>
+				<th width="205px;">备注</th>
+			</tr>
+			<!-- BEGIN: product -->
+			<tr>
+				<td class="center">{product.no}</td>
+				<td>{product.product_name}</td>
+				<td>{product.format}</td>
+				<td>{product.parts_id}</td>
+				<td>{product.price}</td>
+				<td>{product.total}</td>
+				<td>{product.payment}</td>
+				<td class='body'>{product.body}</td>
+				<input name='product_id' type="hidden" value='{product.product_id}'>
+			</tr>
+			<!-- END: product -->
+		</table>
+	</div>
+	<div style="width:100%;float:left;">
+		<div style="float:left;">
+			<h4>合计</h4>
+		</div>
+	</div>
+	<div class="commonMsg totalMsg"  style="width:851px;float:left;">
+		<div style="float:left;">
+			<p>数量总计：<span class="money_color"><span class="zongshu_rk">{info.total}</span></span><span style="margin-left:20px;">总价：<span class="money_color"><span class="zongjia_rk">{info.price}</span></span>元</span>
+			</p>
+		</div>
+	</div>
+	<div class="form-group float_left" style="margin:0 0px 13px 4px;">
+		<div class="table_operate_block">
+			<input class="btn btn-default btn-sm goodsDeleteaa" style="width:46px;" type="buttom" value="打印" />
+			<input class="btn btn-default btn-sm goodsDeleteaa float_right" style="margin-left:10px;" type="reset" value="取消" onclick="parent.$('#MessageBox').modal('hide')" />
+		</div>
+	</div>
+</form>
+</div>
+</body>
+<script>
+	$('.body').dblclick(function(){
+		var td = $(this);
+		var body = td.text();
+		var info_id = $('input[name=id]').val();
+		var product_id = td.parents('tr').find('input[name=product_id]').val();
+		var input = $("<input type='text' class='form-control input-sm' value='"+body+"'/>");
+		td.html(input);
+		input.dblclick(function(){ return false; });
+		input.trigger("focus");
+		input.blur(function(){
+			var newbody = $(this).val();
+			//判断文本有没有修改
+			if (newbody != body) {
+				$.ajax({
+					url:'purchase_documents_xiang.php',
+					type:'post',
+					data:{'body':newbody,'info_id':info_id,'product_id':product_id},
+				})
+				td.html(newbody);
+			}else{
+				td.html(newbody);
+			}
+		})
+	})
+</script>
+</html>
+
+<!-- END: main -->
+

@@ -1,0 +1,24 @@
+/* -----------------内容----------------- */
+section{width:100%;background: #eaeef2;padding-top: 20px;padding-bottom: 73px;}
+.content{width:1048px;margin:0 auto;overflow: hidden;border:1px solid #ccc;background: #fff;}
+.maintop{background: #ddd;border-bottom: 1px solid #ccc;width:100%;height:58px;}
+.maintop li{float:left;font-size: 24px;line-height: 58px;width:134px;text-align: center;}
+.maintop .manageract{background: #fff;color:#358ecb;border-top:3px solid #358ecb;height: 56px;line-height:55px;border-right: 1px solid #ccc;border-left:1px solid #ccc;}
+.maintop .manageract a{color:#358ecb;}
+.maintop a{color:#333;}
+.elecaract{padding:30px 20px 0;} 
+.activestatus{height:30px;width:100%;}
+.activestatus li{float:left;font-size: 20px;}
+.activestatus a{color:#333;}
+.activationact{border-bottom: 2px solid #368ecb;}
+.activationact a{color:#368ecb;}
+.bar{margin:0 10px;}
+.carsernum{height:33px;width:100%;margin:30px 0 20px;}
+.carsernum li{float:left;font-size: 16px;margin-right: 10px;}
+.carsernum a{color:#fd4400;}
+.sernumact{border-bottom: 2px solid #368ecb;}
+.sernumact a{color:#368ecb;}
+.activationbox{resize:none;width:988px;border:1px solid #ccc;height:198px;padding:10px;font-size: 14px;line-height:20px;}
+.btns{width:100%;height:40px;margin:20px 0 178px;}
+.activation{width:100px;height:40px;background: #fe4500;border:none;font-size: 18px;color:#fff;margin-right: 10px;cursor:pointer;}
+.cancel{width:100px;height:40px;background: #ccc;border:none;font-size: 18px;color:#676767;cursor: pointer;}

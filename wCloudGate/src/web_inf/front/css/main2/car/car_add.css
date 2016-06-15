@@ -1,0 +1,15 @@
+.wmainlist .wllevel1 span{float:left;width:17px;height:21px;margin-top:10px;margin-right:10px;}
+.wmainlist .wllevel1:nth-of-type(1) span{background: url(/image/main2/integrate2.png) no-repeat -27px 0;}
+.wmainlist .wllevel1:nth-of-type(2) span{background: url(/image/main2/integrate2.png) no-repeat 0 0;}
+.caraddlist{margin-top: 52px;}
+.caraddlist li{position:relative;width:725px;height:75px;border:1px solid #ddd;border-radius: 4px;margin-bottom: 20px; }
+.operate{position: absolute;left:100%;top:60px;display:block;width:54px;margin-left: 10px;}
+.caraddlist li h2{float:left;width:46px;height:75px;line-height: 75px;text-align: center;}
+.carinf{float: left;width:678px;}
+.input-groupc{float: left;margin:9px 30px 0 0;}
+.input-groupc input{width:113px;height: 22px;border:1px solid #ddd;border-radius: 2px;padding:0 10px;}
+.input-groupc:nth-of-type(3),.input-groupc:nth-of-type(5){margin-right: 0;}
+.input-groupc:nth-of-type(5) input{width:342px;}
+.addcarbtn{cursor:pointer;width:100px;height: 40px;line-height: 40px;text-align: center;font-size: 14px;background: #ccc;color: #666;border:none;margin-top: 10px;}
+#modaladdcar .modalbox{padding:40px;width:220px;height:100px;margin-top: 200px;}
+#modaladdcar .modalbox p{font-size: 18px;color:#358dcc;text-align: center;margin-bottom: 30px;}

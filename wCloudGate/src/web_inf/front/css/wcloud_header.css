@@ -1,0 +1,31 @@
+/*头部导航栏*/
+.wHeader{width: 100%;height: 50px;background: #333C4E;opacity:0.88;}
+.wNav {width: 80%;height: 50px;float: left;}
+.wSet {width: 20%;height: 50px;float: left;}
+.wHeader ul {margin: 0px;padding: 0px;}
+.wHeader li {list-style: none;}
+
+.wNav li{width: 11%;height: 50px;float: left;}
+.wNav li a {width: 100%;display: block;height: 50px;font-size: 15px;line-height: 50px;text-align: center;color: #fff;}
+#wLogo {width: 15%;}
+#wLogo a{display: block;width: 100%;height: 50px;background: #15A4FA;font-size: 25px;font-weight: bold;color: #fff;line-height: 50px;text-align: center;}
+
+/*右侧的控制中心*/
+.wLogout {width:40%;float: right;}
+.userName {width:60%;float: right;}
+.wLogout a {display: block;widows: 100%; line-height: 50px;height: 50px;font-size: 15px;text-align: center;color: #fff;}
+.userName a {display: block;widows: 100%; line-height: 50px;height: 50px;font-size: 15px;text-align: center;color: #fff;}
+
+/*导航栏鼠标样式*/
+.wNav li a:hover {background: #28303E;}
+.wSet li a:hover {background: #28303E;}
+
+
+
+
+
+/*头部与body的整体布局*/
+body{height: 100%;width: 100%;margin: auto;color: #554f4f;background: #f7fafc;font-size: 12px;font-family: Microsoft Yahei, "Helvetica Neue", Helvetica, Arial, sans-serif;}
+.body {height: 100%;width: 100%;}
+.dashboard {width: 100%;height: 92.2%;float: left;padding-top: 2px;}
+.DashContent {width: 100%;height: 100%;}

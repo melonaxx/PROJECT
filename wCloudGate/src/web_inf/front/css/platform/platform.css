@@ -1,0 +1,26 @@
+/* -----------------内容----------------- */
+section{width:100%;background: #eaeef2;padding-top: 20px;}
+.content{width:1048px;margin:0 auto 40px;overflow: hidden;border:1px solid #ccc;background: #fff;}
+.maintop{background: #ddd;border-bottom: 1px solid #ccc;width:100%;height:58px;}
+.maintop li{float:left;font-size: 24px;line-height: 58px;width:154px;text-align: center;}
+.maintop .laboract{background: #fff;color:#358ecb;border-top:3px solid #358ecb;height: 56px;line-height:55px;border-right: 1px solid #ccc;}
+.maintop .laboract a{color:#358ecb;}
+.maintop a{color:#333;}
+.mainlabor{width:1008px;padding:14px 20px 30px;}
+.carinfright{float:right;width:201px;height:40px;margin: 20px 20px 10px 0;}
+.carsearch{float:left;width:150px;height:38px;border:1px solid #ccc;border-right: none;font-size: 16px;padding-left: 10px;}
+.searchbtn{float:left;width:24px;height:24px;background: #358dcd;padding:8px; cursor:pointer;}
+/* -----------------车辆表格----------------- */
+.platformtab{width:100%;overflow: hidden;border-collapse:collapse ;}
+.platformtab thead{width:100%;height:60px;background: #70b0dc;color:#fff;font-size: 18px;line-height: 60px;}
+.platformtab td{text-align: center;}
+.platformtab tbody tr{height:58px;border-bottom: 2px dotted #ccc;font-size: 14px;}
+/* --------------------------------- */
+.platformtab a{margin:0 10px;}
+.plthead td:nth-of-type(1){width:80px;}
+.plthead td:nth-of-type(2){width:130px;}
+.plthead td:nth-of-type(3){width:100px;}
+.plthead td:nth-of-type(4){width:100px;}
+.plthead td:nth-of-type(5){width:100px;}
+.plthead td:nth-of-type(6){width:120px;}
+.page{margin-bottom:30px;}

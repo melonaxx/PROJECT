@@ -1,0 +1,111 @@
+//---- UTF8 编码 ----
+<!-- BEGIN: main -->
+<html>
+<head>
+<title></title>
+<link type="text/css" rel="stylesheet" href="/style/bootstrap.min.css?ver={main.doc_version}"/>
+<link type="text/css" rel="stylesheet" href="/style/style.css?ver={main.doc_version}"/>
+<style>
+body,table,form,input		{font-size:12px; padding:0; margin:0}
+body {
+	min-width:100px;
+	overflow-y:auto;
+	overflow-x:auto;
+}
+.border_color{
+	border:1px solid #E74C3C;
+}
+</style>
+<script type="text/javascript" charset="UTF-8" src="/js_encode/jquery-1.9.1.min.js"></script>
+<script type="text/javascript" src="/js_encode/jquery.validate.js"></script>
+<script type="text/javascript" charset="UTF-8" src="/js_encode/bootstrap.min.js"></script>
+<script type="text/javascript" src="/js_encode/jquery.form.js"></script>
+<!-- 时间插件 -->
+<script type="text/javascript" src="/js_encode/bootstrap-datetimepicker.min.js"></script>
+<script type="text/javascript" src="/js_encode/bootstrap-datetimepicker.zh-CN.js"></script>
+<link rel="stylesheet" href="/style/bootstrap-datetimepicker.min.css"></link>
+<form class="margin_top" method="post" action="/finance/finance_running_account_fund.php">
+	<div style="width:670px;">
+
+		<div class="float_left form-group ">
+			<span class="float_left" style="margin:5px 0 0 5px;">业务日期：</span>
+			<input type="text" name="business_date" id='business_time' value='{main.rq}' class="form-control input-sm" style="width:147px;float:left;">
+		</div>
+		<div class="float_left form-group">
+			<span class="float_left" style="margin:5px 0 0 20px;">收入科目：</span>
+				<select class="form-control input-sm form_no_border float_left find" name="subject" placeholder="必填" data-toggle="tooltip" data-placement="bottom" title="必填" data-original-title="">
+					<!-- BEGIN: list_group -->
+					<option value="{list_group.name}">{list_group.name}</option>
+					<!-- END: list_group -->
+				</select>
+		</div>
+		<div class="float_left form-group">
+			<span class="float_left" style="margin:5px 0 0 20px;">结算账户：</span>
+				<select class="form-control input-sm float_left" name="bank_id">
+					<option value='{default.id}'>{default.name}</option>
+					<!-- BEGIN: list_bank -->
+					<option value="{list_bank.id}">{list_bank.name}</option>
+					<!-- END: list_bank -->
+				</select>
+		</div><br>
+		<div class="float_left form-group">
+			<span class="float_left" style="margin:5px 0 0 5px;">往来单位：</span>
+			<select class="form-control input-sm float_left" name="company_name">
+					<option value='Others'>其他</option>
+					<option value='Custom'>客户</option>
+					<option value="Supplier">供应商</option>
+					<option value='Express'>快递公司</option>
+				</select>
+		</div>
+		<div class="float_left form-group">
+			<span class="float_left" style="margin:5px 0 0 20px;">单位名称：</span>
+			<input type="text" name="company_name" class="form-control input-sm float_left" style="width:147px;">
+		</div>
+		<span class="float_left" style="margin:5px 0 0 44px;">金额：</span>
+		<div class="input-group ">
+			<span class="input-group-addon input-sm">￥</span>
+		 	<input type="text" name="money" class="form-control input-sm" aria-label="Amount (to the nearest dollar)" style="width:114px;" placeholder="必填" data-toggle="tooltip" data-placement="bottom" data-original-title="必填">
+
+		</div>
+		<div class="form-group float_left">
+			<span class="float_left" style="margin:20px 0px 0px 5px;">单据摘要：</span>
+			<textarea class="float_left form-control" rows="3" name="body" style="width:601px; resize: none;margin:-2px 0px -2px 0;"></textarea>
+		</div>
+	</div>
+	<div class="form-group float_left" style="margin:0 0px 13px 4px;">
+		<div class="table_operate_block">
+			<input class="btn btn-default btn-sm btn_margin  float_left" type="submit" value="保存" />
+			<input class="btn btn-default btn-sm goodsDeleteaa float_left" type="reset" value="取消" onclick="parent.$('#MessageBox').modal('hide')" />
+		</div>
+	</div>
+</form>
+
+</body>
+<script type="text/javascript">
+	$('#business_time').datetimepicker({
+		language:'zh-CN',
+		format:'yyyy-mm-dd',
+		autoclose:true,
+		minView:2,
+    });
+    $('input[name=money]').blur(function() {
+    	$(this).removeClass("border_color");
+    });
+    $('.margin_top').submit(function(){
+    	var money = $('input[name=money]').val();
+    	if(isNaN(money) || money <= 0 ){
+    		$('input[name=money]').addClass("border_color");
+    		$('input[name=money]').tooltip("show");
+    		$('input[name=money]').val('');
+    		return false;
+    	}else{
+    		$('input[name=money]').removeClass("border_color");
+    		$('input[name=money]').tooltip("hide");
+    		return true;
+    	}
+    })
+</script>
+</html>
+
+<!-- END: main -->
+

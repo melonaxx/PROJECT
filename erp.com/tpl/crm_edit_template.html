@@ -1,0 +1,99 @@
+//---- UTF8 编码 ----
+<!-- BEGIN: main -->
+<html>
+<head>
+<title>添加模板</title>
+<link type="text/css" rel="stylesheet" href="/style/bootstrap.min.css?ver={main.doc_version}"/>
+<link type="text/css" rel="stylesheet" href="/style/style.css?ver={main.doc_version}"/>
+<style>
+body {
+	text-align:left;
+	min-width:100px;
+	overflow-y:hidden;
+	overflow-x:hidden;
+	padding:0;
+}
+.form-inline .form-control {
+	display: inline-block;
+	vertical-align: middle;
+}
+.form-inline .form-group {
+	display: inline-block;
+	vertical-align: middle;
+}
+</style>
+<script type="text/javascript" src="/js_encode/jquery-1.9.1.min.js"></script>
+<body>
+	<div>
+		<form class="form-inline" method="post" action="">
+			<div class="form-group">
+				<lebel>模板类型：</lebel>
+				<select class="form-control input-sm" value="{res.type}" name="type">
+					<option value="Deliver">发货通知</option>
+					<option value="Remind">短信催款</option>
+					<option value="Payment">已付款通知</option>
+				</select>
+			</div><br/>
+			<div class="form-group">
+				<label>模板名称：</label><input type="text" name="name" value="{res.name}" class="form-control input-sm merger_two_row_3" style="width:485px;"/>
+			</div>
+			<div class="form-group">
+				<label>插入变量：</label><input type="button" class="btn btn-default btn-sm" name="button1" value="快递单号" style="margin-right:5px;" onclick="insertAtCursor(document.getElementById('content'),'#courierNumber#')"/>
+				<input type="button" class="btn btn-default btn-sm" name="button2" value="收货地址" style="margin-right:5px;" onclick="insertAtCursor(document.getElementById('content'),'#address#')"/>
+				<input type="button" class="btn btn-default btn-sm" name="button3" value="店铺名称" style="margin-right:5px;" onclick="insertAtCursor(document.getElementById('content'),'#shop#')"/>
+				<input type="button" class="btn btn-default btn-sm" name="button4" value="快递公司" style="margin-right:5px;" onclick="insertAtCursor(document.getElementById('content'),'#express#')"/><input type="button" class="btn btn-default btn-sm" name="button5" value="收货人名字" style="margin-right:5px;" onclick="insertAtCursor(document.getElementById('content'),'#name#')"/>
+				<input type="button" class="btn btn-default btn-sm" name="button6" value="订单号" onclick="insertAtCursor(document.getElementById('content'),'#number#')"/>
+			</div>
+			<div class="form-group" style="padding-left:60px;">
+				<input type="button" class="btn btn-default btn-sm" name="button7" value="数量" onclick="insertAtCursor(document.getElementById('content'),'#total#')"/>
+			</div>
+			<div class="form-group">
+				<label>模板内容：</label><textarea class="form-control input-sm merger_two_row_3" rows="3" id="content" name="content" style="width:485px;">{res.content}</textarea>
+			</div>
+			<div class="form-group">
+				<label>模板签名：</label><input type="text" name="sign" value="{res.sign}" class="form-control input-sm merger_two_row_3" placeholder='请使用3-8字中文、公司简称、网站名等为短信签名' style="width:485px;"/>
+			</div>
+			<p>
+				<input class="btn btn-default btn-sm btn_margin" type="submit" value="保存"/>
+				<input class="btn btn-default btn-sm" type="button" value="取消" onclick="parent.$('#MessageBox').modal('hide')" />
+			</p>
+		</form>
+	</div>
+</body>
+<script type="text/javascript">
+	//设置下拉框选中默认值
+	var aa = "{res.type}";
+	$('select option').each(function(){
+		var vv = $(this).val();
+		if(vv==aa){
+			$(this).prop('selected','selected');
+		}
+	});
+
+    function insertAtCursor(myField, myValue) {
+	    if (document.selection) {
+	        myField.focus();
+	        sel = document.selection.createRange();
+	        sel.text = myValue;
+	        sel.select();
+	    }
+	    else if (myField.selectionStart || myField.selectionStart == '0') {
+	        var startPos = myField.selectionStart;
+	        var endPos = myField.selectionEnd;
+	        var restoreTop = myField.scrollTop;
+	        myField.value = myField.value.substring(0, startPos) + myValue + myField.value.substring(endPos,   myField.value.length);
+	        if (restoreTop > 0) {
+	            myField.scrollTop = restoreTop;
+	        }
+	        myField.focus();
+	        myField.selectionStart = startPos + myValue.length;
+	        myField.selectionEnd = startPos + myValue.length;
+	    } else {
+	        myField.value += myValue;
+	        myField.focus();
+	    }
+	}
+</script>
+</html>
+
+<!-- END: main -->

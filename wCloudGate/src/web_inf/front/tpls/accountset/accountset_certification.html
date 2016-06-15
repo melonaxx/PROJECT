@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>外麦王云平台</title>
+        <link rel="stylesheet" type="text/css" href="/css/main2/base.css"/>
+        <link rel="stylesheet" type="text/css" href="/css/main2/accountset/certification.css"/>
+    </head>
+    <body>
+        <?php include('header.html');?>
+        <div class="section">
+            <div class="wmain">
+                <ul class="wmainlist">
+                    <li class="wllevel1">
+                    <a href="" class="wllevel1active"><span></span>认证信息<p class="wlrightarrow"></p></a>
+                    </li>
+                </ul>
+                <div class="wmaincontent">
+                    <h1 class="wmch1">|&nbsp;
+                        <?php
+                            switch($usertype){
+                                case 0:
+                                    echo "员工认证";
+                                    break;
+                                case 1:
+                                    echo "平台认证";
+                                    break;
+                                case 2:
+                                    echo "劳务方认证";
+                                    break;
+                                case 4:
+                                    echo "骑士认证";
+                                    break;                        
+                            }
+                        ?>
+                    </h1>
+                    <div class="certifyinf">
+                        <div class="ci-group">
+                            <label><span>企业名称</span></label>
+                            <input type="text" disabled value="<?=$info['name']?>"/>
+                        </div>
+                        <div class="ci-group address">
+                            <label><span>所在地</span></label>
+                            <input type="text" disabled value="<?=$info['province']['name']?>"/>
+                            <input type="text" disabled value="<?=$info['city']['name']?>"/>
+                        </div>
+                        <div class="ci-group">
+                            <label><span>联系人</span></label>
+                            <input type="text" disabled value=" <?=$info['linkman']?>"/>
+                        </div>
+                        <div class="ci-group">
+                            <label><span>电话</span></label>
+                            <input type="text" disabled value="<?=$info['mobileno']?>"/>
+                        </div>
+                        <div class="ci-group">
+                            <label><span>邮箱</span></label>
+                            <input type="text" disabled value="<?=$info['email']?>"/>
+                        </div>
+                        <div class="ci-group">
+                            <label><span>注册号</span></label>
+                            <input type="text" disabled value="<?=$info['registerid']?>"/>
+                        </div>
+                        <div class="ci-group">
+                           <label><span>营业执照</span></label>
+                           <a target="_blank" class="checkeffect" href=<?=$imgurl?> >查看效果</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <?php include('footer.html');?>
+        <script src="/js/jquery-1.11.0.js"></script>
+        <script type="text/javascript" src="/js/main2/common.js"></script>
+        <script>
+        $(".useroperul li:eq(1)").addClass("useractive");
+            
+        </script>
+    </body>
+</html>

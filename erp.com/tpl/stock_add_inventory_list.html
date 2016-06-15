@@ -1,0 +1,107 @@
+//---- UTF8 编码 ----
+<!-- BEGIN: main -->
+<html>
+<head>
+<title>生成盘点单</title>
+<link type="text/css" rel="stylesheet" href="/style/bootstrap.min.css?ver={main.doc_version}"/>
+<link type="text/css" rel="stylesheet" href="/style/style.css?ver={main.doc_version}"/>
+<style>
+body {
+	text-align:left;
+	min-width:600px;
+	padding:0;
+}
+.form-inline .form-control {
+	display: inline-block;
+	vertical-align: middle;
+}
+.form-inline .form-group {
+	display: inline-block;
+	vertical-align: middle;
+}
+</style>
+<script type="text/javascript" charset="UTF-8" src="/js_encode/jquery-1.9.1.min.js"></script>
+<!-- <script type="text/javascript" charset="UTF-8" src="/js_encode/bootstrap.min.js"></script> -->
+<body>
+	<div>
+		<form class="form-inline" action="stock_add_inventory_list.php" method="post">
+			<div class="form-group">
+				<label>时间：</label><input type="text" value="{main.date}" disabled class="form-control input-sm"/>
+			</div>
+			<div class="form-group">
+				<label>仓库：</label><input type="text" readonly value="{main.name}" class="form-control input-sm"/>
+				<input type="hidden" value="{main.store_id}" name="store_id"/>
+			</div>
+			<div class="form-group">
+				<label>单据编号：</label>
+				<input type="text" readonly class="form-control input-sm" name="bill_number" value="{main.bill_number}" />
+			</div>
+			<div>
+				<table style="width:950px;" class="table tab-sel table-bordered table-hover">
+					<tr>
+						<th class="table_th_number" width="46px;">序号</th>
+						<th class="center" width="44px;">图片</th>
+						<th width="180px;">商品名称</th>
+						<th width="180px;">规格</th>
+						<th width="100px;">商品编码</th>
+						<th width="80px;">盘点前数量</th>
+						<th width="80px;">盘点后数量</th>
+						<th width="70px;">盈亏数量</th>
+						<th width="170px;">备注</th>
+					</tr>
+					<!-- BEGIN:product_info -->
+					<tr>
+						<td class="center" width="46px;">{product_info.num}</td>
+						<td class="center" width="44px;">
+							<img width="20" height="20" class="smallimg" src="{product_info.image}"/>
+							<img width="100" height="100" style="position:absolute;display:none" class="bigimg" src="{product_info.image}"/>
+						</td>
+						<td>
+							<input type="hidden" name="product_id[]" value="{product_info.product_id}"/>
+							{product_info.name}
+						</td>
+						<td>
+							{product_info.format}
+						</td>
+						<td>
+							<input type="hidden" name="number[]" value="{product_info.number}"/>
+							{product_info.number}
+						</td>
+						<td>
+							<input type="hidden" name="total_real[]" value="{product_info.total_real}"/>
+							{product_info.total_real}
+						</td>
+						<td>
+							<input type="hidden" name="piece[]" value="{product_info.piece}"/>
+							{product_info.piece}
+						</td>
+						<td>
+							<input type="hidden" name="loss[]" value="{product_info.loss}">
+							{product_info.loss}
+						</td>
+						<td>
+							<input type="text" name="body[]" class="form-control input-sm"/>
+						</td>
+					</tr>
+					<!-- END:product_info -->
+				</table>
+			</div>
+			<p>
+				<input class="btn btn-default btn-sm btn_margin" type="submit" name="send" value="保存"/>
+				<input class="btn btn-default btn-sm" type="button" value="取消" onclick="parent.$('#MessageBox').modal('hide')" />
+			</p>
+		</form>
+	</div>
+	<script type="text/javascript">
+		$('.smallimg').hover(function(e){
+		var pointX = e.pageX;
+		var pointY = e.pageY;
+		$(this).next().css("display","block","top",pointX,"left",pointY);
+		},function(){
+			$(this).next().css("display","none");
+		});
+	</script>
+</body>
+</html>
+
+<!-- END: main -->

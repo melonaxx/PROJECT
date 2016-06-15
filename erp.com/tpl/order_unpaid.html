@@ -1,0 +1,53 @@
+//---- UTF8 编码 ----
+<!-- BEGIN: main --><?xml version="1.0" encoding="UTF-8"?>
+{main.doc_type}
+<?xml-stylesheet type="text/xsl" href="/style/order_unpaid.xsl?ver={main.doc_version}"?>
+<html version="{main.doc_version}">
+<head>
+	<Title>{main.title}</Title>
+	<meta name="keywords" content="{main.keywords}" />
+	<meta name="description" content="{main.description}" />
+	<em company_id="{main.company_id}" staff_id="{main.staff_id}" login_name="{main.login_name}" permit="{main.permit}" program="{main.request_url}"/>
+</head>
+<Body>
+<dir><![CDATA[ 您的位置：{main.this_location}]]></dir>
+<menu>
+	<big>{main.big_menu}</big>
+	<small>
+		<!-- BEGIN: list_menu --><a class="{list_menu.class}" href="{list_menu.link}">{list_menu.name}</a><!-- END: list_menu -->
+	</small>
+</menu>
+	<OrderReview>
+	<ul total="{main.total}">
+		<!-- BEGIN: list_audit -->
+		<li>
+			<remind></remind>
+			<id>{list_audit.id}</id>
+			<biaoji></biaoji>
+			<beizhu>{list_audit.order_text}</beizhu>
+			<message>{list_audit.customer_text}</message>
+			<store>
+			{list_audit.store_id}
+			</store>
+			<kuaidi>{list_audit.express_id}</kuaidi>
+			<name>{list_audit.name}</name>
+			<mobile>{list_audit.mobile}</mobile>
+			<num>{list_audit.total}</num>
+			<number>{list_audit.bind_number}</number>
+			<address>{list_audit.address}</address>
+			<express_number>{list_audit.number}</express_number>
+			<zhuangtai>{list_audit.zhuangtai}</zhuangtai>
+			<shop>
+			{list_audit.shop_name}
+			</shop>
+		</li>
+		<!-- END: list_audit -->
+	</ul>
+	</OrderReview>
+	<find>{main.find}</find>
+{main.page_info}
+</Body>
+
+
+</html>
+<!-- END: main -->

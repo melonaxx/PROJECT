@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="30px" height="22px" viewBox="0 0 30 22" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 3.7.1 (28215) - http://www.bohemiancoding.com/sketch -->
+    <title>Rectangle 1</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <path d="M152,144.99406 C152,143.892771 152.89784,143 153.991617,143 L180.008383,143 C181.108323,143 182,143.894514 182,144.99406 L182,157.00594 C182,158.107229 181.105732,159 180.003618,159 L163.315913,159 C162.640241,159 157.901185,164.966515 157.901185,164.966515 C157.901185,164.966515 157.805936,159 157.085697,159 C156.013078,159 154.007999,159 154.007999,159 C152.899012,159 152,158.105486 152,157.00594 L152,144.99406 Z" id="path-1"></path>
+        <mask id="mask-2" maskContentUnits="userSpaceOnUse" maskUnits="objectBoundingBox" x="0" y="0" width="30" height="21.9665146" fill="white">
+            <use xlink:href="#path-1"></use>
+        </mask>
+    </defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Artboard-1" transform="translate(-152.000000, -143.000000)" stroke="#D22F23" stroke-width="2" fill="#F54336">
+            <use id="Rectangle-1" mask="url(#mask-2)" xlink:href="#path-1"></use>
+        </g>
+    </g>
+</svg>

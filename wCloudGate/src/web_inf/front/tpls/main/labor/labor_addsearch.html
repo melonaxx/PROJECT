@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>外麦王云平台</title>
+	<link rel="stylesheet" type="text/css" href="/css/main/common.css"/>
+	<link rel="stylesheet" type="text/css" href="/css/main/commonsector.css"/>
+	<link rel="stylesheet" type="text/css" href="/css/main/labor/labor_addsearch.css"/>
+</head>
+<body>
+	<header>
+		<div class="header">
+			<div class="topleft">
+				<div class="logo">
+					<img src="/image/main/yunlogo.png"/>
+				</div>
+				<ul class="topul">
+					<li><a href="javascript:void(0)">首页</a></li>
+					<li><a href="javascript:void(0)">地图定位</a></li>
+					<li><a href="javascript:void(0)">车辆管理</a></li>
+					<li class="active"><a href="javascript:void(0)">劳务方</a></li>
+					<li><a href="javascript:void(0)">员工</a></li>
+				</ul>
+			</div>
+			<div class="topright">
+				<p><a href="javascript:void(0)">天天外卖</a></p>
+				<P>|</P>
+				<p><a href="javascript:void(0)">退出</a></p>
+			</div>
+		</div>
+	</header>
+
+	<section>
+		<div class="content">
+			<ul class="maintop">
+				<li><a href="labor.html">劳务方管理</a></li>
+				<li class="laboract"><a href="labor_addsearch.html">添加劳务方</a></li>
+			</ul>
+			<div class="searchbox">
+				<input type="text" class="carsearch" placeholder="手机号/劳务方名称" />
+				<div class="searchbtn">
+					<img src="/image/main/msearch.png"/>
+				</div>
+			</div>
+			<p class="searchnum">
+				共搜索到<span>1</span>条信息
+			</p>
+			<div class="mainlabor">
+				<table class="elecartab">
+					<thead>
+						<tr class="laborthead">
+							<td>序号</td>
+							<td>劳务方</td>
+							<td>负责人</td>
+							<td>手机号</td>
+							<td>邮箱</td>
+							<td>操作</td>							
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>1</td>
+							<td>天天外卖有限公司</td>
+							<td>120</td>
+							<td>88</td>
+							<td>64482670808@qq.com</td>
+							<td class="addtd">
+								<a class="adda">添加</a>
+							</td>
+						</tr>
+						
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</section>
+	<div class="modaldetail">
+		<div class="coverd"></div>
+		<div class="modalboxd">
+			<div class="closedbox">
+				<img class="closed" src="/image/main/close.png"/>				
+			</div>
+			<div class="laborpic">
+				<img src="/image/main/laborpic.png"/>
+			</div>
+			<div class="laborinf">
+				<div>
+					负责人<span class="colon">:</span><span>李天天</span>
+				</div>
+				<div>
+					名称<span class="colon">:</span><span>北京百度外卖有限公司</span>
+				</div>
+				<div>
+					手机号<span class="colon">:</span><span>18000000000</span>
+				</div>
+				<div>
+					邮箱<span class="colon">:</span><span>15097212794@163.com</span>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="modaldetail2">
+		<div class="coverd2"></div>
+		<div class="modalboxd2">
+			<div class="closedbox2">
+				<img class="closed2" src="/image/main/close.png"/>				
+			</div>
+			<div class="laborinf2">
+				<div>
+					负责人<span class="colon">:</span><span>李天天</span>
+				</div>
+				<div>
+					名称<span class="colon">:</span><span>北京百度外卖有限公司</span>
+				</div>
+				<div>
+					手机号<span class="colon">:</span><span>18000000000</span>
+				</div>
+				<div>
+					邮箱<span class="colon">:</span><span>15097212794@163.com</span>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="modaladd">
+		<div class="covera"></div>
+		<div class="modalboxa">
+			<p class="laborname">北京天天外卖有限公司</p>
+			<p class="sureaddp">确认添加吗？</p>
+			<div class="btns">
+				<button class="add">添加</button>
+				<button class="cancela">取消</button>
+			</div>
+		</div>
+	</div>
+	<div class="modaladdf">
+		<div class="coveraf"></div>
+		<div class="modalboxaf">
+			<img class="closef" src="/image/main/close.png"/>
+			<img src="/image/main/right.gif"/>
+			<p>添加完成</p>
+		</div>
+	</div>
+	<div class="push"></div>
+	<footer>
+		<ul>
+			<li><a href="javascript:void(0)">公司简介</a></li>
+			<li class="vbar">|</li>
+			<li><a href="javascript:void(0)">联系我们</a></li>
+			<li class="vbar">|</li>
+			<li><a href="javascript:void(0)">加入我们</a></li>
+			<li class="vbar">|</li>
+			<li><a href="javascript:void(0)">新闻中心</a></li>
+		</ul>
+		<div><a href="javascript:void(0)">版权信息</a></div>
+	</footer>		
+	<script>
+		var checkdetaila = document.getElementsByClassName('checkdetaila'); 
+	    var modaldetail = document.getElementsByClassName('modaldetail')[0]; 
+	    var modaldetail2 = document.getElementsByClassName('modaldetail2')[0]; 
+	    var closedbox = document.getElementsByClassName('closedbox')[0];
+	    var closedbox2 = document.getElementsByClassName('closedbox2')[0];
+	    var add = document.getElementsByClassName('add')[0];
+	    var modaladdf = document.getElementsByClassName('modaladdf')[0];
+	    var closef = document.getElementsByClassName('closef')[0];
+	    for(var i=0;i<checkdetaila.length;i++){
+		    checkdetaila[i].onclick=function(){
+		    	modaldetail.style.display = "block";  	
+		    } 	    	
+	    }
+	    closedbox.onclick=function(){
+	    	modaldetail.style.display = "none";
+	    } 
+	    closedbox2.onclick=function(){
+	    	modaldetail2.style.display = "none";
+	    } 
+	    
+	    var adda = document.getElementsByClassName('adda'); 
+	    var modaladd = document.getElementsByClassName('modaladd')[0]; 
+	    var cancela = document.getElementsByClassName('cancela')[0];
+	    for(var i=0;i<adda.length;i++){
+		    adda[i].onclick=function(){
+		    	modaladd.style.display = "block";  	
+		    } 	    	
+	    }
+	    cancela.onclick=function(){
+	    	modaladd.style.display = "none";
+	    }
+	    add.onclick=function(){
+	    	modaladd.style.display = "none";
+	    	modaladdf.style.display = "block";
+	    	setTimeout(function(){
+	    		modaladdf.style.display = "none";
+	    	},1000)
+	    } 
+	    closef.onclick=function(){
+	    	modaladdf.style.display = "none";
+	    }   
+
+	</script>
+</body>
+</html>

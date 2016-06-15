@@ -1,0 +1,31 @@
+.wmainlist .wllevel1 span{float:left;width:17px;height:21px;margin-top:10px;margin-right:10px;}
+.wmainlist .wllevel1:nth-of-type(1) span{background: url(/image/main2/integrate2.png) no-repeat 0 0;}
+.wmainlist .wllevel1:nth-of-type(2) span{background: url(/image/main2/integrate2.png) no-repeat -27px 0;}
+.filterbox{width:100%;height:30px;margin:52px 0 20px;}
+.abnstatistich2{font-size: 14px;float: left;margin-right:20px;}
+.abnstadiv{width:100%;height:200px;margin-bottom: 20px;}
+.abnstadiv li{overflow:hidden;float: left;position:relative;width:260px;height:200px;background: #f4f7fa;margin-right: 10px;}
+.abnstadiv li:nth-of-type(3){margin-right: 0;}
+.vaborder{width:113px;height:113px;border-radius:50%;border:3px solid #4b98dc;position:absolute;left:50%;margin-left:-56px;margin-top:20px;}
+.vaimg{display:block;width:52px;height:55px;position:absolute;left:50%;margin:15px 0 15px -26px;background:url(/image/main2/abnormal.png) no-repeat 0 0;}
+/*---------未知宽度多个元素居中显示--------*/
+.carnum{height:14px;clear:left; float:left;margin:0; padding:0; position:relative; left:50%; text-align:center;top: 84px;}
+.middleli{ display:block; float:left;margin:0; padding:0; position:relative; right:50%; }
+.carnum span{font-size: 14px;padding-right:4px;}
+.carnum p{padding-top: 2px;} 
+/* --------------------------------------- */
+.abnstatp{width:100%;text-align: center;margin-top: 160px;font-size: 16px;}
+.poweralarm .vaborder{border:3px solid #ee7a53;}
+.poweralarm .vaimg{width:39px;height:59px;margin-left:-20px;background:url(/image/main2/abnormal.png) no-repeat -59px 0;}
+.lostcontact .vaborder{border:3px solid #4fc381;}
+.lostcontact .vaimg{width:49px;height:49px;margin-left:-25px;margin-top:24px;background:url(/image/main2/abnormal.png) no-repeat -107px 0;}
+/* ---------遮罩层--------- */
+.hidediv{width:260px;height: 107px;background:url(/image/main2/integrate.png) no-repeat 0 -232px;z-index: 99;position:absolute;left:0;top:100%;}
+.hidediv p{width:100%;height:16px;font-size: 16px;margin-top: 20px;color:#fff;text-align: center;}
+.hideope{width:100%;height: 24px;margin-top: 28px;}
+.hideope a{width:68px;height: 22px;float: left;text-align: center;line-height: 22px;border:1px solid #fff;color:#fff;}
+.hideope a:nth-of-type(1){margin:0 34px 0 43px;}
+.hideope .opeactive{border:1px solid #00d0fd;color:#00d0fd;}
+
+.abnstatistich22{font-size: 14px;height:14px;margin:0 20px 30px 0;}
+.abncarlinechart{width:100%;}

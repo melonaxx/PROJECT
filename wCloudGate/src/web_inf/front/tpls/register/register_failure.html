@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>外麦王云平台</title>
+	<link rel="stylesheet" type="text/css" href="/css/main2/base.css"/>
+	<link rel="stylesheet" type="text/css" href="/css/main2/register/registercommon.css"/>
+	<link rel="stylesheet" type="text/css" href="/css/main2/register/register_audit.css"/>
+</head>
+<body>
+
+	<?php include("register/registertop.html"); ?>
+	<div class="auditmain" id="auditfail">
+		<div class="auditfailimg"></div>
+		<p>很抱歉&nbsp;,&nbsp;您的企业信息审核未通过&nbsp;。</p>
+		<P>&nbsp;&nbsp;&nbsp;未通过原因&nbsp;:&nbsp;<span>XXXXXXXX</span>&nbsp;,&nbsp;请您修改后重新提交&nbsp;。</P>
+		<button class="agreenbtn epcertify">企业认证</button>
+	</div>
+	<!-- <div class="" id="auditfail">
+		<div class="cover"></div>
+		<div class="modalbox">
+			<div class="modaltop">
+				<img src="/image/main2/close.png" class="close"/>
+				<span>|</span>
+				<span>审核失败</span>
+			</div> -->
+		<!-- </div>
+	</div> -->
+	<?php include("footer.html"); ?>
+	<script src="/js/jquery-1.11.0.js"></script>
+	<script type="text/javascript" src="/js/main2/common.js"></script>
+</body>
+</html>

@@ -1,0 +1,42 @@
+//---- UTF8 编码 ----
+<!-- BEGIN: main -->
+<html>
+<head>
+<title>修改</title>
+<link type="text/css" rel="stylesheet" href="/style/bootstrap.min.css?ver={main.doc_version}"/>
+<link type="text/css" rel="stylesheet" href="/style/style.css?ver={main.doc_version}"/>
+<style>
+body {
+	text-align:left;
+	min-width:200px;
+	overflow-y:hidden;
+	padding:0;
+}
+.form-inline .form-control {
+	display: inline-block;
+	vertical-align: middle;
+}
+.form-inline .form-group {
+	display: inline-block;
+	vertical-align: middle;
+}
+</style>
+<body>
+	<div>
+		<form class="form-inline" method="post" action="/product/product_modify_brand.php">
+			<div class="form-group">
+				<label>品牌名称：</label>
+				<input type="text" value="{main.name}" class="form-control input-sm" name="name"/>
+			</div>
+			<input type="hidden" name="id" value="{main.id}"/>
+			<p style="margin:45px 0 0 0; text-align:center;">
+				<input class="btn btn-default btn-sm btn_margin" name="send" type="submit" value="提交"/>
+				<input class="btn btn-default btn-sm" type="button" value="关闭" onclick="parent.$('#MessageBox').modal('hide')" />
+			</p>
+		</form>
+	</div>
+</body>
+</html>
+
+<!-- END: main -->
+

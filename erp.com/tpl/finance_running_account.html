@@ -1,0 +1,55 @@
+//---- UTF8 编码 ----
+<!-- BEGIN: main --><?xml version="1.0" encoding="UTF-8"?>
+{main.doc_type}
+<?xml-stylesheet type="text/xsl" href="/style/finance_running_account.xsl?ver={main.doc_version}"?>
+<html version="{main.doc_version}">
+<head>
+	<Title>{main.title}</Title>
+	<meta name="keywords" content="{main.keywords}" />
+	<meta name="description" content="{main.description}" />
+	<em company_id="{main.company_id}" staff_id="{main.staff_id}" login_name="{main.login_name}" permit="{main.permit}" program="{main.request_url}"/>
+</head>
+<Body>
+	<dir><![CDATA[ 您的位置： {main.this_location}]]></dir>
+	<menu>
+		<big>{main.big_menu}</big>
+		<small>
+			<!-- BEGIN: list_menu --><a class="{list_menu.class}" href="{list_menu.link}">{list_menu.name}</a><!-- END: list_menu -->
+		</small>
+	</menu>
+	<running>
+		<ul total='{main.total}'>
+			<!-- BEGIN:run -->
+			<li>
+				<id>{run.id}</id>
+				<no>{run.no}</no>
+				<amount_date>{run.amount_date}</amount_date>
+				<business_date>{run.business_date}</business_date>
+				<type>{run.type}</type>
+				<subject>{run.subject}</subject>
+				<money>{run.money}</money>
+				<bank>{run.bank_id}</bank>
+			</li>
+			<!-- END:run-->
+			
+		</ul>
+	</running>
+	
+	<riqi>{main.rq}</riqi>
+	<type>{main.type}</type>
+	<na>{main.name}</na>
+	<begin_date>{main.begin_date}</begin_date>
+	<end_date>{main.end_date}</end_date>
+	
+	<!-- BEGIN:list_bank -->
+	<list>
+		<id>{list_bank.id}</id>
+		<name>{list_bank.name}</name>
+		<number>{list_bank.number}</number>
+		<is_default>{list_bank.is_default}</is_default>
+	</list>
+	<!-- END:list_bank-->
+	{main.page_info}
+</Body>
+</html>
+<!-- END: main -->

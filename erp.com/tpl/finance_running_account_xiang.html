@@ -1,0 +1,63 @@
+//---- UTF8 编码 ----
+<!-- BEGIN: main -->
+<html>
+<head>
+<title></title>
+<link type="text/css" rel="stylesheet" href="/style/bootstrap.min.css?ver={main.doc_version}"/>
+<link type="text/css" rel="stylesheet" href="/style/style.css?ver={main.doc_version}"/>
+<style>
+body,table,form,input		{font-size:12px; padding:0; margin:0}
+body {
+	min-width:100px;
+	overflow-y:auto;
+	overflow-x:auto;
+}
+</style>
+<script type="text/javascript" charset="UTF-8" src="/js_encode/jquery-1.9.1.min.js"></script>
+<script type="text/javascript" charset="UTF-8" src="/js_encode/bootstrap.min.js"></script>
+<script type="text/javascript" src="/js_encode/home_system_announcement_notice.js"></script>
+
+
+	<div style="width:670px;">
+
+		<div class="float_left form-group ">
+			<span class="float_left" style="margin:5px 0 0 5px;">业务日期：</span>
+			<input type="text" name="business_date" readonly="readonly" value='{running.business_date}' class="form-control input-sm" style="width:147px;">
+		</div>
+		<div class="float_left form-group">
+			<span class="float_left" style="margin:5px 0 0 20px;">收支科目：</span>
+				<input type="text" name="" readonly="readonly" value='{running.subject}' class="form-control input-sm" style="width:147px;">
+		</div>
+		<div class="float_left form-group">
+			<span class="float_left" style="margin:5px 0 0 20px;">结算账户：</span>
+				<input type="text" name="" readonly="readonly" value='{running.bank}' class="form-control input-sm" style="width:147px;">
+		</div><br>
+		<div class="float_left form-group">
+			<span class="float_left" style="margin:5px 0 0 5px;">往来单位：</span>
+			<input type="text" name="company_type" readonly="readonly" value="{running.company_type}" class="form-control input-sm float_left" style="width:147px;">
+		</div>
+		<div class="float_left form-group">
+			<span class="float_left" style="margin:5px 0 0 20px;">单位名称：</span>
+			<input type="text" name="company_name" value='{running.company_name}' readonly="readonly" class="form-control input-sm float_left" style="width:147px;">
+		</div>
+		<span class="float_left" style="margin:5px 0 0 44px;">金额：</span>
+		<div class="input-group ">
+			<span class="input-group-addon input-sm">￥</span>
+		 	<input type="text" name="money" readonly="readonly" class="form-control input-sm float_left" aria-label="Amount (to the nearest dollar)" value='{running.money}' style="width:114px;" >
+		</div>
+		<div class="form-group float_left">
+			<span class="float_left" style="margin:20px 0px 0px 5px;">单据摘要：</span>
+			<textarea class="float_left form-control" rows="3" readonly="readonly" value='' name="body" style="width:601px; resize: none;margin:-2px 0px -2px 0;">{running.body}</textarea>
+		</div>
+	</div>
+	<div class="form-group float_left" style="margin:0 0px 13px 4px;">
+		<div class="table_operate_block">
+			<input class="btn btn-default btn-sm" type="button" value="返回" onclick="parent.$('#MessageBox').modal('hide')" />
+		</div>
+	</div>
+
+</body>
+</html>
+
+<!-- END: main -->
+

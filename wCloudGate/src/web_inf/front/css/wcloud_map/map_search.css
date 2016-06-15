@@ -1,0 +1,30 @@
+html,body{width:100%;height:100%;}
+/*html {height: 100%;}*/
+/*地图的搜索*/
+.pointSearch{width:334px;height:30px;position: absolute;left: 20px;top:96px;padding: 0px;margin: 0px;}
+
+/*搜索框的样式*/
+.searchNum{width: 230px;height: 40px;border: 0px;display: block;float: left;font-size: 15px;padding-left:8px;}
+
+/*搜索图标*/
+.input-group-btn {float: left;}
+.searchIcon{width: 50px;height: 34px;font-size: 20px;color: #fff;line-height: 34px;text-align: center;margin: 0px;background: #15A4FA;padding: 0px;margin-top: -1px;cursor:pointer;}
+
+/*路径搜索框位置样式*/
+.showPathToOneCar{width: 350px;height: 40px;position: fixed;top: 50px;left: 315px;}
+
+/*电车信息搜索*/
+.selectType{border-radius:0px;border:0px;height:34px;}
+
+/*seqno的搜索框样式*/
+.places{border:0px;box-shadow: none;border-radius: 0px;}
+
+/*实时同步与显示电车按钮*/
+.controlBtn {position: absolute;width: 250px;height: 34px;left: 20px;top: 60px;}
+.asyncCurrent {margin-top:30px;width: 55%;cursor: pointer;height: 34px;float: left;text-align: center;line-height: 34px;font-size: 13px;background: #15A4FA;color: #fff;}
+.showCar {width: 40%;height: 34px;cursor: pointer;float: right;text-align: center;line-height: 34px;background: #15A4FA;color: #fff;font-size: 13px;}
+/*----------------------------*/
+#dashboard{position: absolute;top: 75px;bottom: 0px;left: 0px;}
+#searchdiv{width:210px;left:0;top:0;}
+#searchdiv input{right:0;float:left;width:150px;height:28px;border:1px solid #ccc;padding:0 10px;}
+#searchdiv .glyphicon{cursor:pointer;float:left;width:30px;height:30px;background: url(/image/main2/integrate2.png) no-repeat -76px 0;border:none;margin:0;}

@@ -1,0 +1,101 @@
+//---- UTF8 编码 ----
+<!-- BEGIN: main -->
+<html>
+<head>
+<title>盘点单详情</title>
+<link type="text/css" rel="stylesheet" href="/style/bootstrap.min.css?ver={main.doc_version}"/>
+<link type="text/css" rel="stylesheet" href="/style/style.css?ver={main.doc_version}"/>
+<style>
+body {
+	text-align:left;
+	min-width:600px;
+	padding:0px;
+}
+.form-inline .form-control {
+	display: inline-block;
+	vertical-align: middle;
+}
+.form-inline .form-group {
+	display: inline-block;
+	vertical-align: middle;
+}
+</style>
+<script type="text/javascript" charset="UTF-8" src="/js_encode/jquery-1.9.1.min.js"></script>
+<!-- <script type="text/javascript" charset="UTF-8" src="/js_encode/bootstrap.min.js"></script> -->
+<body>
+	<div>
+		<form class="form-inline">
+			<input type="hidden" name='id' value='{main.id}'/>
+			<div class="form-group">
+				<label>时间：</label><input type="text" readonly value="{main.action_date}" class="form-control input-sm"/>
+			</div>
+			<div class="form-group">
+				<label>仓库：</label><input type="text" readonly value="{main.store_id}" class="form-control input-sm"/>
+			</div>
+			<div class="form-group">
+				<label>备注：</label><input type="text" name='body' value="{main.body}" class="form-control input-sm merger_two_row_3"/>
+			</div>
+			<div>
+				<table style="width:950px;" class="table tab-sel table-bordered table-hover">
+					<tr>
+						<th class="table_th_number">序号</th>
+						<th class="center" width="46px;">图片</th>
+						<th width="238px;">商品名称</th>
+						<th width="200px;">规格</th>
+						<th width="120px;">商品编码</th>
+						<th width="100px;">盘点前数量</th>
+						<th width="100px;">盘点后数量</th>
+						<th width="100px;">盈亏数量</th>
+					</tr>
+
+					<tr>
+						<td class="center">1</td>
+						<td class='center'>
+						<img width="20" height="20" class="smallimg" src="{main.image}"/>
+						<img width="80" height="80" class="bigimg" style="position:absolute;display:none" src="{main.image}"/>
+						</td>
+						<td>{main.product_id}</td>
+						<td>{main.format}</td>
+						<td>{main.bill_number}</td>
+						<td>{main.old_total}</td>
+						<td>{main.new_total}</td>
+						<td>{main.total}</td>
+					</tr>
+
+				</table>
+			</div>
+		</form>
+	</div>
+	<p>
+		<input class="btn btn-default btn-sm" type="button" value="返回" onclick="parent.$('#MessageBox').modal('hide')" />
+	</p>
+</body>
+<script type="text/javascript">
+	$('.smallimg').hover(function(){
+		var t = $(this).position().top - 90 + 'px';
+		var l = $(this).position().left + 20 + 'px';
+		$(this).next().css("display","block");
+		$(this).next().css("top",t);
+		$(this).next().css("left",l);
+	},function(){
+		$(this).next().css("display","none");
+	})
+
+	//备注失去焦点更改事件
+	var body = $('input[name=body]').val();
+	$('input[name=body]').blur(function(){
+		var newbody = $(this).val();
+		var id 		= $('input[name=id]').val();
+		if(newbody != body)
+		{
+			$.ajax({
+				url:'stock_single_detail.php',
+				type:'post',
+				data:{'id':id,'body':newbody},
+			})
+		}
+	})
+</script>
+</html>
+
+<!-- END: main -->

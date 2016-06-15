@@ -1,0 +1,140 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3c.org/TR/1999/REC-html401-19991224/loose.dtd">
+<HTML xmlns="http://www.w3.org/1999/xhtml"><HEAD id=Head1><title>北京外麦王人事系统</title>
+<META http-equiv=Content-Type content="text/html; charset=utf-8">
+<LINK href="/css/Style.css" type=text/css rel=stylesheet>
+<LINK href="/css/Manage.css" type=text/css rel=stylesheet>
+<link href="/css/changeclass.css" type="text/css" rel="stylesheet">
+<SCRIPT language=javascript src="/js/jquery-1.8.3.min.js"></SCRIPT>
+<META content="MSHTML 6.00.2900.3492" name=GENERATOR></HEAD>
+<BODY>
+<TABLE cellSpacing=0 cellPadding=0 width="98%" border=0>
+  <TBODY>
+  <TR>
+    <TD width=15><IMG src="/images/new_019.jpg" border=0></TD>
+    <TD width="100%" background=/images/new_020.jpg height=20></TD>
+    <TD width=15><IMG src="/images/new_021.jpg" 
+  border=0></TD></TR></TBODY></TABLE>
+<TABLE cellSpacing=0 cellPadding=0 width="98%" border=0>
+  <TBODY>
+  <TR>
+    <TD width=15 background=/images/new_022.jpg><IMG 
+      src="/images/new_022.jpg" border=0> </TD>
+    <TD vAlign=top width="100%" bgColor=#ffffff>
+      <TABLE cellSpacing=0 cellPadding=5 width="100%" border=0>
+        <TR>
+          <TD class=manageHead >当前位置：管理首页 &gt; 附件管理</TD>
+         <!--  <td class=manageHead style="border-left:0px; cursor:pointer;color:red;"><a href="javascript:void(0)" onclick='addannex()'>添加附件</a></td> -->
+        </TR>
+        <TR>
+          <TD height=2></TD></TR></TABLE>
+      <TABLE borderColor=#cccccc cellSpacing=0 cellPadding=0 width="100%" 
+      align=center border=0>
+        <TBODY>
+        <TR>
+          <TD class=manageHead >
+           <form action="upadnexa.php" method="post" enctype="multipart/form-data">
+             <TABLE id=grid 
+            style="BORDER-TOP-WIDTH: 0px; FONT-WEIGHT: normal; BORDER-LEFT-WIDTH: 0px; BORDER-LEFT-COLOR: #cccccc; BORDER-BOTTOM-WIDTH: 0px; BORDER-BOTTOM-COLOR: #cccccc; WIDTH: 100%; BORDER-TOP-COLOR: #cccccc; FONT-STYLE: normal; BACKGROUND-COLOR: #cccccc; BORDER-RIGHT-WIDTH: 0px; TEXT-DECORATION: none; BORDER-RIGHT-COLOR: #cccccc" 
+            cellSpacing=1 cellPadding=2 rules=all border=0>
+              <TR 
+              style="FONT-WEIGHT: bold; FONT-STYLE: normal; BACKGROUND-COLOR: #eeeeee; TEXT-DECORATION: none;text-align: center">
+                <TD style="border:0px;" width="70%">
+                    <input type='file' name='annex[]'/>
+                </TD>
+                <input type="hidden" name="pid" value="{$pid}">
+                <TD><b><input type="submit" value="确认上传" style="cursor:pointer;color:red;"></b></TD>
+              </TR>  
+               </TABLE>
+            </form>
+          </TD>
+        </TR>
+        <TR>
+          <TD height=10></TD>
+        </TR>
+        <TR>
+          <TD>
+            <TABLE id=grid 
+            style="BORDER-TOP-WIDTH: 0px; FONT-WEIGHT: normal; BORDER-LEFT-WIDTH: 0px; BORDER-LEFT-COLOR: #cccccc; BORDER-BOTTOM-WIDTH: 0px; BORDER-BOTTOM-COLOR: #cccccc; WIDTH: 100%; BORDER-TOP-COLOR: #cccccc; FONT-STYLE: normal; BACKGROUND-COLOR: #cccccc; BORDER-RIGHT-WIDTH: 0px; TEXT-DECORATION: none; BORDER-RIGHT-COLOR: #cccccc" 
+            cellSpacing=1 cellPadding=2 rules=all border=0>
+              <TR 
+              style="FONT-WEIGHT: bold; FONT-STYLE: normal; BACKGROUND-COLOR: #eeeeee; TEXT-DECORATION: none;text-align: center" id="add_fujian">
+                <TD width="70%">附件</TD>
+                <TD>操作</TD>
+              </TR>
+              {foreach from=$list item=temp}
+              <TR 
+              style="FONT-WEIGHT: bold; FONT-STYLE: normal; BACKGROUND-COLOR: #eeeeee; TEXT-DECORATION: none;text-align: center" id="add_fujian">
+                {if $temp['fix'] == "png" || $temp['fix'] == "jpg" || $temp['fix'] == "gif" || $temp['fix'] == "jpeg"}
+                <TD width="70%">
+                    <a href="http://img.1sheng.com/{$temp['adnexahash']}"><img src="http://img.1sheng.com/{$temp['adnexahash']}" width="80px" height="60px"></a>{$temp['adnexaname']}
+                </TD>
+                {else}
+                <TD width="70%" height="60px">
+                    <a href="http://img.1sheng.com/{$temp['adnexahash']}">{$temp['adnexaname']}</a>
+                </TD>
+                {/if}
+                <TD>
+                    <a href="http://img.1sheng.com/{$temp['adnexahash']}" target=_blank>查看附件</a>
+                    <a href="deladnexa.php?aid={$temp['id']}&pid={$pid}">删除附件</a>
+                </TD>
+              </TR>
+              {/foreach} 
+               </TABLE>
+          </TD>
+       </TR>
+        <TR>
+          <TD></TD></TR></TBODY></TABLE></TD>
+    <TD width=15 background=/images/new_023.jpg><IMG 
+      src="/images/new_023.jpg" border=0> </TD></TR></TBODY></TABLE>
+<TABLE cellSpacing=0 cellPadding=0 width="98%" border=0>
+  <TBODY>
+  <TR>
+    <TD width=15><IMG src="/images/new_024.jpg" border=0></TD>
+    <TD align=middle width="100%" background=/images/new_025.jpg 
+    height=15></TD>
+    <TD width=15><IMG src="/images/new_026.jpg" 
+  border=0></TD></TR></TBODY></TABLE>
+</BODY>
+<script type="text/javascript" src="/js/util.js"></script>
+{literal}
+<script>
+   //添加附件
+    function addannex(){
+            var str = "";
+                str += "<tr style='FONT-WEIGHT: bold; FONT-STYLE: normal; BACKGROUND-COLOR: #eeeeee; TEXT-DECORATION: none;text-align: center'><td><input type='file' name='annex[]'/><td><b id='remonex' style='cursor:pointer;'>移除</b></td></td></tr>";
+            $(str).insertAfter($("#add_fujian"));
+            $("#remonex").click(function(){
+                $(this).closest("tr").remove();
+            })
+    }
+
+//    $("#deleteclass").live("click",function() {
+//     if (confirm("确定删除吗")) {
+//         $(this).closest("tr").addClass("del");
+//         var cid = $(".del").attr("cid");
+//         $.ajax({
+//             type: "POST",
+//             url: "delclass.php",
+//             data: {
+//                 "cid": cid
+//             },
+//             success: function(msg) {
+
+//                 if (msg == "删除成功") {
+//                     $(".del").closest("TR").remove();
+//                     $(".del").removeClass("del");
+//                     alert(msg);
+//                 } else {
+//                     $(".del").removeClass("del");
+//                     alert(msg);
+//                 }
+//             },
+//             error: function() {
+//                 alert("ajax请求失败")
+//             }
+//         });
+//     }
+// })
+</script>
+{/literal}
+</HTML>

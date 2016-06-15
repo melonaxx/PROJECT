@@ -1,0 +1,162 @@
+//---- UTF8 编码 ----
+<!-- BEGIN: main -->
+<html>
+<head>
+<title></title>
+<link type="text/css" rel="stylesheet" href="/style/bootstrap.min.css?ver={main.doc_version}"/>
+<link type="text/css" rel="stylesheet" href="/style/style.css?ver={main.doc_version}"/>
+<style>
+body,table,form,input		{font-size:12px; padding:0; margin:0}
+body {
+	min-width:100px;
+	overflow-y:auto;
+	overflow-x:auto;
+}
+.border_color{
+	border:1px solid #E74C3C;
+}
+</style>
+<script type="text/javascript" charset="UTF-8" src="/js_encode/jquery-1.9.1.min.js"></script>
+<script type="text/javascript" charset="UTF-8" src="/js_encode/bootstrap.min.js"></script>
+<script type="text/javascript" src="/js_encode/jquery.validate.js"></script>
+<!-- 时间插件 -->
+<script type="text/javascript" src="/js_encode/bootstrap-datetimepicker.min.js"></script>
+<script type="text/javascript" src="/js_encode/bootstrap-datetimepicker.zh-CN.js"></script>
+<link rel="stylesheet" href="/style/bootstrap-datetimepicker.min.css"></link>
+
+<form class="margin_top" method="post" action="/finance/finance_allocation.php">
+	<div style="width:440px;">
+
+		<div class="float_left form-group ">
+			<span class="float_left" style="margin:5px 0 0 5px;">业务日期：</span>
+			<input type="text" id="business_date" name="business_date" class="form-control input-sm" style="width:147px;float:left;" value="{main.rq}">
+		</div>
+
+		<span class="float_left" style="margin:5px 0 0 44px;">金额：</span>
+		<div class="input-group " >
+			<span class="input-group-addon input-sm">￥</span>
+		 	<input type="text" name="money" class="form-control input-sm float_left" aria-label="Amount (to the nearest dollar)" style="width:114px;" placeholder="必填" data-toggle="tooltip" data-placement="bottom" title="必填">
+		</div>
+		<br>
+
+		<div class="float_left form-group">
+			<span class="float_left" style="margin:5px 0 0 5px;">转出账户：</span>
+				<select class="form-control input-sm" style="float:left;" name="output_bank" placeholder="必填" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="选择转出账户">
+					<option value='0'></option>
+					<!-- BEGIN: list_bank -->
+					<option value="{list_bank.id}">{list_bank.name}</option>
+					<!-- END: list_bank -->
+				</select>
+		</div>
+
+		<div class="float_left form-group">
+			<span class="float_left" style="margin:5px 0 0 20px;">转入账户：</span>
+				<select class="form-control input-sm float_left" style="float:left;" name="input_bank"  placeholder="必填" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="选择转入账户">
+					<option value="0"></option>
+					<!-- BEGIN: list_bank1 -->
+					<option value="{list_bank1.id}">{list_bank1.name}</option>
+					<!-- END: list_bank1 -->
+				</select>
+		</div>
+		<div class="form-group float_left">
+			<span class="float_left" style="margin:20px 0px 0px 29px;">备注：</span>
+			<textarea class="float_left form-control" rows="3" name = "body" style="width:374px; resize: none;margin:-2px 0px -2px 0;"></textarea>
+		</div>
+	</div>
+</div>
+	<div class="form-group float_left" style="margin:0 0px 0px 4px;">
+		<div class="table_operate_block">
+			<input class="btn btn-default btn-sm btn_margin  float_left" type="submit" name = 'made' value="确定" />
+			<input class="btn btn-default btn-sm goodsDeleteaa float_left" type="reset" value="取消" onclick="parent.$('#MessageBox').modal('hide')" />
+		</div>
+	</div>
+</form>
+
+</body>
+<script type="text/javascript">
+	$('#business_date').datetimepicker({
+		language:'zh-CN',
+		format:'yyyy-mm-dd',
+		autoclose:true,
+		minView:2,
+    });
+    $("select[name='output_bank']").change(function() {
+
+    	var value = $("select[name=output_bank]").find("option:selected").val();
+    	$.ajax({
+			'url':'finance_allocation.php',
+			'async':true,
+			'type':'POST',
+			'data':{"name":value},
+			'dataType':'json',
+			'success':function(data){
+				var option = "<option value=0></option>";
+				for(var i = 0;i<data.length;i++){
+					option += '<option value='+data[i]['id']+'>'+data[i]['name']+'</option>'
+				}
+				$("select[name='input_bank']").html(option);
+			}
+		});
+    });
+
+    $('input[name=money]').on('blur',function() {
+    	var val = $(this).val();
+    	$('input[name=money]').removeClass("border_color");
+    	if(isNaN(val) || val <= 0)
+    	{
+    		$(this).val('');
+    		return false;
+    	}
+    });
+    $('select[name=output_bank],select[name=input_bank]').blur(function(){
+    	var val = $(this).val();
+    	if(val<=0)
+    	{
+    		$(this).addClass('border_color');
+    		$(this).tooltip('show');
+    		return false;
+    	}else{
+    		$(this).removeClass('border_color');
+    		$(this).tooltip('hide');
+    		return true;
+    	}
+    })
+
+    $('.margin_top').submit(function(){
+    	var money = $('input[name=money]').val();
+    	var output = $('select[name=output_bank]').val();
+    	var input = $('select[name=input_bank]').val();
+    	$('select[name=output_bank]').trigger('blur');
+    	$('select[name=input_bank]').trigger('blur');
+    	if(isNaN(money) ||  money<=0 ){
+    		$('input[name=money]').addClass("border_color");
+    		$('input[name=money]').tooltip("show");
+    		return false;
+    	}else{
+    		$('input[name=money]').removeClass("border_color");
+    		$('input[name=money]').tooltip("hide");
+    	}
+    	if(output<=0)
+    	{
+    		$('select[name=output_bank]').addClass('border_color');
+    		$('select[name=output_bank]').tooltip('show');
+    		return false;
+    	}else{
+    		$('select[name=output_bank]').removeClass('border_color');
+    		$('select[name=output_bank]').tooltip('hide');
+    	}
+    	if(input<=0)
+    	{
+    		$('select[name=input_bank]').addClass('border_color');
+    		$('select[name=input_bank]').tooltip('show');
+    		return false;
+    	}else{
+    		$('select[name=input_bank]').removeClass('border_color');
+    		$('select[name=input_bank]').tooltip('hide');
+    	}
+    })
+</script>
+</html>
+
+<!-- END: main -->
+

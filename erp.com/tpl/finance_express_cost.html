@@ -1,0 +1,59 @@
+//---- UTF8 编码 ----
+<!-- BEGIN: main --><?xml version="1.0" encoding="UTF-8"?>
+{main.doc_type}
+<?xml-stylesheet type="text/xsl" href="/style/finance_express_cost.xsl?ver={main.doc_version}"?>
+<html version="{main.doc_version}">
+<head>
+	<Title>{main.title}</Title>
+	<meta name="keywords" content="{main.keywords}" />
+	<meta name="description" content="{main.description}" />
+	<em company_id="{main.company_id}" staff_id="{main.staff_id}" login_name="{main.login_name}" permit="{main.permit}" program="{main.request_url}"/>
+</head>
+<Body>
+	<dir><![CDATA[ 您的位置： {main.this_location}]]></dir>
+	<menu>
+		<big>{main.big_menu}</big>
+		<small>
+			<!-- BEGIN: list_menu --><a class="{list_menu.class}" href="{list_menu.link}">{list_menu.name}</a><!-- END: list_menu -->
+		</small>
+	</menu>
+	<!-- BEGIN:ress -->
+	<ress>
+		<express_id>{ress.express_id}</express_id>
+		<name>{ress.name}</name>
+	</ress>
+	<!-- END:ress -->
+	<!-- BEGIN:list_shop -->
+	<shop>
+		<id>{list_shop.user_id}</id>
+		<name>{list_shop.shop_name}</name>
+	</shop>
+	<!-- END:list_shop -->
+	<express>
+		<ul total='{main.total}'>
+			<!-- BEGIN:express -->
+			<li>
+				<no>{express.no}</no>
+				<number>{express.number}</number>
+				<profit>{express.profit}</profit>
+				<shop_id>{express.shop_id}</shop_id>
+				<express_id>{express.express_id}</express_id>
+				<bind_number>{express.bind_number}</bind_number>
+				<deliver_date>{express.deliver_date}</deliver_date>
+				<freight_buyer>{express.freight_buyer}</freight_buyer>
+				<freight_seller>{express.freight_seller}</freight_seller>
+			</li>
+			<!-- END:express-->
+		</ul>
+	</express>
+	<freight_buyer_z>{main.freight_buyer_z}</freight_buyer_z>
+	<freight_seller_z>{main.freight_seller_z}</freight_seller_z>
+	<profit_z>{main.profit_z}</profit_z>
+	<shop_id>{main.shop_id}</shop_id>
+	<end_date>{main.end_date}</end_date>
+	<begin_date>{main.begin_date}</begin_date>
+	<express_id>{main.express_id}</express_id>
+	{main.page_info}
+</Body>
+</html>
+<!-- END: main -->

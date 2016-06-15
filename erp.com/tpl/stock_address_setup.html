@@ -1,0 +1,171 @@
+//---- UTF8 编码 ----
+<!-- BEGIN: main -->
+<html>
+<head>
+<title>设置配送地区</title>
+<link type="text/css" rel="stylesheet" href="/style/bootstrap.min.css?ver={main.doc_version}"/>
+<link type="text/css" rel="stylesheet" href="/style/style.css?ver={main.doc_version}"/>
+<style>
+body {
+	text-align:left;
+	min-width:370px;
+	/*height:360px;*/
+	/*overflow-y:hidden;*/
+	padding:0;
+}
+.error_color{
+	border:1px solid red;
+}
+label { font-weight:100;
+    margin-bottom: 0px;
+}
+._input{
+	overflow-x: hidden;
+	overflow-y: visible;
+	width: 100%;
+	height:100%;
+	line-height:30px;
+	cursor:text;
+}
+ .table tr th,td{
+ 	text-align: center;
+}
+.dropdown_body{
+	line-height:25px;
+	display:none;
+	margin-left:50px;
+}
+.car_left{
+	width:25px;
+	height:25px;
+	margin-top:2px;
+	border-radius: 3px;
+	line-height: 1;
+	padding: 4px 5px;
+}
+.car_left:hover{
+	background:#bbb;
+	border:1px solid lightblue;
+}
+.dropdown .checkbox{
+	margin-bottom:7px;
+	display:inline-block;
+}
+.dropbody label{
+	display: block
+}
+.all:hover{
+	cursor:pointer;
+}
+</style>
+<script type="text/javascript" src="/js_encode/jquery-1.9.1.min.js"></script>
+<script type="text/javascript" charset="UTF-8" src="/js_encode/jquery.smallslider.js"></script>
+
+<script type="text/javascript" charset="UTF-8" src="/js_encode/bootstrap.min.js"></script>
+<body>
+
+<form action="" method="post">
+	<div id="area_setting"  >
+		<div class="modal-body" style="height:300px;overflow: auto;">
+			<div style='height:24px;'>
+				<span class='all' style='height:24px;margin:5px 0 7px 20px;' name='all_Check'>全选</span>
+				<span class='all' style='margin:5px 0 7px 20px;' name='all_No'>全不选</span>
+				<span class='all' style='margin:5px 0 7px 20px;' name='all_Reverse'>反选</span>
+			</div>
+			<!-- BEGIN: provinceList -->
+			<div class="dropdown" >
+				<div class="dropdown_header" >
+			    	<span class="car_left"><span class="caret"></span></span><label for="{provinceList.id}"><input type="checkbox" class="checkbox" id="{provinceList.id}" name='sheng[]' value="{provinceList.id}" {provinceList.checked} />  {provinceList.name}</label>
+				</div>
+				<div class="dropdown_body">
+					<!-- BEGIN: cityList -->
+					<label for="{cityList.id}" style="margin-right: 5px;"><input type="checkbox" class="checkbox" id="{cityList.id}" name='shi[]' value="{cityList.id}" {cityList.checked} />  {cityList.name}</label>
+					<!-- END: cityList -->
+				</div>
+			</div>
+			<!-- END: provinceList -->
+		</div>
+		<div class="modal-footer">
+			<input class="btn btn-default btn-sm" data-dismiss="modal" id="area_confirm" type="submit" value='确定' />
+			<input class="btn btn-default btn-sm"  onclick="parent.$('#MessageBox').modal('hide')" data-dismiss="modal" type="button" value='取消' />
+		</div>
+	</div>
+</form>
+<script>
+
+$(function(){
+	$(".car_left").click(function(){
+		$(this).parents(".dropdown").find(".dropdown_body").slideToggle();
+	});
+
+	// 点击省选择框所辖市全选
+	$(".dropdown_header .checkbox").click(function(){
+		if(this.checked){
+			$(this).parents(".dropdown").find(".dropdown_body .checkbox").prop("checked",true);
+		}else{
+			$(this).parents(".dropdown").find(".dropdown_body .checkbox").prop("checked",false);
+		}
+	});
+	//点击全选
+	$("span[name=all_Check]").click(function(){
+		$('span[name=all_No]').prop('checked',false);
+		$('span[name=all_Reverse]').prop('checked',false);
+		$('.dropdown_header .checkbox').prop('checked',true);
+		$('.dropdown_body .checkbox').prop('checked',true);
+	})
+	//点击全不选
+	$("span[name=all_No]").click(function(){
+		$('span[name=all_Check]').prop('checked',false);
+		$('span[name=all_Reverse]').prop('checked',false);
+		$('.dropdown_header .checkbox').prop('checked',false);
+		$('.dropdown_body .checkbox').prop('checked',false);
+	})
+	//点击反选
+	$("span[name=all_Reverse]").click(function(){
+		$('span[name=all_Check]').prop('checked',false);
+		$('span[name=all_No]').prop('checked',false);
+		$('.dropdown_header .checkbox').each(function(){
+			var ttt = $(this);
+			var all_checked = true;
+			ttt.parents('.dropdown').find('.dropdown_body .checkbox').each(function(){
+				if(this.checked)
+				{
+					$(this).prop('checked',false);
+					all_checked = false;
+				}else{
+					$(this).prop('checked',true);
+				}
+			});
+			if(all_checked==false)
+			{
+				ttt.prop('checked',false);
+			}else{
+				ttt.prop('checked',true);
+			}
+		});
+
+	})
+	$(".dropdown_body .checkbox").click(function(){
+		var  sheng = $(this).parents(".dropdown").find(".dropdown_header .checkbox");
+		var  shi = $(this).parents(".dropdown").find(".dropdown_body .checkbox");
+		var  all_checked = true;
+		shi.each(function(){
+			if(this.checked){
+				return true;
+			}else{
+				all_checked = false;
+				return false;
+			}
+		});
+		if(all_checked==false){
+			sheng.prop("checked",false);
+		}else{
+			sheng.prop("checked",true);
+		}
+	});
+
+});
+</script>
+</body>
+</html>
+<!-- END: main -->

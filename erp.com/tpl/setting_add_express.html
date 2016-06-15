@@ -1,0 +1,101 @@
+//---- UTF8 编码 ----
+<!-- BEGIN: main -->
+<html>
+<head>
+<title>新增快递公司</title>
+<link type="text/css" rel="stylesheet" href="/style/bootstrap.min.css?ver={main.doc_version}"/>
+<link type="text/css" rel="stylesheet" href="/style/style.css?ver={main.doc_version}"/>
+<style>
+body {
+	text-align:left;
+	min-width:600px;
+	overflow-y:hidden;
+	padding:0;
+}
+.form-inline .form-control {
+	display: inline-block;
+	vertical-align: middle;
+}
+.form-inline .form-group {
+	display: inline-block;
+	vertical-align: middle;
+}
+</style>
+<script type="text/javascript" src="/js_encode/jquery-1.9.1.min.js"></script>
+<script type="text/javascript" src="/js_encode/jquery.area.three.js"></script>
+<script type="text/javascript" src="/js_encode/jquery.validate.js"></script>
+<script type="text/javascript" src="/js_encode/setting_add_express.js"></script>
+<script type="text/javascript" charset="UTF-8" src="/js_encode/bootstrap.min.js"></script>
+<body>
+	<div>
+		<form class="form-inline supplierMsg" method="post" action="/setting/setting_add_express.php">
+			<div class="form-group">
+				<label>搜索快递：</label>
+				<input type="text" class="form-control input-sm post" placeholder="搜索快递公司"/>
+				<label class="margin_left_1">对应快递：</label><select name="express_id" class="form-control input-sm wre  btn_margin" data-toggle="tooltip" data-placement="bottom" data-original-title="必选"></select>
+			</div><br/>
+			<div class="form-group float_left">
+				<label>快递名称：</label><input type="text" name="name" class="form-control input-sm " placeholder="必填"  data-toggle="tooltip" data-placement="bottom" data-original-title="必填"/>
+			</div>
+			<!--<div class="form-group">
+				<label class="margin_left_1">应付款：</label><div class="input-group"><div class="input-group-addon">￥</div><input type="text" class="form-control input-sm" name="payment" style="width:110px;"/></div>
+			</div>-->
+			<span class="float_left margin_left_1">应付款：</span>
+			<div class="input-group ">
+				<span class="input-group-addon input-sm">￥</span>
+				<input type="text" name="payment" class="form-control input-sm float_left" style="width:117px;">
+			</div>
+			<!--<div class="form-group">
+				<label class="margin_left_1">工本费：</label><div class="input-group"><div class="input-group-addon">￥</div><input type="text" class="form-control input-sm" name="fee" style="width:110px;"/></div>
+			</div>-->
+			<div style="margin-top:-30px;">
+				<span class="float_left margin_left_1" style="margin:5px 0 0 183px">工本费：</span>
+				<div class="input-group ">
+					<span class="input-group-addon input-sm">￥</span>
+					<input type="text" name="fee" class="form-control input-sm float_left" style="width:117px;">
+				</div>
+			</div><br/>
+			<div style="margin-top:-5px;display:inline-block;">
+			<div class="form-group shengDiv"></div>
+			<div class="form-group shiDiv"></div>
+			<div class="form-group xianDiv"></div><br/>
+			</div>
+			<div class="form-group">
+				<label>详细地址：</label><input type="text" class="form-control input-sm merger_two_row_4" name="address"/>
+			</div>
+			<div class="form-group">
+				<label class="margin_left_2">邮编：</label><input type="text" name="post_code" class="form-control input-sm"/>
+			</div>
+			
+			<div class="form-group">
+				<label class="margin_left_1">联系人：</label><input type="text" name="contact_name" class="form-control input-sm"/>
+			</div>
+			<div class="form-group">
+				<label class="margin_left_2">手机：</label><input type="text" onkeyup="value=value.replace(/[^\d]/g,'')" class="form-control input-sm" name="mobile"/>
+			</div>
+			<div class="form-group">
+				<label>固定电话：</label><input type="text" onkeyup="value=value.replace(/[^\d]/g,'')" class="form-control input-sm" name="telphone"/>
+			</div>
+			<!-- <div class="form-group">
+				<label>开户银行：</label><input type="text" value="数据库无字段，只有个银行id" name="bank_id" class="form-control input-sm"/>
+			</div>
+			<div class="form-group">
+				<label>银行账号：</label><input type="text" value="无字段" class="form-control input-sm"/>
+			</div>
+			<div class="form-group">
+				<label class="margin_left_2">税号：</label><input type="text" name="tax" class="form-control input-sm"/>
+			</div> -->
+			<div class="form-group">
+				<label class="margin_left_2">备注：</label><input type="text" name="body" class="form-control input-sm merger_three_row_8"/>
+			</div>
+			<p>
+				<!-- <input class="btn btn-default btn-sm btn_margin" name="send" type="submit" value="提交"/> -->
+				<input class="btn btn-default btn-sm btn_margin" type="button" name="send" value="提交"/>
+				<input class="btn btn-default btn-sm" type="button" value="关闭" onclick="parent.$('#MessageBox').modal('hide')" />
+			</p>
+		</form>
+	</div>
+</body>
+</html>
+
+<!-- END: main -->

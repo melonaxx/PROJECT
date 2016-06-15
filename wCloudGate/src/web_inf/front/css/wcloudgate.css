@@ -1,0 +1,26 @@
+body {
+    width: 100%;
+    margin: auto;
+    color: #554f4f;
+    background: #f7fafc;
+    font-size: 12px;
+    font-family: Microsoft Yahei, "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+.body {
+    height: 100%;
+    background: #ffffff;
+    margin:0px;
+    padding:0px;
+}
+
+a {
+    text-decoration: none;
+}
+
+a:hover {
+    background-color: #56ABEE;
+    text-decoration: none;
+    background: none;
+}
+

@@ -1,0 +1,44 @@
+<!-- BEGIN: main --><?xml version="1.0" encoding="UTF-8"?>
+{main.doc_type}
+<?xml-stylesheet type="text/xsl" href="/style/setting_express_postfee_vol.xsl?ver={main.doc_version}"?>
+<html version="{main.doc_version}">
+	<head>
+		<Title>{main.title}</Title>
+		<meta name="keywords" content="{main.keywords}" />
+		<meta name="description" content="{main.description}" />
+		<em company_id="{main.company_id}" staff_id="{main.staff_id}" login_name="{main.login_name}" permit="{main.permit}" program="{main.request_url}"/>
+	</head>
+	<Body>
+		<dir><![CDATA[ 您的位置： {main.this_location}]]></dir>
+		<menu>
+			<big>{main.big_menu}</big>
+			<small>
+				<!-- BEGIN: list_menu --><a class="{list_menu.class}" href="{list_menu.link}">{list_menu.name}</a><!-- END: list_menu -->
+			</small>
+		</menu>
+		<content>
+		<![CDATA[
+		{main.html_body}
+		]]>
+		</content>
+		<default_fee>{main.default_fee}</default_fee>
+		<least_fee>{main.least_fee}</least_fee>
+		<extra_fee>{main.extra_fee}</extra_fee>
+		<express_id>{main.express_id}</express_id>
+		<vol_fee>
+			<!-- BEGIN: vol_fee -->
+			<tr>
+				<area_id>{vol_fee.area_id}</area_id>
+				<area_name>{vol_fee.area_name}</area_name>
+				<store_id>{vol_fee.store_id}</store_id>
+				<store_name>{vol_fee.store_name}</store_name>
+				<num>{vol_fee.num}</num>
+				<per_fee>{vol_fee.per_fee}</per_fee>
+				<least_fee>{vol_fee.least_fee}</least_fee>
+				<extra_fee>{vol_fee.extra_fee}</extra_fee>
+			</tr>
+			<!-- END: vol_fee -->
+		</vol_fee>
+	</Body>
+</html>
+<!-- END: main -->

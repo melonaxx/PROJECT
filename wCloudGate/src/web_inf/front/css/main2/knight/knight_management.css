@@ -1,0 +1,44 @@
+.wmainlist .wllevel1 span{float:left;width:22px;height:22px;margin-top:10px;margin-right:10px;}
+.wmainlist .wllevel1:nth-of-type(1) span{background: url(/image/main2/integrate.png) no-repeat -40px -1px;}
+.wmainlist .wllevel1:nth-of-type(2) span{background: url(/image/main2/integrate.png) no-repeat -80px -1px;}
+.filterbox{width:100%;height:30px;margin:52px 0 20px;}
+.operatebtn{margin-right: 20px;float: left;}
+.filterbox select{float: right;}
+.wmaincontent table thead th:nth-of-type(8){width:240px;}
+.wmaincontent tbody tr td:nth-of-type(7) a{margin-right: 0;}
+/*点击分组管理按钮*/
+#modalgroupmanag .modalbox{width:700px;height:496px;padding:40px;}
+#modalgroupmanag .tablediv{margin-top:0;}
+#modalgroupmanag table thead th:nth-of-type(1){width:60px;}
+/*点击添加分组按钮*/
+#modaladdgroup .modalbox{width:320px;height:200px;margin-top: 200px;padding:10px;}
+#modaladdgroup .btns{margin-top:120px;}
+/*分组列修改*/
+#modalmodgroup .modalbox{width:320px;height:200px;margin-top: 200px;padding:10px;}
+#modalmodgroup .btns{margin-top:120px;}
+/*操作取消分配*/
+#modalcanceldist .modalbox{width:240px;height:110px;margin-top: 200px;padding:40px;}
+#modalcanceldist p{width:100%;text-align: center;font-size: 18px;height:24px;margin-bottom: 40px;}
+/*操作分配车辆*/
+#modaldistcar .modalbox{width:700px;height:496px;padding:40px;}
+#modaldistcar .tablediv{margin-top:0;}
+#modaldistcar table thead th:nth-of-type(1){width:60px;}
+#modaldistcar .finishdiv a{color:#fff;}
+/*操作删除*/
+#modaldelete .modalbox{width:240px;height:110px;margin-top: 200px;padding:40px;}
+#modaldelete p{width:100%;text-align: center;font-size: 18px;height:24px;margin-bottom: 40px;}
+.page {float: right;margin-top: 16px;}
+.page input {width: 64px;height: 24px;border: 1px solid #ccc;text-align: center;}
+/*----------------table------------------*/
+.carmtop div{width:632px;}
+.carmtop h4{width:148px;float: left;text-align: center;}
+.carmtop .input-groupc label{width:40px;}
+.carmtrcontent{height:110px;}
+.serialnum{width:70px;line-height:110px;}
+.cartrinf{width:538px;height: 90px;padding:10px 0 10px 40px;}
+.cartrope{float:left;width:150px;height: 100%;}
+.cartrope a{display:block;width:100%;text-align: center;}
+.cartrope a:nth-of-type(1){margin-top: 10px;}
+.input-groupc{width:268px;}
+.tablea{margin:0 6px;}
+.input-groupc .spelabel{width:88px;margin-left: -26px;}

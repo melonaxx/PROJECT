@@ -1,0 +1,47 @@
+//---- UTF8 编码 ----
+<!-- BEGIN: main --><?xml version="1.0" encoding="UTF-8"?>
+{main.doc_type}
+<?xml-stylesheet type="text/xsl" href="/style/purchase_add.xsl?ver={main.doc_version}"?>
+<html version="{main.doc_version}">
+	<head>
+		<Title>{main.title}</Title>
+		<meta name="keywords" content="{main.keywords}" />
+		<meta name="description" content="{main.description}" />
+		<em company_id="{main.company_id}" staff_id="{main.staff_id}" login_name="{main.login_name}" permit="{main.permit}" program="{main.request_url}"/>
+	</head>
+	<Body>
+		<dir><![CDATA[ 您的位置：{main.this_location}]]></dir>
+		<menu>
+			<big>{main.big_menu}</big>
+			<small>
+				<!-- BEGIN: list_menu --><a class="{list_menu.class}" href="{list_menu.link}">{list_menu.name}</a><!-- END: list_menu -->
+			</small>
+		</menu>
+		<section>
+			{main.user_info}
+		</section>
+		<purchase_add>
+			<ul>
+				<!-- BEGIN:purchase_add -->
+				<li><text>{purchase_add.name}</text><value>{purchase_add.id}</value></li>
+				<!-- END:purchase_add -->
+			</ul>
+		</purchase_add>
+		<store>
+			<ul>
+				<!-- BEGIN:store -->
+				<li><text>{store.name}</text><value>{store.id}</value></li>
+				<!-- END:store -->
+			</ul>
+		</store>
+		<product_name>
+			<ul>
+				<!-- BEGIN:product_name -->
+				<li><text>{product_name.name}</text><value>{product_name.name}</value></li>
+				<!-- END:product_name -->
+			</ul>
+		</product_name>
+		<business_date>{main.business_date}</business_date>
+	</Body>
+</html>
+<!-- END: main -->

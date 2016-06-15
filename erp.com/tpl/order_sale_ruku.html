@@ -1,0 +1,185 @@
+//---- UTF8 编码 ----
+<!-- BEGIN: main -->
+<html>
+<head>
+<title>商品入库</title>
+
+<link rel="stylesheet" href="/style/bootstrap-datetimepicker.min.css"></link>
+<link type="text/css" rel="stylesheet" href="/style/bootstrap.min.css?ver={main.doc_version}"/>
+<link type="text/css" rel="stylesheet" href="/style/style.css?ver={main.doc_version}"/>
+<style>
+body,table,form,input		{font-size:12px; padding:0; margin:0}
+body {
+	min-width:100px;
+	overflow-y:auto;
+	overflow-x:auto;
+}
+
+.bordercolor {
+	border-color:red;
+}
+
+.dis {
+	display:none;
+}
+</style>
+<script type="text/javascript" charset="UTF-8" src="/js_encode/jquery-1.9.1.min.js"></script>
+<!-- 时间插件 -->
+<script type="text/javascript" src="/js_encode/bootstrap-datetimepicker.min.js"></script>
+<script type="text/javascript" src="/js_encode/bootstrap-datetimepicker.zh-CN.js"></script>
+<script type="text/javascript">
+$(function(){
+	$('input[name=date]').datetimepicker({
+		language:'zh-CN',
+		format:'yyyy-mm-dd',
+		autoclose:true,
+		minView:2,
+    });
+	//入库数量的判断
+    $('table tr td').on('keyup','input[name="ruku[]"]',function(){
+    	var ru = $(this).val();
+    	//未入库数
+    	var total = $(this).parents('tr').find('td:nth-child(6)').find('input[name=total]').val();
+    	// 已入库数
+    	var have = $(this).parents('tr').find('td:nth-child(5)').find('input[name=have]').val();
+    	// 在库数量
+    	var aftertotal = $(this).parents('tr').find('input[name=aftertotal]').val();
+    	// 商品总数量
+    	var oldTotal = $(this).parents('tr').find('input[name=oldTotal]').val();
+
+    	if(ru == ""){
+    		ru = 0;
+    	}
+    	if(have == ""){
+    		have = 0;
+    	}
+
+		if(parseInt(ru) > parseInt(total)){
+    		ru = total;
+    		$(this).val(ru);
+
+    	}
+
+    	var total_wait = total-ru;
+    	var cc = parseInt(have)+parseInt(ru);
+    	$(this).parents('tr').find('td:nth-child(6)').find('.total').html(total_wait);
+    		$(this).parents('tr').find('td:nth-child(5)').find('.have').html(cc);
+    	$(this).parents('tr').find('td:nth-child(6)').find('input[name="total_wait[]"]').val(total_wait);
+
+    	var diff = parseInt(oldTotal)-parseInt(aftertotal);
+    	if(parseInt(ru) > diff) {
+    		$(this).val(diff);
+    		$(this).parents('tr').find('td:nth-child(5)').find('.have').html(diff);
+    		$(this).parents('tr').find('.total').html('0');
+    	}
+    })
+    //---- 是否显示未退货的商品----
+    var wtotal = $('table tr td').find('.total');
+    $.each(wtotal,function(){
+    	if($(this).text() == 0) {
+	    	$(this).parent('td').parent('tr').addClass('dis');
+	    }
+    });
+    //---- 提交时入库数量的验证 ----
+    $('.form-inline').submit(function(){
+    	var bTotal = 0;
+    	var aTotal = 0;
+    	$(".supplierMsg input[name='ruku[]']").each(function(i,v){
+    		var v = $(this).val();
+    		if (v) {
+    			bTotal++;
+    		}
+    		aTotal++;
+    	})
+		if (bTotal == 0) {
+    		alert('入库数量不能为空！');
+    		return false;
+    	}
+    	return true;
+    });
+
+
+})
+</script>
+<form class="form-inline supplierMsg" method="post" action="">
+	<!-- BEGIN: arr -->
+		<div class="form-group">
+			<label class="margin_left_1">订单编号：</label>
+			<input type="text" name="bind_number" value='{arr.bind_number}' readonly="readonly" class="form-control input-sm" style="width:147px;">
+			<input type="hidden" name="order_id" value='{arr.id}' readonly="readonly" class="form-control input-sm">
+		</div>
+		<div class="form-group">
+			<label class="margin_left_1">店铺：</label>
+			<input type="hidden" name="shop_id" value="{arr.user_id}">
+			<input class="form-control input-sm find" name="" value="{arr.shop_name}" readonly="readonly" >
+		</div>
+		<div class="form-group">
+			<label class="margin_left_1">仓库：</label>
+			<select name="store_id" id="" style="width:147px;" class="form-control input-sm">
+				<!-- BEGIN: store -->
+				<option value="{store.id}">{store.name}</option>
+				<!-- END: store -->
+			</select>
+		</div><br>
+		<div class="form-group">
+			<label class="margin_left_1">入库日期：</label>
+			<input class="form-control input-sm" name="date" type="text" value="{arr.rq}">
+		</div>
+		<div class="form-group">
+			<label class="margin_left_1">备注：</label>
+			<input class="form-control input-sm merger_two_row_4 find" type="text" name="body" style="width:370px;">
+		</div>
+	<div style="width:100%;float:left;">
+		<div style="float:left;">
+			<h4 class="padding_clear">商品信息</h4>
+		</div>
+	</div>
+	<!-- END: arr -->
+	<div class="currentMsg" style="width:100%;float:left;">
+		<table class="table table-bordered table-hover">
+			<tr>
+				<th width='46px'>序号</th>
+				<th width="80px;">入库数量</th>
+				<th width="250px;">商品名称</th>
+				<th width="257px;">商品规格</th>
+				<th width="80px;">已入库数量</th>
+				<th width="80px;">未入库数量</th>
+			</tr>
+			<!-- BEGIN: product -->
+			<tr>
+				<td>{product.num}</td>
+				<td>
+					<input type="text" class="form-control input-sm float_left" onbeforepaste="clipboardData.setData('text',clipboardData.getData('text').replace(/[^\d\.]/g,''))" onkeyup ="value = value.replace(/[^\d\.]/,'')" name="ruku[]">
+				</td>
+				<td>{product.name}
+					<input type="hidden" name="product_id[]" value="{product.product_id}">
+					<input type="hidden" name="after_id" value="{product.after_id}">
+				</td>
+				<td>{product.format}</td>
+				<td>
+					<div class='have'>{product.ru}</div>
+					<input type="hidden" name="have" value="{product.ru}">
+					<input type="hidden" name='oldTotal' value="{product.oldTotal}">
+					<input type="hidden" name='aftertotal' value="{product.aftertotal}">
+				</td>
+				<td>
+					<div class="total">{product.total}</div>
+					<input type="hidden" name="total_wait[]" value="{product.total}">
+					<input type="hidden" name="total" value="{product.total}">
+				</td>
+			</tr>
+			<!-- END: product -->
+		</table>
+	</div>
+
+	<div class="float_left btn_margin margin_top_3">
+		<input class="btn btn-default btn-sm  margin_left_0" type="submit" name="submit" value="确定" />
+		<input class="btn btn-default btn-sm  margin_left_0" type="button" onclick="parent.$('#MessageBox').modal('hide')"  value="取消"/>
+	</div>
+</form>
+
+</body>
+</html>
+
+<!-- END: main -->
+

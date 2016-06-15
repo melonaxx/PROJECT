@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>外麦王云平台</title>
+	<link rel="stylesheet" type="text/css" href="/css/main2/base.css"/>
+	<link rel="stylesheet" type="text/css" href="/css/main2/car/car_activation.css"/>
+</head>
+<body>
+	<?php include("header.html"); ?>
+	<div class="section">
+		<div class="wmain">
+			<ul class="wmainlist">
+				<li class="wllevel1 manageract">
+					<a href="/platform/carmanagement.php" ><span></span>车辆管理<p></p></a>
+					<ul class="wllevel2">
+						<li class="mlsonactive cactive"><a href="/platform/carmanagement.php">所有车辆</a></li>
+						<li><a href="/platform/carabnormal.php">异常车辆</a></li>
+					</ul>
+				</li>
+				<li class="wllevel1">
+					<a href="/platform/caractive.php" class="wllevel1active"><span></span>车辆激活<p class="wlrightarrow"></p></a>
+					<ul class="wllevel2 cdeactive">
+						<li <?=$operation['caractive']?> ><a href="/platform/caractive.php">车辆激活</a></li>
+						<li class="mlsonactive" <?=$operation['cardeactive']?> ><a href="/platform/cardeactive.php">解除激活</a></li>
+					</ul>
+				</li>
+			</ul>
+
+			<div class="wmaincontent cardeactive" >
+				<h1 class="wmch1">|&nbsp;车辆解除激活</h1>
+				<h2 class="carnumh2">电动车序列号</h2>
+				<textarea class="activationbox" placeholder="多个序列号激活时请以回车隔开" name="deactive"></textarea>
+				<div class="error-message deacmsg">
+				</div>
+				<div class="btns2">
+					<button class="activation deactivebtn" type="button" >解除激活</button>
+				</div>
+				<div class="activresult deactivemsg">
+					<div class="arsummary deactivenum">
+						激活成功:<span></span>辆&nbsp;&nbsp;&nbsp;&nbsp;激活失败:<span></span>辆
+					</div>
+					<div class="tablediv detablediv">
+						<table>
+							<thead>
+								<tr>
+									<th>序号</th>
+									<th>序列号</th>
+									<th>备注</th>
+								</tr>
+							</thead>
+							<tbody>
+							</tbody>
+						</table>
+					</div>
+				</div>
+
+			</div>
+
+
+
+		</div>
+	</div>
+
+	<div class="modal modalsured">
+		<div class="cover"></div>
+		<div class="modalboxd modalbox">
+			<p>是否确定解除激活？</p>
+			<div class="btnd btns">
+				<button class="deadd">确定</button>
+				<button class="canceld">取消</button>
+			</div>
+		</div>
+	</div>
+
+	<?php include("footer.html"); ?>
+	<script src="/js/jquery-1.8.2.min.js"></script>	
+	<script src="/js/main2/common.js"></script>
+	<script src="/js/util.js"></script>
+	<script src="/js/car/caractivate.js"></script>
+
+</body>
+</html>

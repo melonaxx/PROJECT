@@ -1,0 +1,54 @@
+//---- UTF8 编码 ----
+<!-- BEGIN: main -->
+<html>
+<head>
+<title>选择店铺</title>
+<link type="text/css" rel="stylesheet" href="/style/bootstrap.min.css?ver={main.doc_version}"/>
+<link type="text/css" rel="stylesheet" href="/style/style.css?ver={main.doc_version}"/>
+<style>
+body {
+	text-align:left;
+	min-width:600px;
+	overflow-y:hidden;
+	padding:0;
+}
+.form-inline .form-control {
+	display: inline-block;
+	vertical-align: middle;
+}
+.form-inline .form-group {
+	display: inline-block;
+	vertical-align: middle;
+}
+</style>
+<!-- <script type="text/javascript" charset="UTF-8" src="/js_encode/bootstrap.min.js"></script> -->
+<body>
+	<div>
+		<form class="form-inline supplierMsg" method="post" action="product_select_shop.php">
+			<div class="form-group" style="margin-top:10px;">
+				<label>选择店铺：</label>
+				<select class="form-control input-sm" name="user_id">
+					<!-- BEGIN: arr -->
+					<option value="{arr.user_id}">{arr.name}</option>
+					<!-- END: arr -->
+				</select>
+			</div><br/>
+			<div class="form-group" style="display:none;">
+				<label>下载商品：</label>
+				<select class="form-control input-sm" name="down">
+					<!-- <option>不下载</option> -->
+					<!-- <option>下载到米欢</option> -->
+					<option value="download">下载到米欢并建立对应关系</option>
+				</select>
+			</div>
+			<div style="margin-top:40px;"></div>
+			<p>
+				<input class="btn btn-default btn-sm btn_margin" type="submit" name="submit" value="确定"/>
+				<input class="btn btn-default btn-sm"  onclick="parent.$('#MessageBox').modal('hide')" data-dismiss="modal" type="button" value='取消' />
+			</p>
+		</form>
+	</div>
+</body>
+</html>
+
+<!-- END: main -->

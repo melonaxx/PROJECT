@@ -1,0 +1,155 @@
+//---- UTF8 编码 ----
+<!-- BEGIN: main -->
+<html>
+<head>
+<title>设置配送仓库</title>
+<link type="text/css" rel="stylesheet" href="/style/bootstrap.min.css?ver={main.doc_version}"/>
+<link type="text/css" rel="stylesheet" href="/style/style.css?ver={main.doc_version}"/>
+<style>
+body {
+	text-align:left;
+	min-width:280px;
+	/*overflow-y:hidden;*/
+	padding:0;
+}
+
+.form-inline .form-group {
+	display: inline-block;
+	vertical-align: middle;
+}
+.error_color{
+	border:1px solid red;
+}
+
+td label { font-weight:100;
+    	margin-bottom: 0px;}
+
+</style>
+<script type="text/javascript" src="/js_encode/jquery-1.9.1.min.js"></script>
+<script type="text/javascript" src="/js_encode/jquery.area.three.js"></script>
+<script type="text/javascript" src="/js_encode/jquery.validate.js"></script>
+<script type="text/javascript" charset="UTF-8" src="/js_encode/jquery.smallslider.js"></script>
+
+<script type="text/javascript" charset="UTF-8" src="/js_encode/bootstrap.min.js"></script>
+<body>
+	<div id="fee_setting" style="display:;margin:0 auto">
+		<div class="modal-body" style="height:250px;overflow:auto">
+			<table border="0" class="table tab_select table-bordered table-hover first_weight" style="table-layout:fixed; overflow:hidden;width:100%">
+				<tr>
+					<th class="table_th_number"><input type="checkbox" id="all_checked" /></th>
+					<th>仓库名称</th>
+				</tr>
+				<!-- BEGIN: storeList -->
+				<tr>
+					<td class="table_th_number"><input class="check" store_id="{storeList.id}" store_name=" {storeList.name}" type="checkbox" id="{storeList_id}"></td>
+					<td><label for="{storeList_id}"> {storeList.name}</label></td>
+				</tr>
+				<!-- END: storeList -->
+				
+			</table>
+		</div>
+		<div class="modal-footer" style="">
+			<button class="btn btn-default btn-sm" data-dismiss="modal" id="store_confirm">确定</button>
+			<button class="btn btn-default btn-sm" onclick="parent.$('#MessageBox').modal('hide')" data-dismiss="modal">取消</button>
+		</div>
+	</div>
+
+<script>
+$(function(){
+	// 全选
+	$("#all_checked").click(function(){
+		if(this.checked){
+			$(".check").prop("checked",true);
+		}else{
+			$(".check").prop("checked",false);
+		}
+	});
+	
+	// 提交
+	$("#store_confirm").click(function(){
+		var store_str_text 	= "";
+		var store_str_id 	= "";
+
+		$(".check").each(function(){
+			if(this.checked){
+				store_str_id  += $(this).attr("store_id")+",";
+				store_str_text += $(this).attr("store_name")+",";
+			}
+		});
+
+			store_str_id =  store_str_id.substring(0,store_str_id.length-1);
+			store_str_text =  store_str_text.substring(0,store_str_text.length-1);
+		// 地区仓库是否重复
+		var area_store_repeat = false;
+		parent.$("#weight .store").each(function(a){
+			var store_id = [];
+			var store_str = $(this).attr("store_id");
+			store_id = store_str.split(",");
+			var str_id = [];
+			str_id = store_str_id.split(",");
+			for (var i=0,iLen=store_id.length; i<iLen; i++){
+	            for (var j=0,jLen=str_id.length; j<jLen; j++){
+	                // 除了单前行 其他行没有所选的地区
+	                // 正在操作的行  b
+					var b = parent.store_setting.parents("table tr").index();
+	                if (store_id[i]===str_id[j] && str_id[j]!="" && a+1 != b){
+	                	// 并且当前行所选仓库不与其他行重复
+	                	var area_ids_b = parent.store_setting.parents("table").find("tr:eq("+b+") .area").attr("area_id");
+	                	var area_ids_a = parent.store_setting.parents("table").find("tr:eq("+parseInt(a+1)+") .area").attr("area_id");
+						var ids_b = [];
+						var ids_a = [];
+						ids_b = area_ids_b.split(",");
+						ids_a = area_ids_a.split(",");
+	                	for (var p=0,pLen=ids_b.length; p<pLen; p++){
+	           				for (var q=0,qLen=ids_a.length; q<qLen; q++){
+	           					if(ids_b[p] === ids_a[q]){
+	           						// console.log(ids_b[p]);
+	           						// console.log(ids_a[q]);
+	       							alert("地区/仓库与第"+parseInt(a+1)+"行重复！");
+	       							area_store_repeat = true;
+	       						    return false;	
+	           					}
+	           				}
+	           			}
+	 
+	                }
+	            }
+	        }
+			
+		});
+
+		// var default_rule = parent.$("input[name=default_rule]").val();
+		// var tr = "<tr><td style='text-align:center'>1</td><td style='text-align:center'><a class='delete_one' href='javascript:;'>删除</a></td><td ><span class='area' area_id=''></span><a style='display:bolock;float:right' area_id='' href='javascript:;' class='setting_area'>设置</a></td><td>	<span class='store' store_id=''></span>	<a style='display:bolock;float:right' href='javascript:;' store_id='' class='setting_store'>设置</a></td><td>"+default_rule+"</td><td style='text-align:center'><a  class='setting_rule'>设置</a ></td></tr>";
+		// 设置返回值
+		if(area_store_repeat == false){
+			parent.store_setting.parents("td").find(".store").text(store_str_text);
+			parent.store_setting.parents("td").find(".store").attr("store_id",store_str_id);
+			
+			if(store_str_text!=""){
+				index_tr = parent.store_setting.parents("tr").index();
+				var len = parent.$('#weight table tr').length;
+				if(index_tr==len-1){
+					parent.$("#weight table").append(parent.tr);
+			        for(var i = 1;i<len;i++){
+						var len = parent.$('#weight table tr').length;
+			            parent.$('#weight table tr:eq('+i+') td:first').text(i);
+			      	}
+				}
+			}
+			parent.$('#MessageBox').modal('hide');
+		}
+	});
+
+	var store_ids = parent.store_setting.parents("td").find(".store").attr("store_id");
+	$(".check").each(function(){
+		var store_id = $(this).attr("store_id");
+		if(store_ids.indexOf(store_id) != -1){
+			$(this).prop("checked","checked");
+		}
+	});
+
+});		
+</script>
+</body>
+</html>
+<!-- END: main -->

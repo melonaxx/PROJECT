@@ -1,0 +1,44 @@
+//---- UTF8 编码 ----
+<!-- BEGIN: main --><?xml version="1.0" encoding="UTF-8"?>
+{main.doc_type}
+<?xml-stylesheet type="text/xsl" href="/style/finance_after_flow.xsl?ver={main.doc_version}"?>
+<html version="{main.doc_version}">
+<head>
+	<Title>{main.title}</Title>
+	<meta name="keywords" content="{main.keywords}" />
+	<meta name="description" content="{main.description}" />
+	<em company_id="{main.company_id}" staff_id="{main.staff_id}" login_name="{main.login_name}" permit="{main.permit}" program="{main.request_url}"/>
+</head>
+<Body>
+	<!-- <dir><![CDATA[ 您的位置： {main.this_location}]]></dir> -->
+	<dir><![CDATA[ 您的位置：<a href="/">首页</a> &raquo; <a href="/finance/">财务</a> &raquo; 退款流水]]></dir>
+	<menu>
+		<big>{main.big_menu}</big>
+		<small>
+			<!-- BEGIN: list_menu --><a class="{list_menu.class}" href="{list_menu.link}">{list_menu.name}</a><!-- END: list_menu -->
+		</small>
+	</menu>
+	<begin_date>{main.begin_date}</begin_date>
+	<end_date>{main.end_date}</end_date>
+	<fin_order>
+		<ul total="main.total">
+			<!-- BEGIN: fin_order -->
+			<li>
+				<no>{fin_order.no}</no>
+				<id>{fin_order.id}</id>
+				<order_id>{fin_order.order_id}</order_id>
+				<bank_id>{fin_order.bank_id}</bank_id>
+				<payment>{fin_order.payment}</payment>
+				<refund>{fin_order.refund}</refund>
+				<after_date>{fin_order.after_date}</after_date>
+				<user_id>{fin_order.user_id}</user_id>
+				<bind_number>{fin_order.bind_number}</bind_number>
+				<staff_id>{fin_order.receiver_name}</staff_id>
+			</li>
+			<!-- END: fin_order -->
+		</ul>
+	</fin_order>
+	{main.page_info}
+</Body>
+</html>
+<!-- END: main -->

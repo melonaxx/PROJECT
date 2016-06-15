@@ -1,0 +1,67 @@
+//---- UTF8 编码 ----
+<!-- BEGIN: main -->
+<html>
+<head>
+<title>添加单位</title>
+<link type="text/css" rel="stylesheet" href="/style/bootstrap.min.css?ver={main.doc_version}"/>
+<link type="text/css" rel="stylesheet" href="/style/style.css?ver={main.doc_version}"/>
+<style>
+body {
+	text-align:left;
+	min-width:600px;
+	overflow-y:hidden;
+	padding:0;
+}
+.form-inline .form-control {
+	display: inline-block;
+	vertical-align: middle;
+}
+.form-inline .form-group {
+	display: inline-block;
+	vertical-align: middle;
+}
+</style>
+<script type="text/javascript" src="/js_encode/jquery-1.9.1.min.js"></script>
+<body>
+	<div>
+		<form class="form-inline supplierMsg" method="post" action="/product/product_add_company.php">
+			<div class="form-group">
+				<label>单位名称：</label><input name="name" type="text" class="form-control input-sm name"/>
+			</div><br/>
+			<p>
+				<input class="btn btn-default btn-sm btn_margin" name="made" type="submit" value="提交"/>
+				<input class="btn btn-default btn-sm" type="button" value="关闭" onclick="parent.$('#MessageBox').modal('hide')" />
+			</p>
+		</form>
+	</div>
+</body>
+<script type="text/javascript">
+	$(".name").blur(function(){
+		var value = $(this).val();
+		$.ajax({
+			'url':'/product/product_add_company.php',
+			'async':true,
+			'type':"POST",
+			'data':{"aa":value},
+			'dataType':'json',
+			'success':function(data){
+				if(data == 'no'){
+					$(".name").css('border','1px solid red');
+					$(".name").val("");
+					$("input[name='made']").attr('disabled','true');
+					$(".name").attr('placeholder','不能重复，否则不保存');
+					$(".name").focus(function(){
+						$("input[name='made']").removeAttr('disabled');
+					});
+				}else{
+					$("input[name='made']").removeAttr('disabled');
+					$(".name").css('border','1px solid #ccc');
+					$(".name").removeAttr('placeholder');
+				}
+			}
+		});
+	})
+</script>
+</html>
+
+<!-- END: main -->

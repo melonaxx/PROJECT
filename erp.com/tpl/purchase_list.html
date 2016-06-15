@@ -1,0 +1,43 @@
+//---- UTF8 编码 ----
+<!-- BEGIN: main --><?xml version="1.0" encoding="UTF-8"?>
+{main.doc_type}
+<?xml-stylesheet type="text/xsl" href="/style/purchase_list.xsl?ver={main.doc_version}"?>
+<html version="{main.doc_version}">
+	<head>
+		<Title>{main.title}</Title>
+		<meta name="keywords" content="{main.keywords}" />
+		<meta name="description" content="{main.description}" />
+		<em company_id="{main.company_id}" staff_id="{main.staff_id}" login_name="{main.login_name}" permit="{main.permit}" program="{main.request_url}"/>
+	</head>
+	<Body>
+		<dir><![CDATA[ 您的位置： {main.this_location}]]></dir>
+		<menu>
+			<big>{main.big_menu}</big>
+			<small>
+				<!-- BEGIN: list_menu --><a class="{list_menu.class}" href="{list_menu.link}">{list_menu.name}</a><!-- END: list_menu -->
+			</small>
+		</menu>
+		<application_date>{main.application_date}</application_date>
+		<staff>{main.staff}</staff>
+		<purchase_main>
+			<ul total='{main.total}'>
+				<!-- BEGIN:purchase_main -->
+				<li>
+					<number>{purchase_main.number}</number>
+					<total>{purchase_main.total}</total>
+					<price>{purchase_main.price}</price>
+					<store_id>{purchase_main.store_id}</store_id>
+					<staff_id>{purchase_main.staff_id}</staff_id>
+					<brief>{purchase_main.brief}</brief>
+					<id>{purchase_main.id}</id>
+					<status_audit>{purchase_main.status_audit}</status_audit>
+					<action_date>{purchase_main.action_date}</action_date>
+					<supplier_id>{purchase_main.supplier_id}</supplier_id>
+				</li>
+				<!-- END:purchase_main -->
+			</ul>
+		</purchase_main>
+		{main.page_info}
+	</Body>
+</html>
+<!-- END: main -->

@@ -1,0 +1,82 @@
+//---- UTF8 编码 ----
+<!-- BEGIN: main -->
+<html>
+<head>
+<title>详细</title>
+<link type="text/css" rel="stylesheet" href="/style/bootstrap.min.css?ver={main.doc_version}"/>
+<link type="text/css" rel="stylesheet" href="/style/style.css?ver={main.doc_version}"/>
+<style>
+body {
+	text-align:left;
+	min-width:600px;
+	overflow-y:hidden;
+	padding:0;
+}
+.form-inline .form-control {
+	display: inline-block;
+	vertical-align: middle;
+}
+.form-inline .form-group {
+	display: inline-block;
+	vertical-align: middle;
+}
+</style>
+<script type="text/javascript" src="/js_encode/jquery-1.9.1.min.js"></script>
+<!-- <script type="text/javascript" charset="UTF-8" src="/js_encode/bootstrap.min.js"></script> -->
+<body>
+	<div>
+		<form class="form-inline supplierMsg" method="post" action="/stock/stock_edit_factory.php">
+			<input type="hidden" name='id' value='{main.id}' />
+			<div class="form-group">
+				<label class="margin_left_2">日期：</label><input type="text" value="{main.action_date}" class="form-control input-sm" readonly />
+			</div>
+			<div class="form-group">
+				<label class="margin_left_1">操作人：</label><input type="text" value="{main.output_staff_id}" readonly name="name" class="form-control input-sm"/>
+			</div><br/>
+			<div class="form-group">
+				<label>发货仓库：</label><input type="text" value="{main.output_store_id}" readonly class="form-control input-sm"/>
+			</div>
+			<div class="form-group">
+				<label>收货仓库：</label><input type="text" value="{main.input_store_id}" readonly class="form-control input-sm"/>
+			</div>
+			<div class="form-group">
+				<label class="margin_left_2">备注：</label><input type="text" name='body' value="{main.body}" class="form-control input-sm" style="width:380px;"/>
+			</div>
+			<table style="width:568px;" class="table table-bordered table-hover">
+				<tr>
+					<th class="table_th_number" width="46px;">序号</th>
+					<th width="210px;">商品名称</th>
+					<th width="210px;">规格</th>
+					<th width="100px;">数量</th>
+				</tr>
+				<tr>
+					<td class="center">1</td>
+					<td>{main.product_id}</td>
+					<td>{main.format}</td>
+					<td>{main.total}</td>
+				</tr>
+			</table>
+			<p>
+				<input class="btn btn-default btn-sm" type="button" value="关闭" onclick="parent.$('#MessageBox').modal('hide')" />
+			</p>
+		</form>
+	</div>
+</body>
+<script>
+	var body = $('input[name=body]').val();
+	$('input[name=body]').blur(function(){
+		var newbody = $(this).val();
+		var id = $('input[name=id]').val();
+		if(newbody != body)
+		{
+			$.ajax({
+				url:'stock_single_list_details.php',
+				type:'post',
+				data:{'id':id,'body':newbody},
+			})
+		}
+	})
+</script>
+</html>
+
+<!-- END: main -->

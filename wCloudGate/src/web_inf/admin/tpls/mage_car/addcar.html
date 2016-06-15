@@ -1,0 +1,69 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>外麦王云平台</title>
+        <link rel="stylesheet" type="text/css" href="/css/common.css"/>
+        <link rel="stylesheet" href="//cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="/css/allotcar.css"/>
+    </head>
+    <body>
+        <?php include('mage_header.html');?>
+        <section>
+        <?php include('mage_left.html')?>
+        <div class="right">
+            <div class="content">
+                <!-- Nav tabs -->
+                <ul class="nav nav-tabs usersnav" role="tablist">
+                    <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">新增车辆</a></li>
+                    <!--<li role="presentation" class="relievecar"><a href="/relievecar.php?userid=<?=$userid?>&username=<?=$username?>">解除激活</a></li>-->
+                    <!--<li role="presentation"><a href="#messages" aria-controls="messages" role="tab" data-toggle="tab">店铺</a></li>-->
+                </ul>
+
+                <!-- Tab panes -->
+                <div class="tab-content">
+                    <div class="caractive">                                                               
+                        <ul class="carsernum">                                                            
+                            <li class="sernumact"><a href="javascript:void(0);">电动车序列号</a></li>     
+                        </ul>                                                                             
+                        <textarea class="activationbox" placeholder="多个序列号请以回车隔开" name="active"></textarea>
+
+                        <div class="activemsg" style="width: 300px;height: 20px;border:0px solid gold;margin-top: 7px;"></div>
+                        <div class="btnss" style="margin-bottom: 0px;">                                   
+                            <button class="activation activebtn" type="button" >新增</button>             
+                            <button class="cancel">取消</button>                                          
+                        </div>                                                                            
+                    </div>                                                                                
+                    <div class='msg'></div>
+                    <div class='msgg'></div>
+                    <div class="modal">                                     
+                        <div class="cover"></div>                           
+                        <div class="modalbox">                              
+                            <p>确定新增电动车吗？</p>                           
+                            <div class="btns">                              
+                                <button class="sure">确定</button>          
+                                <button class="cancel">取消</button>        
+                            </div>                                          
+                        </div>                                              
+                    </div>
+                    <div class="modalr">
+                        <div class="cover"></div>
+                        <div class="modalboxr">
+                            <p>正在激活中,请勿操作!</p>
+                        </div>
+                    </div>                                              
+                </div>
+            </div>
+        </div>
+        </section>
+        <script src="//cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
+        <script src="//cdn.bootcss.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+        <script src="/js/addcar.js"></script>
+        <script src="/js/util.js"></script>
+        <script src="/js/header.js"></script>
+    </body>
+</html>
+
+
+
+

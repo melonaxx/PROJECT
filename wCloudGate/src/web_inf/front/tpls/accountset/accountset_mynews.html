@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>外麦王云平台</title>
+        <link rel="stylesheet" type="text/css" href="/css/main2/base.css"/>
+        <link rel="stylesheet" type="text/css" href="/css/main2/accountset/mynews.css"/>
+    </head>
+    <body>
+        <?php include('header.html');?>
+        <div class="section">
+            <div class="wmain">
+                <ul class="wmainlist">
+                    <li class="wllevel1">
+                    <a href="" class="wllevel1active"><span></span>我的消息<p class="wlrightarrow"></p></a>
+                    <ul class="wllevel2">
+                        <li class="mlsonactive"><a href="">车辆消息</a></li>
+                        <li><a href="">员工消息</a></li>
+                        <li><a href="">劳务方消息</a></li>
+                    </ul>
+                    </li>
+                </ul>
+                <div class="wmaincontent">
+                    <h1 class="wmch1">|&nbsp;车辆消息</h1>
+                    <table>
+                        <tbody>
+                            <tr>
+                                <td>1</td>
+                                <td>2014年11月29日</td>
+                                <td>您分配了<span>1</span>辆电动车<span>72168121</span>给<span>天天外卖</span></td>
+                                <td><a>删除</a></td>
+                            </tr>
+                            <tr>
+                                <td>2</td>
+                                <td>2014年11月29日</td>
+                                <td>您分配了<span>1</span>辆电动车<span>72168121</span>给<span>天天外卖</span></td>
+                                <td><a>删除</a></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        
+        <?php include('footer.html');?>
+        <script src="/js/jquery-1.11.0.js"></script>
+        <script type="text/javascript" src="/js/main2/common.js"></script>
+        <script>
+            // 左侧列表二级菜单的显示隐藏
+            $(".wllevel1").hover(
+            function(){
+            $(this).find(".wllevel2").show();
+            },
+            function(){
+            $(this).find(".wllevel2").hide();
+            });
+            $(".useroperul li:eq(0)").addClass("useractive");
+        </script>
+    </body>
+</html>
+

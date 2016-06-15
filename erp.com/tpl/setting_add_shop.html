@@ -1,0 +1,45 @@
+//---- UTF8 编码 ----
+<!-- BEGIN: main -->
+<html>
+<head>
+<title>添加店铺</title>
+<link type="text/css" rel="stylesheet" href="/style/bootstrap.min.css?ver={main.doc_version}"/>
+<link type="text/css" rel="stylesheet" href="/style/style.css?ver={main.doc_version}"/>
+<style>
+body {
+	text-align:left;
+	min-width:600px;
+	overflow-y:hidden;
+	padding:0;
+}
+.form-inline .form-control {
+	display: inline-block;
+	vertical-align: middle;
+}
+.form-inline .form-group {
+	display: inline-block;
+	vertical-align: middle;
+}
+</style>
+
+<body>
+	<div>
+		<form class="form-inline" method="post" target="_blank" action="/setting/setting_add_shop.php">
+			<div class="form-group">
+				<label>销售平台：</label>
+				<select class="form-control input-sm" name="bind_type">
+				<!-- BEGIN: list_type -->
+				<option value="{list_type.id}">{list_type.name}</option>
+				<!-- END: list_type -->
+				</select>
+			</div><br/>
+			<p>
+				<input class="btn btn-default btn-sm btn_margin" type="submit" value="授权"/>
+			</p>
+		</form>
+	</div>
+</body>
+</html>
+
+<!-- END: main -->
+

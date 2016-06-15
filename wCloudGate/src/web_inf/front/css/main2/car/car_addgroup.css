@@ -1,0 +1,18 @@
+.wmainlist{min-height: 865px;}
+.wmaincontent{min-height: 825px;}
+.wmainlist .wllevel1 span{float:left;width:17px;height:21px;margin-top:10px;margin-right:10px;}
+.wmainlist .wllevel1:nth-of-type(1) span{background: url(/image/main2/integrate2.png) no-repeat -27px 0;}
+.wmainlist .wllevel1:nth-of-type(2) span{background: url(/image/main2/integrate2.png) no-repeat 0 0;}
+.carnumh2{width:100%;font-size: 14px;margin:52px 0 10px;height:22px;}
+.activationbox{resize:none;width:100%;border:1px solid #ccc;height:148px;box-sizing:border-box;padding:10px;font-size: 14px;line-height:20px;}
+.error-message{height:12px;padding:10px 0;}
+.btns2{margin-top: 10px;}
+/*----------激活结果----------*/
+.activresult{display:none;margin-top:30px;}
+.arsummary{width: 100%;font-size: 14px;}
+.arsummary span{color:#dd1714;border-bottom: 1px solid #dd1714;padding:0 8px;margin:0 8px;}
+.tablediv{margin: 10px 0;}
+.activastatic{color:#dd1714;}
+/*----------------------------*/
+.modalsure .modalbox,.modalsured .modalbox{padding:40px;width:200px;height: 100px;margin-top: 200px;}
+.modalsure p,.modalsured p{font-size: 18px;width: 100%;text-align: center;margin-bottom: 30px;}

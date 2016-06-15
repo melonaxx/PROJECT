@@ -1,0 +1,79 @@
+//---- UTF8 编码 ----
+<!-- BEGIN: main -->
+<html>
+<head>
+<title>添加账户</title>
+<link type="text/css" rel="stylesheet" href="/style/bootstrap.min.css?ver={main.doc_version}"/>
+<link type="text/css" rel="stylesheet" href="/style/style.css?ver={main.doc_version}"/>
+<style>
+body {
+	text-align:left;
+	min-width:600px;
+	overflow-y:hidden;
+	padding:0;
+}
+.form-inline .form-control {
+	display: inline-block;
+	vertical-align: middle;
+}
+.form-inline .form-group {
+	display: inline-block;
+	vertical-align: middle;
+}
+</style>
+<script type="text/javascript" src="/js_encode/jquery-1.9.1.min.js"></script>
+<script type="text/javascript" src="/js_encode/finance_add_account.js"></script>
+<script type="text/javascript" charset="UTF-8" src="/js_encode/bootstrap.min.js"></script>
+<script type="text/javascript" src="/js_encode/jquery.validate.js"></script>
+<body>
+	<div>
+		<form class="form-inline" method="post" action="/finance/finance_add_account.php">
+			<div class="form-group">
+				<label>默认帐户：</label>
+				<input type="radio" name="is_default" class="" value="Y"/>&nbsp;&nbsp;是
+				&nbsp;&nbsp;&nbsp;&nbsp;
+				<input type="radio" name="is_default" class="" value="N" checked="checked"/>&nbsp;&nbsp;否
+				<span style="margin-left:25px;">当前默认账户为：{main.default}</span>
+			</div><br/>
+			<div class="form-group">
+				<label>账户名称：</label><input type="text" placeholder="必填" name="name" class="form-control input-sm" data-toggle="tooltip" data-placement="bottom" title="必填"/>
+			</div><br/>
+
+			<div class="form-group">
+				<label>账户号码：</label><input type="text" name='number' class="form-control input-sm"/>
+			</div>
+			<div class="form-group">
+				<label>账户类型：</label><select name="type" class="form-control input-sm"><option value="Cashier">出纳账户</option><option value="Company">公司账户</option><option value="Special">特殊账户</option><option value="Secret">私密账户</option></select>
+			</div><br/>
+			<div class="form-group">
+				<label class="margin_left_2">备注：</label><textarea class="form-control input-sm merger_two_row_4" rows="3" name='body'></textarea>
+			</div>
+			<p>
+				<input class="btn btn-default btn-sm btn_margin" name="made" type="submit" value="提交"/>
+				<input class="btn btn-default btn-sm" type="button" value="关闭" onclick="parent.$('#MessageBox').modal('hide')" />
+			</p>
+		</form>
+	</div>
+</body>
+<script type="text/javascript">
+	$('input[name=name]').blur(function() {
+    	$('input[name=name]').removeClass("error_color");
+
+    });
+	$('.form-inline').submit(function(){
+    	var name = $('input[name=name]').val();
+    	if(name == ''){
+    		$('input[name=name]').addClass("error_color");
+    		$('input[name=name]').tooltip("show");
+    		return false;
+    	}else{
+    		$('input[name=name]').removeClass("error_color");
+    		$('input[name=name]').tooltip("hide");
+    		return true;
+    	}
+    })
+</script>
+
+</html>
+
+<!-- END: main -->

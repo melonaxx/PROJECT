@@ -1,0 +1,49 @@
+.ftable{
+	width:850px;
+    border-color:#2A8DC8;
+}
+.ftable td{
+	text-align:center;
+	border-color:#2A8DC8;
+	height:50px;
+}
+.info{
+	font-size:12px;
+    width:70px;
+    border-color:#2A8DC8;
+}
+.val{
+	font-size:14px;
+	color:#D60A0A;
+	width:60px;
+}
+#form input[type='text']{
+	border:0px;
+    width:80%;
+    height:30px;
+    color:#D60A0A;
+	text-align: center;
+}
+#update{
+	width:80px;
+	height:25px;
+	text-align: center;
+	font-size: 12px;
+	background-color:#ECECEC;
+	display:inline-block;
+	border-radius:5px;
+	line-height:25px;
+	border:1px solid black;
+}
+#fbut{
+	width:80px;
+	height:25px;
+	text-align: center;
+	font-size: 12px;
+	background-color:#ECECEC;
+	display:inline-block;
+	border-radius:5px;
+	line-height:25px;
+	border:1px solid black;
+	cursor:pointer;
+}

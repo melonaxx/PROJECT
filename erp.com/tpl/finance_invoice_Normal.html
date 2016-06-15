@@ -1,0 +1,55 @@
+//---- UTF8 编码 ----
+<!-- BEGIN: main -->
+<html>
+<head>
+<title>删除收入科目</title>
+<link type="text/css" rel="stylesheet" href="/style/bootstrap.min.css?ver={main.doc_version}"/>
+<link type="text/css" rel="stylesheet" href="/style/style.css?ver={main.doc_version}"/>
+<style>
+body {
+	text-align:left;
+	padding:0;
+}
+.border_color{
+	border:1px solid #E74C3C;
+}
+</style>
+<script type="text/javascript" src="/js_encode/jquery-1.9.1.min.js"></script>
+<script type="text/javascript" charset="UTF-8" src="/js_encode/bootstrap.min.js"></script>
+</head>
+<body>
+
+<form class="margin_top" method="post" action="">
+<div class="float_left" style="width:260px;margin:5px 0 0 12px;">
+	<span class="float_left">类型：</span>
+	<div style="width:220px;">{billing.tax_type}</div>
+</div>
+<div class="float_left" style="width:260px;margin:5px 0 0 10px;">
+	<span class="float_left">开票时间：</span>
+	<div style="width:200px;">{billing.action_date}</div>
+</div><br/><br/>
+<div class="float_left" style="width:530px;margin:5px 0 0 12px;">
+	<span class="float_left">抬头：</span>
+	<div style="width:490px;">{billing.tax_title}</div>
+</div><br/><br/>
+<div class="float_left" style="width:530px;margin:5px 0 0 12px;">
+	<span class="float_left">明细：</span>
+	<div style="width:490px;">{billing.tax_text}</div>
+</div><br/><br/>
+<div class="float_left" style="width:260px;margin:5px 0 0 0;">
+	<span class="float_left">操作人：</span>
+	<div style="width:210px;">{billing.staff_id}</div>
+</div>
+<div class="float_left" style="width:260px;margin:5px 0 0 22px;">
+	<span class="float_left">发票号码：</span>
+	<div style="width:200px;">{billing.number}</div>
+</div><br/><br/>
+<div class="table_operate_block" style="margin-top:10px;">
+	<input type="button" class="btn btn-default btn-sm cancel" value="返回" onclick="parent.$('#MessageBox').modal('hide')" />
+</div>
+
+</form>
+
+</body>
+</html>
+<!-- END: main -->

@@ -1,0 +1,136 @@
+//---- UTF8 编码 ----
+<!-- BEGIN: main -->
+<html>
+<head>
+<title>选择产品经理</title>
+<link type="text/css" rel="stylesheet" href="/style/bootstrap.min.css?ver={main.doc_version}"/>
+<link type="text/css" rel="stylesheet" href="/style/style.css?ver={main.doc_version}"/>
+<style>
+body {
+	text-align:left;
+	min-width:370px;
+	/*height:360px;*/
+	/*overflow-y:hidden;*/
+	padding:0;
+}
+.all:hover{
+	cursor:pointer;
+}
+input[type="checkbox"]{
+	width:20px;
+	height:20px;
+}
+
+</style>
+<script type="text/javascript" src="/js_encode/jquery-1.9.1.min.js"></script>
+<script type="text/javascript" charset="UTF-8" src="/js_encode/jquery.smallslider.js"></script>
+
+<script type="text/javascript" charset="UTF-8" src="/js_encode/bootstrap.min.js"></script>
+<body>
+
+
+<!-- <div style="margin-left:50px;width:70px;float:left;margin-top:10px;"><input type="radio" name="{manager_list.id}"><span style="font-size:13px;position:relative;top:3px;">{manager_list.nick}</span></div> -->
+	<input type="text" name="son" style="display:none;"/>
+	<div>
+		<div style="height:300px;overflow: auto;">
+			<div style='height:24px;margin-left:400px;'>
+			<form method="post" action="/product/product_manager.php">
+				<input class="btn btn-default btn-sm" type="button" id="checked_no" value='取消产品经理'  style="float:left;position:relative;left:-366px;"/>
+				<div style="margin-left:138px;">
+				<input type="text" name="nick" placeholder="请输入姓名" autocomplete="off"  class="form-control input-sm" style="width:150px;float:left;"/>
+				<!-- <input class="btn btn-default btn-sm" data-dismiss="modal" type="submit" value='搜索'"/> -->
+				<span class="input-group-btn">
+							<button class="btn btn-default btn-sm">搜索</button>
+				</span>
+				</div>
+			</form>
+			</div>
+			<div style="clear:both;"></div>
+			<center>
+			<table style="width:700px;margin-top:10px;" class="table table-bordered table-hover supplierMsg">
+				<tr>
+					<th style="width:50px;text-align:center;">序号</th>
+					<th style="width:100px;text-align:center;display:none;">员工工号</th>
+					<th style="width:100px;text-align:center;">员工编号</th>
+					<th style="width:100px;text-align:center;">操作</th>
+					<th class="center">姓名</th>
+					<th class="center">所属部门</th>
+				</tr>
+			<!-- BEGIN: manager_list -->
+				<tr style="height:30px;">
+					<td class="center">{manager_list.ii}</td>
+					<td class="center" style="display:none;">{manager_list.id}</td>
+					<td class="center">{manager_list.number}</td>
+					<td class="center"><input type="radio" style="width:30px;"/></td>
+					<td class="center">{manager_list.nick}</td>
+					<td class="center">{manager_list.name}</td>
+				</tr>
+			<!-- END: manager_list -->
+			</table>
+			</center>
+		</div>
+		<div class="modal-footer">
+			<input class="btn btn-default btn-sm" data-dismiss="modal" id="manager_sub" type="submit" value='确定' />
+			<input class="btn btn-default btn-sm"  onclick="parent.$('#MessageBox').modal('hide')" data-dismiss="modal" type="button" onclick='fun()' value='取消' />
+		</div>
+	</div>	
+
+<script>
+//获取点击
+numm = 0;
+$("input[type='radio']").click(function(){
+	numm++;
+	$("input[type='radio']").prop("checked",false);
+	$(this).prop("checked",true);
+	nam = $(this).parent().siblings("td").eq(3).html();
+	num = $(this).parent().siblings('td').eq(1).html();
+});
+
+$("#checked_no").click(function(){
+	// if($(this).val()=="选定产品经理"){
+	// 	$(this).val("取消产品经理");
+	// 	$("input[type='radio']").attr("disabled",true);
+		$("input[type='radio']").prop("checked",false);
+		numm++;
+		nam = $(this).parent().siblings("td").eq(3).html();
+	num = $(this).parent().siblings('td').eq(1).html();
+	// }else{
+	// 	$(this).val("选定产品经理");
+	// 	$("input[type='radio']").attr("disabled",false);
+	// }
+});
+
+//提交处理
+$("#manager_sub").click(function(){
+	parent.$('#MessageBox').modal('hide');
+	// if($("#checked_no").val()=="取消"){
+	// 	parent.$("#manager").val("");
+	// 	parent.$("#manager_num").val("");
+	// }else{
+	// 	parent.$("#manager").val(nam);
+	// 	parent.$("#manager_num").val(num);
+	// }
+	if(numm>0){
+		parent.$("#manager").val(nam);
+		parent.$("#manager_num").val(num);
+	}else{
+		// parent.$("#manager").val("");
+		// parent.$("#manager_num").val("");
+		nam = $($("input[name='radio']").prop("checked") = true).parent().siblings("td").eq(3).html();
+		num = $($("input[name='radio']").prop("checked") = true).parent().siblings('td').eq(1).html();
+		parent.$("#manager").val(nam);
+		parent.$("#manager_num").val(num);
+	}		
+});
+
+	$("input[name='son']").val(parent.$("#manager").val());
+	var cpjl = $("input[name='son']").val();
+	$("input[type='radio']").each(function(){
+		if($(this).parent().next("td").html() == cpjl){
+			$(this).prop("checked",true);exit;
+		}
+	})
+</script>
+</body>
+</html>
+<!-- END: main -->

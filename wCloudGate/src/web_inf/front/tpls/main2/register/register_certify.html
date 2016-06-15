@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>外麦王云平台</title>
+	<link rel="stylesheet" type="text/css" href="/css/main2/base.css"/>
+	<link rel="stylesheet" type="text/css" href="/css/main2/register/registercommon.css"/>
+	<link rel="stylesheet" type="text/css" href="/css/main2/register/register_certify.css"/>
+</head>
+<body>
+	<header>
+		<div class="header">
+			<div class="topleft">
+				<div class="logo">
+					<a class="img"><img src="/image/main2/logo.png"/></a>
+				</div>
+				<p></p>
+				<p>欢迎注册</p>
+			</div>
+			<div class="topright">
+				<p>已有账号</p>
+				<p><a href="">请登录</a></p>
+			</div>
+		</div>
+	</header>
+	<section>
+		<div class="rtop">
+			<div class="rprogress">
+				<div class="circle"></div>
+				<div class="hbar">填写信息</div>
+				<div class="circle"></div>
+				<div class="hbar">创建账户</div>
+				<div class="circle"></div>
+				<div class="hbar">认证账户</div>
+				<div class="circle"></div>
+				<div class="hbar">审核账户</div>
+				<div class="circle"></div>
+			</div>
+		</div>
+ 	    <div class="formtop">
+			账号<span><?=$phone?></span>已创建
+		</div>
+		<div class="accountstate">
+			当前账户尚未被邀请或认可，您可以
+			<a class="waitinvi">等待邀请</a>
+			或者去
+			<a href="">认证企业</a>
+		</div>
+		<div class="accountope">
+			<input type="button" class="agreenbtn waitinvi" value="继续等待">
+			<input type="button" class="agreenbtn" value="去认证">
+		</div>
+	</section>
+	<div class="modal">
+		<div class="cover"></div>
+		<div class="modalbox">
+			<div class="modaltop">
+				<img src="/image/main2/close.png" class="close"/>
+				<span>|</span>
+				<span>等待邀请</span>
+			</div>
+			<div class="waitimg"></div>
+			<p>您的账号尚未被邀请,等待邀请中...</p>
+		</div>
+	</div>
+	<footer id="footer">
+		<ul>
+			<li><a href="javascript:void(0)">公司简介</a></li>
+			<li class="vbar">|</li>
+			<li><a href="javascript:void(0)">联系我们</a></li>
+			<li class="vbar">|</li>
+			<li><a href="javascript:void(0)">加入我们</a></li>
+			<li class="vbar">|</li>
+			<li><a href="javascript:void(0)">新闻中心</a></li>
+		</ul>
+		<div><a href="javascript:void(0)">北京外麦王科技有限公司版权所有&nbsp;京ICP备09092621号-3</a></div>
+	</footer>
+	<script src="/js/jquery-1.11.0.js"></script>
+	<script type="text/javascript" src="/js/main2/common.js"></script> 
+	<script>
+		$(".waitinvi").on("click",function(){
+			$(".modal").show();
+		})
+		$(".close").on("click",function(){
+			$(".modal").hide();
+		})
+	</script>
+</body>
+</html>

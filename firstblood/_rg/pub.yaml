@@ -1,0 +1,44 @@
+__publishs:
+    sys_local:
+        pkg     : !P.pkg &sys_pkg
+            name    : "firstblood"
+            root    : ""
+            exclude : 
+                - ".pyc"
+                - ".git"
+        deploy  : !P.deploy &sys_deploy
+            sudo    : True
+            root    : "/home/q/system"
+        host: !P.host 
+            include : 
+                - "127.0.0.1"
+        setup   : !P.rigger
+             sys    : "all"
+             os     : "diy"
+             env    : "online"
+    sys_demo: !P.publish
+        pkg     : *sys_pkg
+        deploy  : *sys_deploy
+        host    : !P.host 
+            include: 
+                - "172.16.101.35"
+        setup: !P.rigger
+             sys    : "all"
+             os     : "diy"
+             env    : "demo"
+#              cmd    : "echo 'done';"
+#              vars   : "V1=abc"
+
+    sys_online: !P.publish
+        pkg     : *sys_pkg
+        deploy  : !P.deploy
+            sudo    : True
+            root    : "/home/q/system"
+            user    : "search"
+        host    : !P.host 
+            include: 
+                - "123.56.190.44"
+        setup: !P.rigger
+             sys    : "all"
+             os     : "diy"
+             env    : "online"

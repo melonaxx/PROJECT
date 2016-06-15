@@ -1,0 +1,44 @@
+//---- UTF8 编码 ----
+<!-- BEGIN: main -->
+<html>
+<head>
+<title>修改盘点单</title>
+<link type="text/css" rel="stylesheet" href="/style/bootstrap.min.css?ver={main.doc_version}"/>
+<link type="text/css" rel="stylesheet" href="/style/style.css?ver={main.doc_version}"/>
+<style>
+body {
+	text-align:left;
+	min-width:500px;
+	padding:0
+}
+.form-inline .form-control {
+	display: inline-block;
+	vertical-align: middle;
+}
+.form-inline .form-group {
+	display: inline-block;
+	vertical-align: middle;
+}
+</style>
+<script type="text/javascript" charset="UTF-8" src="/js_encode/jquery-1.9.1.min.js"></script>
+<script type="text/javascript" src="/js_encode/stock_num_setup.js"></script>
+<body>
+	<div>
+		<form class="form-inline supplierMsg" method="post" action="/stock/stock_num_setup.php">
+			<div class="form-group">
+				<label>成本均价：</label><input type="text" value="{main.cost}" name="cost" class="form-control input-sm"/>
+			</div><br/>
+			<div class="form-group">
+				<label>成本数量：</label><input type="text" value="{main.total}" name="total" class="form-control input-sm"/>
+			</div>
+			<input type="hidden" value="{main.id}" name="related_id"/>
+			<p>
+				<input class="btn btn-default btn-sm btn_margin" name="send" type="submit" value="提交"/>
+				<input class="btn btn-default btn-sm" type="button" value="关闭" onclick="parent.$('#MessageBox').modal('hide')" />
+			</p>
+		</form>
+	</div>
+</body>
+</html>
+
+<!-- END: main -->

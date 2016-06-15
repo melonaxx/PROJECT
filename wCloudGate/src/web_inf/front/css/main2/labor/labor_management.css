@@ -1,0 +1,45 @@
+.wmainlist .wllevel1 span{float:left;width:24px;height:22px;margin-top:10px;margin-right:10px;}
+.wmainlist .wllevel1:nth-of-type(1) span{background: url(/image/main2/integrate.png) no-repeat 0 0;}
+.wmainlist .wllevel1:nth-of-type(2) span{background: url(/image/main2/integrate2.png) no-repeat -301px 0;}
+.filterbox{width:100%;height:30px;margin:52px 0 20px;}
+.filterbox select{float: right;margin-right: 30px;}
+.searchdiv{float:right;}
+.wmaincontent table tr td:nth-of-type(3) a{margin-right: 0;}
+.wmaincontent table thead th:nth-of-type(5){width:200px;}
+/* ----所属员工修改---- */
+#modalmodemp .modalbox{width:340px;height:210px;margin-top: 200px;}
+#modalmodemp .btns{margin-top: 120px;}
+/* ----分配车辆操作---- */
+#modaldistribute .modalbox{width:700px;height:546px;padding: 40px;}
+#modaldistribute table thead th:nth-of-type(1){width:60px;}
+#modaldistribute table thead th:nth-of-type(2){width:60px;}
+#modaldistribute .distcarbtn{width:90px;}
+.coverson{z-index:9999;}
+#modalnoselect .modalbox{z-index: 10000;font-size: 18px;width:200px;height:100px;padding: 40px;padding-top: 46px;margin-top: 200px;}
+#modalnoselect .modalbox p{width:100%;text-align: center;}
+#modalnoselect .finishbtn{margin-top: 36px;}
+/*----删除操作----*/
+#modaldelete .modalbox{padding:40px;width:300px;height: 150px;margin-top: 200px;}
+#modaldelete p{width: 100%;text-align: center;}
+#modaldelete p:nth-of-type(1){font-size: 18px;color: #358dcc;}
+#modaldelete p:nth-of-type(2){font-size: 14px;margin: 20px 0;}
+.page{float: right;margin-top: 16px;}
+.page select{height:26px;margin:0 4px 0 2px;}
+.page a{margin:0 2px;}
+.page input{width:64px;height:24px;border:1px solid #ccc;text-align: center;}
+.nowpagesel{width:68px;height:22px;}
+/* ---------------table------------- */
+.carmtop div{width:602px;}
+.carmtop h4{width:178px;float: left;text-align: center;}
+.carmtop .input-groupc label{width:50px;}
+.carmtrcontent{height:80px;}
+.serialnum{width:56px;line-height:80px;}
+.cartrinf{width:518px;height: 60px;padding:10px 0 10px 40px;}
+.cartrope{float:left;width:170px;height: 100%;padding-top: 10px;box-sizing:border-box;}
+.cartrope a{width:50%;text-align: center;float: left;}
+.input-groupc{width:278px;}
+.tablea{margin:0 6px;}
+.owner{color:#4F96DA;}
+.owner:hover{cursor:pointer;}
+.receive{color:#4F96DA;}
+.receive:hover{cursor:pointer;}

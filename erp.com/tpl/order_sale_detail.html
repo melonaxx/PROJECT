@@ -1,0 +1,102 @@
+//---- UTF8 编码 ----
+<!-- BEGIN: main -->
+<html>
+<head>
+<title>入库信息</title>
+<link type="text/css" rel="stylesheet" href="/style/bootstrap.min.css?ver={main.doc_version}"/>
+<link type="text/css" rel="stylesheet" href="/style/style.css?ver={main.doc_version}"/>
+<style>
+body,table,form,input		{font-size:12px; padding:0; margin:0}
+body {
+	min-width:100px;
+	overflow-y:auto;
+	overflow-x:auto;
+}
+
+</style>
+<script type="text/javascript" charset="UTF-8" src="/js_encode/jquery-1.9.1.min.js"></script>
+<script type="text/javascript">
+$(function(){
+    $('table tr td:nth-child(2)').on('keyup','input[name="ruku[]"]',function(){
+    	var ru = $(this).val();
+    	var total = $(this).parents('tr').find('td:nth-child(6)').find('input[name=total]').val();
+    	var have = $(this).parents('tr').find('td:nth-child(5)').find('input[name=have]').val();
+    	if(ru == ""){
+    		ru = 0;
+    	}
+    	if(have == ""){
+    		have = 0;
+    	}
+    	if(parseInt(ru) > parseInt(total)){
+    		ru = total;
+    		$(this).val(ru);
+    	}
+    	var total_wait = total-ru;
+    	var cc = parseInt(have)+parseInt(ru);
+    	$(this).parents('tr').find('td:nth-child(5)').find('.have').html(cc);
+    	$(this).parents('tr').find('td:nth-child(6)').find('.total').html(total_wait);
+    	$(this).parents('tr').find('td:nth-child(6)').find('input[name="total_wait[]"]').val(total_wait);
+    })
+
+})
+</script>
+<form class="form-inline supplierMsg">
+	<!-- BEGIN: arr -->
+		<div class="form-group">
+			<label  class="margin_left_1">订单编号：</label>
+			<input type="text" name="bind_number" value='{arr.bind_number}' readonly="readonly" class="form-control input-sm" style="width:147px;">
+			<input type="hidden" name="order_id" value='{arr.order_id}' readonly="readonly" class="form-control input-sm" style="width:147px;">
+		</div>
+		<div class="form-group">
+			<label  class="margin_left_1">售后单号：</label>
+			<input type="text" name="after_id" value='{arr.after_id}' readonly="readonly" class="form-control input-sm" style="width:147px;">
+		</div>
+		<div class="form-group">
+			<label class="margin_left_1">店铺：</label>
+			<input type="text" readonly="readonly" class="form-control input-sm" name="shop_id" value="{arr.shop_name}">
+		</div>
+		<div class="form-group">
+			<label class="margin_left_1">仓库：</label>
+			<input type="text" readonly="readonly" class="form-control input-sm" name="shop_id" value="{arr.store_name}">
+		</div><br/>
+		<div class="form-group">
+			<label class="margin_left_1">入库日期：</label>
+			<input class="form-control input-sm" name="date" readonly="readonly" type="text" value="{arr.date}">
+		</div>
+		<div class="form-group">
+			<label class="margin_left_1">备注：</label>
+			<input class="form-control input-sm merger_two_row_4 find" readonly="readonly" type="text" name="body" value="{arr.body}" style="width:620px;">
+		</div>
+	<!-- END: arr -->
+	<div style="width:100%;float:left;">
+		<div style="float:left;">
+			<h4 class="padding_clear">商品信息</h4>
+		</div>
+	</div>
+	<div class="currentMsg" style="width:100%;float:left;">
+		<table class="table table-bordered table-hover">
+			<tr>
+				<th width='46px'>序号</th>
+				<th width="295px;">商品名称</th>
+				<th width="297px;">商品规格</th>
+				<th width="100px;">已入库数量</th>
+				<th width="100px;">未入库数量</th>
+			</tr>
+			<!-- BEGIN: product -->
+			<tr>
+				<td>{product.num}</td>
+				<td>{product.name}</td>
+				<td>{product.format}</td>
+				<td><div class='have'>{product.total_finish}</div></td>
+				<td><div class="total">{product.total_wait}</div></td>
+			</tr>
+			<!-- END: product -->
+		</table>
+	</div>
+</form>
+
+</body>
+</html>
+
+<!-- END: main -->
+

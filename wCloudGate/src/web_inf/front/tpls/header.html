@@ -1,0 +1,32 @@
+<header>
+	<div class="header">
+		<div class="topleft">
+			<div class="logo">
+				<a href="/index.php" class="img"><img src="/image/main2/logo.png"/></a>
+			</div>
+			<ul class="nav">
+			<?php 
+			$header = "";
+			switch($xcontext->usertype) {
+			case 0 :
+				$header = "header/headeremployee.html";
+				break;
+			case 1 :
+				$header = "header/headerplatform.html";
+				break;			
+			case 2 :
+				$header = "header/headerlabor.html";
+				break;			
+			case 4 :
+				$header = "header/headerknight.html";
+				break;
+			default:
+                break;
+			}
+			include($header);
+			?>
+			</ul>
+		</div>
+	</div>
+</header>
+

@@ -1,0 +1,71 @@
+
+<phpunit bootstrap="/home/liwanguo/devspace/firstblood/test//bootstrap.php" >
+    <php>
+        <includePath></includePath>
+                <server name="MYVIMRC" value="/home/liwanguo/.vimrc" />
+        <server name="VARNISHD" value="/usr/local/sbin/varnishd" />
+        <server name="RUN_ROOT" value="/var/run" />
+        <server name="PRJ_NAME" value="firstblood" />
+        <server name="PYTHON" value="python" />
+        <server name="DB_PWD" value="waimaiw" />
+        <server name="PRJ_ROOT" value="/home/liwanguo/devspace/firstblood/" />
+        <server name="MODULES" value="/home/liwanguo/devspace/firstblood//src/logic:/home/liwanguo/devspace/firstblood//test/:/usr/local/php/lib/php" />
+        <server name="VARNISHADM" value="/usr/local/bin/varnishadm" />
+        <server name="NGINX_CONF_PATH" value="/usr/local/nginx/conf/include" />
+        <server name="LESSOPEN" value="||/usr/bin/lesspipe.sh %s" />
+        <server name="PHP_INI" value="/home/liwanguo/devspace/firstblood//conf/used/test_php.ini" />
+        <server name="PHP_CGI" value="/usr/local/php/bin/php-cgi" />
+        <server name="SSH_CLIENT" value="192.168.1.208 50452 22" />
+        <server name="CVS_RSH" value="ssh" />
+        <server name="LOGNAME" value="liwanguo" />
+        <server name="USER" value="liwanguo" />
+        <server name="PRJ_KEY" value="firstblood" />
+        <server name="HOME" value="/home/liwanguo" />
+        <server name="MEMCACHED" value="/usr/local/bin/memcached" />
+        <server name="PHP" value="/usr/local/php/bin/php" />
+        <server name="LANG" value="zh_CN.UTF-8" />
+        <server name="LOG_ROOT" value="/tmp/rigger/firstbloodliwanguo" />
+        <server name="TERM" value="xterm" />
+        <server name="PYL_LOG_MODE" value="DEBUG" />
+        <server name="SHLVL" value="4" />
+        <server name="G_BROKEN_FILENAMES" value="1" />
+        <server name="HISTSIZE" value="1000" />
+        <server name="LOGROTATE" value="/etc/logrotate.d/" />
+        <server name="DB_USER" value="root" />
+        <server name="DOMAIN_PREFIX" value="liwanguo." />
+        <server name="SUNDIAL" value="/home/q/php/sundial" />
+        <server name="PRJ_INCLUDE" value="/home/liwanguo/devspace/firstblood//conf:/home/liwanguo/devspace/firstblood//src/apps/console/:/home/liwanguo/devspace/firstblood//src/" />
+        <server name="RUN_PATH" value="/home/liwanguo/devspace/firstblood//run/test" />
+        <server name="BEANSTALKD" value="/usr/local/bin/beanstalkd" />
+        <server name="APACHE_CTRL" value="/usr/local/apache2/bin/apachectl" />
+        <server name="APACHE_CONF_PATH" value="/usr/local/apache2/conf/include" />
+        <server name="G" value="git@git.imihuan.com" />
+        <server name="OPCACHE_ENABLE" value="0" />
+        <server name="NGINX_CTRL" value="/usr/local/nginx/sbin/nginx -s " />
+        <server name="APP_SYS" value="test" />
+        <server name="DEV_SPACE" value="/home/liwanguo/devspace/" />
+        <server name="ENV" value="dev" />
+        <server name="DEBUG" value="1" />
+        <server name="SPAWN_FCGI" value="/usr/local/bin/spawn-fcgi" />
+        <server name="APP_NAME" value="test" />
+        <server name="GEARMAND" value="/usr/local/sbin/gearmand" />
+        <server name="VIMRUNTIME" value="/usr/share/vim/vim74" />
+        <server name="SSH_CONNECTION" value="192.168.1.208 50452 192.168.1.35 22" />
+        <server name="SYSLOG" value="/usr/local/bin/syslog-ng" />
+        <server name="SSH_TTY" value="/dev/pts/9" />
+        <server name="HOSTNAME" value="VM-DEV-02" />
+        <server name="VIM" value="/usr/share/vim" />
+        <server name="HISTCONTROL" value="ignoredups" />
+        <server name="PWD" value="/home/liwanguo/devspace/firstblood" />
+        <server name="DB_NAME" value="firstblood" />
+        <server name="DB_HOST" value="127.0.0.1" />
+        <server name="MYSQL" value="/usr/local/mysql/bin/mysql" />
+        <server name="MAIL" value="/var/spool/mail/liwanguo" />
+
+    </php>
+    <testsuites>
+        <testsuite name="phpunit auto conf">
+            <directory suffix="__NOFOUND_[TEST_SUFFIX]__">/home/liwanguo/devspace/firstblood/test/</directory>
+        </testsuite>
+    </testsuites>
+</phpunit>

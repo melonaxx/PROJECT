@@ -1,0 +1,77 @@
+//---- UTF8 编码 ----
+<!-- BEGIN: main --><?xml version="1.0" encoding="UTF-8"?>
+{main.doc_type}
+<?xml-stylesheet type="text/xsl" href="/style/stock_real_inventory.xsl?ver={main.doc_version}"?>
+<html version="{main.doc_version}">
+<head>
+	<Title>{main.title}</Title>
+	<meta name="keywords" content="{main.keywords}" />
+	<meta name="description" content="{main.description}" />
+	<em company_id="{main.company_id}" staff_id="{main.staff_id}" login_name="{main.login_name}" permit="{main.permit}" program="{main.request_url}"/>
+</head>
+<Body>
+	<dir><![CDATA[ 您的位置： {main.this_location}]]></dir>
+	<menu>
+		<big>{main.big_menu}</big>
+		<small>
+			<!-- BEGIN: list_menu --><a class="{list_menu.class}" href="{list_menu.link}">{list_menu.name}</a><!-- END: list_menu -->
+		</small>
+	</menu>
+	<real>
+		<ul>
+			<!-- BEGIN:list_store -->
+			<li>
+				<id>{list_store.id}</id>
+				<num>{list_store.num}</num>
+				<!-- <cost>{list_store.cost}</cost> -->
+				<name>{list_store.name}</name>
+				<image>{list_store.image}</image>
+				<total>{list_store.total}</total>
+				<actual>{list_store.actual}</actual>
+				<number>{list_store.number}</number>
+				<format>{list_store.format}</format>
+				<total_way>{list_store.total_way}</total_way>
+				<available>{list_store.available}</available>
+				<total_real>{list_store.total_real}</total_real>
+				<total_lock>{list_store.total_lock}</total_lock>
+				<price_total>{list_store.price_total}</price_total>
+				<price_purchase>{list_store.price_purchase}</price_purchase>
+				<total_available>{list_store.total_available}</total_available>
+			</li>
+			<!-- END:list_store -->
+		</ul>
+	</real>
+	<store_info>
+		<ul>
+			<!-- BEGIN:store_info -->
+				<li><value>{store_info.id}</value><text>{store_info.name}</text></li>
+			<!-- END:store_info -->
+		</ul>
+	</store_info>
+	<product>
+		<ul>
+			<!-- BEGIN:product_category -->
+			<li>
+				<value>{product_category.id}</value><text>{product_category.name}</text>
+			</li>
+			<!-- END:product_category -->
+		</ul>
+	</product>
+	<brandList>
+		<ul total="{main.brand_total}">
+			<!-- BEGIN: brand -->
+				<li id="{brand.id}" parent_id="{brand.parent_id}" level="{brand.level}">{brand.name}</li>
+			<!-- END: brand -->
+		</ul>
+	</brandList>
+	<find>{main.find}</find>
+	<ware>{main.ware}</ware>
+	<brand>{main.brand}</brand>
+	<price_zong>{main.price_zong}</price_zong>
+	<total_zong>{main.total_zong}</total_zong>
+	<classification>{main.classification}</classification>
+	<sales_status>{main.sales_status}</sales_status>
+	{main.page_info}
+</Body>
+</html>
+<!-- END: main -->

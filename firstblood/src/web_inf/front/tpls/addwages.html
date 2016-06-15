@@ -1,0 +1,545 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3c.org/TR/1999/REC-html401-19991224/loose.dtd">
+<HTML xmlns="http://www.w3.org/1999/xhtml"><HEAD id=Head1><title>北京外麦王人事系统</title>
+<META http-equiv=Content-Type content="text/html; charset=utf-8">
+<LINK href="/css/Style.css" type=text/css rel=stylesheet>
+<LINK href="/css/Manage.css" type=text/css rel=stylesheet>
+<LINK href="/css/allinfo.css" type=text/css rel=stylesheet>
+<SCRIPT language=javascript src="/js/jquery-1.8.3.min.js"></SCRIPT>
+<META content="MSHTML 6.00.2900.3492" name=GENERATOR></HEAD>
+<style>
+	 input{
+	 	width:40px;
+	 }
+	 .price{
+	 	background-color:#64B51F;
+
+	 }
+	 .one{
+	 	background-color:orange;
+	 }
+	 .two{
+	 	background-color:#239ABF;
+	 }
+	 .three{
+	 	background-color:#C674C1;
+	 }
+	 .four{
+	 	background-color:#F0AD34;
+	 }
+	 .five{
+	 	background-color:#F74E1E;
+	 }
+	 .sex{
+	 	background-color:#FA9315;
+	 }
+   .seven{
+    background-color:#81FC36;
+   }
+   .eight{
+    background-color:#6AD169;
+   }
+   .nine{
+    background-color:#CBB95A;
+   }
+   .ten{
+    background-color:#937C1C;
+   }
+   .zero{
+    background-color:#D15D5D;
+   }
+   .eleven{
+    background-color:#31D6D3;
+   }
+   .red{
+     font-style:bold;
+     color:red;
+   }
+</style>
+<BODY>
+<TABLE cellSpacing=0 cellPadding=0 width="98%" border=0>
+  <TBODY>
+  <TR>
+    <TD width=15><IMG src="/images/new_019.jpg" border=0></TD>
+    <TD width="100%" background=/images/new_020.jpg height=20></TD>
+    <TD width=15><IMG src="/images/new_021.jpg" 
+  border=0></TD></TR></TBODY></TABLE>
+<TABLE cellSpacing=0 cellPadding=0 width="98%" border=0>
+  <TBODY>
+  <TR>
+    <TD width=15 background=/images/new_022.jpg><IMG 
+      src="/images/new_022.jpg" border=0> </TD>
+    <TD vAlign=top width="100%" bgColor=#ffffff>
+      <TABLE cellSpacing=0 cellPadding=5 width="100%" border=0>
+        <TR>
+          <TD class=manageHead>当前位置：管理首页 &gt; 薪资添加</TD></TR>
+    </TD>
+        <TR>
+          <TD height=2></TD></TR></TABLE>
+      <TABLE borderColor=#cccccc cellSpacing=0 cellPadding=0 width="100%" 
+      align=center border=0>
+        <TBODY>
+        <TR>
+          <TD>
+            <TABLE id=grid 
+            style="BORDER-TOP-WIDTH: 0px; FONT-WEIGHT: normal; BORDER-LEFT-WIDTH: 0px; BORDER-LEFT-COLOR: #cccccc; BORDER-BOTTOM-WIDTH: 0px; BORDER-BOTTOM-COLOR: #cccccc; WIDTH: 100%; BORDER-TOP-COLOR: #cccccc; FONT-STYLE: normal; BACKGROUND-COLOR: #cccccc; BORDER-RIGHT-WIDTH: 0px; TEXT-DECORATION: none; BORDER-RIGHT-COLOR: #cccccc" 
+            cellSpacing=1 cellPadding=2 rules=all border=0>
+              <TBODY>
+              {foreach from=$rows item=temp}
+              <FORM id="form">
+              <TR 
+              style="FONT-WEIGHT: bold; FONT-STYLE: normal; BACKGROUND-COLOR: #eeeeee; TEXT-DECORATION: none;text-align: center">
+                <TD class="price" width="50px">基本工资</TD>
+                <TD class="price" width="50px">职位津贴</TD>
+                <TD class="price" width="50px">应到日</TD>
+                <TD class="price" width="50px">实到日</TD>
+                <td class="eleven" width="50px">假期工资</td>
+                <td class="seven" width="50px">加班次数</td>
+                <td class="seven" width="50px">加班金额</td>
+                <td class="eight" width="50px">迟到次数</td>
+                <td class="eight" width="50px">迟到金额</td>
+                <td class="nine" width="50px">早退次数</td>
+                <td class="nine" width="50px">早退金额</td>
+                <td class="ten" width="50px">旷工次数</td>
+                <td class="ten" width="50px">旷工金额</td>
+                <TD class="two" width="50px">销售额</TD>
+                <TD class="two" width="60px">销售提成(%)</TD>
+                <TD class="two" width="50px">作图数量</TD>
+              </TR>
+             <TR 
+              style="FONT-WEIGHT: bold; FONT-STYLE: normal; BACKGROUND-COLOR: #eeeeee; TEXT-DECORATION: none;text-align: center">
+                <TD class="price">
+                  <span>{$temp['jwages']}(元)</span>
+                  <input type="hidden" name="jiben" value="{$temp['jwages']}" readonly="readonly">
+                </TD>
+                <TD class="price">
+                  <span>{$temp['zwages']}(元)</span>
+                  <input type="hidden" name="zhiwei" value="{$temp['zwages']}" readonly="readonly">
+                </TD>
+                <TD class="price">
+                  <input type="text" name="yingdao">
+                </TD>
+                <TD class="price">
+                  <span>{$temp['day']}(日)</span>
+                  <input type="hidden" name="shidao" value="{$temp['day']}">
+                </TD>
+                <td class="eleven">
+                    <input type="text" name="qingjia">
+                </td>
+                <td class="seven">
+                  <span class="red">{$temp['addwork']}(次)</span>
+                  <input type="hidden" name="worknum" value="{$temp['addwork']}">
+                </td>
+                <td class="seven">
+                   <span>{$temp['addwork_price']}(元)</span>
+                  <input type="hidden" name="jiabanfei" value="{$temp['addwork_price']}">
+                </td>
+                <td class="eight">
+                   <span class="red">{$temp['be_leat']}(次)</span>
+                   <input type="hidden" name="late" value="{$temp['be_leat']}">
+                </td>
+                <td class="eight">
+                   <span>{$temp['late_price']}(元)</span>
+                   <input type="hidden" name="lateprice" value="{$temp['late_price']}">
+                </td>
+                <td class="nine">
+                   <span class="red">{$temp['early_leave']}(次)</span>
+                   <input type="hidden" name="early_leave" value="{$temp['early_leave']}">
+                </td>
+                <td class="nine">
+                   <span>{$temp['early_leave_price']}(元)</span>
+                   <input type="hidden" name="early_leave_price" value="{$temp['early_leave_price']}">
+                </td>
+                <td class="ten">
+                   <span class="red">{$temp['absent']}(次)</span>
+                   <input type="hidden" name="absent" value="{$temp['absent']}">
+                </td>
+                <td class="ten">
+                   <span>{$temp['absent_price']}(元)</span>
+                   <input type="hidden" name="absent_price" value="{$temp['absent_price']}">
+                </td>
+                <TD class="two">
+                  <input type="text" name="xiaoshou">
+                </TD>
+                <TD class="two">
+                  <span>{$temp['sale_price']}(%)</span>
+                  <input type="hidden" name="ticeng" value="{$temp['sale_price']}">
+                </TD>
+                <TD class="two">
+                  <input type="text" name="pnum">
+                </TD>
+
+             </TR>
+              <TR 
+              style="FONT-WEIGHT: bold; FONT-STYLE: normal; BACKGROUND-COLOR: #eeeeee; TEXT-DECORATION: none;text-align: center">
+                <TD class="two">作图单价</TD>
+                <TD class="two">评分绩效</TD>
+                <TD class="three">工龄</TD>
+                <TD class="three">工龄基数</TD>
+                <TD class="four">公积金</TD>
+                <TD class="four">保险</TD>
+                <TD class="four">房补</TD>
+                <TD class="four">补贴</TD>
+                <td class="four">奖惩</td>
+                <td class="sex">预付</td>
+                <td class="zero">微调</td>
+                <td class="five" rowspan="2">
+                <a href="javascript:void(0)" id="jisuan">计算工资</a>
+                </td>
+              </TR>
+             <TR 
+              style="FONT-WEIGHT: bold; FONT-STYLE: normal; BACKGROUND-COLOR: #eeeeee; TEXT-DECORATION: none;text-align: center">
+                <TD class="two">
+                        <span>{$temp['stick_price']}</span>
+                        <input type="hidden" name="danjia" value="{$temp['stick_price']}">
+                </TD>
+                <TD class="two">
+                    <input type="text" name="score" id="score" placeholder="输入分数">
+                </TD>
+                <TD class="three">
+                    <span>{$temp['workmonth']}</span>
+                    <input type="hidden" name="jobage" value="{$temp['workmonth']}" readonly="readonly">(月)
+                </TD>
+                <TD class="three">
+                    <span>{$temp['workagenum_price']}</span>
+                    <input type="hidden" name="agemoney" value="{$temp['workagenum_price']}">
+                </TD>
+                <TD class="four">
+                  <span>{$temp['fund_price']}</span>
+                	<input type="hidden" name="gongjijin" value="{$temp['fund_price']}">
+                </TD>
+                <TD class="four">
+                  <span>{$temp['safe_price']}</span>
+                	<input type="hidden" name="safe" value="{$temp['safe_price']}">
+                </TD>
+                <TD class="four">
+                  <span>{$temp['house_price']}</span>
+                  <input type="hidden" name="fangbu" value="{$temp['house_price']}">
+                </TD>
+                <TD class="four">
+                  <span>{$temp['subsidy_price']}</span>
+                  <input type="hidden" name="butie" value="{$temp['subsidy_price']}">
+                </TD>
+                <td class="four">
+                    <span>{$temp['reward']}(元)</span>
+                    <input type="hidden" name="jiangcheng" value="{$temp['reward']}">
+                </td>
+                <td class="sex">
+                    <input type="text" name="yufu">
+                </td>
+
+                <td class="zero">
+                    <input type="text" name="weitiao">
+                </td>
+             </TR>
+             </FORM>
+             <tr style="FONT-WEIGHT: bold; FONT-STYLE: normal; BACKGROUND-COLOR: #CCCCCC; TEXT-DECORATION: none;text-align: center;">
+              <td colspan="9" height=20px; style="border:0px;"></td>
+             </tr>
+
+             <tr style="FONT-WEIGHT: bold; FONT-STYLE: normal; BACKGROUND-COLOR: #CCCCCC; TEXT-DECORATION: none;text-align: center;">
+                  <td class="four" colspan=4>奖惩理由</td>
+                  <td class="five" colspan=4>奖惩金额</td>
+             </tr>
+             {foreach from=$rows2 item=lis}
+             <tr style="FONT-WEIGHT: bold; FONT-STYLE: normal; BACKGROUND-COLOR: #CCCCCC; TEXT-DECORATION: none;text-align: center;">
+                  <td class="four" colspan=4>{$lis['reason']}</td>
+                  <td class="five" colspan=4>{$lis['acount']}</td>
+             </tr>
+             {/foreach}
+			       <tr style="FONT-WEIGHT: bold; FONT-STYLE: normal; BACKGROUND-COLOR: #CCCCCC; TEXT-DECORATION: none;text-align: center;">
+             	<td colspan="9" height=20px; style="border:0px;"></td>
+             </tr>
+            <form action="" id="savewage">
+             <TR 
+              style="FONT-WEIGHT: bold; FONT-STYLE: normal; BACKGROUND-COLOR: #eeeeee; TEXT-DECORATION: none;text-align: center">
+                <TD class="four" height="20px" width="20px">
+                 工资
+                </TD>
+                <td class="four">
+                 加班费
+                </td>
+                <td class="four">
+                 迟到
+                </td>
+                <td class="four">
+                 早退
+                </td>
+                <td class="four">
+                 旷工
+                </td>
+                <td class="four">
+                 假期工资
+                </td>
+                <TD class="four">
+                 总绩效
+                </TD>
+                <TD class="four">
+                 工龄工资
+                </TD>
+                <TD class="four">
+                 公积金
+                </TD>
+                <TD class="four">
+                 保险
+                </TD>
+                <TD class="four">
+                 房补
+                </TD>
+                <TD class="four">
+                 补贴
+                </TD>
+                <TD class="four">
+                 奖惩
+                </TD>
+                <TD class="four">
+                 微调
+                </TD>
+                <TD class="four">
+                 薪酬合计
+                </TD>
+                <TD class="four">
+                 预付
+                </TD>
+                <TD class="four" width="50px">
+                 应付
+                </TD>
+             </TR>
+             <TR 
+              style="FONT-WEIGHT: bold; FONT-STYLE: normal; BACKGROUND-COLOR: #eeeeee; TEXT-DECORATION: none;text-align: center">
+                <TD class="four" height="20px">
+                  <span id="price1"></span>
+                  <input type="hidden" name="price" id="price">
+                </TD>
+                <td class="four">
+                  <span id="overtimepay1"></span>
+                  <input type="hidden" name="overtimepay" id="overtimepay">
+                </td>
+                <td class="four">
+                  <span id="chidao1"></span>
+                  <input type="hidden" name="chidao" id="chidao">
+                </td>
+                <td class="four">
+                   <span id="zaotui1"></span>
+                   <input type="hidden" name="zaotui" id="zaotui">
+                </td>
+                <td class="four">
+                   <span id="kuang_gong1"></span>
+                   <input type="hidden" name="kuang_gong" id="kuang_gong">
+                </td>
+                <td class="four">
+                   <span id="free1"></span>
+                   <input type="hidden" name="free" id="free">
+                </td>
+                <TD class="four">
+                  <span id="zongjixiao1"></span>
+                  <input type="hidden" name="zongjixiao" id="zongjixiao">
+                </TD>
+                <TD class="four">
+                  <span id="agemoney1"></span>
+                  <input type="hidden" name="agemoney" id="agemoney">
+                </TD>
+                <TD class="four">
+                  <span id="gongjijin1"></span>
+                  <input type="hidden" name="gongjijin" id="gongjijin">
+                </TD>
+                <TD class="four">
+                  <span id="safe1"></span>
+                  <input type="hidden" name="safe" id="safe">
+                </TD>
+                <TD class="four">
+                  <span id="house1"></span>
+                  <input type="hidden" name="house" id="house">
+                </TD>
+                <TD class="four">
+                  <span id="butie1"></span>
+                  <input type="hidden" name="subsidy" id="subsidy">
+                </TD>
+                <TD class="four">
+                  <span id="jiangcheng1"></span>
+                  <input type="hidden" name="jiangcheng" id="jiangcheng">
+                </TD>
+                <TD class="four">
+                  <span id="little1"></span>
+                  <input type="hidden" name="little" id="little">
+                </TD>
+                <TD class="four">
+                  <span id="countwages1"></span>
+                  <input type="hidden" name="countwages" id="countwages">
+                </TD>
+                <TD class="four">
+                  <span id="yufu1"></span>
+                  <input type="hidden" name="yufu" id="yufu">
+                </TD>
+                <TD class="four">
+                  <span id="yingfu1"></span>
+                  <input type="hidden" name="yingfu" id="yingfu">
+                </TD>
+             </TR>      
+             <tr style="FONT-WEIGHT: bold; FONT-STYLE: normal; BACKGROUND-COLOR: #eeeeee; TEXT-DECORATION: none;text-align: center">
+                 <td class="four">时间</td>
+                <TD class="five" colspan=2>部门</TD>
+                <TD class="five">姓名</TD>
+                <TD class="five">评分</TD>
+
+                <TD class="four" rowspan="2">
+                  <a href="javascript:void(0)" id="keepwage">确认保存</a>
+                </TD>
+             </tr>
+             <tr style="FONT-WEIGHT: bold; FONT-STYLE: normal; BACKGROUND-COLOR: #eeeeee; TEXT-DECORATION: none;text-align: center">
+                <TD class="four">
+                  <span id="time1"></span>
+                  <input type="hidden" name="time" id="time">
+                </TD>
+                <TD class="five" colspan=2>
+                   {$temp['classname']}
+                  <input type="hidden" name="classname" value="{$temp['classname']}">
+                </TD>
+                <TD class="five">
+                   {$temp['name']}
+                  <input type="hidden" name="name" value="{$temp['name']}">
+                  <input type="hidden" name="uid" value="{$temp['uid']}">
+                </TD>
+                <TD class="five">
+                  <span id="now_score1"></span>
+                  <input type="hidden" name="now_score" id="now_score">
+                </TD>
+             </tr>
+             </form>
+            {/foreach}
+           </TBODY>
+           </TABLE>
+        </TD>
+       </TR>
+       </TBODY></TABLE></TD>
+    <TD width=15 background=/images/new_023.jpg><IMG 
+      src="/images/new_023.jpg" border=0> </TD></TR></TBODY></TABLE>
+<TABLE cellSpacing=0 cellPadding=0 width="98%" border=0>
+  <TBODY>
+  <TR>
+    <TD widtht=15><IMG src="/images/new_024.jpg" border=0></TD>
+    <TD align=middle width="100%" background=/images/new_025.jpg 
+    height=15></TD>
+    <TD width=15><IMG src="/images/new_026.jpg" 
+  border=0></TD></TR></TBODY></TABLE>
+
+</BODY>
+{literal}
+<script>
+       var jiben = $("input[name='jiben']");
+       var zhiwei = $("input[name='zhiwei']");
+       var yingdao = $("input[name='yingdao']");
+       var shidao = $("input[name='shidao']");
+       $("#jisuan").click(function(){
+	       if(jiben.val()==""){
+	       	  alert("基本工资不能为空");
+	          return false;
+	       }else if(zhiwei.val()==""){
+	      	  alert("职位奖金不能为空");
+              return false;
+	       }else if(yingdao.val()==""){
+	       	  alert("应到天数不能为空");
+	       	  return false;
+	       }else if(shidao.val()==""){
+	       	  alert("实到天数不能为空");
+	          return false;
+	       }
+      	  var str = $("#form").serialize();
+  	   	  $.ajax({
+      		   type: "POST",
+      		   url: "attend.php",
+      		   dataType: "json",
+      		   ansyc:false,
+      		   data: str,	   
+      		   success: function(data){
+                 console.log(data);
+      		       var price = data.price;
+      		       var zongjixiao = data.zongjixiao;
+      		       var agemoney = data.agemoney;
+      		       var gongjijin = data.gongjijin;
+      		       var safe = data.safe;
+      		       var jiangcheng = data.jiangcheng;
+      		       var countwages = data.countwages;
+      		       var yufu = "-"+data.yufu;
+      		       var yingfu = data.yingfu;
+                 var time = data.time;
+                 var overtimepay = data.overtimepay;
+                 var late_price = data.late_price;
+                 var early_leave_price = data.early_leave_price;
+                 var absent_price = data.absent_price;
+                 var little = data.little;
+                 var toleave = data.toleave;
+                 var score = data.score;
+                 var house_price = data.house_price;
+                 var subsidy_price = data.subsidy_price;
+
+
+      		       $("#price").val(price);
+      		       $("#zongjixiao").val(zongjixiao);
+      		       $("#agemoney").val(agemoney);
+      		       $("#gongjijin").val(gongjijin);
+      		       $("#safe").val(safe);
+      		       $("#jiangcheng").val(jiangcheng);
+      		       $("#countwages").val(countwages);
+      		       $("#yufu").val(yufu);
+      		       $("#yingfu").val(yingfu);
+                 $("#time").val(time);
+                 $("#overtimepay").val(overtimepay);
+                 $("#chidao").val(late_price);
+                 $("#zaotui").val(early_leave_price);
+                 $("#kuang_gong").val(absent_price);
+                 $("#free").val(toleave);
+                 $("#little").val(little);
+                 $("#now_score").val(score);
+                 $("#house").val(house_price);
+                 $("#subsidy").val(subsidy_price);
+
+
+                 $("#price1").text(price);
+                 $("#zongjixiao1").text(zongjixiao);
+                 $("#agemoney1").text(agemoney);
+                 $("#gongjijin1").text(gongjijin);
+                 $("#safe1").text(safe);
+                 $("#jiangcheng1").text(jiangcheng);
+                 $("#countwages1").text(countwages);
+                 $("#yufu1").text(yufu);
+                 $("#yingfu1").text(yingfu);
+                 $("#time1").text(time);
+                 $("#overtimepay1").text(overtimepay);
+                 $("#chidao1").text(late_price);
+                 $("#zaotui1").text(early_leave_price);
+                 $("#kuang_gong1").text(absent_price);
+                 $("#free1").text(toleave);
+                 $("#little1").text(little);
+                 $("#now_score1").text(score);
+                 $("#house1").text(house_price);
+                 $("#butie1").text(subsidy_price);
+      		   },
+      		   error: function(){
+      		   	 alert("ajax请求失败")
+		         }
+	        },'html'); 
+        }); 
+       $("#keepwage").click(function(){
+         if(confirm("确定要保存此工资条吗?")){
+           var wage = $("#savewage").serialize();
+           $.ajax({
+             type: "POST",
+             url: "keepwages.php",
+             ansyc:false,
+             data: wage,    
+             success: function(data){
+                 if(data=="yes"){
+                    alert("保存成功");
+                 }else{
+                    alert("保存失败");
+                 }
+             },
+             error: function(){
+               alert("ajax请求失败")
+             }
+          },'html'); 
+         }
+       })
+</script>
+{/literal}
+</HTML>

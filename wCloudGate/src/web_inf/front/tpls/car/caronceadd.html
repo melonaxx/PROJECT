@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>外麦王云平台</title>
+	<link rel="stylesheet" type="text/css" href="/css/main2/base.css"/>
+	<link rel="stylesheet" type="text/css" href="/css/main2/car/car_add.css"/>
+</head>
+<body>
+	<?php include("header.html"); ?>
+	<div class="section">
+		<div class="wmain">
+			<ul class="wmainlist">
+				<li class="wllevel1 manageract">
+					<a href="/platform/carmanagement.php"><span></span>车辆管理<p class="wlrightarrow"></p></a>
+					<ul class="wllevel2">
+						<li class="mlsonactive"><a href="/platform/carmanagement.php">所有车辆</a></li>
+						<li><a href="/platform/carabnormal.php">异常车辆</a></li>
+					</ul>
+				</li>
+				<li class="wllevel1" <?=$operation['caractive']?> >
+					<a class="wllevel1active" href="/caronceadd.php"><span></span>车辆添加<p></p></a>
+					<ul class="wllevel2">
+						<li class="mlsonactive" <?=$operation['caractive']?> ><a href="/caronceadd.php">普通添加</a></li>
+						<li <?=$operation['caractive']?> ><a href="/platform/caractive.php">车辆激活</a></li>
+					</ul>
+				</li>
+			</ul>
+			<div class="wmaincontent">
+				<h1 class="wmch1">|&nbsp;普通添加</h1>
+				<ul class="caraddlist">
+					<li>
+						<h2>1</h2>
+						<div class="carinf">
+							<div class="input-groupc">
+								<label>车辆品牌&nbsp;:&nbsp;&nbsp;</label>
+								<input type="text" />
+							</div>
+							<div class="input-groupc">
+								<label>车辆号码&nbsp;:&nbsp;&nbsp;</label>
+								<input type="text" />
+							</div>
+							<div class="input-groupc">
+								<label>定位器号&nbsp;:&nbsp;&nbsp;</label>
+								<input type="text" />
+							</div>								
+							<div class="input-groupc">
+								<label>车辆型号&nbsp;:&nbsp;&nbsp;</label>
+								<input type="text" />
+							</div>
+							<div class="input-groupc">
+								<label>车辆备注&nbsp;:&nbsp;&nbsp;</label>
+								<input type="text" />
+							</div>
+						</div>
+						<a class="operate caradd">继续添加</a>
+					</li>
+				</ul>
+				<button class="addcarbtn" style="float: left;">添加车辆</button>
+				<div class="msg" style="width: 270px;height: 27px;padding-top: 19px;color: red;padding-left: 27px;float: left;"></div>
+			</div>
+		</div>
+	</div>
+	
+	<div class="modal" id="modaladdcar">
+		<div class="cover"></div>
+		<div class="modalbox">
+			<p>添加成功！</p>
+			<div class="btns">
+				<button class="goonaddbtn goaddcar">继续添加</button>
+				<button class="carmanagement">车辆管理</button>
+			</div>
+		</div>
+	</div>
+
+	<?php include("footer.html"); ?>
+	<script src="/js/jquery-1.8.2.min.js"></script>	
+	<script src="/js/main2/common.js"></script>
+	<script src="/js/util.js"></script>
+	<script src="/js/car/caronceadd.js"></script>
+
+</body>
+</html>

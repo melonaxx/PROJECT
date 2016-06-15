@@ -1,0 +1,53 @@
+//---- UTF8 编码 ----
+<!-- BEGIN: main --><?xml version="1.0" encoding="UTF-8"?>
+{main.doc_type}
+<?xml-stylesheet type="text/xsl" href="/style/stock_manual_delivery_of_storage.xsl?ver={main.doc_version}"?>
+<html version="{main.doc_version}">
+<head>
+	<Title>{main.title}</Title>
+	<meta name="keywords" content="{main.keywords}" />
+	<meta name="description" content="{main.description}" />
+	<em company_id="{main.company_id}" staff_id="{main.staff_id}" login_name="{main.login_name}" permit="{main.permit}" program="{main.request_url}"/>
+</head>
+<Body>
+<dir><![CDATA[ 您的位置：{main.this_location}]]></dir>
+<menu>
+	<big>{main.big_menu}</big>
+	<small>
+		<!-- BEGIN: list_menu --><a class="{list_menu.class}" href="{list_menu.link}">{list_menu.name}</a><!-- END: list_menu -->
+	</small>
+</menu>
+<store_ware>
+	<ul>
+		<!-- BEGIN:store_ware -->
+		<li><value>{store_ware.id}</value><text>{store_ware.name}</text></li>
+		<!-- END:store_ware -->
+	</ul>
+</store_ware>
+<storage>
+	<li><text>入库</text><value>Input</value></li>
+	<li><text>出库</text><value>Output</value></li>
+</storage>
+<storeOperation>
+	<ul>
+		<!-- BEGIN:store_operation -->
+		<li>
+			<id>{store_operation.id}</id>
+			<action_date>{store_operation.action_date}</action_date>
+			<staff_id>{store_operation.staff_id}</staff_id>
+			<product_id>{store_operation.product_id}</product_id>
+			<store_id>{store_operation.store_id}</store_id>
+			<total>{store_operation.total}</total>
+			<type>{store_operation.type}</type>
+			<body>{store_operation.body}</body>
+		</li>
+		<!-- END:storeOperation -->
+	</ul>
+</storeOperation>
+<store>{main.store}</store>
+{main.page_info}
+</Body>
+
+
+</html>
+<!-- END: main -->

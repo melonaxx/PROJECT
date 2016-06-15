@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>车辆管理</title>
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+</head>
+<body class="body">
+    <input type="text" name='content'>
+    <button>点我</button>
+
+</body>
+<script src="/js/jquery.min.js"></script>
+<script src="/js/bootstrap.min.js"></script>
+<script>
+    var res = '';
+    var arr1 = [];
+    var arr2 = [];
+    var arr3 = [];
+    $('input[name=content]').keyup(function(){
+        var len = $(this).val().length;
+        var number = $(this).val();
+
+        //获取123字符
+        if (len < 3) {
+            res = $(this).val();
+        }
+        if(len == 3) {
+            res = number+' ';
+        }
+
+        //获取4567字符
+        if (len > 3 && len <=7) {
+            var p1 = $(this).val().charAt($(this).val().length-1);
+            arr1.push(p1);
+            res = res+arr1.join('');
+            arr1.shift();
+        }
+
+
+        //获取891011字符
+        if (len == 8 ) {
+            var p2 = $(this).val().charAt($(this).val().length-1);
+            arr2.push(p2);
+            res = res+arr2.join()+' ';
+        }
+
+        //获取91011字符
+        if(len >=9 && len <=13) {
+            var p3 = $(this).val().charAt($(this).val().length-1);
+            arr3.push(p3);
+            res = res+arr3.join('');
+            arr3.shift();
+        }
+
+        $(this).val(res);
+        // console.log(res);
+    })
+</script>
+</html>

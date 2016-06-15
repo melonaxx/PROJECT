@@ -1,0 +1,78 @@
+//---- UTF8 编码 ----
+<!-- BEGIN: main --><?xml version="1.0" encoding="UTF-8"?>
+{main.doc_type}
+<?xml-stylesheet type="text/xsl" href="/style/home_system_announcement.xsl?ver={main.doc_version}"?>
+<html version="{main.doc_version}">
+<head>
+	<Title>{main.title}</Title>
+	<meta name="keywords" content="{main.keywords}" />
+	<meta name="description" content="{main.description}" />
+	<em company_id="{main.company_id}" staff_id="{main.staff_id}" login_name="{main.login_name}" permit="{main.permit}" program="{main.request_url}"/>
+</head>
+<Body>
+<dir><![CDATA[ 您的位置：{main.this_location}]]></dir>
+<menu>
+	<big>{main.big_menu}</big>
+	<small>
+		<!-- BEGIN: list_menu --><a class="{list_menu.class}" href="{list_menu.link}">{list_menu.name}</a><!-- END: list_menu -->
+	</small>
+</menu>
+<!-- BEGIN: not -->
+	<not>
+		<id>{not.id}</id>
+		<name>{not.name}</name>
+		<action_date>{not.action_date}</action_date>
+	</not>
+<!-- END: not -->
+<!-- BEGIN: days -->
+	<days>
+		<day>{days.day}</day>
+	</days>
+<!-- END: days -->
+<!-- BEGIN: bishu -->
+	<bishu>
+		<total_bishu>{bishu.total_bishu}</total_bishu>
+	</bishu>
+<!-- END: bishu -->
+<!-- BEGIN: kehu -->
+	<kehu>
+		<kehushu>{kehu.kehushu}</kehushu>
+	</kehu>
+<!-- END: kehu -->
+<!-- BEGIN: shishou -->
+	<shishou>
+		<qian>{shishou.qianshu}</qian>
+	</shishou>
+<!-- END: shishou -->
+
+<total_shenhe>{main.total_shenhe}</total_shenhe>
+<total_dadan>{main.total_dadan}</total_dadan>
+<total_yanhuo>{main.total_yanhuo}</total_yanhuo>
+<total_chengzhong>{main.total_chengzhong}</total_chengzhong>
+<total_daifa>{main.total_daifa}</total_daifa>
+<total_yifa>{main.total_yifa}</total_yifa>
+<total_yichang>{main.total_yichang}</total_yichang>
+<total_1>{main.total_1}</total_1>
+<total_2>{main.total_2}</total_2>
+<total_3>{main.total_3}</total_3>
+<total_4>{main.total_4}</total_4>
+<total>{main.total}</total>
+<notice>
+	<id>{notice.id}</id>
+	<name>{notice.name}</name>
+	<nick>{notice.nick}</nick>
+	<begin_date>{notice.begin_date}</begin_date>
+	<end_date>{notice.end_date}</end_date>
+	<body>{notice.body}</body>
+	<person>{notice.person}</person>
+	<sign>{notice.sign}</sign>
+	<action_date>{notice.action_date}</action_date>
+</notice>
+<!-- BEGIN: shixiang -->
+	<shi>
+	<shixiang>{shixiang.body}</shixiang>
+	</shi>
+<!-- END: shixiang -->
+</Body>
+</html>
+<!-- END: main -->

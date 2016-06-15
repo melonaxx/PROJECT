@@ -1,0 +1,276 @@
+//---- UTF8 编码 ----
+<!-- BEGIN: main -->
+<html>
+<head>
+<title>设置运费计算规则</title>
+<link type="text/css" rel="stylesheet" href="/style/bootstrap.min.css?ver={main.doc_version}"/>
+<link type="text/css" rel="stylesheet" href="/style/style.css?ver={main.doc_version}"/>
+<style>
+body {
+	text-align:left;
+	min-width:600px;
+	/*overflow-y:hidden;*/
+	padding:0;
+}
+
+.form-inline .form-group {
+	display: inline-block;
+	vertical-align: middle;
+}
+.error_color{
+	border:1px solid red;
+}
+._input{overflow-x: hidden; overflow-y: visible; width: 100%;height:100%; line-height:30px;cursor:text}
+ .table tr th,td{text-align: center}
+.dropdown_body{line-height:25px;display:none;margin-left:50px;}
+.car_left{width:25px;height:25px;margin-top:2px;border-radius: 3px;line-height: 1;padding: 4px 5px;} 
+.car_left:hover{background:#bbb;border:1px solid lightblue;}
+.dropdown .checkbox{margin-bottom:7px;display:inline-block;}
+.dropbody label{display: block}
+</style>
+<script type="text/javascript" src="/js_encode/jquery-1.9.1.min.js"></script>
+<!-- <script type="text/javascript" src="/js_encode/jquery.area.three.js"></script> -->
+<!-- <script type="text/javascript" src="/js_encode/jquery.validate.js"></script> -->
+<!-- <script type="text/javascript" charset="UTF-8" src="/js_encode/jquery.smallslider.js"></script> -->
+<script type="text/javascript" charset="UTF-8" src="/js_encode/bootstrap.min.js"></script>
+<body>
+	<div id="fee_setting" style="margin:0 auto">
+		<div class="modal-body" style="overflow: auto;height:300px">
+			<table border="0" class="table tab_select table-bordered table-hover first_weight" style="table-layout:fixed; overflow:hidden;width:100%">
+				<thead>
+					<span class="title-bar">首重部分</span>
+					<br />
+					<button class="btn btn-default btn-sm" style="margin:5px;0px;" class="add_tr" id="add_tr">新增</button>
+				</thead>
+				<tbody>
+				<tr>
+					<th width="20%" rowspan="2" >操作</th>
+					<th width="50%" colspan="2">质量区间</th>
+					<th width="30%" rowspan="2">费用</th>
+				</tr>
+				<tr>
+					<th width="25%">从</th>
+					<th width="25%">到（包含）</th>
+				</tr>
+				<!-- <tr>
+					<td style="text-align: center"><a href="javascript:;" class="delete_one">删除</a></td>
+					<td style="text-align: center"><div class="start" value="">0.000kg</div></td>
+					<td style="text-align: center"><div class="_input over kg" true_value=""></div></td><td style="text-align: center"><div class="_input fee money" value=""></td></tr> -->
+				</tbody>
+			</table>
+			<p class="title-bar">续重部分</p>
+			<div class="form-group floow_weight">
+				<label class="margin_left_0">重量每增加：</label>
+				<input class="form-control input-sm weight_text kg" style="width:20%;display:inline-block;" true_value="" name="every_weight" />
+				<label class="margin_left_2">增加运费：</label>
+				<input class="form-control input-sm weight_text money" style="width:20%;display:inline-block;" true_value="" name="every_fee" />
+			</div>
+		</div>
+		<div class="modal-footer">
+			<button class="btn btn-default btn-sm" data-dismiss="modal" id="fee_confirm">确定</button>
+			<button class="btn btn-default btn-sm" onclick="parent.$('#MessageBox').modal('hide');parent.rule_setting = null;" data-dismiss="modal">取消</button>
+		</div>
+	</div>
+
+<script>
+$(function(){
+	
+	if(!parent.rule_setting){
+		var rule_text = parent.$("input[name=default_rule]").val();
+	}else{
+		var rule_text = parent.rule_setting.parents("tr").find("td:eq(4)").text();
+	}
+
+	var reg1 = /(首重部分.*?);;/;
+	var arr = rule_text.match(reg1);
+	if(arr){
+		var first_w = arr[1].split(";");
+		for(var i=0;i<first_w.length;i++){
+			var reg2 = /从(.+kg)-(.+kg),费用为(￥.+)/;
+			var first_tr = first_w[i].match(reg2);
+			$("table").append('<tr><td style="text-align: center"><a href="javascript:;" class="delete_one">删除</a></td><td style="text-align: center"><div class="_input start kg" true_value="'+first_tr[1].substring(0,5)+'">'+first_tr[1]+'</div></td><td style="text-align: center"><div class="_input over kg" true_value="'+first_tr[2].substring(0,5)+'">'+first_tr[2]+'</div></td><td style="text-align: center"><div class="_input fee money" true_value="'+first_tr[3].substring(1,6)+'">'+first_tr[3]+'</div></td></tr>');
+		}
+	}
+
+	var reg2 = /续重部分：重量每增加(.*?),增加费用(.*?);/;
+	var _added = rule_text.match(reg2);
+	if(_added){
+		$("input[name=every_weight]").val(_added[1]);
+		$("input[name=every_weight]").attr("true_value",_added[1].substring(0,5));
+		$("input[name=every_fee]").val(_added[2]);
+		$("input[name=every_fee]").attr("true_value",_added[2].substring(1,6));
+	}
+
+	// 运费设置
+	var tr_fee ='<tr><td style="text-align: center"><a href="javascript:;" class="delete_one">删除</a></td><td style="text-align: center"><div class="_input start kg" true_value=""></div></td><td style="text-align: center"><div class="_input over kg" true_value=""></div></td><td style="text-align: center"><div class="_input fee money" true_value=""></div></td></tr>';
+
+	$("#add_tr").click(function(){
+		var len = $("#fee_setting table tr").length-1;
+		var last_over_value = $("#fee_setting table tr:eq("+len+") td:eq(2)").text();
+		// 首重部分不能抽过5个
+		if(len > 5){
+			alert("首重部分不能超过5条！");
+		}else{
+			// 第一条
+			if(len == 1 ){
+				$("#fee_setting table").append(tr_fee);
+				$("#fee_setting table tr:eq("+parseInt(len+1)+") td:eq(1)").text("0.00kg");
+			}else{
+				$("#fee_setting table").append(tr_fee);
+				$("#fee_setting table tr:eq("+parseInt(len+1)+") td:eq(1) .start").text(last_over_value).attr("true_value",last_over_value.substring(0,5));
+			}
+		}
+	});
+
+	// 删除一行
+	$("#fee_setting").on('click','.first_weight .delete_one',function(){
+			$(this).parents("tr").remove();
+	});
+
+	// 添加输入框
+	$("#fee_setting").on("click",".first_weight ._input",function(){
+		$(this).removeClass('error_color');
+		var input_fee = '<input class="form-control input-sm weight_text" style="width:100%;display: inline-block;" type="text" />';
+		var old_value =$(this).attr("true_value");
+		$(this).empty();
+		$(this).append(input_fee);
+		$(this).find(".weight_text").focus();
+		$(this).find(".weight_text").val(old_value);
+		$(this).find(".weight_text").select();	;
+	});
+
+	
+	$("#fee_setting").on("blur",".first_weight .weight_text",function(){
+		var tr = $(this).parents("tr");
+		var td_div = $(this).parent();	
+		var weight_text=number_test($(this).val());
+		if(weight_text==""){
+			td_div.attr("true_value","");
+			td_div.text("");
+		}else{
+			td_div.attr("true_value",weight_text);
+			if(td_div.hasClass("kg")){
+				td_div.html(weight_text+"kg");
+				var len = $("#fee_setting table").find('tr').length;
+				var tr_index = tr.index();
+				console.log(td_div);
+				if(tr_index != len-1 && td_div.hasClass("over")){
+					$("#fee_setting table tr:eq("+parseInt(tr_index+1)+") td:eq(1) .start").text(weight_text+"kg");
+				}
+			}else if(td_div.hasClass("money")){
+				td_div.html("￥"+weight_text);
+			}	
+		}
+
+	});
+
+	$("#fee_setting .floow_weight .weight_text")
+	.focus(function(){	
+		$(this).val($(this).attr("true_value"));
+		$(this).select();
+	})
+	.blur(function(){
+		var weight_text=number_test($(this).val());
+		$(this).attr("true_value",weight_text);
+		if(weight_text!=""){
+			if($(this).hasClass("kg")){
+				$(this).val(weight_text+"kg");
+			}else if($(this).hasClass("money")){
+				$(this).val("￥"+weight_text);
+			}	
+		}else{
+			$(this).val("");
+		}	
+	});
+
+
+	// 检测是否为合法的数字（保留3位有效小数）
+	function number_test(text){
+		if(isNaN(parseFloat(text)) || parseFloat(text)<0){
+			return "";
+		}else{
+			return parseFloat(text).toFixed(2);
+		}
+	}
+
+	$("#fee_confirm").click(function(){
+		var len = $("#fee_setting table tr").length;
+		var fee_default = "";
+		// ---- 首重部分 ----
+		if(len > 2){
+			fee_default = "首重部分："
+			var all_ok = true;
+			
+			// --- 非空 ---
+			for(var i=2;i<len;i++){
+				$("#fee_setting table tr:eq("+i+") td").each(function(){
+					if($(this).text()==""){
+						$(this).find("._input").addClass('error_color');
+						alert("不能为空！");
+						all_ok = false;
+						return false;
+					}
+					$(this).find("._input").removeClass('error_color');
+				});
+			if(all_ok == false){
+				return  false;
+			}
+			var weight_1	 = $("#fee_setting table tr:eq("+i+") td:eq(1)").text();
+			var weight_2 	 = $("#fee_setting table tr:eq("+i+") td:eq(2)").text();
+			var weight_up_2  = $("#fee_setting table tr:eq("+parseInt(i-1)+") td:eq(2)").text();
+			
+			if(i==2 && weight_1 != "0.00kg"){
+				alert("首重必须以0.00kg开始！");
+				$("#fee_setting table tr:eq("+i+") td:eq(1) ._input").addClass('error_color');
+				return false;
+			}
+				$("#fee_setting table tr:eq("+i+") td:eq(1) ._input").removeClass('error_color');
+			// --- 下一行的开始 ！= 上一行的结束
+			if(i > 2 && weight_1 != weight_up_2){
+				alert("质量区间开始必须是上一个区间的结束");
+				$("#fee_setting table tr:eq("+i+") td:eq(1) ._input").addClass('error_color');
+				return false;
+			}
+				$("#fee_setting table tr:eq("+i+") td:eq(1) ._input").removeClass('error_color');
+
+			// --- 第二 <  第一 ---
+			if(parseFloat(weight_1) >= parseFloat(weight_2)){
+				$("#fee_setting table tr:eq("+i+") td:eq(2) ._input").addClass('error_color');
+				alert("到质量区间结束必须大于开始");
+				return false;
+			}
+				$("#fee_setting table tr:eq("+i+") td:eq(2) ._input").removeClass('error_color')
+			
+			var fee = $("#fee_setting table tr:eq("+i+") td:eq(3)").text();
+			fee_default += "从"+weight_1+"-"+weight_2+","+"费用为"+fee+";";
+			}
+		}
+		fee_default +=";";
+		// ---- 续重部分 ----
+		var follw_weight 	= $("input[name=every_weight]").val();
+		var follw_fee 		= $("input[name=every_fee]").val();
+		if(follw_weight!="" && follw_fee !=""){
+			fee_default += "续重部分：重量每增加"+follw_weight+",增加费用"+follw_fee+";";
+		}
+		// 返回设置的值
+		if(!parent.rule_setting){
+			if(parent.$("#weight table tr").length == 1){
+				var tr = "<tr><td style='text-align:center'>1</td><td style='text-align:center'><a class='delete_one' href='javascript:;'>删除</a></td><td ><span class='area' area_id=''></span><a style='display:bolock;float:right' area_id='' href='javascript:;' class='setting_area'>设置</a></td><td>	<span class='store' store_id=''></span>	<a style='display:bolock;float:right' href='javascript:;' store_id='' class='setting_store'>设置</a></td><td>"+fee_default+"</td><td style='text-align:center'><a  class='setting_rule'>设置</a ></td></tr>";
+					parent.$("#weight table").append(tr);
+				
+			}
+			parent.$("#weight input[name=default_rule]").val(fee_default);
+			parent.$("table tr:last td:eq(4)").text(fee_default);
+		}else{
+			parent.rule_setting.parents("tr").find("td:eq(4)").text(fee_default);
+			parent.rule_setting = null;
+		}
+		// console.log(first_w);
+		parent.$('#MessageBox').modal('hide');
+	});
+
+});		
+</script>
+</body>
+</html>
+<!-- END: main -->

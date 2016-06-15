@@ -1,0 +1,97 @@
+//---- UTF8 编码 ----
+<!-- BEGIN: main -->
+<html>
+<head>
+<title>手工合单</title>
+<link type="text/css" rel="stylesheet" href="/style/bootstrap.min.css?ver={main.doc_version}"/>
+<link type="text/css" rel="stylesheet" href="/style/style.css?ver={main.doc_version}"/>
+<style>
+body,table,form,input		{font-size:12px; padding:0; margin:0}
+body {
+	min-width:100px;
+	overflow-y:auto;
+	overflow-x:auto;
+}
+</style>
+<script type="text/javascript" charset="UTF-8" src="/js_encode/jquery-1.9.1.min.js"></script>
+
+<script type="text/javascript" src="/js_encode/product_specifications_tankuanaga.js"></script>
+<script type="text/javascript">
+	$(function(){
+		$('.table input[name="select_alld"]').click(function () {
+		    if(this.checked){
+	    		$('.table input[name="select_one"]').each(function () {
+	    			$(this).prop("checked",true);
+	    		});
+		    }else{
+	    		$('.table input[name="select_one"]').each(function () {
+	    			$(this).prop("checked",false);
+	    		});
+		    }
+		});
+		function getData(){
+			var a = '';
+			$('.table tr td:nth-child(2)').find('input[name=select_one]:checked').each(function(){
+				a += $(this).next().val()+",";
+			});
+			return a;
+		}
+		$('.he').click(function(){
+			var a = getData();
+			if(a.split(",").length > 2){
+				alert('只允许选择一个订单');
+				return false;
+			}else if(a.split(",").length < 2){
+				alert('请您选择一个订单');
+				return false;
+			}
+		});
+
+
+	});
+</script>
+<form class="Merge" method="post" action="">
+	<div class="" style="width:820px;">
+		<div class="float_left">
+		<span class="margin_left_5">提示：以下订单将合并成同一笔订单，请选择其中一笔作为合并后的信息。</span>
+		</div><br>
+		<table style="width:850px" class="table table-bordered table-hover margin_left_0 ">
+			<tr>
+				<th class="table_th_number">序号</th>
+				<th class="center table_th_checkbox"><input type="checkbox" name="select_alld" /></th>
+				<th style="width:106px;">订单号</th>
+				<th style="width:67px;">店铺</th>
+				<th style="width:67px;">仓库</th>
+				<th style="width:67px;">快递</th>
+				<th style="width:67px;">收件人</th>
+				<th style="width:147px;">地区</th>
+				<th style="width:147px;">详细地址</th>
+			</tr>
+			<!-- BEGIN: arr -->
+			<tr>
+				<td>{arr.num}</td>
+				<td class="center table_th_checkbox">
+					<input type="radio" name="select_one" value="{arr.order_id}"/>
+					<input type="hidden" name="order_id[]" value="{arr.order_id}">
+				</td>
+				<td>{arr.bind_number}</td>
+				<td>{arr.shop_name}</td>
+				<td>{arr.store_name}</td>
+				<td>{arr.express_name}</td>
+				<td>{arr.name}</td>
+				<td>{arr.district_name}</td>
+				<td>{arr.address}</td>
+			</tr>
+			<!-- END: arr -->
+		</table>
+		<div class="float_left btn_margin margin_top_3">
+			<input class="btn btn-default btn-sm  margin_left_0 he" type="submit" name="submit" value="确定" />
+			<input class="btn btn-default btn-sm margin_left_0" type="button" onclick="parent.$('#MessageBox').modal('hide')" value="取消" />
+		</div>
+	</div>
+</form>
+</body>
+</html>
+
+<!-- END: main -->
+

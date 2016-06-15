@@ -1,0 +1,68 @@
+//---- UTF8 编码 ----
+<!-- BEGIN: main --><?xml version="1.0" encoding="UTF-8"?>
+{main.doc_type}
+<?xml-stylesheet type="text/xsl" href="/style/crm_update_customer.xsl?ver={main.doc_version}"?>
+<html version="{main.doc_version}">
+	<head>
+		<Title>{main.title}</Title>
+		<meta name="keywords" content="{main.keywords}" />
+		<meta name="description" content="{main.description}" />
+		<em company_id="{main.company_id}" staff_id="{main.staff_id}" login_name="{main.login_name}" permit="{main.permit}" program="{main.request_url}"/>
+	</head>
+	<Body>
+		<dir><![CDATA[ 您的位置： {main.this_location}]]></dir>
+		<menu>
+			<big>{main.big_menu}</big>
+			<small>
+				<!-- BEGIN: list_menu --><a class="{list_menu.class}" href="{list_menu.link}">{list_menu.name}</a><!-- END: list_menu -->
+			</small>
+		</menu>
+	<!-- 	<content>
+		<![CDATA[
+		{main.html_body}
+		]]>
+		</content> -->
+		<customerMsg>
+			<id>{main.id}</id>
+			<crm_user_id>{main.crm_user_id}</crm_user_id>
+			<crm_type>{main.crm_type}</crm_type>
+			<name>{main.name}</name>
+			<nick_name>{main.nick_name}</nick_name>
+			<company_name>{main.company_name}</company_name>
+			<state_id>{main.state_id}</state_id>
+			<city_id>{main.city_id}</city_id>
+			<district_id>{main.district_id}</district_id>
+			<address>{main.address}</address>
+			<telphone>{main.telphone}</telphone>
+			<mobile>{main.mobile}</mobile>
+			<email>{main.email}</email>
+			<post_code>{main.post_code}</post_code>
+			<qq>{main.qq}</qq>
+			<body>{main.body}</body>
+			<tax_Ok>{main.tax_Ok}</tax_Ok>
+			<tax_title>{main.tax_title}</tax_title>
+			<tax_number>{main.tax_number}</tax_number>
+			<tax_address>{main.tax_address}</tax_address>
+			<tax_telphone>{main.tax_telphone}</tax_telphone>
+			<tax_bank_name>{main.tax_bank_name}</tax_bank_name>
+			<tax_bank_number>{main.tax_bank_number}</tax_bank_number>
+			<!-- <type>
+				<select_value>{main.type}</select_value>
+				<ul>
+					<li><value>Finished</value><text>成品供货商</text></li>
+					<li><value>Materials</value><text>原材料供货商</text></li>
+				</ul>
+			</type>
+			<level>
+				<select_value>{main.level}</select_value>
+				<ul>
+					<li><value>Primary</value><text>主选供货商</text></li>
+					<li><value>Alternative</value><text>备选供货商</text></li>
+					<li><value>Eliminate</value><text>淘汰供货商</text></li>
+				</ul>
+			</level> -->
+		</customerMsg>
+
+	</Body>
+</html>
+<!-- END: main -->

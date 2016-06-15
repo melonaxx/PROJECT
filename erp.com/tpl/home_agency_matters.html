@@ -1,0 +1,42 @@
+//---- UTF8 编码 ----
+<!-- BEGIN: main --><?xml version="1.0" encoding="UTF-8"?>
+{main.doc_type}
+<?xml-stylesheet type="text/xsl" href="/style/home_agency_matters.xsl?ver={main.doc_version}"?>
+<html version="{main.doc_version}">
+<head>
+	<Title>{main.title}</Title>
+	<meta name="keywords" content="{main.keywords}" />
+	<meta name="description" content="{main.description}" />
+	<em company_id="{main.company_id}" staff_id="{main.staff_id}" login_name="{main.login_name}" permit="{main.permit}" program="{main.request_url}"/>
+</head>
+<Body>
+<dir><![CDATA[ 您的位置：{main.this_location}]]></dir>
+<menu>
+	<big>{main.big_menu}</big>
+	<small>
+		<!-- BEGIN: list_menu --><a class="{list_menu.class}" href="{list_menu.link}">{list_menu.name}</a><!-- END: list_menu -->
+	</small>
+</menu>
+<notice>
+	<ul total='{main.total}'>
+		<!-- BEGIN: notice -->
+		<li>
+			<id>{notice.id}</id>
+			<no>{notice.no}</no>
+			<name>{notice.name}</name>
+			<nick>{notice.nick}</nick>
+			<begin_date>{notice.begin_date}</begin_date>
+			<end_date>{notice.end_date}</end_date>
+			<body>{notice.body}</body>
+			<person>{notice.person}</person>
+			<sign>{notice.sign}</sign>
+			<action_date>{notice.action_date}</action_date>
+		</li>
+		<!-- END: notice -->
+	</ul>
+</notice>
+<date>{main.date}</date>
+{main.page_info}
+</Body>
+</html>
+<!-- END: main -->

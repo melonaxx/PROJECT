@@ -1,0 +1,58 @@
+//---- UTF8 编码 ----
+<!-- BEGIN: main -->
+<html>
+<head>
+<title></title>
+<link type="text/css" rel="stylesheet" href="/style/bootstrap.min.css?ver={main.doc_version}"/>
+<link type="text/css" rel="stylesheet" href="/style/style.css?ver={main.doc_version}"/>
+<style>
+body,table,form,input		{font-size:12px; padding:0; margin:0}
+body {
+	text-align:left;
+	min-width:100px;
+	overflow-y:hidden;
+	overflow-x:hidden;
+}
+</style>
+<script type="text/javascript" charset="UTF-8" src="/js_encode/jquery-1.9.1.min.js"></script>
+<script>
+$(function(){
+	$('.handle').click(function(){
+		//获取订单号
+		var bind_number = $(this).parent('td').find('input[name=bind_number]').val();
+		parent.location.replace('/order/order_list_audit.php?type=online&find='+bind_number+'');
+	});
+})
+
+</script>
+<form class="warehouse" method="post" action="">
+	<div class="float_left">
+	<table class="table table-bordered" style="width:500px;">
+		<tr>
+			<th>序号</th>
+			<th>订单编号</th>
+			<th>原因</th>
+			<th>操作</th>
+		</tr>
+		<!-- BEGIN: arr -->
+		<tr>
+			<td>{arr.serial}</td>
+			<td>{arr.bind_number}</td>
+			<td>没有仓库</td>
+			<td>
+				<a href='javascript:void(0)' class="handle" onclick="parent.$('#MessageBox').modal('hide')">处理</a>
+				<input type="hidden" name="bind_number" value="{arr.bind_number}"/>
+				<input type="hidden" name="order_id" value="{arr.oid}"/>
+			</td>
+		</tr>
+		<!-- END: arr -->
+	</table>
+	<div class=" btn_margin margin_top_3">
+		<input class="btn btn-default btn-sm margin_left_0"  onclick="parent.$('#MessageBox').modal('hide')" type="reset" value="取消" />
+	</div>
+</form>
+</body>
+</html>
+
+<!-- END: main -->
+

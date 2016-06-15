@@ -1,0 +1,28 @@
+<!DOCTYPE>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>云传感器-固件升级</title>
+<style>
+</style>
+</head>
+<body>
+    <div style="width:1080px; margin:0 auto;">
+        <form style="width:600px;margin:0 auto;" method="POST" enctype="multipart/form-data" action="/uploadbin.php">
+            <div>
+                <label>固件版本号</label>
+                <input type="text" id="inputVersion" name="version">
+            </div>
+            <div>
+                <label>版本描述</label>
+                <input type="text" id="inputName" name="name">
+            </div>
+            <div>
+                <label>上传bin文件</label>
+                <input id="inputVersion" type="file" name="bin">
+            </div>
+            <button type="submit">提交</button>
+        </form>
+    </div>
+</body>
+</html>

@@ -1,0 +1,265 @@
+<!DOCTYPE>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>云传感器Debug页面</title>
+<style>
+    ul {list-style: none outside none; padding:5px 0 0 0}
+    li {margin: 10px 0}
+    .content div {color:#989898;}
+    .content div span {display:inline-block;margin:0 5px;color:blue;}
+    .time {font-size:14px;color:#989898;}
+</style>
+</head>
+<body>
+    <div style="width:1080px; margin:0 auto;">
+        <div style="float:left;height:500px;width:800px;border:1px solid;padding:10px;overflow:auto;">
+            <div style="padding:10px;background:#efefef;">
+                <span>IP: <?=$client_ip?></span>
+            </div>
+            <div>
+                <ul class="log-item">
+                    <?php
+                    foreach($debug_logs as $log_str) {
+                    $log = json_decode($log_str, true);
+                    ?>
+                    <li>
+                    <span class="time"><?=date("Y-m-d H:i:s", intval($log['t']))?></span>
+                    <div class="content">
+                        <div>uri:<span class="uri"><?=$log['uri']?></span></div>
+                        <div>ip:<span class="uri"><?=$log['ip']?></span></div>
+                        <div>请求:<span class="request"><?=str_replace("\n", "<br>", htmlspecialchars($log['req']))?></span></div>
+                        <div>响应:<span class="response"><?=htmlspecialchars($log['rsp'])?></span></div>
+                    </div>
+                    </li>
+                    <?php
+                    }
+                    ?>
+                </ul>
+            </div>
+        </div>
+
+        <div style="float:right;height:500px;width:200px;border:1px solid;padding:10px;">
+            <div>
+                <input id="inputIMEI" type="text" placeholder="请输入IMEI号" style="width:100%">
+            </div>
+            <div>
+                <button id="btnReset" type="button" value="重置">重置</button>
+            </div>
+            <div style="margin:20px 0 0 0">
+                <div>
+                    <input id="inputConfIMEI" type="text" placeholder="请输入IMEI号" style="width:100%">
+                </div>
+                <div>
+                    <input id="inputConfcf" type="text" placeholder="cf数据收集频率" style="width:100%">
+                </div>
+                <div>
+                    <input id="inputConff" type="text" placeholder="f数据发送频率" style="width:100%">
+                </div>
+                <div>
+                    <input id="inputConfurl" type="text" placeholder="url数据传输地址" style="width:100%">
+                </div>
+                <div>
+                    <input id="inputConfwi" type="text" placeholder="wi报警间隔" style="width:100%">
+                </div>
+                <div>
+                    <input id="inputConfwf" type="text" placeholder="wf报警状态下的数据发送频率" style="width:100%">
+                </div>
+                <div>
+                    <input id="inputConfwurl" type="text" placeholder="wurl报警地址" style="width:100%">
+                </div>
+                <div>
+                    <button id="btnUpdateConf" type="button" value="更新配置">更新配置</button>
+                    <button id="btnClearConf" type="button" value="清空">清空</button>
+                </div>
+            </div>
+            
+
+            <div style="margin:20px 0 0 0">
+                <div>
+                    <input id="upgradeIMEI" type="text" placeholder="请输入IMEI号" style="width:100%">
+                </div>
+                <div>
+                    <input id="upgradeVersion" type="text" placeholder="请输入升级的固件版本号" style="width:100%">
+                </div>
+                <div>
+                    <button id="upgradeButton" type="button" value="确认">确认</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="http://libs.baidu.com/jquery/1.11.1/jquery.min.js"></script>
+
+    <script>
+        var App = <?=json_encode(array(
+            "fromtime"=>$fromtime,
+            "imei"=>$imei
+        ))?>;
+
+        function listLatestLogs() {
+            $.ajax({
+            url: "/list_debug_logs.php",
+            cache: false,
+            dataType: "json",
+            data: {
+            fromtime: App.fromtime,
+            id: App.imei
+            },
+            success: function(data) {
+                var html = "";
+                if (data.errno === 0 && data.data && data.data.length > 0) {
+                    App.fromtime = data.data[0].t;
+
+                    $.each(data.data, function(i, v) {
+                        html += '\
+                        <li>\
+                        <span class="time">' + v.ft + '</span>\
+                        <div class="content">\
+                            <div>uri:<span class="uri">' + v.uri + '</span></div>\
+                            <div>ip:<span class="uri">' + v.ip + '</span></div>\
+                            <div>请求:<span class="request">' + v.req + '</span></div>\
+                            <div>响应:<span class="response">' + v.rsp + '</span></div>\
+                        </div>\
+                        </li>';
+                    });
+
+                    $("ul.log-item").prepend(html);
+
+                    // 如果子元素过多，要删除最老的数据
+                    var items = $("ul.log-item li");
+                    if (items.length > 100) {
+                        items.slice(100).remove();
+                    }
+                }
+            },
+            complete: function() {
+                setTimeout(listLatestLogs, 3000);
+            }
+            });
+
+        }
+
+        listLatestLogs();
+
+        $("#btnReset").on("click", function() {
+            var imei = $.trim($("#inputIMEI").val());
+            if (!imei) {
+                alert("请填写imei");
+                return false;
+            }
+
+            $.ajax({
+                url: "/close.php",
+                method: "POST",
+                cache: false,
+                dataType: "json",
+                data: {
+                    imei: imei
+                },
+                success: function(data) {
+                    if (data && data.data) {
+                        alert("重置成功");
+                    } else {
+                        alert("重置失败, errno: " + (data && data.errno) + " " + (data && data.errmsg));
+                    }
+                },
+                error: function(xhr, status) {
+                    alert("重置失败: " + status);
+                }
+            });
+        });
+
+        $("#btnUpdateConf").on("click", function() {
+            var imei = $.trim($("#inputConfIMEI").val());
+            var cf = $.trim($("#inputConfcf").val());
+            var f = $.trim($("#inputConff").val());
+            var url = $.trim($("#inputConfurl").val());
+            var wi = $.trim($("#inputConfwi").val());
+            var wf = $.trim($("#inputConfwf").val());
+            var wurl = $.trim($("#inputConfwurl").val());
+
+            if (!imei) {
+                alert("请填写imei");
+                return false;
+            }
+
+            if (!cf && !f && !url && !wi && !wf && !wurl) {
+                alert("请至少填写一项配置信息");
+                return false;
+            }
+
+            $.ajax({
+                url: "/update_conf.php",
+                method: "POST",
+                cache: false,
+                dataType: "json",
+                data: {
+                    imei: imei,
+                    cf: cf,
+                    f: f,
+                    url: url,
+                    wi: wi,
+                    wf: wf,
+                    wurl: wurl
+                },
+                success: function(data) {
+                    if (data && data.data) {
+                        alert("更新配置成功");
+                    } else {
+                        alert("更新配置失败, errno: " + (data && data.errno) + " " + (data && data.errmsg));
+                    }
+                },
+                error: function(xhr, status) {
+                    alert("更新配置失败: " + status);
+                }
+            });
+        });
+
+        $("#btnClearConf").on("click", function() {
+            $("#inputConfcf").val("");
+            $("#inputConff").val("");
+            $("#inputConfurl").val("");
+            $("#inputConfwi").val("");
+            $("#inputConfwf").val("");
+            $("#inputConfwurl").val("");
+        });
+
+
+        $("#upgradeButton").on("click", function() {
+            var imei = $.trim($("#upgradeIMEI").val());
+            var nextver  = $.trim($("#upgradeVersion").val());
+            if (!imei) {
+                alert("请填写imei");
+                return false;
+            }
+
+            if (!nextver) {
+                alert("请填写升级的固件版本号");
+                return false;
+            }
+
+            $.ajax({
+                url: "/update_nextver.php",
+                method: "POST",
+                cache: false,
+                dataType: "json",
+                data: {
+                    imei: imei,
+                    nextver: nextver
+                },
+                success: function(data) {
+                    if (data && data.data) {
+                        alert("升级成功");
+                    } else {
+                        alert("升级失败, errno: " + (data && data.errno) + " " + (data && data.errmsg));
+                    }
+                },
+                error: function(xhr, status) {
+                    alert("升级失败: " + status);
+                }
+            });
+        });
+    </script>
+</body>
+</html>

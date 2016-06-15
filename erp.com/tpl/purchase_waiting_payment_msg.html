@@ -1,0 +1,87 @@
+//---- UTF8 编码 ----
+<!-- BEGIN: main -->
+<html>
+<head>
+<title></title>
+<link type="text/css" rel="stylesheet" href="/style/bootstrap.min.css?ver={main.doc_version}"/>
+<link type="text/css" rel="stylesheet" href="/style/style.css?ver={main.doc_version}"/>
+<style>
+body,table,form,input		{font-size:12px; padding:0; margin:0}
+body {
+	min-width:100px;
+	overflow-y:auto;
+	overflow-x:auto;
+}
+</style>
+<script type="text/javascript" charset="UTF-8" src="/js_encode/jquery-1.9.1.min.js"></script>
+<script type="text/javascript" charset="UTF-8" src="/js_encode/bootstrap.min.js"></script>
+<script type="text/javascript" src="/js_encode/jquery.validate.js"></script>
+
+<div class="mainBody">
+<form class="margin_top" method="" action="">
+	<div style='width:100%;float:left;'>
+		<input type="hidden" name='id' value='{main.id}'/>
+		<div class="float_left form-group ">
+			<span class="float_left" style="margin:5px 0 0 24px;">金额：</span>
+			<input type="text" value='{main.money}' readonly="readonly" class="form-control input-sm" style="float:left;">
+		</div>
+		<div class="float_left form-group">
+			<span class="float_left" style="margin:5px 0 0 30px;">交易账户：</span>
+			<input class="form-control input-sm form_no_border find" value="{main.bank_id}" readonly="readonly" style="float:left;" >
+		</div>
+		<div class="float_left form-group">
+			<span class="float_left" style="margin:5px 0 0 42px;">交易日期：</span>
+			<input type="text" value='{main.amount_date}' readonly="readonly" class="form-control input-sm" style="float:left;">
+		</div><br>
+		<div class="float_left form-group">
+			<span class="float_left" style="margin:5px 0 0 0px;">单据类型：</span>
+			<input class="form-control input-sm float_left" value="{main.type}" readonly="readonly" style="float:left;" >
+		</div>
+		<div class="float_left form-group">
+			<span class="float_left" style="margin:5px 0 0 30px;">单据科目：</span>
+			<input type="text" value="{main.subject}" readonly="readonly" class="form-control input-sm float_left" style="float:left;">
+		</div>
+		<div class="float_left form-group">
+			<span class="float_left" style="margin:5px 0 0 30px;">采购单编号：</span>
+			<input type="text" value="{main.number}" readonly="readonly" class="form-control input-sm float_left" style="float:left;">
+		</div>
+		<div class="float_left form-group">
+			<span class="float_left" style="margin:5px 0 0 0px;">已付金额：</span>
+			<input type="text" value="{main.payment_already}" readonly="readonly" class="form-control input-sm float_left" style="float:left;">
+		</div>
+		<div class="float_left form-group">
+			<span class="float_left" style="margin:5px 0 0 30px;">欠款尾款：</span>
+			<input type="text" value="{main.payment_remain}" readonly="readonly" class="form-control input-sm float_left" style="float:left;">
+		</div>
+		<div class="float_left form-group">
+			<span class="float_left" style="margin:5px 0 0 30px;">供应商欠款：</span>
+			<input type="text" value="{main.payment_return}" readonly="readonly" class="form-control input-sm float_left" style="float:left;">
+		</div>
+		<div class="float_left form-group">
+			<span class="float_left" style="margin:15px 0 0 24px;">备注：</span>
+			<textarea class="form-control input-sm merger_two_row_4" name='body' rows="2" style="width:633px;" >{main.body}</textarea>
+		</div>
+	</div>
+	<div class="form-group float_left" style="margin:0 0px 0px 4px;">
+		<div class="table_operate_block">
+			<input class="btn btn-default btn-sm goodsDeleteaa float_left" type="reset" value="返回" onclick="parent.$('#MessageBox').modal('hide')" />
+		</div>
+	</div>
+</form>
+</div>
+</body>
+<script>
+$('textarea[name=body]').blur(function(){
+	var id = $('input[name=id]').val();
+	var body = $(this).val();
+	$.ajax({
+		url:'purchase_waiting_payment_msg.php',
+		type:'post',
+		data:{'id':id,'body':body},
+	})
+})
+</script>
+</html>
+
+<!-- END: main -->
+

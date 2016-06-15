@@ -1,0 +1,120 @@
+//---- UTF8 编码 ----
+<!-- BEGIN: main --><?xml version="1.0" encoding="UTF-8"?>
+{main.doc_type}
+<?xml-stylesheet type="text/xsl" href="/style/product_look_see.xsl?ver={main.doc_version}"?>
+<html version="{main.doc_version}">
+<head>
+	<Title>{main.title}</Title>
+	<meta name="keywords" content="{main.keywords}" />
+	<meta name="description" content="{main.description}" />
+	<em company_id="{main.company_id}" staff_id="{main.staff_id}" login_name="{main.login_name}" permit="{main.permit}" program="{main.request_url}"/>
+</head>
+<Body>
+<dir><![CDATA[ 您的位置：{main.this_location}]]></dir>
+<menu>
+	<big>{main.big_menu}</big>
+	<small>
+		<!-- BEGIN: list_menu --><a class="{list_menu.class}" href="{list_menu.link}">{list_menu.name}</a><!-- END: list_menu -->
+	</small>
+</menu>
+
+<format_name v1="{main.format_1}" v2="{main.format_2}" v3="{main.format_3}" v4="{main.format_4}" v5="{main.format_5}">
+	<!-- BEGIN: format_name --><li id="{format_name.id}">{format_name.name}</li><!-- END: format_name -->
+</format_name>
+<format_value v1="{main.value_id_1}" v2="{main.value_id_2}" v3="{main.value_id_3}" v4="{main.value_id_4}" v5="{main.value_id_5}">
+	<!-- BEGIN: format_value --><li name_id="{format_value.name_id}" id="{format_value.id}">{format_value.name}</li><!-- END: format_value -->
+</format_value>
+
+<attrib_name>
+	<!-- BEGIN: attrib_name --><li id="{attrib_name.id}"><name>{attrib_name.name}</name></li><!-- END: attrib_name -->
+</attrib_name>
+
+<attrib_value>
+	<!-- BEGIN: attrib_value --><li attrib_id="{attrib_value.attrib_id}" value_id="{attrib_value.value_id}">{attrib_value.body}</li><!-- END: attrib_value -->
+</attrib_value>
+
+<brand>
+	<!-- BEGIN: list_brand --><li id="{list_brand.id}" current="{list_brand.current}">{list_brand.name}</li><!-- END: list_brand -->
+</brand>
+
+<category>
+	<!-- BEGIN: list_category --><li id="{list_category.id}" current="{list_category.current}">{list_category.name}</li><!-- END: list_category -->
+</category>
+
+<shop>
+	<!-- BEGIN: list_shop --><li id="{list_shop.id}" current="{list_shop.current}">{list_shop.name}</li><!-- END: list_shop -->
+</shop>
+
+<product_type>
+	<!-- BEGIN: list_type --><li name="{list_type.id}" current="{list_type.current}">{list_type.name}</li><!-- END: list_type -->
+</product_type>
+
+<product_quality>
+	<!-- BEGIN: list_quality --><li name="{list_quality.id}" current="{list_quality.current}">{list_quality.name}</li><!-- END: list_quality -->
+</product_quality>
+
+<parts>
+	<!-- BEGIN: list_parts -->
+	<li id="{list_parts.id}" current="{list_parts.current}">{list_parts.name}</li>
+	<!-- END: list_parts -->
+</parts>
+
+<list_attrib>
+	<!-- BEGIN: list_attrib -->
+	<li id="{list_attrib.attrib_id}">{list_attrib.value_id}</li>
+	<!-- END: list_attrib -->
+</list_attrib>
+
+<list_accessory>
+	<!-- BEGIN: list_accessory -->
+	<li id="{list_accessory.id}" total="{list_accessory.total}">
+		<name>{list_accessory.name}</name>
+		<image>{list_accessory.image}</image>
+		<unit>{list_accessory.unit}</unit>
+		<price>{list_accessory.price}</price>
+	</li>
+	<!-- END: list_accessory -->
+</list_accessory>
+
+<div>
+	<id>{main.id}</id>
+	<name>{main.name}</name>
+	<number>{main.number}</number>
+	<serial_number>{main.serial_number}</serial_number>
+	<bar_code>{main.bar_code}</bar_code>
+	<total>{main.total}</total>
+	<volume>{main.volume}</volume>
+	<weight>{main.weight}</weight>
+	<price_tag>{main.price_tag}</price_tag>
+	<price_purchase>{main.price_purchase}</price_purchase>
+	<price_display>{main.price_display}</price_display>
+	<price_total>{main.price_total}</price_total>
+	<image_list>
+		<li id="{main.photo_id_1}">{main.image_url_1}</li>
+		<li id="{main.photo_id_2}">{main.image_url_2}</li>
+		<li id="{main.photo_id_3}">{main.image_url_3}</li>
+		<li id="{main.photo_id_4}">{main.image_url_4}</li>
+	</image_list>
+	<content><![CDATA[{main.content}]]></content>
+</div>
+
+	<mang>{main.product_manager}</mang>
+	<product_sale>
+		<!-- BEGIN: sell_state --><li name="{sell_state.id}" current="{sell_state.current}">{sell_state.name}</li><!-- END: sell_state -->
+	</product_sale>
+
+	<snum>{main.sale_number}</snum>
+	<srom>{main.saleroom}</srom>
+	<lr>{main.lirun}</lr>
+	<total_num>{main.total_num}</total_num>
+
+	<store>
+		<!-- BEGIN: shop_store -->
+		<li id="{shop_store.id}"><aa>{shop_store.name}</aa></li>
+		<!-- END: shop_store -->
+	</store>
+
+	<info_id>{main.info_id}</info_id>		
+</Body>
+</html>
+<!-- END: main -->

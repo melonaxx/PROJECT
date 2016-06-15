@@ -1,0 +1,87 @@
+//---- UTF8 编码 ----
+<!-- BEGIN: main -->
+<html>
+<head>
+<title>添加模板</title>
+<link type="text/css" rel="stylesheet" href="/style/bootstrap.min.css?ver={main.doc_version}"/>
+<link type="text/css" rel="stylesheet" href="/style/style.css?ver={main.doc_version}"/>
+<style>
+body{
+	text-align:left;
+	overflow-y:hidden;
+	overflow-x:hidden;
+}
+.form-inline .form-control {
+	display: inline-block;
+	vertical-align: middle;
+}
+.form-inline .form-group {
+	display: inline-block;
+	vertical-align: middle;
+}
+</style>
+<script type="text/javascript" src="/js_encode/jquery-1.9.1.min.js"></script>
+<body style="padding-top:0px;">
+	<div>
+		<form class="form-inline" method="post" action="">
+			<div class="form-group">
+				<lebel>短信开关：</lebel>
+				<select class="form-control input-sm" name="strategy_status">
+					<option value="N">关闭</option>
+					<option value="Y">开启</option>
+				</select>
+			</div><br/>
+			<div class="form-group">
+				<label>选择模板：</label>
+				<select class="form-control input-sm" name="type">
+					<option value="Deliver">发货通知</option>
+					<option value="Remind">短信催付</option>
+					<option value="Payment">已付款通知</option>
+				</select>
+			</div><br/>
+			<div class="form-group">
+				<label>订单金额：</label>
+				<select class="form-control input-sm" name="strat">
+					<option value="D">大于等于</option>
+					<option value="X">小于</option>
+				</select>
+			</div>
+			<div style="width:100px;" class="form-group">
+				<div class="input-group">
+					<div class="input-group-addon">￥</div>
+					<input type="text" name="money" value='{res.money}' class="form-control input-sm" style="width:110px;"/>
+				</div>
+			</div><br/>
+			<p>
+				<input class="btn btn-default btn-= btn_margin" type="submit" value="保存"/>
+				<input class="btn btn-default btn-sm" type="button" value="取消" onclick="parent.$('#MessageBox').modal('hide')" />
+			</p>
+		</form>
+	</div>
+</body>
+<script type="text/javascript">
+	var type 			= "{res.type}";
+	var strat 			= "{res.strat}";
+	var strategy_status = "{res.strategy_status}";
+	$('select[name=strategy_status] option').each(function(){
+		var v = $(this).val();
+		if(v == strategy_status){
+			$(this).prop('selected','selected');
+		}
+	})
+	$('select[name=type] option').each(function(){
+		var v = $(this).val();
+		if(v == type){
+			$(this).prop('selected','selected');
+		}
+	})
+	$('select[name=strat] option').each(function(){
+		var v = $(this).val();
+		if(v == strat){
+			$(this).prop('selected','selected');
+		}
+	})
+</script>
+</html>
+
+<!-- END: main -->

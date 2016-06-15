@@ -1,0 +1,600 @@
+/* Mistruster Application Inc. */
+div,span,img,ul,ol,li,dl,dt,dd,form,p,h2,h3		{margin:0; padding:0; border:0; list-style:none; font-family:microsoft yahei}
+body,table,textarea,option,input
+{
+	font-size:12px;
+	line-height:1.5;
+	font-family: Microsoft Yahei,"Helvetica Neue", Helvetica, Hiragino Sans GB, WenQuanYi Micro Hei, sans-serif;
+}
+a				{color:#336699; text-decoration:none}
+a:hover			{color:#336699}
+body			{overflow-x:auto; overflow-y:scroll; padding:0px; margin:0 auto; min-width:1200px; text-align:center; font-family:microsoft yahei; background:#ffffff; color:#000000;overflow-y:auto;padding-top:58px;
+	overflow-x:hidden;}
+input			{padding:0; margin:0; vertical-align:middle; -moz-box-sizing:border-box; -webkit-box-sizing:border-box; box-sizing:border-box}
+select			{border:1px solid #A7A6AA; font-size:12px; height:22px; line-height:22px; vertical-align:middle; background:none repeat scroll 0 0 #FFFFFF}
+.clear			{clear:both; font-size:1px; visibility:hidden; width:1px; height:3px; line-height:1px!important}
+li				{list-style-position:outside; list-style-type:none}
+h1	{line-height:24px; height:24px; margin:2px; font-size:16px; font-weight:bold}
+blockquote.unlogin		{width:450px; font-size:14px; background-color:#d9dadb; border:dashed 1px #6497D4; padding:15px; text-align:left}
+blockquote.unlogin a	{color:#336699}
+.unlogin		{width:450px}
+.brief			{color:#666666}
+hr				{border:0; border-top:1px solid #bababa; margin:5px 0}
+
+#none			{height:0}
+/* 登录栏 */
+.banner_top		{text-align:center; padding:0; margin:0 auto; height:35px; line-height:35px; background:#171f2a; color:#ffffff; font-size:12px; display:block; overflow:hidden}
+.banner_middle	{text-align:center; padding:0; margin:0 auto; height:60px; line-height:60px; background:#27303f; color:#ffffff; font-size:16px}
+.banner_bottom	{text-align:center; padding:0; margin:0 auto; height:30px; line-height:30px; background:#344157; color:#ffffff; font-size:12px}
+.banner_text	{width:1200px; text-align:left; overflow:hidden; margin:0 auto}
+.logo_top				{width:150px; float:left; background:url(/images/logo.png) no-repeat}
+#header_design			{width:100px; float:left; text-align:left}
+#header_login			{width:950px; float:left; text-align:right}
+#header_login a			{color:#ffffff}
+.divider_home{height:1px; width:100%;background-color: #585858;margin:4px 0;}
+.banner_middle li		{width:90px; text-align:center; float:left}
+.banner_middle li.logo	{width:150px; text-align:left; background:url(/images/logo.png) no-repeat 0 -35px}
+.banner_middle li.logo a:hover	{background:none}
+.banner_middle li.cur	{background:#344157}
+.banner_middle li a		{width:90px; display:block; color:#ffffff}
+.banner_middle li a:hover	{background:#344157}
+.banner_bottom li		{text-align:center; float:left}
+.banner_bottom li a		{margin:0 10px; color:#ffffff}
+.banner_bottom li.cur	{background:#171f2a}
+.banner_bottom li:hover	{background:#171f2a}
+
+#main_page		{width:1200px; margin:0 auto}
+#location_dir	{text-align:left; height:30px; line-height:30px}
+.text-left {text-align: left;}
+.site_footer	{clear:both; width:100%; line-height:20px; background:#333333; color:#ffffff}
+
+#html_body		{width:1000px; text-align:left; margin:50 auto}
+
+#doc		{min-width:1200px; width:100%; text-align:left; font-size:12px}
+
+.main_page		{width:1200px; margin:0 auto; text-align:left}
+
+/* 通用表格框 */
+table.table_box			{border:0; margin:0; border-collapse:collapse; table-layout:fixed; font-size:12px}
+table.table_box th		{border:1px solid #bababa; height:22px; line-height:22px; font-weight:normal; background:url(/images/bars.png) 0 0}
+table.table_box td		{padding:4px; border:1px solid #bababa}
+table.table_box tr.odd	{background:#EDF4FA}
+table.table_box tr.new	{background:#FFFFFF}
+table.table_box tr.odd:hover	{background:#eaeaea}
+table.table_box tr.new:hover	{background:#eaeaea}
+
+/* 分页 */
+#page_list		{float:left; height:30px; width:100%}
+#page_list span	{float:left; margin:2px; padding:5px}
+#page_list b	{float:left; margin:0px 1px; padding:5px; background:#67809C; color:#ffffff; border:#336699 1px solid; line-height:15px}
+#page_list a	{float:left; margin:0px 1px; padding:5px; background:#F5F5F5; color:#5B5B5B; border:#336699 1px solid; line-height:15px}
+#page_list a:hover	{background:#6497D4; color:#ffffff; border:#6497D4 1px solid}
+
+/* 表格标签1 */
+div.search_box		{height:20px; line-height:20px; font-size:12px; margin:12px 0; color:#333333}
+label.table_name	{width:70px; height:20px; line-height:20px; text-align:right; overflow:hidden; display:inline-block; vertical-align:middle}
+input.table_input	{width:180px; height:20px; border:1px solid #bababa; font-size:12px; color:#333333}
+input.table_input:hover	{border:1px solid #9999ff}
+input.search_btn	{width:55px; height:20px; border:1px solid #bababa; font-size:12px; margin-left:12px; color:#333333; background:#ffffff}
+input.	{width:200px; height:25px; line-height:25px; border:1px solid #bababa; font-size:14px; color:#333333}
+.search_box select	{width:100px; height:20px; border:1px solid #bababa; font-size:12px; color:#333333}
+
+#html_left		{width:215px; min-height:300px; float:left; border:1px solid #bababa; text-align:left; font-size:12px; margin:0 12px}
+#html_content	{min-width:900px; min-height:300px; float:left; text-align:left; font-size:12px}
+.div_box		{width:100%; border:1px solid #bababa}
+
+a.blue			{color:blue}
+a.blue:hover	{color:red}
+
+/* 确定按钮 */
+.btn_delete		{border:0; margin:0; height:24px; line-height:24px; padding-left:5px; padding-right:5px; border:#ffffff 1px solid; background:#8b0000; color:#ffffff}
+.btn_ok			{border:0; margin:0; height:24px; line-height:24px; padding-left:5px; padding-right:5px; border:#7babdb 1px solid; background:#dddddd}
+.btn_cancel		{border:0; margin:0; height:24px; line-height:24px; padding-left:5px; padding-right:5px; border:#7babdb 1px solid; background:#eeeeee}
+
+/* 单选框，复选框 */
+font.checkbox_text		{height:20px; line-height:20px; cursor:pointer}
+
+font.checkbox			{width:20px; height:20px; line-height:20px; background:url(/images/background.png) -70px -6px; display:inline-block; cursor:pointer}
+font.checkbox:hover		{background-position-x: -50px}
+font.checkbox_ok		{width:20px; height:20px; line-height:20px; background:url(/images/background.png) -110px -6px; display:inline-block; cursor:pointer}
+
+/*input无边框*/
+.input_border{
+	border: none;
+}
+
+/*
+ * 08.11，全局对a的控制
+ */
+a:hover {
+	text-decoration:none;
+	outline:none;
+}
+a {
+	blr:expression(this.onFocus=this.blur());
+}
+a:focus {
+	text-decoration:none;
+	outline:none;
+}
+.banner_middle li a:hover {
+	color:#ffb800;
+}
+
+
+/*
+ * 08.16
+ */
+/*
+ * 兼容浏览器
+ */
+.form-control option {
+	padding:0 0 0 12px;
+}
+/*
+ * 去掉label加粗
+ */
+form label {
+	font-weight:normal;
+}
+/*
+ * 绝大部分input,select块对应的样式
+ */
+.form-inline .form-group {
+	margin:0 20px 12px 0;
+}
+.form-inline .form-groups {
+	margin:0 20px 12px 0;
+}
+.form-inline .form-group_1 {
+	margin:0 10px 12px 0;
+}
+.form-inline .form-group_bottom0 {
+	margin:0 20px 0 0;
+}
+.form-inline .form-group_bottom1 {
+	margin:6px 20px 0 0;
+}
+.form-inline .form-group_bottom2 {
+	margin:0 20px 0 0;
+}
+.form-group .input-group .input-group-addon {
+	font-size:12px;
+}
+label.error {
+	margin:0;
+	padding:0;
+	display:none;
+}
+/*
+ * 绝大部分input,select的宽度
+ */
+.form-group .form-control {
+	width:147px;
+}
+.form-inline .form_control_extra {
+	width:45px;
+	margin:0 4px;
+}
+/*
+ * 表单input错误时颜色
+ */
+.form-inline .error_color {
+	border:1px solid #E74C3C;
+}
+.form-inline .error_color:focus {
+	box-shadow:0 1px 1px rgba(231, 76, 60, 0.075) inset, 0 0 8px rgba(231, 76, 60, 0.6);
+}
+/*
+ * 不可拖动大小
+ */
+.form-group textarea {
+	resize:none;
+
+}
+
+/*
+ * table向下空的距离
+ */
+.table {
+	margin:0 0 12px 0;
+}
+.table tr th,.table tr td {
+	text-align:left;
+	height:38px;
+	padding:3px 8px !important;
+	vertical-align: middle !important;
+}
+/*
+ * table默认表头颜色
+ */
+.table tr th {
+	background:#f5f5f5;
+}
+/*
+ * 部分列居中
+ */
+.table tr .center {
+	text-align:center;
+}
+/*部分居右*/
+.table tr .right {
+	text-align:right;
+}
+/*
+ * 表中a的样式
+ */
+.table tr td a {
+	color:#333;
+}
+.table tr td a:hover {
+	color:#0070CD;
+}
+/*
+ * 全选宽度
+ */
+.table .table_th_checkbox {
+	width:38px;
+}
+/*
+ * 序号宽度
+ */
+.table .table_th_number {
+	width:46px;
+	text-align:center;
+}
+/*
+ * 序号宽度
+ */
+.table .table_th_pic {
+	width:46px;
+	text-align:center;
+}
+/*商品规格自定义 宽度554*/
+.table .table_th_great {
+	width:548px;
+}
+/*商品规格自定义 宽度255*/
+.table .table_th_great_1 {
+	width:237px;
+}
+/*
+ * 操作宽度，默认对应2个链接
+ */
+.table .table_th_operate {
+	width:86px;
+	text-align:center;
+}
+/*商品录入属性class*/
+.shou_attributes{
+	width:50px; height:30px; line-height:30px; display:block-inline; overflow:hidden; text-align:right; float:left;
+}
+
+/*
+ * 操作宽度，1个链接
+ */
+.table .table_th_operate_1 {
+	width:65px;
+	text-align:center;
+}
+.table .table_th_operate_2 {
+	width:91px;
+	text-align:center;
+}
+/*
+ * 操作宽度，3个链接
+ */
+.table .table_th_operate_3 {
+	width:120px;
+	text-align:center;
+}
+/*
+ * 操作宽度300px
+ */
+.table .table_th_operatea{
+	width:300px;
+}
+/*
+ * 操作宽度550px
+ */
+.table .table_th_operateb{
+	width:550px;
+}
+/*
+ * 操作里的a向右空
+ */
+.table .table_a_operate {
+	margin:0 10px 0 0;
+}
+.span_span_a{
+	font-size:13px;
+}
+/*
+ * 添加订单和添加采购里的a标签
+ */
+.span_span_a a:hover{
+	color:#336699;
+}
+
+.table .table_a_operate_l{
+	margin:0 10px 0 0;
+	font-weight:bold;
+}
+.table .input-group-addon
+ {
+	background-color: transparent;
+	border:none;
+	font-size:12px;
+	padding:6px 2px;
+}
+/*
+ * 对小标题统一用h4，设置统一的样式
+ */
+h4 {
+	font-size:12px;
+	font-weight:bold;
+	margin:0 0 12px 0;
+	padding:8px 0 0 0;
+}
+h4.padding_clear {
+	padding:0;
+}
+/*
+ * 表格内的select和input等额外样式
+ */
+.form-inline .form_no_border {
+	width:100%;
+	border:none;
+}
+/*
+ * 按钮向右空的距离
+ */
+.btn_margin {
+	margin:0 10px 0 0;
+}
+.btn_btn {
+	margin:20px 10px;
+}
+/*
+ *
+ */
+.table_operate_block {
+	margin:0 0 12px 0;
+	overflow:auto;
+}
+.table_operate_blocks {
+	margin:0 0 12px 0;
+
+}
+.copyright2_line {
+  padding: 5px 5px 5px 5px;
+  width:100%;
+ float:left;
+}
+/*
+ * 向左空字数
+ */
+.margin_left_0 {
+	margin:0 0 0 4px;
+}
+.margin_left_1 {
+	margin:0 0 0 12px;
+}
+.margin_left_2 {
+	margin:0 0 0 24px;
+}
+.margin_left_3 {
+	margin:0 0 0 36px;
+}
+.margin_left_4 {
+	margin:0 0 0 48px;
+}
+.margin_left_5 {
+	margin:4 0 10 4px;
+}
+.margin_left_6 {
+	margin:0 0 0 20px;
+}
+.margin_left_7 {
+	margin:10 0 0 4px;
+}
+.margin_left_8 {
+	margin:6 0 0 29px;
+}
+
+.margin_left_10 {
+	margin:6 0 0 24px;
+}
+.margin_left_9 {
+	margin:0 0 15px 60px;
+}
+/*首页空格调整*/
+.margin_home{
+	margin:10px 0 0 10px;
+}
+.margin_home_1{
+	margin:16px 10px 0px 10px;
+}
+.margin_home_2{
+	margin:5px 0px 0px 0px;
+}
+.margin_home_3{
+	margin:10px 30px 0px 0px;
+}
+.margin_home_4{
+	margin:5px 0px 0px 35px;
+}
+
+.margin_home_5{
+	margin:0px 0 0 10px;
+}
+.margin_home_6{
+	margin:0px 10px 0 10px;
+}
+.margin_home_7{
+	margin:6px 6px 0 6px;
+}
+.display_none{
+	display:none;
+}
+.background-f5f5f5{
+	background-color:#f5f5f5;
+}
+.background-FFFCF6{
+	background-color:#FFFCF6;
+}
+/*系统公告左右列表下划线和样式*/
+.home_style{
+	height:34px;width:248px;cursor:pointer;line-height:34px;border-bottom:1px solid #E4DAD2;
+
+}
+
+/*向上空字数*/
+.margin_top_0 {
+	margin:3 10 0 0px;
+}
+.margin_top_1 {
+	margin:3 10 0 4px;
+}
+.margin_top_2 {
+	margin:40 10 0 4px;
+}
+.margin_top_3 {
+	margin:12 0 0 0px;
+}
+.margin_top_4 {
+	margin:6 10 0 4px;
+}
+.margin_top_5 {
+	margin:6px 0 0 0px;
+}
+/*
+ * 对应右边的大块
+ */
+.form-inline .margin_left_block {
+	margin:0 40px 12px 0;
+}
+/*
+ * table上方搜索框的宽度
+ */
+.form-inline .form-group .input_search {
+	width:200px;
+}
+/*
+ * form表单中往右空的小块距离
+ */
+.form-inline .form_small_block {
+	margin:0 10px 0 0;
+}
+/*
+ * 清除浮动
+ */
+.clear_both {
+	clear:both;
+}
+.float_left {
+	float:left;
+}
+.float_right {
+	float:right;
+}
+.form-group .merger_two_row_3 {
+	width:300px;
+}
+.form-group .merger_two_row_4 {
+	width:377px;
+}
+.form-group .merger_two_row_5 {
+	width:389px;
+}
+.form-group .merger_two_row_10 {
+	width:373px;
+}
+.form-group .merger_three_row_4 {
+	width:560px;
+}
+.form-group .merger_three_row_6 {
+	width:584px;
+}
+.form-group .merger_three_row_8 {
+	width:608px;
+}
+.form-group .merger_three_row_9 {
+	width:620px;
+}
+.form-group .merger_three_row_10 {
+	width:580px;
+}
+.margin20 {
+	margin:20px 0;
+}
+.mainBody {
+	margin:20px 0;
+}
+.padding0 {
+	padding:0 !important;
+}
+.margin0 {
+	margin:0 !important;
+}
+/*
+ * 详细列表对应的块
+ */
+.commonMsg {
+	border-top:1px solid #ddd;
+	border-bottom:1px solid #ddd;
+	padding:12px 0;
+	margin:0 0 12px 0;
+}
+.commonMsg .view_detail {
+	float:right;
+	margin:12px 0 0 0;
+}
+/*
+ * 分页
+ */
+.erp_page {
+	clear:both;
+}
+.erp_page ul {
+	float:right;
+}
+.erp_page ul li {
+	float:left;
+	margin:0 0 0 12px;
+	line-height:30px;
+}
+.erp_page ul li .form-group {
+	margin:0 !important;
+}
+.erp_page ul li .page_size {
+	width:60px;
+}
+.erp_page .current_page {
+	width:45px;
+	margin:0 1px;
+}
+/*
+ * nav-tabs标签向下空
+ */
+.nav_tabs_margin {
+	margin:0 0 12px 0;
+}
+/*
+ * 钱的颜色红色
+ */
+.money_color{
+	color:#E74C3C;
+	margin:0 4px;
+	font-weight:bold;
+}
+.padding-left:{
+	padding-left: 20px;
+
+}
+/*
+ *弹出询问框
+ */
+#confirm .number {
+	padding:0 2px;
+}

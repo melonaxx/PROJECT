@@ -1,0 +1,93 @@
+//---- UTF8 编码 ----
+<!-- BEGIN: main -->
+<html>
+<head>
+<title>手工拆单</title>
+<link type="text/css" rel="stylesheet" href="/style/bootstrap.min.css?ver={main.doc_version}"/>
+<!-- <link rel="stylesheet" href="/style/bootstrap-datetimepicker.min.css"></link> -->
+<link type="text/css" rel="stylesheet" href="/style/style.css?ver={main.doc_version}"/>
+
+<style>
+body,table,form,input		{font-size:12px; padding:0; margin:0}
+body {
+	text-align:left;
+	min-width:100px;
+	overflow-y:auto;
+	overflow-x:auto;
+}
+</style>
+<script type="text/javascript" charset="UTF-8" src="/js_encode/jquery-1.9.1.min.js"></script>
+<!-- <script type="text/javascript" src="/js_encode/product_specifications_tankuanaga.js"></script> -->
+
+<script type="text/javascript" src="/js_encode/order_list_audit_detach.js"></script>
+<form class="detach"  method="post" action="">
+	<div class="margin_top_3 float_left"  style="width:750px;">
+		<div class="float_left margin_left_5">
+			<span>提示：以下订单将被拆分成多笔订单，请选择需要拆分的商品作为拆分后的订单商品1。</span>
+			<span style="margin-top:5px">
+				订单编号：<input type="text" name="bind_number" class="form-control input-sm form_no_border" readonly="readonly" value="{product.bind_number}" style="width:110px;float:right;">
+			</span><br>
+		</div><br>
+		<table class="table table-bordered split margin_left_0 old">
+			<tr>
+				<th class="table_th_number">序号</th>
+				<th style="width:100px;">拆分数量</th>
+				<th style="width:200px;">商品名称</th>
+				<th style="width:200px;">商品规格</th>
+				<th style="width:100px;">商品数量</th>
+			</tr>
+			<!-- BEGIN: product -->
+			<tr>
+				<td class="table_th_number">{product.num}
+				<input type="hidden" name="product_id[]" value="{product.product_id}">
+				<input type="hidden" name="order_id" value="{product.order_id}"></td>
+				<td class="split_name">
+					<input type="text" name="split[]" class="form-control input-sm form_no_border chai">
+				</td>
+				<td>{product.name}</td>
+				<td>{product.format}</td>
+				<td class='td'>
+					<input type="hidden" name="total" value="{product.total}">
+					<input type="text" name="old_total[]" class="form-control input-sm form_no_border" readonly="readonly" value="{product.total}">
+				</td>
+			</tr>
+			<!-- END: product -->
+		</table>
+
+	</div>
+
+	<div class="margin_top_3 float_left" style="width:750px;">
+		<div class="float_left">
+			<h4>新订单</h4>
+		</div>
+		<table style="width:750px" class="table table-bordered  orders margin_left_0 new">
+			<tr class="tr">
+				<th class="table_th_number">序号</th>
+				<th style="width:250px;">商品名称</th>
+				<th style="width:250px;">商品规格</th>
+				<th style="width:100px;">商品数量</th>
+
+			</tr>
+			<!-- BEGIN: pro -->
+			<tr>
+				<td class="table_th_number">{pro.num}
+				<input type="hidden" name="new_id[]" value="{pro.product_id}"></td>
+				<td>{product.name}</td>
+				<td>{product.format}</td>
+				<td class='td'>
+					<input type="text" name="new_total[]" class="form-control input-sm form_no_border" readonly="readonly" value="">
+				</td>
+			</tr>
+			<!-- END: product -->
+		</table>
+		<div class="float_left btn_margin margin_top_3">
+			<input class="btn btn-default btn-sm  margin_left_0" type="submit" name="submit" value="确定" />
+			<input class="btn btn-default btn-sm margin_left_0" type="button"  onclick="parent.$('#MessageBox').modal('hide')" value="取消" />
+		</div>
+	</div>
+</form>
+</body>
+</html>
+
+<!-- END: main -->
+

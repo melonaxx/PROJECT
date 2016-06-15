@@ -1,0 +1,105 @@
+//---- UTF8 编码 ----
+<!-- BEGIN: main -->
+<html>
+<head>
+<title>修改快递公司</title>
+<link type="text/css" rel="stylesheet" href="/style/bootstrap.min.css?ver={main.doc_version}"/>
+<link type="text/css" rel="stylesheet" href="/style/style.css?ver={main.doc_version}"/>
+<style>
+body {
+	text-align:left;
+	min-width:600px;
+	overflow-y:hidden;
+	padding:0;
+}
+.form-inline .form-control {
+	display: inline-block;
+	vertical-align: middle;
+}
+.form-inline .form-group {
+	display: inline-block;
+	vertical-align: middle;
+}
+</style>
+<script type="text/javascript" src="/js_encode/jquery-1.9.1.min.js"></script>
+<script type="text/javascript" src="/js_encode/jquery.area.three.js"></script>
+<script type="text/javascript" src="/js_encode/jquery.validate.js"></script>
+<script type="text/javascript" src="/js_encode/setting_edit_express.js"></script>
+<!-- <script type="text/javascript" charset="UTF-8" src="/js_encode/bootstrap.min.js"></script> -->
+<script type="text/javascript">
+var sheng = '{main.state_id}';
+var shi = '{main.city_id}';
+var xian = '{main.district_id}';
+</script>
+<body>
+	<div>
+		<form class="form-inline supplierMsg" method="post" action="/setting/setting_edit_express.php">
+			<div class="form-group">
+				<label>搜索快递：</label>
+					<input type="text" class="form-control input-sm post"/>
+				<label class="margin_left_1">对应快递：</label>
+					<select name="express_id" class="form-control input-sm wre  btn_margin">
+						<!-- BEGIN: express_info -->
+						<option class="" value="{express_info.id}" {express_info.selected}>{express_info.name}</option>
+						<!-- END: express_info -->
+					</select>
+				<label>快递名称：</label><input type="text" value="{main.name}" name="name" class="form-control input-sm"/>
+			</div>
+			<br />
+			<div class="form-group">
+				<label>快递模板：</label>
+					<select name="template_id" class="form-control input-sm btn_margin">
+						<!-- BEGIN:template_list -->
+						<option class="" value="{template_list.id}" {template_list.selected}>{template_list.name}</option>
+						<!-- END:template_list -->
+					</select>
+			</div>
+			<div class="form-group">
+				<label class="margin_left_0">应付款：</label><input type="text" value="{main.payment}" name="payment" class="form-control input-sm"/>
+			</div>
+			<div class="form-group">
+				<label class="margin_left_0">工本费：</label><input type="text" class="form-control input-sm" value="{main.fee}" name="fee"/>
+			</div>
+
+			<div class="form-group shengDiv"></div>
+			<div class="form-group shiDiv"></div>
+			<div class="form-group xianDiv"></div><br/>
+			<div class="form-group">
+				<label>详细地址：</label><input type="text" class="form-control input-sm merger_two_row_4" value="{main.address}" name="address"/>
+			</div>
+			<div class="form-group">
+				<label class="margin_left_2">邮编：</label><input type="text" value="{main.name}" name="post_code" class="form-control input-sm"/>
+			</div>
+			
+			<div class="form-group">
+				<label class="margin_left_1">联系人：</label><input type="text" value="{main.contact_name}" name="contact_name" class="form-control input-sm"/>
+			</div>
+			<div class="form-group">
+				<label class="margin_left_2">手机：</label><input type="text" onkeyup="value=value.replace(/[^\d]/g,'')" class="form-control input-sm" value="{main.mobile}" name="mobile"/>
+			</div>
+			<div class="form-group">
+				<label>固定电话：</label><input type="text" onkeyup="value=value.replace(/[^\d]/g,'')" class="form-control input-sm" value="{main.telphone}" name="telphone"/>
+			</div>
+			<div class="form-group">
+				<label>开户银行：</label><input type="text" name="bank_id" value="{main.bank_id}" class="form-control input-sm"/>
+			</div>
+			<div class="form-group">
+				<label>银行账号：</label><input type="text" class="form-control input-sm"/>
+			</div>
+			<div class="form-group">
+				<label class="margin_left_2">税号：</label><input type="text" value="{main.tax}" name="tax" class="form-control input-sm"/>
+			</div>
+			<div class="form-group">
+				<label class="margin_left_2">备注：</label><input type="text" value="{main.body}" name="body" class="form-control input-sm merger_three_row_8"/>
+			</div>
+			<input type="hidden" name="id" value="{main.id}"/>
+			<p>
+				<input class="btn btn-default btn-sm btn_margin" name="send" type="submit" value="提交"/>
+				<input class="btn btn-default btn-sm" type="button" value="关闭" onclick="parent.$('#MessageBox').modal('hide')" />
+			</p>
+		</form>
+	</div>
+</body>
+</html>
+
+<!-- END: main -->

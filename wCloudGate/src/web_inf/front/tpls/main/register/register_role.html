@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>外麦王云平台</title>
+	<link rel="stylesheet" type="text/css" href="/css/main/common.css"/>
+	<link rel="stylesheet" type="text/css" href="/css/main/register/registercommon.css"/>
+	<link rel="stylesheet" type="text/css" href="/css/main/register/register_role.css"/>
+</head>
+<body>
+	<header>
+		<div class="header">
+			<div class="topleft">
+				<div class="logo">
+					<img src="/image/main/logo.png"/>
+				</div>
+				<p></p>
+				<p>欢迎注册</p>
+			</div>
+			<div class="topright">
+				<p>已有账号</p>
+				<p><a href="/main/login/login.html">请登录</a></p>
+			</div>
+		</div>
+	</header>
+	<section>
+		<ul class="role">
+			<li class="active">我是平台</li>
+			<li>我是劳务方</li>
+			<li>我是店铺</li>
+		</ul>
+		<form method="get" action="">
+			<div class="form-group">
+				<label><p>企业名称</p></label>
+				<input placeholder="请输入企业名称" />
+				<span>*</span>
+			</div>
+			<div class="hide-content"></div>
+			<div class="form-group">
+				<label><p>所在地</p></label>
+				<select id="province" class="address"></select>
+				<select id="city" class="address"></select>
+				<span>*</span>
+			</div>
+			<div class="hide-content"></div>
+			<div class="dash"></div>
+			<div class="hide-content"></div>
+			<div class="form-group">
+				<label><p>联系人</p></label>
+				<input placeholder="请输入您的姓名" />
+				<span>*</span>
+			</div>
+			<div class="hide-content"></div>
+			<div class="form-group">
+				<label><p>手机</p></label>
+				<input placeholder="请输入您的手机号" />
+				<span>*</span>
+			</div>
+			<div class="hide-content"></div>
+			<div class="form-group">
+				<label><p>邮箱</p></label>
+				<input placeholder="请输入您的邮箱" />
+			</div>
+			<div class="hide-content"></div>
+			<div class="license-group form-group" style="height:80px;">
+				<label><p>营业执照</p></label>
+				<div class="picarea">
+					<p>营业执照</p>
+					<p>上传图片</p>
+				</div>
+				<div class="picarea1">
+					<p>
+						上传：营业执照复印件，并加盖红色公章；<br/>
+						照片所有信息需清晰可见，内容真实有效，不得做任何修改。<br/>
+						照片支持.jpg .jpeg .bmp .gif .png格式，大小不超过8M。
+					</p>
+					<input type="button" class="uploadbtn" value="上传照片"/>
+				</div>
+			</div>
+			<div class="hide-content"></div>
+			<div class="form-group">
+				<label><p>注册号</p></label>
+				<input placeholder="请输入15位营业执照注册号" />
+				<span>*</span>
+			</div>
+			<div class="hide-content">
+				请填写正确的营业执照注册号码
+			</div>
+			<div class="registerbtn">
+				提交审核
+			</div>
+		</form>
+	</section>
+
+	<footer>
+		<ul>
+			<li><a href="javascript:void(0)">公司简介</a></li>
+			<li class="vbar">|</li>
+			<li><a href="javascript:void(0)">联系我们</a></li>
+			<li class="vbar">|</li>
+			<li><a href="javascript:void(0)">加入我们</a></li>
+			<li class="vbar">|</li>
+			<li><a href="javascript:void(0)">新闻中心</a></li>
+		</ul>
+		<div><a href="javascript:void(0)">版权信息</a></div>
+	</footer>
+	<script src="/js/main/jsAddress.js"></script>
+	<script src="/js/main/area.js"></script>
+	<script>
+		_init_area();
+	</script>
+</body>
+</html>

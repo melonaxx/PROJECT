@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>外麦王云平台</title>
+        <link rel="stylesheet" type="text/css" href="/css/main2/base.css"/>
+        <link rel="stylesheet" type="text/css" href="/css/main2/accountset/changepassword_modify.css"/>
+    </head>
+    <body>
+        <?php include('header.html');?>
+        <section>
+        <div class="ptop">
+            <div class="pprogress">
+                <div class="circle"></div>
+                <div class="hbar">确认账号</div>
+                <div class="circle"></div>
+                <div class="hbar">修改密码</div>
+                <div class="circle"></div>
+            </div>
+        </div>
+        <div class="form">
+            <input type="password" name="pwd1"  placeholder="请输入新密码(6~18)位"/>
+            <div class="error-message">
+            </div>
+            <input type="password" name="pwd2" placeholder="请再次输入新密码(6~18)位"/>
+            <div class="error-message">
+            </div>
+            <input name="userid" type="hidden" value="<?=$userid?>">
+            <div class="hide-content checkpasswd" style="color:red;"></div>
+            <button class="agreenbtn updatepasswd">提交</button>
+        </div>
+        </section>
+        <div class="modal" id="modalmodpw">
+            <div class="cover"></div>
+            <div class="modalbox">
+                <div class="modaltop">
+                    <img src="/image/main2/close.png" class="close"/>
+                    <span>|</span>
+                    <span>密码修改成功</span>
+                </div>
+                <div class="modalcontent">
+                    <i></i>
+                    <p>密码修改成功！</p>
+                    <div class="btns">
+                        <button>登录</button>
+                        <button>返回首页</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <?php include('footer.html');?>
+        <script src="/js/jquery-1.11.0.js"></script>
+        <script type="text/javascript" src="/js/main2/common.js"></script> 
+        <script type="text/javascript" src="/js/util.js"></script> 
+        <script type="text/javascript" src="/js/accountset/updatepw.js"></script> 
+    </body>
+</html>

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>外麦王云平台</title>
+	<link rel="stylesheet" type="text/css" href="/css/main2/base.css"/>
+	<link rel="stylesheet" type="text/css" href="/css/main2/knight/knight_add.css"/>
+</head>
+<body>
+    <?php include("header.html")?>
+	<div class="section">
+		<div class="wmain">
+			<ul class="wmainlist">
+				<li class="wllevel1">
+					<a href="/knight.php"><span></span>骑士管理<p class="wlrightarrow"></p></a>
+				</li>
+				<li class="wllevel1">
+					<a href="/knightadd.php" class="wllevel1active"><span></span>添加骑士<p></p></a>
+				</li>
+			</ul>
+			<div class="wmaincontent">
+				<h1 class="wmch1">|&nbsp;骑士添加</h1>
+				<div class="filterbox">
+					<div class="searchdiv">
+						<input type="text" class="carsearch" name="ksearch" placeholder="请输入11位手机号" maxlength="11"/>
+						<button class="searchbtn"></button>
+					</div>
+				</div>
+				<div class="infnum searchnum" style="display: none;">
+					共搜索到<span class="number">0</span>条信息
+				</div>
+				<table class="elecartab outtab" style="display: none;">
+					<thead>
+						<tr>
+							<th>序号</th>
+							<th>骑士</th>
+							<th>手机号</th>
+							<th>邮箱</th>
+							<th>操作</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr class='searchresult'></tr>
+					</tbody>
+				</table><br/>
+				<div class="noinf zeroinf" style="display: none;">
+					当前账号<span class="addmobileno"></span>未注册，是否继续添加？
+					<a class="addknight addaccount">添加</a>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="modal modaladd addcheck" id="modaladd">
+		<div class="cover"></div>
+		<div class="modalbox" >
+			<div class="form-group">
+			</div>
+			<p class="sureaddp">确认添加吗？</p>
+			<div class="btns">
+				<button class="addemp add ">添加</button>
+				<button class="cancela">取消</button>
+			</div>
+		</div>
+	</div>
+
+	<div class="modal modaladd succkeck" id="modaladdsuccess">
+		<div class="covera"></div>
+		<div class="modalbox">
+			<div class="form-group">
+			</div>
+			<p class="insertsuc sureaddp">添加成功！</p>
+			<div class="btns">
+				<button class="addemp addsuccess"><a class="addempa" href='/knight.php'>查看骑士管理</a></button>
+				<button class="cancela"><a class="addempaa" href='/knightadd.php'>继续添加</a></button>
+			</div>
+		</div>
+	</div>
+    <?php include("footer.html"); ?>
+    <script src="/js/jquery-1.11.0.js"></script>
+	<script src="/js/main2/common.js"></script>
+	<script src="/js/util.js"></script>
+	<script src="/js/knight/knightadd.js"></script>
+
+</body>
+</html>

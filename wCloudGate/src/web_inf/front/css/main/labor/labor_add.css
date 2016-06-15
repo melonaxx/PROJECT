@@ -1,0 +1,32 @@
+/* -----------------内容----------------- */
+section{width:100%;background: #eaeef2;padding-top: 20px;padding-bottom: 73px;}
+.content{width:1048px;margin:0 auto;overflow: hidden;border:1px solid #ccc;background: #fff;}
+.maintop{background: #ddd;border-bottom: 1px solid #ccc;width:100%;height:58px;}
+.maintop li{float:left;font-size: 24px;line-height: 58px;width:154px;text-align: center;}
+.maintop .laboract{background: #fff;color:#358ecb;border-top:3px solid #358ecb;height: 56px;line-height:55px;border-right: 1px solid #ccc;border-left: 1px solid #ccc;}
+.maintop .laboract a{color:#358ecb;}
+.maintop a{color:#333;}
+.mainlabor{width:1008px;padding:30px 20px 130px;}
+/* -----------------车辆表格----------------- */
+.elecartab{width:100%;overflow: hidden;border-collapse:collapse ;}
+.elecartab thead{width:100%;height:60px;background: #70b0dc;color:#fff;font-size: 18px;line-height: 60px;}
+.elecartab td{text-align: center;}
+.laborthead img{margin-right:4px;margin-bottom:-4px;width:22px;height:21px;}
+.laborthead td:nth-of-type(1){width:210px;}
+.laborthead td:nth-of-type(2){width:180px;}
+.laborthead td:nth-of-type(3){width:194px;}
+.laborthead td:nth-of-type(4){width:200px;}
+.laborthead td:nth-of-type(5){width:223px;}
+.elecartab tbody tr{height:58px;border-bottom: 2px dotted #ccc;font-size: 14px;}
+.checkdetaila{width:80px;height: 22px;border-radius: 8px;background: #f40;color:#fff;line-height: 22px;font-size: 12px;display: inline-block;}
+/* -------------------模态窗------------------ */
+.modaldetail{display:none;} 
+.coverd{width:100%;height:100%;background: #000;opacity: 0.6;filter: alpha(opacity=60);z-index: 99;position: fixed; _position:absolute;left:0;top:0;}
+.modalboxd{width:308px;height:340px;padding:30px 46px;margin:auto;left:0;top:0;right:0;bottom:0;background: #fff;opacity: 1;filter: alpha(opacity=100);z-index:1000;position: fixed; _position:absolute;}
+.closedbox{width:40px;height:40px;position: absolute;right:20px;top:20px;}
+.closed{width:40px;height:40px;}
+.laborpic{margin-left:88px;margin-bottom: 10px;width:132px;height:132px;}
+.laborinf{font-size: 18px;width:100%;height:200px;}
+.laborinf div{width:100%;height:18px;margin-top:20px;} 
+.laborinf div:nth-of-type(1){margin-top: 30px;}
+.colon{margin:0 10px;}

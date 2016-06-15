@@ -1,0 +1,89 @@
+//---- UTF8 编码 ----
+<!-- BEGIN: main --><?xml version="1.0" encoding="UTF-8"?>
+{main.doc_type}
+<?xml-stylesheet type="text/xsl" href="/style/purchase_receivables_detail.xsl?ver={main.doc_version}"?>
+<html version="{main.doc_version}">
+	<head>
+		<Title>{main.title}</Title>
+		<meta name="keywords" content="{main.keywords}" />
+		<meta name="description" content="{main.description}" />
+		<em company_id="{main.company_id}" staff_id="{main.staff_id}" login_name="{main.login_name}" permit="{main.permit}" program="{main.request_url}"/>
+	</head>
+	<Body>
+		<dir><![CDATA[ 您的位置： {main.this_location}]]></dir>
+		<menu>
+			<big>{main.big_menu}</big>
+			<small>
+				<!-- BEGIN: list_menu --><a class="{list_menu.class}" href="{list_menu.link}">{list_menu.name}</a><!-- END: list_menu -->
+			</small>
+		</menu>
+		<bank>
+			<!-- BEGIN: bank -->
+				<li>
+					<id>{bank.id}</id>
+					<name>{bank.name}</name>
+				</li>
+			<!-- END: bank -->
+		</bank>
+		<purchase>
+			<ul>
+				<!-- BEGIN: purchase -->
+				<li>
+					<id>{purchase.id}</id>
+					<sto>{purchase.sto}</sto>
+					<sup>{purchase.sup}</sup>
+					<body>{purchase.body}</body>
+					<staff>{purchase.staff}</staff>
+					<total>{purchase.total}</total>
+					<price>{purchase.price}</price>
+					<brief>{purchase.brief}</brief>
+					<number>{purchase.number}</number>
+					<status>{purchase.status}</status>
+					<store_id>{purchase.store_id}</store_id>
+					<staff_id>{purchase.staff_id}</staff_id>
+					<total_way>{purchase.total_way}</total_way>
+					<pay_method>{purchase.pay_method}</pay_method>
+					<action_date>{purchase.action_date}</action_date>
+					<supplier_id>{purchase.supplier_id}</supplier_id>
+					<status_audit>{purchase.status_audit}</status_audit>
+					<freight_side>{purchase.freight_side}</freight_side>
+					<total_finish>{purchase.total_finish}</total_finish>
+					<total_refund>{purchase.total_refund}</total_refund>
+					<status_refund>{purchase.status_refund}</status_refund>
+					<waybill_number>{purchase.waybill_number}</waybill_number>
+					<status_receipt>{purchase.status_receipt}</status_receipt>
+					<freight_amount>{purchase.freight_amount}</freight_amount>
+					<payment_remain>{purchase.payment_remain}</payment_remain>
+					<payment_return>{purchase.payment_return}</payment_return>
+					<payment_already>{purchase.payment_already}</payment_already>
+					<shipping_company>{purchase.shipping_company}</shipping_company>
+				</li>
+				<!-- END: purchase -->
+			</ul>
+		</purchase>
+		<product>
+			<ul>
+				<!-- BEGIN: product -->
+				<li>
+					<no>{product.no}</no>
+					<id>{product.id}</id>
+					<product_id>{product.product_id}</product_id>
+					<pro>{product.pro}</pro>
+					<par>{product.par}</par>
+					<format>{product.format}</format>
+					<parts_id>{product.parts_id}</parts_id>
+					<total>{product.total}</total>
+					<price>{product.price}</price>
+					<content>{product.content}</content>
+					<zongjia>{product.zongjia}</zongjia>
+					<total_way>{product.total_way}</total_way>
+					<total_finish>{product.total_finish}</total_finish>
+					<total_refund>{product.total_refund}</total_refund>
+				</li>
+				<!-- END: product -->
+			</ul>
+		</product>
+		<bankId>{main.bankId}</bankId>
+	</Body>
+</html>
+<!-- END: main -->

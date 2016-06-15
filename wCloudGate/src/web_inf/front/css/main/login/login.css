@@ -1,0 +1,15 @@
+html,body{height:100%;}
+.loginchoice{width:450px;margin:0 0 6px 74px;height:27px;font-size: 18px;}
+.loginchoice li:nth-of-type(1){float:left;cursor: pointer;}
+.loginchoice li:nth-of-type(2){float:right;cursor: pointer;}
+.active{color:#328eca;border-bottom:2px solid #328eca;}
+.checkdiv{width:450px;height:14px;margin:0 0 10px 74px;}
+.checkdiv input{float:left;}
+.checkdiv p{float:left;width:300px;line-height: 11px;margin-left:5px;}
+.bottomdiv{width:450px;margin:10px 0 0px 74px;height:20px;}
+.bottomdiv a{display:block;color:#333;width:70px;}
+.bottomdiv a:nth-of-type(1){float:left;}
+.bottomdiv a:nth-of-type(2){float:right;border-bottom: 1px solid #333;}
+.form-group1 input{width:288px;margin-right: 10px;}
+.form-group1 div{float:left;width:142px;height:52px;border:1px solid #ccc;color:#de1717;text-align: center;line-height: 52px;}
+#dcode{color:#666;background: #ccc;}

@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>外麦王云平台</title>
+	<link rel="stylesheet" type="text/css" href="/css/main/common.css"/>
+	<link rel="stylesheet" type="text/css" href="/css/main/commonsector.css"/>
+	<link rel="stylesheet" type="text/css" href="/css/main/management/management.css"/>
+</head>
+<body>
+	<header>
+		<div class="header">
+			<div class="topleft">
+				<div class="logo">
+					<img src="/image/main/yunlogo.png"/>
+				</div>
+				<ul class="topul">
+					<li><a href="javascript:void(0)">首页</a></li>
+					<li><a href="javascript:void(0)">地图定位</a></li>
+					<li class="active"><a href="javascript:void(0)">车辆管理</a></li>
+					<li><a href="javascript:void(0)">劳务方</a></li>
+					<li><a href="javascript:void(0)">员工</a></li>
+				</ul>
+			</div>
+			<div class="topright">
+				<p><a href="javascript:void(0)">天天外卖</a></p>
+				<P>|</P>
+				<p><a href="javascript:void(0)">退出</a></p>
+			</div>
+		</div>
+	</header>
+
+	<section>
+		<div class="content">
+			<ul class="maintop">
+				<li class="manageract"><a href="management.html">车辆管理</a></li>
+				<li><a href="management_active.html">车辆激活</a></li>
+			</ul>
+			<div class="elecarmanage">
+				<ul class="carserious">
+					<li class="carser"><a href="management.html">所有车辆</a></li>
+					<li class="carbar">|</li>
+					<li class="carser actcarser"><a href="management_abnormal.html">异常车辆</a></li>
+				</ul>
+				<p class="todayabp">当天异常统计</p>
+				<select class="laborselect">
+					<option>所有车辆</option>
+					<option>劳务方1</option>
+					<option>劳务方2</option>
+					<option>劳务方3</option>
+				</select>
+				<ul class="abnorul">
+					<li>
+						<div class="middle">
+							<div class="carnum">
+								<div class="num middleli">33</div>
+								<p class="middleli">辆</p>
+							</div>
+						</div>
+						<div style="height:80px;"></div>
+						<p class="carp">振动报警</p>
+						<div class="btns">
+							<a href="management.html#2">查看车辆</a>
+							<a href="">查看定位</a>
+						</div>
+					</li>
+					<li>
+						<div class="middle">
+							<div class="carnum">
+								<div class="num middleli">33</div>
+								<p class="middleli">辆</p>
+							</div>
+						</div>
+						<div style="height:80px;"></div>
+						<p class="carp">电量报警</p>
+						<div class="btns">
+							<a href="management.html#3">查看车辆</a>
+							<a href="">查看定位</a>
+						</div>
+					</li>
+					<li>
+						<div class="middle">
+							<div class="carnum">
+								<div class="num middleli">33</div>
+								<p class="middleli">辆</p>
+							</div>
+						</div>
+						<div style="height:80px;"></div>
+						<p class="carp">失去联系</p>
+						<div class="btns">
+							<a href="management.html#4">查看车辆</a>
+							<a href="">查看定位</a>
+						</div>
+					</li>
+				</ul>
+				<p class="nearabp">最近15天异常统计</p>
+				<div class="carlinechart">
+					<div id="carvalarm" style="width: 888px;height:270px;margin-left:10px;"></div>
+					<div id="carpalarm" style="width: 888px;height:270px;margin-left:10px;"></div>
+					<div id="carlostcon" style="width: 888px;height:270px;margin-left:10px;"></div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<div class="push"></div>
+	<footer>
+		<ul>
+			<li><a href="javascript:void(0)">公司简介</a></li>
+			<li class="vbar">|</li>
+			<li><a href="javascript:void(0)">联系我们</a></li>
+			<li class="vbar">|</li>
+			<li><a href="javascript:void(0)">加入我们</a></li>
+			<li class="vbar">|</li>
+			<li><a href="javascript:void(0)">新闻中心</a></li>
+		</ul>
+		<div><a href="javascript:void(0)">版权信息</a></div>
+	</footer>
+	<script src="/js/main/echarts.common.min.js"></script>
+	<script type="text/javascript">
+        // 基于准备好的dom，初始化echarts实例
+        var myChart2 = echarts.init(document.getElementById('carvalarm'));
+        var myChart3 = echarts.init(document.getElementById('carpalarm'));
+        var myChart4 = echarts.init(document.getElementById('carlostcon'));
+        
+		var option2 = {
+		    title : {
+		        text: '振动报警',
+		        subtext: '单位:辆'
+		    },
+		    tooltip : {
+		        trigger: 'axis'
+		    },
+		    legend: {
+		        data:['振动报警车辆']
+		    },
+		    toolbox: {
+		        show : true,
+		        feature : {
+		            mark : {show: true},
+		            dataView : {show: true, readOnly: false},
+		            magicType : {show: true, type: ['line', 'bar']},
+		            restore : {show: true},
+		            saveAsImage : {show: true}
+		        }
+		    },
+		    calculable : true,
+		    xAxis : [
+		        {
+		            type : 'category',
+		            boundaryGap : false,
+		            data : ['4/11','4/12','4/13','4/14','4/15','4/16','4/17','4/18','4/19','4/20','4/21','4/22','4/23','4/24','4/25']
+		        }
+		    ],
+		    yAxis : [
+		        {
+		            type : 'value'
+		        }
+		    ],
+		    series : [
+		        {
+		            name:'振动报警辆数',
+		            type:'line',
+		            smooth:true,
+		            itemStyle: {normal: {areaStyle: {type: 'macarons'}}},
+		            data:[30, 24, 38, 21, 54, 36, 19, 10, 29, 21, 54, 36, 19, 62, 45]
+		        }
+		    ],
+		    color: ['#f2e8ee']
+		};
+		var option3 = {
+		    title : {
+		        text: '电量报警',
+		        subtext: '单位:辆'
+		    },
+		    tooltip : {
+		        trigger: 'axis'
+		    },
+		    legend: {
+		        data:['电量报警车辆']
+		    },
+		    toolbox: {
+		        show : true,
+		        feature : {
+		            mark : {show: true},
+		            dataView : {show: true, readOnly: false},
+		            magicType : {show: true, type: ['line', 'bar']},
+		            restore : {show: true},
+		            saveAsImage : {show: true}
+		        }
+		    },
+		    calculable : true,
+		    xAxis : [
+		        {
+		            type : 'category',
+		            boundaryGap : false,
+		            data : ['4/11','4/12','4/13','4/14','4/15','4/16','4/17','4/18','4/19','4/20','4/21','4/22','4/23','4/24','4/25']
+		        }
+		    ],
+		    yAxis : [
+		        {
+		            type : 'value'
+		        }
+		    ],
+		    series : [
+		        {
+		            name:'电量报警辆数',
+		            type:'line',
+		            smooth:true,
+		            itemStyle: {normal: {areaStyle: {type: 'macarons'}}},
+		            data:[52, 21, 54, 36, 19, 10, 54, 36, 19 , 40, 21, 35, 49, 63, 34]
+		        }
+		    ],
+		    color: ['#c185ff']
+		};
+		var option4 = {
+		    title : {
+		        text: '失去联系',
+		        subtext: '单位:辆'
+		    },
+		    tooltip : {
+		        trigger: 'axis'
+		    },
+		    legend: {
+		        data:['失去联系车辆']
+		    },
+		    toolbox: {
+		        show : true,
+		        feature : {
+		            mark : {show: true},
+		            dataView : {show: true, readOnly: false},
+		            magicType : {show: true, type: ['line', 'bar']},
+		            restore : {show: true},
+		            saveAsImage : {show: true}
+		        }
+		    },
+		    calculable : true,
+		    xAxis : [
+		        {
+		            type : 'category',
+		            boundaryGap : false,
+		            data : ['4/11','4/12','4/13','4/14','4/15','4/16','4/17','4/18','4/19','4/20','4/21','4/22','4/23','4/24','4/25']
+		        }
+		    ],
+		    yAxis : [
+		        {
+		            type : 'value'
+		        }
+		    ],
+		    series : [
+		        {
+		            name:'失去联系辆数',
+		            type:'line',
+		            smooth:true,
+		            itemStyle: {normal: {areaStyle: {type: 'macarons'}}},
+		            data:[52, 21, 54, 36, 19 , 40, 36, 19, 10, 54, 21, 35, 49, 63, 34]
+		        }
+		    ],
+		    color: ['grey']
+		};
+
+        // 使用刚指定的配置项和数据显示图表。
+        myChart2.setOption(option2);
+        myChart3.setOption(option3);
+        myChart4.setOption(option4);
+    </script>
+</body>
+</html>

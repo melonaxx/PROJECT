@@ -1,0 +1,106 @@
+//---- UTF8 编码 ----
+<!-- BEGIN: main -->
+<html>
+<head>
+<title>新增支出科目</title>
+<link type="text/css" rel="stylesheet" href="/style/bootstrap.min.css?ver={main.doc_version}"/>
+<link type="text/css" rel="stylesheet" href="/style/style.css?ver={main.doc_version}"/>
+<style>
+body,table,form,input		{font-size:12px; padding:0; margin:0}
+body	{min-width:100px}
+.form-control	{display:inline-block}
+</style>
+<script type="text/javascript" charset="UTF-8" src="/js_encode/jquery-1.9.1.min.js"></script>
+<script type="text/javascript" charset="UTF-8" src="/js_encode/bootstrap.min.js"></script>
+
+<script>
+if(typeof getObject != 'function')
+{
+	function getObject(objName)
+	{
+		if(document.getElementById)
+		{
+			return eval('document.getElementById("' + objName + '")');
+		}
+		else if(document.layers)
+		{
+			return eval("document.layers['" + objName +"']");
+		}
+		else
+		{
+			return eval('document.all.' + objName);
+		}
+	}
+}
+function close_btn()
+{
+	parent.$('#MessageBox').modal('hide');
+}
+// function check_group()
+// {
+// 	var sn		= getObject("group_name");
+// 	if(sn.value.length < 2)
+// 	{
+// 		alert("部门名称太短，请设置2-10位字符的部门名称");
+// 		sn.focus();
+// 		return false;
+// 	}
+// }
+function click_checkbox(chk_id, box_id)
+{
+	if(getObject(chk_id).value == "Y")
+	{
+		getObject(chk_id).value	= "N";
+		getObject(box_id).className	= "checkbox";
+	}
+	else
+	{
+		getObject(chk_id).value	= "Y";
+		getObject(box_id).className	= "checkbox_ok";
+	}
+}
+</script>
+</head>
+<body>
+
+<center>
+
+<form method="post" action="/finance/finance_running_incomeadd_account.php" autocomplete="off" >
+
+{main.error}
+
+<table align="center">
+<tr height="40">
+	<td width="400" class="form-group">
+		<label>上级科目：</label>
+		<select name="parent_id" class="form-control input-sm">
+			<option value="0">-- 无 --</option>
+			<!-- BEGIN: list_group -->
+			<option value="{list_group.id}">{list_group.name}</option>
+			<!-- END: list_group -->
+		</select>
+	</td>
+</tr>
+<tr height="40">
+	<td class="form-group">
+		<label>科目名称：</label>
+		<input class="form-control input-sm" id="staff_name" name="name" maxlength="32" /> <font color="red">*</font>
+	</td>
+</tr>
+<tr height="60">
+	<td colspan="2">
+		<input class="btn btn-default btn-sm btn_margin" type="submit" value="提交" />
+		&#160;&#160;
+		<input class="btn btn-default btn-sm" type="button" value="取消" onclick="close_btn()" />
+	</td>
+</tr>
+</table>
+
+</form>
+
+
+</center>
+
+</body>
+</html>
+<!-- END: main -->

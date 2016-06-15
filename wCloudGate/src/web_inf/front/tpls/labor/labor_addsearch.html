@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>外麦王云平台</title>
+        <link rel="stylesheet" type="text/css" href="/css/main2/base.css"/>
+        <link rel="stylesheet" type="text/css" href="/css/main2/labor/labor_add.css"/>
+    </head>
+    <body>
+        <?php include("header.html");?>
+        <div class="section">
+            <div class="wmain">
+                <ul class="wmainlist">
+                    <li class="wllevel1">
+                    <a href="/labor/labormanage.php"><span></span>劳务方管理<p class="wlrightarrow"></p></a>
+                    </li>
+                    <li class="wllevel1">
+                    <a href="/labor/addlabor.php" class="wllevel1active"><span></span>添加劳务方<p></p></a>
+                    </li>
+                </ul>
+                <div class="wmaincontent">
+                    <h1 class="wmch1">|&nbsp;劳务方添加</h1>
+                    <form method="get" action="addlabor.php">
+                    <div class="filterbox">
+                        <div class="searchdiv">
+                            <input type="text" class="carsearch" name="value" value="<?php echo $name?$name:"" ?>"  placeholder="请输入劳务方名称" />
+                            <button></button>
+                        </div>
+                    </div>
+                </form>
+                <p class="searchnum" style="<?php if(!empty($name)){echo "display:;";}else{echo "display:none;";}?>">
+                共搜索到<span style="color:red;"><?php echo count($arr);?></span>条信息
+                </p>
+                    <?php
+                    if(!empty($arr)){
+                    echo "<table class='elecartab'><thead><tr class='laborthead'><td>序号</td><td>劳务方</td><td>负责人</td><td>手机号</td><td>邮箱</td><td>操作</td></tr></thead>";  
+                        for($i=0;$i<count($arr);$i++){
+                        $serv = $arr[$i]['belong']==1 ? "已添加" : "<a class='adda'>添加</a>";
+                        echo "<tr>";
+                            echo "<td attr=".$arr[$i]['id'].">".($i+1)."</td>";                       
+                            echo "<td>".$arr[$i]['name']."</td>";       
+                            echo "<td>".$arr[$i]['linkman']."</td>";    
+                            echo "<td>".$arr[$i]['mobileno']."</td>";   
+                            echo "<td>".$arr[$i]['email']."</td>";      
+                            echo "<td class='addlabor'>".$serv."</td>";                
+                            echo "</tr>";                                 
+                        }                                                 
+                        echo "</tbody></table>";                          
+
+                    } 
+                    ?>
+                    <!--<table>
+                        <thead>
+                            <tr>
+                                <th>序号</th>
+                                <th>劳务方</th>
+                                <th>负责人</th>
+                                <th>手机号</th>
+                                <th>邮箱</th>
+                                <th>操作</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>1</td>
+                                <td>饿了没</td>
+                                <td>負責人一</td>
+                                <td>11111111111</td>
+                                <td>11@1.1.1.1</td>
+                                <td>
+                                    <a class="addlabor">添加</a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>-->
+                </div>
+            </div>
+        </div>
+
+        <!-- 添加操作 -->
+        <div class="modal modaladd" id="modaladd">
+            <div class="cover"></div>
+            <div class="modalbox">
+                <form action="/labor/doaddlabor.php" method="post" > 
+                    <div class="input-group"  <?php if($usertype==="0"){echo "style='display:none;'";}?>>
+                    <label>所属员工&nbsp;:&nbsp;&nbsp;</label>
+                    <select name="employee">
+                        <option value="0">无</option>
+                        <?php
+                        for($i=0;$i<count($emp);$i++){
+                        if(empty($emp[$i]['name'])){$name=$emp[$i]['mobileno'];}else{$name=$emp[$i]['name'];}
+                        echo "<option value='{$emp[$i]['id']}'>".$name."</option>";
+                        }
+                        ?>
+                    </select>
+                </div>
+            <input type="text" name="laborid" style="display:none;"  class="laborid">
+            <input type="submit" value="提交" style="display:none;" class="addsubmit">
+            </form>
+                <p <?php if($usertype==="0"){echo "style='font-size:20px;margin-top:70px;line-height:30px;'";}?>>确定添加吗？</p>
+                <div class="btns">
+                    <button class="sure add">确定</button>
+                    <button class="cancel">取消</button>
+                </div>
+            </div>
+        </div>
+
+        <?php include('footer.html');?>
+        <script src="/js/jquery-1.11.0.js"></script>
+        <script type="text/javascript" src="/js/main2/common.js"></script>
+        <script src="/js/labor/labor_search.js"></script>
+<!--        <script>-->
+<!--            // 所属员工修改-->
+<!--            $(".addlabor").on("click",function(){-->
+<!--            $("#modaladd").show();-->
+<!--            })-->
+<!--            $(".sure").on("click",function(){-->
+<!--            $("#modaladd").hide();-->
+<!--            })-->
+<!--            $(".cancel").on("click",function(){-->
+<!--            $("#modaladd").hide();-->
+<!--            })-->
+<!--        </script>-->
+    </body>
+</html>

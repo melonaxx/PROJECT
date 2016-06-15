@@ -1,0 +1,114 @@
+//---- UTF8 编码 ----
+<!-- BEGIN: main --><?xml version="1.0" encoding="UTF-8"?>
+{main.doc_type}
+<?xml-stylesheet type="text/xsl" href="/style/order_add.xsl?ver={main.doc_version}"?>
+<html version="{main.doc_version}">
+	<head>
+		<Title>{main.title}</Title>
+		<meta name="keywords" content="{main.keywords}" />
+		<meta name="description" content="{main.description}" />
+		<em company_id="{main.company_id}" staff_id="{main.staff_id}" login_name="{main.login_name}" permit="{main.permit}" program="{main.request_url}"/>
+	</head>
+	<Body>
+		<dir><![CDATA[ 您的位置：{main.this_location}]]></dir>
+		<menu>
+			<big>{main.big_menu}</big>
+			<small>
+				<!-- BEGIN: list_menu -->
+				<a class="{list_menu.class}" href="{list_menu.link}">{list_menu.name}</a>
+				<!-- END: list_menu -->
+			</small>
+		</menu>
+		<sheng>130000</sheng>
+		<shi>130500</shi>
+		<xian>130522</xian>
+		<riqi>{main.rq}</riqi>
+		<supplierMsg>
+			<type>
+				<ul>
+					<!-- BEGIN: list_account -->
+					<li>
+					<value>{list_account.id}</value>
+					<text>{list_account.name}</text>
+					<is_default>{list_account.is_default}</is_default>
+					</li>
+					<!-- END: list_account -->
+				</ul>
+			</type>
+		</supplierMsg>
+		<buy>
+			<type>
+				<ul>
+					<!-- BEGIN: list_qudao -->
+					<li><value>{list_qudao.id}</value><text>{list_qudao.name}</text></li>
+					<!-- END: list_qudao -->
+				</ul>
+			</type>
+		</buy>
+		<shop>
+			<type>
+				<ul>
+					<!-- BEGIN: list_shop -->
+					<li><value>{list_shop.user_id}</value><text>{list_shop.shop_name}</text></li>
+					<!-- END: list_shop -->
+				</ul>
+			</type>
+		</shop>
+		<fhck>
+			<type>
+				<ul>
+					<!-- BEGIN: list_store -->
+					<li>
+						<value>{list_store.id}</value>
+						<text>{list_store.name}</text>
+						<status>{list_store.status}</status>
+					</li>
+					<!-- END: list_store -->
+				</ul>
+			</type>
+		</fhck>
+		<kdgs>
+			<type>
+				<ul>
+					<!-- BEGIN: list_deliver -->
+					<li><value>{list_deliver.express_id}</value><text>{list_deliver.name}</text></li>
+					<!-- END: list_deliver -->
+				</ul>
+			</type>
+		</kdgs>
+
+		<goodDetail>
+			<type>
+				<ul>
+					<li><value>gooddetail</value><text>无</text></li>
+					<li><value>gooddetail</value><text>无1</text></li>
+				</ul>
+			</type>
+		</goodDetail>
+		<unit>
+			<type>
+				<ul>
+					<li><value>0</value><text>个</text></li>
+					<li><value>1</value><text>件</text></li>
+					<li><value>2</value><text>卷</text></li>
+					<li><value>3</value><text>批</text></li>
+					<li><value>4</value><text>盒</text></li>
+					<li><value>5</value><text>箱</text></li>
+					<li><value>6</value><text>米</text></li>
+					<li><value>7</value><text>kg</text></li>
+				</ul>
+			</type>
+		</unit>
+		<invoiceMsg>
+			<invoice_type>
+		    	<ul>
+			  		<li><value>Normal</value><text>普通</text></li>
+			   		<li><value>VAT</value><text>增值税</text></li>
+				</ul>
+			 </invoice_type>
+		</invoiceMsg>
+	</Body>
+
+
+</html>
+<!-- END: main -->

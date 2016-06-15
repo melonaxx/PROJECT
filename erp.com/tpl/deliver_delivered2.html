@@ -1,0 +1,34 @@
+//---- UTF8 编码 ----
+<!-- BEGIN: main -->
+<html>
+<head>
+<title>删除收入科目</title>
+<link type="text/css" rel="stylesheet" href="/style/bootstrap.min.css?ver={main.doc_version}"/>
+<link type="text/css" rel="stylesheet" href="/style/style.css?ver={main.doc_version}"/>
+<style>
+body {
+	text-align:left;
+	padding:0;
+}
+</style>
+<script type="text/javascript" src="/js_encode/jquery-1.9.1.min.js"></script>
+</head>
+<body>
+	<form method="post" action="">
+		<span>选择短信模板：</span><br/>
+		<div style="width:225px;margin-top:15px;margin-bottom:15px;">
+			<select class="form-control input-sm" name="id" >
+				<!-- BEGIN: template -->
+				<option value="{template.id}">{template.name}</option>
+				<!-- END: template -->
+				</select>
+		</div>
+
+		<input type="submit" class="btn btn-default btn-sm ok" value="发送" />
+		&#160;
+		<input type="button" class="btn btn-default btn-sm cancel" value="取消" onclick="parent.$('#MessageBox').modal('hide')" />
+	</form>
+
+</body>
+</html>
+<!-- END: main -->

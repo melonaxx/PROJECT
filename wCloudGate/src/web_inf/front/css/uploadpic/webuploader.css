@@ -1,0 +1,95 @@
+.webuploader-container {
+	position: relative;
+}
+.webuploader-element-invisible {
+	position: absolute !important;
+	clip: rect(1px 1px 1px 1px); /* IE6, IE7 */
+    clip: rect(1px,1px,1px,1px);
+}
+.webuploader-pick {
+	position: relative;
+	display: inline-block;
+	cursor: pointer;
+	background: #00b7ee;
+	padding: 10px 15px;
+	color: #fff;
+	text-align: center;
+	border-radius: 3px;
+	overflow: hidden;
+}
+.webuploader-pick-hover {
+	background: #00a2d4;
+}
+
+.webuploader-pick-disable {
+	opacity: 0.6;
+	pointer-events:none;
+}
+
+body {
+    color: #333;
+    font-family: "Microsoft YaHei";
+    font-size: 12px;
+}
+
+.license-group {
+    width: 100%;
+    height: 120px;
+    margin: 10px 0;
+}
+
+.picarea {
+    float: left;
+    width: 118px;
+    height: 118px;
+    border: 1px solid #ccc;
+    display:block;
+    overflow:hidden;
+}
+
+.picarea p:nth-of-type(1) {
+    margin: 40px 0 10px;
+}
+
+.picarea p {
+    text-align: center;
+    width: 100%;
+}
+
+.picinstruct {
+    float: left;
+    font-size: 12px;
+    width: 268px;
+    margin-left: 10px;
+}
+
+.picinstruct {
+	margin-top: -4px;
+}
+
+.uploadbtn {
+    width: 100px;
+    height: 20px;
+    cursor: pointer;
+    border: none;
+    background: #fc0;
+    margin: 9px 0 0 0;
+    text-align: center;
+    line-height: 16px;
+    color: #fff;
+}
+
+.filewidth {
+	width: 78px;
+	float: left;
+}
+
+.imagemsg {
+	width: 127px;
+	height: 25px;
+	padding-top: 10px;
+	color: #333;
+	font-weight: 7;
+	letter-spacing: 1px;
+	float: right;
+}

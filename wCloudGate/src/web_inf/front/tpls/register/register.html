@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>外麦王云平台</title>
+	<link rel="stylesheet" type="text/css" href="/css/main2/base.css"/>
+	<link rel="stylesheet" type="text/css" href="/css/main2/register/registercommon.css"/>
+	<link rel="stylesheet" type="text/css" href="/css/main2/register/register.css"/>
+</head>
+<body>
+	<header>
+		<div class="header">
+			<div class="topleft">
+				<div class="logo">
+					<a href="/index.php" class="img"><img src="/image/main2/logo.png"/></a>
+				</div>
+				<p></p>
+				<p >欢迎注册</p>
+			</div>
+			<div class="topright">
+				<p>已有账号</p>
+				<p><a href="/login.php">请登录</a></p>
+			</div>
+		</div>
+	</header>
+	<section>
+		<div class="rtop">
+			<div class="rprogress">
+				<div class="circle"></div>
+				<div class="hbar">填写信息</div>
+				<div class="circle"></div>
+				<div class="hbar">创建账户</div>
+				<div class="circle"></div>
+				<div class="hbar">认证账户</div>
+				<div class="circle"></div>
+				<div class="hbar">审核账户</div>
+				<div class="circle"></div>
+			</div>
+		</div>
+	 	<div class="form" >
+	 		<div class="msg" style="display:none;margin-bottom: 17px;color:red;"></div>
+	 		<div>
+			<input type="text" placeholder="请输入您的手机号" name="phone" maxlength="11"/>
+			</div>
+			<div class="error-message errmsg">
+			</div>
+			<div class="verifycode">
+				<input type="text" placeholder="请输入图中正确验证码" name="captcha" maxlength="4"/>
+				<img width="100px;" height="40px;" class="imgCaptcha" class="form-verify-captcha" src="/captcha.php?l=register&_=<?=time()?>" title="点击刷新" />
+			</div>
+			<div class="error-message errmsg">
+			</div>
+			<div class="dynamiccode">
+				<button class="smscodebtn">获取动态码</button>
+				<div class="codetimes" style="display:none;">
+					<span class="nums">60</span>&nbsp;秒后重新获取动态码
+				</div>
+			</div>
+			<div>		
+			<input type="text" placeholder="请输入手机动态码" name="smscode" maxlength="4"/></div>
+			<div class="error-message errmsg">
+			</div>
+			<div>
+				<input type="password" placeholder="建议密码以字母加数字形式" name="password" maxlength="18"/>
+				<div class="passwordstrength ">
+					<div class="pwstrength rankr">弱</div>
+					<div class="pwstrength rankz">中</div>
+					<div class="pwstrength rankq">强</div>
+				</div>
+			</div>
+			<div class="error-message errmsg">
+			</div>
+			<div>
+			<input type="password" placeholder="请您二次输入密码" name="repassword" maxlength="18"/></div>
+			<div class="error-message errmsg">
+			</div>
+			<button class="agreenbtn regbtn" >同意以下协议并注册</button>
+			<a href="javascript:void(0)" class="deal">《外卖王云平台用户协议》</a>
+		</div>
+	</section>
+	<?php include("footer.html"); ?>
+	<script src="/js/jquery-1.11.0.js"></script>
+	<script type="text/javascript" src="/js/main2/common.js"></script>
+	<script src="/js/util.js"></script>
+	<script src="/js/register/register.js"></script>
+	<script src="/js/register/password.js"></script>
+
+</body>
+</html>
