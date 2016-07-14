@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>资金划拨</title>
+		<link rel="stylesheet" type="text/css" href="/bootstrap/css/bootstrap-datetimepicker.min.css"/>
+		<link href="/bootstrap/css/bootstrap.min.css"  rel="stylesheet" media="screen">
+		<link href="/css/commontop.css"   rel="stylesheet" media="screen">
+		<link rel="stylesheet" type="text/css" href="/css/money/moneyallocation.css"/>
+		<style>
+		{literal}
+			@media screen and (max-width: 1120px){ 
+				/*当屏幕尺寸小于1120px时，应用下面的CSS样式*/
+			    .navbar-nav,#comtop-right{display: none;}
+			}
+		{/literal}
+		</style>
+	</head>
+	<body>
+		{include file="../commontop.html"}
+		<div class="container-fluid container1">
+			<div class="row ware-row">
+				<h5 class="col-xs-12">您的位置： <a href="javascript:;">首页</a> » <a href="javascript:;">财务</a> »资金划拨</h5>
+			</div>
+			<div class="row">
+				<form class="form-inline moneyallocation-form col-xs-12">
+					<div class="form-group">
+					   <button type="button" class="btn btn-default btn-sm ">查询</button>
+					   <button type="reset" class="btn btn-default btn-sm">清空</button>
+					</div> 
+					<div class="form-group">
+					    <label for="exampleInputName2"class="labelname">到</label>
+					    <input type="text" class="form-control" id="datetimepicker1">
+					</div> 
+					<div class="form-group">
+					    <label for="exampleInputName2"class="labelname">日期：</label>
+					    <input type="text" class="form-control" id="datetimepicker">
+					</div>
+					<div class="form-group">
+						<label for="exampleInputName2"class="labelname">转出账户：</label>
+					    <select class="form-control" id="exampleInputName2">
+					    	<option></option>
+					    	<option>支付宝_天猫</option>
+					    	<option>支付宝_淘宝</option>
+					    </select>
+					</div> 
+					<div class="form-group">
+						<label for="exampleInputName2"class="labelname">转入账户：</label>
+					    <select class="form-control" id="exampleInputName2">
+					    	<option></option>
+					    	<option>支付宝_天猫</option>
+					    	<option>支付宝_淘宝</option>
+					    </select>
+					</div> 
+					<div class="form-group newbtn">
+						<button type="button" class="btn btn-default btn-sm newbtn1">新增划拨</button>
+					</div>
+				</form>
+			</div>
+			<div class="row">
+				<table class="table table-hover money-table">
+				    <thead>
+				    	<tr class="active">
+				    		<td>序号</td>
+				    		<td>操作</td>
+				    		<td>创建时间</td>
+				    		<td>业务日期</td>
+				    		<td>转出账户</td>
+				    		<td>转入账户</td>
+				    		<td>金额</td>
+				    		<td>备注</td>
+				    		<td>操作人</td>
+				    	</tr>
+				    </thead>
+				    <tbody class="money-tbody">
+				    	<tr class="money-tr">
+				    	   <td class="money-td">1</td>
+				    	   <td>
+				    	       <a class="money-detail">详细</a>
+				    	   </td>
+				    	   <td class="money-time">2015-11-01 09:41:49</td>
+				    	   <td class="money-date">2015-11-01</td>
+				    	   <td class="money-zhuanchu">支付宝_天猫</td>
+				    	   <td class="money-zhuanru"></td>
+				    	   <td class="money-money">0.00</td>
+				    	   <td class="money-remark"></td>
+				    	   <td>mihuantech</td>
+				    	</tr>
+
+				    	<tr class="money-tr">
+				    	   <td class="money-td">2</td>
+				    	   <td>
+				    	       <a class="money-detail">详细</a>
+				    	   </td>
+				    	   <td class="money-time">2015-11-01 09:41:49</td>
+				    	   <td class="money-date">2015-11-01</td>
+				    	   <td class="money-zhuanchu">支付宝_天猫</td>
+				    	   <td class="money-zhuanru"></td>
+				    	   <td class="money-money">0.00</td>
+				    	   <td class="money-remark"></td>
+				    	   <td>mihuantech</td>
+				    	</tr>
+				    </tbody>
+				</table>
+			</div>
+			<div class="row">
+				<form class="form-inline warestatus-form1 warestatus-form2">
+					<div class="form-group">
+					    <label for="exampleInputName2"class="labelname">每页：</label>
+					    <select class="form-control waregood-status" id="exampleInputName2">
+					    	<option>10</option>
+					    	<option>15</option>
+					    	<option>20</option>
+					    	<option>50</option>
+					    	<option>100</option>
+					    </select>
+					</div> 
+					<div class="form-group">
+						<ul class="warestatus-page">
+							<li><a href="">首页</a></li>
+						    <li class="previous"><a href="#">上一页</a></li>
+						    <li>
+						    	<label for="exampleInputName2"class="labelname">第</label>
+							     <input type="text" class="form-control"id="exampleInputName2"value="1">
+						    	<label for="exampleInputName2"class="labelname">页(共<span>1</span>页<span>0</span>条)</label>
+						    </li>
+						    <li class="next"><a href="#">下一页</a></li>
+							<li><a href="#">末页</a></li>
+						 </ul>
+					</div> 
+				</form>
+			</div>
+			<!--新增划拨-->
+			<div class="modal modal-moneyallocation">
+				<div class="modalcon">
+					<div class="modal-bt">
+						<h4 class="modal-title size-title" id="myModalLabel">新增划拨</h4>
+					    <button type="button" class="close close-btn" data-dismiss="modal" aria-label="Close" id="close-btn"><span aria-hidden="true">x</span></button>
+					</div>
+					<div class="modal-bd">
+					    <form class="form-inline modal-message-form">
+					        <div class="form-group">
+							    <label for="exampleInputName2"class="labelname">业务日期：</label>
+							    <input type="text" class="form-control businessdate" id="datetimepicker2">
+							</div>
+							<div class="form-group">
+							    <label for="exampleInputAmount" class="labelname">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;金额：</label>
+								<div class="input-group">
+									<div class="input-group-addon">￥</div>
+									<input name="money" value="" class="form-control input-sm money-je" style="width:110px;" type="text" placeholder="必填">
+								</div>
+							</div>
+							<br>
+							<div class="form-group">
+								<label class="labelname">转出账户：</label>
+								<select class="form-control input-sm money-zc">
+									<option></option>
+									<option>支付宝_天猫</option>
+									<option>支付宝_淘宝</option>
+								</select>
+							</div>
+							<div class="form-group">
+								<label class="labelname">转入账户：</label>
+								<select class="form-control input-sm money-zr">
+									<option></option>
+									<option>支付宝_天猫</option>
+									<option>支付宝_淘宝</option>
+								</select>
+							</div>
+							<br>
+							<div class="form-group">
+								<label class="labelname">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;备注：</lebel>
+								<textarea class="form-control money-mark" rows="3" style="width:390px;height:83px; resize: none;margin:-2px 0px -2px 0;">
+								</textarea>
+							</div>
+						</form>
+					</div>
+					<div class="modal-bo">
+			        	<button type="button" class="btn btn-default btn-sm money-sure">确定</button>
+			        	<button type="button" class="btn btn-default btn-sm close-btn">取消</button>
+					</div>
+				</div>
+			</div>
+			<!--查看-->
+			<div class="modal modal-moneyallocation1">
+				<div class="modalcon">
+					<div class="modal-bt">
+						<h4 class="modal-title size-title" id="myModalLabel">详细</h4>
+					    <button type="button" class="close close-btn" data-dismiss="modal" aria-label="Close" id="close-btn"><span aria-hidden="true">x</span></button>
+					</div>
+					<div class="modal-bd">
+					    <form class="form-inline modal-message-form">
+					        <div class="form-group">
+							    <label for="exampleInputName2"class="labelname">业务日期：</label>
+							    <input type="text" class="form-control businessdate1" id="exampleInputName2"readonly="readonly">
+							</div>
+							<div class="form-group">
+							    <label for="exampleInputAmount" class="labelname">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;金额：</label>
+								<div class="input-group">
+									<div class="input-group-addon">￥</div>
+									<input name="money" value="" class="form-control input-sm money-je1" style="width:110px;" type="text" readonly="readonly">
+								</div>
+							</div>
+							<br>
+							<div class="form-group">
+								<label class="labelname">转出账户：</label>
+								<input class="form-control input-sm money-zc1"readonly="readonly">
+							</div>
+							<div class="form-group">
+								<label class="labelname">转入账户：</label>
+								<input class="form-control input-sm money-zr1"readonly="readonly">
+							</div>
+							<br>
+							<div class="form-group">
+								<label class="labelname">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;备注：</lebel>
+								<textarea class="form-control money-mark1" rows="3" style="width:390px;height:83px; resize: none;margin:-2px 0px -2px 0;" readonly="readonly">
+								</textarea>
+							</div>
+						</form>
+					</div>
+					<div class="modal-bo">
+			        	<button type="button" class="btn btn-default btn-sm close-btn">返回</button>
+					</div>
+				</div>
+			</div>
+			<div class="push"></div>
+		</div>
+		{include file="../comfoot.html"}
+		<script type="text/javascript" src="/js/jquery-1.11.0.min.js"></script>
+		<script type="text/javascript" src="/js/commontop.js"></script>
+		<script type="text/javascript" src="/bootstrap/js/bootstrap.min.js" ></script>
+		<script type="text/javascript" src="/js/mycom.js"></script>
+		<script type="text/javascript" src="/js/jsAddress.js"></script>
+		<script type="text/javascript" src="/js/money/moneyallocation.js"></script>
+		<script type="text/javascript" src="/bootstrap/js/bootstrap-datetimepicker.min.js"></script>
+		<script type="text/javascript">
+			$('#datetimepicker').datetimepicker({
+			    format: 'yyyy-mm-dd hh:ii'
+			});
+			$('#datetimepicker1').datetimepicker({
+			    format: 'yyyy-mm-dd hh:ii'
+			});
+			$('#datetimepicker2').datetimepicker({
+			    format: 'yyyy-mm-dd hh:ii',
+			    autoclose:true,
+			    minView:2,
+
+			});
+
+		</script>
+	</body>
+</html>

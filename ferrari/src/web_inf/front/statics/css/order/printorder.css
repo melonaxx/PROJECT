@@ -1,0 +1,97 @@
+.row .printorder-nav{
+	width:1200px;
+	margin-left:15px;
+	padding:0;
+}
+.row .printorder-form{
+	width:1200px;
+	margin-left:15px;
+	
+	padding:0;
+}
+.row .printorder-form button{
+	margin-right: 10px;
+}
+.row .printorder-form .sure-print{
+	float:left;
+	margin-bottom: 10px;
+}
+.row .printorder-form .input-group{
+	float:right;
+	margin-bottom:15px;
+}
+.row .printorder-form .input-group input{
+	width:200px;
+}
+
+.row .printerorder-table{
+	width:1200px;
+	margin-left:15px;
+	padding:0;
+}
+.row .printerorder-table thead td:nth-of-type(1){
+	width:46px;
+}
+.row .printerorder-table thead td:nth-of-type(2){
+	width:38px;
+}
+.row .printerorder-table thead td:nth-of-type(3){
+	width:48px;
+}
+.row .printerorder-table thead td:nth-of-type(4){
+	width:100px;
+}
+.row .printerorder-table thead td:nth-of-type(5){
+	width:112px;
+}
+.row .printerorder-table thead td:nth-of-type(6){
+	width:100px;
+}
+.row .printerorder-table thead td:nth-of-type(7){
+	width:87px;
+}
+.row .printerorder-table thead td:nth-of-type(8){
+	width:120px;
+}
+.row .printerorder-table thead td:nth-of-type(9){
+	width:150px;
+}
+.row .printerorder-table thead td:nth-of-type(10){
+	width:120px;
+}
+.row .printerorder-table thead td:nth-of-type(11){
+	width:71px;
+}
+.row .printerorder-table thead td:nth-of-type(12){
+	width:168px;
+}
+.row .printerorder-table .buyer{
+	float:left;
+	margin-left: 10px;
+}
+.row .printerorder-table .message{
+	float:right;
+	margin-right: 10px;
+}
+.modal-tip .modalcon{
+	width:300px;
+	margin-left: -150px;
+}
+.modal-sureprint .modalcon{
+	width:300px;
+	margin-left: -150px;
+}
+.modal-surereturn .modalcon{
+	width:300px;
+	margin-left: -150px;
+}
+
+
+
+
+
+
+
+
+
+

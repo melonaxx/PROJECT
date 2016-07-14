@@ -1,0 +1,37 @@
+.row .scanhandle-form{
+	width:1200px;
+	height:30px;
+	margin-left:15px;
+	padding:0;
+}
+.row .scanhandle-form .form-group{
+	float:right;
+}
+.row .scanhandle-form .input-group{
+	width:345px;
+}
+.row .scanhandle-table{
+	width:1200px;
+	margin-left:15px;
+	padding:0;
+}
+.row .scanhandle-table thead td{
+	font-weight: 600;
+	text-align: center;
+}
+.row .scanhandle-table tbody td{
+	text-align: center;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+

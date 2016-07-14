@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>米欢电商ERP</title>
+		<link href="/images/favicon.ico" rel="shortcut icon">
+		<link rel="stylesheet" type="text/css" href="/bootstrap/css/bootstrap-datetimepicker.min.css"/>
+		<link href="/bootstrap/css/bootstrap.min.css"  rel="stylesheet" media="screen">
+		<link href="/css/commontop.css"   rel="stylesheet" media="screen">
+		<link rel="stylesheet" type="text/css" href="/css/order/mainorder.css"/>
+		<style>
+			{literal}
+				@media screen and (max-width: 1120px){
+					/*当屏幕尺寸小于1120px时，应用下面的CSS样式*/
+				    .navbar-nav,#comtop-right{display: none;}
+				}
+			{/literal}
+		</style>
+	</head>
+	<body>
+		{include file="../commontop.html"}
+		<div class="container-fluid container1">
+			<div class="row ware-row">
+				<h5 class="col-md-12">您的位置： <a href="javascript:;">首页</a> » <a href="javascript:;">订单</a> » 新增主订单</h5>
+			</div>
+			<div class="row">
+				<ul class="nav nav-tabs col-md-12 order-nav">
+				  <li role="presentation" class="active">
+				  	<a href="/order/mainorder.php">添加主订单</a>
+				  </li>
+				  <li role="presentation">
+				  	<a href="/order/checkmain.php">审核主订单</a>
+				  </li>
+				  <li role="presentation">
+				  	<a href="/order/mainlist.php">主订单列表</a>
+				  </li>
+				</ul>
+			</div>
+			<div class="row">
+				<form action="/order/doaddmainorder.php" class="form-inline order-form" method="post">
+					<div class="col-md-5 order-form-left">
+				  		<h2 class="row-bold">订单信息</h2>
+				  		<br>
+						<div class="form-group">
+						    <label for="exampleInputName2" class="labelname">下单时间:</label>
+					    	<input type="text" class="datetimepicker form-control" name="time">
+						</div>
+						<div class="form-group">
+						    <label for="exampleInputName2" class="labelname">订单编号:</label>
+						    <input type="text" class="form-control" placeholder="线上订单编号" name="onlineid">
+						</div>
+						<div class="form-group">
+						    <label for="exampleInputName2" class="labelname">订单分类:</label>
+						    <select class="form-control" name="orderclass">
+							  <option value="0"></option>
+							  {foreach from=$orderclass item=class}
+							  <option value="{$class['id']}">{$class['name']}</option>
+							  {/foreach}
+							</select>
+						</div>
+						<div class="form-group">
+						    <label for="exampleInputEmail2" class="labelname">购买渠道:</label>
+						    <select class="form-control" name="qudao">
+						    	<option value="0"></option>
+							  	{foreach from=$qudao item=qudaos}
+							 	<option value="{$qudaos['id']}">{$qudaos['name']}</option>
+							  	{/foreach}
+							</select>
+						</div>
+						<div class="form-group">
+						    <label for="exampleInputEmail2" class="labelname">店铺名称:</label>
+						    <select class="form-control" name="shop">
+							    <option value="0"></option>
+							  	{foreach from=$shop item=shops}
+							 	<option value="{$shops['id']}">{$shops['name']}</option>
+							  	{/foreach}
+							</select>
+					 	</div>
+					 	<div class="form-group">
+						    <label for="exampleInputEmail2" class="labelname">发货仓库:</label>
+						    <select class="form-control" name="store">
+							    <option value="0"></option>
+							  	{foreach from=$store item=stores}
+							 	<option value="{$stores['id']}">{$stores['name']}</option>
+							  	{/foreach}
+							</select>
+					 	</div>
+					 	<div class="form-group">
+						    <label for="exampleInputEmail2" class="labelname">关联订单:</label>
+						    <input class="form-control" type="text" name="guanlian" />
+					 	</div>
+						<div class="form-group">
+						    <label for="exampleInputEmail2" class="labelname">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;客服:</label>
+						    <input type="text" class="form-control"readonly="readonly" value="{$username}">
+						    <input type="hidden" class="form-control"readonly="readonly" value="{$userid}" name="serviceid">
+						</div>
+						<div class="form-group">
+						    <label for="exampleInputEmail2" class="labelname">代收贷款:</label>
+						    <select class="form-control" name="isreceive">
+							    <option value="N" selected="selected">否</option>
+							    <option value="Y">是</option>
+							</select>
+					 	</div>
+					 	<div class="form-group">
+						    <label for="exampleInputEmail2" class="labelname">审核状态:</label>
+						    <select class="form-control" name="status">
+							    <option value="P">已审核</option>
+							    <option value="N" selected="selected">待审核</option>
+							</select>
+					 	</div>
+					 	<div class="form-group">
+						    <label for="exampleInputEmail2" class="labelname">发票收据:</label>
+						    <select class="form-control" name="isbill">
+							    <option>请选择</option>
+							    <option value="N" selected="selected">无</option>
+							    <option value="Y">有</option>
+							</select>
+					 	</div>
+					 	<div class="form-group piao-group">
+							<label class="labelname">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;票种:</label>
+							<select class="form-control" name="billtype">
+							    <option value="N" selected="selected">无</option>
+							    <option value="Y">专票</option>
+							    <option value="X">普票</option>
+							</select>
+						</div>
+					 	<div class="form-group">
+						    <label for="exampleInputEmail2" class="labelname">订单备注:</label>
+						    <textarea class="form-control order-form-left-mark" row="2" name="comment"></textarea>
+						</div>
+					</div>
+					<div class="col-md-7 order-form-right">
+						<h2 class="row-bold">客户信息</h2>
+						<br>
+				  		<div class="form-group">
+						    <label for="exampleInputEmail2" class="labelname">客户识别:</label>
+						    <input type="text" class="form-control" placeholder="在此搜索" id="seachkh" name="khname">
+						</div>
+				  		<div class="form-group">
+						    <label for="exampleInputEmail2" class="labelname">客户选择:</label>
+						    <select class="form-control" name="khid" id="khid">
+							</select>
+						</div>
+						<div class="form-group">
+						    <label for="exampleInputEmail2" class="labelname">用户昵称:</label>
+						    <input type="text" class="form-control khinfo" id="nick" name="nick">
+						</div>
+						<!-- <div class="form-group">
+						    <label for="exampleInputEmail2" class="labelname">&nbsp;&nbsp;&nbsp;收件人:</label>
+						    <input type="text" class="form-control" placeholder="必填">
+						</div> -->
+						<div class="form-group">
+						    <label for="exampleInputEmail2" class="labelname">手机号码:</label>
+						    <input type="text" class="form-control khinfo" placeholder="必填" id="mobile" name="mobile">
+						</div>
+						<div class="form-group">
+						    <label for="exampleInputEmail2" class="labelname">固定电话:</label>
+						    <input type="text" class="form-control khinfo" id="telphone" name="telphone">
+						</div>
+						<div class="form-group">
+						    <label for="exampleInputEmail2" class="labelname">邮政编码:</label>
+						    <input type="text" class="form-control khinfo" name="postcode" id="postcode">
+						</div>
+						<div class="form-group">
+						    <label for="exampleInputEmail2" class="labelname">公司名称:</label>
+						    <input type="text" class="form-control company-name khinfo" name="companyname" id="companyname">
+						</div><br>
+						<div class="form-group">
+						    <label for="exampleInputEmail2" class="labelname">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;省份:</label>
+						    <select class="form-control pro khinfo" id="custom-prov1" name="stateid">
+							    	<option value="-1">--请选择--</option>
+							</select>
+						</div>
+						<div class="form-group">
+						    <label for="exampleInputEmail2" class="labelname">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;市(区):</label>
+						    <select class="form-control city khinfo" id="custom-city1" name="cityid">
+						    	<option value="-1">--请选择--</option>
+						    </select>
+						</div>
+						<div class="form-group">
+						    <label for="exampleInputEmail2" class="labelname">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;区(县):</label>
+						    <select class="form-control county khinfo" id="custom-town1" name="districtid">
+						    	<option value="-1">--请选择--</option>
+						    </select>
+						</div>
+						<div class="form-group">
+						    <label for="exampleInputEmail2" class="labelname">详细地址:</label>
+						    <input class="form-control right-address khinfo" type="text"/  id="address" name="address">
+						</div>
+						<div class="form-group">
+						    <label for="exampleInputEmail2" class="labelname">客户留言:</label>
+						    <textarea class="form-control right-mark" rows="2"  name="cusmsg"></textarea>
+						</div>
+					</div>
+					<div class="choice-bt" style="width:1200px;float:left;margin-bottom:15px;">
+						<h2 class="row-bold">选择商品</h2>
+					</div>
+					<br>
+					<div class="three-btn">
+		            	<button class="btn btn-default btn-add" type="button">添加</button>
+		            	<button class="btn btn-default btn-del" type="button">删除</button>
+		            	<button class="btn btn-default btn-add-bar" type="button">条码添加</button>
+			           <div id="bar-code">
+						    <label for="exampleInputName2" class="labelname">条形码:</label>
+						    <input type="text" class="form-control input-sm" placeholder="条形码" >
+						</div>
+		           </div>
+		           <br>
+		           <table class="table table-hover order-table">
+						<thead>
+	                		<tr class="active">
+		                    	<td>序号</td>
+		                    	<td>
+		                    		<label class="checkbox-all">
+		                    		<input class="allCheck" type="checkbox" value=""></label>
+		                    	</td>
+		                    	<td>图片</td>
+		                    	<td>搜索</td>
+		                    	<td>商品名称与规格</td>
+		                    	<td>单位</td>
+		                    	<td>单价</td>
+		                    	<td>数量</td>
+		                    	<td>优惠</td>
+		                    	<td>应付</td>
+		                    	<td>备注</td>
+	                		</tr>
+	        			</thead>
+	        			<tbody id="tbody1">
+	                        <tr class="onetr">
+		                        <td class="onetd1">1</td>
+		                        <td>
+		                        	<label>
+		                        		<input class="checkbox-choice" type="checkbox" value="">
+		                        	</label>
+		                        </td>
+		                        <td class="warestatus-tbody-img">
+									
+								</td>
+		                        <td>
+		                        	<input type="text" class="form-control searchbox"placeholder="请搜索商品名称">
+		                        </td>
+		                        <td>
+		                        	<select class="form-control productname" name="proid[]">
+									  <option></option>
+									</select>
+		                        </td>
+		                        <td></td>
+		                        <td>
+		                        	<label class="labelname" style="float:left;display:block;width:20px;height:30px;line-height:30px;">￥</label>
+		                        	<input type="text" class="form-control singleprice" name="singleprice[]">
+		                        </td>
+		                        <td>
+		                        	<input type="text" class="form-control goodsnum"placeholder="必填" name="goodsnum[]">
+		                        </td>
+		                        <td>
+		                        	<label class="labelname" style="float:left;display:block;width:20px;height:30px;line-height:30px;">￥</label>
+		                        	<input type="text" class="form-control singleprice youhui" name="youhui[]">
+		                        </td>
+		                        <td>
+		                        	<label class="labelname" style="float:left;display:block;width:20px;height:30px;line-height:30px;">￥</label>
+		                        	<input type="text" class="form-control singleprice pay" name="pay[]" readonly="readonly">
+		                        </td>
+		                        <td><input type="text" class="form-control" name="procomment[]"></td>
+	                        </tr>
+	                    </tbody>
+	                    <tfoot>
+	                    	<tr>
+	                    		<td>合计</td>
+	                    		<td colspan="6"></td>
+	                    		<td></td>
+	                    		<td>
+		                    		<label class="labelname" style="float:left;display:block;width:20px;height:30px;line-height:30px;">￥</label>
+		                    		<input type="text" class="form-control" readonly="readonly" style="width:100px;" id="youhuis" name="youhuis">
+	                    		</td>
+	                    		<td>
+		                    		<label class="labelname" style="float:left;display:block;width:20px;height:30px;line-height:30px;">￥</label>
+		                    		<input type="text" class="form-control" readonly="readonly" style="width:100px;" id="pays" name="pays">
+	                    		</td>
+		                        <td></td>
+	                    	</tr>
+	                    </tfoot>
+	                </table>
+	                <br>
+					<div class="form-group">
+						<button class="btn btn-default" type="submit">提交</button>
+						<button class="btn btn-default" type="reset">重置</button>
+					</div>
+				</form>
+			</div>
+			<div class="push"></div>
+		</div>
+		{include file="../comfoot.html"}
+		<script src="/js/jquery-1.11.0.min.js" ></script>
+		<script src="/bootstrap/js/bootstrap.min.js"></script>
+		<script src="/bootstrap/js/bootstrap-datetimepicker.min.js"></script>
+		<script src="/bootstrap/js/bootstrap-datetimepicker.zh-CN.js"></script>
+		<script src="/js/commontop.js"></script>
+		<script type="text/javascript" src="/js/threeljs/areasvc.js"></script>
+		<script type="text/javascript" src="/js/util.js"></script>
+		<script type="text/javascript" src="/js/order/mainorder.js"></script>
+		<script type="text/javascript">
+			$('.datetimepicker').datetimepicker({
+			    format: 'yyyy-mm-dd hh:ii:ss',
+			    autoclose:true,
+			    language:'zh-CN',
+			    // minView:'year',
+			});
+		</script>
+	</body>
+</html>

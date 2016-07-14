@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>米欢电商ERP</title>
+ 		<link href="/images/favicon.ico" rel="shortcut icon">
+		<link href="/bootstrap/css/bootstrap.min.css"  rel="stylesheet" media="screen">
+		<link href="/css/commontop.css"   rel="stylesheet" media="screen">
+		<link rel="stylesheet" type="text/css" href="/css/warehouse/enterorout.css"/>
+		<style>
+			{literal}
+				@media screen and (max-width: 1120px){
+					/*当屏幕尺寸小于1120px时，应用下面的CSS样式*/
+				    .navbar-nav,#comtop-right{display: none;}
+				}
+			{/literal}
+		</style>
+	</head>
+	<body>
+		{include file="../commontop.html"}
+		<div class="container-fluid container1">
+			<div class="row ware-row">
+				<h5>您的位置： <a href="javascript:;">首页</a> » <a href="javascript:;">库存</a> »入库出库</h5>
+			</div>
+			<div class="row">
+				<ul class="nav nav-tabs">
+				  <li role="presentation"><a href="enterorout.php">手动出库入库</a></li>
+				  <li role="presentation" class="active"><a href="storagerecord.php">出库入库记录</a></li>
+				</ul>
+			</div>
+			<div class="status">
+				<div class="row">
+					<form class="form-inline enterorout-form">
+						<div class="form-group">
+						    <label for="exampleInputName2"class="labelname">仓库：</label>
+						    <select class="form-control warestatus-ware storelist" id="exampleInputName2">
+						    	{foreach $storedata as $k=>$v}
+						    	<option value="{$v.id}">{$v.name}</option>
+						    	{/foreach}
+						    </select>
+						</div>
+						<div class="form-group">
+						   <button type="button" class="btn btn-default btn-sm searchbystr">查询</button>
+						</div>
+					</form>
+				</div>
+				<div class="row">
+					<table class="table table-hover">
+						<thead class="enterorout-thead">
+							<tr class="active">
+								<td width="46px">序号</td>
+								<td width="46px">操作</td>
+								<td width="100px">时间</td>
+								<td width="120px">仓库</td>
+								<td width="132px">数量</td>
+								<td width="100px">出库入库</td>
+								<td width="100px">类型</td>
+								<td width="210px">备注</td>
+								<td width="90px">操作人</td>
+							</tr>
+						</thead>
+						<tbody class="warestatus-tbody">
+						{foreach $datalist as $k=>$v}
+							<tr>
+								<td>{$k+1}</td>
+								<td>
+									<a href="javascript:;" class="storagerecord-see">查看</a>
+									<input type="hidden" name="productid" value="{$v.productid}">
+									<input type="hidden" name="id" value="{$v.id}">
+								</td>
+								<td>{$v.createtime}</td>
+								<td>{$v.storeid}</td>
+								<td>{$v.total}</td>
+								<td>{$v.type}</td>
+								<td>{$v.purposetype}</td>
+								<td>{$v.comment}</td>
+								<td>{$v.staffid}</td>
+							</tr>
+						{/foreach}
+						</tbody>
+	                </table>
+				</div>
+				{$pages}
+			</div>
+			{if count($datalist) <= 0}
+			<div class="row no-find" style="display:block;">
+				<div class="no-record col-xs-12"><img src="/images/empty.jpg"/><span>没有找到记录，请调整搜索条件。</span></div>
+			</div>
+			{/if}
+			<!-- 查看记录模态窗 -->
+			<div class="modal modal-storage">
+				<div class="modalcon">
+					<div class="modal-bt">
+						<h4 class="modal-title size-title" id="myModalLabel">查看记录</h4>
+					    <button type="button" class="close close-btn" data-dismiss="modal" aria-label="Close" id="close-btn"><span aria-hidden="true">x</span></button>
+					</div>
+					<div class="modal-bd">
+					   <form action="" class="form-inline">
+					   		<div class="form-group">
+					   			<label for="" class="labelname">出库入库：</label>
+					   			<input type="text" class="input-sm form-control iostore" readonly="readonly" style="width:75px;">
+					   		</div>
+					   		<div class="form-group">
+					   			<label for="" class="labelname">类型：</label>
+					   			<input type="text" class="input-sm form-control purposetype" readonly="readonly" style="width:75px;">
+					   		</div>
+					   		<div class="form-group">
+					   			<label for="" class="labelname">&nbsp;&nbsp;&nbsp;仓库：</label>
+					   			<input type="text" class="input-sm form-control storename" readonly="readonly">
+					   		</div>
+					   		<br>
+					   		<div class="form-group">
+					   			<label for="" class="labelname">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;日期：</label>
+					   			<input type="text" class="input-sm form-control manualdate" readonly="readonly" style="width:210px;">
+					   		</div>
+					   		<div class="form-group">
+					   			<label for="" class="labelname">操作人：</label>
+					   			<input type="text" class="input-sm form-control operator" readonly="readonly">
+					   		</div>
+					   		<br>
+					   		<div class="form-group">
+					   			<label for="" class="labelname">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;备注：</label>
+					   			<input type="text" class="input-sm form-control comments" style="width:435px;">
+					   		</div>
+					   </form>
+					    <table class="table">
+					    	<thead>
+					    		<tr class="active">
+					    			<td class="modal-status-num">序号</td>
+					    			<td class="modal-status-ware">商品名称</td>
+					    			<td class="modal-status-allnum">商品规格</td>
+					    			<td class="modal-status-allprice">商品数量</td>
+					    		</tr>
+					    	</thead>
+					    	<tbody>
+					    		<tr class="datatr">
+					    			<td>1</td>
+					    			<td>123</td>
+					    			<td>0</td>
+					    			<td>0.00</td>
+					    		</tr>
+
+					    	</tbody>
+					    </table>
+					</div>
+					<div class="modal-bo">
+						 <button type="button" class="btn btn-default btn-sm close-btn">关闭</button>
+					</div>
+				</div>
+			</div>
+			<div class="push"></div>
+		</div>
+		{include file="../comfoot.html"}
+		<script type="text/javascript" src="/js/jquery-1.11.0.min.js"></script>
+		<script type="text/javascript" src="/js/util.js"></script>
+		<script type="text/javascript" src="/js/commontop.js"></script>
+		<script type="text/javascript" src="/bootstrap/js/bootstrap.min.js"></script>
+		<script type="text/javascript" src="/js/warehouse/storagerecord.js"></script>
+		<script type="text/javascript" src="/js/warehouse/mycom.js"></script>
+	</body>
+</html>

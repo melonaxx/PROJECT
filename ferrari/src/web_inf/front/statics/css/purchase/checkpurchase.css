@@ -1,0 +1,106 @@
+.checkpurchase-form{
+	width:1200px;
+	padding:0;
+	margin-left:15px;
+	margin-bottom:15px;
+}
+.checkpurchase-form .form-group{
+	float:right;
+}
+.checkpurchase-form .form-group button{
+	margin-right:10px;
+}
+.checkpur-group1{
+	margin-right:10px;
+}
+.container1 .checkpur-table{
+	width:1200px;
+	margin-left:15px;
+}
+.checkpur-table .checkpur-thead{
+	font-weight:600;
+	height:38px;
+}
+.checkpur-table .checkpur-thead td label{
+	height:13px;
+}
+.checkpur-table .checkpur-thead td:nth-of-type(1){
+	width:46px;
+	text-align: center;
+}
+.checkpur-table .checkpur-thead td:nth-of-type(2){
+	text-align: center;
+}
+.checkpur-table .checkpur-thead td:nth-of-type(3){
+	width:136px;
+}
+.checkpur-table .checkpur-thead td:nth-of-type(4){
+	width:180px;
+}
+.checkpur-table .checkpur-thead td:nth-of-type(5){
+	width:110px;
+}
+.checkpur-table .checkpur-thead td:nth-of-type(6){
+	width:120px;
+}
+.checkpur-table .checkpur-thead td:nth-of-type(7){
+	width:130px;
+}
+.checkpur-table .checkpur-thead td:nth-of-type(8){
+	width:120px;
+}
+.checkpur-table .checkpur-thead td:nth-of-type(9){
+	width:100px;
+}
+.checkpur-table .checkpur-thead td:nth-of-type(10){
+	width:100px;
+}
+.checkpur-table .checkpur-thead td:nth-of-type(11){
+	width:120px;
+}
+.no-record {
+    width: 100%;
+    height: 90px;
+    line-height: 90px;
+    margin: 0 auto;
+    text-align: center;
+}
+.modal-purchasetip .modalcon{
+	width:300px;
+	margin-left: -150px;
+}
+.modal-purchasetip1 .modalcon{
+	width:300px;
+	margin-left: -150px;
+}
+.modal-purchasetip2 .modalcon{
+	width:300px;
+	margin-left: -150px;
+}
+.modal-purchasetip3 .modalcon{
+	width:300px;
+	margin-left: -150px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

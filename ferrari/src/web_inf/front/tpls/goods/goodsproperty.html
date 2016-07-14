@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>米欢电商ERP</title>
+	<link rel="stylesheet" type="text/css" href="/bootstrap/css/bootstrap.min.css"/>
+	<link href="/images/favicon.ico" rel="shortcut icon">
+	<link href="/css/commontop.css"   rel="stylesheet" media="screen">
+	<link rel="stylesheet" type="text/css" href="/css/goods/goodsproperty.css"/>
+</head>
+<body id="propertybody">
+	{include file="../commontop.html"}
+	<div class="container-fluid container-all">
+		<div class="your-position">
+			<p class="posp1">您的位置&nbsp;:&nbsp;</p>
+			<a class="posa1" href="#">首页</a>
+			<p class="posp2">&nbsp;>>&nbsp;</p>
+			<a class="posa1" href="goods.php">商品</a>
+			<P class="posp2">&nbsp;>>&nbsp;规格和属性</P>
+		</div>
+		<div class="row gl-abovetable">
+			<div class="col-md-12">
+			  <!-- Nav tabs -->
+			  <ul class="nav nav-tabs" role="tablist">
+			    <li role="presentation" class="homeul"><a href="goodsstandard.php">规格管理</a></li>
+			    <li role="presentation" class="active profileul"><a href="">属性</a></li>
+			    <li role="presentation"><a href="goodsunitset.php">单位设置</a></li>
+			  </ul>
+			</div>
+
+		    <!-- Tab panes -->
+	      	<!-- ====================属性====================== -->
+		    <div role="tabpanel" class="tab-pane" id="profile" style="margin-top: 20px;">
+				<div class="row">
+		    		<div class="gpspecify2">
+		    			<div class="gpstop2">
+		    				<span class="gpstopl2">属性</span>
+		    				<span class="gpstopr2">添加新属性</span>
+		    			</div>
+		    			<div class="gspmain2">
+		    				<ul class="gspmainul2">
+		    				{foreach $listattr as $k=>$v}
+		    					<li class="gspmainli2">
+		    						<div class="gsplil2">{$v.name}</div>
+		    						<div class="gsplir2">
+		    							<span class="glyphicon glyphicon-trash delattrname" aria-hidden="true" data-toggle="modal" data-target="#Modaldelspe2"></span>
+		    							<span class="glyphicon glyphicon-list-alt editattrname" aria-hidden="true" data-toggle="modal" data-target="#Modalmodspe2"></span>
+		    							<input type="hidden" name='fattrnameid' value="{$v.id}">
+		    						</div>
+		    					</li>
+		    				{/foreach}
+		    				</ul>
+		    			</div>
+		    		</div>
+		    		<div class="gpspevalue2">
+		    			<div class="gpsvtop2">
+		    				<span class="gpsvtopl2">属性值</span>
+		    				<span class="gpsvtopr2">新增属性值</span>
+		    				<input type="hidden" name='panameid'>
+		    			</div>
+		    			<div class="gpsvmain2">
+		    				<ul class="gspmainulv2">
+		    					<!-- <li class="gpsvmainli2">
+		    						<div class="gpsvlil2">4.0</div>
+		    						<div class="gpsvlir2">
+		    							<span class="glyphicon glyphicon-trash gpvdelpic2" aria-hidden="true"></span>
+		    							<span class="glyphicon glyphicon-list-alt gpvmodpic2" aria-hidden="true"></span>
+		    						</div>
+		    					</li> -->
+		    				</ul>
+		    			</div>
+		    		</div>
+                </div>
+		    </div>
+		</div>
+		<!-- Button trigger modal -->
+		<!-- Modal 添加新属性-->
+		<div class="modal" id="Modaladdspe2">
+		    <div class="modalcon">
+		      <div class="modal-bt">
+		        <button type="button" class="close close-btn" data-dismiss="modal" aria-label="Close"><span aria-hidden="true" id="close-btn">x</span></button>
+		        <h4 class="modal-title size-title">添加规格</h4>
+		      </div>
+		      <div class="modal-bd">
+			      <form action="" class="form-inline">
+			        <div class="form-group">
+					    <label for="exampleInputName2">属性名称:</label>
+					    <input type="text" class="form-control addfattrs">
+					</div>
+
+			      </form>
+		      </div>
+		      <div class="modal-bo">
+		        <button type="button" class="btn btn-default gpsureaddbtn2">提交</button>
+		        <button type="button" class="btn btn-default close-btn">关闭</button>
+		      </div>
+		    </div><!-- /.modal-content -->
+		</div><!-- /.modal -->
+
+		<!-- Button trigger modal -->
+		<!-- Modal 删除属性-->
+		<div class="modal modaldelspe2">
+		    <div class="modalcon">
+		      <div class="modal-bt">
+		        <button type="button" class="close close-btn" data-dismiss="modal" aria-label="Close"><span aria-hidden="true" id="close-btn">x</span></button>
+		        <h4 class="modal-title size-title">删除属性</h4>
+		      </div>
+		      <div class="modal-bd">
+		       		<p>您确定要删除该属性吗？</p>
+		      </div>
+		      <div class="modal-bo">
+		        <button type="button" class="btn btn-default gpsuredelsbtn2">确定</button>
+		        <button type="button" class="btn btn-default close-btn">取消</button>
+		      </div>
+		    </div><!-- /.modal-content -->
+		</div><!-- /.modal -->
+
+		<!-- Button trigger modal -->
+		<!-- Modal 修改属性-->
+		<div class="modal modalmodspe2" id="Modalmodspe2">
+		    <div class="modalcon">
+		      <div class="modal-bt">
+		        <button type="button" class="close close-btn" data-dismiss="modal" aria-label="Close"><span aria-hidden="true" id="close-btn">x</span></button>
+		        <h4 class="modal-title size-title">修改属性</h4>
+		      </div>
+		      <div class="modal-bd">
+		      	<form action="" class="form-inline">
+			        <div class="form-group">
+					    <label for="exampleInputName2">属性名称:</label>
+					    <input type="text" class="form-control gpsnamei222">
+					</div>
+				</form>
+		      </div>
+		      <div class="modal-bo">
+		        <button type="button" class="btn btn-default gpsuremodsbtn2"id="gpmodsbtn2" data-dismiss="modal">提交</button>
+		        <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+		      </div>
+		    </div><!-- /.modal-content -->
+		</div><!-- /.modal -->
+
+		<!-- Button trigger modal -->
+		<!-- Modal点击新增属性值 -->
+		<div class="modal" id="Modalmodspev2">
+		    <div class="modalcon">
+		      <div class="modal-bt">
+		        <button type="button" class="close close-btn" data-dismiss="modal" aria-label="Close"><span aria-hidden="true" id="close-btn">x</span></button>
+		        <h4 class="modal-title size-title">添加属性值</h4>
+		      </div>
+		      <div class="modal-bd">
+		      	<form action="" class="form-inline">
+			        <div class="form-group">
+					    <label for="exampleInputName2">属性值:</label>
+					    <input type="text" class="form-control gpsvaluei22">
+					</div>
+		      	</form>
+		      </div>
+		      <div class="modal-bo">
+		        <button type="button" class="btn btn-default gpsureaddvbtn2">提交</button>
+		        <button type="button" class="btn btn-default close-btn">关闭</button>
+		      </div>
+		    </div><!-- /.modal-content -->
+		</div><!-- /.modal -->
+
+		<!-- Button trigger modal -->
+		<!-- Modal 删除属性值-->
+		<div class="modal modaldelspev" id="Modaldelspev2">
+		    <div class="modalcon">
+		      <div class="modal-bt">
+		        <button type="button" class="close close-btn" data-dismiss="modal" aria-label="Close"><span aria-hidden="true" id="close-btn">x</span></button>
+		        <h4 class="modal-title size-title">删除属性值</h4>
+		      </div>
+		      <div class="modal-bd">
+		        <p>您确定要删除该属性值吗？</p>
+		      </div>
+		      <div class="modal-bo">
+		        <button type="button" class="btn btn-default gpsuredelsvbtn2">确定</button>
+		        <button type="button" class="btn btn-default close-btn">取消</button>
+		      </div>
+		    </div><!-- /.modal-content -->
+		</div><!-- /.modal -->
+
+		<!-- Button trigger modal -->
+		<!-- Modal 修改属性值-->
+		<div class="modal" id="Modalmodspevv2">
+		    <div class="modalcon">
+		      <div class="modal-bt">
+		        <button type="button" class="close close-btn" data-dismiss="modal" aria-label="Close"><span aria-hidden="true" id="close-btn">x</span></button>
+		        <h4 class="modal-title size-title">修改属性值</h4>
+		      </div>
+		      <div class="modal-bd">
+		      	<form action="" class="form-inline">
+			        <div class="form-group">
+					    <label for="exampleInputName2">属性值:</label>
+					    <input type="text" class="form-control gpsvaluei222">
+					</div>
+		      	</form>
+		      </div>
+		      <div class="modal-bo">
+		        <button type="button" class="btn btn-default gpmodsvbtn2" data-dismiss="modal">提交</button>
+		        <button type="button" class="btn btn-default close-btn">关闭</button>
+		      </div>
+		    </div><!-- /.modal-content -->
+		</div><!-- /.modal -->
+		<div class="push"></div>
+	</div>
+	{include file="../comfoot.html"}
+	<script src="/js/jquery-1.11.0.min.js" ></script>
+	<script src="/bootstrap/js/bootstrap.min.js"  ></script>
+	<script src="/js/util.js"  ></script>
+	<script src="/js/commontop.js"></script>
+	<script src="/js/mycom.js"></script>
+	<script src="/js/goods/goodsproperty_property.js"></script>
+</body>
+</html>

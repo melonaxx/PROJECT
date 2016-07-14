@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>米欢电商ERP</title>
+ 	<link href="/images/favicon.ico" rel="shortcut icon">
+	<link rel="stylesheet" type="text/css" href="/bootstrap/css/bootstrap-datetimepicker.min.css"/>
+	<link href="/bootstrap/css/bootstrap.min.css"  rel="stylesheet" media="screen">
+	<link href="/css/commontop.css"   rel="stylesheet" media="screen">
+	<link rel="stylesheet" type="text/css" href="/css/money/accountsubject.css"/>
+	<style>
+		{literal}
+		@media screen and (max-width: 1120px){ 
+			/*当屏幕尺寸小于1120px时，应用下面的CSS样式*/
+			.navbar-nav,#comtop-right{display: none;}
+		}
+		{/literal}
+	</style>
+</head>
+<body>
+	{include file="../commontop.html"}
+	<div class="container-fluid container1">
+		<div class="row ware-row">
+			<h5 class="col-xs-12">您的位置： <a href="javascript:;">首页</a> » <a href="javascript:;">财务</a> »财务科目</h5>
+		</div>
+		<div class="row">
+			<ul class="nav nav-tabs col-md-12 accountsubject-nav">
+				<li power="presentation" class="active">
+					<a href="/money/accountsubject.php">财务科目</a>
+				</li>
+				<li power="presentation">
+					<a href="/money/accounttypeclass.php">财务科目类别</a>
+				</li>
+				<li power="presentation">
+					<a href="/money/accounttype.php">财务科目类型</a>
+				</li>
+
+			</ul>
+		</div>
+		<div class="row">
+			<form action="" class="form-inline accountsubject-form">
+				<div class="form-group">
+					<button class="btn btn-default btn-sm add_this_sort" type="button">添加一级财务科目</button>
+				</div>
+				<div class="form-group" style="float:right;margin-right: 0;">
+					<label for="exampleInputName2" class="labelname">类型：</label>
+					<select name="" class="form-control" id="bigsel">
+						<option value="-1">全部</option>
+						{foreach from=$acctype item=acctypes}
+						<option value="{$acctypes['id']}" {if $id eq $acctypes['id']}selected="selected"{/if}>{$acctypes['typename']}</option>
+						{/foreach}
+					</select>
+				</div>
+			</form>
+			<br>
+			<table class="table table-hover accountsubject-table">
+				<thead>
+					<tr class="active">
+						<td class="table_th_operate">操作</td>
+						<td class="center">编码</td>
+						<td >名称</td>
+						<td >类型</td>
+						<td >备注</td>
+					</tr>
+				</thead>
+				<tbody id="tb">
+				{foreach from=$listinfo item=listinfos}
+					<tr level="1" sort_id="1000119" class="parent">
+						<td class="center ">
+							<a class="table_a_operate sort_edit" href="javascript:;" uid="{$listinfos['id']}">修改</a>
+							<a sort_id="1000119" class="sort_delete"href="javascript:;" uid="{$listinfos['id']}">删除</a>
+							<a  class="add_child_sort" href="javascript:;" uid="{$listinfos['id']}">添加</a>
+						</td>
+						<td>{$listinfos['code']}</td>
+						<td>
+							<div class="float_left sort_name">{$listinfos['name']}</div>
+						</td>
+						<td>{$listinfos['classname']}</td>
+						<td>{$listinfos['remark']}</td>
+					</tr>
+				{/foreach}
+				</tbody>
+			</table>
+		</div>
+		<div class="row" style="display:none;">
+			<div class="no-record col-xs-12"><img src="/images/empty.jpg"/><span>没有找到记录，请调整搜索条件。</span></div>
+		</div>
+		<!-- 添加财务科目 -->
+		<div class="modal modal-accountsubject">
+			<div class="modalcon">
+				<div class="modal-bt">
+					<h4 class="modal-title size-title" id="myModalLabel">添加财务科目</h4>
+					<button type="button" class="close close-btn" data-dismiss="modal" aria-label="Close" id="close-btn"><span aria-hidden="true">x</span></button>
+				</div>
+				<form class="form-inline" id="form1">
+					<div class="modal-bd">
+						<div class="form-group">
+							<label class="labelname">编码：</label>
+							<input name="code" class="form-control input-sm " type="text">
+						</div>
+						<div class="form-group">
+							<label class="labelname">科目名称：</label>
+							<input name="name" class="form-control input-sm " type="text">
+						</div>
+						<div class="form-group">
+							<label class="labelname">上级科目：</label>
+							<input class="form-control input-sm " type="text"disabled="disabled">
+						</div>
+						<br>
+						<div class="form-group">
+							<label for="exampleInputName2" class="labelname">类型：</label>
+							<select name="type" class="form-control sel1">
+								<option value="-1">--请选择--</option>
+								{foreach from=$acctype item=acctypes}
+								<option value="{$acctypes['id']}">{$acctypes['typename']}</option>
+								{/foreach}
+							</select>
+						</div>
+						<div class="form-group">
+							<label for="exampleInputName2" class="labelname">科目类别：</label>
+							<select name="class" class="form-control sel2">
+								
+							</select>
+						</div>
+						<div class="form-group">
+							<label class="labelname">余额方向：</label>
+							<label for=""  class="labelname">
+								<input type="radio" name="radio" style="margin-right:5px;" value="J" checked="checked">借
+							</label>
+							<label for="" class="labelname">
+								<input type="radio" name="radio" style="margin-right:5px;" value="D">贷
+							</label>
+						</div>
+						<div class="form-group">
+							<label class="labelname" class="margin_left_2">备注：</label>
+							<textarea class="form-control input-sm subject-mark" rows="3"
+							name="comment"></textarea>
+						</div>
+					</div>
+					<div class="modal-bo">
+						<button type="button" class="btn btn-default btn-sm addfirst">确定</button>
+						<button type="button" class="btn btn-default btn-sm close-btn">取消</button>
+					</div>
+				</form>
+			</div>
+		</div>
+		<!-- 修改财务科目 -->
+		<div class="modal modal-accountsubject1">
+			<div class="modalcon">
+				<div class="modal-bt">
+					<h4 class="modal-title size-title" id="myModalLabel">修改财务科目</h4>
+					<button type="button" class="close close-btn" data-dismiss="modal" aria-label="Close" id="close-btn"><span aria-hidden="true">x</span></button>
+				</div>
+				<form class="form-inline" id="form3">
+					<div class="modal-bd">
+						<div class="form-group">
+							<label class="labelname">编码：</label>
+							<input name="code" class="form-control input-sm " type="text" id="code">
+							<input type="hidden" name="id" id="hide">
+						</div>
+						<div class="form-group">
+							<label class="labelname">科目名称：</label>
+							<input name="name" class="form-control input-sm " type="text" id="name">
+						</div>
+						<div class="form-group">
+							<label class="labelname">上级科目：</label>
+							<input class="form-control input-sm " type="text"disabled="disabled" id="parentname">
+							<input type="hidden" name="parent" id="parent">
+						</div>
+						<br>
+						<div class="form-group">
+							<label for="exampleInputName2" class="labelname">类型：</label>
+							<select name="type" class="form-control sel1" id="sel1">
+								<option value="-1">--请选择--</option>
+								{foreach from=$acctype item=acctypes}
+								<option value="{$acctypes['id']}">{$acctypes['typename']}</option>
+								{/foreach}
+							</select>
+						</div>
+						<div class="form-group">
+							<label for="exampleInputName2" class="labelname">科目类别：</label>
+							<select name="class" class="form-control sel2" id="sel2">
+									
+							</select>
+						</div>
+						<div class="form-group">
+							<label class="labelname">余额方向：</label>
+							<label for=""  class="labelname">
+								<input type="radio" name="radio" style="margin-right:5px;" value="J" id="radio1">借
+							</label>
+							<label for="" class="labelname">
+								<input type="radio" name="radio" style="margin-right:5px;" value="D" id="radio2">贷
+							</label>
+						</div>
+						<div class="form-group">
+							<label class="labelname" class="margin_left_2">备注：</label>
+							<textarea class="form-control input-sm subject-mark1" rows="3"
+							name="comment" id="comment"></textarea>
+						</div>
+					</div>
+					<div class="modal-bo">
+						<button type="button" class="btn btn-default btn-sm editboth">确定</button>
+						<button type="button" class="btn btn-default btn-sm close-btn">取消</button>
+					</div>
+				</form>
+			</div>
+		</div>
+		<!-- 添加财务子科目 -->
+		<div class="modal modal-accountsubject2">
+			<div class="modalcon">
+				<div class="modal-bt">
+					<h4 class="modal-title size-title" id="myModalLabel">添加财务子科目</h4>
+					<button type="button" class="close close-btn" data-dismiss="modal" aria-label="Close" id="close-btn"><span aria-hidden="true">x</span></button>
+				</div>
+				<form class="form-inline" id="form2">
+					<div class="modal-bd">
+						<div class="form-group">
+							<label class="labelname">编码：</label>
+							<input name="code" class="form-control input-sm " type="text">
+						</div>
+						<div class="form-group">
+							<label class="labelname">科目名称：</label>
+							<input name="name" class="form-control input-sm " type="text">
+						</div>
+						<div class="form-group">
+							<label class="labelname">上级科目：</label>
+							<input name="name" class="form-control input-sm" id="parentnames" type="text"disabled="disabled">
+							<input type="hidden" name="parent" id="parentid">
+						</div>
+						<br>
+						<div class="form-group">
+							<label for="exampleInputName2" class="labelname">类型：</label>
+							<select name="type" class="form-control sel1">
+								<option value="-1">--请选择--</option>
+								{foreach from=$acctype item=acctypes}
+								<option value="{$acctypes['id']}">{$acctypes['typename']}</option>
+								{/foreach}
+							</select>
+						</div>
+						<div class="form-group">
+							<label for="exampleInputName2" class="labelname">科目类别：</label>
+							<select name="class" class="form-control sel2">
+
+							</select>
+						</div>
+						<div class="form-group">
+							<label class="labelname">余额方向：</label>
+							<label for=""  class="labelname">
+								<input type="radio" name="radio" style="margin-right:5px;" value="J" id="ra1">借
+							</label>
+							<label for="" class="labelname">
+								<input type="radio" name="radio" style="margin-right:5px;" value="D" id="ra2">贷
+							</label>
+						</div>
+						<div class="form-group">
+							<label class="labelname" class="margin_left_2">备注：</label>
+							<textarea class="form-control input-sm subject-mark2" rows="3"
+							name="comment"></textarea>
+						</div>
+					</div>
+					<div class="modal-bo">
+						<button type="button" class="btn btn-default btn-sm addchild">确定</button>
+						<button type="button" class="btn btn-default btn-sm close-btn">取消</button>
+					</div>
+				</form>
+			</div>
+		</div>
+		<!--删除 -->
+		<div class="modal modal-tip">
+			<div class="modalcon">
+				<div class="modal-bt">
+					<h4 class="modal-title size-title" id="myModalLabel">提示</h4>
+					<button type="button" class="close close-btn" data-dismiss="modal" aria-label="Close" id="close-btn"><span aria-hidden="true">x</span></button>
+				</div>
+				<div class="modal-bd">
+					<span>您确定要删除该财务科目吗?</span>
+				</div>
+				<div class="modal-bo">
+					<button type="button" class="btn btn-default btn-sm delsub">确定</button>
+					<button type="button" class="btn btn-default btn-sm close-btn">取消</button>
+				</div>
+			</div>
+		</div>
+
+		<div class="push"></div>
+	</div>
+	{include file="../comfoot.html"}
+	<script type="text/javascript" src="/js/jquery-1.11.0.min.js"></script>
+	<script type="text/javascript" src="/js/commontop.js"></script>
+	<script type="text/javascript" src="/bootstrap/js/bootstrap.min.js" ></script>
+	<script type="text/javascript" src="/js/mycom.js"></script>
+	<script type="text/javascript" src="/js/money/accountsubject.js"></script>
+</body>
+</html>

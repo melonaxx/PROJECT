@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>米欢电商ERP</title>
+		<link href="/images/favicon.ico" rel="shortcut icon">
+		<link href="/bootstrap/css/bootstrap.min.css"  rel="stylesheet" media="screen">
+		<link href="/css/commontop.css"   rel="stylesheet" media="screen">
+		<link rel="stylesheet" type="text/css" href="/css/warehouse/warestatus.css"/>
+		<link rel="stylesheet" type="text/css" href="/css/product/product_foundry_manage.css"/>
+		<style>
+			{literal}
+				@media screen and (max-width: 1120px){ 
+					/*当屏幕尺寸小于1120px时，应用下面的CSS样式*/
+				    .navbar-nav,#comtop-right{display: none;}
+				}
+			{/literal}
+		</style>
+	</head>
+	<body>
+		{include file="../commontop.html"}
+		<div class="container-fluid container1">
+			<div class="row ware-row">
+				<h5 class="col-xs-12">您的位置： <a href="javascript:;">首页</a> » <a href="javascript:;">生产</a> » 代工库管理</h5>
+			</div>
+			<div class="row">
+				<ul class="nav nav-tabs col-xs-12 manage-nav">
+				  <li role="presentation" class="active">
+				  	<a href="/product/product_foundry_manage.php">代工库领料明细</a>
+				  </li>
+				  <li role="presentation">
+				  	<a href="/product/product_allocate.php">调拨原料</a>
+				  </li>
+				  <li role="presentation">
+				  	<a href="/product/allocaterecord.php">调拨记录</a>
+				  </li>
+				  <li role="presentation">
+				  	<a href="/product/product_reduce.php">代工库手动减库</a>
+				  </li>
+				  <li role="presentation">
+				  	<a href="/product/reducerecord.php">减库记录</a>
+				  </li>
+				</ul>
+			</div>
+			<div class="row">
+				<form class="form-inline manage-form col-md-12" action="/product/product_foundry_manage.php" method="get">
+					<div class="form-group">
+					    <input type="submit" class="btn btn-default btn-sm " value="查询">
+					</div> 
+					<div class="form-group">
+					    <label for="exampleInputName2"class="labelname">代工库名称：</label>
+					    <select class="form-control" name="oemname">
+					    	<option value="">--请选择--</option>
+					    	{foreach from=$oem_list item=temp}
+							<option value="{$temp['id']}" {if $smarty.get.oemname eq {$temp['id']} }selected="selected"{/if}>{$temp['name']}</option>
+					    	{/foreach}
+					    </select>
+					</div>
+				</form>
+				<table class="table table-hover manage-table">
+					<thead>
+						<tr class="active">
+							<td>序号</td>
+							<td>代工库</td>
+							<td>图片</td>
+							<td>商品名称和规格</td>
+							<td>单位</td>
+							<td>商品编码</td>
+							<td>数量</td>
+						</tr>
+					</thead>
+					<tbody>
+					{foreach from=$goods_info item=temp}
+						<tr>
+							<td><span name="number"></span></td>
+							<td>{$temp['oemname']}</td>
+							<td class="warestatus-tbody-img">
+								<img src="{$temp['img']}" class="img1"/>
+								<img src="{$temp['img']}" class="img2"/>
+							</td>
+							<td>{$temp['goodsinfo']}</td>
+							<td>{$temp['proflats_name']}</td>
+							<td class="manage-code">{$temp['number']}</td>
+							<td class="manage-num">{$temp['count']}</td>
+						</tr>
+					{/foreach}
+					</tbody>
+				</table>
+			</div>
+			<div class="row no-find">
+				<div class="no-record col-md-12"><img src="/images/empty.jpg"/><span>没有找到记录，请调整搜索条件。</span></div>
+			</div>
+			{$pages}
+
+			<div class="push"></div>
+		</div>
+		{include file="../comfoot.html"}
+		<script type="text/javascript" src="/js/jquery-1.11.0.min.js"></script>
+		<script type="text/javascript" src="/js/commontop.js"></script>
+		<script type="text/javascript" src="/bootstrap/js/bootstrap.min.js" ></script>
+		<script type="text/javascript" src="/bootstrap/js/bootstrap-datetimepicker.min.js"></script>
+		<script type="text/javascript" src="/js/warehouse/warestatus.js"></script>
+		<!-- <script type="text/javascript" src="/js/product/product_foundry_manage.js"></script> -->
+	</body>
+<script>
+	var number = document.getElementsByName("number");
+
+	for(var i=0;i<number.length;i++){
+		number[i].innerHTML=i+1;
+	}
+
+	$(".rrow").change(function(){
+
+		var p=$(this).val();
+		var pps=$("#pps").html();
+		var search = String($("select[name='oemname']").val());
+
+		window.location.href = "/product/product_foundry_manage.php?num="+p+"&oemname="+search; 	
+		
+	})
+</script>
+</html>

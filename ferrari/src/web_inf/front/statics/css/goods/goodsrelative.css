@@ -1,0 +1,48 @@
+#relativebody button,#relativebody input,#relativebody select{height:30px;font-size: 12px;margin-right: 10px;}
+#relativebody button span{
+	font-size:20px;
+}
+#relativebody input,#relativebody select{width: 150px;}
+#relativebody .form-group label,#relativebody .form-group select{float:left;line-height:30px;}
+#relativebody .form-group label{width:64px;}
+#relativebody .form-group{margin-bottom: 10px;}
+#relativebody #input-weight{width:150px;}
+#relativebody table tbody{background: #fff;}
+thead{background:#d6d6d6; }
+.col-md-6{padding-right: 0;}
+.container-all{padding:0 60px;}
+.your-position{width:300px;height:50px;line-height: 50px;}
+.your-position .posp1{float:left;}
+.your-position .posa1{display:block;float:left;}
+.your-position .posp2{float:left;}
+#gl-table{
+	width:1200px;
+}
+/*----------------未排版印刷单------------------------*/
+.ps-content select{width:100px;float:left;}
+.ps-content .ps-content1{width:156px;float:left;}
+#relativebody #ps-contentl1{width:36px;}
+.ps-content nav,.ps-content nav ul{float:left;width:126px;margin-top:0px;}
+/*#relativebody #ps-contentl2{float:left;width:320px;}*/
+#relativebody #ps-contentl2 label:nth-of-type(1){float:left;width:20px;margin-left:10px;line-height: 30px;}
+#relativebody #ps-contentl2 label:nth-of-type(2){float:left;width:40px;margin-left:10px;line-height: 30px;}
+#relativebody #ps-contentl2 label:nth-of-type(3){float:left;width:20px;margin-left:10px;line-height: 30px;}
+#relativebody #ps-contentl2 label:nth-of-type(4){float:left;width:20px;margin-left:10px;line-height: 30px;}
+#relativebody #ps-contentl2 input{float:left;width:80px;}
+#relativebody #ps-contentl2 span{width:38px;display:block;float:left;line-height: 30px;text-align: center;}
+#myModal .modalcon{
+	width:300px;
+	margin-left: -150px;
+}
+#myModalgl2 .modalcon{
+	width:300px;
+	margin-left: -150px;
+}
+.gl-abovetable{
+	width:1200px;
+	margin-left:20px;
+}
+.pageul li{
+	float:left;
+	margin:0 10px 0 0;
+}

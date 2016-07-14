@@ -1,0 +1,84 @@
+/*商品品牌*/
+.row .goodscbrand-nav{
+	width:1200px;
+	padding:0;
+	margin-left: 15px;
+}
+.row .gbtabler{
+	width:1200px;
+	padding:0;
+	margin-left: 15px;
+}
+
+.row .gbtabler thead td:nth-of-type(1){
+	width:140px;
+}
+.row .gbtabler thead td:nth-of-type(2){
+	width:1080px;
+	text-align:left;
+}
+.row .gbtabler tbody td:nth-of-type(2){
+	text-align:left;
+}
+
+.row .gbtabler .gcbmodify3{
+	margin-right:15px;
+	cursor:pointer;
+}
+.row .gbtabler .gcbaddsonl3{
+	cursor:pointer;
+}
+.row .gbtabler .gcbdel3{
+	cursor:pointer;
+	margin-right:15px;
+
+}
+#myModaladds .modalcon{
+	width:300px;
+	margin-left: -150px;
+}
+#myModaladdo .modalcon{
+	width:300px;
+	margin-left: -150px;
+}
+#myModaldel .modalcon{
+	width:300px;
+	margin-left: -150px;
+}
+
+#myModaldel2 .modalcon{
+	width:300px;
+	margin-left: -150px;
+}
+.myModaldelsure .modalcon{
+	width:300px;
+	margin-left: -150px;
+}
+#myModalmodson .modalcon{
+	width:300px;
+	margin-left: -150px;
+}
+#myModaladdb .modalcon{
+	width:300px;
+	margin-left: -150px;
+}
+#myModaladdob .modalcon{
+	width:300px;
+	margin-left: -150px;
+}
+.myModaldelb .modalcon{
+	width:300px;
+	margin-left: -150px;
+}
+#myModalmodsonb .modalcon{
+	width:300px;
+	margin-left: -150px;
+}
+.myModaldelb2 .modalcon{
+	width:300px;
+	margin-left: -150px;
+}
+.myModaldelbsure .modalcon{
+	width:300px;
+	margin-left: -150px;
+}

@@ -1,0 +1,167 @@
+.row .warecheck-nav{
+	width:1200px;
+	padding:0;
+	margin-left: 15px;
+}
+.row .warecheck-form{
+	width:1200px;
+	padding:0;
+	margin-left: 15px;
+}
+.warcheck-form .form-group{
+	float:right;
+	margin:0 0 10px 0;
+}
+.row .warecheck-table{
+	width:1200px;
+	padding:0;
+	margin-left: 15px;
+}
+.wareallocate-form .form-control{
+	margin-right:10px;
+}
+.no-record{
+	width:100%;
+	height:90px;
+	line-height:90px;
+	margin:0 auto;
+	text-align: center;
+}
+.modal-check .modalcon{
+	width:1000px;
+	margin-left:-500px;
+}
+.modal-check .modalcon .form-inline .form-group{
+	margin-right: 15px;
+}
+.modal-check .check-num{
+	width:46px;
+}
+.modal-check .check-img{
+	width:44px;
+}
+.modal-check .check-name{
+	width:150px;
+}
+.modal-check .check-size{
+	width:150px;
+}
+.modal-check .check-code{
+	width:100px;
+}
+.modal-check .check-num1{
+	width:80px;
+}
+.modal-check .check-num2{
+	width:80px;
+}
+.modal-check .check-num3{
+	width:70px;
+}
+.modal-check .check-remark{
+	width:150px;
+}
+
+.modal-warechecktip .modalcon{
+	width:300px;
+	margin-left: -150px;
+}
+
+/*盘点单*/
+.row .inventorylist-nav{
+	width:1200px;
+	padding:0;
+	margin-left: 15px;
+}
+.row .inventorylist-form{
+	width:1200px;
+	padding:0;
+	margin-left: 15px;
+}
+
+.inventorylist-form .form-group{
+	float:right;
+	margin:0 0 10px 15px;
+}
+.row .wareallocate-table{
+	width:1200px;
+	padding:0;
+}
+.wareallocate-table .wareallocate-td1{
+	width:46px;
+}
+.wareallocate-table .wareallocate-td2{
+	width:86px;
+}
+.wareallocate-table .wareallocate-td3{
+	width:140px;
+}
+.wareallocate-table .wareallocate-td4{
+	width:200px;
+}
+.wareallocate-table .wareallocate-td5{
+	width:200px;
+}
+.wareallocate-table .wareallocate-td6{
+	width:120px;
+}
+.wareallocate-table .wareallocate-td7{
+	width:110px;
+}
+.wareallocate-table .wareallocate-td8{
+	width:100px;
+}
+.wareallocate-table .wareallocate-td9{
+	width:200px;
+}
+.wareallocate-table .check-detail{
+	cursor:pointer;
+}
+.wareallocate-table .check-print{
+	cursor:pointer;
+}
+.modal-checklist .modalcon{
+	width:1000px;
+	margin-left:-500px;
+}
+.modal-checklist .checkmodal-form{
+	margin:10px 0 15px 0;
+}
+.modal-checklist .checkmodal-table{
+	width:951px;
+}
+.modal-checklist .checkmodal-num{
+	width:46px;
+}
+.modal-checklist .checkmodal-img{
+	width:46px;
+}
+.modal-checklist .checkmodal-name{
+	width:238px;
+}
+.modal-checklist .checkmodal-size{
+	width:200px;
+}
+.modal-checklist .checkmodal-code{
+	width:120px;
+}
+.modal-checklist .checkmodal-num1{
+	width:100px;
+}
+.modal-checklist .checkmodal-num2{
+	width:100px;
+}
+.modal-checklist .checkmodal-num3{
+	width:100px;
+}
+.modal-checklist .checkmodal-form .checkmodal-time{
+	width:150px;
+	background:#eee;
+}
+
+
+
+
+
+
+

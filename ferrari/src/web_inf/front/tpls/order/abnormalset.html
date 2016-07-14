@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>米欢电商ERP</title>
+		<link href="/images/favicon.ico" rel="shortcut icon">
+		<link rel="stylesheet" type="text/css" href="/bootstrap/css/bootstrap-datetimepicker.min.css"/>
+		<link href="/bootstrap/css/bootstrap.min.css"  rel="stylesheet" media="screen">
+		<link href="/css/commontop.css"   rel="stylesheet" media="screen">
+		<link rel="stylesheet" type="text/css" href="/css/order/orderquery.css"/>
+		<link rel="stylesheet" type="text/css" href="/css/order/abnormalset.css"/>
+		<style>
+			{literal}
+				@media screen and (max-width: 1120px){ 
+					/*当屏幕尺寸小于1120px时，应用下面的CSS样式*/
+				    .navbar-nav,#comtop-right{display: none;}
+				}
+			{/literal}
+		</style>
+	</head>
+	<body>
+		{include file="../commontop.html"}
+		<div class="container-fluid container1">
+			<div class="row ware-row">
+				<h5 class="col-xs-12">您的位置： <a href="javascript:;">首页</a> » <a href="javascript:;">订单</a> »异常设置</h5>
+			</div>
+			<div class="row">
+			    <form class="form-inline orderall-form col-md-12">
+					<div class="form-group newbtn">
+						<button type="button" class="btn btn-default btn-sm add-normalset">增加</button>
+					</div>
+				</form>
+			</div>
+			<div class="row">
+				<table class="table table-hover orderall-table abnormalset-table col-md-12">
+				    <thead>
+				    	<tr class="active">
+				    		<td>序号</td>
+				    		<td>操作</td>
+				    		<td>异常类型</td>
+				    		<!-- <td>备注</td> -->
+				    	</tr>
+				    </thead>
+				    <tbody class="normalset-tbody" id="tb">
+				    {foreach from=$list key=k item=row}
+				    	<tr class="normalsettr">
+				    		<td class="normalsetnum">{$k+1}</td>
+				    		<td class="normalsetope">
+				    			<span class="abnormalset-change" uid = {$row['id']}>修改</span>
+				    			<span class="abnormalset-del" uid = {$row['id']}>删除</span>
+
+				    		</td>
+				    		<td class="normalsetname">{$row['name']}</td>
+				    	</tr>
+				    {/foreach}
+				    </tbody>
+				</table>
+			</div>
+			<div class="row no-find">
+				<div class="no-record col-md-12"><img src="/images/empty.jpg"/><span>没有找到记录，请调整搜索条件。</span></div>
+			</div>
+			<div class="row">
+			</div>
+			<!--添加异常 -->
+			<div class="modal modal-addnormalset">
+				<div class="modalcon">
+					<div class="modal-bt">
+						<h4 class="modal-title size-title" id="myModalLabel">添加异常</h4>
+					    <button type="button" class="close close-btn" data-dismiss="modal" aria-label="Close" id="close-btn"><span aria-hidden="true">x</span></button>
+					</div>
+					<form  class="form-inline" action="/order/addabnormal.php" method="post">
+						<div class="modal-bd">
+						    	<div class="form-group">
+								    <label for="" class="labelname">异常名称：</label>
+								    <input class="form-control input-sm normalset-name" type="text" name="name">
+						    	</div>
+						</div>
+						<div class="modal-bo">
+				        	<button type="submit" class="btn btn-default btn-sm normalset-sure">确定</button>
+				        	<button type="button" class="btn btn-default btn-sm close-btn">取消</button>
+						</div>
+				    </form>	
+				</div>
+			</div>
+			<!--修改分类 -->
+			<div class="modal modal-addnormalset1">
+				<div class="modalcon">
+					<div class="modal-bt">
+						<h4 class="modal-title size-title" id="myModalLabel">修改分类</h4>
+					    <button type="button" class="close close-btn" data-dismiss="modal" aria-label="Close" id="close-btn"><span aria-hidden="true">x</span></button>
+					</div>
+					<form  class="form-inline">
+						<div class="modal-bd">
+						    	<div class="form-group">
+								    <label for="" class="labelname">异常名称：</label>
+								    <input class="form-control input-sm normalset-name" type="text">
+						    	</div>
+						</div>
+						<div class="modal-bo">
+				        	<button type="button" class="btn btn-default btn-sm normalset-sure" id="edit">确定</button>
+				        	<button type="button" class="btn btn-default btn-sm close-btn">取消</button>
+						</div>
+				    </form>	
+				</div>
+			</div>
+			<!--删除异常 -->
+			<div class="modal modal-addnormalset2">
+				<div class="modalcon">
+					<div class="modal-bt">
+						<h4 class="modal-title size-title" id="myModalLabel">提示</h4>
+					    <button type="button" class="close close-btn" data-dismiss="modal" aria-label="Close" id="close-btn"><span aria-hidden="true">x</span></button>
+					</div>
+					<div class="modal-bd">
+					    <span>您确定要删除吗?</span>
+					</div>
+					<div class="modal-bo">
+			        	<button type="button" class="btn btn-default btn-sm normalset-sure2" id="del">确定</button>
+			        	<button type="button" class="btn btn-default btn-sm close-btn">取消</button>
+					</div>
+				</div>
+			</div>
+			<div class="push"></div>
+		</div>
+		{include file="../comfoot.html"}
+		<script type="text/javascript" src="/js/jquery-1.11.0.min.js"></script>
+		<script type="text/javascript" src="/js/commontop.js"></script>
+		<script type="text/javascript" src="/bootstrap/js/bootstrap.min.js" ></script>
+		<script type="text/javascript" src="/js/mycom.js"></script>
+		<script type="text/javascript" src="/js/order/abnormalset.js"></script>
+	</body>
+</html>

@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+		<title>米欢电商ERP</title>
+		<link href="/images/favicon.ico" rel="shortcut icon">
+		<link rel="stylesheet" type="text/css" href="/bootstrap/css/bootstrap.min.css"/>
+		<link href="/css/commontop.css"   rel="stylesheet" media="screen">
+		<link rel="stylesheet" type="text/css" href="/css/admin/admin_shopset.css"/>
+</head>
+<body id="propertybody">
+	{include file="../commontop.html"}
+	<div class="container-fluid container1">
+		<div class="row ware-row">
+			<h5 class="col-md-12">您的位置： <a href="javascript:;">首页</a> » <a href="javascript:;">管理</a> » 店铺设置</h5>
+		</div>
+		<div class="row ware-row">
+			<button class="btn btn-default shopset-add" style="margin-left: 15px;">添加店铺</button>
+		</div>
+		<div class="row ware-row">
+			<table class="table table-hover shopset-table">
+				<thead>
+
+					<tr class="active">
+						<td>序号</td>
+						<td>操作</td>
+						<td>店铺名称</td>
+						<td>备注</td>
+					</tr>
+				</thead>
+				<tbody class="shopset-tbody">
+					{foreach from=$list key=k item=row}	
+					<tr class="classify-tr" >
+						<td class="classify-td">{$k+1}</td>
+						<td>
+							<span class="shopset-change" uid="{$row['id']}">修改</span>
+							<span class="shopset-del del" uid="{$row['id']}">删除</span>
+						</td>
+						<td class="classify-name">{$row['name']}</td>
+						<td class="classify-text">{$row['comment']}</td>
+					</tr>
+					{/foreach}
+				</tbody>
+			</table>
+		</div>
+		<!-- Modal 店铺名称-->
+		<div class="modal modal-shopset">
+		    <div class="modalcon">
+			    <div class="modal-bt">
+			        <button type="button" class="close close-btn" data-dismiss="modal" aria-label="Close" id="close-btn"><span aria-hidden="true">x</span></button>
+			        <h4 class="modal-title size-title">添加店铺名称</h4>
+			    </div>
+			    <form action="/admin/addshop.php" class="form-inline" method="post">
+		            <div class="modal-bd">
+			        	<div class="form-group"style="margin-bottom:20px;">
+						    <label for="exampleInputName2" class="labelname">店铺名称:&nbsp;</label>
+						    <input type="text" class="form-control typename"style="width:300px;" id="exampleInputName2" name="name">
+						</div>
+						<div class="form-group">
+						    <label for="exampleInputName2" class="labelname">店铺备注:&nbsp;</label>
+						    <textarea class="form-control typetext"style="width:305px;height:60px; resize: none;" name="comment"></textarea>
+						</div>   
+		        	</div>
+			        <div class="modal-bo">
+				        <button type="submit" class="btn btn-default shopset-sure">提交</button>
+				        <button type="button" class="btn btn-default close-btn">关闭</button>
+			        </div>
+			    </form>
+		    </div>
+		</div>
+		<!-- Modal 删除店铺-->
+		<div class="modal modal-shopset1">
+		    <div class="modalcon">
+		      <div class="modal-bt">
+		        <button type="button" class="close close-btn" data-dismiss="modal" aria-label="Close" id="close-btn"><span aria-hidden="true">x</span></button>
+		        <h4 class="modal-title size-title">提示</h4>
+		      </div>
+		      <div class="modal-bd">
+			      <p>您确定要删除该店铺吗？</p>
+		      </div>
+		      <div class="modal-bo">
+		        <button type="button" class="btn btn-default shopset-sure1" id="del">提交</button>
+		        <button type="button" class="btn btn-default close-btn">关闭</button>
+		      </div>
+		    </div>
+		</div>
+		<!-- Modal 修改店铺-->
+		<div class="modal modal-shopset2">
+		    <div class="modalcon">
+			    <div class="modal-bt">
+			        <button type="button" class="close close-btn" data-dismiss="modal" aria-label="Close" id="close-btn"><span aria-hidden="true">x</span></button>
+			        <h4 class="modal-title size-title">修改店铺</h4>
+			    </div>
+			    <form class="form-inline" method="post">
+		            <div class="modal-bd">
+				        <div class="form-group"style="margin-bottom:20px;">
+						    <label for="exampleInputName2" class="labelname">店铺名称:</label>
+						    <input type="text" class="form-control typename1"style="width:300px;" id="exampleInputName2">
+						</div>
+						<div class="form-group">
+						    <label for="exampleInputName2" class="labelname">店铺备注:</label>
+						    <textarea class="form-control typetext1"style="width:305px;height:60px;resize:none;"></textarea>
+						</div>
+		        	</div>
+				    <div class="modal-bo">
+				        <button type="button" class="btn btn-default shopset-sure2" id="edit">提交</button>
+				        <button type="button" class="btn btn-default close-btn">关闭</button>
+				    </div>
+				</form>
+		    </div>
+		</div>
+		<div class="push"></div>
+	</div>
+	{include file="../comfoot.html"}
+	<script src="/js/jquery-1.11.0.min.js" ></script>
+	<script src="/bootstrap/js/bootstrap.min.js"  ></script>
+	<script src="/js/commontop.js"></script>
+	<script src="/js/mycom.js"></script>
+	<script src="/js/admin/admin_shopset.js"></script>
+</body>
+</html>

@@ -1,0 +1,372 @@
+.row .saleservice-nav{
+	width:1200px;
+	padding:0;
+	margin-left: 15px;
+}
+.row .saleservice-form{
+	width:1200px;
+	padding:0;
+	height:auto;
+	
+	margin-left: 15px;
+}
+.row .saleservice-form button{
+	margin-right: 10px;
+}
+.row .saleservice-form .input-group{
+	float:right;
+	margin-bottom: 15px;
+}
+.row .saleservice-form .input-group input{
+	width:200px;
+}
+.row .saleservice-table{
+	width:1200px;
+	padding:0;
+	height:auto;
+	margin-bottom: 15px;
+	margin-left: 15px;
+}
+.row .saleservice-table thead td:nth-of-type(1){
+	width:46px;
+}
+.row .saleservice-table thead td:nth-of-type(2){
+	width:94px;
+}
+.row .saleservice-table thead td:nth-of-type(3){
+	width:80px;
+}
+.row .saleservice-table thead td:nth-of-type(4){
+	width:100px;
+}
+.row .saleservice-table thead td:nth-of-type(5){
+	width:76px;
+}
+.row .saleservice-table thead td:nth-of-type(6){
+	width:85px;
+}
+.row .saleservice-table thead td:nth-of-type(7){
+	width:70px;
+}
+.row .saleservice-table thead td:nth-of-type(8){
+	width:90px;
+}
+.row .saleservice-table thead td:nth-of-type(9){
+	width:93px;
+}
+.row .saleservice-table thead td:nth-of-type(10){
+	width:70px;
+}
+.row .saleservice-table thead td:nth-of-type(11){
+	width:128px;
+}
+.row .saleservice-table thead td:nth-of-type(12){
+	width:100px;
+}
+.row .saleservice-table thead td:nth-of-type(13){
+	width:70px;
+}
+.modal-shouhou .modalcon{
+	width:1000px;
+	margin-left: -500px;
+	padding-left:30px;
+}
+.modal-shouhou .modalcon .modal-bd{
+	height:450px;
+	overflow: auto;
+}
+.modal-tip .modalcon{
+	width:300px;
+	margin-left: -150px;
+}
+.modal-shouhou .form-inline .form-group{
+	margin:5px 15px 5px 0;
+}
+.modal-shouhou .form-inline .form-group .form-control{
+	width:160px;
+}
+.modal-shouhou .form-inline .form-group .shouhou-mark{
+	width:740px;
+	height:60px;
+	resize:none;
+}
+.modal-shouhou .row-bold{
+	margin:5px 0 5px 0;
+}
+.modal-shouhou .form-inline .shouhou-table{
+	width:800px;
+	margin-top:20px;
+}
+.modal-shouhou .form-inline .shouhou-table thead td:nth-of-type(1){
+	width:46px;
+}
+.modal-shouhou .form-inline .shouhou-table thead td:nth-of-type(2){
+	width:46px;
+}
+.modal-shouhou .form-inline .shouhou-table thead td:nth-of-type(3){
+	width:90px;
+}
+.modal-shouhou .form-inline .shouhou-table thead td:nth-of-type(4){
+	width:150px;
+}
+.modal-shouhou .form-inline .shouhou-table thead td:nth-of-type(5){
+	width:150px;
+}
+.modal-shouhou .form-inline .shouhou-table thead td:nth-of-type(6){
+	width:90px;
+}
+.modal-shouhou .form-inline .shouhou-table thead td:nth-of-type(7){
+	width:80px;
+}
+.modal-shouhou .form-inline .shouhou-table thead td:nth-of-type(8){
+	width:90px;
+}
+/*待处理售后单*/
+.row .saleservice-table1{
+	width:1200px;
+	margin-left: 15px;
+	padding:0;
+}
+.row .saleservice-table1 thead td:nth-of-type(1){
+	width:46px;
+}
+.row .saleservice-table1 thead td:nth-of-type(2){
+	width:38px;
+}
+.row .saleservice-table1 thead td:nth-of-type(3){
+	width:76px;
+	text-align: center;
+}
+.row .saleservice-table1 thead td:nth-of-type(4){
+	width:120px;
+}
+.row .saleservice-table1 thead td:nth-of-type(5){
+	width:67px;
+}
+.row .saleservice-table1 thead td:nth-of-type(6){
+	width:111px;
+}
+.row .saleservice-table1 thead td:nth-of-type(7){
+	width:65px;
+}
+.row .saleservice-table1 thead td:nth-of-type(8){
+	width:91px;
+}
+.row .saleservice-table1 thead td:nth-of-type(9){
+	width:91px;
+}
+.row .saleservice-table1 thead td:nth-of-type(10){
+	width:146px;
+}
+.row .saleservice-table1 thead td:nth-of-type(11){
+	width:71px;
+}
+.row .saleservice-table1 thead td:nth-of-type(12){
+	width:65px;
+}
+.row .saleservice-table1 thead td:nth-of-type(13){
+	width:121px;
+}
+.modal-finished .modalcon{
+	width:300px;
+	margin-left: -150px;
+}
+.modal-closeshou .modalcon{
+	width:300px;
+	margin-left: -150px;
+}
+.modal-enterware .modalcon{
+	width:800px;
+	margin-left: -400px;
+}
+.modal-enterware .modalcon .form-group{
+	margin:5px 15px 5px 0;
+}
+.modal-enterware .modalcon .form-control{
+	width:160px;
+}
+.modal-enterware .modalcon .form-mark{
+	width:400px;
+}
+.modal-enterware .modalcon .process-table{
+	width:750px;
+	margin-top:20px;
+}
+.modal-enterware .modalcon .process-table thead td:nth-of-type(1){
+	width:46px;
+}
+.modal-enterware .modalcon .process-table thead td:nth-of-type(2){
+	width:80px;
+}
+.modal-enterware .modalcon .process-table thead td:nth-of-type(3){
+	width:250px;
+}
+.modal-enterware .modalcon .process-table thead td:nth-of-type(4){
+	width:124px;
+}
+.modal-enterware .modalcon .process-table thead td:nth-of-type(5){
+	width:100px;
+}
+.modal-enterware .modalcon .process-table thead td:nth-of-type(6){
+	width:100px;
+}
+.modal-jizhang .modalcon{
+	width:750px;
+	margin-left: -375px;
+}
+.modal-jizhang .modalcon .form-group{
+	margin:5px 15px 5px 0;
+}
+.modal-jizhang .modalcon .process-mark{
+	width:625px;
+	height:60px;
+	resize:none;
+	margin-top:10px;
+}
+/*售后单查询*/
+.row .saleservice-form .form-group{
+	float:right;
+	margin-bottom:15px;
+}
+.row .saleservice-form .form-group select{
+	width:160px;
+}
+.row .saleservice-form .form-group button{
+	margin-left: 10px;
+	margin-right: 0;
+}
+.row .saleservice-table2{
+	width:1200px;
+	padding:0;
+	margin-left:15px;
+}
+.row .saleservice-table2 thead td:nth-of-type(1){
+	width:46px;
+}
+.row .saleservice-table2 thead td:nth-of-type(2){
+	width:120px;
+	text-align: left;
+}
+.row .saleservice-table2 thead td:nth-of-type(3){
+	width:67px;
+}
+.row .saleservice-table2 thead td:nth-of-type(4){
+	width:111px;
+}
+.row .saleservice-table2 thead td:nth-of-type(5){
+	width:100px;
+}
+.row .saleservice-table2 thead td:nth-of-type(6){
+	width:120px;
+}
+.row .saleservice-table2 thead td:nth-of-type(7){
+	width:91px;
+}
+.row .saleservice-table2 thead td:nth-of-type(8){
+	width:146px;
+}
+.row .saleservice-table2 thead td:nth-of-type(9){
+	width:91px;
+}
+.row .saleservice-table2 thead td:nth-of-type(10){
+	width:65px;
+}
+.row .saleservice-table2 thead td:nth-of-type(11){
+	width:106px;
+}
+/*销售退货入库*/
+.row .saleservice-table3{
+	width:1200px;
+	padding:0;
+	margin-left: 15px;
+}
+.row .saleservice-table3 thead td:nth-of-type(1){
+	width:46px;
+}
+.row .saleservice-table3 thead td:nth-of-type(2){
+	width:97px;
+}
+.row .saleservice-table3 thead td:nth-of-type(3){
+	width:120px;
+	text-align: left;
+}
+.row .saleservice-table3 thead td:nth-of-type(4){
+	width:67px;
+}
+.row .saleservice-table3 thead td:nth-of-type(5){
+	width:111px;
+}
+.row .saleservice-table3 thead td:nth-of-type(6){
+	width:65px;
+}
+.row .saleservice-table3 thead td:nth-of-type(7){
+	width:120px;
+}
+.row .saleservice-table3 thead td:nth-of-type(8){
+	width:120px;
+}
+.row .saleservice-table3 thead td:nth-of-type(9){
+	width:91px;
+}
+/*售后分类*/
+.row .classify-table{
+	width:1200px;
+	padding:0;
+	margin-left: 15px;
+}
+.row .classify-table .classify-change{
+	cursor: pointer;
+}
+.row .classify-table .classify-del{
+	cursor: pointer;
+}
+
+.row .classify-table thead td:nth-of-type(1){
+	width:46px;
+}
+.row .classify-table thead td:nth-of-type(2){
+	width:96px;
+}
+.row .classify-table thead td:nth-of-type(3){
+	width:560px;
+}
+.row .classify-table thead td:nth-of-type(4){
+	width:500px;
+}
+.modal-classify .modalcon{
+	width:430px;
+	margin-left: -215px;
+}
+.modal-classify1 .modalcon{
+	width:300px;
+	margin-left: -150px;
+}
+.modal-classify2 .modalcon{
+	width:430px;
+	margin-left: -215px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

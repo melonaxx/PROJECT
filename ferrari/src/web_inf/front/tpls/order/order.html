@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>米欢电商ERP</title>
+		<link href="/images/favicon.ico" rel="shortcut icon">
+		<link rel="stylesheet" type="text/css" href="/bootstrap/css/bootstrap.min.css"/>
+		<link href="/css/commontop.css"   rel="stylesheet" media="screen">
+		<style type="text/css">
+			*{margin:0;padding:0;}
+			body{font-size: 12px;}
+			a{color:#336699;}
+			.container-all{padding:0 60px;}
+			.your-position{width:300px;height:50px;line-height: 50px;}
+			.your-position .posp1{float:left;}
+			.your-position .posa1{display:block;float:left;}
+			.goods-allcontent p{line-height: 1.5;}
+		</style>
+	</head>
+	<body>
+		<?php include("commontop.html"); ?>
+		<div class="container-fluid container-all">
+			<div class="your-position">
+				<p class="posp1">您的位置&nbsp;:&nbsp;</p>
+				<a class="posa1" href="#">首页</a>
+			</div>
+			<div class="goods-allcontent">
+				<p>新建订单：新建销售订单，注意有两种方式，一种是扫码枪添加，一种是普通的手动添加，对于商品较少的商户，可以手动添加，商品种类一旦上千种，肯定是用扫描枪进行添加的。每个订单都有一个人收货人，收货人和购买人不一定是同一人。</p>
+				<p>下载订单：用于下载淘宝、京东、天猫、当当、苏宁等平台的订单</p>
+				<p>待发货：等待发货的订单列表；订单尾部有打印按钮，可以进行发货单和快递单打印</p>
+				<p>待发货订单一定要注意多仓库的问题，每个子账号必须设置所属仓库或者所属位置，待发货列表只能显示该所属仓库或者位置的订单，以避免订单被异地打印。</p>
+				<p>待审核：等待审核通过的订单。只有审核通过的订单才可以打印发货单和快递单。</p>
+				<p>待跟单：需要客服进行跟踪操作的订单，比如定制产品需要索取定制内容</p>
+				<p>下载售后：下载淘宝的售后服务订单；该操作可以省略，在下载订单的时候进行同步</p>
+				<p><b>售后服务：</b>需要售后服务的订单列表。</p>
+			</div>
+		</div>
+		<script src="/js/jquery-1.11.0.min.js" ></script>
+		<script src="/bootstrap/js/bootstrap.min.js"></script>
+		<script src="/js/commontop.js"></script>
+		<script type="text/javascript">
+			$(function(){
+				$(".comtop-toplevel1li").eq(1).addClass("comtop-activemy");
+			})
+		</script>
+	</body>
+</html>

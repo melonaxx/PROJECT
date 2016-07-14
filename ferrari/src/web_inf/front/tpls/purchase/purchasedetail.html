@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>米欢电商ERP</title>
+ 		<link href="/images/favicon.ico" rel="shortcut icon">
+		<link href="/bootstrap/css/bootstrap.min.css"  rel="stylesheet" media="screen">
+		<link href="/css/commontop.css"   rel="stylesheet" media="screen">
+		<link rel="stylesheet" type="text/css" href="/css/purchase/purenter.css"/>
+		<link rel="stylesheet" type="text/css" href="/css/purchase/searchpurchase.css"/>
+		<style>
+			{literal}
+				@media screen and (max-width: 1120px){ 
+					/*当屏幕尺寸小于1120px时，应用下面的CSS样式*/
+				    .navbar-nav,#comtop-right{display: none;}
+				}
+			{/literal}
+		</style>
+	</head>
+	<body>
+		{include file="../commontop.html"}
+		<div class="container-fluid container1">
+			<div class="row ware-row">
+				<h5 class="col-md-12">您的位置： <a href="javascript:;">首页</a> » <a href="javascript:;">采购</a> » 详细</h5>
+			</div>
+			<div class="row">
+				<form class="form-inline col-md-12 enterware-form">
+					<div class="form-group spe-group">
+					    <label for="exampleInputEmail2" class="labelname">所属公司：</label>
+					    <input class="form-control" id="exampleInputEmail2" type="text" readonly="readonly"value={$list['companyname']}>
+					</div>
+					<div class="form-group spe-group">
+						<label for="exampleInputName2"class="labelname">收货仓库：</label>
+						<input type="text" class="form-control enterware-ware" id="exampleInputName2" readonly="readonly" value={$list['storename']}>
+					</div>
+					<div class="form-group spe-group">
+						<label for="exampleInputName2"class="labelname">&nbsp;&nbsp;&nbsp;供应商：</label>
+						<input type="text" class="form-control enterware-supply form-supply" id="exampleInputName2" readonly="readonly" value="{$list['suppliername']}　({if $list['supplierlevel'] eq 'Primary'}主选供应商{elseif $list['supplierlevel'] eq 'Alternative'}备选供应商{elseif $list['supplierlevel'] eq 'Eliminate'}淘汰供应商{/if})" />
+					</div>
+					<br>
+					<div class="form-group spe-group">
+						<label for="exampleInputName2"class="labelname">创建日期：</label>
+						<input type="text" class="form-control" id="exampleInputName2" readonly="readonly" value="{$list['createtime']}" />
+					</div>
+					<div class="form-group spe-group">
+						<label for="exampleInputName2"class="labelname">单据编码：</label>
+						<input type="text" class="form-control enterware-code" id="exampleInputName2" readonly="readonly" value={$list['number']} >
+					</div>
+					<div class="form-group spe-group">
+						<label for="exampleInputName2"class="labelname">审核状态：</label>
+						<input type="text" class="form-control form-supply" id="exampleInputName2" readonly="readonly" value={if $list['statusaudit'] eq 'N'}
+								待审核
+								{else if $list['statusaudit'] eq 'Y'}
+								通过审核
+								{else if $list['statusaudit'] eq 'R'}
+								待修改
+								{else if $list['statusaudit'] eq 'F'}
+								拒绝
+								{/if} />
+					</div>
+					<br>
+					<div class="form-group">
+						<div class="row-textarea">
+							<label for="exampleInputName2"class="labelname">采购摘要：</label>
+							<textarea class="form-control purenter-text1"id="exampleInputName2">{$list['brief']}</textarea>
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="row-textarea">
+							<label for="exampleInputName2"class="labelname">采购备注：</label>
+							<textarea class="form-control purenter-text2"id="exampleInputName2">{$list['comment']}</textarea>
+						</div>
+					</div>
+					<div class="row-bold">采购商品信息</div>
+					<table class="table table-hover search-table">
+						<thead>
+							<tr class="active">
+								<td>商品名称与规格</td>
+								<td>单位</td>
+								<td>单价</td>
+								<td>数量</td>
+								<td>总价</td>
+								<td>税率(%)</td>
+								<td>税额</td>
+								<td>不含税价</td>
+								<td>已入库数量</td>
+								<td>在途数量</td>
+								<td>退货出库数量</td>
+							</tr>
+						</thead>
+						<tbody>
+						{foreach from=$product item=$res}
+							<tr>
+								<td>
+									{$res['productname']}-{$res['zhiname']['valueid1']}-{$res['zhiname']['valueid2']}-{$res['zhiname']['valueid3']}-{$res['zhiname']['valueid4']}-{$res['zhiname']['valueid5']}
+								</td>
+								<td>{$res['dwname']}</td>
+								<td>{$res['price']}</td>
+								<td>{$res['total']}</td>
+								<td>{$res['taxprice']}</td>
+								<td>{$res['taxrate']}</td>
+								<td>{$res['tax']}</td>
+								<td>{$res['notaxprice']}</td>
+								<td>{$res['totalfinish']}</td>
+								<td>{$res['totalway']}</td>
+								<td>{$res['totalrefund']}</td>
+							</tr>
+						{/foreach}
+						</tbody>
+						<tfoot>
+							<tr>
+								<td colspan="13" class="enterware-total1">
+									<span>合计：</span>
+									<span>采购数量总计：<b class="enterware-allnum">{$list['total']}</b></span>
+									<span>已入库总数：<b class="enterware-innum">{$list['totalfinish']}</b></span>
+									<span>在途总数：<b class="enterware-allnum">{$list['totalway']}</b></span>
+									<span>退货总数：<b class="enterware-outnum">{$list['totalrefund']}</b></span>
+									<span>
+										不含税价：<b>{$list['notaxprice']}</b>元
+									</span>
+									<span>+</span>
+									<span>
+										税额：<b>{$list['tax']}</b>元
+									</span>
+									<span>=</span>
+									<span>
+										含税价：<b>{$list['taxprice']}</b>元
+									</span>
+								</td>
+							</tr>
+						</tfoot>
+					</table>
+					<div class="row-bold">
+						<div class="enterware-total enterware-fare">财务</div>
+					</div>
+					<div class="enterware-total1 enterware-fare1">
+						<div class="form-group">
+							<label for="exampleInputName2" class="labelname">
+								&nbsp;&nbsp;付款状态：
+							</label>
+							<input type="text" class="form-control" readonly="readonly" value={if $bank['status'] eq 'N'}
+								未付款
+								{else if $bank['status'] eq 'D'}
+								部分付款
+								{else if $bank['status'] eq 'Y'}
+								完成付款
+								{/if} >
+						</div>
+						<div class="form-group">
+							<label for="exampleInputAmount" class="labelname">已付金额：</label>
+						    <div class="input-group">
+						      <div class="input-group-addon">￥</div>
+						      <input type="text" class="form-control" id="exampleInputAmount" style="width:110px;" readonly="readonly" value="{$bank['paymentalready']}">
+						    </div>
+						</div>
+						<div class="form-group">
+							<label for="exampleInputAmount" class="labelname">欠款尾数：</label>
+						    <div class="input-group">
+						      <div class="input-group-addon">￥</div>
+						      <input type="text" class="form-control" id="exampleInputAmount" style="width:110px;"  readonly="readonly" value="{$bank['paymentremain']}">
+						    </div>
+						</div>
+						<div class="form-group">
+							<label for="exampleInputAmount" class="labelname">供应商欠款：</label>
+						    <div class="input-group">
+						      <div class="input-group-addon">￥</div>
+						      <input type="text" class="form-control" id="exampleInputAmount" style="width:110px;" readonly="readonly" value="{$bank['paymentreturn']}">
+						    </div>
+						</div>
+					</div>
+					<div class="row-bold">
+						<div class="enterware-total enterware-fare">发货状态</div>
+					</div>
+					<div class="enterware-total1 enterware-fare1">
+						<div class="form-group">
+							<label for="exampleInputName2" class="labelname">收货状态：</label>
+						    <input type="text" class="form-control purdetail-status1" id="exampleInputName2" readonly="readonly" value={if $list['statusreceipt'] eq 'N'}
+								未收货
+								{else if $list['statusreceipt'] eq 'Y'}
+								完成收货
+								{else if $list['statusreceipt'] eq 'P'}
+								部分收货
+								{/if} >
+						</div>
+						<div class="form-group">
+							<label for="exampleInputName2" class="labelname">退货状态：</label>
+						    <input type="text" class="form-control purdetail-status2" id="exampleInputName2" readonly="readonly" value={if $list['statusrefund'] eq 'N'}
+								未退货
+								{else if $list['statusrefund'] eq 'Y'}
+								全部退货
+								{else if $list['statusrefund'] eq 'P'}
+								部分退货
+								{/if} >
+						</div>
+					</div>
+					<div class="enterware-btn">
+						<a class="btn btn-default btn-sm purdetail-back" href="searchpurchase.php">返回</a>
+					</div>
+				</form>
+			</div>
+			<div class="push"></div>
+		</div>
+		{include file="../comfoot.html"}
+		<script type="text/javascript" src="/js/jquery-1.11.0.min.js"></script>
+		<script type="text/javascript" src="/js/commontop.js"></script>
+		<script type="text/javascript" src="/bootstrap/js/bootstrap.min.js" ></script>
+	</body>
+</html>

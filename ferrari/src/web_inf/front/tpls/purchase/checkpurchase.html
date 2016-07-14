@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>米欢电商ERP</title>
+ 		<link href="/images/favicon.ico" rel="shortcut icon">
+		<link rel="stylesheet" type="text/css" href="/bootstrap/css/bootstrap-datetimepicker.min.css"/>
+		<link href="/bootstrap/css/bootstrap.min.css"  rel="stylesheet" media="screen">
+		<link href="/css/commontop.css"   rel="stylesheet" media="screen">
+		<link rel="stylesheet" type="text/css" href="/css/purchase/checkpurchase.css"/>
+		<style>
+			{literal}
+				@media screen and (max-width: 1120px){ 
+					/*当屏幕尺寸小于1120px时，应用下面的CSS样式*/
+				    .navbar-nav,#comtop-right{display: none;}
+				}
+			{/literal}
+		</style>
+	</head>
+	<body>
+		{include file="../commontop.html"}
+		<div class="container-fluid container1">
+			<div class="row ware-row">
+				<h5 class="col-xs-12">您的位置： <a href="javascript:;">首页</a> » <a href="javascript:;">采购</a> »审核采购单</h5>
+			</div>
+			<div class="row">
+				<form class="form-inline checkpurchase-form col-md-12" action="/purchase/checkpurchase.php" method="post"onsubmit="return fun()">
+					<div class="form-group checkpur-group1" style="margin-right: 0;">
+					   <button type="submit" class="btn btn-default btn-sm " id="sou">查询</button>
+					   <a class="btn btn-default btn-sm" href="/purchase/checkpurchase.php">重置</a>
+					</div>
+					<div class="form-group checkpur-group1">
+						<label for="datetimepicker" class="datename">申请日期：</label>
+				    	<input type="text" class="form-control data" id="datetimepicker" name="data" value="{$data}">
+					</div>
+					<div class="form-group checkpur-group1">
+						<label for="exampleInputName2" class="datename">申请人：</label>
+				    	<input type="text" class="form-control name" id="exampleInputName2" name="name" value="{$name}">
+					</div>
+					<div class="form-group" style="float:left;">
+						<button type="button" class="btn btn-default btn-sm check-pass">审核通过</button>
+						<button type="button" class="btn btn-default btn-sm check-return">打回修改</button>
+						<button type="button" class="btn btn-default btn-sm check-refuse">拒绝</button>
+					</div>
+				</form>
+				<table class="table table-hover checkpur-table col-xs-12">
+					<thead class="checkpur-thead">
+						<tr class="active">
+							<td>序号</td>
+							<td>
+								<label>
+							      <input type="checkbox" class="allcheck">
+							    </label>
+							</td>
+							<td>申请日期</td>
+							<td>采购公司</td>
+							<td>状态</td>
+							<td>采购单编号</td>
+							<td>供应商</td>
+							<td>仓库</td>
+							<td>采购数量</td>
+							<td>采购总价</td>
+							<td>申请人</td>
+						</tr>
+					</thead>
+					<tbody class="checkpur-tbody">
+						{foreach from=$list key=k item=row}
+						<tr class="onetr">
+							<td>{$k+1}</td>
+							<td>
+								<label>
+							      <input type="checkbox" class="onlyche" value="{$row['id']}">
+							    </label>
+							</td>
+							<td>{$row['actiondate']}</td>
+							<td>{$row['purchasecompanyid']}</td>
+							<td {if $row['statusaudit'] eq 'R'} style="color:red" {/if}>
+								{if $row['statusaudit'] eq 'N'}
+								待审核
+								{else if $row['statusaudit'] eq 'Y'}
+								通过审核
+								{else if $row['statusaudit'] eq 'R'}
+								待修改
+								{else if $row['statusaudit'] eq 'F'}
+								拒绝
+								{/if}
+							</td>
+							<td>
+							{if $row['statusaudit'] eq 'R'}
+								<a href="purchaselist.php?id={$row['id']}" style="color:red">{$row['number']}</a>
+							{else}
+								<a href="purchaselist.php?id={$row['id']}" >{$row['number']}</a>
+							{/if}
+							</td>
+							<td>{$row['supplierid']}</td>
+							<td>{$row['storeid']}</td>
+							<td>{$row['total']}</td>
+							<td>￥{$row['taxprice']}</td>
+							<td>{$row['staffid']}</td>
+						</tr>
+						{/foreach}
+					</tbody>
+				</table>
+			</div>
+			<div class="row none" {if $list|@count eq 0}style="display:block"{/if}>
+				<div class="no-record col-xs-12" ><img src="/images/empty.jpg"/><span>没有找到记录，请调整搜索条件。</span></div>
+			</div>
+			{$pages}
+			<!-- 提示 -->
+			<div class="modal modal-purchasetip">
+				<div class="modalcon">
+					<div class="modal-bt">
+						<h4 class="modal-title size-title" id="myModalLabel">提示</h4>
+					    <button type="button" class="close close-btn" data-dismiss="modal" aria-label="Close" id="close-btn"><span aria-hidden="true">x</span></button>
+					</div>
+					<div class="modal-bd">
+					    <span>没有选中任何东西</span>
+					</div>
+					<div class="modal-bo">
+			        	<button type="button" class="btn btn-default btn-sm close-btn">确定</button>
+					</div>
+				</div>
+			</div>
+			<!-- 通过审核 -->
+			<div class="modal modal-purchasetip1">
+				<div class="modalcon">
+					<div class="modal-bt">
+						<h4 class="modal-title size-title" id="myModalLabel">通过审核</h4>
+					    <button type="button" class="close close-btn" data-dismiss="modal" aria-label="Close" id="close-btn"><span aria-hidden="true">x</span></button>
+					</div>
+					<div class="modal-bd">
+					    <span>是否通过审核？</span>
+					</div>
+					<div class="modal-bo">
+			        	<button type="button" class="btn btn-default btn-sm subsub">确定</button>
+			        	<button type="button" class="btn btn-default btn-sm close-btn">取消</button>
+					</div>
+				</div>
+			</div>
+			<!-- 打回修改 -->
+			<div class="modal modal-purchasetip2">
+				<div class="modalcon">
+					<div class="modal-bt">
+						<h4 class="modal-title size-title" id="myModalLabel">打回修改</h4>
+					    <button type="button" class="close close-btn" data-dismiss="modal" aria-label="Close" id="close-btn"><span aria-hidden="true">x</span></button>
+					</div>
+					<div class="modal-bd">
+					    <span>确定打回修改吗？</span>
+					</div>
+					<div class="modal-bo">
+			        	<button type="button" class="btn btn-default btn-sm subedit">确定</button>
+			        	<button type="button" class="btn btn-default btn-sm close-btn">取消</button>
+					</div>
+				</div>
+			</div>
+			<!-- 拒绝 -->
+			<div class="modal modal-purchasetip3">
+				<div class="modalcon">
+					<div class="modal-bt">
+						<h4 class="modal-title size-title" id="myModalLabel ">拒绝</h4>
+					    <button type="button" class="close close-btn" data-dismiss="modal" aria-label="Close" id="close-btn"><span aria-hidden="true">x</span></button>
+					</div>
+					<div class="modal-bd">
+					    <span>确定拒绝该采购单吗？</span>
+					</div>
+					<div class="modal-bo">
+			        	<button type="button" class="btn btn-default btn-sm subdel">确定</button>
+			        	<button type="button" class="btn btn-default btn-sm close-btn">取消</button>
+					</div>
+				</div>
+			</div>
+			
+
+			<div class="push"></div>
+		</div>
+		{include file="../comfoot.html"}
+
+		<script type="text/javascript" src="/js/jquery-1.11.0.min.js"></script>
+		<script type="text/javascript" src="/js/commontop.js"></script>
+		<script type="text/javascript" src="/bootstrap/js/bootstrap.min.js" ></script>
+		<script type="text/javascript" src="/bootstrap/js/bootstrap-datetimepicker.min.js"></script>
+		<script type="text/javascript" src="/bootstrap/js/bootstrap-datetimepicker.zh-CN.js"></script>
+		<script type="text/javascript" src="/js/purchase/checkpurchase.js"></script>
+		<script type="text/javascript" src="/js/mycom.js"></script>
+		<script type="text/javascript">
+			$('#datetimepicker').datetimepicker({
+			    format: 'yyyy-mm-dd',
+			    autoclose:true,
+			    language:'zh-CN',
+			    minView:'year',
+			});
+		</script>
+	</body>
+</html>

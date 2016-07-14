@@ -1,0 +1,324 @@
+.row .order-form{
+	width:1200px;
+	padding:0;
+	margin-left: 15px;
+}
+.row .order-form .order-form-left{
+	width:500px;
+	height:auto;
+	float:left;
+	padding:0;
+}
+
+.row .order-form .order-form-left .form-group{
+	margin:10px 15px 10px 0;
+}
+.row .order-form .order-form-left .form-control{
+	width:160px;
+}
+.row .order-form .order-form-left .order-form-left-mark{
+	width:390px;
+	height:60px;
+	resize:none;
+}
+.row .order-form .order-form-right{
+	width:700px;
+	height:auto;
+	float:left;
+	padding-left:15px;
+}
+.row .order-form .order-form-right .form-group{
+	margin:10px 15px 10px 0;
+}
+.row .order-form .order-form-right .form-control{
+	width:150px;
+}
+.row .order-form .order-form-right .company-name{
+	width:372px;
+}
+.row .order-form .order-form-right .right-address{
+	width:600px;
+	height:30px;
+}
+
+.row .order-form .order-form-right .right-mark{
+	width:600px;
+	resize:none;
+	height:60px;
+}
+.row .order-form .three-btn button{
+	margin-right: 10px;
+	margin-bottom: 15px;
+	float:left;
+}
+.row .order-form .three-btn #bar-code{
+	width:300px;
+	float:left;
+	display:none;
+}
+.row .order-form .three-btn #bar-code input{
+	width:202px;
+}
+.row .order-form  .order-table{
+	width:1200px;
+	padding:0;
+}
+.row .order-form  .order-table thead td:nth-of-type(1){
+	width:46px;
+}
+.row .order-form  .order-table thead td:nth-of-type(2){
+	width:38px;
+}
+.row .order-form  .order-table thead td:nth-of-type(3){
+	width:46px;
+}
+.row .order-form  .order-table thead td:nth-of-type(4){
+	width:120px;
+}
+.row .order-form  .order-table tbody td:nth-of-type(4) input{
+	width:110px;
+}
+
+.row .order-form  .order-table thead td:nth-of-type(5){
+	width:300px;
+}
+.row .order-form  .order-table tbody td:nth-of-type(5) select{
+	width:290px;
+}
+.row .order-form  .order-table thead td:nth-of-type(6){
+	width:40px;
+}
+.row .order-form  .order-table thead td:nth-of-type(7){
+	width:130px;
+}
+.row .order-form  .order-table tbody td:nth-of-type(7) input{
+	width:100px;
+}
+.row .order-form  .order-table thead td:nth-of-type(8){
+	width:110px;
+}
+.row .order-form  .order-table tbody td:nth-of-type(8) input{
+	width:100px;
+}
+.row .order-form  .order-table thead td:nth-of-type(9){
+	width:130px;
+}
+.row .order-form  .order-table tbody td:nth-of-type(9) input{
+	width:100px;
+}
+.row .order-form  .order-table thead td:nth-of-type(10){
+	width:130px;
+}
+.row .order-form  .order-table tbody td:nth-of-type(10) input{
+	width:100px;
+}
+.row .order-form  .order-table thead td:nth-of-type(11){
+	width:110px;
+}
+.row .order-form  .order-table tbody td:nth-of-type(11) input{
+	width:100px;
+}
+.row .order-form  .order-bt{
+	margin-bottom: 10px;
+}
+
+.row .order-form  .total-order{
+    width: 1200px;
+    padding: 15px 0;
+    border-top: 1px solid #ccc;
+    border-bottom: 1px solid #ccc;
+    margin-bottom: 15px;
+    float:left;
+}
+.row .order-form  .total-order .form-group{
+	margin:5px 15px 5px 0px;
+}
+.row .order-form  .total-order .form-control{
+	width:150px;
+}
+.row .order-form  .total-order .print-content{
+	width:612px;
+}
+.row .order-form  .total-order .company-express{
+	width:250px;
+}
+.row .total-order .pk-btn{
+	color:blue;
+	margin-left: 10px;
+}
+.row .total-order .pk-table{
+	width:550px;
+	margin-top:15px;
+	margin-bottom: 0;
+	display:none;
+}
+
+.row .total-order .pk-table thead td:nth-of-type(1){
+	width:250px;
+	text-align: left;
+}
+.row .total-order .pk-table tbody td:nth-of-type(1){
+	text-align: left;
+}
+.row .total-order .pk-table thead td:nth-of-type(2){
+	width:150px;
+	text-align: left;
+}
+.row .total-order .pk-table tbody td:nth-of-type(2){
+	text-align: left;
+}
+.row .total-order .pk-table thead td:nth-of-type(3){
+	width:150px;
+}
+.row .order-form  .total-order .method{
+	display:none;
+	margin-top:15px;
+}
+.row .order-form  .total-order .shouhou{
+	width:700px;
+	height:60px;
+	resize:none;
+	margin-right: 15px;
+}
+.row .order-form  .total-order .shouhou-table{
+	width:700px;
+	margin-top: 10px;
+}
+.row .order-form  .total-order .shouhou-table thead td:nth-of-type(1){
+	width:150px;
+	text-align: left;
+}
+.row .order-form  .total-order .shouhou-table tbody td:nth-of-type(1){
+	text-align: left;
+}
+
+.row .order-form  .total-order .shouhou-table thead td:nth-of-type(2){
+	width:410px;
+	text-align: left;
+}
+.row .order-form  .total-order .shouhou-table tbody td:nth-of-type(2){
+	text-align: left;
+}
+.row .order-form  .total-order .shouhou-table thead td:nth-of-type(3){
+	width:100px;
+}
+.row .order-form  .total-order .shouhou-table thead td:nth-of-type(4){
+	width:40px;
+}
+.row .order-form  .total-order .shouhou-table .del-shouhou{
+	cursor:pointer;
+	color:blue;
+}
+.row .order-form  .order-bt .upload{
+	position:relative;
+	color:blue;
+}
+.row .order-form  .order-bt .fileupload{
+	opacity: 0;
+	cursor:pointer;
+	position:absolute;
+	left:-10px;
+	top:0;
+}
+.row .order-form .total-order .Upload-img{
+	width:152px;
+	height:202px;
+	background:red;
+	position:relative;
+	border:1px solid #ccc;
+	float:left;
+}
+.row .order-form .total-order .Upload-img img{
+	width:150px;
+	height:200px;
+}
+.row .order-form .total-order .Upload-img .img-Del{
+	width:150px;
+	height:30px;
+	position:absolute;
+	background:gray;
+	opacity:0.7;
+	left:0;
+	bottom:0;
+	color:white;
+	line-height:30px;
+}
+.row .order-form .total-order .modal-div{
+	position:absolute;
+	left:0;
+	bottom:0;
+	width:100%;
+	height:20px;
+	background:#333;
+
+}
+.row .order-form .total-order .modal-Del{
+	color:#fff;
+	position:absolute;
+	right:10px;
+	bottom:0;
+	display:block;
+	cursor: pointer;
+	height:20px;
+}
+
+.row .total-order .caozuo-table{
+	width:700px;
+	margin-top:15px;
+	margin-bottom: 0;
+}
+.row .total-order .caozuo-table thead td:nth-of-type(1){
+	width:250px;
+	text-align: left;
+}
+.row .total-order .caozuo-table tbody td:nth-of-type(1){
+	text-align: left;
+}
+.row .total-order .caozuo-table thead td:nth-of-type(2){
+	width:250px;
+	text-align: left;
+}
+.row .total-order .caozuo-table tbody td:nth-of-type(2){
+	text-align: left;
+}
+.row .total-order .caozuo-table thead td:nth-of-type(3){
+	width:250px;
+}
+/*主订单编辑*/
+.row .order-table1{
+	width:1200px;
+}
+.row .order-table1 thead td:nth-of-type(1){
+	width:46px;
+}
+.row .order-table1 thead td:nth-of-type(2){
+	width:50px;
+}
+.row .order-table1 thead td:nth-of-type(3){
+	width:254px;
+}
+.row .order-table1 thead td:nth-of-type(4){
+	width:300px;
+}
+.row .order-table1 thead td:nth-of-type(5){
+	width:50px;
+}
+.row .order-table1 thead td:nth-of-type(6){
+	width:100px;
+}
+.row .order-table1 thead td:nth-of-type(7){
+	width:100px;
+}
+.row .order-table1 thead td:nth-of-type(8){
+	width:100px;
+}
+.row .order-table1 thead td:nth-of-type(9){
+	width:100px;
+}
+.row .order-table1 thead td:nth-of-type(10){
+	width:100px;
+}
+
+
+
+

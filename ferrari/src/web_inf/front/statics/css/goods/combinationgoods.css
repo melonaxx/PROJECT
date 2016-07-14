@@ -1,0 +1,170 @@
+#combgoodsbody button span{
+	font-size:20px;
+}
+#combgoodsbody button,#combgoodsbody input,#combgoodsbody select{height:30px;font-size: 12px;margin-right: 10px;}
+#combgoodsbody input,#combgoodsbody select{width: 150px;}
+#combgoodsbody .form-group label,#combgoodsbody .form-group select{line-height:30px;}
+/*#combgoodsbody .form-group label{width:64px;}*/
+#combgoodsbody .form-group{margin-bottom: 10px;}
+#combgoodsbody #input-weight{width:150px;}
+#combgoodsbody table tbody{background: #fff;}
+thead{background:#d6d6d6; }
+.col-md-6{padding-right: 0;}
+.container-all{padding:0 60px;}
+.your-position{width:300px;height:50px;line-height: 50px;}
+.your-position .posp1{float:left;}
+.your-position .posa1{display:block;float:left;}
+.your-position .posp2{float:left;}
+/* ------------------------tab切换组合商品------------------ */
+.cg-h2{font-size: 14px;line-height: 50px;}
+#gl-table tr{height:40px;}
+#combgoodsbody #cg-table {
+	width:680px;
+	margin-left:18px;
+}
+#combgoodsbody #cg-table .allCheck{width:13px;height:13px;margin:0px;}
+#combgoodsbody .cgth1{width:46px;text-align: center;}
+#combgoodsbody .cgth2{width:38px;text-align: center;}
+#combgoodsbody .cgth3{width:220px;}
+#combgoodsbody .cgth4{width:150px;}
+#combgoodsbody .cgth5{width:190px;}
+#combgoodsbody .gltd1,#combgoodsbody .gltd2{text-align: center;line-height:30px;}
+#combgoodsbody #cgtbody1 input,#combgoodsbody #cgtbody1 select{width:100%;}
+/* ------------------------tab切换组合商品列表------------------ */
+.cgtab2top{margin:18px 0 0;}
+.cgdelbtn,.cgdd1{float:left;}
+.cg-tab2topr{padding-left: 190px;}
+.cg-tab2topr .form-group,.cg-tab2topr .form-group label,.cg-tab2topr .form-group input{float:left;}
+#combgoodsbody .cgth23{width:500px;}
+#combgoodsbody .allCheck{width:13px;height:13px;vertical-align: middle;margin: 0;}
+#combgoodsbody .cgtd24{width:100px;margin-right:0;}
+#combgoodsbody .cgtd25{width:100px;margin-right:0;}
+#combgoodsbody .cgtbody2 input{width:100%;}
+/*----------------未排版印刷单------------------------*/
+.ps-content select{width:100px;float:left;}
+.ps-content .ps-content1{width:156px;float:left;}
+#goodslistbody #ps-contentl1{width:36px;}
+.ps-content nav,.ps-content nav ul{float:left;width:126px;margin-top:0px;}
+#goodslistbody #ps-contentl2{float:left;width:300px;}
+#goodslistbody #ps-contentl2 label:nth-of-type(1){float:left;width:20px;margin-left:10px;line-height: 30px;}
+#goodslistbody #ps-contentl2 label:nth-of-type(2){float:left;width:40px;margin-left:10px;line-height: 30px;}
+#goodslistbody #ps-contentl2 label:nth-of-type(3){float:left;width:20px;margin-left:10px;line-height: 30px;}
+#goodslistbody #ps-contentl2 label:nth-of-type(4){float:left;width:20px;margin-left:10px;line-height: 30px;}
+#goodslistbody #ps-contentl2 input{float:left;width:80px;}
+#goodslistbody #ps-contentl2 span{width:38px;display:block;float:left;line-height: 30px;text-align: center;}
+
+/*#combgoodsbody td{line-height: 30px;}*/
+.modal-tip .modalcon{
+	width:300px;
+	margin-left: -150px;
+}
+.modal-cgmodeldel1 .modalcon{
+	width:300px;
+	margin-left: -150px;
+}
+.modal-cgmodeldel2 .modalcon{
+	width:300px;
+	margin-left: -150px;
+}
+.modal-cgmodclass2 .modalcon{
+	width:300px;
+	margin-left: -150px;
+}
+.modal-cgmodbrandh2 .modalcon{
+	width:300px;
+	margin-left: -150px;
+}
+#cgmodview .modalcon{
+	width:760px;
+	margin-left: -365px;
+}
+.form-inline .form-group .labelname{
+	font-weight:100;
+}
+.combinlstsee-form .form-group{
+	margin-right:15px;
+	margin-bottom:15px;
+}
+.combinlstsee-form .form-group .form-control{
+	width:150px;
+}
+.row .childgood{
+	margin-bottom:15px;
+}
+.row .childgood-table{
+	width:1042px;
+	margin-left:16px;
+	border-collapse: collapse;
+	border-spacing:0;
+}
+.row .childgood-table tr,.row .childgood-table td{
+	border:1px solid #ccc;
+}
+
+.row .childgood-table thead td{
+	height:30px;
+	text-align: center;
+}
+.row .childgood-table tbody td{
+	height:30px;
+	text-align: center;
+}
+.row .childgood-table tbody .form-control{
+	border:none;
+}
+#combgoodsbody .row .childgood-table thead td label{
+	height:13px;
+	width:13px;
+}
+#combgoodsbody .row .childgood-table thead label input{
+	height:13px;
+	width:13px;
+}
+#combgoodsbody .row .childgood-table tbody td label{
+	height:13px;
+	width:13px;
+}
+#combgoodsbody .row .childgood-table tbody label input{
+	height:13px;
+	width:13px;
+}
+
+#combgoodsbody .row .childgood-table thead td:nth-of-type(1){
+	width:46px;
+}
+#combgoodsbody .row .childgood-table thead td:nth-of-type(2){
+	width:38px;
+}
+#combgoodsbody .row .childgood-table thead td:nth-of-type(3){
+	width:190px;
+}
+#combgoodsbody .row .childgood-table thead td:nth-of-type(4){
+	width:300px;
+}
+#combgoodsbody .row .childgood-table thead td:nth-of-type(5){
+	width:150px;
+}
+#combgoodsbody .row .childgood-table thead td:nth-of-type(6){
+	width:150px;
+}
+#combgoodsbody .row .childgood-table thead td:nth-of-type(7){
+	width:150px;
+}
+.modal-childgood .modalcon{
+	width:300px;
+	margin-left: -150px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+

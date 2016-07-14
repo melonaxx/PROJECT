@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+		<title>米欢电商ERP</title>
+ 		<link href="/images/favicon.ico" rel="shortcut icon">
+		<link rel="stylesheet" type="text/css" href="/bootstrap/css/bootstrap.min.css"/>
+		<link href="/css/commontop.css"   rel="stylesheet" media="screen">
+		<link rel="stylesheet" type="text/css" href="/css/warehouse/wareinorout_set.css"/>
+</head>
+<body id="propertybody">
+	{include file="../commontop.html"}
+	<div class="container-fluid container1">
+		<div class="row ware-row">
+			<h5 class="col-xs-12">您的位置： <a href="javascript:;">首页</a> » <a href="javascript:;">库存</a> »出入库类型设置</h5>
+		</div>
+		<div class="row ware-row">
+			<button class="btn btn-default inoroutset-add" style="margin-left: 15px;">添加</button>
+		</div>
+		<div class="row ware-row">
+			<table class="table table-hover inoroutset-table">
+				<thead>
+					<tr class="active">
+						<td>序号</td>
+						<td>操作</td>
+						<td>出入库类型</td>
+					</tr>
+				</thead>
+				<tbody class="inoroutset-tbody">
+					<tr class="empty-tr">
+						<td colspan="3">
+							暂无内容， <a href="javascript:;" class="inoroutset-add">点这里添加类型名称</a>
+						</td>
+					</tr>
+					<!-- <tr class="inoroutset-tr">
+						<td class="inoroutset-td">1</td>
+						<td>
+							<span class="inoroutset-change">修改</span>
+							<span class="inoroutset-del">删除</span>
+						</td>
+						<td class="inoroutset-name">1234</td>
+					</tr> -->
+				</tbody>
+			</table>
+		</div>
+		<!-- Modal 添加出入库类型-->
+		<div class="modal modal-inoroutset">
+		    <div class="modalcon">
+		      <div class="modal-bt">
+		        <button type="button" class="close close-btn" data-dismiss="modal" aria-label="Close" id="close-btn"><span aria-hidden="true">x</span></button>
+		        <h4 class="modal-title size-title">添加出入库类型</h4>
+		      </div>
+		      <div class="modal-bd">
+			      <form action="" class="form-inline">
+			        <div class="form-group">
+					    <label for="exampleInputName2">类型名称:</label>
+					    <input type="text" class="form-control typename">
+					</div>
+			      </form>
+		      </div>
+		      <div class="modal-bo">
+		        <button type="button" class="btn btn-default inoroutset-sure">提交</button>
+		        <button type="button" class="btn btn-default close-btn">关闭</button>
+		      </div>
+		    </div>
+		</div>
+		<!-- Modal 删除出入库类型-->
+		<div class="modal modal-inoroutset1">
+		    <div class="modalcon">
+		      <div class="modal-bt">
+		        <button type="button" class="close close-btn" data-dismiss="modal" aria-label="Close" id="close-btn"><span aria-hidden="true">x</span></button>
+		        <h4 class="modal-title size-title">提示</h4>
+		      </div>
+		      <div class="modal-bd">
+			      <p>您确定要删除该类型吗？</p>
+		      </div>
+		      <div class="modal-bo">
+		        <button type="button" class="btn btn-default inoroutset-sure1">提交</button>
+		        <button type="button" class="btn btn-default close-btn">关闭</button>
+		      </div>
+		    </div>
+		</div>
+		<!-- Modal 修改出入库类型-->
+		<div class="modal modal-inoroutset2">
+		    <div class="modalcon">
+		      <div class="modal-bt">
+		        <button type="button" class="close close-btn" data-dismiss="modal" aria-label="Close" id="close-btn"><span aria-hidden="true">x</span></button>
+		        <h4 class="modal-title size-title">修改出入库类型</h4>
+		      </div>
+		      <div class="modal-bd">
+			      <form action="" class="form-inline">
+			        <div class="form-group">
+					    <label for="exampleInputName2">类型名称:</label>
+					    <input type="text" class="form-control typename1">
+					</div>
+			      </form>
+		      </div>
+		      <div class="modal-bo">
+		        <button type="button" class="btn btn-default inoroutset-sure2">提交</button>
+		        <button type="button" class="btn btn-default close-btn">关闭</button>
+		      </div>
+		    </div>
+		</div>
+
+		<div class="push"></div>
+	</div>
+	{include file="../comfoot.html"}
+	<script src="/js/jquery-1.11.0.min.js" ></script>
+	<script src="/bootstrap/js/bootstrap.min.js"  ></script>
+	<script src="/js/commontop.js"></script>
+	<script src="/js/mycom.js"></script>
+	<script src="/js/warehouse/wareinorout_set.js"></script>
+</body>
+</html>

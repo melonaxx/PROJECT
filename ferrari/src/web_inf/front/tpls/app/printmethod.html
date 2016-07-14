@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+		<title>米欢电商ERP</title>
+		<link href="/images/favicon.ico" rel="shortcut icon">
+		<link rel="stylesheet" type="text/css" href="/bootstrap/css/bootstrap.min.css"/>
+		<link href="/css/commontop.css"   rel="stylesheet" media="screen">
+		<link rel="stylesheet" type="text/css" href="/css/app/printlist.css"/>
+</head>
+<body id="propertybody">
+	{include file="../commontop.html"}
+	<div class="container-fluid container1">
+		<div class="row ware-row">
+			<h5 class="col-xs-12">您的位置： <a href="javascript:;">首页</a> » <a href="javascript:;">应用</a> » 印刷方式</h5>
+		</div>
+		<div class="row">
+			<ul class="nav nav-tabs col-md-12 print-nav">
+		  		<li role="presentation">
+			  		<a href="/app/addprint.php">新建印刷单</a>
+			  	</li>
+			  	<li role="presentation">
+			  		<a href="/app/checkprint.php">印刷单审核</a>
+			  	</li>
+			  	<li role="presentation">
+			  		<a href="/app/wpaiprint.php">未排版印刷单</a>
+			  	</li>
+			  	<li role="presentation">
+			  		<a href="/app/waitprint.php">待完工印刷单</a>
+			  	</li>
+			  	<li role="presentation">
+			  		<a href="/app/seeprint.php">印刷单查询</a>
+			  	</li>
+			  	<li role="presentation">
+			  		<a href="/app/seeother.php">其他查询</a>
+			  	</li>
+			  	<li role="presentation" class="active">
+			  		<a href="/app/printmethod.php">印刷方式</a>
+			  	</li>
+			  	<li role="presentation">
+			  		<a href="/app/printunit.php">印刷单位</a>
+			  	</li>
+			</ul>
+		</div>
+		<div class="row ware-row">
+			<button class="btn btn-default print-add" style="margin-left: 15px;">添加印刷方式</button>
+		</div>
+		<div class="row ware-row">
+			<table class="table table-hover print-table1">
+				<thead>
+
+					<tr class="active">
+						<td>序号</td>
+						<td>操作</td>
+						<td>印刷方式名称</td>
+						<td>所属印刷单位</td>
+						<td>是否制版</td>
+						<td>单价</td>
+						<td>备注</td>
+					</tr>
+				</thead>
+				<tbody class="print-tbody">
+				{foreach $methoddata as $key=>$value}
+					<tr class="print-tr" >
+						<td class="print-td">{$key+1}</td>
+						<td>
+							<span printmethodid="{$value['id']}" class="print-change">修改</span>
+							<span printmethodid="{$value['id']}" class="print-del del">删除</span>
+						</td>
+						<td class="print-name">{$value['name']}</td>
+						<td>{$value['printunitid']}</td>
+						<td>{$value['type']}</td>
+						<td>{$value['price']}</td>
+						<td class="print-text">{$value['comment']}</td>
+					</tr>
+				{/foreach}
+				</tbody>
+			</table>
+		</div>
+		<!-- Modal 印刷方式名称-->
+		<div class="modal modal-printmethod">
+		    <div class="modalcon">
+			    <div class="modal-bt">
+			        <button type="button" class="close close-btn" data-dismiss="modal" aria-label="Close" id="close-btn"><span aria-hidden="true">x</span></button>
+			        <h4 class="modal-title size-title">添加印刷方式名称</h4>
+			    </div>
+			    <form action="/app/addprintmethod.php" class="form-inline">
+		            <div class="modal-bd">
+			        	<div class="form-group">
+						    <label for="exampleInputName2" class="labelname">印刷方式名称：</label>
+						    <input type="text" class="form-control typename" id="exampleInputName2" name="printmethodname">
+						</div>
+						<div class="form-group">
+						    <label for="exampleInputName2" class="labelname">所属印刷单位：</label>
+						    <select class="form-control" name="punit">
+						    	<option value="-1">--请选择--</option>
+						    	{foreach $unitdata as $key=>$value}
+						    		<option value="{$value['id']}">{$value['name']}</option>
+						    	{/foreach}
+						    </select>
+						</div>
+						<div class="form-group">
+							<label class="labelname">是否制版：</label>
+							<label for="" class="labelname">
+								<input type="radio" name="creatbord" value="Y" style="margin-right:5px;" checked="checked" >是
+							</label>
+							<label for="" class="labelname">
+								<input type="radio" name="creatbord" value="N" style="margin-right:5px;">否
+							</label>
+						</div>
+						<div class="form-group">
+							<label class="labelname">单价：</label>
+						    <div class="input-group">
+						      <div class="input-group-addon">￥</div>
+						      <input type="text" name="pmprice" class="form-control" style="width:140px;" onkeyup = "value=value.replace(/[^\d\.]/g,'')">
+						    </div>
+						</div>
+						<br>
+						<div class="form-group">
+						    <label for="exampleInputName2" class="labelname">印刷方式备注：</label>
+						    <textarea class="form-control typetext"style="width:775px;height:60px; resize: none;" name="pmcomment"></textarea>
+						</div>
+		        	</div>
+			        <div class="modal-bo">
+				        <button type="submit" class="btn btn-default print-sure">提交</button>
+				        <button type="button" class="btn btn-default close-btn">关闭</button>
+			        </div>
+			    </form>
+		    </div>
+		</div>
+		<!-- Modal 删除印刷方式-->
+		<div class="modal modal-print1">
+		    <div class="modalcon">
+		      <div class="modal-bt">
+		        <button type="button" class="close close-btn" data-dismiss="modal" aria-label="Close" id="close-btn"><span aria-hidden="true">x</span></button>
+		        <h4 class="modal-title size-title">提示</h4>
+		      </div>
+		      <div class="modal-bd">
+			      <p>您确定要删除该印刷方式吗？</p>
+		      </div>
+		      <div class="modal-bo">
+		        <button type="button" class="btn btn-default print-sure1 delpmsub" id="del">提交</button>
+		        <button type="button" class="btn btn-default close-btn">关闭</button>
+		      </div>
+		    </div>
+		</div>
+		<!-- Modal 修改印刷方式-->
+		<div class="modal modal-printmethod2">
+		    <div class="modalcon">
+			    <div class="modal-bt">
+			        <button type="button" class="close close-btn" data-dismiss="modal" aria-label="Close" id="close-btn"><span aria-hidden="true">x</span></button>
+			        <h4 class="modal-title size-title">修改印刷方式</h4>
+			    </div>
+			    <form action="" class="form-inline editpm" method="post">
+		            <!-- <div class="modal-bd">
+				        <div class="form-group">
+						    <label for="exampleInputName2" class="labelname">印刷方式名称：</label>
+						    <input type="text" class="form-control typename editpmname" id="exampleInputName2" name="name">
+						</div>
+						<div class="form-group">
+						    <label for="exampleInputName2" class="labelname">所属印刷单位：</label>
+						    <select class="form-control eidtpunit">
+						    	{foreach $unitdata as $key=>$value}
+						    		<option value="{$value['id']}">{$value['name']}</option>
+						    	{/foreach}
+						    </select>
+						</div>
+						<div class="form-group">
+							<label class="labelname">是否制版：</label>
+							<label for="" class="labelname">
+								<input type="radio" name="radio" style="margin-right:5px;" checked="checked" >是
+							</label>
+							<label for="" class="labelname">
+								<input type="radio" name="radio" style="margin-right:5px;">否
+							</label>
+						</div>
+						<div class="form-group">
+							<label class="labelname">单价：</label>
+						    <div class="input-group">
+						      <div class="input-group-addon">￥</div>
+						      <input type="text" class="form-control" style="width:140px;">
+						    </div>
+						</div>
+						<br>
+						<div class="form-group">
+						    <label for="exampleInputName2" class="labelname">印刷方式备注：</label>
+						    <textarea class="form-control typetext"style="width:775px;height:60px; resize: none;" name="comment"></textarea>
+						</div>
+		        	</div> -->
+				</form>
+		    </div>
+		</div>
+		<div class="push"></div>
+	</div>
+	{include file="../comfoot.html"}
+	<script src="/js/jquery-1.11.0.min.js" ></script>
+	<script src="/bootstrap/js/bootstrap.min.js"  ></script>
+	<script src="/js/util.js"></script>
+	<script src="/js/commontop.js"></script>
+	<script src="/js/mycom.js"></script>
+	<script src="/js/app/printmethod.js"></script>
+</body>
+</html>

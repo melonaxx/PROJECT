@@ -1,0 +1,102 @@
+.row .orderall-form{
+	width:1200px;
+	margin-left:15px;
+	margin-top:20px;
+	padding:0;
+}
+.row .orderall-form .form-group{
+	float:right;
+	margin-left: 10px;
+}
+.row .orderall-form .form-control{
+	width:150px;
+}
+.row .orderall-form .form-group button:nth-of-type(2){
+	margin-left:10px;
+}
+.row .orderall-form .newbtn{
+	float:left;
+	margin:0;
+}
+.row .orderall-form .input-group-btn ul>li>a{
+	font-size:12px;
+}
+.row .orderall-table{
+	width:1200px;
+	margin-left:15px;
+	padding:0;
+}
+.row .orderall-table thead td{
+   font-weight: 600;
+}
+.row .orderall-table thead td label{
+	height:13px;
+}
+.row .orderall-table thead td:nth-of-type(1){
+   width:46px;
+}
+.row .orderall-table thead td:nth-of-type(2){
+   width:38px;
+}
+.row .orderall-table thead td:nth-of-type(3){
+   width:48px;
+}
+.row .orderall-table thead td:nth-of-type(4){
+   width:96px;
+}
+.row .orderall-table thead td:nth-of-type(5){
+   width:100px;
+}
+.row .orderall-table thead td:nth-of-type(6){
+   width:100px;
+}
+.row .orderall-table thead td:nth-of-type(7){
+   width:100px;
+}
+.row .orderall-table thead td:nth-of-type(8){
+   width:100px;
+}
+.row .orderall-table thead td:nth-of-type(9){
+   width:100px;
+}
+.row .orderall-table thead td:nth-of-type(10){
+   width:100px;
+}
+.row .orderall-table thead td:nth-of-type(11){
+   width:100px;
+}
+.row .orderall-table thead td:nth-of-type(12){
+   width:172px;
+}
+.row .orderall-table thead td:nth-of-type(13){
+   width:100px;
+}
+.modal-orderall .modalcon{
+	width:412px;
+	margin-left:-206px;
+}
+.modal-orderall1 .modalcon{
+	width:300px;
+	margin-left:-150px;
+}
+
+.modal-orderall .form-inline .form-group{
+   margin-bottom:15px;
+   margin-right:10px;
+}
+.modal-orderall .form-inline .form-control{
+	width:150px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+

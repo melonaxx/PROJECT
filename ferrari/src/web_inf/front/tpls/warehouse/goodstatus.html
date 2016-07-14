@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>米欢电商ERP</title>
+ 		<link href="/images/favicon.ico" rel="shortcut icon">
+		<link href="/bootstrap/css/bootstrap.min.css"  rel="stylesheet" media="screen">
+		<link href="/css/commontop.css"   rel="stylesheet" media="screen">
+		<link rel="stylesheet" type="text/css" href="/css/warehouse/warestatus.css"/>
+		<style>
+			{literal}
+				@media screen and (max-width: 1120px){
+					/*当屏幕尺寸小于1120px时，应用下面的CSS样式*/
+				    .navbar-nav,#comtop-right{display: none;}
+				}
+			{/literal}
+		</style>
+	</head>
+	<body>
+		{include file="../commontop.html"}
+		<div class="container-fluid container1">
+			<div class="row ware-row">
+				<h5 class="col-md-12">您的位置： <a href="javascript:;">首页</a> » <a href="javascript:;">库存</a> »库存状况</h5>
+			</div>
+			<div class="row">
+				<ul class="nav nav-tabs goodstatus-nav">
+				  <li role="presentation"><a href="warestatus.php">仓库汇总</a></li>
+				  <li role="presentation" class="active"><a href="goodstatus.php">商品汇总</a></li>
+				</ul>
+			</div>
+			<div class="row">
+				<form class="form-inline col-md-12 goodstatus-form">
+					<div class="form-group">
+					   <button type="button" class="btn btn-default btn-sm searchproinfo">查询</button>
+					   <button type="reset" class="btn btn-default btn-sm resetbtn" style="margin-left: 10px;">重置</button>
+					   <button type="button" class="btn btn-default btn-sm" style="margin-left: 10px;">导出</button>
+					</div>
+					<!-- <div class="form-group">
+					    <label for="exampleInputName2"class="labelname">品牌：</label>
+					    <select class="form-control waregood-status" id="exampleInputName2" style="width:150px;">
+
+					    </select>
+					</div>
+					<div class="form-group">
+					    <label for="exampleInputName2"class="labelname">分类：</label>
+					    <select class="form-control waregood-status" id="exampleInputName2">
+					    	<option>上衣</option>
+					    	<option>下衣</option>
+					    	<option>上衣1</option>
+					    	<option>下衣1</option>
+					    </select>
+					</div>   -->
+					<div class="form-group">
+					    <label for="exampleInputName2"class="labelname">商品状态：</label>
+					    <select class="form-control prostatus" id="exampleInputName2">
+					    	<option value="All">全部</option>
+					    	<option value="Onsale">在售</option>
+					    	<option value="Soldout">下架</option>
+					    	<option value="Stop">停产</option>
+					    	<option value="Stockout">缺货</option>
+					    </select>
+					</div>
+					<div class="form-group">
+					    <label for="exampleInputName2"class="labelname">商品：</label>
+					    <input class="form-control proname"placeholder="请输入商品名称"/>
+					    <select class="form-control pronamelist" style="width:150px;">
+					    	<option value=""></option>
+					    </select>
+					</div>
+				</form>
+				<table class="table table-hover col-md-12 goodstatus-table">
+					<thead class="warestatus-thead">
+						<tr class="active">
+							<td>序号</td>
+							<td>图片</td>
+							<td>商品名称</td>
+							<td>规格</td>
+							<td>商品编码</td>
+							<td>位置数量</td>
+						</tr>
+					</thead>
+					<tbody class="warestatus-tbody">
+					{foreach $prolist as $key=>$value}
+						<tr>
+							<td>{$key+1}</td>
+							<td class="warestatus-tbody-img">
+								<img
+								{if !empty($value['image']) && !empty($value['path'])}
+									src="{$value['path']}{$value['image']}"
+								{else}
+									src="";
+								{/if}
+								class="img1"/>
+								<img
+								{if !empty($value['image']) && !empty($value['path'])}
+									src="{$value['path']}{$value['image']}"
+								{else}
+									src="";
+								{/if}
+								class="img2"/>
+							</td>
+							<td>
+								<a href="/goods/goodsentry.php?productid={$value['productid']}" >{$value['name']}</a>
+								<input type="hidden" name='productid' value="{$value['productid']}">
+							</td>
+							<td>{$value['format']}</td>
+							<td>{$value['number']}</td>
+							<td>
+								<span  class="goodstatus-detail" style="cursor:pointer;">详细</span>
+							</td>
+						</tr>
+					{/foreach}
+					</tbody>
+                </table>
+			</div>
+			{if count($prolist) <= 0}
+			<div class="row no-find" style="display:block;">
+				<div class="no-record col-xs-12"><img src="/images/empty.jpg"/><span>没有找到记录，请调整搜索条件。</span></div>
+			</div>
+			{/if}
+			{$pages}
+			<!-- 详细模态窗 -->
+			<div class="modal modal-detail">
+				<div class="modalcon">
+					<div class="modal-bt">
+						<h4 class="modal-title size-title detialloc" id="myModalLabel">详细</h4>
+					    <button type="button" class="close close-btn" data-dismiss="modal" aria-label="Close" id="close-btn"><span aria-hidden="true">x</span></button>
+					</div>
+					<div class="modal-bd">
+					   <!--  <span>合计：数量<span class="status-num">0</span>总价<span class="status-allnum">0.00</span></span> -->
+					    <table class="table modal-status-table1">
+					    	<thead>
+					    		<tr class="active">
+					    			<td class="modal-status-num">序号</td>
+					    			<td class="modal-status-ware">仓库</td>
+					    			<td class="modal-status-allnum">实际数量</td>
+					    			<td class="modal-status-allnum1">锁定数量</td>
+					    			<td class="modal-status-allnum2">在途数量</td>
+					    			<td class="modal-status-allnum3">生产中数量</td>
+					    			<td class="modal-status-allnum4">可用数量</td>
+					    			<td class="modal-status-allnum5">均价</td>
+					    			<td class="modal-status-allnum6">总价</td>
+					    		</tr>
+					    	</thead>
+					    	<tbody class='datatr'>
+					    		<!-- <tr>
+					    			<td>2</td>
+					    			<td>默认仓库</td>
+					    			<td>0</td>
+					    			<td>0</td>
+					    			<td>0</td>
+					    			<td>0</td>
+					    			<td>0</td>
+					    			<td>0</td>
+					    			<td>0</td>
+					    		</tr> -->
+					    	</tbody>
+					    	<tfoot class='sumtr'>
+					    		<!-- <tr>
+					    			<td>合计</td>
+					    			<td></td>
+					    			<td></td>
+					    			<td></td>
+					    			<td></td>
+					    			<td></td>
+					    			<td></td>
+					    			<td></td>
+					    			<td></td>
+					    		</tr> -->
+					    	</tfoot>
+					    </table>
+					</div>
+					<div class="modal-bo"></div>
+				</div>
+			</div>
+			<div class="push"></div>
+		</div>
+		{include file="../comfoot.html"}
+		<script type="text/javascript" src="/js/jquery-1.11.0.min.js"></script>
+		<script type="text/javascript" src="/js/commontop.js"></script>
+		<script type="text/javascript" src="/js/util.js"></script>
+		<script type="text/javascript" src="/bootstrap/js/bootstrap.min.js"></script>
+		<script type="text/javascript" src="/js/warehouse/goodstatus.js"></script>
+		<script type="text/javascript" src="/js/warehouse/mycom.js"></script>
+	</body>
+</html>

@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>米欢电商ERP</title>
+		<link href="/images/favicon.ico" rel="shortcut icon">
+		<link rel="stylesheet" type="text/css" href="/bootstrap/css/bootstrap-datetimepicker.min.css"/>
+		<link href="/bootstrap/css/bootstrap.min.css"  rel="stylesheet" media="screen">
+		<link href="/css/commontop.css"   rel="stylesheet" media="screen">
+		<link rel="stylesheet" type="text/css" href="/css/order/neworder.css"/>
+		<style>
+			{literal}
+				@media screen and (max-width: 1120px){ 
+					/*当屏幕尺寸小于1120px时，应用下面的CSS样式*/
+				    .navbar-nav,#comtop-right{display: none;}
+				}
+			{/literal}
+		</style>
+	</head>
+	<body>
+		{include file="../commontop.html"}
+		<div class="container-fluid container1">
+			<div class="row ware-row">
+				<h5 class="col-md-12">您的位置： <a href="javascript:;">首页</a> » <a href="javascript:;">订单</a> » 新增订单</h5>
+			</div>
+			<div class="row">
+				<form action="" class="form-inline order-form">
+					<div class="col-md-5 order-form-left">
+				  		<h2 class="row-bold">订单信息</h2>
+				  		<br>
+						<div class="form-group">
+						    <label for="exampleInputName2" class="labelname">下单时间:</label>
+					    	<input type="text" class="datetimepicker form-control">
+						</div>
+						<div class="form-group">
+						    <label for="exampleInputName2" class="labelname">订单编号:</label>
+						    <input type="text" class="form-control" placeholder="线上订单编号">
+						</div>
+						<div class="form-group">
+						    <label for="exampleInputName2" class="labelname">订单分类:</label>
+						    <select class="form-control">
+							  <option></option>
+							  <option>外卖王</option>
+							  <option>米欢业务</option>
+							  <option>其它软件</option>
+							  <option>生产单</option>
+							  <option>调拨单</option>
+							  <option>发票</option>
+							</select>
+						</div>
+						<div class="form-group">
+						    <label for="exampleInputEmail2" class="labelname">购买渠道:</label>
+						    <select class="form-control">
+						    	<option></option>
+							    <option>直销</option>
+							    <option>北京东郊市场</option>
+							    <option>北京锦绣大地</option>
+							    <option>其他经销商</option>
+							    <option>网络经销商</option>
+							    <option>shxy</option>
+							    <option>上海经销商</option>
+							</select>
+						</div>
+						<div class="form-group">
+						    <label for="exampleInputEmail2" class="labelname">店铺名称:</label>
+						    <select class="form-control">
+							    <option></option>
+							    <option>ttmihuan</option>
+							</select>
+					 	</div>
+					 	<div class="form-group">
+						    <label for="exampleInputEmail2" class="labelname">发货仓库:</label>
+						    <select class="form-control">
+							    <option></option>
+							    <option>仓库1</option>
+							</select>
+					 	</div>
+					 	<div class="form-group">
+						    <label for="exampleInputEmail2" class="labelname">关联订单:</label>
+						    <input class="form-control" tye="text"/>
+					 	</div>
+						<div class="form-group">
+						    <label for="exampleInputEmail2" class="labelname">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;客服:</label>
+						    <input type="text" class="form-control">
+						</div>
+					 	<div class="form-group">
+						    <label for="exampleInputEmail2" class="labelname">所属订单:</label>
+						    <input type="text" class="form-control"style="width:390px;"placeholder="多个用英文逗号隔开">
+					 	</div>
+						<div class="form-group">
+						    <label for="exampleInputEmail2" class="labelname">代收贷款:</label>
+						    <select class="form-control">
+							    <option>否</option>
+							    <option>1</option>
+							    <option>2</option>
+							</select>
+					 	</div>
+					 	<div class="form-group">
+						    <label for="exampleInputEmail2" class="labelname">审核状态:</label>
+						    <select class="form-control">
+							    <option>未审核</option>
+							    <option>已审核</option>
+							    <option>待审核</option>
+							</select>
+					 	</div>
+					 	<div class="form-group">
+						    <label for="exampleInputEmail2" class="labelname">发票收据:</label>
+						    <select class="form-control">
+							    <option>无</option>
+							    <option>有</option>
+							</select>
+					 	</div>
+					 	<div class="form-group piao-group">
+							<label class="labelname">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;票种:</label>
+							<select class="form-control">
+							    <option>无</option>
+							    <option>专票</option>
+							    <option>普票</option>
+							</select>
+						</div>
+					 	<div class="form-group">
+						    <label for="exampleInputEmail2" class="labelname">订单备注:</label>
+						    <textarea class="form-control order-form-left-mark" row="2"></textarea>
+						</div>
+					</div>
+					<div class="col-md-7 order-form-right">
+						<h2 class="row-bold">客户信息</h2>
+						<br>
+				  		<div class="form-group">
+						    <label for="exampleInputEmail2" class="labelname">客户识别:</label>
+						    <input type="text" class="form-control" placeholder="在此搜索">
+						</div>
+				  		<div class="form-group">
+						    <label for="exampleInputEmail2" class="labelname">客户选择:</label>
+						    <select class="form-control">
+						    	<option value=""></option>
+							</select>
+						</div>
+						<div class="form-group">
+						    <label for="exampleInputEmail2" class="labelname">用户昵称:</label>
+						    <input type="text" class="form-control">
+						</div>
+						<div class="form-group">
+						    <label for="exampleInputEmail2" class="labelname">&nbsp;&nbsp;&nbsp;收件人:</label>
+						    <input type="text" class="form-control" placeholder="必填">
+						</div>
+						<div class="form-group">
+						    <label for="exampleInputEmail2" class="labelname">手机号码:</label>
+						    <input type="text" class="form-control" placeholder="必填">
+						</div>
+						<div class="form-group">
+						    <label for="exampleInputEmail2" class="labelname">固定电话:</label>
+						    <input type="text" class="form-control">
+						</div>
+						<div class="form-group">
+						    <label for="exampleInputEmail2" class="labelname">公司名称:</label>
+						    <input type="text" class="form-control company-name">
+						</div>
+						<div class="form-group">
+						    <label for="exampleInputEmail2" class="labelname">邮政编码:</label>
+						    <input type="text" class="form-control">
+						</div>
+						<div class="form-group">
+						    <label for="exampleInputEmail2" class="labelname">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;省份:</label>
+						    <select id="loc_province"class="form-control">
+							</select>
+						</div>
+						<div class="form-group">
+						    <label for="exampleInputEmail2" class="labelname">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;市(区):</label>
+						    <select id="loc_city"class="form-control">
+							</select>
+						</div>
+						<div class="form-group">
+						    <label for="exampleInputEmail2" class="labelname">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;区(县):</label>
+						    <select id="loc_town"class="form-control">
+							</select>
+						</div>
+						<div class="form-group">
+						    <label for="exampleInputEmail2" class="labelname">详细地址:</label>
+						    <input class="form-control right-address" type="text"/ >
+						</div>
+						<div class="form-group">
+						    <label for="exampleInputEmail2" class="labelname">客户留言:</label>
+						    <textarea class="form-control right-mark" rows="2"></textarea>
+						</div>
+					</div>
+					<div class="choice-bt" style="width:1200px;float:left;margin-bottom:15px;">
+						<h2 class="row-bold">选择商品</h2>
+					</div>
+					<br>
+					<div class="three-btn">
+		            	<button class="btn btn-default btn-add" type="button">添加</button>
+		            	<button class="btn btn-default btn-del" type="button">删除</button>
+		            	<button class="btn btn-default btn-add-bar" type="button">条码添加</button> 
+			           <div id="bar-code">
+						    <label for="exampleInputName2" class="labelname">条形码:</label>
+						    <input type="text" class="form-control input-sm" placeholder="条形码" >
+						</div>
+		           </div>
+		           <br>
+		           <table class="table table-hover order-table">
+						<thead>
+	                		<tr class="active">
+		                    	<td>序号</td>
+		                    	<td>
+		                    		<label class="checkbox-all">
+		                    		<input class="allCheck" type="checkbox" value=""></label>
+		                    	</td>
+		                    	<td>图片</td>
+		                    	<td>搜索</td>
+		                    	<td>商品名称与规格</td>
+		                    	<td>单位</td>
+		                    	<td>单价</td>
+		                    	<td>数量</td>
+		                    	<td>优惠</td>
+		                    	<td>应付</td>
+		                    	<td>备注</td>
+	                		</tr>
+	        			</thead>
+	        			<tbody id="tbody1">
+	                        <tr class="onetr">
+		                        <td class="onetd1">1</td>
+		                        <td>
+		                        	<label>
+		                        		<input class="checkbox-choice" type="checkbox" value="">
+		                        	</label>
+		                        </td>
+		                        <td class="warestatus-tbody-img">
+									<img src="" class="img1">
+									<img src="" class="img2">
+								</td>
+		                        <td>
+		                        	<input type="text" class="form-control searchbox"placeholder="请搜索商品名称">
+		                        </td>
+		                        <td>
+		                        	<select class="form-control searchname">
+									  <option></option>
+									</select>
+		                        </td>
+		                        <td></td>
+		                        <td>
+		                        	<label class="labelname" style="float:left;display:block;width:20px;height:30px;line-height:30px;">￥</label>
+		                        	<input type="text" class="form-control singleprice">
+		                        </td>
+		                        <td>
+		                        	<input type="text" class="form-control goodsnum"placeholder="必填">
+		                        </td>
+		                        <td>
+		                        	<label class="labelname" style="float:left;display:block;width:20px;height:30px;line-height:30px;">￥</label>
+		                        	<input type="text" class="form-control singleprice">
+		                        </td>
+		                        <td>
+		                        	<label class="labelname" style="float:left;display:block;width:20px;height:30px;line-height:30px;">￥</label>
+		                        	<input type="text" class="form-control singleprice">
+		                        </td>
+		                        <td><input type="text" class="form-control"></td>
+	                        </tr>
+	                    </tbody>
+	                    <tfoot>
+	                    	<tr>
+	                    		<td>合计</td>
+	                    		<td colspan="6"></td>
+	                    		<td></td>
+	                    		<td><span>￥</span></td>
+	                    		<td><span>￥</span></td>
+		                        <td></td>
+	                    	</tr>
+	                    </tfoot>
+	                </table>
+	                <br>
+	                <h2 class="row-bold order-bt">印刷</h2>
+	                <div class="total-order">
+	                	<div class="form-group">
+							<label for="exampleInputName2" class="labelname">印刷内容：</label>	
+				  			<input class="form-control input-sm print-content"/>
+						</div>
+						<div class="form-group">
+							<label for="exampleInputName2" class="labelname">印刷确认情况：</label>	
+				  			<select class="form-control">
+							  <option>无印刷</option>
+							  <option>待确认</option>
+							  <option>已确认</option>
+							<select>
+						</div>
+					</div>
+					<h2 class="row-bold order-bt">发货方式</h2>
+	                <div class="total-order">
+	                	<div class="form-group">
+							<label for="" class="labelname" style="margin-right:15px;">
+								<input type="radio" name="radio" style="margin-right:5px;" class="choice">快递
+							</label>
+							<label for="" class="labelname">
+								<input type="radio" name="radio" style="margin-right:5px;" class="choice">物流
+							</label>
+						</div>
+	                	<div class="method">
+	                		<div class="form-group">
+								<label for="exampleInputName2" class="labelname">快递公司：</label>	
+					  			<select class="form-control">
+								  <option></option>
+								  <option>1</option>
+								  <option>2</option>
+								<select>
+							</div>
+							<div class="form-group">
+								<label for="exampleInputName2" class="labelname">快递运费：</label>	
+					  			<div class="input-group">
+							      <div class="input-group-addon">￥</div>
+							      <input type="text" class="form-control" id="exampleInputAmount" style="width:110px;">
+							    </div>
+							</div>
+							<div class="form-group">
+								<label for="exampleInputName2" class="labelname">快递单号：</label>	
+					  			<input class="form-control company-express">
+							</div>
+							<div class="form-group">
+								<label for="exampleInputName2" class="labelname">实际重量：</label>	
+					  			<div class="input-group">
+							      <input type="text" class="form-control" id="exampleInputAmount" style="width:110px;">
+							      <div class="input-group-addon">kg</div>
+							    </div>
+							</div>
+							<div class="form-group">
+								<label for="exampleInputName2" class="labelname">预估重量：</label>	
+					  			<div class="input-group">
+							      <input type="text" class="form-control" id="exampleInputAmount" style="width:110px;">
+							      <div class="input-group-addon">kg</div>
+							    </div>
+							    <button type="button" class="btn btn-sm btn-default pk-btn">快递费比较</button>
+							</div>
+							<br>
+							<table class="table table-hover pk-table">
+								<thead>
+									<tr class="active">
+										<td>快递公司</td>
+										<td>重量(kg)</td>
+										<td>快递费(元)</td>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<td></td>
+										<td></td>
+										<td></td>
+									</tr>
+								</tbody>
+							</table>
+	                	</div>
+	                	<div class="method">
+	                		<div class="form-group">
+	                			<label for="" class="labelname">托运公司：</label>
+	                			<input type="text" class="form-control">
+	                		</div>
+	                		<div class="form-group">
+	                			<label for="" class="labelname">运单编号：</label>
+	                			<input type="text" class="form-control"style="width:200px;">
+	                		</div>
+	                		<div class="form-group">
+	                			<label for="exampleInputName2" class="labelname">运费：</label>	
+					  			<div class="input-group">
+							      <div class="input-group-addon">￥</div>
+							      <input type="text" class="form-control" id="exampleInputAmount" style="width:110px;">
+							    </div>
+	                		</div>
+	                	</div>
+					</div>
+					<h2 class="row-bold order-bt">财务</h2>
+	                <div class="total-order">
+						<div class="form-group">
+							<label for="exampleInputAmount" class="labelname">应收金额：</label>
+						    <div class="input-group">
+						      <div class="input-group-addon">￥</div>
+						      <input type="text" class="form-control" id="exampleInputAmount" style="width:110px;"  value="0.00">
+						    </div>
+						</div>
+						<div class="form-group">
+							<label for="exampleInputName2" class="labelname">实收金额：</label>	
+				  			<div class="input-group">
+						      <div class="input-group-addon">￥</div>
+						      <input type="text" class="form-control" id="exampleInputAmount" style="width:110px;">
+						    </div>
+						</div>
+						<div class="form-group">
+							<label for="exampleInputName2" class="labelname">欠款尾数：</label>	
+				  			<div class="input-group">
+						      <div class="input-group-addon">￥</div>
+						      <input type="text" class="form-control" id="exampleInputAmount" style="width:110px;">
+						    </div>
+						</div>
+						<br>
+						<div class="form-group">
+							<label for="exampleInputName2" class="labelname">银行账户：</label>	
+				  			<select class="form-control">
+							  <option></option>
+							  <option>1</option>
+							  <option>2</option>
+							<select>
+						</div>
+						<div class="form-group">
+							<label for="exampleInputName2" class="labelname">财务入账：</label>	
+				  			<select class="form-control">
+							  <option>未入账</option>
+							<select>
+						</div>
+						<div class="form-group">
+							<label for="exampleInputName2" class="labelname">财务科目：</label>	
+				  			<select class="form-control">
+							  <option>1</option>
+							  <option>2</option>
+							<select>
+						</div>
+					</div>
+					<h2 class="row-bold order-bt">发货|减库</h2>
+	                <div class="total-order">
+						<div class="form-group">
+							<label for="exampleInputAmount" class="labelname">发货状态：</label>
+						    <select class="form-control">
+							  <option>无需发货</option>
+							<select>
+						</div>
+						<div class="form-group">
+							<label for="exampleInputAmount" class="labelname">减库状态：</label>
+						    <select class="form-control">
+							  <option>无需减库</option>
+							<select>
+						</div>
+
+					</div>
+					<h2 class="row-bold order-bt">售后留言</h2>
+					<div class="total-order">
+						<div class="form-group">
+						    <textarea name="" rows="3" class="form-control shouhou"></textarea>
+						    <button class="btn btn-sm btn-default add-shou" type="button">添加</button>
+						</div>
+						<table class="table table-hover shouhou-table">
+							<thead>
+								<tr class="active">
+									<td>日期</td>
+									<td>内容</td>
+									<td>留言人</td>
+									<td>操作</td>
+								</tr>
+							</thead>
+							<tbody class="shou-tbody">
+								
+							</tbody>
+						</table>
+					</div>
+					<h2 class="row-bold order-bt">图片专区(<a href="javascript:;" class="upload">上传图片<input class="fileupload" type="file" name="goodspic"></a>)</h2>
+					<div class="total-order">
+						<div class="Upload-img">
+							<img class="modalImg modalImg1"src="/images/empty.jpg"/>
+							<div class="modal-div">
+								<span class="modal-Del">删除</span>
+							</div>
+						</div>
+					</div>
+					<h2 class="row-bold order-bt">操作记录</h2>
+					<div class="total-order">
+						<table class="table table-hover caozuo-table">
+							<thead>
+								<tr class="active">
+									<td>日期</td>
+									<td>内容</td>
+									<td>操作人</td>
+								</tr>
+							</thead>
+						</table>
+					</div>
+					<div class="form-group">
+						<button class="btn btn-default" type="submit">提交</button>
+						<button class="btn btn-default" type="reset">重置</button>
+					</div>
+				</form>
+			</div>
+			<div class="push"></div>
+		</div>
+		{include file="../comfoot.html"}
+		<script src="/js/jquery-1.11.0.min.js" ></script>
+		<script src="/bootstrap/js/bootstrap.min.js"></script>
+		<script src="/bootstrap/js/bootstrap-datetimepicker.min.js"></script>
+		<script src="/bootstrap/js/bootstrap-datetimepicker.zh-CN.js"></script>
+		<script src="/js/commontop.js"></script>
+		<script src="/js/delivery/editabnormal.js"></script>
+		<script type="text/javascript">
+			$('.datetimepicker').datetimepicker({
+			    format: 'yyyy-mm-dd hh:ii:ss',
+			    autoclose:true,
+			    language:'zh-CN',
+			    // minView:'year',
+			});
+		</script>
+	</body>
+</html>

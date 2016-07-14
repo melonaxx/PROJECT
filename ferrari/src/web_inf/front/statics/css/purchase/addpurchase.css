@@ -1,0 +1,147 @@
+.container1 #basic-infor{
+ margin-top:25px;
+}
+.container1 .form-control{
+ font-size:12px;
+}
+.row-textarea{
+ height:80px;
+}
+.row-textarea textarea{
+ resize: none;
+}
+.checkbox label{
+ width:0;
+}
+.row .table{
+ border-collapse:collapse;
+ border-spacing:0px;
+}
+.row .table, th, td{
+   border: 1px solid #ccc;
+ }
+ .row .addpurchase-table{
+ 	width:1200px;
+ 	padding:0;
+ }
+.row .addpurchase-table thead td:nth-of-type(1){
+	width:46px;
+	text-align: left;
+}
+.row .addpurchase-table thead td:nth-of-type(2){
+	width:36px;
+}
+.row .addpurchase-table thead td:nth-of-type(3){
+	width:112px;
+}
+.row .addpurchase-table thead td:nth-of-type(4){
+	width:310px;
+}
+.row .addpurchase-table thead td:nth-of-type(5){
+	width:46px;
+}
+.row .addpurchase-table thead td:nth-of-type(6){
+	width:140px;
+}
+.row .addpurchase-table thead td:nth-of-type(7){
+	width:90px;
+}
+.row .addpurchase-table thead td:nth-of-type(8){
+	width:140px;
+}
+.row .addpurchase-table thead td:nth-of-type(9){
+	width:80px;
+}
+.row .addpurchase-table thead td:nth-of-type(10){
+	width:100px;
+}
+.row .addpurchase-table thead td:nth-of-type(11){
+	width:100px;
+}
+
+ .row .table .searchbox{
+  width:110px;
+ }
+ .row .table .form-unit{
+  width:50px;
+ }
+.row .table .goodsnum{
+  width:80px;
+ }
+.row .table .singleprice{
+ width:114px;
+}
+.row .table .shuilv{
+ width:70px;
+}
+.row .table .nameorsize{
+ width:300px;
+}
+ .row #tbody2{
+  border:none;
+ }
+.table thead{
+ font-weight:600;
+}
+.pricename{
+ font-weight:100;
+ float:left;
+}
+.discount{
+ width:100px;
+}
+.row-btn,.row-dis{
+ height:auto;
+}
+.row .purchase-form{
+ width:1200px;
+ padding:0;
+}
+.row .purchase-form .form-group{
+ margin-right:15px;
+ margin-bottom:15px;
+}
+.row .purchase-form .form-group textarea{
+ width:725px;
+ height:60px;
+ resize:none;
+}
+.row .purchase-form .form-group .text-mark{
+ width:725px;
+}
+.purchase-form .form-group .form-control{
+ width:200px;
+}
+.purchase-form .form-group .fapiao{
+	width:150px;
+}
+.row .purchase-form .form-group .form-supply{
+ width:150px;
+}
+.row .purchase-form .form-group .form-supply-name{
+ width:330px;
+}
+
+.row-textarea .form-control{
+ width:1200px;
+}
+.row-table .table{
+ width:1200px;
+}
+.row .addpur-bt{
+ margin-bottom:10px;
+}
+.row .money1{
+ color:red;
+}
+.row .total-addpur{
+ width:1200px;
+ padding:15px 0 0 0;
+ border-top:1px solid #ccc;
+ border-bottom:1px solid #ccc;
+ margin-bottom:10px;
+}
+
+.row .total-addpur .form-group .form-control{
+ width:150px;
+}

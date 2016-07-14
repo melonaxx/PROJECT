@@ -1,0 +1,95 @@
+.row .weihandle-form{
+	width:1200px;
+	height:30px;
+	margin-left:15px;
+	padding:0;
+}
+.row .weihandle-form .form-group{
+	float:right;
+}
+.row .weihandle-form .weihandle-btn{
+	float:left;
+}
+.row .weihandle-form .weihandle-btn button{
+	margin-right:10px;
+}
+.row .weihandle-form .input-group{
+	width:345px;
+}
+.row .weihandle-table1{
+	width:1200px;
+	margin-left:15px;
+	padding:0;
+}
+.row .weihandle-table1 thead td:nth-of-type(1){
+	width:46px;
+}
+.row .weihandle-table1 thead td:nth-of-type(2){
+	width:44px;
+}
+.row .weihandle-table1 thead td:nth-of-type(3){
+	width:120px;
+}
+.row .weihandle-table1 thead td:nth-of-type(4){
+	width:120px;
+}
+.row .weihandle-table1 thead td:nth-of-type(5){
+	width:120px;
+}
+.row .weihandle-table1 thead td:nth-of-type(6){
+	width:200px;
+}
+.row .weihandle-table1 thead td:nth-of-type(7){
+	width:110px;
+}
+.row .weihandle-table1 thead td:nth-of-type(8){
+	width:110px;
+}
+.row .weihandle-table1 thead td:nth-of-type(9){
+	width:110px;
+}
+.row .weihandle-table1 thead td:nth-of-type(10){
+	width:110px;
+}
+.row .weihandle-table1 thead td:nth-of-type(11){
+	width:110px;
+}
+.modal-saodan .modalcon{
+	width:300px;
+}
+.modal-tip .modalcon{
+	width:300px;
+	margin-left: -150px;
+}
+.modal-returncheck .modalcon{
+	width:300px;
+	margin-left: -150px;
+}
+.modal-peihuo .modalcon{
+	width:300px;
+	margin-left: -150px;
+}
+.modal-yanhuo .modalcon{
+	width:300px;
+	margin-left: -150px;
+}
+.modal-subabnormal .modalcon{
+	width:412px;
+	margin-left:-206px;
+}
+.modal-subabnormal .form-inline .form-group{
+   margin-bottom:15px;
+   margin-right:10px;
+}
+.modal-subabnormal .form-inline .form-control{
+	width:150px;
+}
+
+
+
+
+
+
+
+
+

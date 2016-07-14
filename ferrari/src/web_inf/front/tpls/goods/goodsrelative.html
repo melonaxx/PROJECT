@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>米欢电商ERP</title>
+	<link rel="stylesheet" type="text/css" href="/bootstrap/css/bootstrap.min.css"/>
+	<link href="/images/favicon.ico" rel="shortcut icon">
+	<link rel="stylesheet" type="text/css" href="/bootstrap/css/bootstrap-datetimepicker.min.css"/>
+	<link href="/css/commontop.css"   rel="stylesheet" media="screen">
+	<link rel="stylesheet" type="text/css" href="/css/goods/goodsrelative.css"/>
+</head>
+<body id="relativebody">
+	{include file="../commontop.html"}
+	<div class="container-fluid container-all">
+			<div class="your-position" id="comtop-yourposition">
+				<p class="posp1">您的位置&nbsp;:&nbsp;</p>
+				<a class="posa1">首页</a>
+				<p class="posp2">&nbsp;>>&nbsp;</p>
+				<a class="posa1" href="goods.html">商品</a>
+				<P class="posp2">&nbsp;>>&nbsp;商品对应关系</P>
+			</div>
+			<div class="row">
+				<form action="" class="form-inline gl-abovetable">
+				  	<div class="form-group">
+				  		<button class="btn btn-default gladdbtn" type="button">选择店铺</button>
+			  		</div>
+			  		<div class="form-group">
+				  		<div class="input-group gl-gnall">
+					      <label for="exampleInputName2" style="line-height: 30px;">已选择店铺:</label>
+					      <span class="input-group-btn">
+					        <button class="btn btn-default" type="submit">更新当前店铺商品信息</button>
+					      </span>
+					    </div>
+			  		</div>
+				  	<div class="gl-stall" style="float:right;">
+				  		<div class="form-group" style="float:left;">
+						    <label for="exampleInputName2" style="float: left;">线上名称:</label>
+						    <input type="text" class="form-control" style="float: left;">
+					  	</div>
+					  	<div class="form-group" style="float:left;">
+						    <label for="exampleInputName2" style="float: left;">系统名称:</label>
+						    <input type="text" class="form-control" style="float: left;">
+					  	</div>
+					  	<button class="btn btn-default" type="button" style="float:left;">查询</button>
+			  		</div>
+				</form>
+	  		</div>
+	  		<div class="row">
+	  			<div class="col-md-12">
+		  			<table class="table table-bordered table-hover gl-table" id="gl-table" >
+						<thead>
+	                		<tr class="glthead active">
+		                    	<th class="glth1" style="width:46px;text-align: center;">序号</th>
+		                    	<th class="glth1" style="width:42px;text-align: center;">图片</th>
+		                    	<th style="width:150px;">线上名称</th>
+		                    	<th  style="width:150px;">规格</th>
+		                    	<th class="glth1" colspan="6" style="text-align: center;">操作</th>
+								<th class="glth1" style="width:42px;text-align: center;">图片</th>
+								<th style="width:150px;">系统名称</th>
+		                    	<th style="width:150px;">规格</th>
+	                		</tr>
+	        			</thead>
+	        			<tbody class="pstbody1">
+	                        <!-- <tr class="glonetr">
+		                        <td class="gltd1 gltdcom">1</td>
+		                        <td class="gltd2 gltdcom"><input class="allCheck" type="checkbox" value=""></td>
+		                        <td class="gltd3 gltdcom"><a href="#">删除</a></td>
+		                        <td class="gltd4">
+		                        	<div class="gl-pic">
+		                        		<img class="glsmallpic" src="/images/smile.png"/>
+		                        		<img class="glbigpic" src="/images/smile.png"/>
+		                        	</div>
+		                        </td>
+		                        <td><input type="text" class="form-control"></td>
+		                        <td><input type="text" class="form-control"></td>
+		                        <td><input type="text" class="form-control"></td>
+		                        <td><input type="text" class="form-control"></td>
+		                        <td>
+									<div class="input-group">
+								      <div class="input-group-addon">￥</div>
+								      <input type="text" class="form-control" id="exampleInputAmount">
+								    </div>
+		                        </td>
+	                        </tr> -->
+	                    </tbody>
+	                </table>
+	            </div>
+	            <div class="norecord" style="margin:0 auto;width:100%;text-align: center;display: none;">
+                	<div class="norecordc">
+                		<img src="/images/empty.jpg"/>
+                		<span>没有找到记录，请调整搜索条件。</span>
+                	</div>
+                </div>
+                <div class="col-md-5"></div>
+                <div class="col-md-7 ps-content">
+                <form action="" class="form-inline" style="float:left;margin-top:10px;padding-left:80px;">
+                	<div class="form-group ps-content1">
+					    <label for="exampleInputEmail2" id="ps-contentl1">每页:</label>
+					    <select class="form-control pseverypagel1" style="width:80px;">
+					    	<option class="evpageo">10</option>
+					    	<option class="evpageo">15</option>
+					    	<option class="evpageo">20</option>
+					    	<option class="evpageo">50</option>
+					    	<option class="evpageo">100</option>
+						</select>
+					</div>
+					<div class="form-group">
+					  <ul class="pageul">
+					    <li><a href="#">首页</a></li>
+					    <li><a href="#">上一页</a></li>
+				      </ul>
+					</div>
+					<div class="form-group ps-contentl2" id="ps-contentl2">
+					    <label for="exampleInputEmail2">第</label>
+					    <input type="text" class="form-control" style="width:45px;float:left;margin-right:0;">
+					    <label for="exampleInputEmail2" class="ps-contentl3">页&nbsp;(共</label>
+					    <span class="ps-allpage" style="float:left;">13476</span>
+					    <label for="exampleInputEmail2">页,</label>
+					    <span class="ps-allcount" style="float:left;">13470</span>
+					    <label for="exampleInputEmail2" style="width:30px;">条)</label>
+					</div>
+					<div class="form-group">
+					  <ul class="pageul">
+					    <li><a href="#">下一页</a></li>
+					    <li><a href="#">末页</a></li>
+					  </ul>
+					</div>
+                </form>
+                </div>
+	  		</div>
+	  		<!-- Button trigger modal -->
+			<!-- Modal -->
+			<div class="modal downcontent glmodal" id="myModal">
+			    <div class="modalcon">
+			      <div class="modal-bt">
+			        <button type="button" class="close close-btn" data-dismiss="modal" aria-label="Close" id="close-btn"><span aria-hidden="true">x</span></button>
+			        <h4 class="modal-title size-title">选择店铺</h4>
+			      </div>
+			      <div class="modal-bd">
+			        <form action="" class="form-inline">
+      					<div class="form-group">
+						    <label for="exampleInputName2" class="gcbclassnamel">选择店铺:</label>
+						    <select class="form-control">
+						    </select>
+						</div>
+			        </form>
+			      </div>
+			      <div class="modal-bo">
+			      	<button type="button" class="btn btn-default glsuredel1">确定</button>
+			        <button type="button" class="btn btn-default glcanceldel close-btn" >取消</button>
+			      </div>
+			    </div>
+			</div>
+			<!-- Button trigger modal -->
+			<!-- Modal -->
+			<div class="modal" id="myModalgl2">
+			    <div class="modalcon">
+			      <div class="modal-bt">
+			        <button type="button" class="close close-btn" data-dismiss="modal" aria-label="Close" id="close-btn"><span aria-hidden="true">x</span></button>
+			        <h4 class="modal-title size-title">提示</h4>
+			      </div>
+			      <div class="modal-bd">
+      					成功删除
+      					<span class="gldelnum"></span>
+      					条数据，失败0条数据。
+			      </div>
+			      <div class="modal-bo">
+			      	<button type="button" class="btn btn-default glsuredel2" data-dismiss="modal">确定</button>
+			      </div>
+			    </div>
+			</div>
+			<div class="push"></div>
+		</div>
+		{include file="../comfoot.html"}
+	<script src="/js/jquery-1.11.0.min.js" ></script>
+	<script src="/bootstrap/js/bootstrap.min.js"  ></script>
+	<script src="/bootstrap/js/bootstrap-datetimepicker.min.js"></script>
+	<script src="/js/commontop.js"></script>
+	<script src="/js/mycom.js"></script>
+	<script src="/js/goods/goodsrelative.js"></script>
+</body>
+</html>

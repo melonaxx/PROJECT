@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>米欢电商ERP</title>
+		<link href="/images/favicon.ico" rel="shortcut icon">
+		<link rel="stylesheet" type="text/css" href="/bootstrap/css/bootstrap-datetimepicker.min.css"/>
+		<link href="/bootstrap/css/bootstrap.min.css"  rel="stylesheet" media="screen">
+		<link href="/css/commontop.css"   rel="stylesheet" media="screen">
+		<link rel="stylesheet" type="text/css" href="/css/order/childorder.css"/>
+		<style>
+			{literal}
+				@media screen and (max-width: 1120px){ 
+					/*当屏幕尺寸小于1120px时，应用下面的CSS样式*/
+				    .navbar-nav,#comtop-right{display: none;}
+				}
+			{/literal}
+		</style>
+	</head>
+	<body>
+		{include file="../commontop.html"}
+		<div class="container-fluid container1">
+			<div class="row ware-row">
+				<h5 class="col-md-12">您的位置： <a href="javascript:;">首页</a> » <a href="javascript:;">订单</a> » 子订单</h5>
+			</div>
+			<div class="row">
+				<ul class="nav nav-tabs col-md-12 childorder-nav">
+				  <li role="presentation">
+				  	<a href="/order/mainorder.php">添加主订单</a>
+				  </li>
+				  <li role="presentation">
+				  	<a href="/order/checkmain.php">审核主订单</a>
+				  </li>
+				  <li role="presentation">
+				  	<a href="/order/mainlist.php">主订单列表</a>
+				  </li>
+				  <li role="presentation" class="active">
+				  	<a href="/order/childorder.php">子订单</a>
+				  </li>
+
+				</ul>
+			</div>
+			<div class="row">
+				<form action="" class="form-inline col-md-12 childorder-form">
+					<div class="form-group">
+						<button class="btn btn-sm btn-default" type="reset" style="margin-right: 0;">导出</button>
+					</div>
+					<table class="table table-hover childorder-table">
+						<thead>
+		            		<tr class="active">
+		                    	<td>序号</td>
+		                    	<td>
+		                    		<input class="allcheck" type="checkbox" value="">
+		                    	</td>
+		                    	<td>下单时间</td>
+		                    	<td>所在位置</td>
+		                    	<td>订单类别</td>
+		                    	<td>购买渠道</td>
+		                    	<td>买家名称</td>
+		                    	<td>手机</td>
+		                    	<td>入账状态</td>
+		                    	<td>发货状态</td>
+		                    	<td>减库状态</td>
+		                    	<td>店铺</td>
+		                    	<td>客服</td>
+		                    	<td>订单编号</td>
+		            		</tr>
+		    			</thead>
+		    			<tbody class="ortbody">
+		    			{foreach from=$list key=k item=row}
+		                    <tr class="order-tr">
+		                        <td class="order-td">{$k+1}</td>
+		                        <td><input class="checkbox-choice" type="checkbox" value=""></td>
+		                        <td>{$row['orderdate']}</td>
+		                        <td>{if $row['orstatus'] eq 'N'}未审核{elseif $row['orstatus'] eq 'P'}打单配货{elseif $row['orstatus'] eq 'T'}条码验货{elseif $row['orstatus'] eq 'C'}称重计费{elseif $row['orstatus'] eq 'F'}扫单发货{elseif $row['orstatus'] eq 'Y'}已发货{/if}</td>
+		                        <td>{$row['classname']}</td>
+		                        <td>{$row['qudao']}</td>
+		                        <td>{$row['cusname']}</td>
+		                        <td>{$row['cusmobile']}</td>
+		                        <td>{if $row['finance'] eq 'N'}未入账{elseif $row['finance'] eq 'A'}自动入账{elseif $row['finance'] eq 'H'}手动入账{elseif $row['finance'] eq 'P'}部分入账{/if}</td>
+		                        <td>{if $row['deliversta'] eq 'N'}无需发货{elseif $row['deliversta'] eq 'E'}未发货{elseif $row['deliversta'] eq 'P'}部分发货{elseif $row['deliversta'] eq 'A'}完成发货{/if}</td>
+		                        <td>{if $row['desstoresta'] eq 'N'}未减库{elseif $row['desstoresta'] eq 'H'}手动减库{elseif $row['desstoresta'] eq 'A'}自动减库{elseif $row['desstoresta'] eq 'B'}无需减库{/if}</td>
+		                        <td>{$row['shopname']}</td>
+		                        <td>{$row['username']}</td>
+		                        <td>{$row['id']}</td>
+		                    </tr>
+		                {/foreach}
+		                </tbody>
+		            </table>
+	            </form>
+	            <form action="" class="form-inline col-md-12 childorder-form">
+					<div class="form-group">
+						<button class="btn btn-sm btn-default" type="reset" style="margin-right: 0;">导出</button>
+					</div>
+					<table class="table table-hover childorder-table1">
+						<thead>
+		            		<tr class="active">
+		                    	<td>序号</td>
+		                    	<td>
+		                    		<input class="allcheck1" type="checkbox" value="">
+		                    	</td>
+		                    	<td>商品名称</td>
+		                    	<td>商品数量</td>
+		            		</tr>
+		    			</thead>
+		    			<tbody class="ortbody">
+		    			{foreach from=$cpro key=kp item=cpros}
+		                    <tr class="order-tr">
+		                        <td class="order-td">{$kp+1}</td>
+		                        <td><input class="checkbox-choice1" type="checkbox" value=""></td>
+		                        <td>{$cpros['productname']}（{$cpros['gui']}）</td>
+		                        <td>{$cpros['totals']}</td>
+		                    </tr>
+		                {/foreach}
+		                </tbody>
+		            </table>
+	            </form>
+			</div>
+			<div class="push"></div>
+		</div>
+		{include file="../comfoot.html"}
+		<script src="/js/jquery-1.11.0.min.js" ></script>
+		<script src="/bootstrap/js/bootstrap.min.js"></script>
+		<script src="/js/commontop.js"></script>
+		<script src="/js/order/childorder.js"></script>
+	</body>
+</html>

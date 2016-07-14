@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>米欢电商ERP</title>
+ 		<link href="/images/favicon.ico" rel="shortcut icon">
+		<link rel="stylesheet" type="text/css" href="/bootstrap/css/bootstrap-datetimepicker.min.css"/>
+		<link rel="stylesheet" type="text/css" href="/css/purchase/addpurchase.css"/>
+		<link href="/bootstrap/css/bootstrap.min.css"  rel="stylesheet" media="screen">
+		<link href="/css/commontop.css"   rel="stylesheet" media="screen">
+		<style>
+			{literal}
+				@media screen and (max-width: 1120px){ 
+					/*当屏幕尺寸小于1120px时，应用下面的CSS样式*/
+				    .navbar-nav,#comtop-right{display: none;}
+				}
+			{/literal}
+		</style>
+	</head>
+	<body>
+		{include file="../commontop.html"}
+		<div class="container-fluid container1">
+			<div class="row ware-row">
+				<h5>您的位置： <a href="javascript:;">首页</a> » <a href="javascript:;">采购</a> </h5>
+			</div>
+			<div class="row">
+				<form class="form-inline col-xs-12 purchase-form">
+					<div class="form-group">
+					    <label for="exampleInputEmail2" class="labelname">采购公司：</label>
+					    <select class="form-control" id="exampleInputEmail2">
+						  <option>北京总公司</option>
+						  <option>上海分公司</option>
+						  <option>河北分公司</option>
+						</select>
+					</div>
+				    <div class="form-group">
+				    	<label for="exampleInputName2" class="labelname">收货仓库：</label>
+				    	<select class="form-control" id="exampleInputName2">
+					  		<option>北京仓库</option>
+					  		<option>上海仓库</option>
+					  		<option>河北仓库</option>
+						</select>
+				    </div>
+				    <br>
+				    <div class="form-group">
+					    <label for="exampleInputName2" class="labelname">&nbsp;&nbsp;&nbsp;供应商：</label>
+					    <input type="text" class="form-control form-supply" id="exampleInputName2" placeholder="请搜索供应商名称">
+					    <select class="form-control form-supply-name">
+					    	<option value=""></option>
+					    </select>
+				 	</div>
+				    <br>
+				    <div class="form-group">
+						<label for="exampleInputName2"class="labelname">创建日期：</label>
+						<input type="text" class="form-control" id="exampleInputName2" readonly="readonly" value="2016-03-01 13:58:37" />
+					</div>
+					<div class="form-group">
+						<label for="exampleInputName2"class="labelname">采购单编码：</label>
+						<input type="text" class="form-control enterware-code" id="exampleInputName2" readonly="readonly"/>
+					</div>
+					<div class="form-group">
+						<label for="exampleInputName2"class="labelname">审核状态：</label>
+						<input type="text" class="form-control form-supply" id="exampleInputName2" readonly="readonly" value="通过审核" />
+					</div>
+				    <br>
+				    <div class="form-group">
+				   		<label for="exampleInputName2" class="labelname">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;摘要：</label>	
+				  		<textarea class="form-control" rows="3"></textarea>
+				    </div>
+				    <br>
+				    
+					<div class="row-bold addpur-bt">商品信息</div>
+					<div class="form-group">
+						<input class="btn btn-default btn-add" type="button" value="添加">
+						<input class="btn btn-default btn-del" type="button" value="删除">
+					</div>
+					<table class="table table-hover addpurchase-table" border="1">
+						<thead>
+							<tr class="active">
+							    <td>序号</td>
+							    <td width="46px">
+									<label class="checkbox-all"><input class="allCheck checkbox-choice" type="checkbox" value=""></label>
+								</td>
+								<td>搜索</td>
+								<td>商品名称与规格</td>
+								<td>单位</td>
+								<td>单价</td>
+								<td>数量</td>
+								<td>总价(含税)
+								<td>税率(%)</td>
+								<td>税额</td>
+								<td>不含税价</td>
+							</tr>
+						</thead>
+						<tbody id="tbody1">
+							<!-- <tr class="onetr1">
+								<td  class="onetd1">1</td>
+								<td>
+									<label class="checkbox-all">
+										<input class="checkbox-choice" type="checkbox" value="">
+									</label>
+								</td>
+	                        	<td style="text-align:center;">
+	                        		<input type="text" class="form-control searchbox seachpro" placeholder="请搜索商品名称"/>
+	                        	</td>
+	                        	<td>
+	                        		<select class="form-control nameorsize productname" name="shang"></select>
+	                        	</td>
+	                        	<td class="danwei">
+	                        		<span></span>
+	                        		<input type="hidden" name="danweiid" class="dwid" value="">
+	                        	</td>
+	                        	<td class="danjia">
+	                        		<label class="labelname">￥</label>
+	                        		<input type="text" class="form-control singleprice" name="danjia"/>
+	                        	</td>
+	                        	<td>
+	                        		<input type="text" class="form-control goodsnum shuliang" placeholder="必填" name="shuliang"/>
+	                        	</td>
+	                        	<td >￥<input type="text" class="zongjia form-control" style="border:none;width:118px;" readonly="readonly" name="zongjia"/></td>
+	                        	<td ><input type="text" class="form-control shuilv" name="shuilv"/></td>
+	                        	<td >￥<input  type="text" class="shuie form-control" style="border:none;width:78px;" readonly="readonly" name="shuie"></td>
+	                        	<td >￥<input  type="text" class="shuijia form-control" style="border:none;width:78px;" readonly="readonly" name="shuijia"></td>
+							</tr> -->
+	                    </tbody>
+					</table>
+					<div class="form-group">
+				   		<label for="exampleInputName2" class="labelname">备注：</label>	
+				  		<textarea class="form-control text-mark" rows="3"></textarea>
+				    </div>
+				    <br>
+					<div class="form-group" style="margin-top:40px;">
+						<button class="btn btn-default" type="submit">提交</button>
+						<button class="btn btn-default" type="reset">重置</button>
+					</div>
+				</form>
+			</div>
+			<div class="push"></div>
+		</div>
+		{include file="../comfoot.html"}
+		<script type="text/javascript" src="/js/jquery-1.11.0.min.js"></script>
+		<script type="text/javascript" src="/js/commontop.js"></script>
+		<script type="text/javascript" src="/bootstrap/js/bootstrap.min.js" ></script>
+		<script type="text/javascript" src="/bootstrap/js/bootstrap-datetimepicker.min.js"></script>
+		<script type="text/javascript" src="/js/mycom.js"></script>
+		<script type="text/javascript" src="/js/purchase/purchaselist_change.js"></script>
+		<script type="text/javascript">
+			$('#datetimepicker').datetimepicker({
+			    format: 'yyyy-mm-dd hh:ii'
+			});
+		</script>
+	</body>
+</html>

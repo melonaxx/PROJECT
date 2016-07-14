@@ -1,0 +1,178 @@
+/*调拨单记录*/
+.row .packinglist-nav{
+	width:1200px;
+	padding:0;
+	margin-left: 15px;
+}
+.row .packing-form{
+	width:1200px;
+	padding:0;
+	margin-left: 15px;
+}
+.packing-form .form-group{
+	float:right;
+	margin-bottom: 10px;
+	margin-left: 10px;
+}
+.row .packing-table{
+	width:1200px;
+	padding:0;
+	margin-left: 15px;
+}
+.row .packing-table .wareallocate-td1{
+	width:46px;
+}
+.row .packing-table .wareallocate-td2{
+	width:60px;
+	text-align: left;
+}
+.row .packing-table tbody td:nth-of-type(2){
+	text-align: left;
+}
+
+.row .packing-table .wareallocate-td3{
+	width:150px;
+}
+.row .packing-table .wareallocate-td4{
+	width:150px;
+}
+.row .packing-table .wareallocate-td5{
+	width:150px;
+}
+.row .packing-table .wareallocate-td6{
+	width:150px;
+}
+.row .packing-table .wareallocate-td7{
+	width:100px;
+}
+.row .packing-table .wareallocate-td8{
+	width:294px;
+}
+.row .packing-table .wareallocate-td9{
+	width:100px;
+}
+/*调拨单*/
+.wareallocate-form{
+	width:1200px;
+	padding:0;
+	margin-left: 15px;
+}
+.wareallocate-form .form-group .form-control{
+	margin-right:10px;
+}
+.wareallocate-form .form-group{
+	margin-bottom: 15px;
+	
+}
+.row .wareallocate-table{
+	width:1200px;
+	padding:0;
+}
+.wareallocate-table thead td:nth-of-type(1){
+	width:46px;
+}
+.wareallocate-table thead td:nth-of-type(2){
+	width:46px;
+}
+.wareallocate-table thead td:nth-of-type(3){
+	width:120px;
+}
+.wareallocate-table tbody td:nth-of-type(3) select{
+	width:110px;
+}
+.wareallocate-table thead td:nth-of-type(4){
+	width:100px;
+}
+.wareallocate-table tbody td:nth-of-type(4) input{
+	width:90px;
+}
+.wareallocate-table thead td:nth-of-type(5){
+	width:278px;
+}
+.wareallocate-table tbody td:nth-of-type(5) select{
+	width:268px;
+}
+.wareallocate-table thead td:nth-of-type(6){
+	width:120px;
+}
+.wareallocate-table tbody td:nth-of-type(6) input{
+	width:110px;
+}
+.wareallocate-table thead td:nth-of-type(7){
+	width:120px;
+}
+.wareallocate-table tbody td:nth-of-type(7) select{
+	width:110px;
+}
+.wareallocate-table thead td:nth-of-type(8){
+	width:120px;
+}
+.wareallocate-table tbody td:nth-of-type(8) select{
+	width:110px;
+}
+.wareallocate-table thead td:nth-of-type(9){
+	width:100px;
+}
+.wareallocate-table tbody td:nth-of-type(9) input{
+	width:90px;
+}
+.wareallocate-table thead td:nth-of-type(10){
+	width:150px;
+}
+.wareallocate-table tbody td:nth-of-type(10) input{
+	width:140px;
+}
+.no-record{
+	width:100%;
+	height:90px;
+	line-height:90px;
+	margin:0 auto;
+	text-align: center;
+}
+.modal-allocate .modalcon{
+	width:750px;
+	margin-left:-375px;
+}
+.allocate-detail{
+	cursor:pointer;
+}
+.allocate-print{
+	cursor:pointer;
+}
+.allocate-form{
+	margin:10px 0 10px 0;
+}
+.allocate-form .form-group{
+	margin-right:15px;
+}
+.allocate-form .form-group .allocatemodal-mark{
+	width:640px;
+}
+.modal-allocate .modalcon .allocatemodal-table{
+	width:700px;
+}
+.modal-allocate .modalcon .allocatemodal-thead>tr>td{
+	font-weight:600;
+}
+.packmodal-table .allocatemodal-code{
+	width:46px;
+}
+.packmodal-table .allocatemodal-name{
+	width:356px;
+}
+.packmodal-table .allocatemodal-size{
+	width:110px;
+}
+.packmodal-table .allocatemodal-num{
+	width:100px;
+}
+
+
+
+
+
+
+
+
+
+

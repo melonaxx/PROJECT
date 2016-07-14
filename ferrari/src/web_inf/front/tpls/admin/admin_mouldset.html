@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>米欢电商ERP</title>
+ 	<link href="/images/favicon.ico" rel="shortcut icon">
+	<link href="/bootstrap/css/bootstrap.min.css"  rel="stylesheet" media="screen">
+	<link href="/css/commontop.css"   rel="stylesheet" media="screen">
+	<link rel="stylesheet" type="text/css" href="/css/admin/admin_mouldset.css"/>
+	
+</head>
+<body>
+	{include file="../commontop.html"}
+	<div class="container-fluid container1">
+		<div class="row ware-row">
+			<h5 class="col-md-12">您的位置： <a href="javascript:;">首页</a> » <a href="javascript:;">管理</a> »模板设置</h5>
+		</div>
+		<div class="row">
+			<ul class="nav nav-tabs col-md-12 mouldset-nav">
+				<li power="presentation" class="active">
+					<a href="/admin/admin_mouldset.php">快递单模板</a>
+				</li>
+				<li power="presentation">
+					<a href="/admin/shipsetlist.php">发货单模板</a>
+				</li>
+			</ul>
+		</div>
+		<div class="row">
+			<a href="/admin/adddesignexpress.php" class="btn btn-default mouldset-add">添加</a>
+			<br>
+			<table class="table table-hover mouldset-table" style="">
+				
+				<thead>
+					<tr class="active tr1">
+						<td rowspan="2" class="table_th_number">序号</td>
+						<td rowspan="2" class="table_th_number" style="width:200px;">操作</td>
+						<td rowspan="2">模板图片</td>
+						<td rowspan="2">模板名称</td>
+						<td rowspan="2">快递公司</td>
+						<td colspan="4">纸张信息（单位：毫米）</td>
+						<td rowspan="2">最后修改时间</td>
+					</tr>
+					<tr class="active tr2">
+						<td>向下偏</td>
+						<td>向右偏</td>
+						<td>纸张宽</td>
+						<td>纸张高</td>
+					</tr>
+				</thead>
+				{foreach from=$model item=model_temp}
+				<tbody>
+					<tr>
+						<td class="center">{$model_temp['mid']}</td>
+						<td class="center">
+							<a href="/admin/designexpress.php?id={$model_temp['mid']}" target="_blank" class="table_a_operate">设计&nbsp;&nbsp;&nbsp;</a>
+							<a is_default="" href="javascript:void(0)" mid={$model_temp['mid']} class="table_a_operate delete">删除&nbsp;&nbsp;&nbsp;</a>
+							<!-- <a is_default="" href="/admin/deletelodopmodel.php?id={$model_temp['mid']}" class="table_a_operate delete">删除&nbsp;&nbsp;&nbsp;</a> -->
+							<a href="javascript:;" class="table_a_operate set-default"></a>
+						</td>
+						<td>
+							<img class="images center" src="http://img.1sheng.com/{$model_temp['image']}" >
+							<img class="bigimg center"src="http://img.1sheng.com/{$model_temp['image']}" >
+						</td>
+						<td>{$model_temp['modelname']}</td>
+						<td express_id="{$model_temp['pressid']}">{$model_temp['name']}</td>
+						<td>{$model_temp['papertop']}</td>
+						<td>{$model_temp['paperleft']}</td>
+						<td>{$model_temp['paperwidth']}</td>
+						<td>{$model_temp['paperheight']}</td>
+						<td>{$model_temp['updatetime']}</td>
+					</tr>
+				</tbody>
+				{/foreach}
+			</table>
+		</div>
+		<div class="row" style="display:none;">
+			<div class="no-record col-xs-12"><img src="/images/empty.jpg"/><span>没有找到记录，请调整搜索条件。</span></div>
+		</div>
+		<!--删除 -->
+		<div class="modal modal-mouldset">
+			<div class="modalcon">
+				<div class="modal-bt">
+					<h4 class="modal-title size-title" id="myModalLabel">提示</h4>
+				    <button type="button" class="close close-btn" data-dismiss="modal" aria-label="Close" id="close-btn"><span aria-hidden="true">x</span></button>
+				</div>
+				<div class="modal-bd">
+				    <span>您确定要删除该快递吗?</span>
+				</div>
+				<div class="modal-bo">
+		        	<button type="button" class="btn btn-default btn-sm">确定</button>
+		        	<button type="button" class="btn btn-default btn-sm close-btn">取消</button>
+				</div>
+			</div>
+		</div>
+		<div class="modal modal-mouldset1">
+			<div class="modalcon">
+				<div class="modal-bt">
+					<h4 class="modal-title size-title" id="myModalLabel">提示</h4>
+				    <button type="button" class="close close-btn" data-dismiss="modal" aria-label="Close" id="close-btn"><span aria-hidden="true">x</span></button>
+				</div>
+				<div class="modal-bd">
+				    <span>确定要删除吗</span>
+				</div>
+				<div class="modal-bo">
+		        	<button type="button" class="btn btn-default btn-sm bun-sure">确定</button>
+		        	<button type="button" class="btn btn-default btn-sm close-btn">取消</button>
+				</div>
+			</div>
+		</div>
+		
+		
+		<div class="push"></div>
+	</div>
+	{include file="../comfoot.html"}
+	<script type="text/javascript" src="/js/jquery-1.11.0.min.js"></script>
+	<script type="text/javascript" src="/js/commontop.js"></script>
+	<script type="text/javascript" src="/bootstrap/js/bootstrap.min.js" ></script>
+	<script type="text/javascript" src="/js/mycom.js"></script>
+	<script type="text/javascript" src="/js/admin/admin_mouldset.js"></script>
+</body>
+</html>

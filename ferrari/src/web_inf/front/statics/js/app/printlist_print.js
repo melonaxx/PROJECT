@@ -1,0 +1,13 @@
+$(function(){
+	$("input").val("");
+	$("textarea").val("");
+	/*-----------------点击编辑>提交印刷单>成功-----------*/
+	$(".psedit").on("click",function(){
+		$(".psallcontent").hide();
+		$("#pseditsheet").show();
+		$(".ps-com").on("click",function(){
+			$("#pseditsheet").hide();
+			$(".ps-opsuccess").show();
+		});
+	});
+})

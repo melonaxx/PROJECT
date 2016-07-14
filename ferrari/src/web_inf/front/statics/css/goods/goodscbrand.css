@@ -1,0 +1,94 @@
+.row .goodscbrand-nav{
+	width:1200px;
+	padding:0;
+	margin-left: 15px;
+}
+.row .gbtablel{
+	width:1200px;
+	padding:0;
+	margin-left: 15px;
+}
+.row .gbtablel thead td:nth-of-type(1){
+	width:140px;
+}
+.row .gbtablel thead td:nth-of-type(2){
+	width:1080px;
+	text-align:left;
+}
+.row .gbtablel tbody td:nth-of-type(2){
+	text-align:left;
+}
+.row .gbtablel .gcbmodify{
+	margin-right:15px;
+	cursor:pointer;
+}
+.row .gbtablel .delcate{
+	margin-right:15px;
+	cursor:pointer;
+}
+.row .gbtablel .addchildcate{
+	cursor:pointer;
+}
+
+#myModaladds .modalcon{
+	width:300px;
+	margin-left: -150px;
+}
+#myModaladdo .modalcon{
+	width:300px;
+	margin-left: -150px;
+}
+#myModaldel .modalcon{
+	width:300px;
+	margin-left: -150px;
+}
+
+#myModaldel2 .modalcon{
+	width:300px;
+	margin-left: -150px;
+}
+.myModaldelsure .modalcon{
+	width:300px;
+	margin-left: -150px;
+}
+#myModalmodson .modalcon{
+	width:300px;
+	margin-left: -150px;
+}
+#myModaladdb .modalcon{
+	width:300px;
+	margin-left: -150px;
+}
+#myModaladdob .modalcon{
+	width:300px;
+	margin-left: -150px;
+}
+.myModaldelb .modalcon{
+	width:300px;
+	margin-left: -150px;
+}
+#myModalmodsonb .modalcon{
+	width:300px;
+	margin-left: -150px;
+}
+.myModaldelb2 .modalcon{
+	width:300px;
+	margin-left: -150px;
+}
+.myModaldelbsure .modalcon{
+	width:300px;
+	margin-left: -150px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+

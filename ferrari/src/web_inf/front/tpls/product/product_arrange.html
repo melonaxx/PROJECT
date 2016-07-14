@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>米欢电商ERP</title>
+		<link href="/images/favicon.ico" rel="shortcut icon">
+		<link rel="stylesheet" type="text/css" href="/bootstrap/css/bootstrap-datetimepicker.min.css"/>
+		<link href="/bootstrap/css/bootstrap.min.css"  rel="stylesheet" media="screen">
+		<link href="/css/commontop.css"   rel="stylesheet" media="screen">
+		<link rel="stylesheet" type="text/css" href="/css/warehouse/warestatus.css"/>
+		<link rel="stylesheet" type="text/css" href="/css/product/product_arrange.css"/>
+		<style>
+			{literal}
+				@media screen and (max-width: 1120px){ 
+					/*当屏幕尺寸小于1120px时，应用下面的CSS样式*/
+				    .navbar-nav,#comtop-right{display: none;}
+				}
+			{/literal}
+		</style>
+	</head>
+	<body>
+		{include file="../commontop.html"}
+		<div class="container-fluid container1">
+			<div class="row ware-row">
+				<h5 class="col-md-12">您的位置： <a href="javascript:;">首页</a> » <a href="javascript:;">生产单</a> »安排生产</h5>
+			</div>
+			<div class="row">
+				<form class="form-inline col-xs-12 arrange-form" action="/product/produce_start.php" method="post" onsubmit="return fun()">
+				    <div class="form-group">
+				    	<label for="exampleInputName2" class="labelname">&nbsp;&nbsp;&nbsp;入库仓库：</label>
+				    	<input class="form-control" id="exampleInputName2" value="{$one_pro_list['storeinfo']}" readonly="readonly">
+				    </div>
+				    <div class="form-group">
+						<label for="exampleInputName2"class="labelname">创建日期：</label>
+						<input type="text" class="form-control" id="exampleInputName2" readonly="readonly" value="{$one_pro_list['actiondate']}" />
+					</div>
+					<br>
+					<div class="form-group">
+						<label for="exampleInputName2"class="labelname">生产单编码：</label>
+						<input type="text" class="form-control" id="exampleInputName2" value="{$one_pro_list['number']}" readonly="readonly"/>
+					</div>
+					<div class="form-group">
+						<label for="exampleInputName2"class="labelname">审核状态：</label>
+						<input type="text" class="form-control" id="exampleInputName2" readonly="readonly" {if $one_pro_list['statusaudit'] == "Y"}value="通过审核"{/if}/>
+					</div>
+				    <br>
+				    <div class="form-group">
+				   		<label for="exampleInputName2" class="labelname">生产单摘要：</label>	
+				  		<textarea class="form-control" rows="3" readonly="readonly">{$one_pro_list['brief']}</textarea>
+				    </div>
+				    <div class="form-group">
+				   		<label for="exampleInputName2" class="labelname">生产单备注：</label>	
+				  		<textarea class="form-control text-mark" rows="3" readonly="readonly">{$one_pro_list['comment']}</textarea>
+				    </div>
+				    <br>
+					<div class="row-bold addpur-bt">生产商品信息</div>
+					<table class="table table-hover arrange-table" border="1">
+						<thead>
+							<tr class="active">
+								<td>商品名称与规格</td>
+								<td>图片</td>
+								<td>单位</td>
+								<td>数量</td>
+							</tr>
+						</thead>
+						<tbody id="tbody1">
+	                        <tr class="onetr1">
+		                        <td style="text-align:left;">
+		                        	{$one_pro_list['goodsinfo']}
+		                        </td>
+		                        <td class="warestatus-tbody-img"style="text-align:center;">
+		                        	<img src="{$one_pro_list['img']}" class="img1"/>
+		                        	<img src="{$one_pro_list['img']}" class="img2"/>
+		                        </td>
+		                        <td>{$one_pro_list['proflats_name']}</td>
+		                        <td><span id="total"> {$one_pro_list['total']} </span></td>
+	                        </tr>
+	                    </tbody>
+					</table>
+
+					
+					<div class="row-bold addpur-bt">选择代工户</div>
+					<div class="form-group">
+						<input class="btn btn-default btn-add" type="button" value="添加">
+						<input class="btn btn-default btn-del" type="button" value="删除">
+					</div>
+					<table class="table table-hover arrange-table1" border="1">
+						<thead>
+							<tr class="active">
+								<td>序号</td>
+								<td>
+									<input class="allCheck choice-all" type="checkbox" value="">
+									<input type="hidden" name="proid" value="{$one_pro_list['id']}">
+									<input type="hidden" name="storeid" value="{$one_pro_list['storeid']}">
+								</td>
+								<td>搜索</td>
+								<td>代工户名称</td>
+								<td>数量</td>
+								<td>备注</td>
+								<td>操作</td>
+							</tr>
+						</thead>
+						<tbody id="arrange-tbody">
+	                    </tbody>
+	                    <tfoot>
+	                    	<tr>
+	                    		<td>合计</td>
+	                    		<td colspan="6">
+	                    			<span>生产数量：<b style="color:red;margin-left: 10px;" id="produce_num"></b></span>
+	                    		</td>
+	                    	</tr>
+	                    </tfoot>
+					</table>
+					<div class="form-group">
+						<button class="btn btn-default" type="submit">提交</button>
+						<button class="btn btn-default" type="reset">重置</button>
+					</div>
+				</form>
+			</div>
+			<div class="push"></div>
+		</div>
+		{include file="../comfoot.html"}
+		<script type="text/javascript" src="/js/jquery-1.11.0.min.js"></script>
+		<script type="text/javascript" src="/js/commontop.js"></script>
+		<script type="text/javascript" src="/bootstrap/js/bootstrap.min.js" ></script>
+		<script type="text/javascript" src="/bootstrap/js/bootstrap-datetimepicker.min.js"></script>
+		<script type="text/javascript" src="/js/mycom.js"></script>
+		<script type="text/javascript" src="/js/product/product_arrange.js"></script>
+		<script type="text/javascript" src="/js/warehouse/warestatus.js"></script>
+	</body>
+</html>

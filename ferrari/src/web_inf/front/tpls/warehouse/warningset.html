@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>米欢电商ERP</title>
+ 		<link href="/images/favicon.ico" rel="shortcut icon">
+		<link href="/bootstrap/css/bootstrap.min.css"  rel="stylesheet" media="screen">
+		<link href="/css/commontop.css"   rel="stylesheet" media="screen">
+		<link rel="stylesheet" type="text/css" href="/css/warehouse/warestatus.css"/>
+		<link rel="stylesheet" type="text/css" href="/css/warehouse/warewarning.css"/>
+		<style>
+			{literal}
+				@media screen and (max-width: 1120px){
+					/*当屏幕尺寸小于1120px时，应用下面的CSS样式*/
+				    .navbar-nav,#comtop-right{display: none;}
+				}
+			{/literal}
+		</style>
+	</head>
+	<body>
+		{include file="../commontop.html"}
+		<div class="container-fluid container1">
+			<div class="row ware-row warning-row1">
+				<a href="warewarning.php">返回库存预警</a>
+			</div>
+			<div class="row">
+				<form class="form-inline warnset-form">
+					<div class="form-group">
+						<input class="btn btn-default btn-sm batch-set" type="button" value="批量设置">
+						<input class="btn btn-default btn-sm cancle-lower-limit" type="button" value="取消下限">
+						<input class="btn btn-default btn-sm cancle-upper-limit" type="button" value="取消上限">
+					</div>
+					<div class="form-group warnset-btn">
+					   <button type="button" class="btn btn-default btn-sm searchbtn">查询</button>
+					   <button type="button" class="btn btn-default btn-sm resetbtn">清空</button>
+					</div>
+					<div class="form-group whether-warn">
+					    <label for="exampleInputName2"class="labelname">有无预警：</label>
+					    <select class="form-control warningset-ware iswarning" id="exampleInputName2" style="width:150px;">
+					    	<option value="-1">--请选择--</option>
+					    	<option value="Y">有</option>
+					    	<option value="N">无</option>
+					    </select>
+					</div>
+					<div class="form-group warnset-ware">
+					    <label for="exampleInputName2"class="labelname">仓库：</label>
+					    <select class="form-control warningset-ware storedata" id="exampleInputName2" style="width:150px;">
+					    	{foreach $storelist as $key=>$value}
+						    	<option value="{$value['id']}">
+						    	{$value['name']}
+						    	{if $value['storetype'] eq 'Sales'}（销售仓）{else if $value['storetype'] eq 'Defective'}（次品仓）{else if $value['storetype'] eq 'Customer'}（售后仓）{else if $value['storetype'] eq 'Purchase'}（采购仓）{/if}
+						    	</option>
+						    {/foreach}
+					    </select>
+					</div>
+				</form>
+			</div>
+			<div class="row">
+				<table class="table table-hover warnset-table" id="warnset-table">
+					<thead class="warn-thead">
+						<tr class="active">
+							<td class="warnset-num">序号</td>
+							<td class="warnset-checkbox">
+							  <label>
+							    <input type="checkbox" value="" class="warnset-allcheck">
+							  </label>
+							</td>
+							<td class="warnset-operate">操作</td>
+							<td class="warnset-img">图片</td>
+							<td class="warnset-name" style="text-align: left;">商品名称</td>
+							<td class="warnset-size">规格</td>
+							<td class="warnset-barcode">商品条码</td>
+							<td class="warnset-fact">实际数量</td>
+							<td class="warnset-lock">锁定数量</td>
+							<td class="warnset-onway">在途数量</td>
+							<td class="warnset-product">生产中数量</td>
+							<td class="warnset-can">可用数量</td>
+							<td class="warnset-lowlimit">下限</td>
+							<td class="warnset-uplimit">上限</td>
+						</tr>
+					</thead>
+					<tbody class="warestatus-tbody">
+						{foreach $warninglist as $key=>$value}
+						<tr class="warnset-tr">
+							<td>{$key+1}</td>
+							<td>
+								<label>
+								    <input type="checkbox" name="warningcheck" value="">
+								</label>
+							</td>
+							<td>
+								<span class="batch-set1">
+								设置
+								<input type="hidden" name="strproductid" value="{$value['id']}">
+								</span>
+							</td>
+							<td class="warestatus-tbody-img" style="text-align:center;">
+								{if !$value['image']}
+									<img src="" alt="" class="img1">
+									<img src="" alt="" class="img2">
+								{else if}
+									<img src="{$value['path']}{$value['image']}" class="img1"/>
+									<img src="{$value['path']}{$value['image']}" class="img2"/>
+								{/if}
+							</td>
+							<td style="text-align: left;">
+								<span class="warnset-type">{$value['productname']}</span>
+							</td>
+							<td>
+								<span class="warnset-color">{$value['format']}</span>
+							</td>
+							<td>{$value['productid']}</td>
+							<td>
+								<span>{$value['totalreal']}</span>
+							</td>
+							<td>
+								<span>{$value['totallock']}</span>
+							</td>
+							<td>
+								<span>{$value['totalway']}</span>
+							</td>
+							<td>
+								<span>{$value['totalproduction']}</span>
+							</td>
+							<td>
+								<span>{$value['totalavailable']}</span>
+							</td>
+							<td class="low-limit">{$value['low']}</td>
+							<td class="up-limit">{$value['up']}</td>
+						</tr>
+						{/foreach}
+					</tbody>
+				</table>
+			</div>
+			{if count($warninglist) <= 0}
+			<div class="row" style="display:block;">
+				<div class="no-record"><img src="/images/empty.jpg"/><span>没有找到记录，请调整搜索条件。</span></div>
+			</div>
+			{/if}
+			{$pages}
+			<!-- 批量设置模态窗 -->
+			<div class="modal modal-batchset">
+				<div class="modalcon">
+					<div class="modal-bt">
+						<h4 class="modal-title size-title" id="myModalLabel">批量设置</h4>
+					    <button type="button" class="close close-btn" data-dismiss="modal" aria-label="Close" id="close-btn"><span aria-hidden="true">x</span></button>
+					</div>
+					<div class="modal-bd">
+						<span class="warn-num">预警数量</span>
+						<form action="" class="form-inline">
+							<div class="form-group">
+							    <label for="exampleInputName2" class="labelname">下限：</label>
+    							<input type="text" class="form-control lower-limit lowlimit" id="exampleInputName2"onkeyup = "value=value.replace(/[^\d]/g,'')">
+							</div>
+							<div class="form-group">
+							    <label for="exampleInputName2" class="labelname">上限：</label>
+    							<input type="text" class="form-control upper-limit uplimit" id="exampleInputName2"onkeyup = "value=value.replace(/[^\d]/g,'')">
+							</div>
+						</form>
+					</div>
+					<div class="modal-bo">
+						<button type="button" class="btn btn-default btn-sm warnset-sure multisetbtn">确定</button>
+			        	<button type="button" class="btn btn-default btn-sm close-btn">取消</button>
+					</div>
+				</div>
+			</div>
+			<!--单独设置模态窗 -->
+			<div class="modal modal-batchset1">
+				<div class="modalcon">
+					<div class="modal-bt">
+						<h4 class="modal-title size-title" id="myModalLabel">单个设置</h4>
+					    <button type="button" class="close close-btn" data-dismiss="modal" aria-label="Close" id="close-btn"><span aria-hidden="true">x</span></button>
+					</div>
+					<div class="modal-bd">
+						<span class="warn-num">预警数量</span>
+						<form action="" class="form-inline">
+							<div class="form-group">
+							    <label for="exampleInputName2" class="labelname">下限：</label>
+    							<input type="text" class="form-control lower-limit1 singlelowlimit" id="exampleInputName2" onkeyup = "value=value.replace(/[^\d]/g,'')">
+							</div>
+							<div class="form-group">
+							    <label for="exampleInputName2" class="labelname">上限：</label>
+    							<input type="text" class="form-control upper-limit1 singleuplimit" id="exampleInputName2"onkeyup = "value=value.replace(/[^\d]/g,'')">
+							</div>
+						</form>
+					</div>
+					<div class="modal-bo">
+						<button type="button" class="btn btn-default btn-sm warnset-sure1 singlebtn">确定</button>
+			        	<button type="button" class="btn btn-default btn-sm close-btn">取消</button>
+					</div>
+				</div>
+			</div>
+
+			<!-- 取消下限模态窗 -->
+			<div class="modal modal-canclelow">
+				<div class="modalcon">
+					<div class="modal-bt">
+						<h4 class="modal-title cancle-title" id="myModalLabel">取消下限</h4>
+					    <button type="button" class="close close-btn" data-dismiss="modal" aria-label="Close" id="close-btn"><span aria-hidden="true">x</span></button>
+					</div>
+					<div class="modal-bd">
+						<span class="cancle-sure">您确定要取消商品下限吗？</span>
+					</div>
+					<div class="modal-bo">
+						<button type="button" class="btn btn-default btn-sm cancle-lowlimit">确定</button>
+			        	<button type="button" class="btn btn-default btn-sm close-btn">取消</button>
+					</div>
+				</div>
+			</div>
+			<!-- 没有选中 -->
+			<div class="modal modal-noselect">
+				<div class="modalcon">
+					<div class="modal-bt">
+						<h4 class="modal-title size-title" id="myModalLabel">提示</h4>
+					    <button type="button" class="close close-btn" data-dismiss="modal" aria-label="Close" id="close-btn"><span aria-hidden="true">x</span></button>
+					</div>
+					<div class="modal-bd">
+						<span>没有选中任何东西</span>
+					</div>
+					<div class="modal-bo">
+			        	<button type="button" class="btn btn-default btn-sm close-btn">确定</button>
+					</div>
+				</div>
+			</div>
+			<div class="push"></div>
+		</div>
+		{include file="../comfoot.html"}
+		<script type="text/javascript" src="/js/jquery-1.11.0.min.js"></script>
+		<script type="text/javascript" src="/js/util.js"></script>
+		<script type="text/javascript" src="/js/commontop.js"></script>
+		<script type="text/javascript" src="/bootstrap/js/bootstrap.min.js"></script>
+		<script type="text/javascript" src="/js/warehouse/warewarning.js"></script>
+		<script type="text/javascript" src="/js/warehouse/mycom.js"></script>
+	</body>
+</html>

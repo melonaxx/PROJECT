@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>米欢电商ERP</title>
+ 		<link href="/images/favicon.ico" rel="shortcut icon">
+		<link rel="stylesheet" type="text/css" href="/bootstrap/css/bootstrap-datetimepicker.min.css"/>
+		<link href="/bootstrap/css/bootstrap.min.css"  rel="stylesheet" media="screen">
+		<link href="/css/commontop.css"   rel="stylesheet" media="screen">
+		<link rel="stylesheet" type="text/css" href="/css/report/prodetail.css"/>
+		<style>
+			{literal}
+				@media screen and (max-width: 1120px){ 
+					/*当屏幕尺寸小于1120px时，应用下面的CSS样式*/
+				    .navbar-nav,#comtop-right{display: none;}
+				}
+			{/literal}
+		</style>
+	</head>
+	<body>
+		{include file="../commontop.html"}
+		<div class="container-fluid container1">
+			<div class="row ware-row">
+				<h5 class="col-md-12">您的位置：<a href="javascript:;">首页</a> » <a href="javascript:;">报表</a> » 生产报表</h5>
+			</div>
+			<div class="row">
+				<ul class="nav nav-tabs col-md-12 prodetail-nav">
+				  <li role="presentation">
+				  	<a href="/report/prodetail.php">生产明细表</a>
+				  </li>
+				  <li role="presentation">
+				  	<a href="/report/allgoodreport.php">生产汇总(商品)</a>
+				  </li>
+				  <li role="presentation" class="active">
+				  	<a href="/report/alldaireport.php">生产汇总(代工户)</a>
+				  </li>
+				</ul>
+			</div>
+			<div class="row">
+				<form action="" class="form-inline col-md-12 prodetail-form" action="/report/alldaireport.php" method="get">
+					<div class="form-group">
+						<label for="" class="labelname">商品名称：</label>
+
+						<input type="text" class="form-control" placeholder="请输入商品名称" name="goods_name" value="{$smarty.get.goodsname}">
+
+						<select class="form-control good-name" id="goods_info" name="goods_id">
+						</select>
+
+					</div>
+					<div class="form-group">
+						<label class="labelname">代工户：</label>
+						<select class="form-control" name="oem">
+						</select>
+					</div>
+					<div class="form-group">
+					    <label class="labelname">日期：</label>
+					    <input type="text" class="form-control datetimepicker" name="starttime">
+					    <span>-</span>
+					    <input type="text" class="form-control datetimepicker" name="stoptime">
+					</div>
+					<div class="form-group form-btn">
+						<input class="btn btn-sm btn-default" type="submit" value="查询">
+						<button class="btn btn-sm btn-default" id="reset" type="button">重置</button>
+						<button class="btn btn-sm btn-default" type="button">导出</button>
+					</div>
+				</form>
+				<table class="table table-hover col-md-12 prodetail-table2">
+					<thead>
+						<tr class="active">
+							<td>代工户</td>
+							<td>商品编码</td>
+							<td>商品名称与规格</td>
+							<td>单位</td>
+							<td>入库数量</td>
+							<td>返工数量</td>
+						</tr>
+					</thead>
+					<tbody>
+					{foreach from=$goodsinfo item=temp}
+						<tr>
+							<td>{$temp['oemname']}</td>
+							<td>{$temp['number']}</td>
+							<td>{$temp['goodsinfo']}</td>
+							<td>{$temp['proflats_name']}</td>
+							<td><span name="totalfinish">{$temp['finish']}</span></td>
+							<td><span name="totalrefund">{$temp['refund']}</span></td>
+						</tr>
+					{/foreach}
+					</tbody>
+					<tfoot>
+						<tr>
+							<td colspan="4"><span style="float:right;">合计</span></td>
+							<td id="finish_count"></td>
+							<td id="refund_count"></td>
+						</tr>
+					</tfoot>
+				</table>
+			</div>
+			<div class="push"></div>
+		</div>
+		{include file="../comfoot.html"}
+		<script type="text/javascript" src="/js/jquery-1.11.0.min.js"></script>
+		<script type="text/javascript" src="/js/commontop.js"></script>
+		<script type="text/javascript" src="/bootstrap/js/bootstrap.min.js" ></script>
+		<script type="text/javascript" src="/bootstrap/js/bootstrap-datetimepicker.min.js"></script>
+		<script type="text/javascript" src="/bootstrap/js/bootstrap-datetimepicker.zh-CN.js"></script>
+		<script type="text/javascript">
+			$('.datetimepicker').datetimepicker({
+			    format: 'yyyy-mm-dd',
+			    autoclose:true,
+			    language:'zh-CN',
+			    minView:'year',
+			});
+
+			var number = document.getElementsByName("number");
+
+			for(var i=0;i<number.length;i++){
+				number[i].innerHTML=i+1;
+			}
+
+			var totalfinish = document.getElementsByName("totalfinish");
+			var finish_count=0;
+			for(var j=0;j<totalfinish.length;j++){
+				finish_count += parseInt(totalfinish[j].innerHTML);
+			}
+			document.getElementById("finish_count").innerHTML=finish_count;
+			
+			var totalrefund = document.getElementsByName("totalrefund");
+			var refund_count=0;
+			for(var k=0;k<totalrefund.length;k++){
+				refund_count += parseInt(totalrefund[k].innerHTML);
+			}
+			document.getElementById("refund_count").innerHTML=refund_count;
+
+
+			$("input[name='goods_name']").keyup(function(){
+						if($(this).val()==""){
+							$('#goods_info').empty();
+						}else{
+							$.ajax({
+					             type: "GET",
+
+					             url: "/product/product_goodsinfo.php",
+
+					             data: {
+					             		"store_name":$(this).val()
+					         			},
+
+					             dataType: "json",
+
+					             success:function(data){
+										var str = "";
+										var info = "";
+					             	 for(var i = 0; i < data.length; i++){
+					             	 	 var productid = data[i].productid;
+					             	 	 var goods_info = data[i].formats;
+					                     str += "<option value="+productid+">"+goods_info+"</option>";
+					             	 }
+
+					             	 $('#goods_info').empty().append(str);
+					             	 $('#goods_info option:last').attr("selected","selected");
+					             }
+							})
+						}
+		    })
+
+
+	 	 $("select[name='oem']").focus(function(){
+
+	 	 	 var ob = $(this);
+
+	 		 $.ajax({
+
+	             type: "GET",
+
+	             url: "/product/product_alloem.php",
+
+	             dataType: "json",
+
+	             success:function(data){
+
+				      var str = "";
+
+		              for(var i = 0;i<data.length;i++){
+			                  str += "<option value='"+data[i].id+"'>"+data[i].name+"</option>";
+		              }
+
+		              ob.empty().append(str);
+	             }
+			})
+
+		 })
+
+	 	 $("#reset").click(function(){
+
+	 	 		window.location.href="/report/prodetail.php";
+
+	 	 })
+
+		</script>
+	</body>
+</html>

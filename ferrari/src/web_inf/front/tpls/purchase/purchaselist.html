@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>米欢电商ERP</title>
+ 		<link href="/images/favicon.ico" rel="shortcut icon">
+		<link rel="stylesheet" type="text/css" href="/bootstrap/css/bootstrap-datetimepicker.min.css"/>
+		<link rel="stylesheet" type="text/css" href="/css/purchase/addpurchase.css"/>
+		<link href="/bootstrap/css/bootstrap.min.css"  rel="stylesheet" media="screen">
+		<link href="/css/commontop.css"   rel="stylesheet" media="screen">
+		<style>
+			{literal}
+				@media screen and (max-width: 1120px){ 
+					/*当屏幕尺寸小于1120px时，应用下面的CSS样式*/
+				    .navbar-nav,#comtop-right{display: none;}
+				}
+			{/literal}
+		</style>
+	</head>
+	<body>
+		{include file="../commontop.html"}
+		<div class="container-fluid container1">
+			<div class="row ware-row">
+				<h5 class="col-md-12">您的位置： <a href="javascript:;">首页</a> » <a href="javascript:;">采购</a> » 审核采购单</h5>
+			</div>
+			<div class="row">
+				<form class="form-inline col-md-12 purchase-form" action="/purchase/doeditpurchase.php" method="post">
+					<div class="form-group">
+					    <label for="exampleInputEmail2" class="labelname">采购公司：</label>
+					    <select class="form-control" id="exampleInputEmail2" name="company">
+					    {foreach from=$company item=companys}
+						  <option value="{$companys['id']}" {if $list['purchasecompanyid'] eq $companys['id']}selected="selected"{/if}>{$companys['name']}</option>
+						{/foreach}
+						</select>
+					</div>
+				    <div class="form-group">
+				    	<label for="exampleInputName2" class="labelname">收货仓库：</label>
+				    	<select class="form-control" id="exampleInputName2" name="store">
+					    {foreach from=$store item=stores}
+					  		<option value="{$stores['id']}" {if $list['storeid'] eq $stores['id']} selected="selected"{/if}>{$stores['name']}</option>
+					  	{/foreach}
+						</select>
+				    </div>
+				    <br>
+				    <div class="form-group ">
+					    <label for="exampleInputName2" class="labelname">&nbsp;&nbsp;&nbsp;供应商：</label>
+					    <input type="text" class="form-control form-supply seach" id="exampleInputName2" placeholder="请搜索供应商名称">
+					    <select class="form-control form-supply-name" id="gys" name="supplier">
+					    <option value={$list['supplierid']}>{$list['suppliername']}　(
+					    {if $list['supplierlevel'] eq 'Primary'}
+					    主选供应商
+					    {elseif $list['supplierlevel'] eq 'Alternative'}
+					    备选供应商
+					    {elseif $list['supplierlevel'] eq 'Eliminate'}
+					    淘汰供应商
+					    {/if}
+					    )</option>
+					    </select>
+				 	</div>
+				    <br>
+				    <div class="form-group">
+						<label for="exampleInputName2"class="labelname">创建日期：</label>
+						<input type="text" class="form-control" id="exampleInputName2" readonly="readonly" value="{$list['createtime']}" />
+					</div>
+					<div class="form-group">
+						<label for="exampleInputName2"class="labelname">采购单编号：</label>
+						<input type="text" class="form-control enterware-code" id="exampleInputName2" readonly="readonly" value="{$list['number']}" />
+					</div>
+					<div class="form-group">
+						<label for="exampleInputName2"class="labelname">审核状态：</label>
+						<input type="text" class="form-control form-supply" id="exampleInputName2" readonly="readonly" value={if $list['statusaudit'] eq 'N'}
+								待审核
+								{else if $list['statusaudit'] eq 'Y'}
+								通过审核
+								{else if $list['statusaudit'] eq 'R'}
+								待修改
+								{else if $list['statusaudit'] eq 'F'}
+								拒绝
+								{/if} >
+					</div>
+				    <br>
+				    <div class="form-group">
+				   		<label for="exampleInputName2" class="labelname">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;摘要：</label>	
+				  		<textarea class="form-control" rows="3" name="brief">{$list['brief']}</textarea>
+				  		<input type="hidden" name="id" value="{$list['id']}">
+				    </div>
+				    <br>
+					<div class="row-bold addpur-bt">商品信息</div>
+					<div class="form-group">
+						<input class="btn btn-default btn-add" type="button" value="添加">
+						<input class="btn btn-default btn-del" type="button" value="删除">
+					</div>
+					<table class="table table-hover addpurchase-table" border="1">
+						<thead>
+							<tr class="active">
+							    <td>序号</td>
+							    <td width="46px">
+									<label class="checkbox-all"><input class="allCheck checkbox-choice" type="checkbox" value=""></label>
+								</td>
+								<td>搜索</td>
+								<td>商品名称与规格</td>
+								<td>单位</td>
+								<td>单价</td>
+								<td>数量</td>
+								<td>总价(含税)
+								<td>税率(%)</td>
+								<td>税额</td>
+								<td>不含税价</td>
+							</tr>
+						</thead>
+						<tbody id="tbody1">
+						{foreach from=$product item=$row}
+							<tr class="onetr1">
+								<td  class="onetd1">1</td>
+								<td>
+									<label class="checkbox-all">
+										<input class="checkbox-choice" type="checkbox" value="">
+									</label>
+								</td>
+	                        	<td style="text-align:center;">
+	                        		<input type="text" class="form-control searchbox seachpro" placeholder="请搜索商品名称"/>
+	                        	</td>
+	                        	<td>
+	                        		<select class="form-control nameorsize productname" name="shang[]">
+	                        			<option value="{$row['productid']}">{$row['productname']}-{$row['zhiname']['valueid1']}-{$row['zhiname']['valueid2']}-{$row['zhiname']['valueid3']}-{$row['zhiname']['valueid4']}-{$row['zhiname']['valueid5']}</option>
+	                        		</select>
+	                        	</td>
+	                        	<td class="danwei">
+	                        		<span>{$row['dwname']}</span>
+	                        		<input type="hidden" name="danweiid[]" class="dwid" value="{$row['partsid']}">
+	                        	</td>
+	                        	<td class="danjia">
+	                        		<label class="labelname">￥</label>
+	                        		<input type="text" class="form-control singleprice" name="danjia[]" value="{$row['price']}"/>
+	                        	</td>
+	                        	<td>
+	                        		<input type="text" class="form-control goodsnum shuliang" placeholder="必填" name="shuliang[]" value="{$row['total']}"/>
+	                        	</td>
+	                        	<td >￥<input type="text" class="zongjia form-control" style="border:none;width:116px;" readonly="readonly" name="zongjia[]" value="{$row['taxprice']}"/></td>
+	                        	<td ><input type="text" class="form-control shuilv" name="shuilv[]" value="{$row['taxrate']}"/></td>
+	                        	<td >￥<input  type="text" class="shuie form-control" style="border:none;width:76px;" readonly="readonly" name="shuie[]" value="{$row['tax']}"></td>
+	                        	<td >￥<input  type="text" class="shuijia form-control" style="border:none;width:76px;" readonly="readonly" name="shuijia[]" value="{$row['notaxprice']}"></td>
+							</tr>
+							{/foreach}
+	                    </tbody>
+					</table>
+					<div class="form-group">
+				   		<label for="exampleInputName2" class="labelname">备注：</label>	
+				  		<textarea class="form-control text-mark" rows="3" name="comment">{$list['comment']}</textarea>
+				    </div>
+				    <br>
+					<div class="form-group" style="margin-top:40px;">
+						<a class="btn btn-default" href="checkpurchase.php">返回</a>
+						{if $list['statusaudit'] eq 'R'}
+						<button class="btn btn-default" type="submit">提交</button>
+						{/if}
+					</div>
+				</form>
+			</div>
+			<div class="push"></div>
+		</div>
+		{include file="../comfoot.html"}
+		<script type="text/javascript" src="/js/jquery-1.11.0.min.js"></script>
+		<script type="text/javascript" src="/js/commontop.js"></script>
+		<script type="text/javascript" src="/bootstrap/js/bootstrap.min.js" ></script>
+		<script type="text/javascript" src="/bootstrap/js/bootstrap-datetimepicker.min.js"></script>
+		<script type="text/javascript" src="/js/mycom.js"></script>
+		<script type="text/javascript" src="/js/purchase/purchaselist.js"></script>
+		<script type="text/javascript">
+			$('#datetimepicker').datetimepicker({
+			    format: 'yyyy-mm-dd hh:ii'
+			});
+		</script>
+	</body>
+</html>

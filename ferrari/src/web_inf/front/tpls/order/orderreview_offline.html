@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>米欢电商ERP</title>
+	<link href="/images/favicon.ico" rel="shortcut icon">
+	<link rel="stylesheet" type="text/css" href="/bootstrap/css/bootstrap.min.css"/>
+	<link rel="stylesheet" type="text/css" href="/bootstrap/css/bootstrap-datetimepicker.min.css"/>
+	<link href="/css/commontop.css"   rel="stylesheet" media="screen">
+	<link rel="stylesheet" type="text/css" href="/css/order/orderreview.css"/>
+</head>
+<body id="orderreviewbody">
+	{include file="../commontop.html"}
+	<div class="container-fluid container1">
+		<div class="row ware-row">
+			<h5 class="col-md-12">您的位置： <a href="javascript:;">首页</a> » <a href="javascript:;">订单</a> »订单审核</h5>
+		</div>
+		<div class="row">
+			<ul class="nav nav-tabs col-md-12 orderreview-nav">
+			  <li role="presentation" class="active">
+			  	<a href="/order/orderreviewoffline.php">线下订单</a>
+			  </li>
+			  <!-- <li role="presentation">
+			  	<a href="/order/orderreview.php">线上订单</a>
+			  </li> -->
+			</ul>
+		</div>
+		<div class="row">
+			<form class="form-inline orderreview-form col-md-12">
+				<div class="form-group">
+					<button type="button" class="btn btn-default btn-sm sure-check">确认审核</button>
+					<button type="button" class="btn btn-default btn-sm submit-statu">提交异常</button>
+					<div class="btn-group">
+						<button data-toggle="dropdown" class="form-control input-sm" type="button">
+							订单拆合<span class="caret"></span>
+						</button>
+						<ul role="menu" class="dropdown-menu">
+							<li>
+								<a style="font-size:12px;" class="chai" href="#">手工拆单</a>
+							</li>
+							<li>
+								<a style="font-size:12px;" class="he" href="#">手工合单</a>
+							</li>
+						</ul>
+					</div>
+					<div class="btn-group">
+						<button data-toggle="dropdown" class="form-control input-sm" type="button">
+							批量修改<span class="caret"></span>
+						</button>
+						<ul role="menu" class="dropdown-menu">
+							<li>
+								<a style="font-size:12px;" class="express" href="#">批量修改快递</a>
+							</li>
+							<!-- <li>
+								<a style="font-size:12px;" class="beizhu" href="#">批量修改备注</a>
+							</li> -->
+						</ul>
+					</div>
+				</div>
+				<div class="form-group orderreview-search">
+					<div class="input-group">
+						<input value="" placeholder="输入订单编号/收件人查询" class="form-control input-sm input_search ordersearch" type="text" onkeyup = "this.value == '' ? this.style.borderColor = 'red' : this.style.borderColor = ''">
+						<span class="input-group-btn">
+							<button class="btn btn-default btn-sm searchbtn" type="button">搜索</button>
+						</span>
+					</div>
+					<button class="btn btn-sm btn-default resetbtn" type="reset">重置</button>
+				</div>
+			</form>
+		</div>
+		<div class="row">
+			<table class="table table-hover or-table">
+				<thead>
+            		<tr class="orthead active">
+                    	<td class="orth1">序号</td>
+                    	<td class="">
+                    		<input class="allcheck" type="checkbox" value="">
+                    	</td>
+                    	<td>操作</td>
+                    	<td>拆合标记</td>
+                    	<td>下单时间</td>
+                    	<td>订单类别</td>
+                    	<td>购买渠道</td>
+                    	<td>发货方式</td>
+                    	<td>发货公司</td>
+                    	<td>买家名称</td>
+                    	<td>手机</td>
+                    	<td>数量</td>
+                    	<td>店铺</td>
+                    	<td>客服</td>
+                    	<td>订单编号</td>
+            		</tr>
+    			</thead>
+    			<tbody class="ortbody">
+    				{foreach $verifydata as $key=>$value}
+                    <tr class="order-tr">
+                        <td class="order-td">{$key+1}</td>
+                        <td>
+                        	<input class="check" orderid='{$value["orderid"]}' type="checkbox" value="" {if $value['deltype'] eq '物流'} disabled {/if}>
+                        </td>
+                        <td>
+	                    	<a href="/order/editorder.php?orderid={$value['orderid']}">编辑</a>
+                        </td>
+                        <td></td>
+                        <td>{$value['createtime']}</td>
+                        <td>{$value['catename']}</td>
+                        <td>{$value['channelname']}</td>
+                        <td>{$value['deltype']}</td>
+                        <td>{$value['transportname']}</td>
+                        <td >{$value['cusname']}</td>
+                        <td>{$value['mobile']}</td>
+                        <td class="review-num">{$value['prototal']}</td>
+                        <td>{$value['shopname']}</td>
+                        <td>{$value['servicename']}</td>
+                        <td class="order-num">{$value['onlineid']}</td>
+                        <td></td>
+                    </tr>
+					{/foreach}
+                </tbody>
+    		</table>
+		</div>
+		{if count($verifydata) <= 0}
+		<div class="row no-find" style="display:block;">
+			<div class="no-record col-md-12"><img src="/images/empty.jpg"/><span>没有找到记录，请调整搜索条件。</span></div>
+		</div>
+		{/if}
+		{$pages}
+		<input type="hidden" name="pagewarning" value='{$pagewarning}'>
+		<!-- 审核订单 -->
+		<div class="modal modal-check">
+			<div class="modalcon">
+				<div class="modal-bt">
+					<h4 class="modal-title size-title" id="myModalLabel">提示</h4>
+				    <button type="button" class="close close-btn" data-dismiss="modal" aria-label="Close" id="close-btn"><span aria-hidden="true">x</span></button>
+				</div>
+				<div class="modal-bd">
+				    <p>您确定要审核吗?</p>
+				</div>
+				<div class="modal-bo">
+		        	<button type="button" class="btn btn-default btn-sm verbtn">确定</button>
+				</div>
+			</div>
+		</div>
+		<!--提示 -->
+		<div class="modal modal-tip">
+			<div class="modalcon">
+				<div class="modal-bt">
+					<h4 class="modal-title size-title" id="myModalLabel">提示</h4>
+				    <button type="button" class="close close-btn" data-dismiss="modal" aria-label="Close" id="close-btn"><span aria-hidden="true">x</span></button>
+				</div>
+				<div class="modal-bd">
+				    <span class="tip-content">请至少选择1个订单</span>
+				</div>
+				<div class="modal-bo">
+		        	<button type="button" class="btn btn-default btn-sm close-btn">确定</button>
+				</div>
+			</div>
+		</div>
+		<!-- 提交异常 -->
+		<div class="modal modal-abnormal">
+			<div class="modalcon">
+				<div class="modal-bt">
+					<h4 class="modal-title size-title" id="myModalLabel">异常原因</h4>
+				    <button type="button" class="close close-btn" data-dismiss="modal" aria-label="Close" id="close-btn"><span aria-hidden="true">x</span></button>
+				</div>
+				<div class="modal-bd">
+				    <form class="form-inline" method="post" action="">
+						<div class="form-group">
+							<label class="labelname">异常原因：</label>
+							<select class="form-control input-sm orderunusualid" >
+							{foreach $unusualdata as $key=>$value}
+								<option value="{$value['id']}">{$value['name']}</option>
+							{/foreach}
+							</select>
+							<a href="/order/abnormalset.php" target="_blank">异常添加</a>
+						</div>
+						<br>
+						<div class="form-group">
+							<label class="labelname">异常备注：</label>
+							<textarea class="form-control input-sm unusualcomment" rows="4" style="width:300px;height:100px;resize: none;"></textarea>
+						</div>
+					</form>
+				</div>
+				<div class="modal-bo">
+		        	<button type="button" class="btn btn-default btn-sm account-sure unusualbtn">确定</button>
+		        	<button type="button" class="btn btn-default btn-sm close-btn">取消</button>
+				</div>
+			</div>
+		</div>
+		<!-- ===============订单拆合手工拆单modal3====================== -->
+		<div class="modal modalsplits3">
+		    <div class="modalcon">
+			    <div class="modal-bt">
+			        <button type="button" class="close close-btn" data-dismiss="modal" aria-label="Close" id="close-btn"><span aria-hidden="true">x</span></button>
+			        <h4 class="modal-title size-title">手工拆单</h4>
+			    </div>
+			    <form action="/order/dochai.php" method="post">
+			    <div class="modal-bd">
+			        <div style="width:750px;">
+						<div>
+							<span>提示：以下订单将被拆分成多笔订单，请选择需要拆分的商品作为拆分后的订单商品1。</span>
+							<span style="margin:5px 0 0 104px;">
+								订单编号：<input type="text" name="bind_number" class="form-control input-sm" readonly="readonly" value="0" style="width:110px;float:right;margin-top:-5px;" id="chaiid">
+							</span>
+							<br>
+						</div>
+						<br>
+						<table class="table table-bordered split margin_left_0 old">
+							<thead>
+								<tr class="active">
+									<td>序号</td>
+									<td>拆分数量</td>
+									<td>商品名称</td>
+									<td>商品规格</td>
+									<td>商品数量</td>
+								</tr>
+							</thead>
+							<tbody id="tb1">
+							</tbody>
+						</table>
+					</div>
+					<div style="width:750px;">
+						<div>
+							<h4 style="margin-bottom: 18px;font-weight: bold;">新订单</h4>
+						</div>
+						<table class="table table-bordered  orders margin_left_0 new">
+							<thead>
+								<tr class="active">
+									<td>序号</td>
+									<td>商品名称</td>
+									<td>商品规格</td>
+									<td>商品数量</td>
+								</tr>
+							</thead>
+							<tbody id="tb2">
+							</tbody>
+						</table>
+					</div>
+			    </div>
+			    <div class="modal-bo">
+			        <button type="submit" class="btn btn-default">确定</button>
+			        <button type="button" class="btn btn-default close-btn">取消</button>
+			    </div>
+			    </form>
+		    </div>
+		</div>
+
+
+		<!-- ===============订单拆合手工合单====================== -->
+		<div class="modal modalmerge">
+		    <div class="modalcon">
+		      	<div class="modal-bt">
+		        	<button type="button" class="close close-btn" id="close-btn" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">x</span></button>
+		        	<h4 class="modal-title size-title">手工合单</h4>
+		      	</div>
+		      	<div class="modal-bd">
+			        <form class="Merge" method="post" action="">
+						<div class="" style="width:850px;">
+							<span class="">	提示：以下订单将合并成同一笔订单，请选择其中一笔作为合并后的信息。
+							</span><br>
+							<table class="table table-hover merge-table">
+								<thead>
+									<tr class="active">
+										<td class="">序号</td>
+										<td class="">
+											<input type="checkbox">
+										</td>
+										<td>订单编号</td>
+										<td>店铺</td>
+										<td>仓库</td>
+										<td>快递</td>
+										<td>收件人</td>
+										<td>详细地址</td>
+									</tr>
+								</thead>
+								<tbody class="modaltbody" id="tb3">
+								</tbody>
+							</table>
+						</div>
+					</form>
+		        </div>
+		        <div class="modal-bo">
+		        	<button type="submit" class="btn btn-default">确定</button>
+		       	 	<button type="button" class="btn btn-default btn-sm close-btn">取消</button>
+		        </div>
+		    </div><!-- /.modal-content -->
+		</div><!-- /.modal -->
+
+		<!-- ===============批量修改备注modal2====================== -->
+		<div class="modal change-mark">
+		    <div class="modalcon">
+		      	<div class="modal-bt">
+		        	<button type="button" class="close close-btn" id="close-btn" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">x</span></button>
+		        	<h4 class="modal-title size-title">批量修改备注</h4>
+		      	</div>
+	        	<form class="form-inline" method="post" action="">
+			      	<div class="modal-bd">
+							<div class="form-group">
+								<label class="labelname">修改方式：</label>
+								<select class="form-control input-sm change-method" >
+									<option class="zhujia">在原备注上追加</option>
+
+									<option class="fugai">覆盖原先的备注</option>
+								</select>
+							</div>
+							<br>
+							<div class="form-group">
+								<label class="labelname">备注内容：</label>
+								<textarea class="form-control input-sm content-mark" rows="4" style="width:300px;height:100px;resize: none;"></textarea>
+							</div>
+			      	</div>
+			      	<div class="modal-bo">
+			        	<button type="button" class="btn btn-default">确定</button>
+			        	<button type="button" class="btn btn-default close-btn">取消</button>
+			      	</div>
+				</form>
+		    </div><!-- /.modal-content -->
+		</div><!-- /.modal -->
+
+		<!-- ===============批量修改快递modal2====================== -->
+		<div class="modal change-express">
+		    <div class="modalcon">
+		      	<div class="modal-header">
+		       		<button type="button" class="close close-btn" id="close-btn"data-dismiss="modal" aria-label="Close"><span aria-hidden="true">x</span></button>
+		        	<h4 class="modal-title" center style="text-align: center;font-weight: bold;">批量修改快递</h4>
+		      	</div>
+		        <form class="form-inline" method="post" action="">
+			     	<div class="modal-bd">
+							<div class="form-group">
+								<label class="labelname"> 选择快递：</label>
+								<select class="form-control input-sm expressid" >
+								{foreach $expressdata as $key=>$value}
+									<option value="{$value['id']}">{$value['name']}</option>
+								{/foreach}
+								</select>
+							</div>
+
+			      	</div>
+				    <div class="modal-bo">
+				        <button type="button" class="btn btn-default editmulexpress">确定</button>
+				        <button type="button" class="btn btn-default close-btn">取消</button>
+				    </div>
+				</form>
+		    </div><!-- /.modal-content -->
+		</div><!-- /.modal -->
+
+		<!-- ===============批量修改仓库modal2====================== -->
+		<!-- <div class="modal change-ware">
+		    <div class="modalcon">
+		        <div class="modal-bt">
+		        	<button type="button" class="close close-btn" id="close-btn"data-dismiss="modal" aria-label="Close"><span aria-hidden="true">x</span></button>
+		        	<h4 class="modal-title" center style="text-align: center;font-weight: bold;">批量修改仓库</h4>
+		      	</div>
+	      		<form class="form-inline" method="post" action="">
+			      	<div class="modal-bd">
+							<div class="form-group">
+								<label class="labelname">选择仓库：</label>
+								<select class="form-control input-sm" >
+									 <option>1</option>
+									  <option>上海仓库</option>
+									  <option>北京仓库</option>
+								</select>
+							</div>
+			      	</div>
+			      	<div class="modal-bo">
+			        	<button type="button" class="btn btn-default">确定</button>
+			        	<button type="button" class="btn btn-default close-btn">取消</button>
+			      	</div>
+				</form>
+		    </div>
+		</div>-->
+		<div class="push"></div>
+	</div>
+	{include file="../comfoot.html"}
+	<script src="/js/jquery-1.11.0.min.js" ></script>
+	<script src="/bootstrap/js/bootstrap.min.js"></script>
+	<script src="/js/util.js"></script>
+	<script src="/js/commontop.js"></script>
+	<script src="/js/order/orderreview_offline.js"></script>
+	<script src="/js/mycom.js"></script>
+</body>
+</html>

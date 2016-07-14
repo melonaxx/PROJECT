@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>米欢电商ERP</title>
+ 		<link href="/images/favicon.ico" rel="shortcut icon">
+		<link rel="stylesheet" type="text/css" href="/bootstrap/css/bootstrap-datetimepicker.min.css"/>
+		<link href="/bootstrap/css/bootstrap.min.css"  rel="stylesheet" media="screen">
+		<link href="/css/commontop.css"   rel="stylesheet" media="screen">
+		<link rel="stylesheet" type="text/css" href="/css/warehouse/warestatus.css"/>
+		<link rel="stylesheet" type="text/css" href="/css/warehouse/warecheck.css"/>
+		<style>
+			{literal}
+				@media screen and (max-width: 1120px){
+					/*当屏幕尺寸小于1120px时，应用下面的CSS样式*/
+				    .navbar-nav,#comtop-right{display: none;}
+				}
+			{/literal}
+		</style>
+	</head>
+	<body>
+		{include file="../commontop.html"}
+		<div class="container-fluid container1">
+			<div class="row ware-row">
+				<h5 class="col-md-12">您的位置： <a href="javascript:;">首页</a> » <a href="javascript:;">库存</a> »库存盘点</h5>
+			</div>
+			<div class="row">
+				<ul class="nav nav-tabs col-md-12 inventorylist-nav">
+				  <li role="presentation"><a href="warecheck.php">库存盘点</a></li>
+				  <li role="presentation" class="active"><a href="inventorylist.php">盘点单</a></li>
+				</ul>
+			</div>
+			<div class="row">
+				<form class="form-inline inventorylist-form col-md-12">
+					<div class="form-group">
+					   <button type="button" class="btn btn-default btn-sm searchbtn">查询</button>
+					   <button type="button" class="btn btn-default btn-sm resetbtn">清空</button>
+					</div>
+					<div class="form-group">
+					    <label for="datetimepicker"class="labelname">到：</label>
+					    <input type="text" class="form-control enddate" id="datetimepicker2">
+					</div>
+					<div class="form-group">
+					    <label for="datetimepicker"class="labelname">日期：</label>
+					    <input type="text" class="form-control startdate" id="datetimepicker1">
+					</div>
+					<div class="form-group">
+					    <label for="exampleInputName2"class="labelname">仓库：</label>
+					    <select class="form-control warestatus-ware storedata" id="exampleInputName2" style="width:150px;">
+						    {foreach $storelist as $key=>$value}
+						    	<option value="{$value['id']}">
+						    	{$value['name']}
+						    	{if $value['storetype'] eq 'Sales'}（销售仓）{else if $value['storetype'] eq 'Defective'}（次品仓）{else if $value['storetype'] eq 'Customer'}（售后仓）{else if $value['storetype'] eq 'Purchase'}（采购仓）{/if}
+						    	</option>
+						    {/foreach}
+					    </select>
+					</div>
+
+			      	<table class="table table-hover wareallocate-table">
+			      		<thead class="wareallocate-thead">
+			      			<tr class="active">
+			      				<td  class="wareallocate-td1">库存</td>
+			      				<td  class="wareallocate-td2">操作</td>
+			      				<td  class="wareallocate-td3">日期</td>
+			      				<td  class="wareallocate-td4">商品名称</td>
+			      				<td  class="wareallocate-td5">商品规格</td>
+			      				<td  class="wareallocate-td6">单据编码</td>
+			      				<td  class="wareallocate-td7">仓库</td>
+			      				<td  class="wareallocate-td8">操作人</td>
+			      				<td  class="wareallocate-td9">备注</td>
+			      			</tr>
+			      		</thead>
+			      		<tbody class="enterorout-tbody">
+			      			{foreach $checkdata as $key=>$value}
+			      			<tr>
+			      				<td>{$key+1}</td>
+			      				<td>
+			      					<span class="check-detail">详情&nbsp;&nbsp;&nbsp;
+			      					</span>
+									<input type="hidden" name='total' value="{$value['total']}">
+									<input type="hidden" name='newtotal' value="{$value['newtotal']}">
+									<input type="hidden" name='oldtotal' value="{$value['oldtotal']}">
+									<input type="hidden" name='image' value="{$value['image']}">
+									<input type="hidden" name='createtime' value="{$value['createtime']}">
+									<input type="hidden" name='path' value="{$value['path']}">
+			      					<span class="check-print">打印</span>
+			      				</td>
+			      				<td class="checktime">
+			      					{$value['createtime']}
+			      				</td>
+			      				<td class="checkname">
+			      					{$value['productname']}
+			      				</td>
+			      				<td class="chechformat">{$value['format']}</td>
+			      				<td class="checkcode">{$value['id']}</td>
+			      				<td class="checkware">{$value['storename']}</td>
+			      				<td class="checkman">{$value['staffid']}</td>
+			      				<td class="checkcomment">{$value['comment']}</td>
+			      			</tr>
+							{/foreach}
+			      		</tbody>
+			      	</table>
+			    </form>
+			</div>
+			{if count($checkdata) <= 0}
+			<div class="row" style="display:block;">
+				<div class="no-record"><img src="/images/empty.jpg"/><span>没有找到记录，请调整搜索条件。</span></div>
+			</div>
+			{/if}
+			{$pages}
+			<!-- 盘点单详情模态窗 -->
+			<div class="modal modal-checklist">
+				<div class="modalcon">
+					<div class="modal-bt">
+						<h4 class="modal-title size-title" id="myModalLabel">详情</h4>
+					    <button type="button" class="close close-btn" data-dismiss="modal" aria-label="Close" id="close-btn"><span aria-hidden="true">x</span></button>
+					</div>
+					<div class="modal-bd">
+					    <form class="form-inline checkmodal-form">
+							<div class="form-group">
+							    <label for="exampleInputName2"class="labelname">日期d：</label>
+							    <span class="form-control checkmodal-time"></span>
+							</div>
+							<div class="form-group">
+							    <label for="exampleInputName2"class="labelname">仓库：</label>
+							    <input class="form-control checkmodal-ware" id="exampleInputName2" readonly="readonly"/>
+							</div>
+							<div class="form-group">
+							    <label for="exampleInputName2"class="labelname">备注：</label>
+							    <input class="form-control checkmodal-mark" id="exampleInputName2" style="width:500px;"/>
+							</div>
+						</form>
+						<table class="table table-hover checkmodal-table">
+					      	<thead class="checkmodal-thead">
+								<tr class="active">
+									<td class="checkmodal-num">序号</td>
+									<td class="checkmodal-img">图片</td>
+									<td class="checkmodal-name">商品名称</td>
+									<td class="checkmodal-size">规格</td>
+									<td class="checkmodal-code">商品编码</td>
+									<td class="checkmodal-num1">盘点前数量</td>
+									<td class="checkmodal-num2">盘点后数量</td>
+									<td class="checkmodal-num3">盈亏数量</td>
+								</tr>
+							</thead>
+							<tbody class="warestatus-modaltbody">
+								<tr>
+									<td>1</td>
+									<td class="warestatus-tbody-img checkmodalimg">
+										<img src="/images/smile.png" class="img1"/>
+										<img src="/images/smile.png" class="img2"/>
+									</td>
+									<td class="checkmodalname">篮球
+									</td>
+									<td class="checkmodalsize">透明</td>
+									<td class="checkmodalcode">5275693773361071</td>
+									<td class="checkmodalnum1">1</td>
+									<td class="checkmodalnum2">2</td>
+									<td class="checkmodalnum3">3</td>
+								</tr>
+							</tbody>
+		                </table>
+					</div>
+					<div class="modal-bo">
+			        	<button type="button" class="btn btn-default btn-sm close-btn">返回</button>
+					</div>
+				</div>
+			</div>
+			<div class="push"></div>
+		</div>
+		{include file="../comfoot.html"}
+		<script type="text/javascript" src="/js/jquery-1.11.0.min.js"></script>
+		<script type="text/javascript" src="/js/commontop.js"></script>
+		<script type="text/javascript" src="/bootstrap/js/bootstrap.min.js"></script>
+		<script type="text/javascript" src="/bootstrap/js/bootstrap-datetimepicker.min.js"></script>
+		<script  src="/bootstrap/js/bootstrap-datetimepicker.zh-CN.js"></script>
+		<script type="text/javascript" src="/js/warehouse/inventorylist.js"></script>
+		<script type="text/javascript" src="/js/warehouse/mycom.js"></script>
+		<script type="text/javascript">
+			$('#datetimepicker1').datetimepicker({
+			    format: 'yyyy-mm-dd',
+			    autoclose: true,
+			    language:'zh-CN',
+			    minView:'year',
+
+			});
+			$('#datetimepicker2').datetimepicker({
+			    format: 'yyyy-mm-dd',
+			    autoclose: true,
+			    language:'zh-CN',
+			    minView:'year',
+			});
+		</script>
+	</body>
+</html>

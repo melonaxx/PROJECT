@@ -1,0 +1,124 @@
+.row .deliver-form{
+	width:1200px;
+	margin-left:15px;
+	padding:0;
+}
+.row .deliver-form .form-group button{
+	margin-right:10px;
+}
+.row .form-inline .dropdown-menu a{
+	font-size:12px;
+}
+.row .form-inline .form-group .input_search{
+	width:200px;
+}
+.row .form-inline .deliver-search{
+	float:right;
+}
+.row .deliver-table{
+	width:1200px;
+	margin-left:15px;
+	padding:0;
+}
+.row .deliver-table thead td{
+   font-weight: 600;
+}
+.row .deliver-table thead td label{
+	height:13px;
+}
+.row .deliver-table thead td:nth-of-type(1){
+   width:46px;
+}
+.row .deliver-table thead td:nth-of-type(2){
+   width:38px;
+}
+.row .deliver-table thead td:nth-of-type(3){
+   width:48px;
+}
+.row .deliver-table thead td:nth-of-type(4){
+   width:70px;
+}
+.row .deliver-table thead td:nth-of-type(5){
+   width:100px;
+}
+.row .deliver-table thead td:nth-of-type(6){
+   width:67px;
+}
+.row .deliver-table thead td:nth-of-type(7){
+   width:119px;
+}
+.row .deliver-table thead td:nth-of-type(8){
+   width:132px;
+}
+.row .deliver-table thead td:nth-of-type(9){
+   width:93px;
+}
+.row .deliver-table thead td:nth-of-type(10){
+   width:93px;
+}
+.row .deliver-table thead td:nth-of-type(11){
+   width:71px;
+}
+.row .deliver-table thead td:nth-of-type(12){
+   width:128px;
+}
+.row .deliver-table thead td:nth-of-type(13){
+   width:120px;
+}
+.modal-deliver .modalcon{
+	width:300px;
+	margin-left: -150px;
+}
+.modal-deliver1 .modalcon{
+	width:300px;
+	margin-left: -150px;
+}
+.modal-deliver2 .modalcon{
+	width:300px;
+	margin-left: -150px;
+}
+.modal-deliver3 .modalcon{
+	width:412px;
+	margin-left:-206px;
+}
+.modal-deliver3 .form-inline .form-group{
+   margin-bottom:15px;
+   margin-right:10px;
+}
+.modal-deliver3 .form-inline .form-control{
+	width:150px;
+}
+.modal-deliver4 .modalcon{
+	width:500px;
+	margin-left:-250px;
+}
+.modal-deliver4 .form-inline .form-group{
+   margin-bottom:15px;
+   margin-right:10px;
+}
+.modal-deliver4 .form-inline .form-control{
+	width:150px;
+}
+.modal-deliver5 .modalcon{
+	width:300px;
+	margin-left:-150px;
+}
+.modal-deliver6 .modalcon{
+	width:420px;
+	margin-left:-210px;
+}
+.modal-deliver6 .form-inline .form-group{
+   margin-bottom:15px;
+   margin-right:10px;
+}
+.modal-deliver6 .form-inline .form-control{
+	width:150px;
+}
+
+
+
+
+
+
+
+

@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>米欢电商ERP</title>
+	<link href="/images/favicon.ico" rel="shortcut icon">
+	<link rel="stylesheet" type="text/css" href="/bootstrap/css/bootstrap.min.css"/>
+	<link href="/css/commontop.css"   rel="stylesheet" media="screen">
+	<link rel="stylesheet" type="text/css" href="/css/order/paymentorder.css"/>			
+</head>
+<body id="printorderbody">
+	{include file="../commontop.html"}
+	<div class="container-fluid container1">
+		<div class="row ware-row">
+			<h5 class="col-md-12">您的位置： <a href="javascript:;">首页</a> » <a href="javascript:;">订单</a> »待付款订单</h5>
+		</div>
+		<div class="row">
+			<ul class="nav nav-tabs col-md-12 paymentorder-nav">
+		  		<li role="presentation">
+			  		<a href="/order/paymentorder.php">线上待付款订单</a>
+			  	</li>
+			  	<li role="presentation">
+			  		<a href="/order/paymentorder_offline.php">线下待付款订单</a>
+			  	</li>
+			  	<li role="presentation" class="active">
+			  		<a href="/order/paymentorder_closed.php">已关闭订单</a>
+			  	</li>
+			</ul>
+		</div>
+		<div class="row">
+			<form action="" class="form-inline paymentorder-form">
+		    	<button class="btn btn-default return-order" type="button">打回订单</button>
+			    <div class="input-group">
+					<input value="" placeholder="输入订单编号/收件人查询" class="form-control input-sm input_search" type="text">
+					<span class="input-group-btn">
+						<button class="btn btn-default btn-sm" style="margin-right: 0;">搜索</button>
+					</span>
+				</div>
+			</form>
+			<table class="table table-hover paymentorder-table">
+				<thead>
+            		<tr class="active">
+                    	<td>序号</td>
+                    	<td>
+                    		<input class="allcheck" type="checkbox" value="">
+                    	</td>
+                    	<td>操作</td>
+                    	<td>买家留言</td>
+                    	<td>订单级别</td>
+                    	<td>发货仓库</td>
+                    	<td>快递公司</td>
+                    	<td>买家名称</td>
+                    	<td>手机</td>
+                    	<td>数量</td>
+                    	<td>订单编号</td>
+                    	<td>店铺</td>
+                    	<td>付款情况</td>
+            		</tr>
+    			</thead>
+    			<tbody class="ortbody">
+                    <tr class="order-tr">
+                        <td class="order-td">1</td>
+                        <td><input class="check" type="checkbox" value=""></td>
+                        <td><a href="/order/editorder.php">编辑</a></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td>
+                        	<span class="buyer">张闫杰</span>
+                    	</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    
+                </tbody>
+            </table>
+		</div>
+		<div class="row no-find">
+			<div class="no-record col-md-12"><img src="/images/empty.jpg"/><span>没有找到记录，请调整搜索条件。</span></div>
+		</div>
+		<div class="row">
+			<form class="form-inline warestatus-form1 warestatus-form2">
+				<div class="form-group">
+				    <label for="exampleInputName2"class="labelname">每页：</label>
+				    <select class="form-control waregood-status" id="exampleInputName2">
+				    	<option>10</option>
+				    	<option>15</option>
+				    	<option>20</option>
+				    	<option>50</option>
+				    	<option>100</option>
+				    </select>
+				</div> 
+				<div class="form-group">
+					<ul class="warestatus-page">
+						<li><a href="">首页</a></li>
+					    <li class="previous"><a href="#">上一页</a></li>
+					    <li>
+					    	<label for="exampleInputName2"class="labelname">第</label>
+						     <input type="text" class="form-control"id="exampleInputName2"value="1">
+					    	<label for="exampleInputName2"class="labelname">页(共<span>1</span>页<span>0</span>条)</label>
+					    </li>
+					    <li class="next"><a href="#">下一页</a></li>
+						<li><a href="#">末页</a></li>
+					 </ul>
+				</div> 
+			</form>
+		</div>
+
+		<!-- 打回订单 -->
+		<div class="modal modal-returnorder">
+			<div class="modalcon">
+				<div class="modal-bt">
+					<h4 class="modal-title size-title" id="myModalLabel">关闭订单</h4>
+				    <button type="button" class="close close-btn" data-dismiss="modal" aria-label="Close" id="close-btn"><span aria-hidden="true">x</span></button>
+				</div>
+				<div class="modal-bd">
+				    <p>您确定要打回订单吗?</p>
+				</div>
+				<div class="modal-bo">
+		        	<button type="button" class="btn btn-default btn-sm">确定</button>
+				</div>
+			</div>
+		</div>
+		<!--提示 -->
+		<div class="modal modal-tip">
+			<div class="modalcon">
+				<div class="modal-bt">
+					<h4 class="modal-title size-title" id="myModalLabel">提示</h4>
+				    <button type="button" class="close close-btn" data-dismiss="modal" aria-label="Close" id="close-btn"><span aria-hidden="true">x</span></button>
+				</div>
+				<div class="modal-bd">
+				    <span class="tip-content">请至少选择1个订单</span>
+				</div>
+				<div class="modal-bo">
+		        	<button type="button" class="btn btn-default btn-sm close-btn">确定</button>
+				</div>
+			</div>
+		</div>
+
+		<div class="push"></div>
+	</div>
+	{include file="../comfoot.html"}
+	<script src="/js/jquery-1.11.0.min.js" ></script>
+	<script src="/js/commontop.js"></script>
+	<script src="/bootstrap/js/bootstrap.min.js"></script>
+	<script src="/js/order/paymentorder_closed.js"></script>
+	<script src="/js/mycom.js"></script>
+</body>
+</html>

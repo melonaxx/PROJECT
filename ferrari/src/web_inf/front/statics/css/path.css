@@ -1,0 +1,54 @@
+@charset "utf-8";
+body {
+    color: #222222;
+    background-color: #fff;
+    padding:68px 0 0;
+    font-family:"Microsoft YaHei";
+}
+/*header*/
+nav {
+    background: url("../images/header-bg.png") repeat-x scroll 0 0 transparent;
+    padding:8px 0 0 0;
+    height:56px;
+    margin:0 0 10px;
+    color:#fff;
+    position:fixed;
+    width:100%;
+    top:0;
+    left:0; 
+    z-index:100
+}
+nav .logo_conn{
+    float:left;
+    min-width:14.893617021276595%;
+    *width:14.840425531914894%;
+    margin:0 20px;
+    display:inline-block
+}
+nav h1{
+    margin:0 20px 0 0;
+    width:96px;
+    height:39px;
+    display:inline-block;
+    overflow:hidden; 
+    vertical-align:middle;
+    background:url(../images/header_line.png) no-repeat 100% 0;
+    padding:0 15px 0 0
+}
+nav .logo {background:url(../images/logo.png) no-repeat;width:83px;height:39px;display:block;text-indent:-9999px;overflow:hidden;margin:0 auto}
+nav .txt{height:43px;font-size:20px;line-height:43px;color:#fff;vertical-align:middle;display:inline-block;}
+nav a, nav a:hover{color:#fff}
+nav .pull-right{padding:0 20px 0 0}
+nav .nav{float:left;margin-top:10px;}
+nav .nav a{padding:7px 15px;display:inline-block;height:24px;line-height:24px;margin:0 8px 0 0;font-size:16px;font-weight:bold;text-shadow:1px 1px 0 rgba(0,0,0,0.4);border-radius:4px 4px 0 0;}
+nav .nav a.cur{background:#fff;color:#08c;text-shadow:1px 1px rgba(255,255,255,0.7)}
+
+span.required {
+    color: red;
+    margin: 0 0 0 3px;
+}
+.errmsg {
+    color: red;
+    display: inline-block;
+    padding: 3px 3px 3px 12px;
+}

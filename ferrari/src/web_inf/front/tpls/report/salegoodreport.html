@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>米欢电商ERP</title>
+ 		<link href="/images/favicon.ico" rel="shortcut icon">
+		<link rel="stylesheet" type="text/css" href="/bootstrap/css/bootstrap-datetimepicker.min.css"/>
+		<link href="/bootstrap/css/bootstrap.min.css"  rel="stylesheet" media="screen">
+		<link href="/css/commontop.css"   rel="stylesheet" media="screen">
+		<link rel="stylesheet" type="text/css" href="/css/report/salereport.css"/>
+		<style>
+			{literal}
+				@media screen and (max-width: 1120px){ 
+					/*当屏幕尺寸小于1120px时，应用下面的CSS样式*/
+				    .navbar-nav,#comtop-right{display: none;}
+				}
+			{/literal}
+		</style>
+	</head>
+	<body>
+		{include file="../commontop.html"}
+		<div class="container-fluid container1">
+			<div class="row ware-row">
+				<h5 class="col-md-12">您的位置：<a href="javascript:;">首页</a> » <a href="javascript:;">报表</a> » 销售汇总(商品)</h5>
+			</div>
+			<div class="row">
+				<ul class="nav nav-tabs col-md-12 salerepot-nav">
+				  <li role="presentation">
+				  	<a href="/report/salereport.php">销售明细表</a>
+				  </li>
+				  <li role="presentation" class="active">
+				  	<a href="/report/salegoodreport.php">销售汇总(商品)</a>
+				  </li>
+				  <li role="presentation">
+				  	<a href="/report/customreport.php">销售汇总(客户)</a>
+				  </li>
+				  <li role="presentation">
+				  	<a href="/report/salemanreport.php">销售汇总(销售员)</a>
+				  </li>
+
+				</ul>
+			</div>
+			<div class="row">
+				<form action="" class="form-inline col-md-12 salerepot-form">
+					<div class="form-group">
+						<label for="" class="labelname">商品：</label>
+						<input type="text" class="form-control"placeholder="请输入商品名称">
+						<select class="form-control select-name">
+							<option value=""></option>
+						</select>
+					</div>
+					<div class="form-group">
+					    <label class="labelname">日期：</label>
+					    <input type="text" class="form-control datetimepicker">
+					    <span>-</span>
+					    <input type="text" class="form-control datetimepicker">
+					</div>
+					<div class="form-group form-btn">
+						<button class="btn btn-sm btn-default" type="button">搜索</button>
+						<button class="btn btn-sm btn-default" type="reset">重置</button>
+						<button class="btn btn-sm btn-default" type="button">导出</button>
+					</div>
+				</form>
+				<table class="table table-hover col-md-12 salerepot-table1">
+					<thead>
+						<tr class="active">
+							<td>序号</td>
+							<td>商品编码</td>
+							<td>商品名称</td>
+							<td>规格属性</td>
+							<td>单位</td>
+							<td>单价</td>
+							<td>数量</td>
+							<td>销售总额</td>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+						</tr>
+					</tbody>
+					<tfoot>
+						<tr>
+							<td>合计</td>
+							<td colspan="5"></td>
+							<td></td>
+							<td></td>
+						</tr>
+					</tfoot>
+				</table>
+			</div>
+			<div class="push"></div>
+		</div>
+		{include file="../comfoot.html"}
+		<script type="text/javascript" src="/js/jquery-1.11.0.min.js"></script>
+		<script type="text/javascript" src="/js/commontop.js"></script>
+		<script type="text/javascript" src="/bootstrap/js/bootstrap.min.js" ></script>
+		<script type="text/javascript" src="/bootstrap/js/bootstrap-datetimepicker.min.js"></script>
+		<script type="text/javascript" src="/bootstrap/js/bootstrap-datetimepicker.zh-CN.js"></script>
+		<scriptsrc="/js/report/salegoodreport.js"></script>
+		<script type="text/javascript">
+			$('.datetimepicker').datetimepicker({
+			    format: 'yyyy-mm-dd',
+			    autoclose:true,
+			    language:'zh-CN',
+			    minView:'year',
+			});
+		</script>
+	</body>
+</html>

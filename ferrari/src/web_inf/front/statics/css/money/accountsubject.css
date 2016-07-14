@@ -1,0 +1,192 @@
+.row .accountsubject-nav{
+	width:1200px;
+	height:auto;
+	padding:0;
+	margin-left: 15px;
+}
+.row .accountsubject-form{
+	width:1200px;
+	height:auto;
+	padding:0;
+	margin-left: 15px;
+}
+.row .accountsubject-form .form-group{
+	margin-right:10px;
+}
+.row .accountsubject-form select{
+	width:200px;
+}
+.row .accountsubject-table{
+	width:1200px;
+	height:auto;
+	padding:0;
+	margin-left: 15px;
+}
+
+.row .accountsubject-table thead td:nth-of-type(1){
+	width:140px;
+}
+.row .accountsubject-table thead td:nth-of-type(2){
+	width:170px;
+	text-align:left;
+}
+.row .accountsubject-table tbody td:nth-of-type(2){
+	text-align:left;
+}
+.row .accountsubject-table thead td:nth-of-type(3){
+	width:340px;
+}
+.row .accountsubject-table thead td:nth-of-type(4){
+	width:150px;
+}
+.row .accountsubject-table thead td:nth-of-type(5){
+	width:400px;
+}
+
+.row .accountsubject-table .table_a_operate{
+	margin-right: 15px;
+}
+.row .accountsubject-table .sort_delete{
+	margin-right: 15px;
+}
+.row .accountsubject-table .float_left{
+	float:left;
+}
+.row .accountsubject-table .float_right{
+	float:right;
+}
+.modal-tip .modalcon{
+	width:300px;
+	margin-left: -150px;
+}
+.modal-accountsubject .modalcon{
+	width:850px;
+	margin-left: -425px;
+}
+.modal-accountsubject .modalcon .form-group{
+	margin:5px 15px 5px 0;
+}
+.modal-accountsubject .modalcon .form-control{
+	width:200px;
+}
+.modal-accountsubject .modalcon .subject-mark{
+	width:765px;
+	height:60px;
+	resize:none;
+}
+.modal-accountsubject1 .modalcon{
+	width:850px;
+	margin-left: -425px;
+}
+.modal-accountsubject1 .modalcon .form-control{
+	width:200px;
+}
+.modal-accountsubject1 .modalcon .form-group{
+	margin:5px 15px 5px 0;
+}
+
+.modal-accountsubject1 .modalcon .subject-mark1{
+	width:765px;
+	height:60px;
+	resize:none;
+}
+.modal-accountsubject2 .modalcon{
+	width:850px;
+	margin-left: -425px;
+}
+.modal-accountsubject2 .modalcon .form-group{
+	margin:5px 15px 5px 0;
+}
+.modal-accountsubject2 .modalcon .form-control{
+	width:200px;
+}
+.modal-accountsubject2 .modalcon .subject-mark2{
+	width:765px;
+	height:60px;
+	resize:none;
+}
+/*财务科目类别*/
+.row .accountsubject-table1{
+	width:1200px;
+	padding:0;
+	margin-left: 15px;
+}
+.row .accountsubject-table1 thead td:nth-of-type(1){
+	width:100px;
+}
+.row .accountsubject-table1 thead td:nth-of-type(2){
+	width:300px;
+	text-align: left;
+}
+.row .accountsubject-table1 tbody td:nth-of-type(2){
+	text-align: left;
+}
+.row .accountsubject-table1 thead td:nth-of-type(3){
+	width:300px;
+}
+.row .accountsubject-table1 thead td:nth-of-type(4){
+	width:500px;
+}
+.row .accountsubject-table1 .table_a_operate{
+	margin-right:10px;
+}
+.modal-accountsubject3 .modalcon{
+	width:600px;
+}
+.modal-accountsubject3 .form-inline .form-group{
+	margin:5px 15px 5px 0;
+}
+.modal-accountsubject3 .form-inline .form-control{
+	width:200px;
+}
+.modal-accountsubject3 .form-inline .subject-mark{
+	width:485px;
+	height:60px;
+	resize:none;
+}
+.modal-accountsubject4 .modalcon{
+	width:600px;
+}
+.modal-accountsubject4 .form-inline .form-group{
+	margin:5px 15px 5px 0;
+}
+.modal-accountsubject4 .form-inline .form-control{
+	width:200px;
+}
+.modal-accountsubject4 .form-inline .subject-mark{
+	width:485px;
+	height:60px;
+	resize:none;
+}
+
+/*科目类型*/
+.row .accountsubject-table2{
+	width:1200px;
+	padding:0;
+	margin-left: 15px;
+}
+.row .accountsubject-table2 thead td:nth-of-type(1){
+	width:100px;
+}
+.row .accountsubject-table2 thead td:nth-of-type(2){
+	width:300px;
+	text-align: left;
+}
+.row .accountsubject-table2 tbody td:nth-of-type(2){
+	text-align: left;
+}
+.row .accountsubject-table2 thead td:nth-of-type(3){
+	width:800px;
+}
+.row .accountsubject-table2 .table_a_operate{
+	margin-right:10px;
+}
+
+
+
+
+
+
+
+
+

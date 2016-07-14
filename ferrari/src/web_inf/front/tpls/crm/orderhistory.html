@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>米欢电商ERP</title>
+		<link href="/images/favicon.ico" rel="shortcut icon">
+		<link rel="stylesheet" type="text/css" href="/bootstrap/css/bootstrap-datetimepicker.min.css"/>
+		<link href="/bootstrap/css/bootstrap.min.css"  rel="stylesheet" media="screen">
+		<link href="/css/commontop.css"   rel="stylesheet" media="screen">
+		<link rel="stylesheet" type="text/css" href="/css/crm/messageset.css"/>
+		<style>
+			{literal}
+				@media screen and (max-width: 1120px){ 
+					/*当屏幕尺寸小于1120px时，应用下面的CSS样式*/
+				    .navbar-nav,#comtop-right{display: none;}
+				}
+			{/literal}
+		</style>
+	</head>
+	<body>
+		{include file="../commontop.html"}
+		<div class="container-fluid container1">
+			<div class="row ware-row">
+				<h5 class="col-xs-12">您的位置： <a href="javascript:;">首页</a> » <a href="javascript:;">CRM</a> »短信设置</h5>
+			</div>
+			<div class="row">
+				<ul class="nav nav-tabs col-xs-12 messageset-nav">
+				  <li role="presentation">
+				  	<a href="messageset.php">统计报表</a>
+				  </li>
+				  <li role="presentation">
+				  	<a href="messagemould.php">短信模板</a>
+				  </li>
+				  <li role="presentation">
+				  	<a href="sendhistory.php">发送历史</a>
+				  </li>
+				  <li role="presentation">
+				  	<a href="messageconfig.php">短信配置</a>
+				  </li>
+				  <li role="presentation">
+				  	<a href="messageorder.php">短信订购</a>
+				  </li>
+				  <li role="presentation" class="active">
+				  	<a href="orderhistory.php">订购历史</a>
+				  </li>
+				  <li style="float:right;line-height:39px;">
+				      短信剩余条数：
+				      <b style="color:#ff0000">0</b> 条
+				  </li>
+				</ul>
+			</div>
+			<div class="status">
+				<div class="row">
+					<table class="table messageset-table messageset-table5">
+						<thead>
+							<tr class="active">
+								<td>序号</td>
+								<td>支付宝交易号</td>
+								<td>充值账户</td>
+								<td>实付金额</td>
+								<td>短信数量</td>
+								<td>订购时间</td>
+							</tr>
+						</thead>
+						<tbody>
+						</tbody>
+					</table>
+				</div>
+			</div>
+			<div class="push"></div>
+		</div>
+		{include file="../comfoot.html"}
+		<script type="text/javascript" src="/js/jquery-1.11.0.min.js"></script>
+		<script type="text/javascript" src="/js/commontop.js"></script>
+		<script type="text/javascript" src="/bootstrap/js/bootstrap.min.js" ></script>
+		<script type="text/javascript" src="/bootstrap/js/bootstrap-datetimepicker.min.js"></script>
+		<script type="text/javascript" src="/js/crm/orderhistory.js"></script>
+	</body>
+</html>

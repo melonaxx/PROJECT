@@ -1,0 +1,165 @@
+/*人员列表*/
+.row .staff-nav{
+	width:1200px;
+	padding:0;
+	margin-left:15px;
+}
+.row .staff-form{
+	width:1200px;
+	padding:0;
+	margin-left:15px;
+}
+.row .staff-form .form-group{
+	margin:0 0 15px 0;
+}
+.row .staff-table{
+	width:1200px;
+	padding:0;
+	margin-left:15px;
+}
+.row .staff-table thead td:nth-of-type(1){
+	width:46px;
+}
+.row .staff-table thead td:nth-of-type(2){
+	width:164px;
+}
+.row .staff-table thead td:nth-of-type(3){
+	width:120px;
+}
+.row .staff-table thead td:nth-of-type(4){
+	width:120px;
+}
+.row .staff-table thead td:nth-of-type(5){
+	width:120px;
+}
+.row .staff-table thead td:nth-of-type(6){
+	width:200px;
+}
+.row .staff-table thead td:nth-of-type(7){
+	width:60px;
+}
+.row .staff-table thead td:nth-of-type(8){
+	width:140px;
+}
+.row .staff-table thead td:nth-of-type(9){
+	width:230px;
+}
+.row .staff-table .staff-del{
+	cursor: pointer;
+}
+.row .staff-table .role-edit{
+	cursor:pointer;
+	color:#000;
+}
+.row .staff-table .role-edit:hover{
+	color:#23527c;
+}
+.modal-staff .modalcon{
+	width:300px;
+	margin-left: -150px;
+}
+/*添加人员*/
+.row .staff-form{
+	width:1200px;
+	padding:0;
+	margin-left: 15px;
+}
+.row .staff-form .staff-left .form-group{
+	margin:10px 20px 10px 0;
+}
+.row .staff-form .form-group .input-tip{
+	color:red;
+}
+.row .staff-form .form-group .form-control{
+	width:160px;
+}
+.row .staff-form .staff-left{
+	width:549px;
+	height:300px;
+	float:left;
+}
+.row .staff-form .staff-right{
+	width:651px;
+	min-height:300px;
+	height:auto!important;
+	height:300px;
+	float:left;
+	
+}
+.row .staff-form .staff-right .form-group:nth-of-type(1){
+	margin-bottom:20px;
+}
+.row .staff-form .choice{
+	font-size:16px;
+	margin-bottom: 15px;
+
+}
+
+.row .staff-form .staff-right .checkbox{
+	margin-top:-2px;
+	margin-right:10px;
+}
+.row .staff-form .staff-right .right-row{
+	width:651px;
+}
+.row .staff-form .staff-right .right-row .form-group{
+	margin:0px 0 0px 17px;
+	width:197px;
+	height:30px;
+	vertical-align: middle;
+}
+.row .staff-form .staff-right .right-row label{
+	vertical-align: middle;
+	width:20px;
+	display:block;
+	float:left;
+
+}
+.row .staff-form .staff-right .right-row .role-name{
+	float:right;
+	width:177px;
+}
+.row .staff-form .staff-btn{
+	margin-top: 70px;
+}
+/*部门人员*/
+.row .department-table{
+	width:1200px;
+	padding:0;
+	margin-left: 15px;
+}
+.row .department-table thead tr td{
+	text-align: left;
+}
+.row .department-table thead tr td:nth-of-type(1){
+	width:400px;
+}
+.row .department-table thead tr td:nth-of-type(2){
+	width:800px;
+}
+.row .department-table tbody tr td{
+	text-align: left;
+}
+/*修改密码*/
+.row .changepassword-form .form-group{
+	margin-bottom: 15px;
+}
+.row .changepassword-form .form-control{
+	width:200px;
+}
+.modal-success .modalcon{
+	width:300px;
+	margin-left: -150px;
+}
+.sousou{
+	box-shadow: 0px 0px 10px pink;
+	border-color:red;
+}
+
+
+
+
+
+
+
+

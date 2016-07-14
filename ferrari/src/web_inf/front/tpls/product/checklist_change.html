@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>米欢电商ERP</title>
+		<link href="/images/favicon.ico" rel="shortcut icon">
+		<link rel="stylesheet" type="text/css" href="/bootstrap/css/bootstrap-datetimepicker.min.css"/>
+		<link href="/bootstrap/css/bootstrap.min.css"  rel="stylesheet" media="screen">
+		<link href="/css/commontop.css"   rel="stylesheet" media="screen">
+		<link rel="stylesheet" type="text/css" href="/css/warehouse/warestatus.css"/>
+		<link rel="stylesheet" type="text/css" href="/css/product/product_addlist.css"/>
+		<style>
+			{literal}
+				@media screen and (max-width: 1120px){ 
+					/*当屏幕尺寸小于1120px时，应用下面的CSS样式*/
+				    .navbar-nav,#comtop-right{display: none;}
+				}
+			{/literal}
+		</style>
+	</head>
+	<body>
+		{include file="../commontop.html"}
+		<div class="container-fluid container1">
+			<div class="row ware-row">
+				<h5>您的位置： <a href="javascript:;">首页</a> » <a href="javascript:;">生产单</a></h5>
+			</div>
+			<div class="row">
+				<form class="form-inline col-xs-12 addlist-form" action="/product/dochange.php" method = "post" id="form_order">
+					<div class="form-group">
+				    	<label for="exampleInputName2" class="labelname">&nbsp;&nbsp;&nbsp;入库仓库：</label>
+				    	<select class="form-control" id="exampleInputName2" name="storehouse">
+					  		<option value="{$one_pro_list['storeid']}">{$one_pro_list['storeinfo']}</option>
+						</select>
+				    </div>
+				    <br>
+				    <div class="form-group">
+				   		<label for="exampleInputName2" class="labelname">生产单摘要：</label>	
+				  		<textarea class="form-control text-mark" rows="3" name="pro_order" id="pro_order">{$one_pro_list['brief']}</textarea>
+				    </div>
+				   
+				    <br>
+					<div class="row-bold addpur-bt">商品信息</div>
+					<table class="table table-hover add-table" border="1">
+						<thead>
+							<tr class="active">
+								<td>搜索</td>
+								<td>商品名称与规格</td>
+								<td>图片</td>
+								<td>单位</td>
+								<td>数量</td>
+							</tr>
+						</thead>
+						<tbody id="tbody1">
+	                        <tr class="onetr1">
+		                        <td>
+		                        	<input type="text" class="form-control searchbox" placeholder="请搜索商品名称与规格" name="goods_name"/>
+		                        </td>
+		                        <td>
+		                        	<select class="form-control searchname" id="goods_info" name="goods_info">
+		                        		<option value="{$one_pro_list['productid']}">{$one_pro_list['goodsinfo']}</option>
+		                        	</select>
+		                        </td>
+		                        <td class="warestatus-tbody-img">
+		                        	<img src="{$one_pro_list['img']}" class="img1"/>
+		                        	<img src="{$one_pro_list['img']}" class="img2"/>
+		                        </td>
+		                        <td style="text-align:center;"><span id="proflats_name">{$one_pro_list['proflats_name']}</span></td>
+		                        <td>
+		                            <input type="hidden" name="id" value="{$one_pro_list['id']}"/>
+		                        	<input type="text" class="form-control goodsnum" placeholder="必填" value="{$one_pro_list['total']}" name="number"  required="required"/>
+		                        </td>
+	                        </tr>
+	                    </tbody>
+					</table>
+					 <div class="form-group">
+				   		<label for="exampleInputName2" class="labelname">生产单备注：</label>	
+				  		<textarea class="form-control text-mark" rows="3"  name="remarks">{$one_pro_list['comment']}</textarea>
+				    </div>
+					<br>
+					<div class="form-group"style="margin-top: 75px;">
+						<input class="btn btn-default" type="submit" value="提交">
+						<a class="btn btn-default" href="product_checklist.php">返回</a>
+					</div>
+				</form>
+			</div>
+			<div class="push"></div>
+		</div>
+		{include file="../comfoot.html"}
+		<script type="text/javascript" src="/js/jquery-1.11.0.min.js"></script>
+		<script type="text/javascript" src="/js/commontop.js"></script>
+		<script type="text/javascript" src="/bootstrap/js/bootstrap.min.js" ></script>
+		<script type="text/javascript" src="/bootstrap/js/bootstrap-datetimepicker.min.js"></script>
+		<script type="text/javascript" src="/js/mycom.js"></script>
+<!-- 		<script type="text/javascript" src="/js/product/checklist_change.js"></script> -->
+		<script type="text/javascript" src="/js/warehouse/warestatus.js"></script>
+	</body>
+{literal}
+<script>
+	 $(function(){
+		var name = $("input[name='goods_name']");
+			name.keyup(function(){
+				if($(this).val()==""){
+					$('#goods_info').empty();
+		            $(".img1").attr("src","");
+		            $(".img2").attr("src","");
+		            $("#proflats_name").text("");
+				}else{
+					$.ajax({
+			             type: "GET",
+
+			             url: "/product/product_goodsinfo.php",
+
+			             data: {
+			             		"store_name":$(this).val()
+			         			},
+
+			             dataType: "json",
+
+			             success:function(data){
+								var str = "";
+								var info = "";
+			             	 for(var i = 0; i < data.length; i++){
+			             	 	 var productid = data[i].productid;
+			             	 	 var goods_info = data[i].formats;
+			             	 	 var img = data[i].img;
+			             	 	 var proflats_name = data[i].proflats_name;
+			                     str += "<option value="+productid+">"+goods_info+"</option>";
+			             	 }
+
+		                     $(".img1").attr("src",img ? img : "");
+		                     $(".img2").attr("src",img ? img : "");
+		                     $("#proflats_name").text(proflats_name ? proflats_name : "");
+			             	 $('#goods_info').empty().append(str);
+			             	 $('#goods_info option:last').attr("selected","selected");
+			             }
+					})
+				}
+			})
+		 	 $('#goods_info').change(function(){
+		 		 $.ajax({
+		             type: "GET",
+
+		             url: "/product/product_goodsinfo.php",
+
+		             data: {
+		             		"productid":$(this).val()
+		         			},
+
+		             dataType: "json",
+
+		             success:function(data){
+		             	 var str = "";
+		             	 for(var i = 0; i < data.length; i++){
+		             	 	 var productid = data[i].productid;
+		             	 	 var goods_info = data[i].formats;
+		             	 	 var img = data[i].img;
+		             	 	 var proflats_name = data[i].proflats_name;
+		                     str += "<option value="+productid+">"+goods_info+"</option>";
+		                     $(".img1").attr("src",img);
+		                     $(".img2").attr("src",img);
+		                     $("#proflats_name").text(proflats_name);
+		             	 }
+		             }
+				})
+
+			 })
+             
+		 	 $("#exampleInputName2").on("focus",function(){
+
+		 	 	   $.ajax({
+		             type: "GET",
+
+		             url: "/product/allstorehouse.php",
+
+		             dataType: "json",
+
+		             success:function(data){
+		             	var str="";
+		             	for(var i=0;i<data.length;i++){
+		             		str += '<option value='+data[i].id+'>'+data[i].name+'('+data[i].storetype+')'+'</option>';
+		             	}
+		             	$("#exampleInputName2").empty().append(str);
+	                    console.log(str);
+		             }
+				})
+
+		 	 })
+
+			 $("#form_order").submit(function(){
+			 	 //仓库
+			 	 var storehouse = $("#exampleInputName2 option:selected").val();
+			 	 // 生产单摘要
+			 	 var pro_order = $("#pro_order").val();
+			 	 //商品id
+			 	 var goods_info = $("#goods_info option:selected").val();
+			 	 //数量
+			 	 var number = $("input[name='number']").val();
+
+		         if(storehouse == "" || goods_info == undefined || goods_info == ""){
+		     		 return false;
+		         }else{
+				   return true;
+		         }
+			 })
+	 })
+</script>
+{/literal}
+</html>

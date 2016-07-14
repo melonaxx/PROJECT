@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>米欢电商ERP</title>
+		<link href="/images/favicon.ico" rel="shortcut icon">
+		<link href="/bootstrap/css/bootstrap.min.css"  rel="stylesheet" media="screen">
+		<link href="/css/commontop.css"   rel="stylesheet" media="screen">
+		<link rel="stylesheet" type="text/css" href="/css/crm/customerlist.css"/>
+		<link rel="stylesheet" type="text/css" href="/css/crm/supplier.css"/>
+		<style>
+			{literal}
+				@media screen and (max-width: 1120px){ 
+					/*当屏幕尺寸小于1120px时，应用下面的CSS样式*/
+				    .navbar-nav,#comtop-right{display: none;}
+				}
+			{/literal}
+		</style>
+	</head>
+	<body>
+		{include file="../commontop.html"}
+		<div class="container-fluid container1">
+			<div class="row ware-row">
+				<h5 class="col-xs-12">您的位置： <a href="javascript:;">首页</a> » <a href="javascript:;">CRM</a> »供应商</h5>
+			</div>
+			<div class="row">
+				<ul class="nav nav-tabs col-xs-12 customer-nav">
+				  <li role="presentation">
+				  	<a href="supplier.php">供应商</a>
+				  </li>
+				  <li role="presentation" class="active">
+				  	<a href="addsupplier.php">添加供应商</a>
+				  </li>
+				  <li role="presentation"style="display:none;" >
+				  	<a href="supplierinfor.php">供应商信息</a>
+				  </li>
+				  <li role="presentation">
+				  	<a href="supplierpayment.php">供应商款项记录</a>
+				  </li>
+				   <li role="presentation">
+				  	<a href="suppliersearch.php">供应商结算金额查询</a>
+				  </li>
+				  
+				</ul>
+			</div>
+			<div class="status">
+				<div class="row">
+					<form class="form-inline supplier1-form supplier1-form1" action="/crm/doaddsupplier.php" method="post">
+						<div class="supplier1-left col-md-5">
+							    <div class="form-group">
+									<label for="exampleInputName2" class="labelname">供应商编码：</label>
+									<input type="text" class="form-control custom-code" placeholder="默认自动生成" name="number">
+								</div>
+								<div class="form-group">
+									<label for="exampleInputName2" class="labelname">供应商名称：</label>
+									<input type="text" class="form-control custom-name" placeholder="必填" required="required" name="name">
+								</div>
+								<div class="form-group">
+									<label for="exampleInputName2"class="labelname">供应商类型：</label>
+								    <select class="form-control custom-type" id="exampleInputName2" name="type">
+								    	<option value="Finished">成品</option>
+								    	<option value="Materials">原材料</option>
+								    </select>
+								</div>
+								<div class="form-group">
+									<label for="exampleInputName2"class="labelname">供应商级别：</label>
+								    <select class="form-control" id="exampleInputName2" name="level">
+								    	<option value="Primary">主选供应商</option>
+								    	<option value="Alternative">备选供应商</option>
+								    	<option value="Eliminate">淘汰供应商</option>
+								    </select>
+								</div>
+								<div class="form-group">
+									<label for="exampleInputName2" class="labelname">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;税号：</label>
+									<input type="text" class="form-control" name="tax">
+								</div>
+								<div class="form-group">
+									<label for="exampleInputName2" class="labelname">&nbsp;&nbsp;&nbsp;结算金额：</label>
+									<input type="text" class="form-control" name="balance">
+								</div>
+								<br>
+								<div class="form-group">
+									<label for="exampleInputName2" class="labelname">&nbsp;&nbsp;&nbsp;开户银行：</label>
+									<input type="text" class="form-control"  style="width:389px;" name="bankname">
+								</div>
+								<div class="form-group">
+									<label for="exampleInputName2" class="labelname">&nbsp;&nbsp;&nbsp;银行账号：</label>
+									<input type="text" class="form-control" style="width:389px;" name="banknumber">
+								</div>
+								<br>
+								<div class="form-group">
+									<label for="exampleInputName2" class="labelname">&nbsp;&nbsp;&nbsp;网站网址：</label>
+									<input type="text" class="form-control custom-url" style="width:389px;" name="website">
+								</div>
+						</div>
+						<div class="supplier1-right col-md-7">
+								<div class="form-group">
+									<label for="exampleInputName2" class="labelname">&nbsp;&nbsp;&nbsp;联系人：</label>
+									<input type="text" class="form-control custom-linkman" name="contactname">
+								</div>
+								<div class="form-group">
+									<label for="exampleInputName2" class="labelname">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;手机：</label>
+									<input type="text" class="form-control custom-phone" name="mobile">
+								</div>
+								<div class="form-group">
+									<label for="exampleInputName2" class="labelname">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;固话：</label>
+									<input type="text" class="form-control" name="phone">
+								</div>
+								<br>
+								<div class="form-group">
+									<label for="exampleInputName2" class="labelname">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;邮箱：</label>
+									<input type="text" class="form-control" name="email">
+								</div>
+								<div class="form-group">
+									<label for="exampleInputName2" class="labelname">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;传真：</label>
+									<input type="text" class="form-control" name="fax">
+								</div>
+								<div class="form-group">
+									<label for="exampleInputName2" class="labelname">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;邮编：</label>
+									<input type="text" class="form-control" name="postcode">
+								</div>
+								<div class="form-group">
+									<label for="select1" class="labelname">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;省份：</label>
+									<select class="form-control pro" id="custom-prov1" name="stateid">
+								    	<option value="-1">--请选择--</option>
+								    </select>
+								</div>
+								<div class="form-group">
+									<label for="select2" class="labelname">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;市区：</label>
+									<select class="form-control city" id="custom-city1" name="cityid">
+								    	<option value="-1">--请选择--</option>
+								    </select>
+								</div>
+								<div class="form-group">
+									<label for="select3" class="labelname">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;区县：</label>
+									<select class="form-control county" id="custom-town1" name="districtid">
+								    	<option value="-1">--请选择--</option>
+								    </select>
+								</div>
+								<br>
+								<div class="form-group">
+									<label for="exampleInputName2" class="labelname">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;地址：</label>
+									<input type="text" class="form-control" style="width:600px;" name="address">
+								</div>
+								<br>
+								<div class="form-group">
+									<label for="exampleInputName2" class="labelname">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;备注：</label>
+									<textarea class="form-control custom-mark1"style="width:600px;height:60px;resize:none;"row="2" name="comment"></textarea>
+								</div>
+						</div>
+						<br>
+						<div class="custom-btn col-md-12">
+							<input type="reset" class="btn btn-default btn-sm custom-reset" value="重置">
+							<input type="submit" class="btn btn-default btn-sm custom-sub" value="提交" style="margin-right:10px;">
+						</div>
+					</form>
+				</div>
+			</div>
+			<div class="push"></div>
+		</div>
+		{include file="../comfoot.html"}
+		<script type="text/javascript" src="/js/jquery-1.11.0.min.js"></script>
+		<script type="text/javascript" src="/js/commontop.js"></script>
+		<script type="text/javascript" src="/bootstrap/js/bootstrap.min.js" ></script>
+		<script type="text/javascript" src="/js/mycom.js"></script>
+		<!-- <script type="text/javascript" src="/js/jsAddress.js"></script> -->
+		<script type="text/javascript" src="/js/threeljs/areasvc.js"></script>
+		<script type="text/javascript" src="/js/util.js"></script>
+		<script type="text/javascript" src="/js/crm/addsupplier.js"></script>
+
+
+	</body>
+</html>

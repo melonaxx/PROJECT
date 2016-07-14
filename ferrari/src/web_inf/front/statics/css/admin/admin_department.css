@@ -1,0 +1,70 @@
+/*人员列表*/
+.row .department-nav{
+	width:1200px;
+	padding:0;
+	margin-left:15px;
+}
+.row .department-table{
+	width:1200px;
+	padding:0;
+	margin-left:15px;
+}
+.row .department-table thead td:nth-of-type(1){
+	width:46px;
+}
+.row .department-table thead td:nth-of-type(2){
+	width:94px;
+}
+.row .department-table thead td:nth-of-type(3){
+	width:250px;
+}
+.row .department-table thead td:nth-of-type(4){
+	width:250px;
+}
+.row .department-table thead td:nth-of-type(5){
+	width:560px;
+}
+.row .department-table .department-del{
+	cursor: pointer;
+}
+.row .department-table .department-del:hover{
+	color:#23527c;
+	
+}
+.modal-department .modalcon{
+	width:300px;
+	margin-left: -150px;
+}
+/*添加部门*/
+.row .department-form{
+	width:1200px;
+	padding:0;
+	margin-left: 15px;
+}
+.row .department-form .form-group{
+	margin:10px 0 10px 0;
+}
+.row .department-form .form-group .form-control{
+	width:160px;
+}
+.row .department-form .form-group .input-tip{
+	color:red;
+}
+.row .department-form .form-group .department-mark{
+	width:320px;
+	height:84px;
+	resize:none;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+

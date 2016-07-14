@@ -1,0 +1,97 @@
+html,body,header,section,footer,div,ul,li,p,a,span,img,h1,h2,h3,h4,h5,h6,input,button, select, textarea{margin:0;padding:0;}
+h1,h2,h3,h4,h5,h6{font-size:12px;font-weight:normal;}
+i{font-style: normal;}
+ul,li{list-style:none;cursor: pointer;}
+html,body{width:100%;height:100%;}
+html{position: relative;}
+body{color:#222;font-family:"Microsoft YaHei";font-size:12px;background: #F7F7F7;}
+a{color:#08c;text-decoration:none}
+a:hover{color:#005580;text-decoration: none;}
+a {outline: none;}
+a:active {star:expression(this.onFocus=this.blur());}
+a:focus { outline:0; }
+/*.psheettop-allf{position: relative;width:99%;}*/
+#allbody input,#allbody button,#allbody select{height:30px;line-height: 17px;}
+.ps-contentall{padding:0 60px;}
+#psheettop-all{background:url(/images/header-bg.png);height:90px;overflow:hidden;padding:0 20px;position: fixed;background: #737373;width:100%;color:#fff;z-index: 999;}
+.psheettop-all a{color:#fff;}
+.psheettop{background:url(/images/header-bg.png);width:110%;margin-left:-5%;text-align: center;font-size: 24px;line-height:50px;font-weight:bold;}
+.psheettop1{font-size: 16px;line-height:30px;float:left;width:10%;box-sizing:border-box;}
+.psheettop2{font-size: 16px;line-height:30px;float:left;width:80%;}
+.psheettop2 ul{text-align: center;}
+.psheettop2 li{float:left;width:16%;cursor: pointer;}
+.psheettop3{font-size: 16px;line-height:30px;float:right;width:10%;text-align: right;box-sizing:border-box;}
+
+#ps-data .form_datetime{background: #fff;}
+/*----------------未排版印刷单------------------------*/
+.psheet-table{margin-top:100px;}
+.psheet-table tbody{background: #fff;}
+.ps-contentl1{width:34px;float:left;line-height: 30px;}
+.ps-content select{width:100px;float:left;}
+.ps-content .ps-content1{width:150px;float:left;}
+.ps-content nav,.ps-content nav ul{float:left;width:126px;margin-top:6px;}
+.ps-contentl2{float:left;width:300px;}
+.ps-contentl2 label:nth-of-type(1){float:left;width:20px;margin-left:10px;line-height: 30px;}
+.ps-contentl2 label:nth-of-type(2){float:left;width:40px;margin-left:10px;line-height: 30px;}
+.ps-contentl2 label:nth-of-type(3){float:left;width:20px;margin-left:10px;line-height: 30px;}
+.ps-contentl2 label:nth-of-type(4){float:left;width:60px;line-height: 30px;}
+.ps-contentl2 input{float:left;width:80px;}
+.ps-contentl2 span{width:38px;display:block;float:left;line-height: 30px;}
+.psheet-tr .psedit{color:mediumpurple;}
+
+/*--------------编辑印刷单--------------------*/
+#pseditsheet{display: none;}
+.ps-editp{font-size:18px;margin-top:100px;height:40px;line-height:40px;}
+#content-topr .form-group{float: left;}
+.form-group{margin-top:10px;}
+.content select.form-control,.content input.form-control{width:150px;margin-right:50px;height:30px;line-height: 28px;font-size: 12px;}
+.content textarea.form-control{width:328px;height:34px;}
+.content label{width:80px;}
+.content .form-group .ps-otherinput{width:436px;}
+.content-topr label{margin-top:10px;line-height:30px;float:left;}
+.ps-effpicture{width:350px;height:350px;border:1px solid #d6d6d6;float:left;margin-top:10px;}
+.content-topr button{float: left;margin:10px 0 0 10px;background: lightgreen;}
+#ps-addpeople input{float:left;width:350px;}
+#ps-addpeople label{margin:0;}
+.ps-ordercom{font-size:16px;line-height: 30px;margin-bottom:10px;}
+#ps-otherinput{height:82px;width:100%;}
+.ps-com{background: lightskyblue;margin:30px;}
+.ps-copy{background: greenyellow;margin:30px;}
+
+/*--------------编辑印刷单成功--------------------*/
+.ps-opsuccess{font-size:18px;margin-top:100px;display: none;}
+
+/*-------------------查询-------------------------*/
+.ps-queryall .form-group{margin-top:20px;}
+.ps-queryinput{width:66%;height:30px;line-height: 28px;font-size: 12px;}
+.ps-queryall .ps-queryal1{width:156px;float:left;line-height: 30px;}
+.ps-queryall .ps-queryal2{width:156px;line-height: 30px;}
+.ps-queryl1{background:#dff0d8;margin-top:10px;}
+.ps-queryl2{background:#d9edf7;margin-top:10px;}
+.ps-queryl3{background:#fcf8e3;margin-top:-10px;}
+.ps-queryl4{background:#f2dede;margin-top:-10px;}
+.ps-queryfg1 label{float:left;width:64px;line-height:30px;}
+.ps-queryfg1 input{float:left;width:150px;height:30px;line-height: 28px;font-size: 12px;}
+.ps-queryfg1 select{float:left;width:150px;height:30px;line-height: 28px;font-size: 12px;}
+#ps-queryotherfg{margin:0;}
+#ps-queryal2{width:50%;height:30px;line-height: 30px;margin-top:20px;}
+#ps-queryal2 label,#ps-queryal2 input,#ps-queryal2 div{float:left;vertical-align: middle;}
+#ps-queryradio1{margin:0;}
+#ps-queryradio2{margin:0;}
+#ps-queryradio1 input{margin-left:-16px;}
+#ps-queryradio2 input{margin-left:-16px;}
+
+/*---------------------查询结果(无)----------------*/
+.ps-queryflase{margin-top: 100px;display: none;}
+.ps-queryflase p{font-size:18px;margin:20px 0;}
+.ps-return{background: #337ab7;}
+.ps-querysp{font-size:18px;margin:20px 0;}
+
+/*---------------------查询结果(有)----------------*/
+.ps-querysuccess{margin-top: 110px;display: none;}
+.ps-querysuccess .ps-querysall label{width:100px;float:left;line-height: 30px;}
+.ps-querysuccess .ps-querysall #input-weight{width:150px;float:left;}
+
+
+
+

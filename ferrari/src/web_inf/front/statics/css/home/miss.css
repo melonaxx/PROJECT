@@ -1,0 +1,21 @@
+.row .misscon{
+	width:788px;
+	height:320px;
+	background:url(/images/miss.png) no-repeat;
+	margin:0 auto;
+	padding-top:180px;
+	padding-left:272px;
+}
+.row .misscon .miss-p{
+	width:408px;
+	height:40px;
+	line-height:40px;
+	font-size:25px;
+
+}
+.row .misscon .miss-p1{
+	font-size:16px;
+}
+.row .misscon .miss-p1 a{
+	color:blue;
+}

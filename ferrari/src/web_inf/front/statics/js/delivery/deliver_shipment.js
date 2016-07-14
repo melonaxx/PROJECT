@@ -1,0 +1,91 @@
+$(function(){
+	//全选;
+	var flag=false;
+	$(".allcheck").on("click",function(){
+		if(this.checked){
+			$(".check[type='checkbox']").each(function(){
+				this.checked=true;
+				flag=true;
+			});
+		}else{
+			$(".check[type='checkbox']").each(function(){
+				this.checked=false;
+				flag=false;
+			});
+		}
+	});
+	//发货;
+	$(".sure-fahuo").click(function(){
+		$(".check[type='checkbox']").each(function(){
+			if(this.checked==true){
+				flag=true;
+				$(".modal-shipment").show();
+
+			}
+		});
+		if(flag){
+			$(".modal-shipment").show();
+		}else{
+			$(".modal-shipment1").show();
+		}
+	});
+	//打回
+	$(".return").click(function(){
+		var $who=$(this);
+		$(".check[type='checkbox']").each(function(){
+			if(this.checked==true){
+				flag=true;
+				$(".modal-shipment2").show();
+				$(".detail-con").html($who.html());
+
+			}
+		});
+		if(flag){
+			$(".modal-shipment2").show();
+		}else{
+			$(".modal-shipment1").show();
+		}
+	});
+	//提交异常;
+	$(".submit-statu").click(function(){
+		$(".check[type='checkbox']").each(function(){
+			if(this.checked==true){
+				flag=true;
+				$(".modal-shipment3").show();
+			}
+		});
+		if(flag){
+			$(".modal-shipment3").show();
+		}else{
+			$(".modal-shipment1").show();
+		}
+	});
+	$(".change-bei").click(function(){
+		$(".check[type='checkbox']").each(function(){
+			if(this.checked==true){
+				flag=true;
+				$(".modal-shipment4").show();
+
+			}
+		});
+		if(flag){
+			$(".modal-shipment4").show();
+		}else{
+			$(".modal-shipment1").show();
+		}
+	});
+	//判断是否覆盖
+	$(".shipment4-sure").click(function(){
+		if($(".change-method").val()=="在原备注上追加"){
+			$(".check[type='checkbox']:checked").each(function(){
+				$(this).parents("tr").find('td:nth-child(5)').html($(this).parents("tr").find('td:nth-child(5)').html()+"[追加]"+$(".shipment4-mark").val());
+			    $(".modal-shipment4").hide();
+			});
+		}else if($(".change-method").val()=="覆盖原先的备注"){
+			$(".check[type='checkbox']:checked").each(function(){
+				$(this).parents("tr").find('td:nth-child(5)').html($(".shipment4-mark").val());
+			    $(".modal-shipment4").hide();
+			});
+		}
+	});
+})

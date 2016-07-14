@@ -1,0 +1,113 @@
+.row .shipment-form{
+	width:1200px;
+	margin-left:15px;
+	padding:0;
+}
+.row .shipment-form .form-group button{
+	margin-right:10px;
+}
+.row .form-inline .dropdown-menu a{
+	font-size:12px;
+}
+.row .form-inline .form-group .input_search{
+	width:200px;
+}
+.row .form-inline .shipment-search{
+	float:right;
+}
+.row .shipment-table{
+	width:1200px;
+	margin-left:15px;
+	padding:0;
+}
+
+.row .shipment-table thead td{
+     font-weight: 600;
+}
+.row .shipment-table thead td label{
+	height:13px;
+}
+.row .shipment-table thead td:nth-of-type(1){
+   width:46px;
+}
+.row .shipment-table thead td:nth-of-type(2){
+   width:38px;
+}
+.row .shipment-table thead td:nth-of-type(3){
+   width:48px;
+}
+.row .shipment-table thead td:nth-of-type(4){
+   width:46px;
+}
+.row .shipment-table thead td:nth-of-type(5){
+   width:46px;
+}
+.row .shipment-table thead td:nth-of-type(6){
+   width:132px;
+}
+.row .shipment-table thead td:nth-of-type(7){
+   width:132px;
+}
+.row .shipment-table thead td:nth-of-type(8){
+   width:67px;
+}
+.row .shipment-table thead td:nth-of-type(9){
+   width:67px;
+}
+.row .shipment-table thead td:nth-of-type(10){
+   width:93px;
+}
+.row .shipment-table thead td:nth-of-type(11){
+   width:93px;
+}
+.row .shipment-table thead td:nth-of-type(12){
+   width:71px;
+}
+.row .shipment-table thead td:nth-of-type(13){
+   width:128px;
+}
+.row .shipment-table thead td:nth-of-type(14){
+   width:120px;
+}
+.modal-shipment .modalcon{
+	width:300px;
+	margin-left: -150px;
+}
+.modal-shipment1 .modalcon{
+	width:300px;
+	margin-left: -150px;
+}
+.modal-shipment2 .modalcon{
+	width:300px;
+	margin-left: -150px;
+}
+.modal-shipment3 .modalcon{
+	width:412px;
+	margin-left:-206px;
+}
+.modal-shipment3 .form-inline .form-group{
+   margin-bottom:15px;
+   margin-right:10px;
+}
+.modal-shipment3 .form-inline .form-control{
+	width:150px;
+}
+.modal-shipment4 .modalcon{
+	width:420px;
+	margin-left:-210px;
+}
+.modal-shipment4 .form-inline .form-group{
+   margin-bottom:15px;
+   margin-right:10px;
+}
+.modal-shipment4 .form-inline .form-control{
+	width:150px;
+}
+
+
+
+
+
+
+
+

@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+        <title>用户管理 - 北京福润一生ERP系统</title>
+
+        <!-- Bootstrap -->
+        <link href="/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+        <link href="/css/path.css" rel="stylesheet">
+    </head>
+    <body>
+        <nav>
+        <div class="logo_conn">
+            <h1><a title="首页" class="logo" href="/"></a></h1><span class="txt">北京福润一生科技有限公司</span>
+        </div>
+        </nav>
+
+        <div class="container">
+            <div class="tabbable">
+                <ul class="nav nav-tabs" role="tablist">
+                    <li role="presentation"><a href="/user/listuser.php">用户列表</a></li>
+                    <li role="presentation" class="active"><a href="/user/adduser.php">添加用户</a></li>
+                </ul>
+
+                <div>
+                    <h2>添加用户</h2>
+                    <form class="form-horizontal" action="/user/adduser.php" method="POST" enctype="application/x-www-form-urlencoded">
+                        <input type="hidden" name="op" value="1">
+                        <div id="error_panel" class="form-group<?=$errinfo['errno']<0 ? "" : " hidden"?>" style="margin-bottom:0;">
+                            <label class="col-sm-2 control-label"></label>
+                            <div class="col-sm-4">
+                                <div class="alert alert-danger" role="alert">
+                                    <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+                                    <span class="sr-only">错误提示：</span>
+                                    <span><?=$errinfo['errmsg']?></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="inputUsername" class="col-sm-2 control-label">用户名<span class="required">*</span></label>
+                            <div class="col-sm-4">
+                                <input type="text" class="form-control" id="inputUsername" name="name" placeholder="请输入新增的用户名" autocomplete="off" maxlenth="16">
+                                <span class="errmsg<?=$errinfo['errno']==1 ? "" : " hidden"?>"><?=$errinfo['errmsg']?></span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="inputPassword" class="col-sm-2 control-label">密码<span class="required">*</span></label>
+                            <div class="col-sm-4">
+                                <input type="password" class="form-control" id="inputPassword" name="pwd" placeholder="请输入用户名密码" autocomplete="off" maxlenth="16">
+                                <span class="errmsg hidden"></span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="inputPassword2" class="col-sm-2 control-label">确认密码<span class="required">*</span></label>
+                            <div class="col-sm-4">
+                                <input type="password" class="form-control" id="inputPassword2" placeholder="再次输入密码" autocomplete="off" maxlenth="16">
+                                <span class="errmsg hidden"></span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-offset-2 col-sm-10">
+                                <button id="btnAddUser" type="submit" class="btn btn-primary">添加</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <?php include("footer.html"); ?>
+
+        <script>
+            $("#btnAddUser").on("click", function() {
+                // 首先隐藏所有的错误提示
+                $("#error_panel, .error").addClass("hidden");
+
+                var nameInput = $("#inputUsername"), name = $.trim(nameInput.val());
+                if (!name) {
+                    nameInput.focus();
+                    nameInput.next().removeClass("hidden").text("请输入用户名");
+                    return false;
+                }
+
+                var pwdInput = $("#inputPassword"), pwdInput2 = $("#inputPassword2");
+                var pwd = $.trim(pwdInput.val()), pwd2 = $.trim(pwdInput2.val());
+                if (!pwd) {
+                    pwdInput.focus();
+                    pwdInput.next().removeClass("hidden").text("请输入用户密码");
+                    return false;
+                }
+                if (!pwd2) {
+                    pwdInput2.focus();
+                    pwdInput2.next().removeClass("hidden").text("请再次输入用户密码");
+                    return false;
+                }
+                if (pwd !== pwd2) {
+                    pwdInput.val("");
+                    pwdInput2.val("");
+                    pwdInput.focus();
+                    pwdInput2.next().removeClass("hidden").text("前后两次输入密码不一致");
+                    return false;
+                }
+
+                if (!/^[\w~`\!@#\$%^&*\(\)\-\+=\{\[\}\]\:;\"\',<.>\/\?]{6,32}$/.test(pwd)) {
+                    pwdInput.select();
+                    pwdInput2.next().removeClass("hidden").text("密码长度至少为6位。不能是汉字。");
+                    return false;
+                }
+
+                return true;
+            });
+        </script>
+    </body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>米欢电商ERP</title>
+		<link rel="stylesheet" type="text/css" href="/bootstrap/css/bootstrap.min.css"/>
+		<link href="/images/favicon.ico" rel="shortcut icon">
+		<link href="/css/commontop.css"   rel="stylesheet" media="screen">
+		<style type="text/css">
+			*{margin:0;padding:0;}
+			body{font-size: 12px;}
+			a{color:#336699;}
+			.container-all{padding:0 60px;}
+			.your-position{width:300px;height:50px;line-height: 50px;}
+			.your-position .posp1{float:left;}
+			.your-position .posa1{display:block;float:left;}
+			.goods-allcontent p{line-height: 1.5;}
+		</style>
+	</head>
+	<body>
+		<?php include("commontop.html"); ?>
+		<div class="container-fluid container-all">
+			<div class="your-position">
+				<p class="posp1">您的位置&nbsp;:&nbsp;</p>
+				<a class="posa1" href="#">首页</a>
+			</div>
+			<div class="goods-allcontent">
+				<p>商品录入：商品的名称、成本价、零售价、批发价、重量、体积、属性、照片、所属类目、包含的配件、供货商、是否计入库存等信息的录入</p>
+				<p>商品列表：商品的列表和查询功能</p>
+				<p>商品组装：把原材料或者配件，或者两个产品组装成一个新的产品；组装以后，会导致库存的变化；</p>
+				<p>商品分类：商品类目的添加，商品类目的管理；</p>
+			</div>
+		</div>
+		<script src="/js/jquery-1.11.0.min.js" ></script>
+		<script src="/bootstrap/js/bootstrap.min.js"  ></script>
+		<script src="/js/commontop.js"></script>
+	</body>
+</html>

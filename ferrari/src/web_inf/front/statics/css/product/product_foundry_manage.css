@@ -1,0 +1,164 @@
+.row .manage-nav{
+	width:1200px;
+	padding:0;
+	margin-left: 15px;
+}
+.row .manage-form {
+	width:1200px;
+	padding:0;
+	margin-left: 15px;
+	margin-bottom: 15px;
+}
+.row .manage-form .form-group{
+	float:right;
+	margin:0 0 0 15px;
+}
+.row .manage-form .form-group select{
+	width:150px;
+}
+.row .manage-form1 .form-group{
+	float:left;
+	margin-right:15px;
+	margin-left: 0;
+	margin-bottom: 15px;
+}
+.row .manage-form1 .form-group button:nth-of-type(1){
+	margin-right: 10px;
+}
+.row .manage-table{
+	width:1200px;
+	padding:0;
+	margin-left: 15px;
+}
+.row .manage-table thead td:nth-of-type(1){
+	width:46px;
+}
+.row .manage-table thead td:nth-of-type(2){
+	width:56px;
+}
+.row .manage-table thead td:nth-of-type(3){
+	width:46px;
+	text-align: center;
+}
+.row .manage-table tbody td:nth-of-type(3){
+	text-align: center;
+}
+
+.row .manage-table thead td:nth-of-type(4){
+	width:602px;
+}
+.row .manage-table thead td:nth-of-type(5){
+	width:150px;
+}
+.row .manage-table thead td:nth-of-type(6){
+	width:150px;
+}
+.row .manage-table thead td:nth-of-type(7){
+	width:150px;
+}
+
+.row .manage-table1,.row .manage-table2{
+	margin-left: 0;
+}
+.row .manage-table1 thead td:nth-of-type(1){
+	width:46px;
+}
+.row .manage-table1 thead td:nth-of-type(2){
+	width:46px;
+}
+.row .manage-table1 thead td:nth-of-type(3){
+	width:46px;
+	text-align: center;
+}
+.row .manage-table1 thead td:nth-of-type(4){
+	width:152px;
+}
+.row .manage-table1 thead td:nth-of-type(5){
+	width:290px;
+}
+.row .manage-table1 thead td:nth-of-type(6){
+	width:120px;
+}
+.row .manage-table1 thead td:nth-of-type(7){
+	width:120px;
+}
+.row .manage-table1 thead td:nth-of-type(8){
+	width:120px;
+}
+.row .manage-table1 thead td:nth-of-type(9){
+	width:250px;
+}
+.row .manage-table1 .searchbox{
+	width:142px;
+}
+.row .manage-table1 .searchname{
+	width:280px;
+}
+.row .manage-table1 .choice{
+	width:110px;
+}
+.row .manage-table1 .number{
+	width:110px;
+}
+.row .manage-table1 .remark{
+	width:240px;
+}
+.row .manage-table2 thead td:nth-of-type(1){
+	width:46px;
+}
+.row .manage-table2 thead td:nth-of-type(2){
+	width:46px;
+}
+.row .manage-table2 thead td:nth-of-type(3){
+	width:46px;
+	text-align: center;
+}
+.row .manage-table2 thead td:nth-of-type(4){
+	width:152px;
+}
+.row .manage-table2 thead td:nth-of-type(5){
+	width:360px;
+}
+.row .manage-table2 thead td:nth-of-type(6){
+	width:150px;
+}
+.row .manage-table2 thead td:nth-of-type(7){
+	width:150px;
+}
+.row .manage-table2 thead td:nth-of-type(8){
+	width:250px;
+}
+.row .manage-table2 .searchbox{
+	width:142px;
+}
+.row .manage-table2 .searchname{
+	width:350px;
+}
+.row .manage-table2 .choice{
+	width:140px;
+}
+.row .manage-table2 .number{
+	width:140px;
+}
+.row .manage-table2 .remark{
+	width:240px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

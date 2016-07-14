@@ -1,0 +1,101 @@
+.row .paymentorder-nav{
+	width:1200px;
+	padding:0;
+	margin-left: 15px;
+}
+.row .paymentorder-form{
+	width:1200px;
+	padding:0;
+	height:auto;
+	margin-bottom: 15px;
+	margin-left: 15px;
+}
+.row .paymentorder-form button{
+	margin-right: 10px;
+}
+.row .paymentorder-form .input-group{
+	float:right;
+}
+.row .paymentorder-form .input-group input{
+	width:200px;
+}
+.row .paymentorder-table{
+	width:1200px;
+	padding:0;
+	height:auto;
+	margin-bottom: 15px;
+	margin-left: 15px;
+}
+.row .paymentorder-table thead td:nth-of-type(1){
+	width:46px;
+}
+.row .paymentorder-table thead td:nth-of-type(2){
+	width:38px;
+}
+.row .paymentorder-table thead td:nth-of-type(3){
+	width:48px;
+}
+.row .paymentorder-table thead td:nth-of-type(4){
+	width:132px;
+}
+.row .paymentorder-table thead td:nth-of-type(5){
+	width:132px;
+}
+.row .paymentorder-table thead td:nth-of-type(6){
+	width:85px;
+}
+.row .paymentorder-table thead td:nth-of-type(7){
+	width:70px;
+}
+.row .paymentorder-table thead td:nth-of-type(8){
+	width:90px;
+}
+.row .paymentorder-table thead td:nth-of-type(9){
+	width:93px;
+}
+.row .paymentorder-table thead td:nth-of-type(10){
+	width:70px;
+}
+.row .paymentorder-table thead td:nth-of-type(11){
+	width:128px;
+}
+.row .paymentorder-table thead td:nth-of-type(12){
+	width:100px;
+}
+.row .paymentorder-table thead td:nth-of-type(13){
+	width:70px;
+}
+.modal-closeorder .modalcon{
+	width:300px;
+	margin-left: -150px;
+}
+.modal-sendmessage .modalcon{
+	width:300px;
+	margin-left: -150px;
+}
+.modal-sendmessage .modalcon .form-control{
+	width:150px;
+}
+.modal-tip .modalcon{
+	width:300px;
+	margin-left: -150px;
+}
+.modal-returnorder .modalcon{
+	width:300px;
+	margin-left: -150px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

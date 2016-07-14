@@ -1,0 +1,260 @@
+.row .purchasepay-nav{
+	width:1200px;
+	margin-left:15px;
+}
+.row .purchasepay-form1 {
+	width:1200px;
+	padding:0;
+	margin-left:15px;
+	margin-bottom:15px;
+}
+.row .purchasepay-form1 .form-group{
+	float:right;
+}
+.purchasepay-form .form-group{
+	margin-right:10px;
+}
+.purchasepay-form .form-group:nth-of-type(1){
+	margin-right: 0;
+}
+.purchasepay-form .form-group .form-control{
+	width:150px;
+}
+.purchasepay-form .form-group button:nth-of-type(1){
+	margin-right:10px;
+}
+.row .purchasepay-table{
+	width:1200px;
+	margin-left:15px;
+}
+.purchasepay-table thead td{
+	font-weight:600;
+}
+.purchasepay-table thead td:nth-of-type(1){
+	width:46px;
+}
+.purchasepay-table thead td:nth-of-type(2){
+	width:64px;
+}
+.purchasepay-table thead td:nth-of-type(3){
+	width:130px;
+}
+.purchasepay-table thead td:nth-of-type(4){
+	width:110px;
+}
+.purchasepay-table thead td:nth-of-type(5){
+	width:140px;
+}
+.purchasepay-table thead td:nth-of-type(6){
+	width:150px;
+}
+.purchasepay-table thead td:nth-of-type(7){
+	width:140px;
+}
+.purchasepay-table thead td:nth-of-type(8){
+	width:140px;
+}
+.purchasepay-table thead td:nth-of-type(9){
+	width:140px;
+}
+.purchasepay-table thead td:nth-of-type(10){
+	width:140px;
+}
+/*单据列表页面*/
+.row .purchasepay-table1{
+	width:1200px;
+	margin-left:15px;
+	padding:0;
+}
+.row .purchasepay-table1 thead td:nth-of-type(1){
+	width:46px;
+}
+.row .purchasepay-table1 thead td:nth-of-type(2){
+	width:144px;
+	text-align:left;
+}
+.row .purchasepay-table1 tbody td:nth-of-type(2){
+	text-align:left;
+}
+.row .purchasepay-table1 thead td:nth-of-type(3){
+	width:120px;
+}
+.row .purchasepay-table1 thead td:nth-of-type(4){
+	width:70px;
+}
+.row .purchasepay-table1 thead td:nth-of-type(5){
+	width:100px;
+}
+.row .purchasepay-table1 thead td:nth-of-type(6){
+	width:90px;
+}
+.row .purchasepay-table1 thead td:nth-of-type(7){
+	width:90px;
+}
+.row .purchasepay-table1 thead td:nth-of-type(8){
+	width:90px;
+}
+.row .purchasepay-table1 thead td:nth-of-type(9){
+	width:90px;
+}
+.row .purchasepay-table1 thead td:nth-of-type(10){
+	width:140px;
+}
+.row .purchasepay-table1 thead td:nth-of-type(11){
+	width:120px;
+}
+.row .purchasepay-table1 thead td:nth-of-type(12){
+	width:100px;
+}
+.modal-purchasepay .modalcon{
+	width:600px;
+	margin-left:-300px;
+}
+.modal-purchasepay .modalcon .form-inline{
+	margin:15px 0 10px 0;
+}
+.modal-purchasepay .modalcon .form-group{
+	margin-right:50px;
+	margin-bottom:15px;
+}
+.modal-purchasepay .modalcon .form-group textarea{
+	width:450px;
+	height:65px;
+	resize:none;
+}
+/*++++++++++++++跳转付款页面+++++++++++++++++++++*/
+.row .payfor-table{
+	width:1200px;
+}
+.row .payfor-table thead td{
+	font-weight:600;
+	vertical-align: middle;
+}
+.row .payfor-table thead td:nth-of-type(1){
+	width:300px;
+	text-align:left;
+}
+.row .payfor-table tbody td:nth-of-type(1){
+	text-align:left;
+}
+.row .payfor-table thead td:nth-of-type(2){
+	width:80px;
+}
+.row .payfor-table thead td:nth-of-type(3){
+	width:80px;
+}
+.row .payfor-table thead td:nth-of-type(4){
+	width:80px;
+}
+.row .payfor-table thead td:nth-of-type(5){
+	width:100px;
+}
+.row .payfor-table thead td:nth-of-type(6){
+	width:100px;
+}
+.row .payfor-table thead td:nth-of-type(7){
+	width:100px;
+}
+.row .payfor-table thead td:nth-of-type(8){
+	width:100px;
+}
+.row .payfor-table thead td:nth-of-type(9){
+	width:90px;
+}
+.row .payfor-table thead td:nth-of-type(10){
+	width:80px;
+}
+.row .payfor-table thead td:nth-of-type(11){
+	width:90px;
+}
+
+.row .thispayfor{
+	width:1200px;
+	height:41px;
+    padding:8px 0 0 0;
+    margin-bottom: 0;
+    border-bottom:1px solid #ccc;
+	background:#eee;
+}
+.row .thispayfor-group{
+	width:1200px;
+	height:105px;
+	padding:15px 0 15px 0;
+	background:#eee;
+	border-bottom:1px solid #ccc;
+}
+.row .thispayfor-form .form-group{
+	margin:10px 20px 0 0;
+}
+.row .thispayfor-form .form-group .form-control{
+	width:150px;
+}
+.row .thispayfor-form .payfor-group1 .form-control{
+	width:610px;
+}
+.row .payfor-title{
+	margin:15px 0 15px 0;
+}
+.row .payfor-form{
+	width:1200px;
+	height:auto;
+	border-top: 1px solid #ccc;
+	border-bottom: 1px solid #ccc;
+	padding:12px 0 5px 0;
+	margin:0 0 12px 0;
+}
+.row .payfor-form .form-inline{
+	margin-bottom:10px;
+}
+.row .payfor-form .form-inline .form-control{
+	width:150px;
+}
+.row .payfor-form .form-inline .form-group{
+	margin-right:10px;
+}
+.row .form-inline .payfor-see{
+	float:right;
+	height:30px;
+	line-height:30px;
+}
+.row .expenses-form{
+	width:1200px;
+	height:auto;
+	padding:15px 0 0 0;
+	border-top:1px solid #ccc;
+	border-bottom:1px solid #ccc;
+}
+.row .expenses-form .form-group{
+	margin-right:10px;
+}
+.row .enterware-btn{
+	margin-top: 10px;
+	margin-left: 0;
+	padding:0;
+}
+.row .enterware-btn .btn{
+	margin-right: 10px;
+}
+
+.modal-listof .modalcon{
+	width:800px;
+	margin-left: -400px;
+}
+.modal-listof .modalcon .modal-bd{
+	height:300px;
+	overflow: auto;
+}
+.modal-listof .modalcon .form-group{
+	margin:10px 30px 10px 0;
+}
+.listof-detail,.listof-print{
+	cursor:pointer;
+}
+.modal-listof .modal-listtext{
+	width:680px;
+	height:60px;
+	resize:none;
+}
+
+
+

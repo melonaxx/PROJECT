@@ -1,0 +1,135 @@
+.row .searchpurchse-nav{
+	width:1200px;
+	padding:0;
+	margin-left: 15px;
+}
+.container1 .row .searchpur-form{
+	width:1200px;
+	margin-left:15px;
+	margin-bottom:20px;
+	padding:0;
+}
+.row .searchpur-form .form-group{
+    float:right;
+    margin-left:10px;
+}
+.row .searchpur-form .form-group button:nth-of-type(2){
+    margin-left:10px;
+}
+.row .searchpur-table{
+	width:1200px;
+	margin-left:15px;
+	padding:0;
+}
+.row .searchpur-table thead td{
+	font-weight:600;
+}
+.row .searchpur-table thead td:nth-of-type(1){
+	width:46px;
+}
+.row .searchpur-table thead td:nth-of-type(2){
+	width:104px;
+	text-align: left;
+}
+.row .searchpur-table thead td:nth-of-type(3){
+	width:140px;
+}
+.row .searchpur-table thead td:nth-of-type(4){
+	width:80px;
+}
+.row .searchpur-table thead td:nth-of-type(5){
+	width:70px;
+}
+.row .searchpur-table thead td:nth-of-type(6){
+	width:70px;
+}
+.row .searchpur-table thead td:nth-of-type(7){
+	width:100px;
+}
+.row .searchpur-table thead td:nth-of-type(8){
+	width:100px;
+}
+.row .searchpur-table thead td:nth-of-type(9){
+	width:70px;
+}
+.row .searchpur-table thead td:nth-of-type(10){
+	width:90px;
+}
+.row .searchpur-table thead td:nth-of-type(11){
+	width:120px;
+}
+.row .searchpur-table thead td:nth-of-type(12){
+	width:140px;
+}
+.row .searchpur-table thead td:nth-of-type(13){
+	width:110px;
+}
+.container1 .row .search-table{
+	width:1200px;
+	padding:0;
+}
+.row .search-table thead td:nth-of-type(1){
+	width:400px;
+	text-align: left;
+}
+.row .search-table tbody td:nth-of-type(1){
+	text-align: left;
+}
+.row .search-table thead td:nth-of-type(2){
+	width:50px;
+}
+.row .search-table thead td:nth-of-type(3){
+	width:80px;
+}
+.row .search-table thead td:nth-of-type(4){
+	width:80px;
+}
+.row .search-table thead td:nth-of-type(5){
+	width:80px;
+}
+.row .search-table thead td:nth-of-type(6){
+	width:80px;
+}
+.row .search-table thead td:nth-of-type(7){
+	width:80px;
+}
+.row .search-table thead td:nth-of-type(8){
+	width:80px;
+}
+.row .search-table thead td:nth-of-type(9){
+	width:90px;
+}
+.row .search-table thead td:nth-of-type(10){
+	width:90px;
+}
+.row .search-table thead td:nth-of-type(11){
+	width:90px;
+}
+
+.container1 .row .search-table input{
+	height:30px;
+	font-size:12px;
+}
+.container1 .row .enterware-btn{
+	margin-left:0;
+}
+.enterware-form .yunfei .form-control{
+	width:190px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

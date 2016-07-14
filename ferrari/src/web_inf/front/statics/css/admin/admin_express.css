@@ -1,0 +1,220 @@
+.row .express-nav{
+	width:1200px;
+	padding:0;
+	margin-left: 15px;
+}
+.row .express-table{
+	width:1200px;
+	margin-left: 15px;
+	padding:0;
+}
+.row .express-table thead td{
+	text-align: left;
+}
+.row .express-table tbody td{
+	text-align: left;
+}
+
+.row .express-table thead td:nth-of-type(1){
+	width:46px;
+}
+.row .express-table thead td:nth-of-type(2){
+	width:154px;
+}
+.row .express-table thead td:nth-of-type(3){
+	width:50px;
+}
+.row .express-table thead td:nth-of-type(4){
+	width:125px;
+}
+.row .express-table thead td:nth-of-type(5){
+	width:125px;
+}
+.row .express-table thead td:nth-of-type(6){
+	width:100px;
+}
+.row .express-table thead td:nth-of-type(7){
+	width:300px;
+}
+.row .express-table thead td:nth-of-type(8){
+	width:300px;
+}
+
+.row .express-table .express-del{
+	cursor: pointer;
+}
+.row .express-table .openorclose{
+	cursor: pointer;
+}
+
+.row .addexpress-form{
+	width:1200px;
+	margin-left: 15px;
+	padding:0;
+}
+.row .addexpress-form .form-control{
+	width:160px;
+}
+.row .addexpress-form .form-group{
+	margin:10px 15px 10px 0; 
+}
+.row .addexpress-form .addexpress-address{
+	width:880px;
+	height:60px;
+	resize:none;
+}
+.row .addexpress-form .addexpress-mark{
+	width:880px;
+	height:60px;
+	resize:none;
+}
+.modal-express .modalcon{
+	width:300px;
+	margin-left: -150px;
+}
+/*按重量计费*/
+.row .billweight-form{
+	width:1200px;
+	margin-left: 15px;
+	padding:0;
+}
+.row .billweight-table thead td:nth-of-type(1){
+	width:46px;
+}
+.row .billweight-table thead td:nth-of-type(2){
+	width:94px;
+}
+.row .billweight-table thead td:nth-of-type(3){
+	width:360px;
+}
+.row .billweight-table thead td:nth-of-type(4){
+	width:350px;
+}
+.row .billweight-table thead td:nth-of-type(5){
+	width:350px;
+}
+.row .billweight-table tbody td:nth-of-type(5){
+	text-align: left;
+}
+.row .billweight-table .billweight-edit{
+	cursor: pointer;
+}
+.row .billweight-table .billweight-del{
+	cursor: pointer;
+}
+
+.row .billweight-table .billweight-address{
+	float:left;
+	margin-left: 10px;
+}
+.row .billweight-table .billaddress-set{
+	float:right;
+	margin-right: 10px;
+	cursor: pointer;
+}
+.row .billweight-table .billweight-ware{
+	float:left;
+	margin-left: 10px;
+}
+.row .billweight-table .billware-set{
+	float:right;
+	margin-right: 10px;
+	cursor: pointer;
+}
+.row .billweight-table .billweight-set{
+	cursor: pointer;
+}
+/*添加*/
+.row .addbillweight-form{
+	width:1200px;
+	padding:0;
+	margin-left: 15px;
+}
+.row .addbillweight-form .form-group{
+	margin-bottom:15px;
+}
+.row .addbillweight-form .form-group button{
+	margin-right: 10px;
+}
+.row .addbillweight-form .bill-text1{
+	width:500px;
+	height:60px;
+	resize:none;
+}
+.row .form-inline .form-group .set-color{
+	color:blue;
+}
+.modal-wareset .modalcon{
+	width:500px;
+	margin-left: -250px;
+}
+.modal-wareset .modalcon .modal-bd{
+	height:250px;
+	overflow: auto;
+}
+.modal-wareset .modalcon .wareset-table{
+	width:450px;
+}
+.modal-wareset .modalcon .wareset-table thead td:nth-of-type(1){
+	width:46px;
+}
+.modal-wareset .modalcon .wareset-table thead td:nth-of-type(2){
+	width:404px;
+	text-align: left;
+}
+.modal-wareset .modalcon .wareset-table tbody td:nth-of-type(2){
+	text-align: left;
+}
+.modal-address .modalcon{
+	width:800px;
+	margin-left: -400px;
+}
+.modal-address .modalcon .error_color{
+	border:1px solid red;
+}
+.modal-address .modalcon label { font-weight:100;
+    	margin-bottom: 0px;}
+.modal-address .modalcon ._input{overflow-x: hidden; overflow-y: visible; width: 100%;height:100%; line-height:30px;cursor:text}
+ .table tr th,td{text-align: center}
+.modal-address .modalcon .dropdown_body{line-height:25px;display:none;margin-left:50px;}
+.modal-address .modalcon .car_left{width:25px;height:25px;margin-top:2px;border-radius: 3px;line-height: 1;padding: 4px 5px;}
+/*.modal-address .modalcon .car_left:hover{background:#bbb;border:1px solid lightblue;}*/
+.modal-address .modalcon .dropdown .checkbox{margin-bottom:7px;display:inline-block;}
+.modal-address .modalcon .dropbody label{display: block}
+
+.modal-billweightset .modalcon{
+	width:615px;
+	margin-left: -307.5px;
+}
+.modal-billweightset .modalcon .modal-bd{
+	height:400px;
+	overflow: auto;
+}
+.modal-billweightset .modalcon .first_weight{
+	width:560px;
+	margin-top:20px;
+
+}
+.modal-billweightset .modalcon .first_weight .form-control{
+	border:none;
+}
+.modal-weightdel .modalcon{
+	width:300px;
+	margin-left: -150px;
+}
+.modal-tip .modalcon{
+	width:300px;
+	margin-left: -150px;
+}
+.priceunit,.weightunit{
+	height:30px;
+	line-height: 30px;
+	display:none;
+	margin:0;
+}
+/*.comcss{
+	width:139px;
+	height:39px;
+	display:inline-block;
+}*/
+

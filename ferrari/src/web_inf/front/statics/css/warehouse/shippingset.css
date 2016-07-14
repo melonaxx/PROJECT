@@ -1,0 +1,129 @@
+.shipping-num{
+	width:46px;
+	text-align:center;
+	font-weight:bold;
+}
+.shipping-province{
+	width:154px;
+	font-weight:600;
+	
+}
+.shipping-city{
+	width:1000px;
+	font-weight:600;
+}
+.size-title{
+	font-weight:600;
+	text-align:center;
+	font-size:12px;
+}
+#myModal1 .modal-shipping-con{
+	width:800px;
+	box-sizing: border-box;
+	
+}
+.modal-shipping-con .modal-a{
+	margin:0 10px 10px 10px;
+	cursor:pointer;
+}
+.modal-shipping-con .modal-check{
+	width:150px;
+	margin:10px 0 200px 50px;
+	float:left;
+}
+.modal-shipping-con .modal-check input{
+	float:left;
+	display:block;
+	width:20px;
+	height:20px;
+}
+.modal-shipping-con .modal-body{
+	padding-left:30px;
+	box-sizing: border-box;
+	height:300px;
+	overflow:auto;
+}
+.all-btn{
+	margin-bottom:10px;
+}
+.dropdown_body{
+	line-height:25px;
+	display:none;
+	margin-left:50px;
+}
+.car_left{
+	width:25px;
+	height:25px;
+	margin-top:2px;
+	border-radius: 3px;
+	line-height: 1;
+	padding: 4px 5px;
+}
+.car_left:hover{
+	background:#bbb;
+	border:1px solid lightblue;
+}
+.dropdown .checkbox{
+	margin-bottom:7px;
+	display:inline-block;
+}
+.dropbody label{
+	display: block
+}
+.all:hover{
+	cursor:pointer;
+}
+.modal-shipset .modalcon{
+	width:750px;
+	overflow: auto;
+}
+.modal-shipset .modalcon .modal-bd{
+	height:400px;
+	overflow: auto;
+}
+.modal-shipset .modalcon .modal-allcheck{
+	margin:20px 10px 10px 10px;
+	cursor: pointer;
+}
+.modal-shipset .modalcon .modal-uncheck{
+	margin:20px 10px 10px 10px;
+	cursor: pointer;
+}
+.modal-shipset .modalcon .modal-reverse{
+	margin:20px 10px 10px 10px;
+	cursor: pointer;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

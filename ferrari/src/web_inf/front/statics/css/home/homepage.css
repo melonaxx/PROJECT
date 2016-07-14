@@ -1,0 +1,169 @@
+.row .home-nav{
+	padding:0;
+	width:1200px;
+	margin-left: 15px;
+}
+.row .allcharts{
+	width:1200px;
+	height:1000px;
+	padding:0;
+	margin-left: 15px;
+	z-index:-999;
+}
+.row .left-chart{
+	width:590px;
+	height:346px;
+	float:left;
+	font-size:14px;
+	border:1px solid #ccc;
+	margin-right:20px;
+}
+ .row .left-chart .home-bt1{
+	width:588px;
+	height:40px;
+	background:#ecedef;
+	line-height:40px;
+	padding-left: 5px;
+	border-bottom:1px solid #ccc;
+}
+.row .left-chart .piechart{
+	width:590px;
+	height:300px;
+}
+.row .right-chart{
+	width:590px;
+	height:346px;
+	float:left;
+	font-size:14px;
+	box-sizing:border-box;
+	border:1px solid #ccc;
+}
+ .row .right-chart .home-bt1{
+	width:588px;
+	height:40px;
+	background:#ecedef;
+	line-height:40px;
+	padding-left: 5px;
+	border-bottom:1px solid #ccc;
+}
+.row .right-chart .piechart1{
+	width:514px;
+	height:300px;
+	float:left;
+}
+.row .right-chart .right_left{
+	width:74px;
+	height:300px;
+	padding-left:10px;
+	padding-top:10px;
+	box-sizing:border-box;
+	float:left;
+}
+.row .right-chart .right_left-child{
+	float:left;
+	height:16px;
+	margin-bottom:5px;
+}
+.row .right-chart .right_left-color{
+	width:15px;
+	height:8px;
+	float:left;
+	margin-top:6px;
+	margin-right:5px;
+}
+.row .right-chart .color1{
+	background-color:#E87C25;
+}
+.row .right-chart .color2{
+	background-color:#FCCE10;
+}
+.row .right-chart .color3{
+	background-color:#B5C334;
+}
+.row .right-chart .color4{
+	background-color:#C1232B;
+}
+
+.row .right-chart .right_left-text{
+	 line-height:16px;
+}
+.row .right-chart .right_left-text{
+	font-size:12px;
+}
+.row .right-chart .text1:hover{
+	color:#E87C25;
+}
+.row .right-chart .text2:hover{
+	color:#FCCE10;
+}
+.row .right-chart .text3:hover{
+	color:#B5C334;
+}
+.row .right-chart .text4:hover{
+	color:#C1232B;
+}
+.row .bottom-chart{
+	width:1200px;
+	height:344px;
+	font-size:14px;
+	border:1px solid #ccc;
+	float:left;
+	margin-top:20px;
+}
+.row .bottom-chart .home-bt1{
+	width:1198px;
+	height:40px;
+	background:#ecedef;
+	line-height:40px;
+	padding-left: 5px;
+	border-bottom:1px solid #ccc;
+
+}
+.row .bottom-chart .piechart2{
+	width:1198px;
+	height:300px;
+	float:left;
+}
+
+.row .bottom-chart1{
+	width:1200px;
+	height:344px;
+	float:left;
+	font-size:14px;
+	border:1px solid #ccc;
+	margin-top:20px;
+}
+.row .bottom-chart1 .home-bt1{
+	width:1198px;
+	height:40px;
+	background:#ecedef;
+	line-height:40px;
+	padding-left: 5px;
+	border-bottom:1px solid #ccc;
+}
+.row .bottom-chart1 .home-search{
+	width:195px;
+	height:30px;
+	float:right;
+	margin-top:6px;
+	margin-right: 10px;
+}
+.row .bottom-chart1 button{
+	float:right;
+}
+
+.row .bottom-chart1 .piechart3{
+	width:1198px;
+	height:300px;
+	float:left;
+}
+
+
+
+
+
+
+
+
+
+

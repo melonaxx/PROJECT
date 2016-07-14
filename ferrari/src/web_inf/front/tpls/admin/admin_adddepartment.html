@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>米欢电商ERP</title>
+ 		<link href="/images/favicon.ico" rel="shortcut icon">
+		<link href="/bootstrap/css/bootstrap.min.css"  rel="stylesheet" media="screen">
+		<link href="/css/commontop.css"   rel="stylesheet" media="screen">
+		<link rel="stylesheet" type="text/css" href="/css/admin/admin_department.css"/>
+		<style>
+			{literal}
+				@media screen and (max-width: 1120px){ 
+					/*当屏幕尺寸小于1120px时，应用下面的CSS样式*/
+				    .navbar-nav,#comtop-right{display: none;}
+				}
+			{/literal}
+		</style>
+	</head>
+	<body>
+		{include file="../commontop.html"}
+		<div class="container-fluid container1">
+			<div class="row ware-row">
+				<h5 class="col-md-12">您的位置： <a href="javascript:;">首页</a> » <a href="javascript:;">管理</a> »部门管理</h5>
+			</div>
+			<div class="row">
+				<ul class="nav nav-tabs col-md-12 department-nav">
+				  <li role="presentation">
+				  	<a href="admin_department.php">部门列表</a>
+				  </li>
+				  <li role="presentation" class="active">
+				  	<a href="admin_adddepartment.php">添加部门</a>
+				  </li>
+				  <li role="presentation">
+				  	<a href="admin_department_staff.php">部门人员</a>
+				  </li>
+				</ul>
+			</div>
+			<div class="row">
+				<form class="form-inline department-form" id="form">
+					<div class="form-group">
+						<label for="exampleInputName2"class="labelname">上级部门：</label>
+					    <select class="form-control" id="parent" name="parent_id">
+					    	<option value="0">请选择</option>
+					    	{foreach from=$catelist item=result}
+					    	<option value={$result['id']}>{$result['name']}</option>
+					    	{/foreach}
+					    </select>
+					</div>
+					<br>
+					<div class="form-group">
+						<label for="exampleInputName2"class="labelname">部门名称：</label>
+					    <input class="form-control" id="partname" name="name"/>
+					    <span class="input-tip">*</span>
+					</div>
+					<br>
+					<div class="form-group">
+						<label for="exampleInputName2"class="labelname">部门备注：</label>
+					    <textarea name="comment" class="form-control department-mark" rows="3"></textarea>
+					</div>
+					<br>
+					<div class="form-group department-btn">
+						<input type="button" class="btn btn-default btn-sm custom-submit" value="提交" style="margin-right:10px;" id="add">
+						<input type="reset" class="btn btn-default btn-sm" value="重置">
+					</div>
+				</form>
+			</div>
+			<div class="push"></div>
+		</div>
+		{include file="../comfoot.html"}
+		<script type="text/javascript" src="/js/jquery-1.11.0.min.js"></script>
+		<script type="text/javascript" src="/js/commontop.js"></script>
+		<script type="text/javascript" src="/bootstrap/js/bootstrap.min.js" ></script>
+		<script type="text/javascript" src="/js/mycom.js"></script>
+		<script type="text/javascript" src="/js/jsAddress.js"></script>
+		<!-- <script type="text/javascript" src="/js/admin/admin_adddepartment.js"></script> -->
+	</body>
+	{literal}
+	<script type="text/javascript">
+		$("#add").click(function(){
+			var parentid=$('#parent option:selected').val();
+			var partname=$("#partname").val();
+			var str=$("#form").serialize(); 
+			 $.ajax({
+				   type: "POST",
+				   url: "admin_doadddepartment.php",
+				   data:str,
+				   success: function(msg){
+	                    if(msg==1){
+	                    	alert("添加成功!");
+	                    	$('#form')[0].reset();
+	                    }else{
+	                    	alert("添加失败!");
+	                    }
+				   },
+				   error: function(){
+				   	 alert("ajax请求失败")
+				   }
+				});
+		})
+	</script>
+	{/literal}
+</html>

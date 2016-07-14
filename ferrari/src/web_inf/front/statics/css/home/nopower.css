@@ -1,0 +1,21 @@
+.row .nopowercon{
+	width:788px;
+	height:320px;
+	background:url(/images/nopower.png) no-repeat;
+	margin:0 auto;
+	padding-top:180px;
+	padding-left:272px;
+}
+.row .nopowercon .nopower-p{
+	width:408px;
+	height:40px;
+	line-height:40px;
+	font-size:25px;
+
+}
+.row .nopowercon .nopower-p1{
+	font-size:16px;
+}
+.row .nopowercon .nopower-p1 a{
+	color:blue;
+}

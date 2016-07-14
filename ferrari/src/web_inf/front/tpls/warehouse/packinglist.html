@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>米欢电商ERP</title>
+ 		<link href="/images/favicon.ico" rel="shortcut icon">
+		<link rel="stylesheet" type="text/css" href="/bootstrap/css/bootstrap-datetimepicker.min.css"/>
+		<link href="/bootstrap/css/bootstrap.min.css"  rel="stylesheet" media="screen">
+		<link href="/css/commontop.css"   rel="stylesheet" media="screen">
+		<link rel="stylesheet" type="text/css" href="/css/warehouse/wareallocate.css"/>
+		<style>
+			{literal}
+				@media screen and (max-width: 1120px){
+					/*当屏幕尺寸小于1120px时，应用下面的CSS样式*/
+				    .navbar-nav,#comtop-right{display: none;}
+				}
+			{/literal}
+		</style>
+	</head>
+	<body>
+		{include file="../commontop.html"}
+		<div class="container-fluid container1">
+			<div class="row ware-row">
+				<h5 class="col-md-12">您的位置： <a href="javascript:;">首页</a> » <a href="javascript:;">库存</a> »库存调拨</h5>
+			</div>
+			<div class="row">
+				<ul class="nav nav-tabs col-md-12 packinglist-nav">
+				  <li role="presentation"><a href="wareallocate.php">调拨单</a></li>
+				  <li role="presentation" class="active"><a href="packinglist.php">调拨单记录</a></li>
+				</ul>
+			</div>
+			<div class="row">
+				<form class="form-inline packing-form col-md-12">
+					<div class="form-group">
+					   <button type="button" class="btn btn-default btn-sm searchtime">查询</button>
+					   <button type="button" class="btn btn-default btn-sm reset">清空</button>
+					</div>
+					<div class="form-group">
+					    <label for="datetimepicker"class="labelname">到：</label>
+					    <input type="text" class="form-control enddate" id="datetimepicker2">
+					</div>
+					<div class="form-group">
+					    <label for="datetimepicker"class="labelname">日期：</label>
+					    <input type="text" class="form-control packinglist-time startdate" id="datetimepicker1">
+					</div>
+				</form>
+		      	<table class="table table-hover packing-table col-md-12">
+		      		<thead class="wareallocate-thead">
+		      			<tr class="active">
+		      				<td  class="wareallocate-td1">库存</td>
+		      				<td  class="wareallocate-td2">操作</td>
+		      				<td  class="wareallocate-td3">日期</td>
+		      				<td  class="wareallocate-td4">调拨类型</td>
+		      				<td  class="wareallocate-td5">调出仓库</td>
+		      				<td  class="wareallocate-td6">调入仓库</td>
+		      				<td  class="wareallocate-td7">数量</td>
+		      				<td  class="wareallocate-td8">备注</td>
+		      				<td  class="wareallocate-td9">操作人</td>
+		      			</tr>
+		      		</thead>
+		      		<tbody class="enterorout-tbody">
+		      		{foreach $allocatedata as $key=>$value}
+		      			<tr>
+		      				<td>{$key+1}</td>
+		      				<td>
+		      					<span class="allocate-detail">
+			      					详细&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		      						<input type="hidden" name="productid" value="{$value['id']}">
+		      					</span>
+		      				</td>
+		      				<td class="allocate-time">{$value['createtime']}</td>
+		      				<td class="allocate-type1">{$value['movetype']}</td>
+		      				<td class="allocate-ware1">{$value['stroutname']}</td>
+		      				<td class="allocate-ware2">{$value['strinname']}</td>
+		      				<td class="allocate-num">{$value['total']}</td>
+		      				<td class="allocate-mark">{$value['comment']}</td>
+		      				<td class="operate-man">{$value['staffid']}</td>
+		      			</tr>
+					{/foreach}
+		      		</tbody>
+		      	</table>
+			</div>
+			{if count($allocatedata) <= 0}
+			<div class="row" style="display:block;">
+				<div class="no-record"><img src="/images/empty.jpg"/><span>没有找到记录，请调整搜索条件。</span></div>
+			</div>
+			{/if}
+			{$pages}
+			<!-- 调拨单列表模态窗 -->
+			<div class="modal modal-allocate">
+				<div class="modalcon">
+					<div class="modal-bt">
+						<h4 class="modal-title size-title" id="myModalLabel">详细</h4>
+					    <button type="button" class="close close-btn" data-dismiss="modal" aria-label="Close" id="close-btn"><span aria-hidden="true">x</span></button>
+					</div>
+					<div class="modal-bd">
+					    <form class="form-inline allocate-form">
+							<div class="form-group">
+							    <label for="datetimepicker"class="labelname">
+							      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;日期：
+							    </label>
+							    <input type="text" class="form-control  allocatemodal-time" id="datetimepicker" readonly="readonly">
+							</div>
+							<div class="form-group">
+							    <label for="exampleInputName2"class="labelname">&nbsp;&nbsp;&nbsp;操作人：</label>
+							    <input class="form-control allocatemodal-man" id="exampleInputName2" readonly="readonly"/>
+							</div>
+						</form>
+						<form class="form-inline allocate-form">
+							<div class="form-group">
+							    <label for="datetimepicker"class="labelname">调出仓库：</label>
+							    <input type="text" class="form-control active allocatemodal-ware1" id="datetimepicker" readonly="readonly">
+							</div>
+							<div class="form-group">
+							    <label for="exampleInputName2"class="labelname">调入仓库：</label>
+							    <input class="form-control allocatemodal-ware2" id="exampleInputName2"readonly="readonly"/>
+							</div>
+							<div class="form-group">
+							    <label for="exampleInputName2"class="labelname">调拨类型：</label>
+							    <input class="form-control  allocatemodal-movetype" id="exampleInputName2"readonly="readonly"/>
+							</div>
+
+						</form>
+						<form class="form-inline allocate-form">
+							<div class="form-group">
+							    <label for="datetimepicker"class="labelname">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;备注：</label>
+							    <input type="text" class="form-control allocatemodal-mark" id="datetimepicker">
+							</div>
+						</form>
+
+						<table class="table table-hover allocatemodal-table packmodal-table">
+					      	<thead class="allocatemodal-thead">
+								<tr class="active">
+									<td class="allocatemodal-code">序号</td>
+									<td class="allocatemodal-name" style="text-align: left;width:200px;">商品名称</td>
+									<td class="allocatemodal-size" style="width:300px;">规格</td>
+									<td class="allocatemodal-num">数量</td>
+								</tr>
+							</thead>
+							<tbody class="allocatemodal-modaltbody">
+								<tr>
+									<td class="allocatemodal-code">1</td>
+									<td class="allocatemodal-name productname" style="text-align: left;">测试商品B</td>
+									<td class="allocatemodal-size formatdatas">6.0,蓝色</td>
+									<td class="allocatemodal-num1 pronumber"></td>
+								</tr>
+							</tbody>
+		                </table>
+					</div>
+					<div class="modal-bo">
+			        	<button type="button" class="btn btn-default btn-sm close-btn">关闭</button>
+					</div>
+				</div>
+			</div>
+			<div class="push"></div>
+		</div>
+		{include file="../comfoot.html"}
+		<script type="text/javascript" src="/js/jquery-1.11.0.min.js"></script>
+		<script type="text/javascript" src="/js/util.js"></script>
+		<script type="text/javascript" src="/js/commontop.js"></script>
+		<script type="text/javascript" src="/bootstrap/js/bootstrap.min.js"></script>
+		<script type="text/javascript" src="/js/warehouse/packinglist.js"></script>
+		<script type="text/javascript" src="/bootstrap/js/bootstrap-datetimepicker.min.js"></script>
+		<script  src="/bootstrap/js/bootstrap-datetimepicker.zh-CN.js"></script>
+		<script type="text/javascript" src="/js/warehouse/mycom.js"></script>
+		<script type="text/javascript">
+			$('#datetimepicker1').datetimepicker({
+			    format: 'yyyy-mm-dd',
+			    autoclose: true,
+			    language:'zh-CN',
+			    minView:'year',
+			});
+			$('#datetimepicker2').datetimepicker({
+			    format: 'yyyy-mm-dd',
+			    autoclose: true,
+			    language:'zh-CN',
+			    minView:'year',
+			});
+		</script>
+	</body>
+</html>

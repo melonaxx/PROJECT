@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+		<title>米欢电商ERP</title>
+		<link rel="stylesheet" type="text/css" href="/bootstrap/css/bootstrap.min.css"/>
+		<link href="/images/favicon.ico" rel="shortcut icon">
+		<link href="/css/commontop.css"   rel="stylesheet" media="screen">
+		<link rel="stylesheet" type="text/css" href="/css/goods/goodsproperty.css"/>
+</head>
+<body id="propertybody">
+	{include file="../commontop.html"}
+	<div class="container-fluid container-all">
+		<div class="your-position">
+			<p class="posp1">您的位置&nbsp;:&nbsp;</p>
+			<a class="posa1" href="#">首页</a>
+			<p class="posp2">&nbsp;>>&nbsp;</p>
+			<a class="posa1" href="goods.php">商品</a>
+			<P class="posp2">&nbsp;>>&nbsp;规格和属性</P>
+		</div>
+		<div class="row gl-abovetable">
+			<div class="col-md-12">
+			  <!-- Nav tabs -->
+			  <ul class="nav nav-tabs" role="tablist">
+			    <li role="presentation" class="homeul"><a href="goodsstandard.php">规格管理</a></li>
+			    <li role="presentation" class="profileul"><a href="goodsproperty.php">属性</a></li>
+			    <li role="presentation" class="active"><a href="">单位设置</a></li>
+			  </ul>
+			</div>
+
+		    <!-- Tab panes -->
+				<!-- ======================单位设置==================== -->
+		    <div role="tabpanel" class="tab-pane" id="home1" style="margin-top: 20px;">
+		    	<button type="button" class="btn btn-default unitadd" style="margin:20px 0 20px 15px;">添加</button>
+				<table class="table table-bordered table-hover" style="width:50%;margin-left:15px;">
+					<thead>
+                		<tr class="active">
+	                    	<th style="width:46px;text-align: center;">序号</th>
+	                    	<th style="width:91px;text-align: center;">操作</th>
+	                    	<th style="width:548px;">单位名称</th>
+                		</tr>
+        			</thead>
+        			<tbody class="pstbody1">
+        			{if $unitlength <=0 }
+        				<tr class="psfirsttr">
+        					<td colspan="3">
+        						暂无内容，
+        						<span class="gpaddunitp">点这里添加单位名称</span>
+        					</td>
+        				</tr>
+        			{else if}
+        				{foreach $listunit as $k=>$v}
+        				<tr class="gponetr">
+        					<td class="sequence"></td>
+        					<td class="gptd2">
+        						<a href="#" class="gpmodifytd">修改</a>
+        						<a href="#" class="gpdeltd">删除</a>
+        						<input type="hidden" name='unitid' value="{$v['id']}">
+        					</td>
+        					<td class="gptd3">{$v['name']}</td>
+        				</tr>
+        				{/foreach}
+        			{/if}
+        			</tbody>
+    			</table>
+		    </div>
+		</div>
+		<!-- Button trigger modal -->
+		<!-- Modal 添加单位名称-->
+		<div class="modal" id="Modaladdunit">
+		    <div class="modalcon">
+		      <div class="modal-bt">
+		        <button type="button" class="close close-btn" data-dismiss="modal" aria-label="Close" id="close-btn"><span aria-hidden="true">x</span></button>
+		        <h4 class="modal-title size-title">添加单位名称</h4>
+		      </div>
+		      <div class="modal-bd">
+			      <form action="" class="form-inline">
+			        <div class="form-group">
+					    <label for="exampleInputName2">单位名称:</label>
+					    <input type="text" class="form-control gpunitnamei">
+					</div>
+			      </form>
+		      </div>
+		      <div class="modal-bo">
+		        <button type="button" class="btn btn-default gpsureunitnbtn">提交</button>
+		        <button type="button" class="btn btn-default close-btn">关闭</button>
+		      </div>
+		    </div><!-- /.modal-content -->
+		</div><!-- /.modal -->
+
+		<!-- Button trigger modal -->
+		<!-- Modal 修改单位名称-->
+		<div class="modal" id="Modalmodunit">
+		    <div class="modalcon">
+		      <div class="modal-bt">
+		        <button type="button" class="close close-btn" data-dismiss="modal" aria-label="Close" id="close-btn"><span aria-hidden="true">x</span></button>
+		        <h4 class="modal-title size-title">修改单位名称</h4>
+		      </div>
+		      <div class="modal-bd">
+			      <form action="" class="form-inline">
+			        <div class="form-group">
+					    <label for="exampleInputName2">单位名称:</label>
+					    <input type="text" class="form-control gpsunitni">
+					</div>
+			      </form>
+		      </div>
+		      <div class="modal-bo">
+		        <button type="button" class="btn btn-default gpmodunitbtn">提交</button>
+		        <button type="button" class="btn btn-default close-btn">关闭</button>
+		      </div>
+		    </div><!-- /.modal-content -->
+		</div><!-- /.modal -->
+
+		<!-- Button trigger modal -->
+		<!-- Modal 删除单位名称-->
+		<div class="modal" id="Modaldelunit">
+		    <div class="modalcon">
+		      <div class="modal-bt">
+		        <button type="button" class="close close-btn" data-dismiss="modal" aria-label="Close" id="close-btn"><span aria-hidden="true">x</span></button>
+		        <h4 class="modal-title size-title">删除单位名称</h4>
+		      </div>
+		      <div class="modal-bd">
+		        	<p>您确定要删除该单位吗？</p>
+		      </div>
+		      <div class="modal-bo">
+		        <button type="button" class="btn btn-default gpdelunitbtn">确定</button>
+		        <button type="button" class="btn btn-default close-btn">取消</button>
+		      </div>
+		    </div><!-- /.modal-content -->
+		</div><!-- /.modal -->
+
+		<div class="push"></div>
+	</div>
+	{include file="../comfoot.html"}
+	<script src="/js/jquery-1.11.0.min.js" ></script>
+	<script src="/bootstrap/js/bootstrap.min.js"  ></script>
+	<script src="/js/commontop.js"></script>
+	<script src="/js/util.js"></script>
+	<script src="/js/mycom.js"></script>
+	<script src="/js/goods/goodsproperty_unitset.js"></script>
+</body>
+</html>

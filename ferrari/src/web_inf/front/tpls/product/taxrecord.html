@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>米欢电商ERP</title>
+ 		<link href="/images/favicon.ico" rel="shortcut icon">
+		<link rel="stylesheet" type="text/css" href="/bootstrap/css/bootstrap-datetimepicker.min.css"/>
+		<link href="/bootstrap/css/bootstrap.min.css"  rel="stylesheet" media="screen">
+		<link href="/css/commontop.css"   rel="stylesheet" media="screen">
+		<link rel="stylesheet" type="text/css" href="/css/product/settlement.css"/>
+		<style>
+			{literal}
+				@media screen and (max-width: 1120px){ 
+					/*当屏幕尺寸小于1120px时，应用下面的CSS样式*/
+				    .navbar-nav,#comtop-right{display: none;}
+				}
+			{/literal}
+		</style>
+	</head>
+	<body>
+		{include file="../commontop.html"}
+		<div class="container-fluid container1">
+			<div class="row ware-row">
+				<h5 class="col-md-12">您的位置：<a href="javascript:;">首页</a> » <a href="javascript:;">生产</a> » 税点记录</h5>
+			</div>
+			<div class="row">
+				<ul class="nav nav-tabs col-md-12 settlement-nav">
+				  <li role="presentation">
+				  	<a href="/product/settlement.php">代工户结算</a>
+				  </li>
+				  <li role="presentation">
+				  	<a href="/product/setrecord.php">结算记录</a>
+				  </li>
+				  <li role="presentation">
+				  	<a href="/product/dailyopen.php">日常开票</a>
+				  </li>
+				  <li role="presentation">
+				  	<a href="/product/dailyrecord.php">开票记录</a>
+				  </li>
+				  <li role="presentation">
+				  	<a href="/product/paytax.php">补交税点(不含税)</a>
+				  </li>
+				  <li role="presentation" class="active">
+				  	<a href="/product/taxrecord.php">税点记录</a>
+				  </li>
+				</ul>
+			</div>
+			<div class="row">
+				<table class="table table-hover daily-table1">
+					<thead>
+						<tr class="active">
+							<td>序号</td>
+							<td>日期</td>
+							<td>财务科目(借)</td>
+							<td>财务科目(贷)</td>
+							<td>金额</td>
+							<td>税额</td>
+							<td>金额(不含税)</td>
+							<td>票种</td>
+							<td>备注</td>
+							<td>交易账号</td>
+							<td>操作人</td>
+						</tr>
+					</thead>
+					<tbody>
+					{foreach from=$invoice_log_list item=temp}
+						<tr>
+							<td></td>
+							<td>{$temp['actiontime']}</td>
+							<td>{$temp['lead_str']}</td>
+							<td>{$temp['lent_str']}</td>
+							<td>{$temp['taxprice']}</td>
+							<td>{$temp['taxtotal']}</td>
+							<td>{$temp['taxedprice']}</td>
+							<td>{$temp['stamptype']}</td>
+							<td>{$temp['comment']}</td>
+							<td>{$temp['lent_str']}</td>
+							<td>{$temp['peoplename']}</td>
+						</tr>
+					{/foreach}
+					</tbody>
+				</table>
+			</div>
+			<div class="push"></div>
+		</div>
+		{include file="../comfoot.html"}
+		<script type="text/javascript" src="/js/jquery-1.11.0.min.js"></script>
+		<script type="text/javascript" src="/js/commontop.js"></script>
+		<script type="text/javascript" src="/bootstrap/js/bootstrap.min.js" ></script>
+		<script type="text/javascript" src="/js/product/dailyrecord.js"></script>
+	</body>
+</html>

@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>米欢电商ERP</title>
+		<link href="/images/favicon.ico" rel="shortcut icon">
+		<link rel="stylesheet" type="text/css" href="/bootstrap/css/bootstrap-datetimepicker.min.css"/>
+		<link href="/bootstrap/css/bootstrap.min.css"  rel="stylesheet" media="screen">
+		<link href="/css/commontop.css"   rel="stylesheet" media="screen">
+		<link rel="stylesheet" type="text/css" href="/css/crm/messageset.css"/>
+		<style>
+			{literal}
+				@media screen and (max-width: 1120px){ 
+					/*当屏幕尺寸小于1120px时，应用下面的CSS样式*/
+				    .navbar-nav,#comtop-right{display: none;}
+				}
+			{/literal}
+		</style>
+	</head>
+	<body>
+		{include file="../commontop.html"}
+		<div class="container-fluid container1">
+			<div class="row ware-row">
+				<h5 class="col-xs-12">您的位置： <a href="javascript:;">首页</a> » <a href="javascript:;">CRM</a> »短信设置</h5>
+			</div>
+			<div class="row">
+				<ul class="nav nav-tabs col-xs-12 messageset-nav">
+				  <li role="presentation">
+				  	<a href="messageset.php">统计报表</a>
+				  </li>
+				  <li role="presentation" class="active">
+				  	<a href="messagemould.php">短信模板</a>
+				  </li>
+				  <li role="presentation">
+				  	<a href="sendhistory.php">发送历史</a>
+				  </li>
+				  <li role="presentation">
+				  	<a href="messageconfig.php">短信配置</a>
+				  </li>
+				  <li role="presentation">
+				  	<a href="messageorder.php">短信订购</a>
+				  </li>
+				  <li role="presentation">
+				  	<a href="orderhistory.php">订购历史</a>
+				  </li>
+				  <li style="float:right;line-height:39px;">
+				      短信剩余条数：
+				      <b style="color:#ff0000">0</b> 条
+				  </li>
+				</ul>
+			</div>
+			<div class="status">
+				<div class="row">
+					<form class="form-inline messageset-form col-xs-12">
+						<div class="form-group">
+						   <button type="button" class="btn btn-default btn-sm ">查询</button>
+						</div> 
+						<div class="form-group">
+						    <label for="exampleInputName2"class="labelname">模板类型</label>
+						    <select class="form-control" id="exampleInputName2" style="width:150px;">
+						    	<option></option>
+						    	<option>发货通知</option>
+						    	<option>关闭</option>
+						    	<option>开启</option>
+						    </select>
+						</div> 
+						<div class="form-group add-message">
+						    <button type="button" class="btn btn-default btn-sm message-add">添加模板</button>
+						</div> 
+					</form>
+				</div>
+				<div class="row">
+					<table class="table messageset-table messageset-table1">
+						<thead>
+							<tr class="active">
+								<td>序号</td>
+								<td>操作</td>
+								<td>短信名称</td>
+								<td>短信类别</td>
+								<td>签名</td>
+								<td>短信内容</td>
+								<td>审核状态</td>
+								<td>未通过原因</td>
+							</tr>
+						</thead>
+						<tbody>
+							<tr class="messageset-tr">
+								<td class="messageset-td">1</td>
+								<td>
+									<span class="messageset-change">修改</span>
+									<span class="messageset-del">删除</span>
+								</td>
+								<td class="mess-name">发货通知</td>
+								<td class="mess-type">发货通知</td>
+								<td class="mess-sign">蜜獾科技</td>
+								<td class="mess-content">［#shop#］#name#您好，订单#number#已发货，#express##courierNumber#。</td>
+								<td>已通过</td>
+								<td></td>
+							</tr>
+							<tr class="messageset-tr">
+								<td class="messageset-td">2</td>
+								<td>
+									<span class="messageset-change">修改</span>
+									<span class="messageset-del">删除</span>
+								</td>
+								<td class="mess-name">催付通知</td>
+								<td class="mess-type">发货通知</td>
+								<td class="mess-sign">【蜜獾科技】</td>
+								<td class="mess-content">［#shop#］#name#您好，订单#number#已发货，#express##courierNumber#。</td>
+								<td>已通过</td>
+								<td></td>
+							</tr>
+
+						</tbody>
+					</table>
+				</div>
+				<div class="row" style="display:none;">
+					<div class="no-record col-xs-12"><img src="/images/empty.jpg"/><span>没有找到记录，请调整搜索条件。</span></div>
+				</div>
+				<div class="row">
+					<form class="form-inline warestatus-form1 warestatus-form2">
+						<div class="form-group">
+						    <label for="exampleInputName2"class="labelname">每页：</label>
+						    <select class="form-control waregood-status" id="exampleInputName2">
+						    	<option>10</option>
+						    	<option>15</option>
+						    	<option>20</option>
+						    	<option>50</option>
+						    	<option>100</option>
+						    </select>
+						</div> 
+						<div class="form-group">
+							<ul class="warestatus-page">
+								<li><a href="">首页</a></li>
+							    <li class="previous"><a href="#">上一页</a></li>
+							    <li>
+							    	<label for="exampleInputName2"class="labelname">第</label>
+								     <input type="text" class="form-control"id="exampleInputName2"value="1">
+							    	<label for="exampleInputName2"class="labelname">页(共<span>1</span>页<span>0</span>条)</label>
+							    </li>
+							    <li class="next"><a href="#">下一页</a></li>
+								<li><a href="#">末页</a></li>
+							 </ul>
+						</div> 
+					</form>
+				</div>
+			</div>
+            <!--添加模板模态窗 -->
+			<div class="modal modal-messageset">
+				<div class="modalcon">
+					<div class="modal-bt">
+						<h4 class="modal-title size-title" id="myModalLabel">添加模板</h4>
+					    <button type="button" class="close close-btn" data-dismiss="modal" aria-label="Close" id="close-btn"><span aria-hidden="true">x</span></button>
+					</div>
+					<div class="modal-bd">
+						<form class="form-inline modal-message-form">
+							<div class="form-group">
+							    <label for="exampleInputName2"class="labelname">模板类型：</label>
+							    <select class="form-control mode-type" id="exampleInputName2" style="width:150px;">
+							    	<option></option>
+							    	<option value="发货通知">发货通知</option>
+							    	<option value="关闭">关闭</option>
+							    	<option value="开启">开启</option>
+							    </select>
+							</div>
+							<br>
+							<div class="form-group">
+							    <label for="exampleInputName2"class="labelname">模板名称：</label>
+							    <input type="text" class="form-control input-sm  mode-name">
+							</div>
+							<br>
+							<div class="form-group">
+								<label class="labelname">插入变量：</label>
+								<input class="btn btn-default btn-sm" name="button1" value="快递单号" style="margin-right:5px;" onclick="insertAtCursor(document.getElementById('content'),'#courierNumber#')" type="button">
+								<input class="btn btn-default btn-sm" name="button2" value="收货地址" style="margin-right:5px;" onclick="insertAtCursor(document.getElementById('content'),'#address#')" type="button">
+								<input class="btn btn-default btn-sm" name="button3" value="店铺名称" style="margin-right:5px;" onclick="insertAtCursor(document.getElementById('content'),'#shop#')" type="button">
+								<input class="btn btn-default btn-sm" name="button4" value="快递公司" style="margin-right:5px;" onclick="insertAtCursor(document.getElementById('content'),'#express#')" type="button">
+								<input class="btn btn-default btn-sm" name="button5" value="收货人名字" style="margin-right:5px;" onclick="insertAtCursor(document.getElementById('content'),'#name#')" type="button">
+								<input class="btn btn-default btn-sm" name="button6" value="订单号" onclick="insertAtCursor(document.getElementById('content'),'#number#')" type="button">
+							</div>
+							<div class="form-group" style="padding-left:60px;">
+								<input class="btn btn-default btn-sm" name="button7" value="数量" onclick="insertAtCursor(document.getElementById('content'),'#total#')" type="button">
+							</div>
+							<div class="form-group">
+								<label class="labelname">模板内容：</label>
+								<textarea class="form-control input-sm merger_two_row_3  mode-content" id="content" rows="3" name="content" style="width:485px;resize: none;height:83px;">
+									
+								</textarea>
+							</div>
+							<div class="form-group">
+								<label class="labelname">模板签名：</label>
+								<input name="store_sign" class="form-control input-sm merger_two_row_3  mode-sign" placeholder="请使用3-8字中文、公司简称、网站名等为短信签名" style="width:485px;" type="text">
+							</div>
+						</form>
+					</div>
+					<div class="modal-bo">
+			        	<button type="button" class="btn btn-default btn-sm message-save">保存</button>
+			        	<button type="button" class="btn btn-default btn-sm close-btn">关闭</button>
+					</div>
+				</div>
+			</div>
+			<!--删除 -->
+			<div class="modal modal-messageset1">
+				<div class="modalcon">
+					<div class="modal-bt">
+						<h4 class="modal-title size-title" id="myModalLabel">提示</h4>
+					    <button type="button" class="close close-btn" data-dismiss="modal" aria-label="Close" id="close-btn"><span aria-hidden="true">x</span></button>
+					</div>
+					<div class="modal-bd">
+					    <span>您确定要删除该模板吗?</span>
+					</div>
+					<div class="modal-bo">
+			        	<button type="button" class="btn btn-default btn-sm message-sure1">确定</button>
+			        	<button type="button" class="btn btn-default btn-sm close-btn">取消</button>
+					</div>
+				</div>
+			</div>
+			<div class="push"></div>
+		</div>
+		{include file="../comfoot.html"}
+		<script type="text/javascript" src="/js/jquery-1.11.0.min.js"></script>
+		<script type="text/javascript" src="/js/commontop.js"></script>
+		<script type="text/javascript" src="/bootstrap/js/bootstrap.min.js" ></script>
+		<script type="text/javascript" src="/bootstrap/js/bootstrap-datetimepicker.min.js"></script>
+		<script type="text/javascript" src="/js/mycom.js"></script>
+		<script type="text/javascript" src="/js/crm/messagemould.js"></script>
+		<script type="text/javascript">
+			function insertAtCursor(myField, myValue) {
+			    if (document.selection) {
+			        myField.focus();
+			        sel = document.selection.createRange();
+			        sel.text = myValue;
+			        sel.select();
+			    }
+			    else if (myField.selectionStart || myField.selectionStart == '0') {
+			        var startPos = myField.selectionStart;
+			        var endPos = myField.selectionEnd;
+			        var restoreTop = myField.scrollTop;
+			        myField.value = myField.value.substring(0, startPos) + myValue + myField.value.substring(endPos,   myField.value.length);
+			        if (restoreTop > 0) {
+			            myField.scrollTop = restoreTop;
+			        }
+			        myField.focus();
+			        myField.selectionStart = startPos + myValue.length;
+			        myField.selectionEnd = startPos + myValue.length;
+			    } else {
+			        myField.value += myValue;
+			        myField.focus();
+			    }
+			}
+		</script>
+	</body>
+</html>

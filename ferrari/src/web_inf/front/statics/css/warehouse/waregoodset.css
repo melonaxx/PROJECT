@@ -1,0 +1,121 @@
+#waregoodset .waregood-area{
+	margin-left:10px;
+}
+.row .goodset-form{
+	width:1200px;
+	padding:0;
+	margin-left:15px;
+}
+.row .goodset-table{
+	width:1200px;
+	padding:0;
+	margin-left:15px;
+}
+.goodset-table .waregood-thead>tr>td{
+	font-weight:bold;
+	text-align:left;
+}
+.goodset-table .waregood-tbody>tr>td{
+	text-align:left;
+}
+.goodset-table .waregood-tbody td:nth-of-type(3){
+	text-align:center;
+}
+.waregood-num,.waregood-done,.waregood-img{
+	width:46px;
+	text-align:center;
+}
+.waregood-name{
+	width:660px;
+}
+.waregood-size .waregood-unit{
+	width:200px;
+}
+.size-title{
+	font-weight:600;
+	text-align:center;
+	font-size:12px;
+}
+#waregood-modal .modalcon{
+	width:910px;
+	margin-left:-455px;
+
+}
+.waregood-modalbody{
+	height:auto;
+	overflow:auto;
+}
+.waregood-bo{
+	border:none;
+}
+.waregood-info{
+	font-weight:600;
+}
+.waremodal-btn{
+	margin:10px 0 10px 0;
+}
+.waregood-add,.waregood-del{
+	margin-right:10px;
+	width:46px;
+	height:30px;
+}
+#waregood-modal .waregood-table{
+	width:854px;
+}
+.waregood-table>.waregood-modaltbody>tr>td{
+	height:38px;
+}
+.waregood-modalthead>tr{
+	font-weight:600;
+}
+.waregood-modalthead td:nth-of-type(1){
+	width:46px;
+}
+.waregood-modalthead td:nth-of-type(2){
+	width:38px;
+}
+.waregood-modalthead td:nth-of-type(3){
+	width:170px;
+	text-align:left;
+}
+.waregood-modalthead td:nth-of-type(4){
+	width:46px;
+}
+.waregood-modalthead td:nth-of-type(5){
+	width:404px;
+	text-align:left;
+}
+.waregood-modalthead td:nth-of-type(6){
+	width:100px;
+	text-align:left;
+}
+.waregood-modaltbody td:nth-of-type(6){
+	text-align:left;
+}
+.waregood-modalnum .waregood-modalimg{
+	text-align: center;
+	width:46px;
+}
+.modal-noborder{
+	border:none;
+	height:28px;
+	overflow:hidden;
+}
+.waregood-modaltbody>tr{
+	padding:2px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

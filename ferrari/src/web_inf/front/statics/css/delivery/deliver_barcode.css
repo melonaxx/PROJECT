@@ -1,0 +1,117 @@
+.row .barcode-nav{
+	width:1200px;
+	margin-left:15px;
+	padding:0;
+}
+.row .barcode-left{
+	width:780px;
+	float:left;
+	margin-left:15px;
+	padding:0;
+}
+.row .barcode-left .form-group{
+	height:30px;
+	line-height:30px;
+}
+.row .barcode-right{
+	width:360px;
+	float:left;
+	margin-top:20px;
+}
+.row .barcode-bt{
+	margin:10px 0 10px 0;
+}
+.row .barcode-form1{
+	width:100%;
+
+}
+.row .barcode-form1 .form-group{
+	margin-bottom:15px;
+}
+.row .barcode-form1 .barcode-input{
+	width:678px;
+	cursor:default;
+}
+.row .barcode-table{
+	width:738px;
+	margin-top:10px;
+}
+.row .barcode-table thead td{
+	text-align: center;
+	font-weight:600;
+}
+.row .barcode-table tbody td{
+	text-align: center;
+}
+.row .barcode-table thead td:nth-of-type(1){
+	width:46px;
+}
+.row .barcode-table thead td:nth-of-type(2){
+	width:80px;
+}
+.row .barcode-table thead td:nth-of-type(3){
+	width:80px;
+}
+.row .barcode-table thead td:nth-of-type(4){
+	width:80px;
+}
+.row .barcode-table thead td:nth-of-type(5){
+	width:60px;
+}
+.row .barcode-table thead td:nth-of-type(6){
+	width:130px;
+}
+.row .barcode-table thead td:nth-of-type(7){
+	width:130px;
+}
+.row .barcode-table thead td:nth-of-type(8){
+	width:132px;
+}
+.row .barcode-table .totalcount{
+	background:#fffae9;
+}
+.row .barcode-right .barcodehandle{
+	text-align: center;
+	margin:10px 0 10px 0;
+	font-size:18px;
+	height:30px;
+	font-weight:600;
+}
+.row .barcode-right .barcodehandle .barcode-many{
+	color:red;
+	margin:0 2px 0 2px;
+}
+.row .barcode-form2{
+	padding-left:10px;
+	padding-top:10px;
+	height:auto;
+	background:rgba(150,150,150,0.5);
+	box-shadow:0px 0px 20px #666;
+	border-radius: 5px;
+	border:1px solid #ccc;
+}
+.row .barcode-form2 .form-group{
+	margin-bottom:15px;
+}
+.row .barcode-form2 .form-control{
+	width:200px;
+}
+.row .barcode-form2 .form-group .open-barcode{
+	margin-left:65px;
+}
+.row .barcode-form2 .dropdown-menu{
+	width:206px;
+}
+.row .barcode-form2 .dropdown-menu>li>a{
+	padding:3px 10px;
+}
+.modal-barcode1 .modalcon{
+	width:300px;
+	margin-left:-150px;
+}
+
+
+
+
+
+

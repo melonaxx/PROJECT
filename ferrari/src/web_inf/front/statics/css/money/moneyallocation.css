@@ -1,0 +1,92 @@
+.row .moneyallocation-form{
+	width:1200px;
+	margin-left:15px;
+	margin-top:20px;
+	padding:0;
+}
+.row .moneyallocation-form .form-group{
+	float:right;
+	margin-left: 10px;
+}
+.row .moneyallocation-form .form-control{
+	width:150px;
+}
+.row .moneyallocation-form .form-group button:nth-of-type(2){
+	margin-left:10px;
+}
+.row .moneyallocation-form .newbtn{
+	float:left;
+	margin:0;
+}
+.row .money-table{
+	width:1200px;
+	margin-left:15px;
+	padding:0;
+}
+.row .money-table tbody td{
+   text-align: center;
+}
+.row .money-table thead td{
+   text-align: center;
+   font-weight: 600;
+}
+.row .money-table thead td:nth-of-type(1){
+   width:50px;
+}
+.row .money-table thead td:nth-of-type(2){
+   width:90px;
+}
+.row .money-table thead td:nth-of-type(3){
+   width:150px;
+}
+.row .money-table thead td:nth-of-type(4){
+   width:120px;
+}
+.row .money-table thead td:nth-of-type(5){
+   width:120px;
+}
+.row .money-table thead td:nth-of-type(6){
+   width:120px;
+}
+.row .money-table thead td:nth-of-type(7){
+   width:120px;
+}
+.row .money-table thead td:nth-of-type(8){
+   width:310px;
+}
+.row .money-table thead td:nth-of-type(9){
+   width:120px;
+}
+.modal-moneyallocation .modalcon{
+	width:500px;
+	margin-left:-250px;
+}
+.modal-moneyallocation1 .modalcon{
+	width:500px;
+	margin-left:-250px;
+}
+
+.modal-moneyallocation .form-inline .form-group{
+   margin-bottom:15px;
+   margin-right:20px;
+}
+.modal-moneyallocation .form-inline .form-control{
+	width:150px;
+}
+.modal-moneyallocation1 .form-inline .form-group{
+   margin-bottom:15px;
+   margin-right:20px;
+}
+.modal-moneyallocation1 .form-inline .form-control{
+	width:150px;
+}
+/*.container .modal-money-allocation .red{
+	border-color:1px solid #E74C3C;
+}*/
+
+
+
+
+
+
+

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>米欢电商ERP</title>
+		<link href="/images/favicon.ico" rel="shortcut icon">
+		<link href="/bootstrap/css/bootstrap.min.css"  rel="stylesheet" media="screen">
+		<link href="/css/commontop.css"   rel="stylesheet" media="screen">
+		<link rel="stylesheet" type="text/css" href="/css/home/homepage.css"/>
+		<style>
+			{literal}
+				@media screen and (max-width: 1120px){ 
+					/*当屏幕尺寸小于1120px时，应用下面的CSS样式*/
+				    .navbar-nav,#comtop-right{display: none;}
+				}
+			{/literal}
+		</style>
+	</head>
+	<body>
+		{include file="../commontop.html"}
+		<div class="container-fluid container1">
+			<div class="row ware-row">
+				<h5 class="home-nav">您的位置： <a href="javascript:;">首页</a></h5>
+			</div>
+			<!-- 图表一二 -->
+			<div class="row">
+				<div class="allcharts">
+					<div class="left-chart">
+						<h5 class="home-bt1">待处理订单</h5>
+						<div class="piechart" id="pie"></div>
+					</div>
+					<div class="right-chart">
+						<h5 class="home-bt1">待处理售后单</h5>
+						<div class="right_left">
+							<div class="right_left-child">
+								<div class="right_left-color color1"></div>
+								<a class="right_left-text text1" href="javascript:;">1天</a>
+							</div>
+							<div class="right_left-child">
+								<div class="right_left-color color2"></div>
+								<a class="right_left-text text2" href="javascript:;">2~3天</a>
+							</div>
+							<div class="right_left-child">
+								<div class="right_left-color color3"></div>
+								<a class="right_left-text text3" href="javascript:;">4~6天</a>
+							</div>
+							<div class="right_left-child">
+								<div class="right_left-color color4"></div>
+								<a class="right_left-text text4" href="javascript:;">7天以上</a>
+							</div>
+
+						</div>
+						<div class="piechart1" id="bar"></div>
+					</div>
+					<!-- 图表三-->
+					<div class="bottom-chart">
+						<h5 class="home-bt1">交易趋势</h5>
+						<div class="piechart2" id="line"></div>
+					</div>
+					<!-- 图表四-->
+					<div class="bottom-chart1">
+						<div class="home-bt1">
+							<span>销售额</span>
+							<div class="input-group home-search">
+						      <input type="text" class="form-control input-sm" placeholder="输入商品名称"style="width:280px;">
+						      <span class="input-group-btn">
+						        <button class="btn btn-default btn-sm" type="button">搜索</button>
+						      </span>
+						    </div>
+						</div>
+						<div class="piechart3" id="line1"></div>
+					</div>
+				</div>
+			</div> 
+			<div class="push"></div>
+		</div>
+		{include file="../comfoot.html"}
+		<script type="text/javascript" src="/js/jquery-1.11.0.min.js"></script>
+		<script type="text/javascript" src="/js/commontop.js"></script>
+		<script type="text/javascript" src="/bootstrap/js/bootstrap.min.js"></script>
+		<script type="text/javascript" src="/js/home/echarts.js"></script>
+		<script type="text/javascript" src="/js/home/homepage.js"></script>
+	</body>
+</html>

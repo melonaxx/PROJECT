@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>米欢电商ERP</title>
+		<link href="/images/favicon.ico" rel="shortcut icon">
+		<link rel="stylesheet" type="text/css" href="/bootstrap/css/bootstrap-datetimepicker.min.css"/>
+		<link href="/bootstrap/css/bootstrap.min.css"  rel="stylesheet" media="screen">
+		<link href="/css/commontop.css"   rel="stylesheet" media="screen">
+		<link rel="stylesheet" type="text/css" href="/css/delivery/deliver_printlist.css"/>
+		<style>
+			{literal}
+				@media screen and (max-width: 1120px){
+					/*当屏幕尺寸小于1120px时，应用下面的CSS样式*/
+				    .navbar-nav,#comtop-right{display: none;}
+				}
+			{/literal}
+		</style>
+	</head>
+	<body>
+		{include file="../commontop.html"}
+		<div class="container-fluid container1">
+			<div class="row ware-row">
+				<h5 class="col-md-12">您的位置： <a href="javascript:;">首页</a> » <a href="javascript:;">发货</a> »打单配货</h5>
+			</div>
+			<div class="row">
+			    <form class="form-inline deliver-form col-md-12">
+					<div class="form-group">
+						<button type="button" class="btn btn-default btn-sm sure-peihuo">确认配货</button>
+						<button type="button" class="btn btn-default btn-sm return-check">打回审核</button>
+						<button type="button" class="btn btn-default btn-sm submit-statu">提交异常</button>
+
+						<div class="btn-group">
+							<button class="btn btn-sm  btn-primary order_select2" type="button" style="margin-right:0;" id="lodop_print" classval='a'>打印快递单</button>
+							<button style="height:30px;margin-right:0;" aria-expanded="false" aria-haspopup="true" data-toggle="dropdown" class="btn btn-sm btn-primary dropdown-toggle" type="button">
+								<span class="caret"></span>
+							</button>
+							<ul class="dropdown-menu">
+								<li>
+									<a class="express" href="javascript:;">打印预览和设计</a>
+								</li>
+							</ul>
+							<a class="myMod" href="" target="_blank">
+								<img src="/images/doubt.png" title="点击前往设置快递单模板" height="16px;" width="16px;">
+							</a>
+						</div>
+						<div class="btn-group">
+							<button class="btn btn-sm  btn-success order_select2"type="button" style="margin-right:0;" classval='b'>打印发货单</button>
+							<button style="height:30px;margin-right:0;" aria-expanded="false" aria-haspopup="true" data-toggle="dropdown" class="btn btn-sm btn-success dropdown-toggle " type="button">
+								<span class="caret"></span>
+							</button>
+							<ul class="dropdown-menu">
+								<li>
+									<a class="express" href="javascript:;">打印预览和设计</a>
+								</li>
+							</ul>
+							<a class="myMod" href="" target="_blank">
+								<img src="/images/doubt.png" title="点击前往设置快递单模板" height="16px;" width="16px;">
+							</a>
+						</div>
+						<div class="btn-group">
+							<button class="btn btn-sm btn-warning order_select2" type="button" style="margin-right:0;" classval='c'>打印配货单</button>
+							<button style="height:30px;margin-right:0;" aria-expanded="false" aria-haspopup="true" data-toggle="dropdown" class="btn btn-sm btn-warning dropdown-toggle " type="button">
+								<span class="caret"></span>
+							</button>
+							<ul class="dropdown-menu">
+								<li>
+									<a class="express" href="javascript:;">打印预览和设计</a>
+								</li>
+							</ul>
+							<a class="myMod" href="" target="_blank">
+								<img src="/images/doubt.png" title="点击前往设置快递单模板" height="16px;" width="16px;">
+							</a>
+						</div>
+						<div style="margin-left:10px" class="btn-group">
+							<button class="btn btn-sm btn-default express_add" type="button" style="margin:0;">批量生成快递单</button>
+							<button style="height:30px;" aria-expanded="true" aria-haspopup="true" data-toggle="dropdown" class="btn btn-sm btn-default dropdown-toggle" type="button">
+								<span class="caret"></span>
+							</button>
+							<ul class="dropdown-menu">
+								<li>
+									<a class="mod_express" href="#">批量修改快递</a>
+								</li>
+							</ul>
+						</div>
+
+
+					</div>
+					<div class="form-group deliver-search"style="float:right;">
+						<div class="input-group"style="width:250px;">
+							<input value="" placeholder="输入订单编号/收件人等" class="form-control input-sm input_search ordersearch" type="text">
+							<span class="input-group-btn">
+								<button class="btn btn-default btn-sm searchbtn" type="button">搜索</button>
+							</span>
+						</div>
+						 <button class="btn btn-sm btn-default resetbtn" type="reset"style="margin-right: 0;">重置</button>
+					</div>
+				</form>
+			</div>
+			<div class="row">
+				<table class="table table-hover deliver-table col-md-12">
+				    <thead>
+				    	<tr class="active">
+				    		<td>序号</td>
+				    		<td>
+				    			<label>
+							      <input type="checkbox" class="allcheck">
+							    </label>
+							</td>
+				    		<td>操作</td>
+				    		<td>打印标记</td>
+				    		<td>下单时间</td>
+				    		<td>订单类别</td>
+				    		<td>发货方式</td>
+				    		<td>发货公司</td>
+				    		<td>运单号</td>
+				    		<td>买家名称</td>
+				    		<td>手机</td>
+				    		<td>数量</td>
+				    		<td>店铺</td>
+				    		<td>客服</td>
+				    		<td>订单编号</td>
+				    	</tr>
+				    </thead>
+				    <tbody>
+    				{foreach $verifydata as $key=>$value}
+				    	<tr>
+				    		<td>{$key+1}</td>
+				    		<td>
+				    			<label>
+							      <input orderid='{$value["orderid"]}' type="checkbox" value="" {if $value['deltype'] eq '物流' or $value['deltype'] eq '无'} disabled {/if}>
+							    </label>
+				    		</td>
+				    		<td>
+				    			<a href="/delivery/editdeliver.php?orderid={$value['orderid']}">编辑</a>
+				    		</td>
+				    		<td></td>
+				    		<td>{$value['createtime']}</td>
+				    		<td>{$value['catename']}</td>
+				    		<td>{$value['deltype']}</td>
+				    		<td>{$value['transportname']}</td>
+				    		<td>{$value['waybill']}</td>
+				    		<td>{$value['cusname']}</td>
+				    		<td>{$value['mobile']}</td>
+	                        <td class="review-num">{$value['prototal']}</td>
+	                        <td>{$value['shopname']}</td>
+	                        <td>{$value['servicename']}</td>
+	                        <td class="order-num">{$value['onlineid']}</td>
+				    	</tr>
+					{/foreach}
+				    </tbody>
+				</table>
+			</div>
+			{if count($verifydata) <= 0}
+			<div class="row no-find" style="display:block;">
+				<div class="no-record col-md-12"><img src="/images/empty.jpg"/><span>没有找到记录，请调整搜索条件。</span></div>
+			</div>
+			{/if}
+			{$pages}
+			<input type="hidden" name="pagewarning" value='{$pagewarning}'>
+			<!-- 确认配货 -->
+			<div class="modal modal-deliver">
+				<div class="modalcon">
+					<div class="modal-bt">
+						<h4 class="modal-title size-title" id="myModalLabel">提示</h4>
+					    <button type="button" class="close close-btn" data-dismiss="modal" aria-label="Close" id="close-btn"><span aria-hidden="true">x</span></button>
+					</div>
+					<div class="modal-bd">
+					    <p>有<span class="deliver-many"></span>笔订单没有填快递单号</p>
+					    <p><span>你确定要提交吗？</span></p>
+					</div>
+					<div class="modal-bo">
+			        	<button type="button" class="btn btn-default btn-sm">确定</button>
+					</div>
+				</div>
+			</div>
+			<!--提示 -->
+			<div class="modal modal-deliver1">
+				<div class="modalcon">
+					<div class="modal-bt">
+						<h4 class="modal-title size-title" id="myModalLabel">提示</h4>
+					    <button type="button" class="close close-btn" data-dismiss="modal" aria-label="Close" id="close-btn"><span aria-hidden="true">x</span></button>
+					</div>
+					<div class="modal-bd">
+					    <span>请至少选择1个订单</span>
+					</div>
+					<div class="modal-bo">
+			        	<button type="button" class="btn btn-default btn-sm close-btn">确定</button>
+					</div>
+				</div>
+			</div>
+			<!--打回审核 -->
+			<div class="modal modal-deliver2">
+				<div class="modalcon">
+					<div class="modal-bt">
+						<h4 class="modal-title size-title" id="myModalLabel">提示</h4>
+					    <button type="button" class="close close-btn" data-dismiss="modal" aria-label="Close" id="close-btn"><span aria-hidden="true">x</span></button>
+					</div>
+					<div class="modal-bd">
+					    <span>您确定要打回审核吗?</span>
+					</div>
+					<div class="modal-bo">
+			        	<button type="button" class="btn btn-default btn-sm close-btn">确定</button>
+					</div>
+				</div>
+			</div>
+			<!-- 提交异常 -->
+			<div class="modal modal-deliver3">
+				<div class="modalcon">
+					<div class="modal-bt">
+						<h4 class="modal-title size-title" id="myModalLabel">异常原因</h4>
+					    <button type="button" class="close close-btn" data-dismiss="modal" aria-label="Close" id="close-btn"><span aria-hidden="true">x</span></button>
+					</div>
+				    <form class="form-inline" method="post" action="">
+						<div class="modal-bd">
+								<div class="form-group">
+									<label class="labelname">异常原因：</label>
+									<select class="form-control input-sm" >
+										<option >缺货</option>
+
+										<option>a</option>
+									</select>
+									<a href="/order/abnormalset.php" target="_blank">异常添加</a>
+								</div>
+								<br>
+								<div class="form-group">
+									<label class="labelname">异常备注：</label>
+									<textarea class="form-control input-sm" rows="4" style="width:300px;height:100px;resize: none;"></textarea>
+								</div>
+						</div>
+						<div class="modal-bo">
+				        	<button type="button" class="btn btn-default btn-sm account-sure">确定</button>
+				        	<button type="button" class="btn btn-default btn-sm close-btn">取消</button>
+						</div>
+					</form>
+				</div>
+			</div>
+			<!-- 生成快递单 -->
+			<div class="modal modal-deliver4">
+				<div class="modalcon">
+					<div class="modal-bt">
+						<h4 class="modal-title size-title" id="myModalLabel">生成快递单</h4>
+					    <button type="button" class="close close-btn" data-dismiss="modal" aria-label="Close" id="close-btn"><span aria-hidden="true">x</span></button>
+					</div>
+					<form class="form-inline" method="post" action="">
+						<div class="modal-bd">
+							<div class="form-group">
+								<label class="labelname">首张快递单号：</label>
+								<input type="text" class="form-control">
+							</div>
+							<div class="form-group">
+								<label class="labelname">单号按照：</label>
+								<select class="form-control input-sm" style="width:50px;">
+									<option >1</option>
+								</select>
+							</div>
+							<div class="form-group">
+								<input name="type" value="1" checked="checked" type="radio">
+								递增
+								<input name="type" value="-1" checked="" type="radio">
+								递减
+							</div>
+						</div>
+						<div class="modal-bo">
+				        	<button type="button" class="btn btn-default btn-sm">确定</button>
+				        	<button type="button" class="btn btn-default btn-sm close-btn">取消</button>
+						</div>
+					</form>
+				</div>
+			</div>
+
+			<!-- 批量修改快递 -->
+			<div class="modal modal-deliver5">
+				<div class="modalcon">
+					<div class="modal-bt">
+						<h4 class="modal-title size-title" id="myModalLabel">批量修改快递</h4>
+					    <button type="button" class="close close-btn" data-dismiss="modal" aria-label="Close" id="close-btn"><span aria-hidden="true">x</span></button>
+					</div>
+					<form class="form-inline" method="post" action="">
+						<div class="modal-bd">
+								<div class="form-group">
+									<label class="labelname"> 选择快递：</label>
+									<select class="form-control input-sm" >
+										<option >顺丰速运</option>
+									</select>
+								</div>
+						</div>
+						<div class="modal-bo">
+				        	<button type="button" class="btn btn-default btn-sm">确定</button>
+				        	<button type="button" class="btn btn-default btn-sm close-btn">取消</button>
+						</div>
+					</form>
+				</div>
+			</div>
+			<!-- 批量修改备注 -->
+			<div class="modal modal-deliver6">
+				<div class="modalcon">
+					<div class="modal-bt">
+						<h4 class="modal-title size-title" id="myModalLabel">批量修改备注</h4>
+					    <button type="button" class="close close-btn" data-dismiss="modal" aria-label="Close" id="close-btn"><span aria-hidden="true">x</span></button>
+					</div>
+					<form class="form-inline" method="post" action="">
+						<div class="modal-bd">
+						    <form class="form-inline" method="post" action="">
+								<div class="form-group">
+									<label class="labelname">修改方式：</label>
+									<select class="form-control input-sm change-method" >
+										<option class="zhujia">在原备注上追加</option>
+
+										<option class="fugai">覆盖原先的备注</option>
+									</select>
+								</div>
+								<br>
+								<div class="form-group">
+									<label class="labelname">备注内容：</label>
+									<textarea class="form-control input-sm deliver6-mark" rows="4" style="width:300px;height:100px;resize: none;"></textarea>
+								</div>
+							</form>
+						</div>
+						<div class="modal-bo">
+				        	<button type="button" class="btn btn-default btn-sm deliver6-sure">确定</button>
+				        	<button type="button" class="btn btn-default btn-sm close-btn">取消</button>
+						</div>
+					</form>
+				</div>
+			</div>
+
+			<div class="push">
+			</div>
+		</div>
+
+		<!-- 打印预览与设计界面 -->
+<div class="modal contain" >
+	<div class="modalcon" style="width:1000px;height:300px;margin-left: -500px;">
+		<div class="modal-bt">
+			<h4 class="modal-title size-title" id="myModalLabel">打印预览与设计</h4>
+		    <button type="button" class="close close-btn" data-dismiss="modal" aria-label="Close" id="close-btn"><span aria-hidden="true">x</span></button>
+		</div>
+		<div class="modal-bd" style="margin-top:30px;">
+			<table class="table tab_select table-bordered table-hover" style="width:965px;table-layout:fixed; overflow:hidden;" border="1">
+			<tbody><tr>
+				<th width="90">单据类型</th>
+				<th class="aria-hidden" width="100">默认打印机</th>
+				<th width="130">打印模板</th>
+				<th width="30">份</th>
+				<th width="502">自动校验：批量打印时调整纸张</th>
+			</tr>
+			<tr>
+				<td id="express_id" value="1001"><span id="express_font">快递单</span></td>
+				<td width="100">
+					<select name="print_plane" id="print_plane" style="width:100px;">
+						 <option value="">--请选择打印机--</option>
+					</select>
+				</td>
+				<td>
+					<select name="express_template">
+						<option value="">--请选择打印模版--</option>
+					</select>
+				</td>
+				<td><a id="print_num" href="javascript:;">1</a></td>
+				<td>每打印
+					<input id="adjust_print" value="0" style="width:20px;" type="text">
+					份，　　偏 <a href="javascript:;" class="reduce"> 上（-） </a> <input id="top_bottom" value="0" style="width:20px;" type="text"><a href="javascript:;" class="add"> （+）下 </a>,　　
+					偏 <a href="javascript:;" class="reduce"> 左（-） </a><input id="left_right" value="0" style="width:20px;" type="text"><a href="javascript:;" class="add"> （+）右 </a>　　（单位mm）
+				</td>
+			</tr>
+		</tbody>
+		</table>
+		<div style="text-align: center">
+			<a class="btn btn-default btn-sm" id="print_preview" href="javascript:;">打印预览</a>
+			<a class="btn btn-default btn-sm" data-dismiss="modal" href="#print_state" data-toggle="modal" id="doprint">打印</a>
+			<a class="btn btn-default btn-sm" data-dismiss="modal" id="print_design" target="blank" href="https://erp.imihuan.com/deliver/deliver_design_express.php">设计模板</a>
+			<a class="btn btn-default btn-sm" data-dismiss="modal" id="print_design" target="blank" href="https://erp.imihuan.com/deliver/deliver_design_express_add.php">添加模板</a>
+			<a class="btn btn-default btn-sm" href="#print_state" data-toggle="modal" id="check_print">查看打印状态</a>
+		</div>
+		</div>
+<!-- 		<div class="modal-bo" style="text-align: center">
+	    	<button type="button" class="btn btn-default btn-sm deliver6-sure">确定</button>
+	    	<button type="button" class="btn btn-default btn-sm close-btn">取消</button>
+		</div> -->
+	</div>
+</div>
+<div class="modal print-modal">
+	<div class="modalcon" style="width:340px;margin-left:-170px;">
+		<div class="modal-bt">
+			<h4 class="modal-title size-title" id="myModalLabel">打印状态</h4>
+		    <button type="button" class="close close-btn" data-dismiss="modal" aria-label="Close" id="close-btn"><span aria-hidden="true">x</span></button>
+		</div>
+			<div class="modal-bd">
+			    <form class="form-inline" method="post" action="">
+					<div class="form-group">
+						<label class="margin_left_0" style="margin-left:30px">打印任务名：</label>
+						<span id="print_name"></span>
+						<br>
+						<label class="margin_left_1" style="margin-left:42px">状态描述：</label>
+						<span id="print_state_text"></span>
+						<br>
+						<label class="margin_left_2" style="margin-left:54px">待打印：</label>
+						<font id="print_wait_pages" color="red" size="3px"></font><font></font>/<font id="print_total_pages" color="blue" size="3px"></font>页
+					</div>
+				</form>
+			</div>
+			<div class="modal-bo">
+	        	<button class="btn btn-default btn-sm" id="pirnt_pause" data-dismiss="">暂停打印</button>
+				<button class="btn btn-default btn-sm" id="print_resume">恢复打印</button>
+				<button class="btn btn-default btn-sm" id="print_purge" data-dismiss="modal">取消打印</button>
+			</div>
+	</div>
+</div>
+	<object id="LODOP_OB" classid="clsid:2105C259-1E0C-4534-8141-A753534CB4CA" height="0" width="0">
+       <embed id="LODOP_EM" type="application/x-print-lodop" pluginspage="install_lodop.exe" height="0" width="0">
+	</object>
+	</div>
+		{include file="../comfoot.html"}
+		<script type="text/javascript" src="/js/jquery-1.11.0.min.js"></script>
+		<script type="text/javascript" src="/js/commontop.js"></script>
+		<script type="text/javascript" src="/bootstrap/js/bootstrap.min.js" ></script>
+		<script type="text/javascript" src="/js/mycom.js"></script>
+		<script type="text/javascript" src="/js/delivery/deliver_printlist.js"></script>
+		<script language="javascript" src="/js/LodopFuncs.js"></script>
+	</body>
+{literal}
+<script>
+  //      $(function(){
+  //      	   var LODOP=getLodop(); //声明为全局变量
+		// 	$("#lodop_print").click(function(){
+		// 		 $.ajax({
+		// 		   type: "POST",
+		// 		   url: "/delivery/deliver_orderprite.php",
+		// 		   dataType:"json",
+		// 		   success: function(msg){
+		// 		   	  loddopprint(msg);
+		// 		   }
+		// 		});
+		// 	})
+
+		// 	function loddopprint(msg){
+		// 	   var LODOP=getLodop();
+  //              var page_height = msg.paperheight;
+		//    	   var page_left = msg.paperleft;
+		//    	   var page_width = msg.paperwidth;
+		//    	   var page_top = msg.papertop;
+
+	 //   	   	   LODOP.PRINT_INITA(page_top+"mm",page_left+"mm",page_width+"mm",page_height+"mm","");
+	 //   	   	   LODOP.SET_PRINT_PAGESIZE(1,page_width+"mm",page_height+"mm","");
+		//    	   for(var i=0; i<msg['item'].length; i++){
+		//    	   	   var LODOP=getLodop();
+		//    	   	    itemwidth=msg['item'][i].itemwidth;
+		//    	   	    itemheight=msg['item'][i].itemheight;
+		//    	   	    itemleft=msg['item'][i].itemleft;
+		//    	   	    itemtop=msg['item'][i].itemtop;
+		//    	   	    itemfontsize=msg['item'][i].itemfontsize;
+		//    	   	    itemname=msg['item'][i].name;
+		//    	   	   LODOP.ADD_PRINT_TEXT(itemtop,itemleft,itemwidth,itemheight,itemname);
+		//    	   	   LODOP.SET_PRINT_STYLEA(0,"FontSize",itemfontsize);
+		//    	   }
+		// 	   LODOP.SET_PRINT_STYLEA(0,"PreviewOnly",1);
+		//    	   LODOP.preview();
+		// 	}
+		// })
+
+	$(".order_select2").click(function(){
+
+		    classval = $(this).attr("classval");
+
+		var checked = $("input[type='checkbox']:checked");
+
+		if(checked.length == 0){
+
+			$(".modal-deliver1").show();
+
+			return false;
+
+		}else{
+
+			if(classval == 'a'){
+                 $("#express_font").text("快递单");
+			}else if(classval == 'b'){
+				 $("#express_font").text("发货单");
+			}else if(classval == 'c'){
+				 $("#express_font").text("配货单");
+			}
+
+			request_model(classval);
+
+			$(".contain").show();
+
+		}
+
+	});
+
+	load();
+	function load(){
+
+		var LODOP=getLodop(document.getElementById('LODOP_OB'),document.getElementById('LODOP_EM')); //声明为全局变量
+
+		var printer_count 	=  LODOP.get_printer_count();//获取打印机个数
+
+		var printer_name 	= new Array();
+
+		for(var i=0;i<printer_count;i++){
+			printer_name[i] = LODOP.get_printer_name(i);//获取打印机设备名字
+			$("select[name='print_plane']").append("<option value="+i+">"+printer_name[i]+"</option>");
+		}
+	}
+
+	//模版设置
+
+	function request_model(classval){
+
+		if(classval == 'a'){
+		  $.ajax({
+
+			   type: "POST",
+
+			   url: "request_model.php",
+
+			   data: {
+
+			   		'classval':'a'
+
+			   },
+
+			   dataType:'json',
+
+			   success: function(msg){
+
+			   		var str = "";
+			   		for (var i=0;i<msg.length;i++) {
+			   			str += "<option value="+msg[i].mid+">"+msg[i].modelname+"</option>"
+			   		}
+
+			   		$("select[name='express_template']").empty().append(str);
+			   }
+
+			});
+		}else if (classval == "b" || classval == 'c') {
+			 $.ajax({
+
+			   type: "POST",
+
+			   url: "request_model.php",
+
+			   data: {
+
+			   		'classval': classval
+
+			   },
+
+			   dataType:'json',
+
+			   success: function(msg){
+
+			   		var str = "";
+			   		for (var i=0;i<msg.length;i++) {
+			   			str += "<option value="+msg[i].id+">"+msg[i].name+"</option>"
+			   		}
+
+			   		$("select[name='express_template']").empty().append(str);
+			   }
+
+			});
+		}
+
+	}
+
+</script>
+{/literal}
+</html>

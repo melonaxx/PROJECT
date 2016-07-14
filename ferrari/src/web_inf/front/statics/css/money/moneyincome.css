@@ -1,0 +1,76 @@
+.row .moneyincome-btn{
+	margin-left:15px;
+}
+.row .moneyincome-table thead td:nth-of-type(1){
+   width:46px;
+}
+.row .moneyincome-table thead td:nth-of-type(2){
+   width:100px;
+}
+.row .moneyincome-table thead td:nth-of-type(3){
+   width:1054px;
+}
+.modal-moneyincome .modalcon{
+	width:300px;
+	margin-left: -150px;
+}
+.modal-moneyincome .form-inline .form-group{
+   margin-bottom:15px;
+   margin-right:10px;
+}
+.modal-moneyincome .form-inline .form-control{
+	width:150px;
+}
+.modal-moneyincome1 .modalcon{
+	width:300px;
+	margin-left: -150px;
+}
+.modal-moneyincome1 .form-inline .form-group{
+   margin-bottom:15px;
+   margin-right:10px;
+}
+.modal-moneyincome1 .form-inline .form-control{
+	width:150px;
+}
+.modal-moneyincome2 .modalcon{
+	width:320px;
+	margin-left: -160px;
+}
+.modal-moneyincome2 .form-inline .form-group{
+   margin-bottom:15px;
+   margin-right:10px;
+}
+.modal-moneyincome2 .form-inline .form-control{
+	width:150px;
+}
+
+.row .moneyincome-change{
+	float:left;
+	cursor:pointer;
+}
+.row .moneyincome-del{
+	float:right;
+	cursor:pointer;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

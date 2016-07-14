@@ -1,0 +1,137 @@
+.row .purexpense-nav{
+	width:1200px;
+	padding:0;
+	margin-left:15px;
+}
+.row .purexpense-form{
+	width:1200px;
+	padding:0;
+	margin-left:15px;
+}
+.row .purexpense-form .form-group{
+	margin:0 15px 15px 0;
+}
+.row .purexpense-form .form-control{
+	width:180px;
+}
+.row .purexpense-form .expense-mark{
+	width:455px;
+	height:60px;
+	resize:none;
+}
+/*运费记录*/
+.row .expenserecord-table{
+	width:1200px;
+	margin-left: 15px;
+	padding:0;
+}
+.row .expenserecord-table thead td:nth-of-type(1){
+	width:46px;
+}
+.row .expenserecord-table thead td:nth-of-type(2){
+	width:104px;
+}
+.row .expenserecord-table thead td:nth-of-type(3){
+	width:150px;
+}
+.row .expenserecord-table thead td:nth-of-type(4){
+	width:150px;
+}
+.row .expenserecord-table thead td:nth-of-type(5){
+	width:150px;
+}
+.row .expenserecord-table thead td:nth-of-type(6){
+	width:150px;
+}
+.row .expenserecord-table thead td:nth-of-type(7){
+	width:150px;
+}
+.row .expenserecord-table thead td:nth-of-type(8){
+	width:150px;
+}
+.row .expenserecord-table thead td:nth-of-type(9){
+	width:150px;
+}
+.row .expenserecord-table .expense-detail{
+	cursor:pointer;
+}
+.modal-expense .modalcon{
+	width:900px;
+	margin-left: -450px;
+	
+}
+.modal-expense .modalcon .modal-bd{
+	height:300px;
+	min-height:300px;
+	overflow: auto;
+}
+.modal-expense .modal-recordtable {
+	width:860px;
+}
+.modal-expense .modal-recordtable thead td:nth-of-type(1){
+	width:46px;
+}
+.modal-expense .modal-recordtable thead td:nth-of-type(2){
+	width:104px;
+	text-align:left;
+}
+.modal-expense .modal-recordtable tbody td:nth-of-type(2){
+	text-align:left;
+}
+.modal-expense .modal-recordtable thead td:nth-of-type(3){
+	width:270px;
+}
+.modal-expense .modal-recordtable thead td:nth-of-type(4){
+	width:110px;
+}
+.modal-expense .modal-recordtable thead td:nth-of-type(5){
+	width:110px;
+}
+.modal-expense .modal-recordtable thead td:nth-of-type(6){
+	width:110px;
+}
+.modal-expense .modal-recordtable thead td:nth-of-type(7){
+	width:110px;
+}
+
+/*运费开票记录*/
+.row .expenserecord-table1{
+	width:1200px;
+	padding:0;
+	margin-left: 15px;
+}
+.row .expenserecord-table1 thead td:nth-of-type(1){
+	width:46px;
+}
+.row .expenserecord-table1 thead td:nth-of-type(2){
+	width:184px;
+	text-align: left;
+}
+.row .expenserecord-table1 tbody td:nth-of-type(2){
+	text-align: left;
+}
+
+.row .expenserecord-table1 thead td:nth-of-type(3){
+	width:330px;
+}
+.row .expenserecord-table1 thead td:nth-of-type(4){
+	width:180px;
+}
+.row .expenserecord-table1 thead td:nth-of-type(5){
+	width:180px;
+}
+.row .expenserecord-table1 thead td:nth-of-type(6){
+	width:180px;
+}
+.row .expenserecord-table1 thead td:nth-of-type(7){
+	width:100px;
+}
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,225 @@
+.row .orderreview-nav{
+	width:1200px;
+	margin-left: 15px;
+	padding:0;
+}
+.row .orderreview-form {
+	width:1200px;
+	margin-left: 15px;
+	padding:0;
+}
+.row .orderreview-form .form-group {
+	margin-right: 10px;
+}
+.row .orderreview-form .form-group .sure-check{
+	margin-right: 10px;
+}
+.row .orderreview-form .form-group .submit-statu{
+	margin-right: 10px;
+}
+.row .orderreview-form .form-group .btn-group{
+	margin-right: 10px;
+}
+.row .orderreview-form .orderreview-search{
+	float:right;
+	margin-right: 0;
+}
+.row .orderreview-form .orderreview-search .input_search{
+	width:200px;
+}
+.row .or-table{
+	width:1200px;
+	margin-left: 15px;
+	padding:0;
+}
+.row .or-table thead td:nth-of-type(1){
+	width:46px;
+}
+.row .or-table thead td:nth-of-type(2){
+	width:38px;
+}
+.row .or-table thead td:nth-of-type(3){
+	width:46px;
+}
+.row .or-table thead td:nth-of-type(4){
+	width:80px;
+}
+.row .or-table thead td:nth-of-type(5){
+	width:100px;
+}
+.row .or-table thead td:nth-of-type(6){
+	width:100px;
+}
+.row .or-table thead td:nth-of-type(7){
+	width:150px;
+}
+.row .or-table thead td:nth-of-type(8){
+	width:170px;
+}
+.row .or-table thead td:nth-of-type(9){
+	width:150px;
+}
+.row .or-table thead td:nth-of-type(10){
+	width:80px;
+}
+.row .or-table thead td:nth-of-type(11){
+	width:120px;
+}
+.row .or-table thead td:nth-of-type(12){
+	width:120px;
+}
+.row .or-table .buyer{
+	float:left;
+	margin-left: 10px;
+}
+.row .or-table .message{
+	float:right;
+	margin-right: 10px;
+}
+.modal-check .modalcon{
+	width:300px;
+	margin-left: -150px;
+}
+
+.modal-tip .modalcon{
+	width:300px;
+	margin-left: -150px;
+}
+.modal-abnormal .modalcon{
+	width:412px;
+	margin-left: -206px;
+}
+.modal-abnormal .form-inline .form-group {
+    margin-bottom: 15px;
+    margin-right: 10px;
+}
+.modal-abnormal .form-inline .form-control {
+    width: 150px;
+}
+.modalsplits3 .modalcon{
+	width:800px;
+	margin-left: -400px;
+}
+.modalsplits3 .modalcon .modal-bd{
+	height:400px;
+	overflow: auto;
+}
+.modalsplits3 .split{
+	width:750px;
+	padding:0;
+}
+.modalsplits3 .split thead td:nth-of-type(1){
+	width:46px;
+}
+.modalsplits3 .split thead td:nth-of-type(2){
+	width:152px;
+}
+.modalsplits3 .split thead td:nth-of-type(3){
+	width:250px;
+}
+.modalsplits3 .split thead td:nth-of-type(4){
+	width:150px;
+}
+.modalsplits3 .split thead td:nth-of-type(5){
+	width:152px;
+}
+.modalsplits3 .split .chai-num{
+	width:142px;
+}
+.modalsplits3 .split1 thead td:nth-of-type(1){
+	width:46px;
+}
+.modalsplits3 .split1 thead td:nth-of-type(2){
+	width:300px;
+	text-align: left;
+}
+.modalsplits3 .split1 tbody td:nth-of-type(2){
+	text-align: left;
+}
+
+.modalsplits3 .split1 thead td:nth-of-type(3){
+	width:250px;
+}
+.modalsplits3 .split1 thead td:nth-of-type(4){
+	width:154px;
+}
+.modalmerge .modalcon{
+	width:900px;
+	margin-left: -450px;
+}
+.modalmerge .modalcon .modal-bd{
+	height:350px;
+	overflow: auto;
+}
+.modalmerge .merge-table{
+	width:850px;
+	padding:0;
+	margin-top:15px;
+}
+.modalmerge .merge-table thead td:nth-of-type(1){
+	width:46px;
+}
+.modalmerge .merge-table thead td:nth-of-type(2){
+	width:36px;
+}
+.modalmerge .merge-table thead td:nth-of-type(3){
+	width:106px;
+}
+.modalmerge .merge-table thead td:nth-of-type(4){
+	width:67px;
+}
+.modalmerge .merge-table thead td:nth-of-type(5){
+	width:67px;
+}
+.modalmerge .merge-table thead td:nth-of-type(6){
+	width:67px;
+}
+.modalmerge .merge-table thead td:nth-of-type(7){
+	width:67px;
+}
+.modalmerge .merge-table thead td:nth-of-type(8){
+	width:147px;
+}
+.modalmerge .merge-table thead td:nth-of-type(9){
+	width:147px;
+}
+.change-mark .modalcon {
+    width: 420px;
+    margin-left: -210px;
+}
+.change-mark .form-inline .form-group {
+    margin-bottom: 15px;
+    margin-right: 10px;
+}
+.change-express .modalcon{
+	width:300px;
+	margin-left: -150px;
+}
+.change-express .modalcon .form-control{
+	width:150px;
+}
+.change-ware .modalcon{
+	width:300px;
+	margin-left: -150px;
+}
+.change-ware .modalcon .form-control{
+	width:150px;
+}
+.choice-shop .modalcon{
+	width:300px;
+	margin-left: -150px;
+}
+.choice-shop .modalcon .form-control{
+	width:150px;
+}
+
+
+
+
+
+
+
+
+
+
+

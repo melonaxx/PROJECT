@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>米欢电商ERP</title>
+		<link rel="stylesheet" type="text/css" href="/bootstrap/css/bootstrap.min.css"/>
+		<link href="/css/commontop.css"   rel="stylesheet" media="screen">
+		<link rel="stylesheet" type="text/css" href="/css/goods/combinationgoods.css"/>
+	</head>
+	<body id="combgoodsbody">
+		{include file="../commontop.html"}
+		<div class="container-fluid container-all">
+			<div class="your-position">
+				<p class="posp1">您的位置&nbsp;:&nbsp;</p>
+				<a class="posa1" href="#">首页</a>
+			</div>
+			<div class="row">
+				<p class="col-md-12" style="margin:10px 0 10px 0;font-weight:600;">商品信息</p>
+				<form action="" class="form-inline col-md-12 combinlstsee-form">
+					<div class="form-group">
+						<label for="" class="labelname">商品编码：</label>
+						<input type="text" class="input-sm form-control">
+					</div>
+					<div class="form-group">
+						<label for="" class="labelname">商品名称：</label>
+						<input type="text" class="input-sm form-control" style="width:390px;">
+					</div>
+					<br>
+					<div class="form-group">
+						<label for="" class="labelname">商品分类：</label>
+						<select type="text" class="input-sm form-control">
+							<option value="">手机</option>
+							<option value="">衣服</option>
+						</select>
+					</div>
+					<div class="form-group">
+						<label for="" class="labelname">商品品牌：</label>
+						<select type="text" class="input-sm form-control">
+							<option value="">品牌a001</option>
+							<option value="">品牌a002</option>
+						</select>
+					</div>
+					<div class="form-group">
+						<label class="labelname">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;售价：</label>
+						<div class="input-group">
+							<div class="input-group-addon">￥</div>
+							<input readonly="true" style="width:110px;" value="220" class="form-control input-sm" type="text">
+						</div>
+					</div>
+					<br>	
+					<div class="form-group">
+						<label for="" class="labelname" style="margin-top:20px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;售价：</label>
+						<textarea name="content" rows="3" class="form-control input-sm" style="resize: none;width:390px;height:83px;"></textarea>
+					</div>
+					<div class="form-group">
+						<label class="labelname" style="margin-left: 10px;">&nbsp;&nbsp;&nbsp;组合价：</label>
+						<div class="input-group">
+							<div class="input-group-addon">￥</div>
+							<input style="width:110px;" value="220" class="form-control input-sm" type="text">
+						</div>
+					</div>
+				</form>
+				<p class="col-md-12" style="margin:10px 0 10px 0;font-weight:600;">子商品</p>
+				<div class="col-md-12 childgood">
+					<button class="btn btn-sm btn-default childgood-add">	添加</button>
+					<button class="btn btn-sm btn-default childgood-del">	删除</button>
+				</div>
+				<table class="table table-hover childgood-table">
+					<thead>
+						<tr class="active">
+							<td>序号</td>
+							<td>
+								<label>
+									<input type="checkbox" class="allcheck">
+								</label>
+							</td>
+							<td>搜索</td>
+							<td>商品名称和规格</td>
+							<td>零售价</td>
+							<td>数量</td>
+							<td>单位</td>
+						</tr>
+					</thead>
+					<tbody class="childgood-tbody">
+						<tr class="childgood-tr">
+							<td class="childgood-td">1</td>
+							<td>
+								<label>
+									<input type="checkbox">
+								</label>
+							</td>
+							<td>
+								<input placeholder="搜索" class="form-control input-sm seach" type="text">
+							</td>
+							<td>
+								<select name="product[]" style="width:280px" class="form-control input-sm product">
+									<option selected="selected">组合子商品A</option>
+								</select>
+							</td>
+							<td>100.00</td>
+							<td>
+								<input class="input-sm form-control" value="1" name="total[]" type="text">
+							</td>
+							<td></td>
+						</tr>
+						<tr class="childgood-tr">
+							<td class="childgood-td">2</td>
+							<td>
+								<label>
+									<input type="checkbox">
+								</label>
+							</td>
+							<td>
+								<input placeholder="搜索" class="form-control input-sm seach" type="text">
+							</td>
+							<td>
+								<select name="product[]" style="width:280px" class="form-control input-sm product">
+									<option selected="selected" value="102249337,,,,,">组合子商品A</option>
+								</select>
+							</td>
+							<td>100.00</td>
+							<td>
+								<input class="input-sm form-control" value="1" name="total[]" type="text">
+							</td>
+							<td></td>
+						</tr>
+					</tbody>
+				</table>
+				<div class="col-md-12 childgood">
+					<button class="btn btn-sm btn-default childgood-sub">提交</button>
+					<button class="btn btn-sm btn-default childgood-reset">重置</button>
+				</div>
+			</div>
+			<div class="modal modal-childgood">
+			    <div class="modalcon">
+			    	<div class="modal-bt">
+			    		<h4 class="modal-title size-title" id="myModalLabel">提示</h4>
+						<button type="button" class="close close-btn" data-dismiss="modal" aria-label="Close" id="close-btn"><span aria-hidden="true">x</span></button>
+			    	</div>
+			      	<div class="modal-bd">
+  						<span>组合的商品或数量不正确，请重新输入！</span>
+			      	</div>
+			        <div class="modal-bo">
+			      	  <button type="button" class="btn btn-default close-btn btn-sm">确定</button>
+			       </div>
+			    </div>
+			</div>
+			<div class="push"></div>
+		</div>
+		{include file="../comfoot.html"}
+		<script src="/js/jquery-1.11.0.min.js" ></script>
+		<script src="/bootstrap/js/bootstrap.min.js"  ></script>
+		<script src="/js/commontop.js"></script>
+		<script src="/js/mycom.js"></script>
+		<script src="/js/goods/combinationgoods_listgai.js"></script>
+	</body>
+</html>

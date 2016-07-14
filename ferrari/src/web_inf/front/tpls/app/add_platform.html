@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>米欢电商ERP</title>
+ 		<link href="/images/favicon.ico" rel="shortcut icon">
+		<link href="/bootstrap/css/bootstrap.min.css"  rel="stylesheet" media="screen">
+		<link href="/css/commontop.css"   rel="stylesheet" media="screen">
+		<link href="/css/app/custom_service.css"   rel="stylesheet" media="screen">
+		
+	</head>
+	<body id="allbody">
+		{include file="../commontop.html"}
+		<div class="container-fluid container1">
+			<div class="row ware-row">
+				<h5 class="home-nav"style="margin-left: 15px;">您的位置： <a href="javascript:;">首页</a> » <a href="javascript:;">客服问答系统</a></h5>
+			</div>
+			<div class="row">
+				<ul class="nav nav-tabs col-md-12 custom_service-nav">
+				  <li role="presentation">
+				  	<a href="custom_service.php">问题答案</a>
+				  </li>
+				  <li role="presentation">
+				  	<a href="add_question.php">添加问题</a>
+				  </li>
+				  <li role="presentation" class="active">
+				  	<a href="add_platform.php">添加平台</a>
+				  </li>
+				</ul>
+			</div>
+			<div class="row ware-row">
+				<button class="btn btn-default plat-add" style="margin-left: 15px;">添加平台</button>
+			</div>
+			<div class="row">
+				<table class="table platform-table">
+					<thead>
+						<tr class="active">
+							<td>序号</td>
+							<td>操作</td>
+							<td>平台名称</td>
+							<td>备注</td>
+						</tr>
+					</thead>
+					<tbody>
+					{foreach from=$list key=k item=row}
+						<tr>
+							<td>{$k+1}</td>
+							<td>
+								<span class="platform-edit" uid="{$row['id']}">编辑&nbsp;&nbsp;&nbsp;</span>
+								<span class="platform-del" uid="{$row['id']}">删除</span>
+							</td>
+							<td class="platform-name">{$row['name']}</td>
+							<td class="platform-comment">{$row['body']}</td>
+						</tr>
+					{/foreach}
+					</tbody>
+				</table>
+			</div>
+			<!-- 添加平台模态窗 -->
+			<div class="modal modal-addplatform">
+				<div class="modalcon">
+					<div class="modal-bt">
+						<h4 class="modal-title size-title" id="myModalLabel">添加平台</h4>
+					    <button type="button" class="close close-btn" data-dismiss="modal" aria-label="Close" id="close-btn"><span aria-hidden="true">x</span></button>
+					</div>
+					<div class="modal-bd">
+					    <form action="/app/doaddplatform.php" class="form-inline" method="post">
+					    	<div class="form-group">
+					    		<label for="" class="labelname">平台名称：</label>
+					    		<input type="text" class="form-control input-sm" name="name">
+					    	</div>
+					    	<br>
+					    	<div class="form-group">
+					    		<label for="" class="labelname">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;备注：</label>
+					    		<textarea class="form-control platform-mark"row="3" name="body"></textarea>
+					    	</div>
+					</div>
+					<div class="modal-bo">
+						<button class="btn btn-sm btn-default"style="margin-right: 10px;" type="submit">提交</button >
+						<button type="button" class="btn btn-default btn-sm close-btn">取消</button>
+					</div>
+				</form>
+				</div>
+			</div>
+			<!-- 编辑平台模态窗 -->
+			<div class="modal modal-addplatform1">
+				<div class="modalcon">
+					<div class="modal-bt">
+						<h4 class="modal-title size-title" id="myModalLabel">编辑平台</h4>
+					    <button type="button" class="close close-btn" data-dismiss="modal" aria-label="Close" id="close-btn"><span aria-hidden="true">x</span></button>
+					</div>
+					<div class="modal-bd">
+					    <form action="/app/editplatform.php" class="form-inline" method="post">
+					    	<div class="form-group">
+								<label for="" class="labelname">平台名称：</label>
+								<input type="text" class="form-control input-sm modal-platname" name="name">
+								<input type="hidden" class="modal-platid" name="id">
+							</div>
+					    	<br>
+					    	<div class="form-group">
+					    		<label for="" class="labelname">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;备注：</label>
+					    		<textarea class="form-control platform-mark1 modal-platcomment"row="3" name="body"></textarea>
+					    	</div>
+							<br>
+					</div>
+					<div class="modal-bo">
+						<button class="btn btn-sm btn-default"style="margin-right: 10px;" type = "submit">提交</button >
+						<button type="button" class="btn btn-default btn-sm close-btn">取消</button>
+					</div>
+					</form>
+				</div>
+			</div>
+			<!--删除平台 -->
+			<div class="modal modal-delplatform">
+				<div class="modalcon">
+					<div class="modal-bt">
+						<h4 class="modal-title size-title" id="myModalLabel">提示</h4>
+					    <button type="button" class="close close-btn" data-dismiss="modal" aria-label="Close" id="close-btn"><span aria-hidden="true">x</span></button>
+					</div>
+					<div class="modal-bd">
+					    <span>您确定要删除该平台吗?</span>
+					</div>
+					<div class="modal-bo">
+			        	<button type="button" class="btn btn-default btn-sm del">确定</button>
+			        	<button type="button" class="btn btn-default btn-sm close-btn">取消</button>
+					</div>
+				</div>
+			</div>
+			<div class="push"></div>
+		</div>
+		{include file="../comfoot.html"}
+		<script src="/js/jquery-1.11.0.min.js" ></script>
+		<script type="text/javascript" src="/js/commontop.js"></script>
+		<script src="/bootstrap/js/bootstrap.min.js"  ></script>
+		<script src="/js/app/add_platform.js"></script>
+		<script src="/js/mycom.js"></script>
+	</body>
+</html>

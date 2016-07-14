@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>米欢电商ERP</title>
+ 	<link href="/images/favicon.ico" rel="shortcut icon">
+	<link href="/bootstrap/css/bootstrap.min.css"  rel="stylesheet" media="screen">
+	<link rel="stylesheet" type="text/css" href="/css/admin/designexpress.css"/>
+	<style>
+		{literal}
+		@media screen and (max-width: 1120px){ 
+			/*当屏幕尺寸小于1120px时，应用下面的CSS样式*/
+			.navbar-nav,#comtop-right{display: none;}
+		}
+		{/literal}
+	</style>
+</head>
+<body>
+	<div class="container-fluid">
+		<div class="row design-row">
+			<div class="design-left col-md-7">
+				<div style="height:30px" class="printdesign-btn">
+					<button class="btn btn-default btn-sm change-mould" type="button" id="update_model">提交修改</button>
+					<button class="btn btn-default btn-sm del-select" type="button">删除选中项</button>
+					<button class="btn btn-default btn-sm del-all" type="button">删除全部</button>
+					<button class="btn btn-default btn-sm print-see" type="button" id="preview">预览</button>
+					<a href="/admin/designexpress.php?id={$mid}"><button class="btn btn-default btn-sm huaiyuan">还原默认</button></a>
+				</div>
+				<div class="loadloop">
+						 <object id="LODOP_OB" classid="clsid:2105C259-1E0C-4534-8141-A753534CB4CA" width=810 height=407 > 
+						 <param name="Caption" value="内嵌显示区域">
+						<embed id="LODOP_EM" type="application/x-print-lodop" width=868px height=600px pluginspage="/js/install_lodop32.exe"></embed>
+						</object>>
+				</div>
+			</div>
+			<div class="design-right col-md-5">
+				<div class="dropdown">
+					<div class="dropdown_header">
+						<span class="title">选择打印模板</span>
+						<span class="car_right">
+							<span class="caret"></span>
+						</span>
+					</div>
+					<div class="dropdown_body">
+						<a id="express_template" class="btn btn-default btn-sm" data-dismiss="modal" style="margin:0 50px 0 50px;" href="javascript:;">切换模板</a>
+						<select style="display:none;" class="form-control input-sm" name="express_template" id="model_select">
+                           {foreach from=$allmodel item=all_model}
+                           <option value="{$all_model['mid']}">{$all_model['modelname']}</option>
+                           {/foreach}
+						</select>
+						<label id="template_id" class="margin_left_1">
+						模板名称：
+						</label>
+						<input id="template_name" value="{$model['name']}" class="form-control input-sm" style="width:200px;display:inline;" type="text">
+					</div>
+				</div>
+				<div class="dropdown">
+					<div class="dropdown_header">
+						<span class="title">设计辅助配置-只在设计模板时使用</span>
+						<span class="car_right">
+							<span class="caret"></span>
+						</span>
+					</div>
+					<div class="dropdown_body">
+						<label class="margin_left_1">预览张数：</label>
+						<input id="preview_num"class="form-control input-sm" style="width:60px;display:inline;" type="text">　
+						<span>只在设计时使用！调整多张后，可用来测试连打效果</span>
+					</div>
+				</div>
+				<div class="dropdown">
+					<div class="dropdown_header">
+						<span class="title">上传图片-图片用作背景时不会打印，仅用于辅助调整打印项位置</span>
+						<span class="car_right">
+							<span class="caret"></span>
+						</span>
+					</div>
+					<div style="display: block;" class="dropdown_body">
+						<form action="/admin/designexpress.php" enctype="multipart/form-data" method="post" src="{$model['image']}" id="bgform">
+								<div class="form-group" style="margin-top:15px;">
+									<label class="margin_left_1">上传图片：</label>
+									<input name="uploadFile" aria-describedby="sizing-addon2" id="bgimg" class="form-control input-sm" style="width:240px;display:inline;padding: 0px 5px; margin-right: 10px;" type="file">
+									<input type="submit" class="btn btn-sm btn-default" style="margin-bottom:3px;" value="上传图片">
+									<input type="hidden" name="id" value="{$mid}">
+								</div>
+						</form>
+					</div>
+				</div>
+				<div class="dropdown">
+					<div class="dropdown_header">
+						<span class="title">纸张信息-打印时按此处设置的纸张大小进行打印</span>
+						<span class="car_right">
+							<span class="caret"></span>
+						</span>
+					</div>
+					<div style="display: block;" class="dropdown_body">
+						<label class="margin_left_1">纵向偏移：</label>
+						<input id="page_top" aria-describedby="sizing-addon2" value="{$model['papertop']}" class="form-control input-sm" style="width:50px;display:inline;padding: 0 5px;" type="text">（单位：mm）　　　
+						<label class="margin_left_1">横向偏移：</label>
+						<input id="page_left" aria-describedby="sizing-addon2" value="{$model['paperleft']}" class="form-control input-sm" style="width:50px;display:inline;padding: 0 5px;" type="text">（单位：mm）
+						<br>
+						<label class="margin_left_1">模板尺寸：</label>
+						<select id="page_size" class="form-control input-sm" style="width:160px;display:inline;padding: 0 5px;">
+							<option value="0">自定义尺寸</option>
+							<option value="230*127">230*127</option>
+							<option value="217*140">217*140</option>
+						</select>
+						<label class="margin_left_2">宽：</label>
+						<input id="page_width" aria-describedby="sizing-addon2" value="{$model['paperwidth']}" class="form-control input-sm" style="width:50px;display:inline;padding: 0 5px;margin-right: 10px;" type="text"><label class="margin_left_1">高：</label>
+						<input id="page_height" aria-describedby="sizing-addon2" value="{$model['paperheight']}" class="form-control input-sm" style="width:50px;display:inline;padding: 0 5px;" type="text"><br>
+						<label class="margin_left_2">打印机：</label>
+						<select name="printer" class="form-control input-sm" style="width:160px;display:inline;padding: 0 5px;">
+						</select>
+						<label class="margin_left_2">背景图（预览）：</label>
+						<label style="margin-right:15px;line-height:25px;">
+							<input checked="checked" style="margin:5px 3px" name="template_image" value="1" type="radio" onclick="bg()">
+						有</label>
+						<label style="margin-right:15px;line-height:25px;">
+							<input style="margin:5px 3px" name="template_image" value="0" type="radio" onclick="bg()">
+						无</label>
+					</div>
+				</div>
+				<div class="dropdown">
+					<div class="dropdown_header">
+						<span class="title">打印项-自动获取订单、店铺、买家信息等进行打印（自定义打印项除外）</span>
+						<span class="car_right">
+							<span class="caret"></span>
+						</span>
+					</div>
+					<div class="dropdown_body" style="padding:0;">
+						<div class="dropdown_body_header">
+							<span class="car_left">
+								<span class="caret"></span>
+							</span>
+							<span class="title">快递单内容</span>
+						</div>
+						<div class="dropdown_body_body">
+							{foreach from=$control item=temp}
+								<span>
+									<label for="{$temp['id']}p">
+										<input value="{$temp['name']}" {if $temp['iteminfo']}checked="checked"{/if} autocomplete="off" class="form-control express_item" type="checkbox" id="{$temp['id']}p" autocomplete="off" item_top="{$temp['iteminfo']['itemtop']}" item_left="{$temp['iteminfo']['itemleft']}" item_width="{$temp['iteminfo']['itemwidth']}" item_height="{$temp['iteminfo']['itemheight']}" font-size="{$temp['iteminfo']['itemfontsize']}">
+									</label>
+									<label for="{$temp['id']}p" class="margin_left_0">{$temp['name']}</label>
+								</span>
+							{/foreach}
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!--提示 -->
+		<div class="modal modal-tip">
+			<div class="modalcon">
+				<div class="modal-bt">
+					<h4 class="modal-title size-title" id="myModalLabel">提示</h4>
+				    <button type="button" class="close close-btn" data-dismiss="modal" aria-label="Close" id="close-btn"><span aria-hidden="true">x</span></button>
+				</div>
+				<div class="modal-bd">
+				    <font style="color:#FF00FF">打印控件需要升级!点击这里<a href="javascript:;">执行升级</a>,升级后请重新进入。</font>
+				</div>
+				<div class="modal-bo">
+		        	<button type="button" class="btn btn-default btn-sm">确定</button>
+		        	<button type="button" class="btn btn-default btn-sm close-btn">取消</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script type="text/javascript" src="/js/jquery-1.11.0.min.js"></script>
+	<script type="text/javascript" src="/bootstrap/js/bootstrap.min.js" ></script>
+	<script type="text/javascript" src="/js/mycom.js"></script>
+	<script type="text/javascript" src="/js/admin/designexpress.js"></script>
+	<script language="javascript" src="/js/LodopFuncs.js"></script>
+	<!-- <script type="text/javascript" src="/js/lodop/addlodop.js"></script> -->
+</body>
+{literal}
+<script>
+$(function(){
+   var LODOP=getLodop(document.getElementById('LODOP_OB'),document.getElementById('LODOP_EM')); //声明为全局变量
+
+	function load(){
+		// 获取系统打印机信息
+		var printer_count 	=  LODOP.get_printer_count();//获取打印机个数
+		var printer_name 	= new Array();
+		for(var i=0;i<printer_count;i++){
+			printer_name[i] = LODOP.get_printer_name(i);//获取打印机设备名字
+			$("select[name=printer]").append("<option value="+i+">"+printer_name[i]+"</option>");
+		}
+
+		//左边距,上边距  宽高
+		var page_top = $("#page_top").val()?$("#page_top").val():0;
+		var page_left 	= $("#page_left").val()?$("#page_left").val():0;
+		var page_width  = $("#page_width").val()?$("#page_width").val():249;
+		var page_height = $("#page_height").val()?$("#page_height").val():140;
+
+		LODOP.PRINT_INITA(page_top+"mm",page_left+"mm",page_width+"mm",page_height+"mm","");
+		//打印初始化、设定纸张整体偏移量、设定可视编辑区域大小
+		LODOP.SET_SHOW_MODE("DESIGN_IN_BROWSE",1);//打印设计界面是否内嵌到网页内部
+		// LODOP.SET_SHOW_MODE("HIDE_PBUTTIN_PREVIEW",1);//隐藏预览窗口的打印按钮
+		LODOP.SET_SHOW_MODE("HIDE_PBUTTIN_SETUP",1);//隐藏打印维护及设计窗口的打印按钮
+		LODOP.SET_SHOW_MODE("HIDE_ABUTTIN_SETUP",1);//隐藏打印维护及设计窗口的应用（暂存）按钮
+		LODOP.SET_SHOW_MODE("HIDE_DISBUTTIN_SETUP",1);//隐藏打印维护窗口那些已经禁止操作的无效按钮
+		// LODOP.SET_SHOW_MODE("HIDE_VBUTTIN_SETUP",1);//隐藏打印维护及设计窗口的预览按钮
+		LODOP.SET_SHOW_MODE("HIDE_RBUTTIN_SETUP",1);//隐藏打印维护及设计窗口的复原按钮
+		LODOP.SET_SHOW_MODE("BKIMG_IN_PREVIEW",1);// 打印预览时是否包含背景图
+		LODOP.SET_SHOW_MODE("HIDE_GROUND_LOCK",1);//隐藏打印维护及设计窗口的纸钉按钮
+
+		LODOP.SET_PRINT_PAGESIZE(1,page_width+"mm",page_height+"mm","");
+		LODOP.SET_PRINT_STYLEA(0,"PreviewOnly",1);
+
+		//背景图是否显示
+		var img = $("input[name='template_image']:checked").val();
+		LODOP.SET_SHOW_MODE("BKIMG_IN_PREVIEW",img);// 打印预览时是否包含背景图
+        //背景图
+        var src="http://img.1sheng.com/";
+            src += $("#bgform").attr("src");
+        if(src != "http://img.1sheng.com/"){
+        	LODOP.ADD_PRINT_SETUP_BKIMG("<img border='0' src='"+src+"'>");
+	    }
+
+	    //选中的遍历
+	    $(':checkbox').each(function(){
+			if($(this).attr('checked')=="checked"){
+			   var top = $(this).attr("item_top");
+			   var left = $(this).attr("item_left");
+			   var width = $(this).attr("item_width");
+			   var height = $(this).attr("item_height");
+			   var fontsize = $(this).attr("font-size");
+			   var itemname = $(this).val();
+			   var Itemid = $(this).attr("id");
+			   LODOP.ADD_PRINT_TEXTA(Itemid,top,left,width,height,itemname);
+			   LODOP.SET_PRINT_STYLEA(0,"FontSize",fontsize);
+			}
+		})
+		LODOP.PRINT_DESIGN();
+	}
+	load();
+	// 获取小控件的属性
+	$(".express_item").bind("click",function(){
+	   var top = $(this).attr("item_top") ? $(this).attr("item_top") : 50;
+	   var left = $(this).attr("item_left") ? $(this).attr("item_left") : 100;
+	   var width = $(this).attr("item_width") ? $(this).attr("item_width") : 160;
+	   var height = $(this).attr("item_height") ? $(this).attr("item_height") : 20;
+	   var font_size = $(this).attr("font_size") ? $(this).attr("font_size") : 10;
+	   var item_id = $(this).attr('id');
+	   Moditify(this,top,left,width,height,font_size,item_id);
+	})
+	
+	function Moditify(item,top,left,width,height,font_size,item_id){
+		if ((!LODOP.GET_VALUE("ItemIsExist",item_id)) && (item.checked)){
+			LODOP.ADD_PRINT_TEXTA(item_id,top,left,width,height,item.value);
+			LODOP.SET_PRINT_STYLEA(0,"FontSize",font_size);
+		} else {
+			LODOP.SET_PRINT_STYLEA(item_id,'Deleted',!item.checked);
+		}
+	}
+	//删除全部
+	$(".del-all").click(function(){
+		LODOP.SET_PRINT_STYLEA('All','Deleted',true);
+		 $(".express_item").each(function(){
+			if(this.checked) {
+				$(this).attr("checked",false);
+			}
+		 })
+	})
+	//删除单个
+	$(".del-select").click(function(){
+		LODOP.SET_PRINT_STYLEA('Selected','Deleted',true);
+		var count = LODOP.GET_VALUE('ItemCount',0);////获得程序代码、打印项属性等数据值。
+		var item_id_list = "";
+		var type_id  = new Array();
+		for(var i = 0; i < count; i++){
+			item = LODOP.GET_VALUE("ItemName",i+1);
+			type_id= item.split("|");
+			item_id_list += type_id[0]+',';
+		}
+		$('.express_item').each(function() {
+			if(this.checked && item_id_list.indexOf($(this).attr("id")) == -1){
+				$(this).trigger('click');
+			}
+		});
+	})
+
+	//更换模版
+	$("#model_select option").on("click",function(){
+		  location.href="/admin/designexpress.php?id="+$(this).val();
+	});
+	// 预览
+	$("#preview").click(function(){
+		// LODOP=getLodop(); 
+		// 预览张数
+		// var page_top  = $("#page_top").val()?$("#page_top").val():0;
+		// var page_left = $("#page_left").val()?$("#page_left").val():0;
+		// var page_width  = $("#page_width").val()?$("#page_width").val():230;
+		// var page_height = $("#page_height").val()?$("#page_height").val():142;
+		// var	preview_num = $("#preview_num").val();
+
+		// // LODOP.PRINT_INITA(page_top+"mm",page_left+"mm",800,600,"");
+		// var page_width  = $("#page_width").val() || !isNaN(page_width)?$("#page_width").val():229;
+		// var page_height = $("#page_height").val() || !isNaN(page_height)?$("#page_height").val():126;
+		// //设置纸张宽高
+		// // LODOP.SET_PRINT_PAGESIZE(1,page_width+"mm",page_height+"mm","");
+		// LODOP.SET_PRINT_PAGESIZE(1,"229mm","126mm","");
+		// LODOP.SET_PRINT_STYLEA(0,"PreviewOnly",1);
+
+		// for(var k in temp_item){
+		// 	LODOP.ADD_PRINT_TEXTA(temp_item[k]['itemname'],parseInt(temp_item[k]['top']),parseInt(temp_item[k]['left']),parseInt(temp_item[k]['width']),parseInt(temp_item[k]['height']),temp_item[k]['itemname']);
+		// 	LODOP.SET_PRINT_STYLEA(temp_item[k]['itemname'],"FontSize",temp_item[k]['font_size']);
+		// }
+
+		// LODOP.SET_SHOW_MODE("PREVIEW_IN_BROWSE",0);
+		// LODOP.SET_SHOW_MODE("BKIMG_IN_PREVIEW",1);
+		// LODOP.SET_SHOW_MODE("HIDE_PAPER_BOARD ",true);
+
+		// LODOP.PREVIEW();
+		// 
+			
+			LODOP.SET_SHOW_MODE("PREVIEW_IN_BROWSE",0);
+			LODOP.SET_SHOW_MODE("HIDE_PAPER_BOARD",1);
+			LODOP.PREVIEW();	
+			load();	
+	});
+		
+		//设置偏移
+	var page_top = document.getElementById("page_top");
+	var page_left = document.getElementById("page_left");
+    page_top.onblur=function(){	
+    	load();
+        if(page_top.value==""){
+    		page_top.value=0;
+    	}
+    }
+    page_left.onblur=function(){
+    	load();
+	    if(page_left.value==""){
+    		page_left.value=0;
+    	}
+    }
+    //设置宽高
+    var page_width = document.getElementById("page_width");
+    var page_height = document.getElementById("page_height");
+
+    page_width.onblur=function(){
+    	load();
+    	if(page_width.value==""){
+    		page_width.value=230;
+    	}
+    }
+    page_height.onblur=function(){	
+    	load();
+    	if(page_height.value==""){
+    		page_height.value=127;
+    	}
+    }
+    //select框选中宽高
+    page_size = document.getElementById("page_size");
+    page_size.onchange = function(){
+    	 load();
+    	 page_width.value=page_size.value.substr(0,3);
+    	 page_height.value=page_size.value.substr(4,7);
+    	 console.log(page_width.value);
+    }
+    //保存快递模版
+    $("#update_model").on("click",function(){
+		var temp_item = new Array();
+		//小控件数组
+		var count = LODOP.GET_VALUE("ItemCount",0);
+		for(i = 0 ; i < count ; i++){
+			temp_item[i]={};
+			temp_item[i]['top']=LODOP.GET_VALUE("ItemTop",i+1);
+			temp_item[i]['left']=LODOP.GET_VALUE("ItemLeft",i+1);
+			temp_item[i]['width']=LODOP.GET_VALUE("ItemWidth",i+1);
+			temp_item[i]['height']=LODOP.GET_VALUE("ItemHeight",i+1);
+			temp_item[i]['fontsize']=LODOP.GET_VALUE("ItemFontSize",i+1);
+			temp_item[i]['itemname']=LODOP.GET_VALUE("ItemContent",i+1);
+			temp_item[i]['Itemid']=LODOP.GET_VALUE("ItemName",i+1);
+		}
+		//宽高,偏移量
+   		var page_top = $("#page_top").val()?$("#page_top").val():0;
+		var page_left 	= $("#page_left").val()?$("#page_left").val():0;
+		var page_width  = $("#page_width").val()?$("#page_width").val():229;
+		var page_height = $("#page_height").val()?$("#page_height").val():140;
+        //背景图地址
+        var src =$("#bgform").attr("src");
+
+        //模版名称
+        var template_name = $("#template_name").val();
+        
+        var templateinfo = {};
+		 	templateinfo['template_name'] = template_name;
+			templateinfo['page_top'] = page_top;
+            templateinfo['page_left'] = page_left;
+            templateinfo['page_width'] = page_width;
+            templateinfo['page_height'] = page_height;
+            templateinfo['image'] = src;
+            //模版id
+            templateinfo['mid'] = $("input[name='id']").val();
+            console.log(templateinfo);
+        if(template_name == ""){
+            alert("请输入模版名称");
+            return false;
+        }else{
+        	$.ajax({
+			   type: "POST",
+			   url: "/admin/updatemodel.php",
+			   data: {
+			   	     'temp_item':temp_item,
+			   	     'templateinfo':templateinfo
+			   	     },
+			   success: function(msg){
+			   	  if(msg=="yes"){
+			   	  	 alert("修改成功");
+			   	  	 location.href="/admin/designexpress.php?id="+$("input[name='id']").val();
+			   	  }else{
+			   	  	 alert("修改失败");
+			   	  }
+			   },
+			   error:function(){
+			   	  alert("ajax请求失败");
+			   }
+			});
+        }
+    });
+
+});
+    // 预览是否显示背景图
+    function bg(){
+    	var LODOP=getLodop(document.getElementById('LODOP_OB'),document.getElementById('LODOP_EM')); //声明为全局变量
+    	var bgimg = document.getElementsByName("template_image");
+	    for(i = 0 ; i < bgimg.length ; i++){
+		   	 	if(bgimg[i].checked){
+			    	bgvalue = bgimg[i].value;
+		   	 	}
+	    }
+	   LODOP.SET_SHOW_MODE("BKIMG_IN_PREVIEW",bgvalue);
+    }
+
+
+</script>
+{/literal}
+</html>

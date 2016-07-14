@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>米欢电商ERP</title>
+ 		<link href="/images/favicon.ico" rel="shortcut icon">
+		<link rel="stylesheet" type="text/css" href="/bootstrap/css/bootstrap-datetimepicker.min.css"/>
+		<link href="/bootstrap/css/bootstrap.min.css"  rel="stylesheet" media="screen">
+		<link href="/css/commontop.css"   rel="stylesheet" media="screen">
+		<link rel="stylesheet" type="text/css" href="/css/purchase/purchasepay.css"/>
+		<style>
+			{literal}
+				@media screen and (max-width: 1120px){ 
+					/*当屏幕尺寸小于1120px时，应用下面的CSS样式*/
+				    .navbar-nav,#comtop-right{display: none;}
+				}
+			{/literal}
+		</style>
+	</head>
+	<body>
+		{include file="../commontop.html"}
+		<div class="container-fluid container1">
+			<div class="row ware-row">
+				<h5 class="col-md-12">您的位置： <a href="javascript:;">首页</a> » <a href="javascript:;">采购</a> » 待收款</h5>
+			</div>
+			<div class="row">
+				<ul class="nav nav-tabs col-xs-12 purchasepay-nav">
+				  <li role="presentation" >
+				  	<a href="purchasepay.php">待付款</a>
+				  </li>
+				  <li role="presentation"class="active">
+				  	<a href="pendingpayment.php">待收款</a>
+				  </li>
+				  <li role="presentation" class="order-list">
+				  	<a href="listofdocument.php">单据列表</a>
+				  </li>
+				</ul>
+			</div>
+			<div class="status">
+				<div class="row">
+					<form class="form-inline purchasepay-form purchasepay-form1 col-xs-12" action="/purchase/pendingpayment.php" method="post">
+						 <button type="button" class="btn btn-default btn-sm newCreate">新建收款</button>
+						<div class="form-group">
+						   <button type="submit" class="btn btn-default btn-sm ">查询</button>
+						   <a href="/purchase/pendingpayment.php" class="btn btn-default btn-sm">重置</a>
+						</div> 
+						<div class="form-group">
+						    <label for="exampleInputName2"class="labelname">供应商：</label>
+						    <select class="form-control" id="exampleInputName2"style="width:200px;" name="supp">
+						    <option value="0">--请选择--</option>
+					    	{foreach from = $supplier item=supp}
+					    	<option value="{$supp['id']}" {if $gys eq $supp['id']}selected="selected"{/if}>{$supp['name']}{if $supp['level'] eq 'Primary'}（主选供应商）{else if $supp['level'] eq 'Alternative'}（备选供应商）{else if $supp['level'] eq 'Eliminate'}（淘汰供应商）{/if}</option>                    
+					    	{/foreach}
+						    </select>
+						</div>
+						<div class="form-group">
+						     <label for="exampleInputName2"class="labelname">日期：</label>
+						    <input type="text" class="form-control datetimepicker1" name="datestart" value="{$datestart}">
+						    <input type="hidden" value="{$seach}" id="seach">
+						    <label for="exampleInputName2"class="labelname">-</label>
+						    <input type="text" class="form-control datetimepicker1" name="dateend" value="{$dateend}">
+						</div> 
+					</form>
+					<table class="table purchasepay-table">
+						<thead>
+							<tr class="active">
+								<td>序号</td>
+								<td>操作</td>
+								<td>申请日期</td>
+								<td>采购公司</td>
+								<td>采购单编码</td>
+								<td>供应商</td>
+								<td>收货仓库</td>
+								<td>供应商欠款</td>
+								<td>退货状态</td>
+								<td>申请人</td>
+							</tr>
+						</thead>
+						<tbody id="tb"> 
+						{foreach from=$list key=k item=row}
+							<tr>
+								<td>{$k+1}</td>
+								<td>
+									<a href="purchaserecive.php?id={$row['id']}">收款</a>
+								</td>
+								<td>{$row['createtime']}</td>
+								<td>{$row['companyname']}</td>
+								<td>{$row['number']}</td>
+								<td>{$row['suppliername']}{if $row['supplierlevel'] eq 'Primary'}（主选供应商）{else if $row['supplierlevel'] eq 'Alternative'}（备选供应商）{else if $row['supplierlevel'] eq 'Eliminate'}（淘汰供应商）{/if}</td>
+								<td>{$row['storename']}{if $row['storetype'] eq 'Sales'}（销售仓）{else if $row['storetype'] eq 'Defective'}（次品仓）{else if $row['storetype'] eq 'Customer'}（售后仓）{else if $row['storetype'] eq 'Purchase'}（采购仓）{/if}</td>
+								<td>{$row['paymentreturn']}</td>
+								<td>{if $row['statusrefund'] eq 'N'}未退货{else if $row['statusrefund'] eq 'P'}部分退货{else if $row['statusrefund'] eq 'Y'}全部退货{/if}</td>
+								<td>{$row['username']}</td>
+							</tr>
+						{/foreach}
+						</tbody>
+					</table>
+				</div>
+				<div class="row no-find">
+					<div class="no-record col-xs-12"><img src="/images/empty.jpg"/><span>没有找到记录，请调整搜索条件。</span></div>
+				</div>
+				<div class="row">
+					{$pages}
+				</div>
+			</div>
+			<div class="modal modal-purchasepay">
+				<div class="modalcon">
+					<div class="modal-bt">
+						<h4 class="modal-title size-title" id="myModalLabel">新建收款</h4>
+					    <button type="button" class="close close-btn" data-dismiss="modal" aria-label="Close" id="close-btn"><span aria-hidden="true">x</span></button>
+					</div>
+				    <form class="form-inline purenter-modalform" action="/purchase/addmoney.php" method="post">
+						<div class="modal-bd">
+							<div class="form-group">
+							    <label for="exampleInputName2"class="labelname">采购单编号：</label>
+							    <input class="form-control purentermodal-man" id="exampleInputName2" name="purchaseid">
+							</div> 
+							<div class="form-group">
+							    <label for="exampleInputAmount" class="labelname">收款金额：</label>
+							    <div class="input-group">
+							      <div class="input-group-addon">￥</div>
+							      <input type="text" class="form-control" id="exampleInputAmount" style="width:110px;" name="money">
+							    </div>
+							</div>  
+						</div>
+						<div class="modal-bo">
+				        	<button type="submit" class="btn btn-default btn-sm">确定</button>
+				        	<button type="button" class="btn btn-default btn-sm close-btn">关闭</button>
+						</div>
+					</form>
+				</div>
+			</div>
+			<div class="push"></div>
+		</div>
+		{include file="../comfoot.html"}
+		<script type="text/javascript" src="/js/jquery-1.11.0.min.js"></script>
+		<script type="text/javascript" src="/js/commontop.js"></script>
+		<script type="text/javascript" src="/bootstrap/js/bootstrap.min.js" ></script>
+		<script type="text/javascript" src="/bootstrap/js/bootstrap-datetimepicker.min.js"></script>
+		<script type="text/javascript" src="/bootstrap/js/bootstrap-datetimepicker.zh-CN.js"></script>
+		<script type="text/javascript" src="/js/purchase/pendingpayment.js"></script>
+		<script type="text/javascript" src="/js/mycom.js"></script>
+		<script type="text/javascript">
+			$('.datetimepicker1').datetimepicker({
+			    format: 'yyyy-mm-dd',
+			    autoclose:true,
+			    language:'zh-CN',
+			    minView:'year',
+			});
+		</script>
+	</body>
+</html>

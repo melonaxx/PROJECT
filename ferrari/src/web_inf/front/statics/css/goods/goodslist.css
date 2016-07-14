@@ -1,0 +1,67 @@
+.row .goodlist-form{
+	width:1200px;
+	padding:0;
+	margin-left:15px;
+}
+.row .goodslist-table{
+	width:1200px;
+	padding:0;
+	margin-left:15px;
+}
+.row .goodslist-table td{
+	border-bottom: none;
+}
+.row .goodslist-table tbody td{
+	position:relative;
+
+}
+.row .goodslist-table thead td:nth-of-type(1){
+	width:46px;
+}
+.row .goodslist-table thead td:nth-of-type(2){
+	width:38px;
+}
+.row .goodslist-table thead td:nth-of-type(3){
+	width:66px;
+	text-align: center;
+}
+.row .goodslist-table tbody td:nth-of-type(3){
+	text-align: center;
+}
+.row .goodslist-table thead td:nth-of-type(4){
+	width:38px;
+	text-align: center;
+}
+.row .goodslist-table tbody td:nth-of-type(4){
+	text-align: center;
+}
+
+.row .goodslist-table thead td:nth-of-type(5){
+	width:412px;
+}
+.row .goodslist-table thead td:nth-of-type(6){
+	width:150px;
+}
+.row .goodslist-table thead td:nth-of-type(7){
+	width:150px;
+}
+.row .goodslist-table thead td:nth-of-type(8){
+	width:150px;
+}
+.row .goodslist-table thead td:nth-of-type(9){
+	width:150px;
+}
+.row .goodslist-table .glsmallpic{width:20px;height:20px;border:1px solid #d6d6d6;}
+.row .goodslist-table .glbigpic{position: absolute;left:40px;top:35px;width:200px;height:200px;display:none;box-shadow: 3px 3px 20px #9edeff;z-index:999;}
+.glmodal .modalcon{
+	width:600px;
+	margin-left: -300px;
+}
+
+
+
+
+
+
+
+

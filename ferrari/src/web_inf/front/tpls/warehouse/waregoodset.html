@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>商品设置</title>
+		<link rel="stylesheet" type="text/css" href="/css/warehouse/ware.css"/>
+		<link rel="stylesheet" type="text/css" href="/css/warehouse/waregoodset.css"/>
+		<link href="/bootstrap/css/bootstrap.min.css"  rel="stylesheet" media="screen">
+		<link href="/css/commontop.css"   rel="stylesheet" media="screen">
+		<style>
+			{literal}
+				@media screen and (max-width: 1120px){
+					/*当屏幕尺寸小于1120px时，应用下面的CSS样式*/
+				    .navbar-nav,#comtop-right{display: none;}
+				}
+			{/literal}
+		</style>
+	</head>
+	<body>
+		{include file="../commontop.html"}
+		<div class="container-fluid container1">
+			<div class="row ware-row">
+				<h5 class="col-md-12">您的位置： <a href="javascript:;">首页</a></h5>
+			</div>
+			<div class="row" id="waregoodset">
+				<form action="" class="form-inline col-md-12 goodset-form">
+					<button class="btn btn-default add-waregood" type="button">添加商品</button>
+					<span class="waregood-area">{$myloc['store']['name']} >> {$myloc[2]['placeno']} >> {$myloc[1]['placeno']} >> {$myloc[0]['placeno']}</span>
+					<input type="hidden" name='locstr' value='{$locstr}'>
+				</form>
+			</div>
+			<div class="row">
+				<table class="table goodset-table">
+					<thead class="waregood-thead">
+						<tr>
+							<td class="active waregood-num">序号</td>
+							<td class="active waregood-done">操作</td>
+							<td class="active waregood-img">图片</td>
+							<td class="active waregood-name">商品名</td>
+							<td class="active waregood-size">规格</td>
+							<td class="active waregood-unit">单位</td>
+						</tr>
+					</thead>
+					<tbody class="waregood-tbody">
+					{foreach $goodlist as $key=>$value}
+						<tr class="modal-tr">
+							<td class="modal-td">{$key+1}</td>
+							<td>
+								<a href="javascript:void(0)" class='delstrrelated'>删除</a>
+								<input type="hidden" name='productid' value='{$value["productid"]}'>
+								<input type="hidden" name='locationid' value='{$value["locationid"]}'>
+								<input type="hidden" name='storeid' value='{$value["storeid"]}'>
+							</td>
+							<td><img
+							{if $value['image'] != null}
+								src="http://img.1sheng.com/{$value['image']} "
+							{else if}
+								src=''
+							{/if}style="width:20px;height:20px;"></td>
+							<td>{$value['name']}</td>
+							<td>
+								{if $value['format'] != ''}
+									{$value['format']}
+								{/if}
+							</td>
+							<td>{$value['unit']}</td>
+						</tr>
+					{/foreach}
+					</tbody>
+				</table>
+			</div>
+			<!-- 添加商品模态窗 -->
+			<div class="modal" id="waregood-modal">
+			  <div class="modalcon waregood-modalcon">
+			      <div class="modal-bt">
+			        <button type="button" class="close close-btn"id="close-btn" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">x</span></button>
+			         <h4 class="modal-title size-title" id="myModalLabel">添加商品</h4>
+			      </div>
+			      <div class="modal-bd waregood-modalbody">
+			      	<span class="waregood-info">商品信息</span>
+			      	<div class="waremodal-btn">
+				      	<input class="btn btn-default btn-sm waregood-add" type="submit" value="添加">
+				      	<input class="btn btn-default btn-sm waregood-del" type="submit" value="删除">
+			      	</div>
+			      	<table class="table table-hover waregood-table">
+			      		<thead class="waregood-modalthead">
+			      			<tr>
+			      				<td class="active waregood-modalnum">序号</td>
+			      				<td class="active waregood-modalcheck">
+			      					<label class="checkbox-all"><input class="allcheck checkbox-choice" type="checkbox" value=""></label>
+			      				</td>
+			      				<td class="active waregood-modalseach">搜索</td>
+			      				<td class="active waregood-modalimg">图片</td>
+			      				<td class="active waregood-modalsize">商品名称和规格</td>
+			      				<td class="active waregood-modalunit">单位</td>
+			      			</tr>
+			      		</thead>
+			      		<tbody class="waregood-modaltbody">
+			      			<tr class="modal-tr">
+			      				<td class="modal-td">1</td>
+			      				<td>
+			      					<label class="checkbox-all"><input class="checkbox-choice" type="checkbox" value=""></label>
+			      				</td>
+			      				<td>
+			      					<input type="text" class="form-control modal-noborder searchgoods">
+			      				</td>
+			      				<td>
+			      					<img class='goodsimg' src="" style="width:20px;height:20px;">
+			      				</td>
+			      				<td>
+			      					<select class="form-control modal-noborder goodselectlist">
+			      						<option>请选择商品</option>
+			      					</select>
+			      				</td>
+			      				<td class="unitname"></td>
+			      			</tr>
+			      		</tbody>
+			      	</table>
+			      </div>
+			      <div class="modal-bo waregood-modalfoot">
+			        <button type="button" class="btn btn-primary btn-sm sure-addgood">提交</button>
+			        <button type="button" class="btn btn-default btn-sm close-btn">返回</button>
+			      </div>
+			  </div>
+			</div>
+			<div class="push"></div>
+		</div>
+		{include file="../comfoot.html"}
+		<script type="text/javascript" src="/js/jquery-1.11.0.min.js"></script>
+		<script type="text/javascript" src="/js/commontop.js"></script>
+		<script type="text/javascript" src="/js/util.js"></script>
+		<script type="text/javascript"src="/bootstrap/js/bootstrap.min.js"></script>
+		<script type="text/javascript"src="/js/warehouse/waregoodset.js"></script>
+		<script type="text/javascript" src="/js/warehouse/mycom.js"></script>
+	</body>
+</html>

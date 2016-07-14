@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+		<title>米欢电商ERP</title>
+		<link href="/images/favicon.ico" rel="shortcut icon">
+		<link rel="stylesheet" type="text/css" href="/bootstrap/css/bootstrap.min.css"/>
+		<link href="/css/commontop.css"   rel="stylesheet" media="screen">
+		<link rel="stylesheet" type="text/css" href="/css/order/saleservice.css"/>
+</head>
+<body id="propertybody">
+	{include file="../commontop.html"}
+	<div class="container-fluid container1">
+		<div class="row ware-row">
+			<h5 class="col-xs-12">您的位置： <a href="javascript:;">首页</a> » <a href="javascript:;">订单</a> »售后服务</h5>
+		</div>
+		<div class="row">
+			<ul class="nav nav-tabs col-md-12 saleservice-nav">
+		  		<li role="presentation">
+			  		<a href="/order/saleservice.php">新建售后单</a>
+			  	</li>
+			  	<li role="presentation">
+			  		<a href="/order/saleserviceprocess.php">待处理售后单</a>
+			  	</li>
+			  	<li role="presentation">
+			  		<a href="/order/saleservicequery.php">售后单查询</a>
+			  	</li>
+			  	<li role="presentation">
+			  		<a href="/order/saleservicebackwarehouse.php">销售退货入库</a>
+			  	</li>
+			  	<li role="presentation">
+			  		<a href="/order/returnrecord.php">退款记录</a>
+			  	</li>
+			  	<li role="presentation" class="active">
+			  		<a href="/order/saleserviceclassify.php">售后分类</a>
+			  	</li>
+
+			</ul>
+		</div>
+		<div class="row">
+			<button class="btn btn-default classify-add" style="margin-left: 15px;">添加分类</button>
+		</div>
+		<div class="row">
+			<table class="table table-hover classify-table">
+				<thead>
+
+					<tr class="active">
+						<td>序号</td>
+						<td>操作</td>
+						<td>分类名称</td>
+						<td>备注</td>
+					</tr>
+				</thead>
+				<tbody class="classify-tbody">
+					{foreach $catedata as $key=>$value}
+					<tr class="classify-tr" >
+						<td class="classify-td">{$key+1}</td>
+						<td>
+							<span class="classify-change" cateid='{$value["id"]}'>修改&nbsp;&nbsp;&nbsp;</span>
+							<span class="classify-del del" id="del" cateid="{$value['id']}">删除</span>
+						</td>
+						<td class="classify-name">{$value['catename']}</td>
+						<td class="classify-text">{$value['comment']}</td>
+					</tr>
+					{/foreach}
+					{if count($catedata) <=0 }
+					<tr class="empty-tr" style="display:block;">
+						<td colspan="3">
+							暂无内容<a href="javascript:;" class="classify-add">点这里添加分类名称</a>
+						</td>
+					</tr>
+					{/if}
+				</tbody>
+			</table>
+		</div>
+		<!-- Modal 订单分类名称-->
+		<div class="modal modal-classify">
+		    <div class="modalcon">
+			    <div class="modal-bt">
+			        <button type="button" class="close close-btn addclosebtn" data-dismiss="modal" aria-label="Close" id="close-btn"><span aria-hidden="true">x</span></button>
+			        <h4 class="modal-title size-title">添加分类名称</h4>
+			    </div>
+			    <form action=" " class="form-inline" method="post">
+		            <div class="modal-bd">
+			        	<div class="form-group"style="margin-bottom:20px;">
+						    <label for="exampleInputName2" class="labelname">分类名称:&nbsp;</label>
+						    <input type="text" class="form-control typename addcatename"style="width:300px;" id="exampleInputName2" name="cname">
+						</div>
+						<div class="form-group">
+						    <label for="exampleInputName2" class="labelname">分类备注:&nbsp;</label>
+						    <textarea class="form-control typetext addcatecom"style="width:305px;height:60px; resize: none;" name="comment"></textarea>
+						</div>
+		        	</div>
+			        <div class="modal-bo">
+				        <button type="button" class="btn btn-default classify-sure addcatebtn">提交</button>
+				        <button type="button" class="btn btn-default close-btn addclosebtn">关闭</button>
+			        </div>
+			    </form>
+		    </div>
+		</div>
+		<!-- Modal 删除订单分类-->
+		<div class="modal modal-classify1">
+		    <div class="modalcon">
+		      <div class="modal-bt">
+		        <button type="button" class="close close-btn delclosebtn" data-dismiss="modal" aria-label="Close" id="close-btn"><span aria-hidden="true">x</span></button>
+		        <h4 class="modal-title size-title">提示</h4>
+		      </div>
+		      <div class="modal-bd">
+			      <p>您确定要删除该分类吗？</p>
+		      </div>
+		      <div class="modal-bo">
+		        <button type="button" class="btn btn-default classify-sure1 delcatebtn">提交</button>
+		        <button type="button" class="btn btn-default close-btn delclosebtn">关闭</button>
+		      </div>
+		    </div>
+		</div>
+		<!-- Modal 修改订单分类-->
+		<div class="modal modal-classify2">
+		    <div class="modalcon">
+			    <div class="modal-bt">
+			        <button type="button" class="close close-btn editclosebtn" data-dismiss="modal" aria-label="Close" id="close-btn"><span aria-hidden="true">x</span></button>
+			        <h4 class="modal-title size-title">修改分类</h4>
+			    </div>
+			    <form action="" class="form-inline" method="post">
+		            <div class="modal-bd">
+				        <div class="form-group"style="margin-bottom:20px;">
+						    <label for="exampleInputName2" class="labelname">分类名称:</label>
+						    <input type="text" class="form-control typename1 editcatename"style="width:300px;" id="exampleInputName2" name="name">
+						    <input type="hidden" class="typehidden" name="id">
+						</div>
+						<div class="form-group">
+						    <label for="exampleInputName2" class="labelname">分类备注:</label>
+						    <textarea class="form-control typetext1 editcatecomment"style="width:305px;height:60px;resize:none;" name="comment"></textarea>
+						</div>
+		        	</div>
+				    <div class="modal-bo">
+				        <button type="button" class="btn btn-default classify-sure2 editcatesub">提交</button>
+				        <button type="button" class="btn btn-default close-btn editclosebtn">关闭</button>
+				    </div>
+				</form>
+		    </div>
+		</div>
+		<div class="push"></div>
+	</div>
+	{include file="../comfoot.html"}
+	<script src="/js/jquery-1.11.0.min.js" ></script>
+	<script src="/bootstrap/js/bootstrap.min.js"  ></script>
+	<script src="/js/util.js"></script>
+	<script src="/js/commontop.js"></script>
+	<script src="/js/mycom.js"></script>
+	<script src="/js/order/saleservice_classify.js"></script>
+</body>
+</html>

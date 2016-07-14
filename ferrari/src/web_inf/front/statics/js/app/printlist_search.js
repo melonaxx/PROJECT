@@ -1,0 +1,50 @@
+$(function(){
+	var flag=true;
+	$("input").val("");
+	$("textarea").val("");
+	$("input").prop("checked",false);
+	/*-----------标题查询中内容部分点击提交按钮--------------*/
+	$(".ps-queryl1b").on("click",function(){
+		if(flag){
+			$(".psallcontent").hide();
+			$(".ps-querysuccess").hide();
+			$(".ps-queryflase").show();
+			$(".pstopnav li").on("click",function(){
+				$(".psallcontent").show();
+				$(".ps-queryflase").hide();
+				$(".ps-querysuccess").hide();
+			})
+			$(".ps-return").on("click",function(){
+				$(".ps-queryflase").hide();
+				$(".ps-querysuccess").hide();
+				$(".psallcontent").show();
+			})
+			flag=false;
+		}else{
+			$(".psallcontent").hide();
+			$(".ps-queryflase").hide();
+			$(".ps-querysuccess").show();
+			$(".ps-return").on("click",function(){
+				$(".ps-querysuccess").hide();
+				$(".ps-queryflase").hide();
+				$(".psallcontent").show();
+			})
+			$(".pstopnav li").on("click",function(){
+				$(".psallcontent").show();
+				$(".ps-queryflase").hide();
+				$(".ps-querysuccess").hide();
+			})
+			flag=true;
+		}
+	})
+	/*-----------------点击编辑>提交印刷单>成功-----------*/
+	$(".psedit").on("click",function(){
+		$(".psallcontent").hide();
+		$(".ps-querysuccess").hide();
+		$("#pseditsheet").show();
+		$(".ps-com").on("click",function(){
+			$("#pseditsheet").hide();
+			$(".ps-opsuccess").show();
+		})
+	})
+})

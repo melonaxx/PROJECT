@@ -1,0 +1,55 @@
+.row .purchase-form .form-group .text-mark{
+	width:590px;
+}
+.row .table .searchbox{
+	width:286px;
+}
+.row .table .searchbox1{
+	width:486px;
+}
+.row .table .searchname{
+	width:380px;
+}
+
+.row .add-table{
+	width:1200px;
+}
+.row .add-table thead td:nth-of-type(1){
+	width:296px;
+	text-align:left;
+}
+.row .add-table thead td:nth-of-type(2){
+	width:390px;
+	text-align:center;
+}
+.row .add-table tbody td:nth-of-type(3){
+	width:46px;
+	text-align:center;
+}
+.row .add-table thead td:nth-of-type(4){
+	width:58px;
+}
+.row .add-table thead td:nth-of-type(5){
+	width:150px;
+}
+.row .add-table tbody td:nth-of-type(5)>input{
+	width:140px;
+}
+.row .add-table thead td:nth-of-type(6){
+	width:250px;
+}
+.row .add-table tbody td:nth-of-type(6)>input{
+	width:250px;
+}
+
+
+
+
+
+
+
+
+
+
+
+

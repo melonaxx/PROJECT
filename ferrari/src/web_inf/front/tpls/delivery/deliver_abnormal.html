@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>米欢电商ERP</title>
+		<link href="/images/favicon.ico" rel="shortcut icon">
+		<link rel="stylesheet" type="text/css" href="/bootstrap/css/bootstrap-datetimepicker.min.css"/>
+		<link href="/bootstrap/css/bootstrap.min.css"  rel="stylesheet" media="screen">
+		<link href="/css/commontop.css"   rel="stylesheet" media="screen">
+		<link rel="stylesheet" type="text/css" href="/css/delivery/deliver_abnormal.css"/>
+		<style>
+			{literal}
+				@media screen and (max-width: 1120px){ 
+					/*当屏幕尺寸小于1120px时，应用下面的CSS样式*/
+				    .navbar-nav,#comtop-right{display: none;}
+				}
+			{/literal}
+		</style>
+	</head>
+	<body>
+		{include file="../commontop.html"}
+		<div class="container-fluid container1">
+			<div class="row ware-row">
+				<h5 class="col-md-12">您的位置： <a href="javascript:;">首页</a> » <a href="javascript:;">发货</a> » 异常订单</h5>
+			</div>
+			<div class="row">
+			    <form class="form-inline abnormal-form col-md-12">
+					<div class="form-group">
+						<button type="button" class="btn btn-default btn-sm sure-close"style="margin-right: 10px;">关闭订单</button>
+						<button type="button" class="btn btn-default btn-sm recover-normal"style="margin-right: 10px;">恢复正常</button>
+						<button type="button" class="btn btn-default btn-sm change-statu"style="margin-right: 10px;">修改异常</button>
+						<button type="button" class="btn btn-default btn-sm change-bei">修改备注</button>
+					</div>
+					<div class="form-group abnormal-search"style="float:right;">
+						<div class="input-group"style="width:250px;">
+							<input value="" placeholder="输入订单编号/收件人等" class="form-control input-sm input_search" type="text">
+							<span class="input-group-btn">
+								<button class="btn btn-default btn-sm" type="button">搜索</button>
+							</span>
+						</div>
+						 <button class="btn btn-sm btn-default" type="reset"style="margin-right: 0;">重置</button>
+					</div>
+				</form>
+				<table class="table table-hover abnormal-table col-md-12">
+				    <thead>
+				    	<tr class="active">
+				    		<td>序号</td>
+				    		<td>
+							    <input type="checkbox" class="allcheck">
+							</td>
+				    		<td>操作</td>
+				    		<td>下单时间</td>
+				    		<td>所在位置</td>
+				    		<td>订单类别</td>
+				    		<td>购买渠道</td>
+				    		<td>发货仓库</td>
+				    		<td>发货方式</td>
+				    		<td>发货公司</td>
+				    		<td>运单号</td>
+				    		<td>买家名称</td>
+				    		<td>手机</td>
+				    		<td>数量</td>
+				    		<td>订单编号</td>
+				    		<td>店铺</td>
+				    		<td>客服</td>
+				    	</tr>
+				    </thead>
+				    <tbody>
+				    	<tr>
+				    		<td>1</td>
+				    		<td>
+							    <input type="checkbox" class="check">
+				    		</td>
+				    		<td>
+				    			<a href="/delivery/editabnormal.php">编辑</a>
+				    		</td>
+				    		<td></td>
+				    		<td>异常订单</td>
+				    		<td><a href="javascript:;">总订单</a></td>
+				    		<td></td>
+				    		<td></td>
+				    		<td></td>
+				    		<td></td>
+				    		<td></td>
+				    		<td></td>
+				    		<td></td>
+				    		<td></td>
+				    		<td></td>
+				    		<td></td>
+				    		<td></td>
+				    		
+				    	</tr>
+				    	<tr>
+				    		<td>2</td>
+				    		<td>
+							    <input type="checkbox" class="check">
+				    		</td>
+				    		<td>
+				    			<a href="/delivery/editabnormal.php">编辑</a>
+				    		</td>
+				    		<td></td>
+				    		<td>异常订单</td>
+				    		<td>子订单</td>
+				    		<td></td>
+				    		<td></td>
+				    		<td></td>
+				    		<td></td>
+				    		<td></td>
+				    		<td></td>
+				    		<td></td>
+				    		<td></td>
+				    		<td></td>
+				    		<td></td>
+				    		<td></td>
+				    	</tr>
+				    	<tr>
+				    		<td>3</td>
+				    		<td>
+							    <input type="checkbox" class="check">
+				    		</td>
+				    		<td>
+				    			<a href="/delivery/editabnormal.php">编辑</a>
+				    		</td>
+				    		<td></td>
+				    		<td>异常订单</td>
+				    		<td>子订单</td>
+				    		<td></td>
+				    		<td></td>
+				    		<td></td>
+				    		<td></td>
+				    		<td></td>
+				    		<td></td>
+				    		<td></td>
+				    		<td></td>
+				    		<td></td>
+				    		<td></td>
+				    		<td></td>
+				    	</tr>
+
+				    </tbody>
+				</table>
+			</div>
+			<div class="row no-find">
+				<div class="no-record col-md-12"><img src="/images/empty.jpg"/><span>没有找到记录，请调整搜索条件。</span></div>
+			</div>
+			<div class="row">
+				<form class="form-inline warestatus-form1 warestatus-form2">
+					<div class="form-group">
+					    <label for="exampleInputName2"class="labelname">每页：</label>
+					    <select class="form-control waregood-status" id="exampleInputName2">
+					    	<option>10</option>
+					    	<option>15</option>
+					    	<option>20</option>
+					    	<option>50</option>
+					    	<option>100</option>
+					    </select>
+					</div> 
+					<div class="form-group">
+						<ul class="warestatus-page">
+							<li><a href="">首页</a></li>
+						    <li class="previous"><a href="#">上一页</a></li>
+						    <li>
+						    	<label for="exampleInputName2"class="labelname">第</label>
+							     <input type="text" class="form-control"id="exampleInputName2"value="1">
+						    	<label for="exampleInputName2"class="labelname">页(共<span>1</span>页<span>0</span>条)</label>
+						    </li>
+						    <li class="next"><a href="#">下一页</a></li>
+							<li><a href="#">末页</a></li>
+						 </ul>
+					</div> 
+				</form>
+			</div>
+			<!-- 关闭订单 -->
+			<div class="modal modal-abnormal">
+				<div class="modalcon">
+					<div class="modal-bt">
+						<h4 class="modal-title size-title" id="myModalLabel">提示</h4>
+					    <button type="button" class="close close-btn" data-dismiss="modal" aria-label="Close" id="close-btn"><span aria-hidden="true">x</span></button>
+					</div>
+					<div class="modal-bd">
+					    <p>您确定要关闭订单吗?</p>
+					</div>
+					<div class="modal-bo">
+			        	<button type="button" class="btn btn-default btn-sm">确定</button>
+					</div>
+				</div>
+			</div>
+			<!--提示 -->
+			<div class="modal modal-abnormal1">
+				<div class="modalcon">
+					<div class="modal-bt">
+						<h4 class="modal-title size-title" id="myModalLabel">提示</h4>
+					    <button type="button" class="close close-btn" data-dismiss="modal" aria-label="Close" id="close-btn"><span aria-hidden="true">x</span></button>
+					</div>
+					<div class="modal-bd">
+					    <span>请至少选择1个订单</span>
+					</div>
+					<div class="modal-bo">
+			        	<button type="button" class="btn btn-default btn-sm close-btn">确定</button>
+					</div>
+				</div>
+			</div>
+			<!-- 恢复订单 -->
+			<div class="modal modal-abnormal2">
+				<div class="modalcon">
+					<div class="modal-bt">
+						<h4 class="modal-title size-title" id="myModalLabel">提示</h4>
+					    <button type="button" class="close close-btn" data-dismiss="modal" aria-label="Close" id="close-btn"><span aria-hidden="true">x</span></button>
+					</div>
+					<div class="modal-bd">
+					    <span>您确定要恢复订单吗?</span>
+					</div>
+					<div class="modal-bo">
+			        	<button type="button" class="btn btn-default btn-sm">确定</button>
+					</div>
+				</div>
+			</div>
+			<!-- 修改异常 -->
+			<div class="modal modal-abnormal3">
+				<div class="modalcon">
+					<div class="modal-bt">
+						<h4 class="modal-title size-title" id="myModalLabel">异常原因</h4>
+					    <button type="button" class="close close-btn" data-dismiss="modal" aria-label="Close" id="close-btn"><span aria-hidden="true">x</span></button>
+					</div>
+					<div class="modal-bd">
+					    <form class="form-inline" method="post" action="">
+							<div class="form-group">
+								<label class="labelname">异常原因：</label>
+								<select class="form-control input-sm" >
+									<option >缺货</option>
+									
+									<option>a</option>
+								</select>
+								<a href="/order/abnormalset.php" target="_blank">异常添加</a>
+							</div>
+							<br>
+							<div class="form-group">
+								<label class="labelname">异常备注：</label>
+								<textarea class="form-control input-sm" rows="4" style="width:300px;height:100px;resize: none;"></textarea>
+							</div>
+						</form>
+					</div>
+					<div class="modal-bo">
+			        	<button type="button" class="btn btn-default btn-sm account-sure">确定</button>
+			        	<button type="button" class="btn btn-default btn-sm close-btn">取消</button>
+					</div>
+				</div>
+			</div>
+			<!--修改备注 -->
+			<div class="modal modal-abnormal4">
+				<div class="modalcon">
+					<div class="modal-bt">
+						<h4 class="modal-title size-title" id="myModalLabel">批量修改备注</h4>
+					    <button type="button" class="close close-btn" data-dismiss="modal" aria-label="Close" id="close-btn"><span aria-hidden="true">x</span></button>
+					</div>
+					<div class="modal-bd">
+					    <form class="form-inline" method="post" action="">
+							<div class="form-group">
+								<label class="labelname">修改方式：</label>
+								<select class="form-control input-sm change-method" >
+									<option class="zhujia">在原备注上追加</option>
+									
+									<option class="fugai">覆盖原先的备注</option>
+								</select>
+							</div>
+							<br>
+							<div class="form-group">
+								<label class="labelname">备注内容：</label>
+								<textarea class="form-control input-sm abnormal4-mark" rows="4" style="width:300px;height:100px;resize: none;"></textarea>
+							</div>
+						</form>
+					</div>
+					<div class="modal-bo">
+			        	<button type="button" class="btn btn-default btn-sm abnormal4-sure">确定</button>
+			        	<button type="button" class="btn btn-default btn-sm close-btn">取消</button>
+					</div>
+				</div>
+			</div>
+			
+			<div class="push"></div>
+		</div>
+		{include file="../comfoot.html"}
+		<script type="text/javascript" src="/js/jquery-1.11.0.min.js"></script>
+		<script type="text/javascript" src="/js/commontop.js"></script>
+		<script type="text/javascript" src="/bootstrap/js/bootstrap.min.js" ></script>
+		<script type="text/javascript" src="/js/mycom.js"></script>
+		<script type="text/javascript" src="/js/delivery/deliver_abnormal.js"></script>
+	</body>
+</html>

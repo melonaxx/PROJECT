@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>米欢电商ERP</title>
+	<link href="/bootstrap/css/bootstrap.min.css"  rel="stylesheet" media="screen">
+	<link href="/images/favicon.ico" rel="shortcut icon">
+	<link href="/css/commontop.css"   rel="stylesheet" media="screen">
+	<link rel="stylesheet" type="text/css" href="/css/warehouse/warestatus.css"/>
+	<link rel="stylesheet" type="text/css" href="/css/goods/goodsentry.css"/>
+	<style>
+		{literal}
+		@media screen and (max-width: 1120px){
+			/*当屏幕尺寸小于1120px时，应用下面的CSS样式*/
+			.navbar-nav,#comtop-right{display: none;}
+		}
+		{/literal}
+	</style>
+</head>
+<body>
+	{include file="../commontop.html"}
+	<div class="container-fluid container1">
+		<div class="row ware-row">
+			<h5>您的位置： <a href="javascript:;">首页</a> » <a href="javascript:;">商品</a> »商品录入</h5>
+		</div>
+		<div class="row row-bold">
+			商品信息
+		</div>
+		<div class="row">
+			<form class="form-inline waredetail-form">
+				<div class="float-left">
+					<div class="form-group">
+						<label for="exampleInputEmail2" class="datename">商品编码：</label>
+						<input type="text" class="form-control code pronumber" id="exampleInputEmail2" placeholder="不填写将自动生成" value="{$showpro['number']}">
+					</div>
+					<div class="form-group">
+						<label for="exampleInputEmail2" class="datename">商品名称：</label>
+						<input type="text" class="form-control waregoods-detailname proname" id="exampleInputEmail2" placeholder="必填" value="{$showpro['name']}">
+					</div>
+					<div class="form-group">
+						<label for="exampleInputEmail2" class="datename">商品品牌：</label>
+						<select class="form-control goodsbrand" id="exampleInputEmail2">
+							{foreach $brandlist as $k=>$v}
+							<option value="{$v['id']}" {if $v['id'] == $showpro['brandid']}selected{/if} >{$v['name']}</option>
+							{/foreach}
+						}
+					</select>
+				</div>
+				<div class="form-group">
+					<label for="exampleInputEmail2" class="datename goodsstore">所属店铺：</label>
+					<select class="form-control proshop"id="exampleInputEmail2">
+						{foreach $comshop as $k=>$v}
+						<option value="{$v['id']}">{$v['name']}</option>
+						{/foreach}
+					</select>
+				</div>
+				<div class="form-group">
+					<label for="exampleInputEmail2" class="datename">商品分类：</label>
+					<select class="form-control goodsclassify" id="exampleInputEmail2">
+						{foreach $catelist as $k=>$v}
+						<option value="{$v['id']}"  {if $v['id'] == $showpro['categoryid']}selected{/if}>{$v['name']}</option>
+						{/foreach}
+					</select>
+				</div>
+				<div class="form-group">
+					<label for="exampleInputEmail2" class="datename">产品类型：</label>
+					<select class="form-control goodstype" id="exampleInputEmail2">
+						<option value="Virtual" {if $showpro['producttype'] == 'Virtual'}selected{/if}>虚拟产品</option>
+						<option value="Packaged" {if $showpro['producttype'] == 'Packaged'}selected{/if}>套装产品</option>
+						<option value="Real" {if $showpro['producttype'] == 'Real'}selected{/if}>实体产品</option>
+						<option value="Materials" {if $showpro['producttype'] == 'Materials'}selected{/if}>原材料</option>
+					</select>
+				</div>
+				<div class="form-group">
+					<label for="exampleInputEmail2" class="datename">是否二手：</label>
+					<select class="form-control goodsused" id="exampleInputEmail2">
+						<option value="New" {if $showpro['productquality'] == 'New'}selected{/if}>全新</option>
+						<option value="Used" {if $showpro['productquality'] == 'Used'}selected{/if}>二手</option>
+					</select>
+				</div>
+				<div class="form-group">
+					<label for="exampleInputEmail2" class="datename">单位：</label>
+					<select class="form-control goodsunit" id="exampleInputEmail2">
+						{foreach $unitlist as $k=>$v}
+						<option value="{$v['id']}" {if $v['id'] == $showpro['unitid']}selected{/if}>{$v['name']}</option>
+						{/foreach}
+					</select>
+				</div>
+				<div class="form-group">
+					<label for="exampleInputEmail2" class="datename">商品货号：</label>
+					<input type="text" class="form-control serialnumber" id="exampleInputEmail2" value="{$showpro['serialnumber']}">
+				</div>
+				<div class="form-group">
+					<label for="exampleInputEmail2" class="datename">商品条码：</label>
+					<input type="text" class="form-control barcode" id="exampleInputEmail2" value="{$showpro['barcode']}">
+				</div>
+				<div class="form-group">
+					<label for="exampleInputEmail2" class="datename">商品数量：</label>
+					<input type="text" class="form-control prototal" id="exampleInputEmail2" value="{$showpro['total']}">
+				</div>
+				<div class="form-group">
+					<label for="exampleInputAmount" class="datename">体积：</label>
+					<div class="input-group">
+						<input type="text" class="form-control volume" id="exampleInputAmount" value="{$showpro['volume']}">
+						<div class="input-group-addon">m³</div>
+					</div>
+				</div>
+				<div class="form-group">
+					<label for="exampleInputAmount" class="datename">重量：</label>
+					<div class="input-group">
+						<input type="text" class="form-control weight" id="exampleInputAmount" value="{$showpro['weight']}">
+						<div class="input-group-addon">kg</div>
+					</div>
+				</div>
+				<div class="form-group">
+					<label for="exampleInputAmount" class="datename">吊牌价：</label>
+					<div class="input-group">
+						<div class="input-group-addon">￥</div>
+						<input type="text" class="form-control pricetag" id="exampleInputAmount" value="{$showpro['pricetag']}">
+					</div>
+				</div>
+				<div class="form-group">
+					<label for="exampleInputAmount" class="datename">进价：</label>
+					<div class="input-group">
+						<div class="input-group-addon">￥</div>
+						<input type="text" class="form-control pricepurchase" id="exampleInputAmount" value="{$showpro['pricepurchase']}">
+					</div>
+				</div>
+				<div class="form-group">
+					<label for="exampleInputAmount" class="datename">零售价：</label>
+					<div class="input-group">
+						<div class="input-group-addon">￥</div>
+						<input type="text" class="form-control pricesell" id="exampleInputAmount" value="{$showpro['pricesell']}">
+					</div>
+				</div>
+				<div class="form-group">
+					<label for="exampleInputAmount" class="datename">总价：</label>
+					<div class="input-group">
+						<div class="input-group-addon">￥</div>
+						<input type="text" class="form-control pricetotal" id="exampleInputAmount" value="{$showpro['pricetotal']}">
+					</div>
+				</div>
+				<div class="form-group">
+					<label for="exampleInputEmail2" class="datename">在售状态：</label>
+					<select class="form-control goodsstatus"id="exampleInputEmail2">
+						<option value="Onsale" {if $showpro['salesstatus'] == 'Onsale'}selected{/if}>在售</option>
+						<option value="Soldout" {if $showpro['salesstatus'] == 'Soldout'}selected{/if}>下架</option>
+						<option value="Stop" {if $showpro['salesstatus'] == 'Stop'}selected{/if}>停产</option>
+						<option value="Stockout" {if $showpro['salesstatus'] == 'Stockout'}selected{/if}>缺货</option>
+					</select>
+				</div>
+				<div class="form-group">
+					<label for="exampleInputEmail2" class="datename">产品经理：</label>
+					<input type="text" class="form-control">
+					<!-- <input type="text" class="form-control person-name" id="exampleInputEmail2"> -->
+				</div>
+			</div>
+			<div class="float-right">
+				<table id="waregoods-table-img">
+					<tbody>
+						<tr id="warp">
+							<td class="Upload-img">
+								{if !isset($showpro['filename'][0])}
+								<span class="Upload-text Upload-text1">
+									<span class='plan'>上传</span>
+									<input class="fileupload" type="file" name="goodspic">
+								</span>
+								{/if}
+								<img class="modalImg modalImg1" {if isset($showpro['filename'][0])}src="{$showpro['url'][0]}/{$showpro['filename'][0]}" style="display: block;"{/if}/>
+								<div class="modal-div">
+									<span class="modal-Edit"></span>
+									<span class="modal-Del">删除</span>
+								</div>
+								<input type="hidden" name='imgpath' value="{$showpro['proimage'][0]}">
+							</td>
+							<td class="Upload-img">
+								{if !isset($showpro['filename'][1])}
+								<span class="Upload-text Upload-text1">
+									<span class='plan'>上传</span>
+									<input class="fileupload" type="file" name="goodspic">
+								</span>
+								{/if}
+								<img class="modalImg modalImg1" {if isset($showpro['filename'][1])}src="{$showpro['url'][1]}/{$showpro['filename'][1]}" style="display: block;"{/if} id="imgShow_WU_FILE_0"/>
+								<div class="modal-div">
+									<span class="modal-Edit"></span>
+									<span class="modal-Del">删除</span>
+								</div>
+								<input type="hidden" name='imgpath' value="{$showpro['proimage'][1]}">
+							</td>
+							<td class="Upload-img">
+								{if !isset($showpro['filename'][2])}
+								<span class="Upload-text Upload-text1">
+									<span class='plan'>上传</span>
+									<input class="fileupload" type="file" name="goodspic">
+								</span>
+								{/if}
+								<img class="modalImg modalImg1"  {if isset($showpro['filename'][2])}src="{$showpro['url'][2]}/{$showpro['filename'][2]}" style="display: block;"{/if} id="imgShow_WU_FILE_0"/>
+								<div class="modal-div">
+									<span class="modal-Edit"></span>
+									<span class="modal-Del">删除</span>
+								</div>
+								<input type="hidden" name='imgpath' value="{$showpro['proimage'][2]}">
+							</td>
+							<td class="Upload-img">
+								{if !isset($showpro['filename'][3])}
+								<span class="Upload-text Upload-text1">
+									<span class='plan'>上传</span>
+									<input class="fileupload" type="file" name="goodspic">
+								</span>
+								{/if}
+								<img class="modalImg modalImg1"  {if isset($showpro['filename'][3])}src="{$showpro['url'][3]}/{$showpro['filename'][3]}" style="display: block;"{/if} id="imgShow_WU_FILE_0"/>
+								<div class="modal-div">
+									<span class="modal-Edit"></span>
+									<span class="modal-Del">删除</span>
+								</div>
+								<input type="hidden" name='imgpath' value="{$showpro['proimage'][3]}">
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</form>
+	</div>
+	<div class="row"><span>商品描述</span></div>
+	<div class="row row-textarea">
+		<textarea class="form-control input-sm procomment" rows="4"> {$showpro['comment']}</textarea>
+	</div>
+	<div class="row row-bold">
+		商品规格
+		<a href="goodsproperty.php" target="_blank" class="waining-img">
+			<img src="/images/doubt.png" width="18px" height="18px" title="点击前往编辑规格" />
+		</a>
+	</div>
+	<div class="row">
+		<table class="table waregooddetail-table">
+			<tr class='fnames'>
+				<td class="waredetail-operate">操作</td>
+				<td>
+					<select class="form-control select1 formatenamelist0" id="exampleInputEmail2">
+						<option class="opt1" value='0'>--无--</option>
+						{foreach $formatename as $k=>$v}
+						<option value="{$v['id']}" {if $v['id'] == $showpro['formatid1']}selected{/if}>{$v['name']}</option>
+						{/foreach}
+					</select>
+				</td>
+				<td>
+					<select class="form-control select1 formatenamelist1" id="exampleInputEmail2">
+						<option class="opt1" value='0' >--无--</option>
+						{foreach $formatename as $k=>$v}
+						<option value="{$v['id']}" {if $v['id'] == $showpro['formatid2']}selected{/if}>{$v['name']}</option>
+						{/foreach}
+					</select>
+				</td>
+				<td>
+					<select class="form-control select1 formatenamelist2" id="exampleInputEmail2">
+						<option class="opt1" value='0' >--无--</option>
+						{foreach $formatename as $k=>$v}
+						<option value="{$v['id']}" {if $v['id'] == $showpro['formatid3']}selected{/if}>{$v['name']}</option>
+						{/foreach}
+					</select>
+				</td>
+				<td>
+					<select class="form-control select1 formatenamelist3" id="exampleInputEmail2">
+						<option class="opt1" value='0' >--无--</option>
+						{foreach $formatename as $k=>$v}
+						<option value="{$v['id']}" {if $v['id'] == $showpro['formatid4']}selected{/if}>{$v['name']}</option>
+						{/foreach}
+					</select>
+				</td>
+				<td>
+					<select class="form-control select1 formatenamelist4" id="exampleInputEmail2">
+						<option class="opt1" value='0' >--无--</option>
+						{foreach $formatename as $k=>$v}
+						<option value="{$v['id']}" {if $v['id'] == $showpro['formatid5']}selected{/if}>{$v['name']}</option>
+						{/foreach}
+					</select>
+				</td>
+			</tr>
+			<tr class='fvalues'>
+				<td class="waredetail-clear">清除</td>
+				<td>
+					<select class="form-control select2 fvaluelist0" id="exampleInputEmail2">
+					</select>
+				</td>
+				<td>
+					<select class="form-control select2 fvaluelist1" id="exampleInputEmail2">
+					</select>
+				</td>
+				<td>
+					<select class="form-control select2 fvaluelist2" id="exampleInputEmail2">
+					</select>
+				</td>
+				<td>
+					<select class="form-control select2 fvaluelist3" id="exampleInputEmail2">
+					</select>
+				</td>
+				<td>
+					<select class="form-control select2 fvaluelist4" id="exampleInputEmail2">
+					</select>
+				</td>
+			</tr>
+		</table>
+	</div>
+	<div class="row row-bold">
+		商品属性
+		<a href="goodsproperty.php" target="_blank" class="waining-img">
+			<img src="/images/doubt.png" width="18px" height="18px" title="点击前往编辑属性" />
+		</a>
+	</div>
+	<div class="row">
+		<input class="btn btn-default btn-add1" type="button" value="添加">
+	</div>
+	<div class="row row-table">
+		<table class="table waregooddetail-table">
+			<thead>
+				<tr class="active">
+					<td width="40px">序号</td>
+					<td width="40px">操作</td>
+					<td width="300px">属性</td>
+					<td width="600px">属性值</td>
+				</tr>
+			</thead>
+			<tbody id="tbody1">
+				{foreach $showpro['attrname'] as $key=>$value}
+				<tr class='onetr1'>
+					<td class="onetd1">{$key+1}</td>
+					<td>
+						<a class="btn-del delproattr">删除</a>
+					</td>
+					<td>
+						<select class="form-control attrselectname" id="exampleInputEmail2">
+							<option>--无--</option>
+							{foreach $attrnamelist as $k=>$v}
+							<option value={$v["id"]} {if $v['id'] == $showpro['attrname'][$key]}selected{/if}>{$v["name"]}</option>
+							{/foreach}
+						</select>
+					</td>
+					<td>
+						<select class="form-control attrselectvalue" id="exampleInputEmail2">
+							<option value="{$showpro['attrvalueid'][$key]}">{$showpro['attrvalue'][$key]}</option>
+						</select>
+					</td>
+				</tr>
+				{/foreach}
+			</tbody>
+		</table>
+	</div>
+	<div class="row row-bold">
+		商品配件
+	</div>
+	<div class="row">
+		<input class="btn btn-default btn-add2" type="button" value="添加">
+	</div>
+	<div class="row row-table">
+		<table class="table waregooddetail-table">
+			<thead>
+				<tr class="active">
+					<td width="46px">序号</td>
+					<td width="46px">操作</td>
+					<td width="300px">搜索</td>
+					<td width="658px">商品名称与规格</td>
+					<td width="150px">数量</td>
+				</tr>
+			</thead>
+			<tbody id="tbody2">
+				{foreach $showpro['partsname'] as $key=>$value}
+				<tr class="onetr2">
+					<td class="onetd2">{$key+1}</td>
+					<td>
+						<a class="btn-del1" href="javascript:;">删除</a>
+					</td>
+					<td>
+						<input type="text" class="form-control searchbox searchparts" placeholder="搜索"/>
+					</td>
+					<td>
+						<select class="form-control partsopt" id="exampleInputEmail2">
+							<option value="{$showpro['partsid'][$key]}">{$showpro['partsname'][$key]}</option>
+						</select>
+					</td>
+					<td>
+						<input type="text" class="form-control searchbox" value="{$showpro['partstotal'][$key]}" name="partnumber"/>
+					</td>
+				</tr>
+				{/foreach}
+			</tbody>
+		</table>
+	</div>
+	<!-- <div class="row row-bold">
+		仓库选择
+	</div>
+	<div class="row row-house">
+		<form class="form-inline">
+			<div class="form-group">
+				{foreach $storelist as $key=>$v}
+				<div class="modal-check">
+					<input type="checkbox" {foreach $showpro['storname'] as $kk=>$vv}{if $v['id'] == $showpro['storname'][$kk]} checked {/if}{/foreach} name='stores[]' value="{$v['id']}" />
+					<span class="modal-span">{$v['name']}</span>
+				</div>
+				{/foreach}
+			</div>
+			<div class="detail-house">
+
+			</div>
+		</form>
+	</div> -->
+	<div class="row waregoodsdetail-btn">
+		<button class="btn btn-default btn-submit editprosub" type="button">提交</button>
+		<button class="btn btn-default" type="reset">重置</button>
+	</div>
+
+	<!-- 添加商品成功-->
+	<div class="modal addprowindow">
+		<div class="modalcon" style="width:300px;margin-left:-150px;">
+			<div class="modal-bt">
+				<button type="button" class="close close-btn" data-dismiss="modal" aria-label="Close"><span aria-hidden="true" id="close-btn">x</span></button>
+				<h4 class="modal-title size-title">添加商品</h4>
+			</div>
+			<div class="modal-bd" >
+				<p>数据处理中···</p>
+			</div>
+			<div class="modal-bo">
+
+			</div>
+		</div><!-- /.modal-content -->
+	</div>
+	<!--modal0上传图片-->
+			<!-- <div class="modal modal-upload">
+			  <div class="modalcon">
+			      <div class="modal-bt">
+			        <h4 class="modal-title size-title" id="myModalLabel">上传图片</h4>
+					<button type="button" class="close close-btn" data-dismiss="modal" aria-label="Close" id="close-btn"><span aria-hidden="true">x</span></button>
+			      </div>
+			      <div class="modal-bd">
+			      	<ul class="nav nav-tabs">
+					  <li role="presentation" class="active modal-img">
+					  	<a href="#">网络图片地址</a>
+					  </li>
+					  <li role="presentation" class="modal-img">
+					  	<a href="#">上传本地图片</a>
+					  </li>
+					</ul>
+					<div class="form-group modal-form">
+                		<input type="text" class="form-control Imgsrc Imgsrc-net" placeholder="输入图片地址"/>
+					</div>
+           			<div class="form-group modal-form modal-form1 form-control">
+					    <input type="file" id="up_img_WU_FILE_0" class="Imgsrc Imgsrc0">
+					    <input type="file" id="up_img_WU_FILE_1" class="Imgsrc Imgsrc1">
+					    <input type="file" id="up_img_WU_FILE_2" class="Imgsrc Imgsrc2">
+					    <input type="file" id="up_img_WU_FILE_3" class="Imgsrc Imgsrc3">
+					</div>
+			      </div>
+			      <div class="modal-bo">
+			        <button type="button" class="btn btn-primary btn-sure0 btn-sm uploadsub">确定</button>
+			        <button type="button" class="btn btn-default btn-sm close-btn" data-dismiss="modal">取消</button>
+			      </div>
+			  </div>
+			</div> -->
+			<!-- 产品经理Modal1 -->
+			<div class="modal modal-manager">
+				<div class="modalcon" >
+					<div class="modal-bt">
+						<h4 class="modal-title size-title" id="myModalLabel">产品经理</h4>
+						<button type="button" class="close close-btn" data-dismiss="modal" aria-label="Close" id="close-btn"><span aria-hidden="true">x</span></button>
+					</div>
+					<div class="modal-bd">
+						<form class="form-inline">
+							<div class="form-group">
+								<input class="btn btn-default btn-cancle btn-sm" type="button" value="取消产品经理">
+							</div>
+					  <!-- <div class="form-group modal-namebox">
+					    <input type="text" class="form-control namebox" placeholder="请输入姓名"/>
+					  </div>
+					  <div class="form-group">
+					    <input class="btn btn-default btn-sm" type="button" value="搜索">
+					</div> -->
+				</form>
+				<form class="form-inline">
+					<div class="form-group">
+						<table class="table table-hover man-table">
+							<thead>
+								<tr  class="active">
+									<td>序号</td>
+									<td>操作</td>
+									<td>员工编号</td>
+									<td>姓名</td>
+									<td>所属部门</td>
+								</tr>
+							</thead>
+							<tr>
+								<td>1</td>
+								<td>
+									<div class="radio">
+										<label>
+											<input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked>
+										</label>
+									</div>
+								</td>
+								<td></td>
+								<td>admihuan</td>
+								<td></td>
+							</tr>
+							<tr>
+								<td>2</td>
+								<td>
+									<div class="radio">
+										<label>
+											<input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked>
+										</label>
+									</div>
+								</td>
+								<td>SN002</td>
+								<td>马三</td>
+								<td>产品部</td>
+							</tr>
+							<tr>
+								<td>3</td>
+								<td>
+									<div class="radio">
+										<label>
+											<input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked>
+										</label>
+									</div>
+								</td>
+								<td>SN003</td>
+								<td>刘二</td>
+								<td>客服部</td>
+							</tr>
+						</table>
+					</div>
+				</form>
+			</div>
+			<div class="modal-bo">
+				<button type="button" class="btn btn-default btn-sure1 btn-sm">确定</button>
+				<button type="button" class="btn btn-default close-btn btn-sm">取消</button>
+			</div>
+		</div>
+	</div>
+	<div class="push"></div>
+</div>
+{include file="../comfoot.html"}
+<script type="text/javascript" src="/js/jquery-1.11.0.min.js"></script>
+<script type="text/javascript" src="/js/util.js"></script>
+<script type="text/javascript" src="/js/commontop.js"></script>
+<script type="text/javascript" src="/bootstrap/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="/js/goods/goodsentry.js"></script>
+<script type="text/javascript" src="/js/goods/goodslistedit.js"></script>
+<!-- <script type="text/javascript" src="/js/uploadPreview.js"></script> -->
+<script type="text/javascript" src="/js/plupload.min.js"></script>
+<script type="text/javascript" src="/js/mycom.js"></script>
+</body>
+</html>

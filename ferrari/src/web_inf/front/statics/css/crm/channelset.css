@@ -1,0 +1,103 @@
+.row .channel-btn{
+	width:1200px;
+	margin-left:15px;
+	padding:0;
+	margin-top:30px;
+}
+.row .channelset-table{
+	width:686px;
+	padding:0;
+	margin-left:15px;
+}
+.row .channelset-table thead td{
+	font-weight:600;
+}
+.row .channelset-table thead td:nth-of-type(1){
+	text-align: center;
+}
+.row .channelset-table thead td:nth-of-type(2){
+	text-align: center;
+}
+
+.row .channelset-table tbody td:nth-of-type(1){
+	text-align: center;
+}
+.row .channelset-table thead td:nth-of-type(1){
+	width:46px;
+}
+.row .channelset-table thead td:nth-of-type(2){
+	width:90px;
+}
+.row .channelset-table thead td:nth-of-type(3){
+	width:200px;
+}
+.row .channelset-table thead td:nth-of-type(4){
+	width:350px;
+}
+/*.row .channelset-table thead td:nth-of-type(5){
+	width:150px;
+}
+.row .channelset-table thead td:nth-of-type(6){
+	width:150px;
+}*/
+.row .channel-change{
+	float:left;
+	cursor:pointer;
+	margin-left:5px;
+}
+.row .channel-del{
+	float:right;
+	cursor:pointer;
+	margin-right:5px;
+}
+.modal-channelset2 .modalcon{
+	width:260px;
+	margin-left:-130px;
+}
+.modal-channelset .modalcon,.modal-channelset1 .modalcon{
+	width:400px;
+	margin-left: -200px;
+}
+.modal-channelset .modalcon .form-group,.modal-channelset1 .modalcon .form-group{
+	margin-bottom:20px;
+}
+.modal-channelset .form-group .form-control{
+	width:296px;
+}
+.modal-channelset .modalcon .channel-mark{
+	width:300px;
+	height:60px;
+	resize:none;
+}
+
+.modal-channelset1 .form-group .form-control{
+	width:296px;
+}
+.modal-channelset1 .modalcon .channel-mark1{
+	width:300px;
+	height:60px;
+	resize:none;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

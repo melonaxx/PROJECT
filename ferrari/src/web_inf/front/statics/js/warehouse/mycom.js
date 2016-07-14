@@ -1,0 +1,40 @@
+$(function(){
+	//tab切换;
+	$(".nav-tabs").children().click(function(){
+		$(this).addClass("active").siblings().removeClass("active");
+    });
+	//关闭窗口；
+	$(".close-btn").click(function(){
+        $(this).parent().parent().parent().hide();
+        $(this).parent().siblings(".modal-bd").children(".form-inline").children(".form-group").children(".form-control").val("");
+	    $(this).parent().siblings(".modal-bd").children(".dropdown").children(".dropdown_header").children("label").children("input").prop("checked",false);
+    });
+	//双击出现文本框
+     $(".purentermark").dblclick(function(event){
+     	event.stopPropagation();
+        var $input=$('<input class="form-control" type="text"/>');
+        $(this).append($input);
+        $(this).children().focus();
+        $(this).children().css("height","30px");
+        $(this).children().blur(function(){
+        	$(this).remove();
+        });
+    });
+})
+function DelKeHu(){
+    $(".customer-del").click(function(){
+        var $this=$(this);
+        $this.parent().parent().addClass("click");
+        $(".modal-customer").show();
+        $(".custom-sure").click(function(){
+            $(".click").remove();
+            $(".custom-td").each(function(i){
+                 $(this).html(i+1);
+            });
+            $(".modal-customer").hide();
+        });
+        $(".close-btn").click(function(){
+            $(".click").removeClass("click");
+        });
+    });
+}

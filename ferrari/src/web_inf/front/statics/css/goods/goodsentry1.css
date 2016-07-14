@@ -1,0 +1,182 @@
+html,body,div,form,input,a,span,label,textarea{
+	margin:0;
+	padding:0;
+	font-size:small;
+}
+h5{
+	font-size:small;
+}
+h6{
+	font-weight:600;
+	margin: 0 0 12px 0;
+    padding: 8px 0 0 0;
+    width:50px;
+    float:left;
+}
+#Body{
+	font-size: small;
+}
+.row{
+	width:90%;
+	height:auto;
+	margin:0 auto;
+	margin-top:10px;
+	margin-bottom:10px;
+}
+.form-control,.btn{
+	font-size: small;
+}
+.row-bold{
+	font-weight:600;
+	height:auto;
+}
+.datename{
+	font-weight:100;
+	width:70px;
+	
+}
+.table{
+	border-collapse: collapse;
+	border-spacing:0;
+}
+.table tr,.table td{
+	border:1px solid #ccc;
+}
+#tbody2{
+	border:none;
+}
+.form-group{
+	margin-bottom:10px;
+}
+#table-img{
+	width:200px;
+	height:200px;
+	border:1px dashed #ccc;
+}
+#table-img td{
+	width:100px;
+	height:100px;
+	border:1px dashed #ccc;
+	border-spacing: 10px;
+	text-align:center;
+	cursor:pointer;
+}
+.commodity-form .form-group{
+	margin-top:10px;
+}
+.waining-img{
+	display:block;
+	float:left;
+	margin-top:5px;
+	margin-left:5px;
+}
+.commodity-table{
+	margin-bottom:10px;
+}
+/*模态*/
+.Upload-img{
+	position:relative;
+}
+.Upload-text{
+	position:absolute;
+	left:50%;
+	top:50%;
+	margin-left:-13px;
+	margin-top:-9px;
+	z-index:1;
+}
+.modal-div{
+	position:absolute;
+	left:0;
+	bottom:0;
+	width:100%;
+	height:20px;
+	background:#333;
+	display:none;
+}
+.modal-Edit{
+	position:absolute;
+	left:0;
+	bottom:0;
+	width:50%;
+	height:20px;
+	display:block;
+	color:#fff;
+}
+.modal-Del{
+	color:#fff;
+	position:absolute;
+	right:0;
+	bottom:0;
+	width:50%;
+	display:block;
+	height:20px;
+}
+.modalImg{
+	width:100%;
+	height:100%;
+	display:none;
+}
+.modal-form{
+	margin:10px 0 10px 0;
+}
+.modal-form1{
+	display:none;
+}
+.modal-title1{
+	text-align: center;
+	font-size:10px;
+	font-weight:600;
+}
+.btn-close{
+	margin-left:20px;
+	float:left;
+}
+#model-table{
+	width:715px;margin-left:20px;
+}
+.modal-a{
+	margin:0 10px 10px 10px;
+	cursor:pointer;
+}
+.modal-check{
+	width:150px;
+	margin:10px 0 200px 50px;
+	float:left;
+}
+.modal-check input{
+	float:left;
+	display:block;
+	width:20px;
+	height:20px;
+}
+.modal-span{
+	display:block;
+	float:left;
+	height:20px;
+	font-size:13px;
+	line-height:30px;
+}
+.modal-house{
+	width:210px;
+	height:34px;
+	line-height:30px;
+	margin:10px 0 15px 10px;
+	float:left;
+	text-align: center;
+	border:1px solid #ddd;
+	overflow:auto;
+	cursor:pointer;
+	position:relative;
+}
+.modal-house-name{
+	
+}
+.modal-del{
+	position:absolute;
+	display:none;
+	
+}
+.hover{
+	cursor:pointer;
+}

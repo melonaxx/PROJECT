@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>米欢电商ERP</title>
+ 		<link href="/images/favicon.ico" rel="shortcut icon">
+		<link href="/bootstrap/css/bootstrap.min.css"  rel="stylesheet" media="screen">
+		<link href="/css/commontop.css"   rel="stylesheet" media="screen">
+		<link href="/css/app/custom_service.css"   rel="stylesheet" media="screen">
+		
+	</head>
+	<body id="allbody">
+		{include file="../commontop.html"}
+		<div class="container-fluid container1">
+			<div class="row ware-row">
+				<h5 class="home-nav"style="margin-left: 15px;">您的位置： <a href="javascript:;">首页</a> » <a href="javascript:;">客服问答系统</a></h5>
+			</div>
+			<div class="row">
+				<ul class="nav nav-tabs col-md-12 custom_service-nav">
+				  <li role="presentation"class="active">
+				  	<a href="custom_service.php">问题答案</a>
+				  </li>
+				  <li role="presentation">
+				  	<a href="add_question.php">添加问题</a>
+				  </li>
+				  <li role="presentation" >
+				  	<a href="/app/add_platform.php">添加平台</a>
+				  </li>
+				</ul>
+			</div>
+			<div class="row"  {if $list|@count eq 0}style="display: none"{/if}>
+				<div class="custom-content col-md-12">
+					<ul class="row-left">
+					{foreach from=$list item=row}
+						<a href="/app/custom_service.php?platid={$row['id']}"><li {if $flag eq $row['id']} class="li-color" {/if}>{$row['name']}</li></a>
+						<!-- <li class="li-color">111</li> -->
+					{/foreach}
+					</ul>
+					<div class="row-right">
+						<form action="" class="form-inline">
+							<div class="service-search form-group">
+								<label for="" class="labelname">常见问题及答案：</label>
+								<input type="text" class="form-control input-sm"placeholder="请搜索问题">
+							</div>
+						</form>
+						<ul class="service-question">
+						{foreach from=$question key=k item=answer}
+							<li>
+								<div class="question-list">
+									<span class="question-num">{$k+1}</span>.
+									<span class="question ">{$answer['problem']}</span>
+									<span class="question-edit" uid="{$answer['platformid']}" selfid="{$answer['id']}">编辑</span>
+									<span class="question-del" selfid="{$answer['id']}">删除</span>
+								</div>
+								<div class="question-answer">
+									<span id="copy_txt{$k}">{$answer['answer']}</span>
+									<button class="btn btn-sm btn-primary copy-answer"id="copy_btn{$k}"data='0'>复制到粘贴板</button>
+								</div>
+							</li>
+						{/foreach}
+						</ul>
+					</div>
+				</div>
+			</div>
+			<div class="row"  >
+				<div class="no-platform" {if $list|@count eq 0}style="display:block"{/if}>
+					<span class="platform-tip">还没有平台和客户问题，请添加!</span>
+				</div>
+			</div>
+			<!-- 编辑问题和答案 -->
+			<div class="modal modal-question">
+				<div class="modalcon">
+					<div class="modal-bt">
+						<h4 class="modal-title size-title" id="myModalLabel">编辑问题及答案</h4>
+					    <button type="button" class="close close-btn" data-dismiss="modal" aria-label="Close" id="close-btn"><span aria-hidden="true">x</span></button>
+					</div>
+					<div class="modal-bd">
+					    <form action="/app/editquestion.php" class="form-inline" method="post">
+					    	<div class="form-group">
+					    		<label for="" class="labelname">所属平台：</label>
+					    		<select class="form-control input-sm" id="platname" name="platname">
+									{foreach from=$list item=plat}
+					    				<option value="{$plat['id']}">{$plat['name']}</option>
+					    			{/foreach}
+								<select>
+								<input type="hidden" id="selfid" name="selfid">	
+					    	</div>
+					    	<br>
+					    	<div class="form-group">
+					    		<label for="" class="labelname">客户问题：</label>
+					    		<textarea class="form-control custom-question"row="3" id="question" name="question"></textarea>
+					    	</div>
+					    	<br>
+					    	<div class="form-group">
+								<label for="" class="labelname">问题答案：</label>
+								<textarea class="form-control question-answer" row="5" id="answer" name="answer"></textarea>
+							</div>
+					</div>
+					<div class="modal-bo">
+						<button class="btn btn-sm btn-default"style="margin-right: 10px;">提交</button >
+						<button type="button" class="btn btn-default btn-sm close-btn">取消</button>
+					</div></form>
+				</div>
+			</div>
+			<!--删除问题 -->
+			<div class="modal modal-delquestion">
+				<div class="modalcon">
+					<div class="modal-bt">
+						<h4 class="modal-title size-title" id="myModalLabel">提示</h4>
+					    <button type="button" class="close close-btn" data-dismiss="modal" aria-label="Close" id="close-btn"><span aria-hidden="true">x</span></button>
+					</div>
+					<div class="modal-bd">
+					    <span>您确定要删除该问题吗?</span>
+					</div>
+					<div class="modal-bo">
+			        	<button type="button" class="btn btn-default btn-sm del">确定</button>
+			        	<button type="button" class="btn btn-default btn-sm close-btn">取消</button>
+					</div>
+				</div>
+			</div>
+			<div class="push"></div>
+		</div>
+		{include file="../comfoot.html"}
+		<script src="/js/jquery-1.11.0.min.js" ></script>
+		<script type="text/javascript" src="/js/commontop.js"></script>
+		<script src="/bootstrap/js/bootstrap.min.js"  ></script>
+		<script type="text/javascript" src="/js/app/ZeroClipboard.js"></script>
+		<script src="/js/app/custom_service.js"></script>
+		<script src="/js/mycom.js"></script>
+	</body>
+</html>

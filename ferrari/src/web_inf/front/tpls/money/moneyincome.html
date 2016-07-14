@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>米欢电商ERP</title>
+		<link href="/images/favicon.ico" rel="shortcut icon">
+		<link rel="stylesheet" type="text/css" href="/bootstrap/css/bootstrap-datetimepicker.min.css"/>
+		<link href="/bootstrap/css/bootstrap.min.css"  rel="stylesheet" media="screen">
+		<link href="/css/commontop.css"   rel="stylesheet" media="screen">
+		<link rel="stylesheet" type="text/css" href="/css/money/moneyincome.css"/>
+		<style>
+		{literal}
+			@media screen and (max-width: 1120px){ 
+				/*当屏幕尺寸小于1120px时，应用下面的CSS样式*/
+			    .navbar-nav,#comtop-right{display: none;}
+			}
+		{/literal}
+		</style>
+	</head>
+	<body>
+		{include file="../commontop.html"}
+		<div class="container-fluid container1">
+			<div class="row ware-row">
+				<h5 class="col-md-12">您的位置： <a href="javascript:;">首页</a> » <a href="javascript:;">财务</a> » 收入支出</h5>
+			</div>
+			<div class="row">
+				<ul class="nav nav-tabs col-md-12 moneyin-nav">
+				  <li role="presentation" class="active">
+				  	<a href="moneyincome.php">收入支出</a>
+				  </li>
+				  <li role="presentation">
+				  	<a href="moneywater.php">资金流水</a>
+				  </li>
+				</ul>
+			</div>
+			<div class="row">
+				<form class="form-inline col-md-12 moneyin-form">
+					<div class="form-group moneyin-btn">
+				      	<button class="btn btn-default btn-sm btn-add" type="button">添加</button>
+				      	<button class="btn btn-default btn-sm btn-del" type="button">删除</button>
+			      	</div>
+			      	<table class="table table-hover moneyin-table">
+			      		<thead>
+			      			<tr class="active">
+			      				<td>序号</td>
+			      				<td>
+			      					<input class="allcheck" type="checkbox" value="">
+			      				</td>
+			      				<td>发生时间</td>
+			      				<td>财务科目</td>
+			      				<td>银行账号</td>
+			      				<td>收入支出</td>
+			      				<td>发生金额</td>
+			      				<td>备注</td>
+			      			</tr>
+			      		</thead>
+			      		<tbody class="tbody">
+			      			<tr class='onetr'>
+			      				<td class="onetd">1</td>
+			      				<td>
+		      						<input class="check" type="checkbox" value="">
+			      				</td>
+			      				<td>
+			      					<input type="text" class="form-control datetimepicker">
+			      				</td>
+			      				<td>
+			      					<select class="form-control">
+			      						<option></option>
+			      					</select>
+			      				</td>
+			      				<td>
+			      					<select class="form-control">
+			      						<option></option>
+			      					</select>
+			      				</td>
+			      				<td>
+			      					<select class="form-control">
+			      						<option value="">收入</option>
+			      						<option value="">支出</option>
+			      					</select>
+			      				</td>
+			      				<td>
+			      					<input type="text" class="form-control">
+			      				</td>
+			      				<td>
+			      					<input type="text" class="form-control">
+			      				</td>
+			      			</tr>
+			      			<tr class='onetr'>
+			      				<td class="onetd">2</td>
+			      				<td>
+		      						<input class="check" type="checkbox" value="">
+			      				</td>
+			      				<td>
+			      					<input type="text" class="form-control datetimepicker">
+			      				</td>
+			      				<td>
+			      					<select class="form-control">
+			      						<option></option>
+			      					</select>
+			      				</td>
+			      				<td>
+			      					<select class="form-control">
+			      						<option></option>
+			      					</select>
+			      				</td>
+			      				<td>
+			      					<select class="form-control">
+			      						<option value="">收入</option>
+			      						<option value="">支出</option>
+			      					</select>
+			      				</td>
+			      				<td>
+			      					<input type="text" class="form-control">
+			      				</td>
+			      				<td>
+			      					<input type="text" class="form-control">
+			      				</td>
+			      			</tr>
+			      			<tr class='onetr'>
+			      				<td class="onetd">3</td>
+			      				<td>
+		      						<input class="check" type="checkbox" value="">
+			      				</td>
+			      				<td>
+			      					<input type="text" class="form-control datetimepicker">
+			      				</td>
+			      				<td>
+			      					<select class="form-control">
+			      						<option></option>
+			      					</select>
+			      				</td>
+			      				<td>
+			      					<select class="form-control">
+			      						<option></option>
+			      					</select>
+			      				</td>
+			      				<td>
+			      					<select class="form-control">
+			      						<option value="">收入</option>
+			      						<option value="">支出</option>
+			      					</select>
+			      				</td>
+			      				<td>
+			      					<input type="text" class="form-control">
+			      				</td>
+			      				<td>
+			      					<input type="text" class="form-control">
+			      				</td>
+			      			</tr>
+
+			      		</tbody>
+			      	</table>
+					<div class="form-group">
+						<button class="btn btn-default btn-sm" type="button">提交</button>
+						<button class="btn btn-default btn-sm" type="reset">重置</button>
+					</div>
+				</form>
+			</div>
+			<div class="push"></div>
+		</div>
+		{include file="../comfoot.html"}
+		<script type="text/javascript" src="/js/jquery-1.11.0.min.js"></script>
+		<script type="text/javascript" src="/js/commontop.js"></script>
+		<script type="text/javascript" src="/bootstrap/js/bootstrap.min.js" ></script>
+		<script type="text/javascript" src="/js/mycom.js"></script>
+		<script type="text/javascript" src="/js/jsAddress.js"></script>
+		<script type="text/javascript" src="/js/money/moneyincome.js"></script>
+		<script  src="/bootstrap/js/bootstrap-datetimepicker.min.js"></script>
+		<script src="/bootstrap/js/bootstrap-datetimepicker.zh-CN.js"></script>
+		<script type="text/javascript">
+			$('.datetimepicker').datetimepicker({
+			    format: 'yyyy-mm-dd hh:ii:ss',
+			    autoclose:true,
+			    // minView:'year',
+			    language:'zh-CN',
+			});
+		</script>
+	</body>
+</html>

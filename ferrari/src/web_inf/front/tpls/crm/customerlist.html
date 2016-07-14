@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>米欢电商ERP</title>
+		<link href="/images/favicon.ico" rel="shortcut icon">
+		<link href="/bootstrap/css/bootstrap.min.css"  rel="stylesheet" media="screen">
+		<link href="/css/commontop.css"   rel="stylesheet" media="screen">
+		<link rel="stylesheet" type="text/css" href="/css/crm/customerlist.css"/>
+		<style>
+			{literal}
+				@media screen and (max-width: 1120px){
+					/*当屏幕尺寸小于1120px时，应用下面的CSS样式*/
+				    .navbar-nav,#comtop-right{display: none;}
+				}
+			{/literal}
+		</style>
+	</head>
+	<body>
+		{include file="../commontop.html"}
+		<div class="container-fluid container1">
+			<div class="row ware-row">
+				<h5 class="col-md-12">您的位置： <a href="javascript:;">首页</a> » <a href="javascript:;">CRM</a> »客户列表</h5>
+			</div>
+			<div class="row">
+				<ul class="nav nav-tabs col-md-12 customer-nav">
+				  <li role="presentation" class="active active0">
+				  	<a href="customerlist.php">客户列表</a>
+				  </li>
+				  <li role="presentation">
+				  	<a href="addcustomer.php">添加客户</a>
+				  </li>
+				  <li role="presentation"style="display:none;" >
+				  	<a href="customerinfor.php">客户信息</a>
+				  </li>
+				</ul>
+			</div>
+			<div class="status kehulist">
+				<div class="row">
+					<form class="form-inline customer-form col-md-12">
+						<div class="form-group" style="float:right;">
+							<div class="input-group">
+								<input value="" placeholder="输入名称/昵称查询" class="form-control input-sm input_search" type="text">
+								<span class="input-group-btn">
+									<button class="btn btn-default btn-sm searchbtn" style="margin-right: 0;" type="button">搜索</button>
+								</span>
+							</div>
+							<button class="btn btn-default btn-sm resetbtn" type="button">重置</button>
+						</div>
+						<div class="form-group">
+						    <label for="exampleInputName2"class="labelname">客户类型：</label>
+						    <select class="form-control custype" id="exampleInputName2">
+						    	<option value="P">个人客户</option>
+						    	<option value="E">企业客户</option>
+						    </select>
+						</div>
+					</form>
+					<table class="table table-hover customer-table">
+						<thead>
+							<tr class="active">
+								<td>序号</td>
+								<td>操作</td>
+								<td style="text-align: left;">客户名称</td>
+								<td>客户昵称</td>
+								<td>省份</td>
+								<td>市（区）</td>
+								<td>区（县）</td>
+								<td>手机</td>
+								<!-- <td>订单数</td>
+								<td>订单总额</td> -->
+								<td>结算金额</td>
+							</tr>
+						</thead>
+						<tbody class="custom-tbody">
+						{foreach $cusdata as $key=>$value}
+							<tr class="custom-tr">
+								<td class="custom-td">{$key+1}</td>
+								<td>
+									<span class="customer-see">查看</span>
+			      					<span class="customer-del">删除</span>
+			      					<input type="hidden" name='cusid' value="{$value['id']}">
+								</td>
+								<td class="custom-name">{$value['name']}</td>
+								<td class="custom-name1">{$value['nick']}</td>
+								<td class="custom-province">{$value['pro']}</td>
+								<td class="custom-city">{$value['city']}</td>
+								<td class="custom-town">{$value['county']}</td>
+								<td class="custom-phonenum">{$value['mobile']}</td>
+								<!-- <td>0</td>
+								<td></td> -->
+								<td>{$value['payment']}</td>
+							</tr>
+						{/foreach}
+						</tbody>
+					</table>
+				</div>
+			</div>
+			{if count($cusdata) <= 0}
+			<div class="row" style="display:block;">
+				<div class="no-record"><img src="/images/empty.jpg"/><span>没有找到记录，请调整搜索条件。</span></div>
+			</div>
+			{/if}
+			{$pages}
+			<!--删除 -->
+			<div class="modal modal-customer">
+				<div class="modalcon">
+					<div class="modal-bt">
+						<h4 class="modal-title size-title" id="myModalLabel">提示</h4>
+					    <button type="button" class="close close-btn" data-dismiss="modal" aria-label="Close" id="close-btn"><span aria-hidden="true">x</span></button>
+					</div>
+					<div class="modal-bd">
+					    <span>您确定要删除1条数据吗?</span>
+					</div>
+					<div class="modal-bo">
+			        	<button type="button" class="btn btn-default btn-sm custom-sure">确定</button>
+			        	<button type="button" class="btn btn-default btn-sm close-btn">取消</button>
+					</div>
+				</div>
+			</div>
+			<div class="push"></div>
+		</div>
+		{include file="../comfoot.html"}
+		<script type="text/javascript" src="/js/jquery-1.11.0.min.js"></script>
+		<script type="text/javascript" src="/js/util.js"></script>
+		<script type="text/javascript" src="/js/commontop.js"></script>
+		<script type="text/javascript" src="/bootstrap/js/bootstrap.min.js" ></script>
+		<script type="text/javascript" src="/js/mycom.js"></script>
+		<script type="text/javascript" src="/js/crm/customerlist.js"></script>
+	</body>
+</html>

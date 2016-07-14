@@ -1,0 +1,87 @@
+.row .shipped-form{
+	width:1200px;
+	margin-left:15px;
+	padding:0;
+}
+.row .shipped-form .form-group button{
+	margin-right:10px;
+}
+.row .form-inline .shipped-search{
+	float:right;
+}
+.row .shipped-table{
+	width:1200px;
+	margin-left:15px;
+	padding:0;
+}
+.row .shipped-table thead td{
+   font-weight: 600;
+}
+.row .shipped-table thead td label{
+	height:13px;
+}
+.row .shipped-table thead td:nth-of-type(1){
+   width:46px;
+}
+.row .shipped-table thead td:nth-of-type(2){
+   width:38px;
+}
+.row .shipped-table thead td:nth-of-type(3){
+   width:48px;
+}
+.row .shipped-table thead td:nth-of-type(4){
+   width:46px;
+}
+.row .shipped-table thead td:nth-of-type(5){
+   width:46px;
+}
+.row .shipped-table thead td:nth-of-type(6){
+   width:132px;
+}
+.row .shipped-table thead td:nth-of-type(7){
+   width:132px;
+}
+.row .shipped-table thead td:nth-of-type(8){
+   width:67px;
+}
+.row .shipped-table thead td:nth-of-type(9){
+   width:67px;
+}
+.row .shipped-table thead td:nth-of-type(10){
+   width:93px;
+}
+.row .shipped-table thead td:nth-of-type(11){
+   width:93px;
+}
+.row .shipped-table thead td:nth-of-type(12){
+   width:71px;
+}
+.row .shipped-table thead td:nth-of-type(13){
+   width:128px;
+}
+.row .shipped-table thead td:nth-of-type(14){
+   width:120px;
+}
+.modal-shipped .modalcon{
+	width:300px;
+	margin-left: -150px;
+}
+.modal-shipped .form-inline .form-group{
+   margin-bottom:15px;
+   margin-right:10px;
+}
+.modal-shipped .form-inline .form-control{
+	width:150px;
+}
+.modal-shipped1 .modalcon{
+	width:300px;
+	margin-left: -150px;
+}
+
+
+
+
+
+
+
+

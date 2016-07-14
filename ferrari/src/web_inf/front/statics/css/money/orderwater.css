@@ -1,0 +1,63 @@
+.row .orderwater-nav{
+	width:1200px;
+	margin-left:15px;
+	margin-top:20px;
+	padding:0;
+}
+
+.row .orderwater-form{
+	width:1200px;
+	margin-left:15px;
+	margin-top:20px;
+	padding:0;
+}
+.row .orderwater-form .form-group{
+	float:right;
+	margin-left: 10px;
+}
+.row .orderwater-form .form-control{
+	width:150px;
+}
+.row .orderwater-form .form-group button:nth-of-type(2){
+	margin-left:10px;
+}
+.row .orderwater-form .newbtn{
+	float:left;
+	margin:0;
+}
+.row .orderwater-table{
+	width:1200px;
+	margin-left:15px;
+	padding:0;
+}
+.row .orderwater-table tbody td{
+   text-align: center;
+}
+.row .orderwater-table thead td{
+   text-align: center;
+   font-weight: 600;
+}
+.row .orderwater-table thead td:nth-of-type(1){
+   width:46px;
+}
+.row .orderwater-table thead td:nth-of-type(2){
+   width:164px;
+}
+.row .orderwater-table thead td:nth-of-type(3){
+   width:150px;
+}
+.row .orderwater-table thead td:nth-of-type(4){
+   width:150px;
+}
+.row .orderwater-table thead td:nth-of-type(5){
+   width:160px;
+}
+.row .orderwater-table thead td:nth-of-type(6){
+   width:190px;
+}
+.row .orderwater-table thead td:nth-of-type(7){
+   width:150px;
+}
+.row .orderwater-table thead td:nth-of-type(8){
+   width:190px;
+}

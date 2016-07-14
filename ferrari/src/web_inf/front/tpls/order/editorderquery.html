@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>米欢电商ERP</title>
+		<link href="/images/favicon.ico" rel="shortcut icon">
+		<link rel="stylesheet" type="text/css" href="/bootstrap/css/bootstrap-datetimepicker.min.css"/>
+		<link href="/bootstrap/css/bootstrap.min.css"  rel="stylesheet" media="screen">
+		<link href="/css/commontop.css"   rel="stylesheet" media="screen">
+		<link rel="stylesheet" type="text/css" href="/css/order/neworder.css"/>
+		<style>
+			{literal}
+				@media screen and (max-width: 1120px){
+					/*当屏幕尺寸小于1120px时，应用下面的CSS样式*/
+				    .navbar-nav,#comtop-right{display: none;}
+				}
+			{/literal}
+		</style>
+	</head>
+	<body>
+		{include file="../commontop.html"}
+		<div class="container-fluid container1">
+			<div class="row ware-row">
+				<h5 class="col-md-12">您的位置： <a href="javascript:;">首页</a> » <a href="javascript:;">订单</a> » 编辑订单</h5>
+			</div>
+			<div class="row">
+				<form class="form-inline order-form">
+					<div class="col-md-5 order-form-left">
+				  		<h2 class="row-bold">订单信息</h2>
+				  		<br>
+						<div class="form-group">
+						    <label for="exampleInputName2" class="labelname">下单时间:</label>
+					    	<input type="text" class="datetimepicker form-control" name="time" value="{$list['orderdate']}" readonly="readonly">
+					    	<input type="hidden" value="{$list['id']}" name="orderid" id="orderid">
+						</div>
+						<div class="form-group">
+						    <label for="exampleInputName2" class="labelname">订单编号:</label>
+						    <input type="text" class="form-control" placeholder="线上订单编号" name="onlineid" value="{$list['onlineid']}" readonly="readonly">
+						</div>
+						<div class="form-group">
+						    <label for="exampleInputName2" class="labelname">订单分类:</label>
+						    <select class="form-control" name="orderclass" disabled="disabled">
+							  <option value="0"></option>
+							  {foreach from=$orderclass item=class}
+							  <option value="{$class['id']}" {if $list['categoryid'] eq $class['id']}selected="selected"{/if}>{$class['name']}</option>
+							  {/foreach}
+							</select>
+						</div>
+						<div class="form-group">
+						    <label for="exampleInputEmail2" class="labelname">购买渠道:</label>
+						    <select class="form-control" name="qudao" disabled="disabled">
+						    	<option value="0"></option>
+							  	{foreach from=$qudao item=qudaos}
+							 	<option value="{$qudaos['id']}" {if $list['channelid'] eq $qudaos['id']}selected="selected"{/if}>{$qudaos['name']}</option>
+							  	{/foreach}
+							</select>
+						</div>
+						<div class="form-group">
+						    <label for="exampleInputEmail2" class="labelname">店铺名称:</label>
+						    <select class="form-control" name="shop" disabled="disabled">
+							    <option value="0"></option>
+							  	{foreach from=$shop item=shops}
+							 	<option value="{$shops['id']}" {if $list['companyid'] eq $shops['id']}selected="selected"{/if}>{$shops['name']}</option>
+							  	{/foreach}
+							</select>
+					 	</div>
+					 	<div class="form-group">
+						    <label for="exampleInputEmail2" class="labelname">发货仓库:</label>
+						    <select class="form-control" name="store" disabled="disabled">
+							    <option value="0"></option>
+							  	{foreach from=$store item=stores}
+							 	<option value="{$stores['id']}" {if $list['storeid'] eq $stores['id']}selected="selected"{/if}>{$stores['name']}</option>
+							  	{/foreach}
+							</select>
+					 	</div>
+					 	<div class="form-group">
+						    <label for="exampleInputEmail2" class="labelname">关联订单:</label>
+						    <input class="form-control" type="text" name="guanlian" value="{$list['relatedid']}" readonly="readonly"/>
+					 	</div>
+						<div class="form-group">
+						    <label for="exampleInputEmail2" class="labelname">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;客服:</label>
+						    <input type="text" class="form-control"readonly="readonly" value="{$username}" readonly="readonly">
+						    <input type="hidden" class="form-control"readonly="readonly" value="{$list['serviceid']}" name="serviceid" readonly="readonly">
+						</div>
+					 	<div class="form-group">
+						    <label for="exampleInputEmail2" class="labelname">所属订单:</label>
+						    <input type="text" class="form-control"style="width:390px;"placeholder="多个用英文逗号隔开" name="oparid" id="suoshu" readonly="readonly" value="{$strpid}">
+					 	</div>
+						<div class="form-group">
+						    <label for="exampleInputEmail2" class="labelname">代收贷款:</label>
+						    <select class="form-control" name="isreceive" disabled="disabled">
+							    <option value="N" {if $list['isreceive'] eq "N"}selected="selected"{/if}>否</option>
+							    <option value="Y" {if $list['isreceive'] eq "Y"}selected="selected"{/if}>是</option>
+							</select>
+					 	</div>
+					 	<div class="form-group">
+						    <label for="exampleInputEmail2" class="labelname">审核状态:</label>
+						    <select class="form-control" name="status" disabled="disabled">
+							    <option value="P" {if $list['orstatus'] eq "P"}selected="selected"{/if}>已审核</option>
+							    <option value="N" {if $list['orstatus'] eq "N"}selected="selected"{/if}>待审核</option>
+							</select>
+					 	</div>
+					 	<div class="form-group">
+						    <label for="exampleInputEmail2" class="labelname">发票收据:</label>
+						    <select class="form-control" name="isbill" disabled="disabled">
+							    <option value="N" {if $list['isbill'] eq "N"}selected="selected"{/if}>无</option>
+							    <option value="Y" {if $list['isbill'] eq "Y"}selected="selected"{/if}>有</option>
+							</select>
+					 	</div>
+					 	<div class="form-group piao-group">
+							<label class="labelname">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;票种:</label>
+							<select class="form-control" name="billtype" disabled="disabled">
+							    <option value="N" {if $list['billtype'] eq "N"}selected="selected"{/if}>无</option>
+							    <option value="Y" {if $list['billtype'] eq "Y"}selected="selected"{/if}>专票</option>
+							    <option value="X" {if $list['billtype'] eq "X"}selected="selected"{/if}>普票</option>
+							</select>
+						</div>
+					 	<div class="form-group">
+						    <label for="exampleInputEmail2" class="labelname">订单备注:</label>
+						    <textarea class="form-control order-form-left-mark" row="2" name="comment" readonly="readonly">{$list['comment']}</textarea>
+						</div>
+					</div>
+					<div class="col-md-7 order-form-right">
+						<h2 class="row-bold">客户信息</h2>
+						<br>
+				  		<div class="form-group">
+						    <label for="exampleInputEmail2" class="labelname">客户识别:</label>
+						    <input type="text" class="form-control" placeholder="在此搜索" id="seachkh" name="khname" readonly="readonly">
+						</div>
+				  		<div class="form-group">
+						    <label for="exampleInputEmail2" class="labelname">客户选择:</label>
+						    <select class="form-control" name="khid" id="khid" disabled="disabled">
+						    	<option value="{$list['customerid']}">{$kehuname}</option>
+							</select>
+						</div>
+						<div class="form-group">
+						    <label for="exampleInputEmail2" class="labelname">用户昵称:</label>
+						    <input type="text" class="form-control khinfo" id="nick" name="nick" readonly="readonly">
+						</div>
+						<div class="form-group">
+						    <label for="exampleInputEmail2" class="labelname">手机号码:</label>
+						    <input type="text" class="form-control khinfo" placeholder="必填" id="mobile" name="mobile" readonly="readonly">
+						</div>
+						<div class="form-group">
+						    <label for="exampleInputEmail2" class="labelname">固定电话:</label>
+						    <input type="text" class="form-control khinfo" id="telphone" name="telphone" readonly="readonly">
+						</div>
+						<div class="form-group">
+						    <label for="exampleInputEmail2" class="labelname">邮政编码:</label>
+						    <input type="text" class="form-control khinfo" name="postcode" id="postcode" readonly="readonly">
+						</div>
+						<div class="form-group">
+						    <label for="exampleInputEmail2" class="labelname">公司名称:</label>
+						    <input type="text" class="form-control company-name khinfo" name="companyname" id="companyname" readonly="readonly">
+						</div><br>
+						<div class="form-group">
+						    <label for="exampleInputEmail2" class="labelname">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;省份:</label>
+						    <select class="form-control pro khinfo" id="custom-prov1" name="stateid" disabled="disabled">
+							    	<option value="-1">--请选择--</option>
+							</select>
+						</div>
+						<div class="form-group">
+						    <label for="exampleInputEmail2" class="labelname">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;市(区):</label>
+						    <select class="form-control city khinfo" id="custom-city1" name="cityid" disabled="disabled">
+						    	<option value="-1">--请选择--</option>
+						    </select>
+						</div>
+						<div class="form-group">
+						    <label for="exampleInputEmail2" class="labelname">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;区(县):</label>
+						    <select class="form-control county khinfo" id="custom-town1" name="districtid" disabled="disabled">
+						    	<option value="-1">--请选择--</option>
+						    </select>
+						</div>
+						<div class="form-group">
+						    <label for="exampleInputEmail2" class="labelname">详细地址:</label>
+						    <input class="form-control right-address khinfo" type="text"/  id="address" name="address" readonly="readonly">
+						</div>
+						<div class="form-group">
+						    <label for="exampleInputEmail2" class="labelname">客户留言:</label>
+						    <textarea class="form-control right-mark" rows="2"  name="cusmsg" readonly="readonly">{$list['cusmsg']}</textarea>
+						</div>
+					</div>
+					<div class="choice-bt" style="width:1200px;float:left;margin-bottom:15px;">
+						<h2 class="row-bold">选择商品</h2>
+					</div>
+					<br>
+		           <br>
+		           <table class="table table-hover order-table1">
+						<thead>
+	                		<tr class="active">
+		                    	<td>序号</td>
+		                    	<td>图片</td>
+		                    	<td>商品名称</td>
+		                    	<td>商品规格</td>
+		                    	<td>单位</td>
+		                    	<td>单价</td>
+		                    	<td>数量</td>
+		                    	<td>优惠</td>
+		                    	<td>应付</td>
+		                    	<td>备注</td>
+	                		</tr>
+	        			</thead>
+	        			<tbody id="tbody1">
+	        				{foreach from=$pro key=k item=row}
+	                        <tr class="onetr">
+		                        <td class="onetd1">{$k+1}</td>
+		                        <td class="warestatus-tbody-img">
+		                        	<img src="http://img.1sheng.com/{$row['image']}"  class="img1">
+		                        	<img src="http://img.1sheng.com/{$row['image']}"  class="img2">
+		                        </td>
+		                        <td>{$row['productname']}</td>
+		                        <td>{$row['gui']}</td>
+		                        <td>{$row['dwname']}</td>
+		                        <td><span>￥</span>{$row['price']}</td>
+		                        <td>{$row['total']}</td>
+		                        <td><span>￥</span>{$row['discount']}</td>
+		                        <td><span>￥</span>{$row['payment']}</td>
+		                        <td>{$row['comment']}</td>
+	                        </tr>
+	                        {/foreach}
+	                    </tbody>
+	                    <tfoot>
+	                    	<tr>
+	                    		<td>合计</td>
+	                    		<td colspan="5"></td>
+	                    		<td></td>
+	                    		<td>
+		                    		<span>￥{$list['discount']}</span>
+	                    		</td>
+	                    		<td>
+		                    		<span>￥{$list['ypayment']}</span>
+	                    		</td>
+		                        <td></td>
+	                    	</tr>
+	                    </tfoot>
+	                </table>
+	                <br>
+	                <h2 class="row-bold order-bt">印刷</h2>
+	                <div class="total-order">
+	                	<div class="form-group">
+							<label for="exampleInputName2" class="labelname">印刷内容：</label>
+				  			<input class="form-control input-sm print-content" name="printcomment" value="{$print['contents']}" readonly="readonly"/>
+						</div>
+						<div class="form-group">
+							<label for="exampleInputName2" class="labelname">印刷确认情况：</label>
+				  			<select class="form-control" name="printinfo" disabled="disabled">
+							  <option value="N" {if $print['affirm'] eq "N"}selected="selected"{/if}>无印刷</option>
+							  <option value="R" {if $print['affirm'] eq "R"}selected="selected"{/if}>待确认</option>
+							  <option value="Y" {if $print['affirm'] eq "Y"}selected="selected"{/if}>已确认</option>
+							<select>
+						</div>
+					</div>
+					<h2 class="row-bold order-bt">发货方式</h2>
+	                <div class="total-order">
+	                	<div class="form-group">
+							<label for="" class="labelname" style="margin-right:15px;">
+								<input type="radio" name="radio" style="margin-right:5px;" class="choice" value="K" {if $deliver['type'] eq 'K'}checked="checked"{/if} disabled="disabled">快递
+							</label>
+							<label for="" class="labelname">
+								<input type="radio" name="radio" style="margin-right:5px;" class="choice" value="W" {if $deliver['type'] eq 'W'}checked="checked"{/if} disabled="disabled">物流
+							</label>
+						</div>
+	                	<div class="method">
+	                		<div class="form-group">
+								<label for="exampleInputName2" class="labelname">快递公司：</label>
+					  			<select class="form-control" name="kuaidi" disabled="disabled">
+								   <option value="0"></option>
+								  {foreach from=$kuaidi item=kuaidis}
+								  <option value="{$kuaidis['id']}" {if $deliver['transportid'] eq $kuaidis['id']}selected="selected"{/if}>{$kuaidis['name']}</option>
+								  {/foreach}
+								<select>
+							</div>
+							<div class="form-group">
+								<label for="exampleInputName2" class="labelname">快递运费：</label>
+					  			<div class="input-group">
+							      <div class="input-group-addon">￥</div>
+							      <input type="text" class="form-control" id="exampleInputAmount" style="width:110px;" name="kdmoney" value="{if $deliver['type'] eq 'K'}{$deliver['freight']}{/if}" readonly="readonly">
+							    </div>
+							</div>
+							<div class="form-group">
+								<label for="exampleInputName2" class="labelname">快递单号：</label>
+					  			<input class="form-control company-express" name="kdnumber" value="{if $deliver['type'] eq 'K'}{$deliver['waybill']}{/if}" readonly="readonly">
+							</div>
+							<div class="form-group">
+								<label for="exampleInputName2" class="labelname">实际重量：</label>
+					  			<div class="input-group">
+							      <input type="text" class="form-control" id="exampleInputAmount" style="width:110px;" name="kdweight" value="{if $deliver['type'] eq 'K'}{$deliver['realweight']}{/if}" readonly="readonly">
+							      <div class="input-group-addon">kg</div>
+							    </div>
+							</div>
+							<div class="form-group">
+								<label for="exampleInputName2" class="labelname">预估重量：</label>
+					  			<div class="input-group">
+							      <input type="text" class="form-control" id="exampleInputAmount" style="width:110px;" readonly="readonly">
+							      <div class="input-group-addon">kg</div>
+							    </div>
+							    <button type="button" class="btn btn-sm btn-default pk-btn">快递费比较</button>
+							</div>
+							<br>
+							<table class="table table-hover pk-table">
+								<thead>
+									<tr class="active">
+										<td>快递公司</td>
+										<td>重量(kg)</td>
+										<td>快递费(元)</td>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<td></td>
+										<td></td>
+										<td></td>
+									</tr>
+								</tbody>
+							</table>
+	                	</div>
+	                	<div class="method">
+	                		<div class="form-group">
+	                			<label for="exampleInputName2" class="labelname">托运公司：</label>
+					  			<select class="form-control" name="wuliu" disabled="disabled">
+								  <option value="0"></option>
+								  {foreach from=$wuliu item=wulius}
+								  <option value="{$wulius['id']}" {if $deliver['transportid'] eq $wulius['id']}selected="selected"{/if}>{$wulius['name']}</option>
+								  {/foreach}
+								<select>
+	                		</div>
+	                		<div class="form-group">
+	                			<label for="" class="labelname">运单编号：</label>
+	                			<input type="text" class="form-control"style="width:200px;" name="wlnumber" value="{if $deliver['type'] eq 'W'}{$deliver['waybill']}{/if}" readonly="readonly">
+	                		</div>
+	                		<div class="form-group">
+	                			<label for="exampleInputName2" class="labelname">运费：</label>
+					  			<div class="input-group">
+							      <div class="input-group-addon">￥</div>
+							      <input type="text" class="form-control" id="exampleInputAmount" style="width:110px;" name="wlmoney" value="{if $deliver['type'] eq 'W'}{$deliver['freight']}{/if}" readonly="readonly">
+							    </div>
+	                		</div>
+	                	</div>
+					</div>
+					<h2 class="row-bold order-bt">财务</h2>
+	                <div class="total-order">
+						<div class="form-group">
+							<label for="exampleInputAmount" class="labelname">应收金额：</label>
+						    <div class="input-group">
+						      <div class="input-group-addon">￥</div>
+						      <input type="text" class="form-control" id="yingshou" style="width:110px;" readonly="readonly" value="{$payin['qpayment']}" name="yingshou">
+						    </div>
+						</div>
+						<div class="form-group">
+							<label for="exampleInputName2" class="labelname">实收金额：</label>
+				  			<div class="input-group">
+						      <div class="input-group-addon">￥</div>
+						      <input type="text" class="form-control" id="shishou" style="width:110px;" name="shishou" readonly="readonly">
+						    </div>
+						</div>
+						<div class="form-group">
+							<label for="exampleInputName2" class="labelname">欠款尾数：</label>
+				  			<div class="input-group">
+						      <div class="input-group-addon">￥</div>
+						      <input type="text" class="form-control" id="qiankuan" style="width:110px;"readonly="readonly" name="qiankuan">
+						    </div>
+						</div>
+						<br>
+						<div class="form-group">
+							<label for="exampleInputName2" class="labelname">银行账户：</label>
+				  			<select id="exampleInputName2" class="form-control" name="zhanghao" disabled="disabled">
+								<option value="-1"></option>
+								{foreach from=$zhanghu item=zhanghus}
+								<option value="{$zhanghus['id']}" {if $payin['bankid'] eq $zhanghus['id']}selected="selected"{/if}>{$zhanghus['name']}</option>
+								{/foreach}
+							</select>
+						</div>
+						<div class="form-group">
+							<label for="exampleInputName2" class="labelname">财务入账：</label>
+				  			<select class="form-control" name="ruzhang" disabled="disabled">
+							  <option value="N" {if $payin['status'] eq 'N'}selected="selected"{/if}>未入账</option>
+							  <option value="A" {if $payin['status'] eq 'A'}selected="selected"{/if}>自动入账</option>
+							  <option value="H" {if $payin['status'] eq 'H'}selected="selected"{/if}>手动入账</option>
+							  <option value="P" {if $payin['status'] eq 'P'}selected="selected"{/if}>部分入账</option>
+							<select>
+						</div>
+						<div class="form-group">
+							<label for="exampleInputName2" class="labelname">财务科目：</label>
+				  			<select id="exampleInputName2" class="form-control" name="kemu" disabled="disabled">
+				  				<option value="-1"></option>
+								{foreach from=$kemu item=kemus}
+								<option value="{$kemus['id']}" {if $payin['financesubid'] eq $kemus['id']}selected="selected"{/if}>{$kemus['name']}</option>
+								{/foreach}
+							</select>
+						</div>
+					</div>
+					<h2 class="row-bold order-bt">发货|减库</h2>
+	                <div class="total-order">
+						<div class="form-group">
+							<label for="exampleInputAmount" class="labelname">发货状态：</label>
+						    <select class="form-control">
+							  <option>无需发货</option>
+							<select>
+						</div>
+						<div class="form-group">
+							<label for="exampleInputAmount" class="labelname">减库状态：</label>
+						    <select class="form-control">
+							  <option>无需减库</option>
+							<select>
+						</div>
+
+					</div>
+					<h2 class="row-bold order-bt">售后留言</h2>
+					<div class="total-order">
+						<div class="form-group">
+						    <textarea name="" rows="3" class="form-control shouhou" id="shouhou"></textarea>
+						    <button class="btn btn-sm btn-default add-shou" type="button" id="addshouhou">添加</button>
+						</div>
+						<table class="table table-hover shouhou-table">
+							<thead>
+								<tr class="active">
+									<td>日期</td>
+									<td>内容</td>
+									<td>留言人</td>
+									<td>操作</td>
+								</tr>
+							</thead>
+							<tbody class="shou-tbody" id="tb">
+							</tbody>
+						</table>
+					</div>
+					<h2 class="row-bold order-bt imagearea">图片专区(
+						<a href="javascript:;" class="upload">上传图片
+							<input class="fileupload" type="file"  name="goodspic">
+						</a>)
+					</h2>
+					<div class="total-order imagelist">
+					{foreach $ordermsgdata as $key=>$value}
+						<div class="Upload-img" style='background: white;'>
+							<span class="picnotice">
+							<a href='{$value['path']}{$value['filename']}' target="blank">
+									<img class="modalImg modalImg1"src="{$value['path']}{$value['filename']}"/>
+								</a>
+							</span>
+							<div class="modal-div oimageaction">
+								<span class="modal-Del oimagedel">删除</span>
+								<input type="hidden" name='ordermsgid' value="{$value['id']}">
+							</div>
+						</div>
+					{/foreach}
+					</div>
+					<h2 class="row-bold order-bt">操作记录</h2>
+					<div class="total-order">
+						<table class="table table-hover caozuo-table">
+							<thead>
+								<tr class="active">
+									<td>日期</td>
+									<td>内容</td>
+									<td>操作人</td>
+								</tr>
+							</thead>
+							<tbody>
+							{foreach from=$recode item=recodes}
+								<tr>
+									<td>{$recodes['createtime']}</td>
+									<td>{$recodes['operate']}</td>
+									<td>{$recodes['username']}</td>
+								</tr>
+							{/foreach}
+							</tbody>
+						</table>
+					</div>
+					<div class="form-group">
+						<a class="btn btn-default" href="/order/orderquery.php">返回</a>
+					</div>
+				</form>
+			</div>
+			<div class="push"></div>
+		</div>
+		{include file="../comfoot.html"}
+		<script src="/js/jquery-1.11.0.min.js" ></script>
+		<script src="/bootstrap/js/bootstrap.min.js"></script>
+		<script src="/js/util.js"></script>
+		<script src="/js/commontop.js"></script>
+		<script src="/js/order/editorderquery.js"></script>
+		<script type="text/javascript" src="/js/threeljs/areasvc.js"></script>
+		<script type="text/javascript" src="/js/plupload.min.js"></script>
+		<script type="text/javascript" src="/js/order/imgupload.js"></script>
+	</body>
+</html>

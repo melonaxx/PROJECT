@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>米欢电商ERP</title>
+		<link href="/images/favicon.ico" rel="shortcut icon">
+		<link rel="stylesheet" type="text/css" href="/bootstrap/css/bootstrap-datetimepicker.min.css"/>
+		<link href="/bootstrap/css/bootstrap.min.css"  rel="stylesheet" media="screen">
+		<link href="/css/commontop.css"   rel="stylesheet" media="screen">
+		<link rel="stylesheet" type="text/css" href="/css/warehouse/warestatus.css"/>
+		<link rel="stylesheet" type="text/css" href="/css/product/product_addlist.css"/>
+		<style>
+			{literal}
+				@media screen and (max-width: 1120px){ 
+					/*当屏幕尺寸小于1120px时，应用下面的CSS样式*/
+				    .navbar-nav,#comtop-right{display: none;}
+				}
+			{/literal}
+		</style>
+	</head>
+	<body>
+		{include file="../commontop.html"}
+		<div class="container-fluid container1">
+			<div class="row ware-row">
+				<h5>您的位置： <a href="javascript:;">首页</a> » <a href="javascript:;">生产单</a></h5>
+			</div>
+			<div class="row">
+				<form class="form-inline col-xs-12 addlist-form">
+				    <div class="form-group">
+				    	<label for="exampleInputName2" class="labelname">&nbsp;&nbsp;&nbsp;入库仓库：</label>
+				    	<select class="form-control" id="exampleInputName2">
+					  		<option>{$one_pro_list['storeinfo']}</option>
+						</select>
+				    </div>
+				    <br>
+				    <div class="form-group">
+				   		<label for="exampleInputName2" class="labelname">生产单摘要：</label>	
+				  		<textarea class="form-control text-mark" rows="3">{$one_pro_list['brief']}</textarea>
+				    </div>
+				   
+				    <br>
+					<div class="row-bold addpur-bt">商品信息</div>
+					<table class="table table-hover add-table" border="1">
+						<thead>
+							<tr class="active">
+								<td>搜索</td>
+								<td>商品名称与规格</td>
+								<td>图片</td>
+								<td>单位</td>
+								<td>数量</td>
+							</tr>
+						</thead>
+						<tbody id="tbody1">
+	                        <tr class="onetr1">
+		                        <td>
+		                        	<input type="text" class="form-control searchbox" placeholder="请搜索商品名称与规格" />
+		                        </td>
+		                        <td>
+		                        	<select class="form-control searchname" >
+		                        		<option value="">{$one_pro_list['goodsinfo']}</option>
+		                        	</select>
+		                        </td>
+		                        <td class="warestatus-tbody-img">
+		                        	<img src="{$one_pro_list['img']}" class="img1"/>
+		                        	<img src="{$one_pro_list['img']}" class="img2"/>
+		                        </td>
+		                        <td style="text-align:center;">{$one_pro_list['proflats_name']}</td>
+		                        <td>
+		                        	<input type="text" class="form-control goodsnum" placeholder="必填" value="{$one_pro_list['total']}"/>
+		                        </td>
+	                        </tr>
+	                    </tbody>
+					</table>
+					 <div class="form-group">
+				   		<label for="exampleInputName2" class="labelname">生产单备注：</label>	
+				  		<textarea class="form-control text-mark" rows="3">{$one_pro_list['comment']}</textarea>
+				    </div>
+					<br>
+					<div class="form-group"style="margin-top: 75px;">
+						<a class="btn btn-default" href="product_checklist.php">返回</a>
+					</div>
+				</form>
+			</div>
+			<div class="push"></div>
+		</div>
+		{include file="../comfoot.html"}
+		<script type="text/javascript" src="/js/jquery-1.11.0.min.js"></script>
+		<script type="text/javascript" src="/js/commontop.js"></script>
+		<script type="text/javascript" src="/bootstrap/js/bootstrap.min.js" ></script>
+		<script type="text/javascript" src="/bootstrap/js/bootstrap-datetimepicker.min.js"></script>
+		<script type="text/javascript" src="/js/mycom.js"></script>
+		<script type="text/javascript" src="/js/product/product_addlist.js"></script>
+		<script type="text/javascript" src="/js/warehouse/warestatus.js"></script>
+	</body>
+</html>

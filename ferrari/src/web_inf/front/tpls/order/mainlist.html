@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>米欢电商ERP</title>
+		<link href="/images/favicon.ico" rel="shortcut icon">
+		<link rel="stylesheet" type="text/css" href="/bootstrap/css/bootstrap-datetimepicker.min.css"/>
+		<link href="/bootstrap/css/bootstrap.min.css"  rel="stylesheet" media="screen">
+		<link href="/css/commontop.css"   rel="stylesheet" media="screen">
+		<link rel="stylesheet" type="text/css" href="/css/order/mainlist.css"/>
+		<style>
+			{literal}
+				@media screen and (max-width: 1120px){ 
+					/*当屏幕尺寸小于1120px时，应用下面的CSS样式*/
+				    .navbar-nav,#comtop-right{display: none;}
+				}
+			{/literal}
+		</style>
+	</head>
+	<body>
+		{include file="../commontop.html"}
+		<div class="container-fluid container1">
+			<div class="row ware-row">
+				<h5 class="col-md-12">您的位置： <a href="javascript:;">首页</a> » <a href="javascript:;">订单</a> » 审核主订单</h5>
+			</div>
+			<div class="row">
+				<ul class="nav nav-tabs col-md-12 mainlist-nav">
+				  <li role="presentation">
+				  	<a href="/order/mainorder.php">添加主订单</a>
+				  </li>
+				  <li role="presentation">
+				  	<a href="/order/checkmain.php">审核主订单</a>
+				  </li>
+				  <li role="presentation" class="active">
+				  	<a href="/order/mainlist.php">主订单列表</a>
+				  </li>
+				</ul>
+			</div>
+			<div class="row">
+				<form action="/order/mainlist.php" method="post" class="form-inline col-md-12 mainlist-form">
+					<div class="form-group" style="float:right;margin-right: 0;">
+					    <div class="input-group">
+							<input  placeholder="输入订单编号" class="form-control input-sm input_search" type="text" name="number" value="{$number}">
+							<span class="input-group-btn">
+								<button class="btn btn-default btn-sm" style="margin-right: 0;" type="submit">搜索</button>
+							</span>
+						</div>
+						<a class="btn btn-sm btn-default" href="/order/mainlist.php" style="margin-right: 0;">重置</a>
+					</div>
+					<div class="form-group" style="float:right;margin-right: 15px;">
+						<label class="labelname">票种：</label>
+						<label for="" class="labelname">
+							<input type="radio" name="radio" style="margin-right:5px;"value="S" {if $radio eq 'S'}checked="checked"{/if}>专票
+						</label>
+						<label for="" class="labelname">
+							<input type="radio" name="radio" style="margin-right:5px;" value="G" {if $radio eq 'G'}checked="checked"{/if}>普票
+						</label>
+						<input type="hidden" value="{$seach}" id="seach">
+					</div>
+				</form>
+				<table class="table table-hover col-md-12 mainlist-table">
+					<thead>
+	            		<tr class="active">
+	                    	<td>序号</td>
+	                    	<td>操作</td>
+	                    	<td>下单时间</td>
+	                    	<td>订单类别</td>
+	                    	<td>购买渠道</td>
+	                    	<td>买家名称</td>
+	                    	<td>手机</td>
+	                    	<td>入账状态</td>
+	                    	<td>店铺</td>
+	                    	<td>客服</td>
+	                    	<td>订单编号</td>
+	            		</tr>
+	    			</thead>
+	    			<tbody class="ortbody">
+	    			{foreach from=$list key=k item=row}
+	                    <tr class="order-tr">
+	                        <td class="order-td">{$k+1}</td>
+	                        <td>
+	                        	<a href="/order/editmainlist.php?id={$row['id']}">编辑</a>&nbsp;&nbsp;&nbsp;
+	                        	<a href="/order/childorder.php?id={$row['id']}">子订单</a>
+	                        </td>
+	                        <td>{$row['orderdate']}</td>
+	                        <td>{$row['classname']}</td>
+	                        <td>{$row['qudao']}</td>
+	                        <td>{$row['cusname']}</td>
+	                        <td>{$row['mobile']}</td>
+	                        <td>{if $row['financestatus'] eq 'N'}未入账{elseif $row['financestatus'] eq 'A'}自动入帐{elseif $row['financestatus'] eq 'H'}手动入帐{elseif $row['financestatus'] eq 'P'}部分入账{/if}</td>
+	                        <td>{$row['shopname']}</td>
+	                        <td>{$row['kefu']}</td>
+	                        <td>{$row['id']}</td>
+	                    </tr>
+	                   {/foreach}
+	                </tbody>
+	            </table>
+			</div>
+			{$pages}
+			<div class="row no-find">
+				<div class="no-record col-md-12"><img src="/images/empty.jpg"/><span>没有找到记录，请调整搜索条件。</span></div>
+			</div>
+			<div class="push"></div>
+		</div>
+		{include file="../comfoot.html"}
+		<script src="/js/jquery-1.11.0.min.js" ></script>
+		<script src="/bootstrap/js/bootstrap.min.js"></script>
+		<script src="/js/commontop.js"></script>
+		<script src="/js/order/mainlist.js"></script>
+	</body>
+</html>

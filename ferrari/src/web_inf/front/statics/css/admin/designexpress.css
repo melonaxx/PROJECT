@@ -1,0 +1,130 @@
+.container1 .design-row{
+	margin-top:0;
+}
+.row .design-left{
+	width:860px;
+	height:auto;
+	padding:0;
+	margin:0;
+	float:left;
+	border:1px solid #ddd;
+	border-radius: 3px;
+}
+.row .design-right{
+	/*position:absolute;*/
+	width:480px;
+	border:1px solid #ddd;
+	/*right:0;*/
+	border-radius: 3px;
+	margin:0px 0px;
+	height:660px;
+	overflow: auto;
+	padding:0;
+	float:right;
+}
+.design-left .printdesign-btn{
+	padding-left:245px;
+	float:left;
+}
+.design-left .printdesign-btn button{
+	margin-right:10px;
+}
+.design-left .loadloop{
+	float:left;
+	width:100%;
+	height:630px;
+	overflow:auto;
+	background:gray;
+}
+.dropdown_header{
+	height:30px;
+	text-align:left;
+	background:#eee;
+	padding:0px 20px;
+	line-height:30px;
+	border:1px solid #aaa;
+	border-radius: 3px;
+	font-size:12px;
+}
+.car_right,.car_left{
+	width:25px;
+	height:25px;
+	margin-top:2px;
+	border-radius: 3px;
+	line-height: 1.5;
+	padding: 4px 5px;
+	display:inline-block;
+}
+.car_right{
+	float:right;
+	display:block;
+}
+
+.car_right:hover,.car_left:hover{
+	background:#bbb;
+	border:1px solid lightblue;
+	padding-right:10px;
+}
+.car_left1:hover{
+	width:25px;
+	height:25px;
+	background:#bbb;
+	border:1px solid lightblue;
+	padding:3px;
+}
+.car_right .caret{
+	margin-right:10px;
+}
+.dropdown_body{
+	line-height:40px;
+	text-align:left;
+	padding:0px 10px;
+	font-size:12px;
+}
+.dropdown_body_header{
+	height:30px;
+}
+.dropdown_body_body{
+	line-height:28px;
+	display:none;
+}
+.dropdown_body_body span{
+	width:110px;
+	overflow:visible;
+	margin-right:5px;
+	display:inline-block;
+	
+}
+.dropdown_body_body span input{
+	width:13px;
+	height:13px;
+	display:inline;
+	/*margin-top:3px;*/
+}
+.dropdown_body_body span label{
+	margin: 0 0 0 4px;
+	height:30px;
+	vertical-align: middle;
+	font-size:12px;
+}
+.dropdown_body_body span label:nth-of-type(1){
+	padding-top:3px;
+}
+.modal-tip .modalcon{
+	width:300px;
+	margin-left: -150px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+

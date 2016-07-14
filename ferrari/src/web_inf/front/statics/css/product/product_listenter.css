@@ -1,0 +1,241 @@
+.row .listenter-nav{
+	width:1200px;
+	margin-left: 15px;
+}
+.row .listenter-form{
+	width:1200px;
+	margin-left: 15px;
+	padding:0;
+}
+.row .listenter-form .form-group{
+	float:right;
+	margin-left: 15px;
+}
+.row .listenter-table{
+	width:1200px;
+	margin-left: 15px;
+	padding:0;
+}
+.row .listenter-table thead td:nth-of-type(1){
+	width:46px;
+}
+.row .listenter-table thead td:nth-of-type(2){
+	width:56px;
+}
+.row .listenter-table thead td:nth-of-type(3){
+	width:140px;
+}
+.row .listenter-table thead td:nth-of-type(4){
+	width:388px;
+}
+.row .listenter-table thead td:nth-of-type(5){
+	width:100px;
+}
+.row .listenter-table thead td:nth-of-type(6){
+	width:150px;
+}
+.row .listenter-table thead td:nth-of-type(7){
+	width:200px;
+}
+.row .listenter-table thead td:nth-of-type(8){
+	width:120px;
+}
+
+.row .listenter-table1 thead td:nth-of-type(1){
+	width:46px;
+}
+.row .listenter-table1 thead td:nth-of-type(2){
+	width:90px;
+}
+.row .listenter-table1 thead td:nth-of-type(3){
+	width:150px;
+}
+.row .listenter-table1 thead td:nth-of-type(4){
+	width:150px;
+}
+.row .listenter-table1 thead td:nth-of-type(5){
+	width:150px;
+}
+.row .listenter-table1 thead td:nth-of-type(6){
+	width:150px;
+}
+.row .listenter-table1 thead td:nth-of-type(7){
+	width:158px;
+}
+.row .listenter-table1 thead td:nth-of-type(8){
+	width:150px;
+}
+.row .listenter-table1 thead td:nth-of-type(9){
+	width:110px;
+}
+.row .listenter-table1 .listenter-detail{
+	cursor: pointer;
+}
+.row .listenter-table1 .listenter-print{
+	cursor: pointer;
+}
+.row .enter-table{
+	width:1200px;
+}
+.row .enter-table thead td:nth-of-type(1){
+	width:496px;
+	text-align:left;
+}
+.row .enter-table tbody td:nth-of-type(1)>input{
+	text-align:left;
+	width:486px;
+}
+.row .enter-table thead td:nth-of-type(2){
+	width:46px;
+	text-align:center;
+}
+.row .enter-table tbody td:nth-of-type(2){
+	text-align:center;
+}
+.row .enter-table thead td:nth-of-type(3){
+	width:58px;
+}
+.row .enter-table thead td:nth-of-type(4){
+	width:150px;
+}
+.row .enter-table tbody td:nth-of-type(4)>input{
+	width:140px;
+}
+.row .enter-table thead td:nth-of-type(5){
+	width:450px;
+}
+.row .enter-table tbody td:nth-of-type(5)>input{
+	width:440px;
+}
+.row .product-enter-table thead td:nth-of-type(1){
+	width:46px;
+	text-align: left;
+}
+.row .product-enter-table thead td:nth-of-type(2){
+	width:154px;
+	text-align: left;
+}
+.row .product-enter-table tbody td:nth-of-type(2){
+	text-align: left;
+}
+.row .product-enter-table thead td:nth-of-type(3){
+	width:150px;
+}
+.row .product-enter-table thead td:nth-of-type(4){
+	width:100px;
+}
+.row .product-enter-table thead td:nth-of-type(5){
+	width:450px;
+}
+.row .product-enter-table thead td:nth-of-type(6){
+	width:100px;
+}
+.row .product-enter-table thead td:nth-of-type(7){
+	width:100px;
+}
+.row .product-enter-table thead td:nth-of-type(8){
+	width:100px;
+}
+.row .product-enter-table .total span{
+	margin-right: 10px;
+}
+.row .product-enter-table .enterware-num{
+	width:145px;
+}
+.row .product-enter-table2 thead td:nth-of-type(1){
+	width:46px;
+	text-align: left;
+}
+.row .product-enter-table2 thead td:nth-of-type(2){
+	width:150px;
+	text-align: left;
+}
+.row .product-enter-table2 tbody td:nth-of-type(2){
+	text-align: left;
+}
+.row .product-enter-table2 thead td:nth-of-type(3){
+	width:100px;
+}
+.row .product-enter-table2 thead td:nth-of-type(4){
+	width:604px;
+}
+.row .product-enter-table2 thead td:nth-of-type(5){
+	width:100px;
+}
+.row .product-enter-table2 thead td:nth-of-type(6){
+	width:100px;
+}
+.row .product-enter-table2 thead td:nth-of-type(7){
+	width:100px;
+}
+.row .product-enter-table1 thead td:nth-of-type(1){
+	width:46px;
+}
+.row .product-enter-table1 thead td:nth-of-type(2){
+	width:300px;
+	text-align: left;
+}
+.row .product-enter-table1 tbody td:nth-of-type(2){
+	text-align: left;
+}
+
+.row .product-enter-table1 thead td:nth-of-type(3){
+	width:160px;
+}
+.row .product-enter-table1 thead td:nth-of-type(4){
+	width:694px;
+}
+.row .product-enter-table1 tbody td:nth-of-type(4)>input{
+	width:684px;
+}
+.modal-listenter .modalcon {
+    width: 800px;
+    margin-left: -400px;
+}
+.modal-listenter .modalcon .modal-bd{
+	height:300px;
+	overflow: auto;
+}
+.modal-listenter .modalcon .listenter-modalform{
+	margin-top:15px;
+}
+.modal-listenter .modalcon .form-group{
+	margin-bottom:15px;
+	margin-right:15px;
+}
+.modal-listenter .listentermodal-table {
+    width: 750px;
+    margin-top:15px;
+}
+.modal-listenter .listentermodal-table thead td:nth-of-type(1){
+	width:50px;
+}
+.modal-listenter .listentermodal-table thead td:nth-of-type(2){
+	width:200px;
+	text-align:left;
+}
+.modal-listenter .listentermodal-table tbody td:nth-of-type(2){
+	text-align:left;
+}
+.modal-listenter .listentermodal-table thead td:nth-of-type(3){
+	width:150px;
+}
+.modal-listenter .listentermodal-table thead td:nth-of-type(4){
+	width:350px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

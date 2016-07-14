@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>米欢电商ERP</title>
+ 		<link href="/images/favicon.ico" rel="shortcut icon">
+		<link rel="stylesheet" type="text/css" href="/bootstrap/css/bootstrap.min.css"/>
+		<link rel="stylesheet" type="text/css" href="/bootstrap/css/bootstrap-datetimepicker.min.css"/>
+		<link href="/css/commontop.css"   rel="stylesheet" media="screen">
+		<link href="/css/app/printlist.css"   rel="stylesheet" media="screen">
+	</head>
+	<body>
+		{include file="../commontop.html"}
+		<div class="container-fluid container1">
+			<div class="row ware-row">
+				<h5 class="col-md-12">您的位置： <a href="javascript:;">首页</a> » <a href="javascript:;">应用</a> » 编辑印刷单</h5>
+			</div>
+			<div class="row">
+				<ul class="nav nav-tabs col-md-12 print-nav">
+			  		<li role="presentation" class="active">
+				  		<a href="/app/editprint.php">编辑印刷单</a>
+				  	</li>
+				</ul>
+			</div>
+			<div class="row">
+				<form action="" class="form-inline print-form">
+					<div class="form-left col-md-6">
+						<div class="form-group">
+						    <label for="exampleInputName2" class="labelname">印刷内容：</label>
+						    <input type="text" class="form-control content" style="width:480px;" value="{$pbilldata['content']}">
+						    <input type="hidden" name="pbillid" value="{$pbilldata['id']}">
+						</div>
+						<br>
+						<div class="form-group">
+						    <label for="exampleInputName2" class="labelname">印刷单位：</label>
+						    <select class="form-control printunitid">
+						    	<option value="-1">--请选择--</option>
+						    	{foreach $unitdata as $key=>$value}
+						    		<option value="{$value['id']}" {if $pbilldata['printunitid'] == $value['id']} selected {/if}>{$value['name']}</option>
+						    	{/foreach}
+							</select>
+						</div>
+						<div class="form-group">
+						    <label for="exampleInputName2" class="labelname">印刷方式：</label>
+						    <select class="form-control printmethodid">
+						    	<option value="-1">--请选择--</option>
+						    	{foreach $methoddata as $key=>$value}
+						    		<option value="{$value['id']}" {if $pbilldata['printmethodid'] == $value['id']} selected {/if}>{$value['name']}</option>
+						    	{/foreach}
+							</select>
+						</div>
+						<br>
+						<div class="form-group">
+						    <label for="exampleInputName2" class="labelname">&nbsp;&nbsp;&nbsp;制版数：</label>
+						    <input type="text" class="form-control vnumber" value="{$pbilldata['vnumber']}">
+						</div>
+						<div class="form-group">
+						    <label for="exampleInputName2" class="labelname">产品数量：</label>
+						    <input type="text" class="form-control pnumber" value="{$pbilldata['pnumber']}">
+						</div>
+						<br>
+						<div class="form-group">
+						    <label for="exampleInputName2"   class="labelname">印刷次数：</label>
+						    <input type="text" class="form-control frequency" value="{$pbilldata['frequency']}">
+						</div>
+						<div class="form-group">
+						    <label for="exampleInputName2" class="labelname">印刷位置：</label>
+						    <input type="text" class="form-control position" value="{$pbilldata['position']}">
+						</div>
+						<br>
+						<div class="form-group">
+						    <label for="exampleInputName2" class="labelname">订单编号：</label>
+						    <input type="text" class="form-control orderid" value="{$pbilldata['orderid']}">
+						</div>
+						<div class="form-group">
+						    <label for="exampleInputName2"   class="labelname">款式名称：</label>
+						    <input type="text" class="form-control stylename" value="{$pbilldata['stylename']}">
+						</div>
+						<br>
+						<div class="form-group">
+						    <label for="exampleInputName2" class="labelname"><a href="http://{$pbilldata['loadaddress']}">下载地址：</a></label>
+						    <input type="text" class="form-control loadaddress" style="width:480px;" placeholder="源文件下载地址" value="{$pbilldata['loadaddress']}">
+						</div>
+						<br>
+						<div class="form-group">
+						    <label for="exampleInputName2" class="labelname">完工状态：</label>
+						    <select class="form-control comstatus">
+								<option value="N" {if $pbilldata['comstatus'] == 'N'} selected {/if}>未完工</option>
+								<option value="Y" {if $pbilldata['comstatus'] == 'Y'} selected {/if}>已完工</option>
+								<option value="R" {if $pbilldata['comstatus'] == 'R'} selected {/if}>返工</option>
+							</select>
+						</div>
+						<div class="form-group">
+						    <label for="exampleInputName2" class="labelname">完工日期：</label>
+						    <input type="text" class="form-control comdate" name="complatedate" value="{$pbilldata['comdate']}">
+						</div>
+						<br>
+						<!-- <div class="form-group">
+						    <label for="exampleInputName2" class="labelname">下单日期：</label>
+						    <input type="text" class="form-control" readonly="readonly">
+						</div> -->
+						<div class="form-group">
+						    <label for="exampleInputName2" class="labelname">排版状态：</label>
+						     <select class="form-control tpsetstatus">
+								<option value="N" {if $pbilldata['tpsetstatus'] == 'N'} selected {/if}>未排版</option>
+								<option value="Y" {if $pbilldata['tpsetstatus'] == 'Y'} selected {/if}>已排版</option>
+							</select>
+						</div>
+						<br>
+						<div class="form-group">
+						    <label for="exampleInputName2" class="labelname">审核状态：</label>
+						     <select class="form-control verifystatus" disabled="disabled">
+								<option value="N" {if $pbilldata['verifystatus'] == 'N'} selected {/if}>未审核</option>
+								<option value="Y" {if $pbilldata['verifystatus'] == 'Y'} selected {/if}>已审核</option>
+							</select>
+						</div>
+						<div class="form-group">
+						    <button class="btn btn-sm btn-default printcount" type="button">印刷成本</button>
+						    <input type="text" class="form-control printcost" style="width:190px;" value="{$pbilldata['printcost']}">
+						</div>
+					</div>
+					<div class="form-right col-md-6">
+						<div class="form-group">
+							<label for="exampleInputName2" class="labelname">&nbsp;&nbsp;&nbsp;印刷单编号：</label>
+						    <input type="text" class="form-control printbid"style="width:350px;"readonly="readonly" value="{$pbilldata['id']}">
+						</div>
+						<br>
+						<input type="hidden" name="printimage" value="{$picarr['picname']}">
+						<div class="form-group img-group">
+							<a href="javascript:;" class="upload btn btn-sm btn-default">上传图片<input class="fileupload" type="file" name="goodspic"></a>
+							<div class="total-order imagearea">
+								<div class="Upload-img imagebox">
+								{if $picarr['picname']}
+									<img class="modalImg modalImg1"src="{$picarr['picpath']}{$picarr['picname']}"/>
+									<div class="modal-div">
+										<span class="modal-Del delimage">删除</span>
+									</div>
+								{else if}
+									<img class="modalImg modalImg1"src=""/>
+								{/if}
+								</div>
+							</div>
+						</div>
+						<br>
+						<div class="form-group">
+							<label for="exampleInputName2" class="labelname">印刷单添加人：</label>
+						    <input type="text" class="form-control staffid" readonly="readonly"style="width:350px;" value="{$pbilldata['staffid']}">
+						</div>
+						<div class="form-group">
+							<label for="exampleInputName2" class="labelname">&nbsp;&nbsp;&nbsp;印刷单备注：</label>
+						    <textarea name="" rows="3" class="print-mark form-control comment">{$pbilldata['comment']}</textarea>
+						</div>
+					</div>
+					<br>
+					<div class="form-btn col-md-12">
+						<div class="form-group">
+							<button class="btn btn-sm btn-default editprintsub" type="button">提交</button>
+							<button class="btn btn-sm btn-default" type="reset">重置</button>
+						</div>
+					</div>
+				</form>
+			</div>
+			<div class="push"></div>
+
+		</div>
+		{include file="../comfoot.html"}
+		<script src="/js/jquery-1.11.0.min.js" ></script>
+		<script src="/bootstrap/js/bootstrap.min.js"></script>
+		<script src="/bootstrap/js/bootstrap-datetimepicker.min.js"></script>
+		<script src="/bootstrap/js/bootstrap-datetimepicker.zh-CN.js"></script>
+		<script src="/js/util.js"></script>
+		<script src="/js/commontop.js"></script>
+		<script src="/js/app/printlistedit.js"></script>
+		<script type="text/javascript" src="/js/plupload.min.js"></script>
+		<script type="text/javascript">
+			$('.datetimepicker').datetimepicker({
+			    format: 'yyyy-mm-dd hh:ii:ss',
+			    autoclose:true,
+			    language:'zh-CN',
+			    // minView:'year',
+			});
+		</script>
+	</body>
+</html>

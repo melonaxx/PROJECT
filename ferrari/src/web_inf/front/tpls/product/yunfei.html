@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>米欢电商ERP</title>
+ 		<link href="/images/favicon.ico" rel="shortcut icon">
+		<link rel="stylesheet" type="text/css" href="/bootstrap/css/bootstrap-datetimepicker.min.css"/>
+		<link href="/bootstrap/css/bootstrap.min.css"  rel="stylesheet" media="screen">
+		<link href="/css/commontop.css"   rel="stylesheet" media="screen">
+		<link rel="stylesheet" type="text/css" href="/css/product/yunfei.css"/>
+		<style>
+			{literal}
+				@media screen and (max-width: 1120px){ 
+					/*当屏幕尺寸小于1120px时，应用下面的CSS样式*/
+				    .navbar-nav,#comtop-right{display: none;}
+				}
+			{/literal}
+		</style>
+	</head>
+	<body>
+		{include file="../commontop.html"}
+		<div class="container-fluid container1">
+			<div class="row ware-row">
+				<h5 class="col-md-12">您的位置：<a href="javascript:;">首页</a> » <a href="javascript:;">生产</a> » 生产运费</h5>
+			</div>
+			<div class="row">
+				<ul class="nav nav-tabs col-md-12 yunfei-nav">
+				  <li role="presentation" class="active">
+				  	<a href="/product/yunfei.php">生产运费</a>
+				  </li>
+				  <li role="presentation">
+				  	<a href="/product/yunrecord.php">运费记录</a>
+				  </li>
+				  <li role="presentation">
+				  	<a href="/product/yunopen.php">运费开票(含税)</a>
+				  </li>
+				  <li role="presentation">
+				  	<a href="/product/yunopenrecord.php">运费开票记录</a>
+				  </li>
+
+				</ul>
+			</div>
+			<div class="row">
+				<form action="" class="form-inline col-md-12 yunfei-form">
+					<div class="yunfei-left col-md-6">
+						<div class="form-group">
+							<label for="exampleInputName2" class="labelname">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;时间：</label>
+							<input type="text" class="form-control" id="datetimepicker1"/>
+						</div>
+						<div class="form-group">
+							<label for="exampleInputName2" class="labelname">&nbsp;&nbsp;&nbsp;交易账号：</label>
+							<select class="form-control">
+								<option value=""></option>
+							</select>
+						</div>
+						<br>
+						<div class="form-group">
+							<label for="exampleInputName2" class="labelname">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;生产单编号：</label>
+							<input type="text" class="form-control"style="width:455px;"placeholder="多个请用英文逗号分开"/>
+						</div>
+						<br>
+						<div class="form-group">
+							<label for="exampleInputAmount" class="labelname">运费金额(含税)：</label>
+						    <div class="input-group">
+						      <div class="input-group-addon">￥</div>
+						      <input type="text" class="form-control" id="exampleInputAmount" style="width:140px;">
+						    </div>
+						</div>
+						<div class="form-group">
+							<label for="exampleInputName2" class="labelname">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;税率(%)：</label>
+							<input type="text" class="form-control"/>
+						</div>
+						<br>
+						<div class="form-group">
+							<label for="exampleInputAmount" class="labelname">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;税额：</label>
+						    <div class="input-group">
+						      <div class="input-group-addon">￥</div>
+						      <input type="text" class="form-control" id="exampleInputAmount" style="width:140px;">
+						    </div>
+						</div>
+						<div class="form-group">
+							<label for="exampleInputAmount" class="labelname">&nbsp;&nbsp;&nbsp;不含税额：</label>
+						    <div class="input-group">
+						      <div class="input-group-addon">￥</div>
+						      <input type="text" class="form-control" id="exampleInputAmount" style="width:140px;">
+						    </div>
+						</div>
+						<div class="form-group">
+							<label for="exampleInputName2" class="labelname">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;托运公司：</label>
+							<input type="text" class="form-control"/>
+						</div>
+						<div class="form-group">
+							<label for="exampleInputName2" class="labelname">&nbsp;&nbsp;&nbsp;运单编号：</label>
+							<input type="text" class="form-control"/>
+						</div>
+						<br>
+						<div class="form-group">
+							<label for="exampleInputName2" class="labelname">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;备注：</label>
+							<textarea class="form-control expense-mark" row="2"></textarea>
+						</div>
+					</div>
+					<div class="yunfei-right col-md-6">
+						<div class="add-kemu1">
+							<button class="btn btn-sm btn-default add-sub1" style="margin-bottom:10px;" type="button">添加</button>
+							<br>
+							<div class="form-group">
+								<label for="" class="labelname">财务科目(借)：</label>
+								<select class="form-control">
+									<option value=""></option>
+								</select>
+								<label for="" class="labelname" style="margin-left: 30px;">金额：</label>
+								<div class="input-group">
+							      <div class="input-group-addon">￥</div>
+							      <input type="text" class="form-control" style="width:110px;">
+							    </div>
+								<a href="javascript:;" class="del-sub" style="margin-left: 30px;color:blue;">删除</a>
+							</div>
+
+						</div>
+						<br>
+						<div class="add-kemu2">
+							<button class="btn btn-sm btn-default add-sub2" style="margin-bottom:10px;"type="button">添加</button>
+							<br>
+							<div class="form-group">
+								<label for="" class="labelname">财务科目(贷)：</label>
+								<select class="form-control">
+									<option value=""></option>
+								</select>
+								<label for="" class="labelname" style="margin-left: 30px;">金额：</label>
+								<div class="input-group">
+							      <div class="input-group-addon">￥</div>
+							      <input type="text" class="form-control" style="width:110px;">
+							    </div>
+								<a href="javascript:;" class="del-sub" style="margin-left: 30px;color:blue;">删除</a>
+							</div>
+						</div>
+					</div>
+					<br>
+					<div class="form-btn col-md-12">
+						<div class="form-group" style="margin-top:30px;">
+							<button class="btn btn-sm btn-default" type="button" style="margin-right:15px;">提交</button>
+							<button class="btn btn-sm btn-default" type="reset">重置</button>
+						</div>
+					</div>
+
+				</form>
+			</div>
+			<div class="push"></div>
+		</div>
+		{include file="../comfoot.html"}
+		<script type="text/javascript" src="/js/jquery-1.11.0.min.js"></script>
+		<script type="text/javascript" src="/js/commontop.js"></script>
+		<script type="text/javascript" src="/bootstrap/js/bootstrap.min.js" ></script>
+		<script type="text/javascript" src="/bootstrap/js/bootstrap-datetimepicker.min.js"></script>
+		<script type="text/javascript" src="/bootstrap/js/bootstrap-datetimepicker.zh-CN.js"></script>
+		<script src="/js/product/yunfei.js"></script>
+		<script type="text/javascript">
+			$('#datetimepicker1').datetimepicker({
+			    format: 'yyyy-mm-dd hh:ii:ss',
+			    autoclose:true,
+			    language:'zh-CN',
+			    // minView:'year',
+			});
+		</script>
+	</body>
+</html>

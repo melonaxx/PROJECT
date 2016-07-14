@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>米欢电商ERP</title>
+ 	<link href="/images/favicon.ico" rel="shortcut icon">
+	<link href="/bootstrap/css/bootstrap.min.css"  rel="stylesheet" media="screen">
+	<link href="/css/commontop.css"   rel="stylesheet" media="screen">
+	<link rel="stylesheet" type="text/css" href="/css/admin/wuliucompany.css"/>
+	<style>
+		{literal}
+		@media screen and (max-width: 1120px){ 
+			/*当屏幕尺寸小于1120px时，应用下面的CSS样式*/
+			.navbar-nav,#comtop-right{display: none;}
+		}
+		{/literal}
+	</style>
+</head>
+<body>
+	{include file="../commontop.html"}
+	<div class="container-fluid container1">
+		<div class="row ware-row">
+			<h5 class="col-md-12">您的位置： <a href="javascript:;">首页</a> » <a href="javascript:;">管理</a> »物流公司</h5>
+		</div>
+		<div class="row">
+			<ul class="nav nav-tabs col-md-12 wuliu-nav">
+				<li power="presentation">
+					<a href="/admin/wuliucompany.php">物流公司列表</a>
+				</li>
+				<li power="presentation" class="active">
+					<a href="/admin/addwuliu.php">添加物流</a>
+				</li>
+				<li power="presentation" style="display:none;">
+					<a href="/admin/editwuliu.php">编辑物流</a>
+				</li>
+			</ul>
+		</div>
+		<div class="row">
+			<form action="/admin/doaddwuliu.php" class="form-inline addwuliu-form" method="post">
+				<div class="form-group">
+					<label for="" class="labelname">物流名称：</label>
+					<input type="text" class="form-control input-sm"placeholder="必填"name="name">
+				</div>
+				<div class="form-group">
+					<label for="exampleInputAmount" class="labelname">&nbsp;&nbsp;&nbsp;初期应付款：</label>
+				    <div class="input-group">
+				      <div class="input-group-addon">￥</div>
+				      <input type="text" class="form-control " id="exampleInputAmount" style="width:125px;" name="payment">
+				    </div>
+				</div>
+				<br>
+				<div class="form-group">
+					<label for="" class="labelname">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;省份：</label>
+					<select class="form-control pro" uid="{$list['stateid']}" name="stateid">
+						<option value="-1">--请选择--</option>
+					</select>
+				</div>
+				<div class="form-group">
+					<label for="" class="labelname">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;市(区)：</label>
+					<select class="form-control city" uid="{$list['cityid']}" name="cityid">
+						<option value="-1">--请选择--</option>
+					</select>
+				</div>
+				<div class="form-group">
+					<label for="" class="labelname">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;区(县)：</label>
+					<select class="form-control county" uid="{$list['districtid']}" name="districtid">
+						<option value="-1">--请选择--</option>
+					</select>
+				</div>
+				<br>
+				<div class="form-group">
+					<label class="labelname">详细地址：</label>
+					<textarea class="form-control addwuliu-address" row="3" name="address"></textarea>
+				</div>
+				<br>
+				<div class="form-group">
+					<label for="" class="labelname">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;邮编：</label>
+					<input type="text" class="form-control input-sm" value="{$list['postcode']}" name="postcode">
+				</div>
+				<div class="form-group">
+					<label for="" class="labelname">&nbsp;&nbsp;&nbsp;联系人：</label>
+					<input type="text" class="form-control input-sm" value="{$list['contactname']}" name="contactname">
+				</div>
+				<div class="form-group">
+					<label for="" class="labelname">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;手机：</label>
+					<input type="text" class="form-control input-sm" value="{$list['mobile']}" name="mobile">
+				</div>
+				<div class="form-group">
+					<label for="" class="labelname">固定电话：</label>
+					<input type="text" class="form-control input-sm" value="{$list['telphone']}" name="telphone">
+				</div>
+				<br>
+				<div class="form-group">
+					<label class="labelname">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;备注：</label>
+					<textarea class="form-control addwuliu-mark" row="3" name="comment"></textarea>
+				</div>
+				<br>
+				<div class="form-group">
+					<button class="btn btn-default btn-sm" type="submit"style="margin-right: 15px;">提交</button>
+					<button class="btn btn-default btn-sm" type="reset">重置</button>
+				</div>
+			</form>
+
+		</div>
+		
+		
+		<div class="push"></div>
+	</div>
+	{include file="../comfoot.html"}
+	<script type="text/javascript" src="/js/jquery-1.11.0.min.js"></script>
+	<script type="text/javascript" src="/js/commontop.js"></script>
+	<script type="text/javascript" src="/bootstrap/js/bootstrap.min.js" ></script>
+	<script type="text/javascript" src="/js/mycom.js"></script>
+	<script type="text/javascript" src="/js/threeljs/areasvc.js"></script>
+	<script type="text/javascript" src="/js/util.js"></script>
+	<script type="text/javascript" src="/js/admin/addwuliu.js"></script>
+</body>
+</html>

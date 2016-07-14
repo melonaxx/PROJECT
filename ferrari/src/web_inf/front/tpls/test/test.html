@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title></title>
+  <SCRIPT language=javascript src="/js/jquery-1.11.0.min.js"></SCRIPT>
+</head>
+<style>
+
+</style>
+<body>
+    <center>
+<!--              <div id="upload">
+                  <div class="layer">头像设置 <b style="padding-left:385px;color:red">X</b></div>
+                  <br/><br/><br/>
+                  <form action="uploadphoto.php" method="post" enctype= "multipart/form-data">
+                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                     <input type="file" name="uplad" id="upload">
+                  </form>
+                  <img src="sss.jpg" width="160px" id="imgshow" height="160px">
+              </div>  -->
+ <th><img src="__ROOT__/{$rows['photo']}" id='imgshow' width="120px" height="100px"></th>
+
+             <form id='form' name='form' method="post" action="__MODULE__/User/upload" enctype="multipart/form-data" onsubmit>
+                  <input type="file" name="upload" id="upload" onchange="test()">
+                  <input type="hidden" name="id" value="{$rows['id']}"><br/><br/>
+                  <button>确认上传</button>
+             </form>
+    </center>
+</body>
+<script>
+        //显示传上的头像
+        $("#upload").change(function(){
+        	console.log(window.URL.createObjectURL(this.files[0]));
+          if($(this).val()){
+            var url = test(this.files[0]) ;
+            $("#imgshow").attr("src",url)
+             // console.log(url);
+           }
+        })
+
+      function test(file) {
+        var url = null ;
+        if (window.createObjectURL!=undefined){
+          url = window.createObjectURL(file) ;
+        } else if (window.URL!=undefined){
+          url = window.URL.createObjectURL(file) ;
+        } else if (window.webkitURL!=undefined){
+          url = window.webkitURL.createObjectURL(file) ;
+        }
+        return url ;
+      }
+</script>
+</html>

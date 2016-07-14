@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>米欢电商ERP</title>
+ 		<link href="/images/favicon.ico" rel="shortcut icon">
+		<link href="/bootstrap/css/bootstrap.min.css"  rel="stylesheet" media="screen">
+		<link href="/bootstrap/css/bootstrap-datetimepicker.min.css"  rel="stylesheet" media="screen">
+		<link href="/css/app/printlist.css"   rel="stylesheet" media="screen">
+		<script src="/js/jquery-1.11.0.min.js" ></script>
+		<script src="/bootstrap/js/bootstrap.min.js"  ></script>
+		<script src="/js/app/printlist.js"></script>
+	</head>
+	<body id="allbody">
+		<div class="container-fluid">
+			<div class="row psheettop-all" id="psheettop-all">
+				<div class="col-md-12 psheettop">
+					外卖王印刷单管理
+				</div>	
+				<div class="psheettop1">
+					用户：<span>何承雄</span>
+				</div>
+				<div class="psheettop2">
+					<!-- Nav tabs -->
+					<ul class="nav nav-tabs pstopnav" role="tablist">
+					    <li role="presentation" class="active"><a href="printlist.php">未排版印刷单</a></li>
+					    <li role="presentation"><a href="printlist_finish.php">待完工印刷单</a></li>
+					    <li role="presentation"><a href="printlist_add.php" >添加印刷单</a></li>
+					    <li role="presentation"><a href="printlist_search.php" >查询</a></li>
+					    <li role="presentation"><a href="printlist_total.php" >印刷单汇总列表</a></li>
+					    <li role="presentation"><a href="printlist_print.php" >待不干胶打印</a></li>
+					</ul>
+				</div>
+				<div class="psheettop3">
+					<a href="#">退出</a>
+				</div>
+			</div>
+		</div>
+		<div class="container-fluid ps-contentall">
+			<!-- Tab panes -->
+			<div class="tab-content">
+			    <div role="tabpanel" class="tab-pane active" id="home">
+			    	<!--未排版印刷单-->
+					<div class="row psallcontent">
+						<div class="psheet-content1 col-md-12">
+							<table class="table table-bordered table-hover col-md-12 psheet-table">
+								<thead>
+			                		<tr class="thead-all">
+				                    	<th>序号</th>
+				                    	<th>日期</th>
+				                    	<th>印刷内容</th>
+				                    	<th>产品数量</th>
+				                    	<th>印刷方式</th>
+				                    	<th>制版数</th>
+				                    	<th>设计</th>
+				                    	<th>订单编号</th>
+				                    	<th>印刷单位</th>
+				                    	<th>款式名称</th>
+				                    	<th>成本</th>
+				                    	<th>排版状态</th>
+				                    	<th>操作</th>
+			                		</tr>
+			        			</thead>
+			        			<tbody class="pstbody1">
+			                        <!-- <tr class="psheet-tr">	                       
+				                        <td><input type="text" class="form-control" value="1818"></td>
+				                        <td><input type="text" class="form-control" value="2016-3-10"></td>
+				                        <td><input type="text" class="form-control" value="天天快餐"></td>
+				                        <td><input type="text" class="form-control" value="1"></td>
+				                        <td><input type="text" class="form-control" value="热转印"></td>
+				                        <td><input type="text" class="form-control" value="0"></td>
+				                        <td><input type="text" class="form-control" value="周文丹"></td>
+				                        <td><input type="text" class="form-control" value="1616"></td>
+				                        <td><input type="text" class="form-control" value="福润一生(热转印)"></td>
+				                        <td><input type="text" class="form-control" value="13款  62升红色"></td>
+				                        <td><input type="text" class="form-control" value="5.00元"></td>
+				                        <td><input type="text" class="form-control" value="未排版"></td>
+				                        <td><a href="#pseditsheet" aria-controls="pseditsheet" role="tab" data-toggle="tab" class="btn btn-default psedit" href="#" role="button">编辑</a></td>
+				                    </tr>-->    
+			                    </tbody>
+			                </table>
+			                <div class="col-md-4"></div>
+			                <div class="col-md-8 ps-content">
+			                	<div class="form-group ps-content1">
+								    <label for="exampleInputEmail2" class="ps-contentl1">每页:</label>
+								    <select class="form-control pseverypagel1">
+								    	<option>10</option>
+								    	<option>15</option>
+								    	<option>20</option>
+								    	<option>50</option>
+								    	<option>100</option>
+									</select>
+								</div>
+								<nav>
+								  <ul class="pager">
+								    <li><a href="#">首页</a></li>
+								    <li><a href="#">上一页</a></li>
+							      </ul>
+								</nav>
+								<div class="form-group ps-contentl2">
+								    <label for="exampleInputEmail2">第</label>
+								    <input type="text" class="form-control">
+								    <label for="exampleInputEmail2" class="ps-contentl3">页&nbsp;(共</label>
+								    <span class="ps-allpage">13476</span>
+								    <label for="exampleInputEmail2">页,</label>
+								    <span class="ps-allcount"></span>
+								    <label for="exampleInputEmail2">13470条)</label>
+								</div>
+								<nav>
+								  <ul class="pager">
+								    <li><a href="#">下一页</a></li>
+								    <li><a href="#">末页</a></li>
+								  </ul>
+								</nav>
+			                </div>
+						</div>				
+					</div>
+			    </div>
+				<!--编辑印刷单-->
+				<div role="tabpanel" class="row content tab-pane active" id="pseditsheet">
+			  		<h2 class="col-md-12 ps-editp">编辑印刷单</h2>
+				  	<div class="col-md-6 content-topl">
+				  		<form class="form-inline">					  
+						  <div class="form-group">
+						    <label for="exampleInputName2">印刷单编号:</label>
+						    <input type="text" class="form-control">
+						  </div>
+						  <div class="form-group">
+						    <label for="exampleInputName2">印刷方式:</label>
+						    <select class="form-control">
+							  <option>丝网印</option>
+							  <option>热转印</option>
+							  <option>刻字膜</option>
+							  <option>不干胶打印</option>
+							  <option>塑封宣传页</option>
+							</select>
+						  </div>
+						  <div class="form-group">
+						    <label for="exampleInputName2">制版数:</label>
+						    <input type="text" class="form-control">
+						  </div>
+						  <div class="form-group">
+						    <label for="exampleInputName2">产品数量:</label>
+						    <input type="text" class="form-control">
+						  </div>
+						  <div class="form-group">
+						    <label for="exampleInputName2">每件印刷次数:</label>
+						    <input type="text" class="form-control">
+						  </div>
+						  <div class="form-group">
+						    <label for="exampleInputName2">印刷位置:</label>
+						    <select class="form-control">
+							  <option>正面</option>
+							  <option>反面</option>
+							</select>
+						  </div>					  
+						  <div class="form-group">
+						    <label for="exampleInputName2">款式名称:</label>
+						    <input type="text" class="form-control">
+						  </div>
+						  <div class="form-group">
+						    <label for="exampleInputName2">订单状态:</label>
+						    <select class="form-control">
+							  <option>未完工</option>
+							  <option>刻录完毕</option>
+							  <option>返工</option>
+							  <option>完工发货</option>
+							  <option>订单作废</option>
+							</select>
+						  </div>  
+						  <div class="form-group">
+						    <label for="exampleInputName2">是否删除:</label>
+						    <select class="form-control">
+							  <option>否</option>
+							  <option>是</option>
+							</select>
+						  </div>
+						  <div class="form-group" id="ps-data">
+						    <label for="exampleInputName2">下单日期:</label>
+					    	<input size="16" type="text" value="2012-06-15 14:45" readonly class="form_datetime form-control" id="form-datetime">
+						  </div>
+						  <div class="form-group" id="ps-data">
+						    <label for="exampleInputName2">完工日期:</label>
+					    	<input size="16" type="text" value="2012-06-15 14:45" readonly class="form_datetime form-control" id="form-datetime">
+						  </div>
+						  <div class="form-group">
+						    <label for="exampleInputName2">印刷单位:</label>
+						    <select class="form-control">
+							  <option>福润一生(刻字膜)</option>
+							  <option>福润一生(热转印)</option>
+							  <option>北京精工(丝网印)</option>
+							  <option>河北工厂(丝网印)</option>
+							  <option>印想(热转印)</option>
+							  <option>北京不干胶打印</option>
+							</select>
+						  </div>
+						  <div class="form-group">
+						    <label for="exampleInputName2">是否排版:</label>
+						    <select class="form-control">
+							  <option>未排版</option>
+							  <option>已排版</option>
+							</select>
+						  </div>
+						  <div class="form-group">
+						    <label for="exampleInputName2">印刷成本核算:</label>
+						    <input type="text" class="form-control">
+						  </div>
+						  <div class="form-group">
+						    <label for="exampleInputName2"><a href="#">源文件下载：</a></label>
+						    <input type="text" class="form-control ps-otherinput">
+						  </div>
+						  <div class="form-group">
+						    <label for="exampleInputName2">订单编号:</label>
+						    <input type="text" class="form-control ps-otherinput">
+						  </div>
+						  <div class="form-group">
+						    <label for="exampleInputName2">印刷内容:</label>
+						    <input type="text" class="form-control ps-otherinput">
+						  </div>
+						</form>
+				  	</div>
+				  	<div class="col-md-6 content-topr" id="content-topr">
+				  		<label for="exampleInputName2" class="ps-effectpic">效果图:</label>
+				  		<div class="ps-effpicture"></div>
+				  		<button class="btn btn-default btn-add" type="submit">上传效果图片</button>
+				  		<div class="form-group ps-addpeople" id="ps-addpeople">
+						    <label for="exampleInputName2" class="ps-effectpic">订单添加人:</label>
+						    <input type="text" class="form-control">
+						</div>
+			  		</div>
+			  		<div class="col-md-12">
+						<div class="col-md-12">
+						    <h2 class="ps-ordercom">订单备注:</h2>
+						</div>
+					    <textarea class="form-control col-md-12" rows="2" id="ps-otherinput"></textarea>		  			
+			  		</div>
+			  		<button class="btn btn-default ps-com" type="submit">提交印刷单</button>
+			  		<button class="btn btn-default ps-copy" type="submit">复制并新建</button>
+			  	</div>
+			</div>
+			<!--编辑印刷单成功-->
+			<div class="row ps-opsuccess">
+				<p>操作成功</p>
+			</div>												
+		</div>
+		<script src="/bootstrap/js/bootstrap-datetimepicker.min.js"></script>
+		
+		<script type="text/javascript">
+			{literal}
+		    $(".form_datetime").datetimepicker({format: 'yyyy-mm-dd hh:ii',autoclose: true});
+		    {/literal}
+		</script>
+	</body>
+</html>

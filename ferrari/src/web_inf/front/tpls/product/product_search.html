@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>米欢电商ERP</title>
+		<link href="/images/favicon.ico" rel="shortcut icon">
+		<link rel="stylesheet" type="text/css" href="/bootstrap/css/bootstrap-datetimepicker.min.css"/>
+		<link href="/bootstrap/css/bootstrap.min.css"  rel="stylesheet" media="screen">
+		<link href="/css/commontop.css"   rel="stylesheet" media="screen">
+		<link rel="stylesheet" type="text/css" href="/css/product/product_search.css"/>
+		<style>
+			{literal}
+				@media screen and (max-width: 1120px){ 
+					/*当屏幕尺寸小于1120px时，应用下面的CSS样式*/
+				    .navbar-nav,#comtop-right{display: none;}
+				}
+			{/literal}
+		</style>
+	</head>
+	<body>
+		{include file="../commontop.html"}
+		<div class="container-fluid container1">
+			<div class="row ware-row">
+				<h5 class="col-md-12">您的位置： <a href="javascript:;">首页</a> » <a href="javascript:;">生产</a> » 生产单查询</h5>
+			</div>
+			<div class="row">
+				<form class="form-inline col-md-12 search-form" action="/product/product_search.php">
+					<div class="form-group">
+					    <button  class="btn btn-default btn-sm ">查询</button>
+				   		<button  class="btn btn-default btn-sm" id="reset"  type="button">重置</button>
+				   		<button type="reset" class="btn btn-default btn-sm">导出</button>
+					</div> 
+				  	<div class="form-group">
+   				    	<label for="exampleInputName2" class="datename">审核状态：</label>
+						<select class="form-control" id="exampleInputEmail1" name="statusaudit">
+						<option value="">--请选择--</option>
+					
+				 		<option value="N" {if $smarty.get.statusaudit eq 'N'}selected='selected'{/if}>待审核</option>
+				 		<option value="R" {if $smarty.get.statusaudit eq 'R'}selected='selected'{/if}>待修改</option>
+				  		<option value="Y" {if $smarty.get.statusaudit eq 'Y'}selected='selected'{/if}>通过审核</option>
+					  		
+						</select>
+				  	</div>
+					<div class="form-group">
+   				    	<label for="exampleInputName2" class="datename">返工状态：</label>
+						<select class="form-control" id="exampleInputEmail2" name="statusrefund">
+					 		<option value="">--请选择--</option>
+					 		<option value="N" {if $smarty.get.statusrefund eq 'N'}selected='selected'{/if}>未返工</option>
+					 		<option value="P" {if $smarty.get.statusrefund eq 'P'}selected='selected'{/if}>部分返工</option>
+					  		<option value="Y" {if $smarty.get.statusrefund eq 'Y'}selected='selected'{/if}>全部返工</option>
+						</select>
+				  	</div>
+				  	<div class="form-group">
+   				    	<label for="exampleInputName2" class="datename">入库状态：</label>
+						<select class="form-control" id="exampleInputEmail3" name="product_status">
+							<option value="">--请选择--</option>
+					 		<option value="N" {if $smarty.get.product_status eq 'N'}selected='selected'{/if}>未入库</option>
+					 		<option value="P" {if $smarty.get.product_status eq 'P'}selected='selected'{/if}>部分入库</option>
+					  		<option value="Y" {if $smarty.get.product_status eq 'Y'}selected='selected'{/if}>全部入库</option>
+						</select>
+				  	</div>
+				  	<div class="form-group">
+					    <label for="datetimepicker"class="labelname">日期：</label>
+					    <input type="text" class="form-control datetimepicker" name="starttime" value="{$smarty.get.starttime}"/>
+					    <label for="datetimepicker"class="labelname">-</label>
+					    <input type="text" class="form-control datetimepicker" name="stoptime" value="{$smarty.get.stoptime}"/>
+					</div>
+				</form>
+				<table class="table table-hover col-md-12 product-search-table">
+					<thead>
+						<tr class="active">
+							<td>序号</td>
+							<td style="text-align: center;">操作</td>
+							<td>生产单编号</td>
+							<td>审核状态</td>
+							<td>入库状态</td>
+							<td>返工状态</td>
+							<td>仓库</td>
+							<td>生产数量</td>
+							<td>申请日期</td>
+							<td>申请人</td>
+						</tr>
+					</thead>
+					<tbody>
+					{foreach from=$pro_order_list item=temp}
+						<tr>
+							<td><span name="id_number"></span></td>
+							<td>
+								<a href="/product/product_searchdetail.php?id={$temp['id']}" class="searchpur-detail">详细</a>
+							</td>
+							<td class="purenter-code">{$temp['number']}</td>
+							<td class="seapurchase-status">{$temp['status']}</td>
+							<td class="seapurchase-status1">{$temp['storeRec']}</td>
+							<td class="seapurchase-status2">{$temp['storeRef']}</td>
+							<td class="purenter-ware">{$temp['storename']}</td>
+							<td class="purenter-num">{$temp['total']}</td>
+							<td class="seapurchase-time">{$temp['actiondate']}</td>
+							<td>{$temp['peoplename']}</td>
+						</tr>
+					{/foreach}
+					</tbody>
+				</table>
+			</div>
+			<div class="row no-find">
+				<div class="no-record col-xs-12"><img src="/images/empty.jpg"/><span>没有找到记录，请调整搜索条件。</span></div>
+			</div>
+			{$pages}
+<!-- 			<div class="row">
+				<form class="form-inline warestatus-form1 warestatus-form2">
+					<div class="form-group">
+					    <label for="exampleInputName2"class="labelname">每页：</label>
+					    <select class="form-control waregood-status" id="exampleInputName2">
+					    	<option>10</option>
+					    	<option>15</option>
+					    	<option>20</option>
+					    	<option>50</option>
+					    	<option>100</option>
+					    </select>
+					</div> 
+
+					<div class="form-group">
+						<ul class="warestatus-page">
+							<li><a href="">首页</a></li>
+						    <li class="previous"><a href="#">上一页</a></li>
+						    <li>
+						    	<label for="exampleInputName2"class="labelname">第</label>
+							     <input type="text" class="form-control"id="exampleInputName2"value="1">
+						    	<label for="exampleInputName2"class="labelname">页(共<span>1</span>页<span>0</span>条)</label>
+						    </li>
+						    <li class="next"><a href="#">下一页</a></li>
+							<li><a href="#">末页</a></li>
+						 </ul>
+					</div> 
+				</form>
+			</div> -->
+			<div class="push"></div>
+		</div>
+		{include file="../comfoot.html"}
+        <script type="text/javascript" src="/js/jquery-1.11.0.min.js"></script>
+		<script type="text/javascript" src="/js/commontop.js"></script>
+		<script type="text/javascript" src="/bootstrap/js/bootstrap.min.js" ></script>
+		<script type="text/javascript" src="/bootstrap/js/bootstrap-datetimepicker.min.js"></script>
+		<script type="text/javascript" src="/bootstrap/js/bootstrap-datetimepicker.zh-CN.js"></script>
+		<script type="text/javascript" src="/js/warehouse/mycom.js"></script>
+		<script type="text/javascript" src="/js/product/product_search.js"></script>
+		<script type="text/javascript">
+			$('.datetimepicker').datetimepicker({
+			    format: 'yyyy-mm-dd',
+			    autoclose:true,
+			    language:'zh-CN',
+			    minView:'year',
+			});
+
+			var id_number = document.getElementsByName("id_number");
+
+			for(var i=0;i<id_number.length;i++){
+				id_number[i].innerHTML=i+1;
+			}
+
+			$("#reset").click(function(){
+
+			    window.location.href = "/product/product_search.php";
+			})
+
+			$(".rrow").change(function(){
+				var p=$(this).val();
+				var pps=$("#pps").html();
+				var starttime = String($("input[name='starttime']").val());
+				var stoptime = String($("input[name='stoptime']").val());
+				var statusaudit = String($("#exampleInputEmail1").val());
+				var statusrefund = String($("#exampleInputEmail2").val());
+				var product_status = String($("#exampleInputEmail3").val());
+				var search_info = "&starttime="+starttime+"&stoptime="+stoptime+"&statusaudit="+statusaudit+"&statusrefund="+statusrefund+"&product_status="+product_status;
+				window.location.href = "/product/product_search.php?num="+p+search_info; 	
+				
+			})
+		</script>
+	</body>
+</html>

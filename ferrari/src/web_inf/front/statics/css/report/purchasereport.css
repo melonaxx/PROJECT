@@ -1,0 +1,113 @@
+.row .purchasereport-nav{
+	width:1200px;
+	margin-left: 15px;
+	padding:0;
+}
+.row .purchasereport-form{
+	width:1200px;
+	margin-left: 15px;
+	padding:0;
+}
+.row .purchasereport-form .form-group{
+	margin:0 15px 15px 0;
+}
+.row .purchasereport-form .form-control{
+	width:150px;
+}
+.row .purchasereport-table{
+	width:1200px;
+	margin-left: 15px;
+	padding:0;
+}
+.row .purchasereport-table thead td:nth-of-type(1){
+	width:150px;
+	text-align:left;
+}
+.row .purchasereport-table tbody td:nth-of-type(1){
+	text-align:left;
+}
+.row .purchasereport-table thead td:nth-of-type(2){
+	width:150px;
+	text-align:left;
+}
+.row .purchasereport-table tbody td:nth-of-type(2){
+	text-align:left;
+}
+.row .purchasereport-table thead td:nth-of-type(3){
+	width:120px;
+}
+.row .purchasereport-table thead td:nth-of-type(4){
+	width:150px;
+}
+.row .purchasereport-table thead td:nth-of-type(5){
+	width:180px;
+}
+.row .purchasereport-table thead td:nth-of-type(6){
+	width:75px;
+}
+.row .purchasereport-table thead td:nth-of-type(7){
+	width:75px;
+}
+.row .purchasereport-table thead td:nth-of-type(8){
+	width:100px;
+}
+.row .purchasereport-table thead td:nth-of-type(9){
+	width:100px;
+}
+.row .purchasereport-table thead td:nth-of-type(10){
+	width:100px;
+}
+/*采购汇总(按商品)*/
+.row .purchasereport-form .goodsname{
+	width:250px;
+}
+.row .purchasereport-table1{
+	width:1200px;
+	margin-left: 15px;
+	padding:0;
+}
+.row .purchasereport-table1 thead td:nth-of-type(1){
+	width:46px;
+	text-align:left;
+}
+.row .purchasereport-table1 thead td:nth-of-type(2){
+	width:150px;
+	text-align:left;
+}
+.row .purchasereport-table1 tbody td:nth-of-type(2){
+	text-align:left;
+}
+.row .purchasereport-table1 thead td:nth-of-type(3){
+	width:150px;
+}
+.row .purchasereport-table1 thead td:nth-of-type(4){
+	width:304px;
+}
+.row .purchasereport-table1 thead td:nth-of-type(5){
+	width:150px;
+}
+.row .purchasereport-table1 thead td:nth-of-type(6){
+	width:100px;
+}
+.row .purchasereport-table1 thead td:nth-of-type(7){
+	width:100px;
+}
+.row .purchasereport-table1 thead td:nth-of-type(8){
+	width:100px;
+}
+.row .purchasereport-table1 thead td:nth-of-type(9){
+	width:150px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+

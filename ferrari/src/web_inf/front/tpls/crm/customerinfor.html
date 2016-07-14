@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>米欢电商ERP</title>
+		<link href="/images/favicon.ico" rel="shortcut icon">
+		<link href="/bootstrap/css/bootstrap.min.css"  rel="stylesheet" media="screen">
+		<link href="/css/commontop.css"   rel="stylesheet" media="screen">
+		<link rel="stylesheet" type="text/css" href="/css/crm/customerlist.css"/>
+		<style>
+			{literal}
+				@media screen and (max-width: 1120px){
+					/*当屏幕尺寸小于1120px时，应用下面的CSS样式*/
+				    .navbar-nav,#comtop-right{display: none;}
+				}
+			{/literal}
+		</style>
+	</head>
+	<body>
+		{include file="../commontop.html"}
+		<div class="container-fluid container1">
+			<div class="row ware-row">
+				<h5 class="col-md-12">您的位置： <a href="javascript:;">首页</a> » <a href="javascript:;">CRM</a> » 客户列表</h5>
+			</div>
+			<div class="row">
+				<ul class="nav nav-tabs col-md-12 customer-nav">
+				  <li role="presentation">
+				  	<a href="customerlist.php">客户列表</a>
+				  </li>
+				  <li role="presentation" style="display:none;" >
+				  	<a href="addcustomer.php">添加客户</a>
+				  </li>
+				  <li role="presentation" class="active">
+				  	<a href="customerinfor.php">客户信息</a>
+				  </li>
+				</ul>
+			</div>
+			<div class="status">
+				<div class="row ">
+					<h5 class="row-bold col-md-12" style="margin-top:10px;">商品信息</h5>
+				</div>
+				<div class="row">
+					<form class="form-inline customer-form1 col-md-12 cusform">
+						<div class="form-group">
+							<label for="exampleInputName2"class="labelname">客户类型：</label>
+						    <select class="form-control customertype" id="exampleInputName2">
+						    	<option value="P" {if $cusdata[0]['type'] == 'P'} selected {/if} >个人客户</option>
+						    	<option value="E" {if $cusdata[0]['type'] == 'E'} selected {/if}>企业客户</option>
+						    </select>
+						</div>
+						<div class="form-group">
+							<label for="exampleInputName2" class="labelname">客户名称：</label>
+							<input type="text" class="form-control custom-custom customername" placeholder="必填" required="required" value="{$cusdata[0]['name']}">
+							<input type="hidden" name="cusid" value="{$cusdata[0]['id']}">
+						</div>
+						<div class="form-group">
+							<label for="exampleInputName2" class="labelname">客户昵称：</label>
+							<input type="text" class="form-control custom-custom1 customernick" readonly="readonly" value="{$cusdata[0]['nick']}">
+						</div>
+						<br/>
+
+						<div class="form-group">
+							<label for="exampleInputName2" class="labelname">手机号码：</label>
+							<input type="text" class="form-control custom-phone1 customerphone" value="{$cusdata[0]['mobile']}">
+						</div>
+						<div class="form-group">
+							<label for="exampleInputName2" class="labelname">固定电话：</label>
+							<input type="text" class="form-control clienttel" value="{$cusdata[0]['telphone']}">
+						</div>
+						<div class="form-group">
+							<label for="exampleInputName2" class="labelname">结算金额：</label>
+							<div class="input-group">
+						      <div class="input-group-addon">￥</div>
+						      <input type="text" class="form-control payment" id="exampleInputAmount" style="width:110px;" value="{$cusdata[0]['payment']}">
+						    </div>
+						</div>
+						<br>
+						<div class="form-group">
+							<label for="exampleInputName2" class="labelname">公司名称：</label>
+							<input type="text" class="form-control customercom" style="width:377px;"  value="{$cusdata[0]['companyname']}">
+						</div>
+						<br>
+						<div class="form-group">
+							<label for="exampleInputName2" class="labelname">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;邮箱：</label>
+							<input type="text" class="form-control cusemail" value="{$cusdata[0]['mailbox']}">
+						</div>
+						<div class="form-group">
+							<label for="exampleInputName2" class="labelname">&nbsp;QQ号码：</label>
+							<input type="text" class="form-control cusQQ" value="{$cusdata[0]['qq']}">
+						</div>
+						<div class="form-group">
+							<label for="exampleInputName2" class="labelname">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;邮编：</label>
+							<input type="text" class="form-control cuspostcode"  value="{$cusdata[0]['postcode']}">
+						</div>
+						<br>
+						<div class="form-group">
+							<label for="select1" class="labelname">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;省份：</label>
+							<select class="form-control pro" pro="{$cusdata[0]['stateid']}" id="province1">
+								<option value="-1">--请选择--</option>
+						    </select>
+						</div>
+						<div class="form-group">
+							<label for="select2" class="labelname">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;市区：</label>
+							<select class="form-control city" city="{$cusdata[0]['cityid']}" id="city1">
+								<option value="-1">--请选择--</option>
+						    </select>
+						</div>
+						<div class="form-group">
+							<label for="select3" class="labelname">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;区县：</label>
+							<select class="form-control county" county="{$cusdata[0]['districtid']}" id="town1">
+								<option value="-1">--请选择--</option>
+						    </select>
+						</div>
+						<br>
+						<div class="form-group">
+							<label for="exampleInputName2" class="labelname">详细地址：</label>
+							<input type="text" class="form-control cusaddress" style="width:608px;" value="{$cusdata[0]['address']}">
+						</div>
+						<br>
+						<div class="form-group">
+							<label for="exampleInputName2" class="labelname">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;备注：</label>
+							<input type="text" class="form-control custom-mark1 cuscomment" style="width:608px;" value="{$cusdata[0]['comment']}">
+						</div>
+						<br>
+						<div class="form-group">
+							<input type="button" class="btn btn-default btn-sm custom-change" value="修改" style="margin-right:10px;">
+							<input type="reset" class="btn btn-default btn-sm cusreset" value="重置">
+						</div>
+					</form>
+				</div>
+			</div>
+			<div class="push"></div>
+		</div>
+		{include file="../comfoot.html"}
+		<script type="text/javascript" src="/js/jquery-1.11.0.min.js"></script>
+		<script type="text/javascript" src="/js/commontop.js"></script>
+		<script type="text/javascript" src="/bootstrap/js/bootstrap.min.js" ></script>
+		<script type="text/javascript" src="/js/threeljs/areasvc.js"></script>
+		<script type="text/javascript" src="/js/util.js"></script>
+		<script type="text/javascript" src="/js/mycom.js"></script>
+		<script type="text/javascript" src="/js/crm/customerinfor.js"></script>
+	</body>
+</html>

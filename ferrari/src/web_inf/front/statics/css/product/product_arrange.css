@@ -1,0 +1,50 @@
+.row .arrange-table{
+	width:1200px;
+	padding:0;	
+}
+.row .arrange-table thead td:nth-of-type(1){
+	width:46px;	
+}
+.row .arrange-table thead td:nth-of-type(2){
+	width:38px;	
+}
+.row .arrange-table thead td:nth-of-type(3){
+	width:200px;	
+}
+.row .arrange-table thead td:nth-of-type(4){
+	width:306px;	
+}
+.row .arrange-table thead td:nth-of-type(5){
+	width:150px;	
+}
+.row .arrange-table thead td:nth-of-type(6){
+	width:300px;	
+}
+.row .arrange-table thead td:nth-of-type(7){
+	width:150px;	
+	text-align: center;
+}
+.row .arrange-table .searchbox{
+	width:340px;
+}
+.row .arrange-table .search{
+	width:190px;
+}
+.row .arrange-table .searchname{
+	width:296px;
+}
+.row .arrange-table .arrange-opeartion{
+	text-align: center;
+}
+.row .arrange-table .table-mark{
+	width:300px;
+}
+.row .arrange-table .goodsnum{
+	width:140px;
+}
+
+
+
+
+
+

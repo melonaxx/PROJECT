@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>米欢电商ERP</title>
+		<link href="/images/favicon.ico" rel="shortcut icon">
+		<link href="/bootstrap/css/bootstrap.min.css"  rel="stylesheet" media="screen">
+		<link href="/css/commontop.css"   rel="stylesheet" media="screen">
+		<link rel="stylesheet" type="text/css" href="/css/crm/customerlist.css"/>
+		<style>
+			{literal}
+				@media screen and (max-width: 1120px){
+					/*当屏幕尺寸小于1120px时，应用下面的CSS样式*/
+				    .navbar-nav,#comtop-right{display: none;}
+				}
+			{/literal}
+		</style>
+	</head>
+	<body>
+		{include file="../commontop.html"}
+		<div class="container-fluid container1">
+			<div class="row ware-row">
+				<h5 class="col-md-12">您的位置： <a href="javascript:;">首页</a> » <a href="javascript:;">CRM</a> »客户列表</h5>
+			</div>
+			<div class="row">
+				<ul class="nav nav-tabs col-md-12 customer-nav">
+				  <li role="presentation">
+				  	<a href="/crm/customerlist.php">客户列表</a>
+				  </li>
+				  <li role="presentation" class="active">
+				  	<a href="/crm/addcustomer.php">添加客户</a>
+				  </li>
+				  <li role="presentation" style="display:none;" >
+				  	<a href="/crm/customerinfor.php">客户信息</a>
+				  </li>
+				</ul>
+			</div>
+			<div class="status">
+				<div class="row ">
+					<h5 class="row-bold col-md-12" style="margin-top:10px;">商品信息</h5>
+				</div>
+				<div class="row">
+					<form class="form-inline customer-form1 customer-form2 col-md-12">
+						<div class="form-group">
+							<label for="exampleInputName2"class="labelname">客户类型：</label>
+						    <select class="form-control customertype" id="exampleInputName2">
+						    	<option value="P">个人客户</option>
+						    	<option value="E">企业客户</option>
+						    </select>
+						</div>
+						<div class="form-group">
+							<label for="exampleInputName2" class="labelname">客户名称：</label>
+							<input type="text" class="form-control custom-custom customername" placeholder="必填" required="required" onkeyup = "this.value == '' ? this.style.borderColor='red' : this.style.borderColor=''">
+						</div>
+						<div class="form-group">
+							<label for="exampleInputName2" class="labelname">客户昵称：</label>
+							<input type="text" class="form-control custom-custom1 customernick">
+						</div>
+						<br/>
+
+						<div class="form-group">
+							<label for="exampleInputName2" class="labelname">手机号码：</label>
+							<input type="text" class="form-control custom-phone1 customerphone" onkeyup = "this.value == '' ? this.style.borderColor='red' : this.style.borderColor=''">
+						</div>
+						<div class="form-group">
+							<label for="exampleInputName2" class="labelname customertel">固定电话：</label>
+							<input type="text" class="form-control clienttel">
+						</div>
+						<div class="form-group">
+							<label for="exampleInputName2" class="labelname">结算金额：</label>
+							<div class="input-group">
+						      <div class="input-group-addon">￥</div>
+						      <input type="text" class="form-control payment" id="exampleInputAmount" style="width:110px;" onkeyup="value = value.replace(/[^\d\.]/,'')">
+						    </div>
+						</div>
+						<br>
+						<div class="form-group">
+							<label for="exampleInputName2" class="labelname">公司名称：</label>
+							<input type="text" class="form-control customercom" style="width:377px;">
+						</div>
+						<br>
+						<div class="form-group">
+							<label for="exampleInputName2" class="labelname">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;邮箱：</label>
+							<input type="text" class="form-control cusemail" >
+						</div>
+						<div class="form-group">
+							<label for="exampleInputName2" class="labelname">&nbsp;QQ号码：</label>
+							<input type="text" class="form-control cusQQ" >
+						</div>
+						<div class="form-group">
+							<label for="exampleInputName2" class="labelname">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;邮编：</label>
+							<input type="text" class="form-control cuspostcode" >
+						</div>
+						<br>
+						<div class="form-group">
+							<label for="select1" class="labelname">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;省份：</label>
+							<select class="form-control pro" id="select1">
+						    </select>
+						</div>
+						<div class="form-group">
+							<label for="select2" class="labelname">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;市区：</label>
+							<select class="form-control city" id="select2">
+						    </select>
+						</div>
+						<div class="form-group">
+							<label for="select3" class="labelname">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;区县：</label>
+							<select class="form-control county" id="select3">
+						    </select>
+						</div>
+						<br>
+						<div class="form-group">
+							<label for="exampleInputName2" class="labelname">详细地址：</label>
+							<input type="text" class="form-control cusaddress" style="width:608px;">
+						</div>
+						<br>
+						<div class="form-group">
+							<label for="exampleInputName2" class="labelname">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;备注：</label>
+							<input type="text" class="form-control custom-mark cuscomment" style="width:608px;">
+						</div>
+						<br>
+						<div class="form-group">
+							<input type="button" class="btn btn-default btn-sm custom-submit" value="提交" style="margin-right:10px;">
+							<input type="reset" class="btn btn-default btn-sm cusreset" value="重置">
+						</div>
+					</form>
+				</div>
+			</div>
+			<div class="push"></div>
+		</div>
+		{include file="../comfoot.html"}
+		<script type="text/javascript" src="/js/jquery-1.11.0.min.js"></script>
+		<script type="text/javascript" src="/js/commontop.js"></script>
+		<script type="text/javascript" src="/js/util.js"></script>
+		<script type="text/javascript" src="/bootstrap/js/bootstrap.min.js" ></script>
+		<script type="text/javascript" src="/js/mycom.js"></script>
+		<script type="text/javascript" src="/js/threeljs/areasvc.js"></script>
+		<script type="text/javascript" src="/js/crm/addcustomer.js"></script>
+	</body>
+</html>

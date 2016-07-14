@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>米欢电商ERP</title>
+		<link rel="stylesheet" type="text/css" href="/bootstrap/css/bootstrap.min.css"/>
+		<link href="/css/commontop.css"   rel="stylesheet" media="screen">
+		<link rel="stylesheet" type="text/css" href="/css/goods/combinationgoods.css"/>
+	</head>
+	<body id="combgoodsbody">
+		{include file="../commontop.html"}
+		<div class="container-fluid container-all">
+			<div class="your-position">
+				<p class="posp1">您的位置&nbsp;:&nbsp;</p>
+				<a class="posa1" href="#">首页</a>
+				<p class="posp2">&nbsp;>>&nbsp;</p>
+				<a class="posa1" href="goods.php">商品</a>
+				<P class="posp2">&nbsp;>>&nbsp;组合商品</P>
+			</div>
+			<div class="row gl-abovetable">
+				<div class="col-md-12">
+				  <!-- Nav tabs -->
+				  <ul class="nav nav-tabs" role="tablist">
+				    <li role="presentation"><a href="combinationgoods.php">组合商品</a></li>
+				    <li role="presentation" class="active"><a href="">组合商品列表</a></li>
+				  </ul>
+
+				  <!-- Tab panes -->
+		    	    <div role="tabpanel" class="tab-pane" id="profile">
+				    	<div class="row cgtab2top">
+				    		<div class="col-md-4">
+				            	<button class="btn btn-default cgdelbtn2" type="submit" style="float:left;">删除</button>					  		
+								<div class="dropdown cgdd1">
+								  <button class="form-control  btn btn-default dropdown-toggle cgbatchopbtn" id="dLabel" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="float:left;">
+								    批量操作
+								    <span class="caret"></span>
+								  </button>
+								  <ul class="dropdown-menu mydropdown-menu" aria-labelledby="dLabel">
+								    <li><a href="#" class="cgmodclass" data-toggle="modal" data-target="#cgmodclass">修改分类</a></li>
+								    <li><a href="#" class="cgmdbrand">修改品牌</a></li>
+								  </ul>
+							    </div>
+							</div>
+							<div class="col-md-8 cg-tab2topr">
+						  		<div class="form-group">
+								    <label for="exampleInputName2">商品名称:</label>
+								    <input type="text" class="form-control cggoodsname">
+							    </div>
+							    <div class="form-group">
+								    <label for="exampleInputEmail2">商品分类:</label>
+								    <select class="form-control cggoodsclassify">
+								    	<option></option>
+								    	<option>1</option>
+									</select>
+								</div>
+								<div>
+							  		<button class="btn btn-default" type="submit">查询</button>
+					            	<button class="btn btn-default glclearbtn" type="submit">清空</button>
+						  		</div>
+					  		</div>
+				    	</div>
+						<div class="row">
+						  <div class="col-md-12">
+				  			<table class="table table-bordered table-hover" style="width:1200px;margin-left: 18px;">
+								<thead>
+			                		<tr class="cgthead2 active">
+				                    	<th class="cgth21"  style="width:46px;">序号</th>
+				                    	<th class="cgth22" style="width:46px;text-align: center;"><input class="allCheck choice-all2" type="checkbox" value=""></th>
+				                    	<th class="cgth21" style="width:90px;">操作</th>
+				                    	<th style="width:218px;">商品名称</th>
+				                    	<th style="width:100px;">子商品</th>
+				                    	<th style="width:156px;">零售价</th>
+				                    	<th>分类</th>
+				                    	<th>品牌</th>
+				                    	<th class="col-md-4">备注</th>
+			                		</tr>
+			        			</thead>
+			        			<tbody class="cgtbody2">
+			                        <tr class="glonetr2">
+            	                        <td class="cgth1 cgthcom1">1</td>
+            	                        <td class="gltd2"><input class="allCheck checkboxChoice2" type="checkbox" value=""></td>
+            	                        <td class="gltd3"><a href="combinationgoods_listgai.php">修改</a></td>
+            	                        <td>
+            	                        	<a href="combinationgoods_listsee.php">haha</a>
+            	                        </td>
+            	                        <td class="gltd4">
+            	                        	<a href="javascript:;" class="combin-see">查看</a>
+            	                        </td>
+            	                        <td>
+            								<div class="input-group">
+            							      <div class="input-group-addon">￥</div>
+            							      <input type="text" class="form-control cgtd25" id="exampleInputAmount">
+            							    </div>
+            	                        </td>
+            	                        <td><input type="text" class="form-control cgtdclass"></td>
+            	                        <td><input type="text" class="form-control cgtdbrand"></td>
+            	                        <td><input type="text" class="form-control"></td>
+			                        </tr>
+			                        <tr class="glonetr2">
+            	                        <td class="cgth1 cgthcom1">2</td>
+            	                        <td class="gltd2"><input class="allCheck checkboxChoice2" type="checkbox" value=""></td>
+            	                        <td class="gltd3"><a href="combinationgoods_listgai.php">修改</a></td>
+            	                        <td>
+            	                        	<a href="combinationgoods_listsee.php">haha</a>
+            	                        </td>
+            	                        <td class="gltd4">
+            	                        	<a href="javascript:;" class="combin-see">查看</a>
+            	                        </td>
+            	                        <td>
+            								<div class="input-group">
+            							      <div class="input-group-addon">￥</div>
+            							      <input type="text" class="form-control cgtd25" id="exampleInputAmount">
+            							    </div>
+            	                        </td>
+            	                        <td><input type="text" class="form-control cgtdclass"></td>
+            	                        <td><input type="text" class="form-control cgtdbrand"></td>
+            	                        <td><input type="text" class="form-control"></td>
+			                        </tr>
+			                    </tbody>
+			                </table>
+			              </div>
+		                </div>
+		                <div class="norecord2" style="margin:0 auto;width:100%;text-align: center;display: none;">
+		                	<div class="norecordc">
+		                		<img src="/images/empty.jpg"/>
+		                		<span>没有找到记录，请调整搜索条件。</span>
+		                	</div>
+		                </div>
+		                <div class="row">
+		                	<div class="col-md-5"></div>
+			                <div class="col-md-7 ps-content">
+				                <form action="" class="form-inline" style="float:left;margin-top:10px;padding-left:145px;">
+				                	<div class="form-group ps-content1">
+									    <label for="exampleInputEmail2" id="ps-contentl1" style="float:left;margin-right: 10px;">每页:</label>
+									    <select class="form-control pseverypagel1" style="width:80px;">
+									    	<option class="evpageo">10</option>
+									    	<option class="evpageo">15</option>
+									    	<option class="evpageo">20</option>
+									    	<option class="evpageo">50</option>
+									    	<option class="evpageo">100</option>
+										</select>
+									</div>
+									<div class="form-group" style="float:left;">
+									  <ul class="pageul">
+									    <li><a href="#">首页</a></li>
+									    <li><a href="#">上一页</a></li>
+								      </ul>
+									</div>
+									<div class="form-group ps-contentl2" id="ps-contentl2">
+									    <label for="exampleInputEmail2">第</label>
+									    <input type="text" class="form-control" style="width:45px;float:left;margin:0 5px 0 5px;">
+									    <label for="exampleInputEmail2" class="ps-contentl3">页&nbsp;(共</label>
+									    <span class="ps-allpage">13476</span>
+									    <label for="exampleInputEmail2">页,</label>
+									    <span class="ps-allcount" >13470</span>
+									    <label for="exampleInputEmail2">条)</label>
+									</div>
+									<div class="form-group">
+									  <ul class="pageul" >
+									    <li><a href="#">下一页</a></li>
+									    <li><a href="#">末页</a></li>
+									  </ul>
+									</div>
+				                </form>
+				            </div>
+		                </div>
+				    </div>
+
+					<!-- Button trigger modal -->
+					<!-- Modal -->
+					<div class="modal modal-cgmodeldel1">
+					    <div class="modalcon">
+					    	<div class="modal-bt">
+					    		<h4 class="modal-title size-title" id="myModalLabel">提示</h4>
+								<button type="button" class="close close-btn" data-dismiss="modal" aria-label="Close" id="close-btn"><span aria-hidden="true">x</span></button>
+					    	</div>
+					      	<div class="modal-bd">
+	      						<span>没有选中任何东西!</span>
+					      	</div>
+					        <div class="modal-bo">
+					      	  <button type="button" class="btn btn-default close-btn">确定</button>
+					       </div>
+					    </div>
+					</div>
+					<div class="modal modal-cgmodeldel2">
+					    <div class="modalcon">
+					    	<div class="modal-bt">
+					    		<h4 class="modal-title size-title" id="myModalLabel">删除商品</h4>
+								<button type="button" class="close close-btn" data-dismiss="modal" aria-label="Close" id="close-btn"><span aria-hidden="true">x</span></button>
+					    	</div>
+					      	<div class="modal-bd">
+	      						<span>确定删除？</span>
+					      	</div>
+					        <div class="modal-bo">
+					      	  <button type="button" class="btn btn-default btn-sm cgsuredelbtn">确定</button>
+					      	  <button type="button" class="btn btn-default close-btn btn-sm">关闭</button>
+					       </div>
+					    </div>
+					</div>
+
+					<!-- Button trigger modal -->
+					<!-- Modal -->
+					<div class="modal modal-cgmodclass2">
+					    <div class="modalcon">
+					    	<div class="modal-bt">
+					    		<h4 class="modal-title size-title" id="myModalLabel">修改品牌</h4>
+								<button type="button" class="close close-btn" data-dismiss="modal" aria-label="Close" id="close-btn"><span aria-hidden="true">x</span></button>
+					    	</div>
+					      	<div class="modal-bd">
+	      						<div class="form-group">
+								    <label for="exampleInputName2">分类:</label>
+								    <select class="form-control cgmclassselect">
+								    	<option>衣服</option>
+								    	<option>&nbsp;&nbsp;上衣</option>
+								    	<option>&nbsp;&nbsp;&nbsp;&nbsp;上衣1</option>
+								    	<option>&nbsp;&nbsp;下衣</option>
+									</select>
+								</div>
+					      	</div>
+					        <div class="modal-bo">
+					      	  <button type="button" class="btn btn-default btn-sm cgsureclassbtn">确定</button>
+					      	  <button type="button" class="btn btn-default close-btn btn-sm">关闭</button>
+					        </div>
+					    </div>
+					</div>
+
+					<!-- Button trigger modal -->
+					<!-- Modal -->
+					<div class="modal modal-cgmodbrandh2">
+					    <div class="modalcon">
+					      <div class="modal-bt">
+					        <h4 class="modal-title" style="text-align: center;font-weight: bold;">修改品牌</h4>
+					        <button type="button" class="close close-btn" data-dismiss="modal" aria-label="Close" id="close-btn"><span aria-hidden="true">x</span></button>
+					      </div>
+					      <div class="modal-bd">
+					         <div class="form-group">
+							    <label for="exampleInputName2">品牌:</label>
+							    <select class="form-control cgmbrandselect">
+							    	<option>男装</option>
+							    	<option>&nbsp;&nbsp;男式上衣</option>
+							    	<option>&nbsp;&nbsp;&nbsp;&nbsp;男式上衣1</option>
+							    	<option>&nbsp;&nbsp;男士裤装</option>
+								</select>
+							 </div>
+					      </div>
+					      <div class="modal-bo">
+					        <button type="button" class="btn btn-default cgsurebrandbtn" data-dismiss="modal">提交</button>
+					        <button type="button" class="btn btn-default btn-sm close-btn" data-dismiss="modal">关闭</button>
+					      </div>
+					    </div><!-- /.modal-content -->
+					</div><!-- /.modal -->
+
+					<!-- Button trigger modal -->
+					<!-- Modal -->
+					<div class="modal" id="cgmodview">
+					    <div class="modalcon">
+					      <div class="modal-bt">
+					        <h4 class="modal-title size-title" style="text-align: center;font-weight: bold;">子商品</h4>
+					        <button type="button" class="close close-btn" data-dismiss="modal" aria-label="Close" id="close-btn"><span aria-hidden="true">x</span></button>
+					      </div>
+					      <div class="modal-bd" style="height:200px;overflow:auto;">
+					        <table class="table table-bordered table-hover cg-table " id="cg-table">
+									<thead>
+				                		<tr class="active" style="line-height: 38px;">
+					                    	<th style="width:25%;height:38px;">子商品</th>
+					                    	<th style="width:25%;height:38px;">零售价</th>
+					                    	<th style="width:25%;height:38px;">数量</th>
+					                    	<th style="width:25%;height:38px;">单位</th>
+				                		</tr>
+				        			</thead>
+				        			<tbody id="cgtbodymodson">
+				                        <tr class="glonetr">
+											<td>组合子商品A</td>
+											<td>1222</td>
+											<td>1</td>
+											<td>1</td>
+				                        </tr>				                        
+				                    </tbody>
+				                </table>
+					      </div>
+					    </div><!-- /.modal-content -->
+					</div><!-- /.modal -->
+				</div>
+			</div>
+			<div class="push"></div>
+		</div>
+		{include file="../comfoot.html"}
+		<script src="/js/jquery-1.11.0.min.js" ></script>
+		<script src="/bootstrap/js/bootstrap.min.js"  ></script>
+		<script src="/js/commontop.js"></script>
+		<script src="/js/mycom.js"></script>
+		<script src="/js/goods/combinationgoods_list.js"></script>
+	</body>
+</html>

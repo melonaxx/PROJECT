@@ -1,0 +1,41 @@
+__publishs:
+    sys_local:
+        pkg     : !P.pkg &sys_pkg
+            name    : "ferrari"
+            root    : ""
+            exclude : 
+                - ".pyc"
+                - ".git"
+        deploy  : !P.deploy &sys_deploy
+            sudo    : True
+            root    : "/home/q/system"
+        host: !P.host 
+            include : 
+                - "127.0.0.1"
+        setup   : !P.rigger
+             sys    : "all"
+             os     : "diy"
+             env    : "online"
+    sys_demo: !P.publish
+        pkg     : *sys_pkg
+        deploy  : *sys_deploy
+        host    : !P.host 
+            include: 
+                - "127.0.0.1"
+        setup: !P.rigger
+             sys    : "all"
+             os     : "diy"
+             env    : "demo"
+#              cmd    : "echo 'done';"
+#              vars   : "V1=abc"
+
+    sys_online: !P.publish
+        pkg     : *sys_pkg
+        deploy  : *sys_deploy
+        host    : !P.host 
+            include: 
+                - "127.0.0.1"
+        setup: !P.rigger
+             sys    : "all"
+             os     : "diy"
+             env    : "online"

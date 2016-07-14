@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>米欢电商ERP</title>
+		<link href="/images/favicon.ico" rel="shortcut icon">
+		<link rel="stylesheet" type="text/css" href="/bootstrap/css/bootstrap-datetimepicker.min.css"/>
+		<link href="/bootstrap/css/bootstrap.min.css"  rel="stylesheet" media="screen">
+		<link href="/css/commontop.css"   rel="stylesheet" media="screen">
+		<link rel="stylesheet" type="text/css" href="/css/delivery/deliver_barcode_handle.css"/>
+		<style>
+			{literal}
+				@media screen and (max-width: 1120px){
+					/*当屏幕尺寸小于1120px时，应用下面的CSS样式*/
+				    .navbar-nav,#comtop-right{display: none;}
+				}
+			{/literal}
+		</style>
+	</head>
+	<body>
+		{include file="../commontop.html"}
+		<div class="container-fluid container1">
+			<div class="row ware-row">
+				<h5 class="col-md-12">您的位置： <a href="javascript:;">首页</a> » <a href="javascript:;">发货</a> » 待处理</h5>
+			</div>
+			<div class="row">
+				<ul class="nav nav-tabs col-md-12 barcode-nav">
+				  <li role="presentation">
+				  	<a href="/delivery/deliverbarcode.php">条码验货</a>
+				  </li>
+				  <li role="presentation" class="active">
+				  	<a href="/delivery/barcodehandle.php">待处理</a>
+				  </li>
+				</ul>
+			</div>
+			<div class="row">
+				<form class="form-inline col-md-12 barhandle-form">
+					<div class="form-group barhandle-btn">
+						<button type="button" class="btn btn-default btn-sm sure-weight"style="margin-right: 10px;">进行称重</button>
+						<button type="button" class="btn btn-default btn-sm submit-statu"style="margin-right: 10px;">提交异常</button>
+						<div class="btn-group">
+							<button aria-expanded="false" data-toggle="dropdown" class="form-control input-sm" type="button"style="width:66px;">
+								打回
+								<span class="caret"></span>
+							</button>
+							<ul role="menu" class="dropdown-menu">
+							  <li>
+								<a class="shen" href="#" style="font-size:12px;">
+									订单审核
+								</a>
+							  </li>
+							  <li>
+							  	<a class="pei" href="#" style="font-size:12px;">打单配货</a>
+							  </li>
+							</ul>
+						</div>
+					</div>
+					<div class="form-group"style="float:right;">
+						<div class="input-group" style="width:250px;">
+							<input value="" placeholder="输入订单编号/收件人查询" class="form-control input-sm ordersearch" type="text">
+							<span class="input-group-btn">
+								<button class="btn btn-default btn-sm searchbtn" type="button">搜索</button>
+							</span>
+						</div>
+						<button class="btn btn-sm btn-default resetbtn" type="reset">重置</button>
+					</div>
+				</form>
+				<table class="table table-hover col-md-12 barhandle-table1">
+					<thead>
+						<tr class="active">
+							<td>序号</td>
+							<td>
+								<label>
+							      <input type="checkbox" class="allcheck">
+							    </label>
+							</td>
+							<td>下单时间</td>
+							<td>订单类别</td>
+							<td>购买渠道</td>
+							<td>发货仓库</td>
+							<td>发货方式</td>
+							<td>发货公司</td>
+							<td>运单号</td>
+							<td>买家名称</td>
+							<td>手机</td>
+							<td>数量</td>
+							<td>店铺</td>
+							<td>客服</td>
+							<td>订单编号</td>
+						</tr>
+					</thead>
+					<tbody>
+	    				{foreach $barcodedata as $key=>$value}
+						<tr>
+							<td>{$key+1}</td>
+							<td>
+								<label>
+							      <input class="check" orderid='{$value["orderid"]}' type="checkbox" value="">
+							    </label>
+							</td>
+							<td>{$value['createtime']}</td>
+							<td>{$value['catename']}</td>
+							<td>{$value['channelname']}</td>
+							<td>{$value['storename']}</td>
+							<td>{$value['deltype']}</td>
+							<td>{$value['transportname']}</td>
+							<td>{$value['waybill']}</td>
+							<td>{$value['cusname']}</td>
+							<td>{$value['mobile']}</td>
+							<td>{$value['prototal']}</td>
+							<td>{$value['shopname']}</td>
+							<td>{$value['servicename']}</td>
+							<td>{$value['onlineid']}</td>
+						</tr>
+						{/foreach}
+					</tbody>
+				</table>
+			</div>
+			{if count($barcodedata) <= 0}
+			<div class="row no-find" style="display:block;">
+				<div class="no-record col-md-12"><img src="/images/empty.jpg"/><span>没有找到记录，请调整搜索条件。</span></div>
+			</div>
+			{/if}
+			{$pages}
+			<input type="hidden" name="pagewarning" value="{$pagewarning}">
+			<!-- 确认称重 -->
+			<div class="modal modal-sureweight">
+				<div class="modalcon">
+					<div class="modal-bt">
+						<h4 class="modal-title size-title" id="myModalLabel">提示</h4>
+					    <button type="button" class="close close-btn" data-dismiss="modal" aria-label="Close" id="close-btn"><span aria-hidden="true">x</span></button>
+					</div>
+					<div class="modal-bd">
+					    <span>你确定要称重计费吗？</span>
+					</div>
+					<div class="modal-bo">
+			        	<button type="button" class="btn btn-default btn-sm">确定</button>
+					</div>
+				</div>
+			</div>
+			<!--提示 -->
+			<div class="modal modal-tip">
+				<div class="modalcon">
+					<div class="modal-bt">
+						<h4 class="modal-title size-title" id="myModalLabel">提示</h4>
+					    <button type="button" class="close close-btn" data-dismiss="modal" aria-label="Close" id="close-btn"><span aria-hidden="true">x</span></button>
+					</div>
+					<div class="modal-bd">
+					    <span>请至少选择1个订单</span>
+					</div>
+					<div class="modal-bo">
+			        	<button type="button" class="btn btn-default btn-sm close-btn">确定</button>
+					</div>
+				</div>
+			</div>
+			<!--订单审核 -->
+			<div class="modal modal-returncheck">
+				<div class="modalcon">
+					<div class="modal-bt">
+						<h4 class="modal-title size-title" id="myModalLabel">提示</h4>
+					    <button type="button" class="close close-btn" data-dismiss="modal" aria-label="Close" id="close-btn"><span aria-hidden="true">x</span></button>
+					</div>
+					<div class="modal-bd">
+					    <span>您确定要订单审核吗?</span>
+					</div>
+					<div class="modal-bo">
+			        	<button type="button" class="btn btn-default btn-sm close-btn">确定</button>
+					</div>
+				</div>
+			</div>
+			<!--打单配货 -->
+			<div class="modal modal-peihuo">
+				<div class="modalcon">
+					<div class="modal-bt">
+						<h4 class="modal-title size-title" id="myModalLabel">提示</h4>
+					    <button type="button" class="close close-btn" data-dismiss="modal" aria-label="Close" id="close-btn"><span aria-hidden="true">x</span></button>
+					</div>
+					<div class="modal-bd">
+					    <span>您确定要打单配货吗?</span>
+					</div>
+					<div class="modal-bo">
+			        	<button type="button" class="btn btn-default btn-sm close-btn">确定</button>
+					</div>
+				</div>
+			</div>
+
+			<!-- 提交异常 -->
+			<div class="modal modal-subabnormal">
+				<div class="modalcon">
+					<div class="modal-bt">
+						<h4 class="modal-title size-title" id="myModalLabel">异常原因</h4>
+					    <button type="button" class="close close-btn" data-dismiss="modal" aria-label="Close" id="close-btn"><span aria-hidden="true">x</span></button>
+					</div>
+				    <form class="form-inline" method="post" action="">
+						<div class="modal-bd">
+								<div class="form-group">
+									<label class="labelname">异常原因：</label>
+									<select class="form-control input-sm" >
+										<option >缺货</option>
+
+										<option>a</option>
+									</select>
+									<a href="/order/abnormalset.php" target="_blank">异常添加</a>
+								</div>
+								<br>
+								<div class="form-group">
+									<label class="labelname">异常备注：</label>
+									<textarea class="form-control input-sm" rows="4" style="width:300px;height:100px;resize: none;"></textarea>
+								</div>
+						</div>
+						<div class="modal-bo">
+				        	<button type="button" class="btn btn-default btn-sm account-sure">确定</button>
+				        	<button type="button" class="btn btn-default btn-sm close-btn">取消</button>
+						</div>
+					</form>
+				</div>
+			</div>
+			<div class="push"></div>
+		</div>
+		{include file="../comfoot.html"}
+		<script type="text/javascript" src="/js/jquery-1.11.0.min.js"></script>
+		<script type="text/javascript" src="/js/commontop.js"></script>
+		<script type="text/javascript" src="/bootstrap/js/bootstrap.min.js" ></script>
+		<script type="text/javascript" src="/js/mycom.js"></script>
+		<script type="text/javascript" src="/js/delivery/deliver_barcode_handle.js"></script>
+	</body>
+</html>

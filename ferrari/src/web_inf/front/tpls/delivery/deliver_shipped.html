@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>米欢电商ERP</title>
+		<link href="/images/favicon.ico" rel="shortcut icon">
+		<link href="/bootstrap/css/bootstrap.min.css"  rel="stylesheet" media="screen">
+		<link href="/css/commontop.css"   rel="stylesheet" media="screen">
+		<link rel="stylesheet" type="text/css" href="/css/delivery/deliver_shipped.css"/>
+		<style>
+			{literal}
+				@media screen and (max-width: 1120px){ 
+					/*当屏幕尺寸小于1120px时，应用下面的CSS样式*/
+				    .navbar-nav,#comtop-right{display: none;}
+				}
+			{/literal}
+		</style>
+	</head>
+	<body>
+		{include file="../commontop.html"}
+		<div class="container-fluid container1">
+			<div class="row ware-row">
+				<h5 class="col-md-12">您的位置： <a href="javascript:;">首页</a> » <a href="javascript:;">发货</a> »已发货</h5>
+			</div>
+			<div class="row">
+			    <form class="form-inline shipped-form col-md-12">
+					<!-- <div class="form-group">
+						<button type="button" class="btn btn-default btn-sm send-message">发送短信</button>
+					</div> -->
+					<div class="form-group shipment-search"style="float:right;">
+						<div class="input-group"style="width:250px;">
+							<input value="" placeholder="输入订单编号/收件人等" class="form-control input-sm input_search" type="text">
+							<span class="input-group-btn">
+								<button class="btn btn-default btn-sm" type="button">搜索</button>
+							</span>
+						</div>
+						<button class="btn btn-sm btn-default"type="reset"style="margin-right: 0;">重置</button>
+					</div>
+				</form>
+				<table class="table table-hover shipped-table col-md-12">
+				    <thead>
+				    	<tr class="active">
+				    		<td>序号</td>
+				    		<td>
+				    			<label>
+							      <input type="checkbox" class="allcheck">
+							    </label>
+							</td>
+				    		<td>操作</td>
+				    		<td>下单时间</td>
+							<td>订单类别</td>
+							<td>购买渠道</td>
+							<td>发货仓库</td>
+							<td>发货方式</td>
+							<td>发货公司</td>
+							<td>运单号</td>
+							<td>买家名称</td>
+							<td>手机</td>
+							<td>数量</td>
+							<td>店铺</td>
+							<td>客服</td>
+							<td>订单编号</td>
+				    	</tr>
+				    </thead>
+				    <tbody>
+				    	<tr>
+				    		<td>1</td>
+				    		<td>
+							    <input type="checkbox" class="check">
+				    		</td>
+				    		<td>
+				    			<a href="/order/editorderquery.php">编辑</a>
+				    		</td>
+				    		<td></td>
+				    		<td></td>
+				    		<td></td>
+				    		<td></td>
+				    		<td></td>
+				    		<td></td>
+				    		<td></td>
+				    		<td></td>
+				    		<td></td>
+				    		<td></td>
+				    		<td></td>
+				    		<td></td>
+				    		<td></td>
+				    	</tr>
+				    </tbody>
+				</table>
+			</div>
+			<div class="row" style="display:none;">
+				<div class="no-record col-md-12"><img src="/images/empty.jpg"/><span>没有找到记录，请调整搜索条件。</span></div>
+			</div>
+			<div class="row">
+				<form class="form-inline warestatus-form1 warestatus-form2">
+					<div class="form-group">
+					    <label for="exampleInputName2"class="labelname">每页：</label>
+					    <select class="form-control waregood-status" id="exampleInputName2">
+					    	<option>10</option>
+					    	<option>15</option>
+					    	<option>20</option>
+					    	<option>50</option>
+					    	<option>100</option>
+					    </select>
+					</div> 
+					<div class="form-group">
+						<ul class="warestatus-page">
+							<li><a href="">首页</a></li>
+						    <li class="previous"><a href="#">上一页</a></li>
+						    <li>
+						    	<label for="exampleInputName2"class="labelname">第</label>
+							     <input type="text" class="form-control"id="exampleInputName2"value="1">
+						    	<label for="exampleInputName2"class="labelname">页(共<span>1</span>页<span>0</span>条)</label>
+						    </li>
+						    <li class="next"><a href="#">下一页</a></li>
+							<li><a href="#">末页</a></li>
+						 </ul>
+					</div> 
+				</form>
+			</div>
+			<!-- 发送短信 -->
+			<div class="modal modal-shipped">
+				<div class="modalcon">
+					<div class="modal-bt">
+						<h4 class="modal-title size-title" id="myModalLabel">选择模板</h4>
+					    <button type="button" class="close close-btn" data-dismiss="modal" aria-label="Close" id="close-btn"><span aria-hidden="true">x</span></button>
+					</div>
+					<div class="modal-bd">
+					    <form class="form-inline">
+							<div class="form-group">
+								<label class="labelname">选择短信模板：</label>
+								<select class="form-control input-sm" >
+									<option >发货通知</option>
+								</select>
+							</div>
+						</form>
+					</div>
+					<div class="modal-bo">
+			        	<button type="button" class="btn btn-default btn-sm">发送</button>
+			        	<button type="button" class="btn btn-default btn-sm close-btn">取消</button>
+					</div>
+				</div>
+			</div>
+			<!--提示 -->
+			<div class="modal modal-shipped1">
+				<div class="modalcon">
+					<div class="modal-bt">
+						<h4 class="modal-title size-title" id="myModalLabel">提示</h4>
+					    <button type="button" class="close close-btn" data-dismiss="modal" aria-label="Close" id="close-btn"><span aria-hidden="true">x</span></button>
+					</div>
+					<div class="modal-bd">
+					    <span>请至少选择1个订单</span>
+					</div>
+					<div class="modal-bo">
+			        	<button type="button" class="btn btn-default btn-sm close-btn">确定</button>
+					</div>
+				</div>
+			</div>
+			<div class="push"></div>
+		</div>
+		{include file="../comfoot.html"}
+		<script type="text/javascript" src="/js/jquery-1.11.0.min.js"></script>
+		<script type="text/javascript" src="/js/commontop.js"></script>
+		<script type="text/javascript" src="/bootstrap/js/bootstrap.min.js" ></script>
+		<script type="text/javascript" src="/js/mycom.js"></script>
+		<script type="text/javascript" src="/js/delivery/deliver_shipped.js"></script>
+	</body>
+</html>

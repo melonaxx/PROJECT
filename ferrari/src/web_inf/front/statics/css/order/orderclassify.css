@@ -1,0 +1,60 @@
+.classify-table{
+	width:686px;
+	margin-left: 15px;
+}
+.classify-table thead td:nth-of-type(1){
+	width:46px;
+}
+.classify-table thead td:nth-of-type(2){
+	width:90px;
+}
+.classify-table thead td:nth-of-type(3){
+	width:550px;
+}
+.empty-tr td{
+	text-align: center;
+	vertical-align: middle;
+}
+.empty-tr td a{
+	color:#38f;
+
+}
+.classify-change{
+	float:left;
+	margin-left: 5px;
+	cursor: pointer;
+}
+.classify-del{
+	float:right;
+	margin-right: 5px;
+	cursor: pointer;
+}
+.modal-classify .modalcon{
+	width:430px;
+	margin-left: -215px;
+}
+.modal-classify1 .modalcon{
+	width:300px;
+	margin-left: -150px;
+}
+.modal-classify2 .modalcon{
+	width:430px;
+	margin-left: -215px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

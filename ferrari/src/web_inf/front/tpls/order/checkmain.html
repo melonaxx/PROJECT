@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>米欢电商ERP</title>
+		<link href="/images/favicon.ico" rel="shortcut icon">
+		<link rel="stylesheet" type="text/css" href="/bootstrap/css/bootstrap-datetimepicker.min.css"/>
+		<link href="/bootstrap/css/bootstrap.min.css"  rel="stylesheet" media="screen">
+		<link href="/css/commontop.css"   rel="stylesheet" media="screen">
+		<link rel="stylesheet" type="text/css" href="/css/order/checkmain.css"/>
+		<style>
+			{literal}
+				@media screen and (max-width: 1120px){ 
+					/*当屏幕尺寸小于1120px时，应用下面的CSS样式*/
+				    .navbar-nav,#comtop-right{display: none;}
+				}
+			{/literal}
+		</style>
+	</head>
+	<body>
+		{include file="../commontop.html"}
+		<div class="container-fluid container1">
+			<div class="row ware-row">
+				<h5 class="col-md-12">您的位置： <a href="javascript:;">首页</a> » <a href="javascript:;">订单</a> » 审核主订单</h5>
+			</div>
+			<div class="row">
+				<ul class="nav nav-tabs col-md-12 checkmain-nav">
+				  <li role="presentation">
+				  	<a href="/order/mainorder.php">添加主订单</a>
+				  </li>
+				  <li role="presentation" class="active">
+				  	<a href="/order/checkmain.php">审核主订单</a>
+				  </li>
+				  <li role="presentation">
+				  	<a href="/order/mainlist.php">主订单列表</a>
+				  </li>
+				</ul>
+			</div>
+			<div class="row">
+				<form action="/order/checkmain.php" class="form-inline col-md-12 checkmain-form" method="post" onsubmit="return fun()">
+					<div class="form-group">
+						<button type="button" class="btn btn-default btn-sm sure-check">确认审核</button>
+						<button class="btn btn-default order-close" type="button">关闭</button>
+					</div>
+					<div class="form-group" style="float:right;margin-right: 0;">
+					    <div class="input-group">
+							<input placeholder="输入订单编号" class="form-control input-sm input_search" type="text" name="seach" value="{$seach}" id="seach">
+							<span class="input-group-btn">
+								<button type="submit" class="btn btn-default btn-sm"  id="sou">搜索</button>
+							</span>
+						</div>
+						<a href="/order/checkmain.php" class="btn btn-sm btn-default" style="margin-right: 0;">重置</a>
+					</div>
+				</form>
+				<table class="table table-hover col-md-12 checkmain-table">
+					<thead>
+	            		<tr class="active">
+	                    	<td>序号</td>
+	                    	<td>
+	                    		<input class="allcheck" type="checkbox" value="">
+	                    	</td>
+	                    	<td>操作</td>
+	                    	<td>下单时间</td>
+	                    	<td>订单类别</td>
+	                    	<td>购买渠道</td>
+	                    	<td>买家名称</td>
+	                    	<td>手机</td>
+	                    	<td>店铺</td>
+	                    	<td>客服</td>
+	                    	<td>订单编号</td>
+	            		</tr>
+	    			</thead>
+	    			<tbody class="ortbody" id="tb">
+	    			{foreach from=$list key=k item=row}
+	                    <tr class="order-tr">
+	                        <td class="order-td">{$k+1}</td>
+	                        <td><input class="check" type="checkbox" value="{$row['id']}"></td>
+	                        <td><a href="/order/editmain.php?id={$row['id']}">编辑</a></td>
+	                        <td>{$row['orderdate']}</td>
+	                        <td>{$row['classname']}</td>
+	                        <td>{$row['qudao']}</td>
+	                        <td>{$row['cusname']}</td>
+	                        <td>{$row['mobile']}</td>
+	                        <td>{$row['shopname']}</td>
+	                        <td>{$row['kefu']}</td>
+	                        <td>{$row['id']}</td>
+	                    </tr>
+	                {/foreach}
+	                </tbody>
+	            </table>
+			</div>
+			<!-- 审核订单 -->
+			<div class="modal modal-check">
+				<div class="modalcon">
+					<div class="modal-bt">
+						<h4 class="modal-title size-title" id="myModalLabel">提示</h4>
+					    <button type="button" class="close close-btn" data-dismiss="modal" aria-label="Close" id="close-btn"><span aria-hidden="true">x</span></button>
+					</div>
+					<div class="modal-bd">
+					    <p>您确定要审核吗?</p>
+					</div>
+					<div class="modal-bo">
+			        	<button type="button" class="btn btn-default btn-sm" id="edit">确定</button>
+					</div>
+				</div>
+			</div>
+			<!--提示 -->
+			<div class="modal modal-tip">
+				<div class="modalcon">
+					<div class="modal-bt">
+						<h4 class="modal-title size-title" id="myModalLabel">提示</h4>
+					    <button type="button" class="close close-btn" data-dismiss="modal" aria-label="Close" id="close-btn"><span aria-hidden="true">x</span></button>
+					</div>
+					<div class="modal-bd">
+					    <span class="tip-content">请至少选择1个订单</span>
+					</div>
+					<div class="modal-bo">
+			        	<button type="button" class="btn btn-default btn-sm close-btn">确定</button>
+					</div>
+				</div>
+			</div>
+			<!--关闭提示 -->
+			<div class="modal modal-close">
+				<div class="modalcon">
+					<div class="modal-bt">
+						<h4 class="modal-title size-title" id="myModalLabel">提示</h4>
+					    <button type="button" class="close close-btn" data-dismiss="modal" aria-label="Close" id="close-btn"><span aria-hidden="true">x</span></button>
+					</div>
+					<div class="modal-bd">
+					    <span class="tip-content">你确定要关闭吗？</span>
+					</div>
+					<div class="modal-bo">
+			        	<button type="button" class="btn btn-default btn-sm close-btn" id="del">确定</button>
+					</div>
+				</div>
+			</div>
+			{$pages}
+			<div class="push"></div>
+		</div>
+		{include file="../comfoot.html"}
+		<script src="/js/jquery-1.11.0.min.js" ></script>
+		<script src="/bootstrap/js/bootstrap.min.js"></script>
+		<script src="/js/commontop.js"></script>
+		<script src="/js/mycom.js"></script>
+		<script src="/js/order/checkmain.js"></script>
+	</body>
+</html>

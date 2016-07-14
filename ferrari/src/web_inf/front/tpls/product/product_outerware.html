@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>米欢电商ERP</title>
+		<link href="/images/favicon.ico" rel="shortcut icon">
+		<link href="/bootstrap/css/bootstrap.min.css"  rel="stylesheet" media="screen">
+		<link href="/css/commontop.css"   rel="stylesheet" media="screen">
+		<link rel="stylesheet" type="text/css" href="/css/warehouse/warestatus.css"/>
+		<link rel="stylesheet" type="text/css" href="/css/product/product_listenter.css"/>
+		<style>
+			{literal}
+				@media screen and (max-width: 1120px){ 
+					/*当屏幕尺寸小于1120px时，应用下面的CSS样式*/
+				    .navbar-nav,#comtop-right{display: none;}
+				}
+			{/literal}
+		</style>
+	</head>
+	<body>
+		{include file="../commontop.html"}
+		<div class="container-fluid container1">
+			<div class="row ware-row">
+				<h5 class="col-md-12">您的位置： <a href="javascript:;">首页</a> » <a href="javascript:;">生产</a></h5>
+			</div>
+			<div class="row">
+				<form class="form-inline col-md-12 enterware-form" action="/product_product_changestore.php" method="post">
+					<div class="form-group">
+						<label for="exampleInputName2"class="labelname">&nbsp;&nbsp;&nbsp;收货仓库：</label>
+						<input type="text" class="form-control enterware-ware" id="exampleInputName2" readonly="readonly" value="{$one_pro_list['storeinfo']}"/>
+					</div>
+					<div class="form-group">
+						<label for="exampleInputName2"class="labelname">创建日期：</label>
+						<input type="text" class="form-control" id="exampleInputName2" readonly="readonly" value="{$one_pro_list['actiondate']}" />
+					</div>
+					<br>
+					<div class="form-group">
+						<label for="exampleInputName2"class="labelname">生产单编码：</label>
+						<input type="text" class="form-control enterware-code" id="exampleInputName2" readonly="readonly" value="{$one_pro_list['number']}"/>
+					</div>
+					<div class="form-group">
+						<label for="exampleInputName2"class="labelname">审核状态：</label>
+						<input type="text" class="form-control" id="exampleInputName2" readonly="readonly" {if $one_pro_list['statusaudit'] == "Y"}value="通过审核"{/if} />
+					</div>
+					<br>
+					<div class="form-group">
+						<div class="row-textarea">
+							<label for="exampleInputName2"class="labelname">生产单摘要：</label>
+							<textarea class="form-control"id="exampleInputName2">{$one_pro_list['brief']}</textarea>
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="row-textarea">
+							<label for="exampleInputName2"class="labelname">生产单备注：</label>
+							<textarea class="form-control"id="exampleInputName2">{$one_pro_list['comment']}</textarea>
+						</div>
+					</div>
+					<div class="row-bold addpur-bt">生产商品信息</div>
+					<table class="table table-hover enter-table" border="1">
+						<thead>
+							<tr class="active">
+								<td>商品名称与规格</td>
+								<td>图片</td>
+								<td>单位</td>
+								<td>数量</td>
+							</tr>
+						</thead>
+						<tbody id="tbody1">
+	                        <tr class="onetr1">
+		                        <td>{$one_pro_list['goodsinfo']}</td>
+		                        <td class="warestatus-tbody-img">
+		                        	<img src="{$one_pro_list['img']}" class="img1"/>
+		                        	<img src="{$one_pro_list['img']}" class="img2"/>
+		                        </td>
+		                        <td>{$one_pro_list['proflats_name']}</td>
+		                        <td>{$one_pro_list['total']}</td>
+	                        </tr>
+	                    </tbody>
+					</table>
+					<div class="row-bold addpur-bt">代工户加工商品出库详情</div>
+					<table class="table table-hover product-enter-table">
+						<thead>
+							<tr class="active">
+								<td>序号</td>
+								<td>代工户名称</td>
+								<td>生产数量</td>
+								<td>备注</td>
+								<td>已入库数量</td>
+								<td>在途数量</td>
+								<td>返工出库数量</td>
+							</tr>
+						</thead>
+
+						<tbody>
+							{foreach from=$alloem item=temp}
+								<tr>
+									<td><span name="number1"></span></td>
+									<td>
+										{$temp['oemname']}
+									</td>
+									<td class="enterware-allnum onecount">{$temp['total']}</td>
+									<td class="purentermark">
+										{$temp['comment']}
+									</td>
+									<td class="enterware-innum">{$temp['totalfinish']}</td>
+									<td class="enterware-allnum twocount">{$temp['totalway']}</td>
+									<td class="enterware-outnum">{$temp['totalrefund']}</td>
+								</tr>
+							{/foreach}
+						</tbody>
+						<tfoot>
+							<tr>
+								<td>合计</td>
+								<td colspan="6" class="total">
+									<span>生产数量：<b id="actnum" style="color:red;margin-left: 10px;">0</b></span>
+									<span>已入库数量：<b id="besotrenum" style="color:red;margin-left: 10px;">0</b></span>
+									<span>在途数量：<b id="waynum" style="color:red;margin-left: 10px;">0</b></span>
+									<span>返工入库数量：<b id="returnnum" style="color:red;margin-left: 10px;">0</b></span>
+								</td>
+							</tr>
+						</tfoot>
+					</table>
+					
+					<div class="row-bold addpur-bt">本次出库</div>
+					<table class="table product-enter-table1">
+						<thead>
+							<tr class="active">
+								<td>序号</td>
+								<td>代工户名称</td>
+								<td>出库数量</td>
+								<td>备注</td>
+							</tr>
+						</thead>
+						{foreach from=$alloem item=temp}
+							<tbody>
+								<tr>
+									<td><span name="number2"></span></td>
+									<td>
+										{$temp['oemname']}
+									</td>
+									<td>
+										<input type="text" class="form-control" name="to_store[]" number="{$temp['totalfinish']}" value="0">
+										<input type="hidden" name="pro_oem[]" value="{$temp['id']}"/>
+									</td>
+									<td>
+										<input type="text" class="form-control" name="remart[]" >
+									</td>
+								</tr>
+							</tbody>
+						{/foreach}
+							<input type="hidden" name="productid" value="{$one_pro_list['productid']}">
+							<input type="hidden" name="storeid" value="{$one_pro_list['storeid']}">
+							<input type="hidden" name="pro_order_id" value="{$one_pro_list['id']}">
+						<tfoot>
+							<tr>
+								<td>合计</td>
+								<td colspan="3">
+									<span>入库数量：<b id="allcount" style="color:red;margin-left: 10px;"></b></span>
+									<input type="hidden" name="to_storecount" value="">
+								</td>
+							</tr>
+						</tfoot>
+					</table>
+					<div class="row-bold addpur-bt">
+						<div>出库状态</div>
+					</div>
+					<div class="enterware-status">
+						<div class="form-group">
+							<label for="exampleInputName2" class="labelname">入库状态：</label>
+						    <input type="text" class="form-control" id="exampleInputName2" readonly="readonly" value="{$one_pro_list['storeRec']}">
+						</div>
+						<div class="form-group">
+							<label for="exampleInputName2" class="labelname">返工状态：</label>
+						    <input type="text" class="form-control" id="exampleInputName2" readonly="readonly" value="{$one_pro_list['storeRef']}">
+						</div>
+					</div>
+					<div class="form-group enterware-btn">
+						<button class="btn btn-default btn-sm" type="submit">提交</button>
+						<button class="btn btn-default btn-sm" type="reset">重置</button>
+					</div>
+				</form>
+			</div>
+			<div class="push"></div>
+		</div>
+		{include file="../comfoot.html"}
+		<script type="text/javascript" src="/js/jquery-1.11.0.min.js"></script>
+		<script type="text/javascript" src="/js/commontop.js"></script>
+		<script type="text/javascript" src="/bootstrap/js/bootstrap.min.js" ></script>
+		<script type="text/javascript" src="/js/product/product_outerware.js"></script>
+		<script type="text/javascript" src="/js/warehouse/warestatus.js"></script>
+	</body>
+{literal}
+<script>
+	 var number1 = document.getElementsByName("number1");
+	 var number2 = document.getElementsByName("number2");
+	 	for(var i = 0; i<number1.length; i++){
+	 		number1[i].innerHTML = i+1;
+	 		number2[i].innerHTML = i+1;
+	 	}
+
+	 $("input[name='to_store[]']").val(0);
+
+	 $("input[name='to_store[]']").keyup(function(){
+
+	     var val = $(this).val()?$(this).val():0;
+	 	 
+	 	 if($(this).val().match(/^\d*$/)==null){
+	 	 	$(this).val(0);
+	 	 }
+
+ 	 	 if(parseInt(val)>parseInt($(this).attr("number"))){
+	 	 	$(this).val($(this).attr("number"));
+	 	 }
+	 	 allcount();
+	 })
+
+	 function allcount(){
+	 	 var input = $("input[name='to_store[]']");
+	 	 var count = 0;
+	 	 for(var i=0;i<input.length;i++){
+	 	 	 count += parseInt(input[i].value);
+	 	 }
+	 	 $("#allcount").text(count);
+	 	 $("input[name='to_storecount']").val(count);
+	 }
+	 var actnum = 0;
+	 for(var i= 0 ;i <$(".onecount").length;i++){
+	 	 actnum += parseInt($(".onecount")[i].innerHTML);
+	 }
+	 $("#actnum").text(actnum);
+
+	 var besotrenum = 0;
+	 for(var i= 0 ;i <$(".enterware-innum").length;i++){
+	 	 besotrenum += parseInt($(".enterware-innum")[i].innerHTML);
+	 }
+	 $("#besotrenum").text(besotrenum);
+
+	 var waynum = 0;
+ 	 for(var i= 0 ;i <$(".twocount").length;i++){
+	 	 waynum += parseInt($(".twocount")[i].innerHTML);
+	 }
+	 $("#waynum").text(waynum);
+	 
+	 var returnnum = 0;
+  	 for(var i= 0 ;i <$(".enterware-outnum").length;i++){
+	 	 returnnum += parseInt($(".enterware-outnum")[i].innerHTML);
+	 }
+	 $("#returnnum").text(returnnum);
+</script>
+{/literal}
+</html>

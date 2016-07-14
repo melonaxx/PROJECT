@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>米欢电商ERP</title>
+	<link href="/images/favicon.ico" rel="shortcut icon">
+	<link rel="stylesheet" type="text/css" href="/bootstrap/css/bootstrap.min.css"/>
+	<link href="/css/commontop.css"   rel="stylesheet" media="screen">
+	<link rel="stylesheet" type="text/css" href="/css/goods/goodsclassbrand.css"/>
+</head>
+<body id="classbrandbody">
+	{include file="../commontop.html"}
+	<div class="container-fluid container1">
+		<div class="row ware-row">
+			<h5 style="margin-left: 15px;">您的位置： <a href="javascript:;">首页</a> » <a href="javascript:;">商品</a> »商品分类</h5>
+		</div>
+	    <div class="row">
+			<ul class="nav nav-tabs col-xs-12 goodscbrand-nav">
+			  <li role="presentation"><a href="goodscbrand.php">商品分类</a></li>
+			  <li role="presentation" class="active"><a href="goodscbrand_brand.php">商品品牌</a></li>
+			</ul>
+		</div>
+
+		<div class="row">
+			<form action="" class="form-inline goodscbrand-form">
+				<div class="form-group">
+	    			<button class="btn btn-default cgaddbrandbtn" type="button" style="margin:0px 0 15px 15px;">添加一级品牌</button>
+	    		</div>
+    		</form>
+			<table class="table table-hover gbtabler" id="gbtabler">
+				<thead>
+            		<tr class="active">
+                    	<td class="gcbth1">操作</td>
+                    	<td class="gcbth3">品牌名称</td>
+            		</tr>
+    			</thead>
+    			<tbody>
+    			{foreach from=$catelist item=list}
+    				<tr>
+    					<td>
+    						<span class="gcbmodify3" uid="{$list['id']}">修改</span>
+    						<span class="gcbdel3" uid="{$list['id']}">删除</span>
+    						<span class="gcbaddsonl3" uid="{$list['id']}">添加</span>
+    					</td>
+    					<td rename="{$list['name']}">{$list['names']}</td>
+    				</tr>
+    			{/foreach}
+    			</tbody>
+							<!-- {foreach $catelist as $k=>$v}
+								{if $v['level'] <=1}
+								<tbody class="gcbtbody3">
+									<tr>
+										<td>
+											<i class="arrow arrow-top"></i>
+											<input type="text" class="form-control gbclassname3" name='brandsname' disabled="disabled" value="{$v['name']}">
+											<div class="gcbtright3">
+												<a class="gcbaddsonl3">添加子品牌</a>
+												<input type="hidden" name='brandparentid' value="{$v['id']}">
+											</div>
+										</td>
+										<td>
+											<input type="hidden" name='brandid' value="{$v['id']}">
+											<a class="gcbmodify3">修改</a>
+											<a class="gcbdel3">删除</a>
+										</td>
+									</tr>
+									{elseif $v['level']>1}
+									<tr>
+										<td>
+											<i class="gbbranch3"></i>
+											<input type="text" class="form-control gbbrandnames" name='brandsname' disabled="disabled" value="{$v['name']}">
+										</td>
+										<td class="gcbtd13">
+											<input type="hidden" name='brandid' value="{$v['id']}">
+											<a class="gcbmodify3">修改</a>
+											<a class="gcbdel3">删除</a>
+										</td>
+									</tr>
+								{/if}
+							{/foreach}
+						</tbody> -->
+			</table>
+		</div>
+
+		<!-- -=====================商品品牌模态窗================= -->
+		<!-- Button trigger modal -->
+		<!-- Modal 添加同级品牌-->
+		<div class="modal" id="myModaladdb">
+		    <div class="modalcon">
+		      <div class="modal-bt">
+		        <h4 class="modal-title size-title" style="text-align: center;font-weight: bold;">添加同级品牌</h4>
+		        <button type="button" class="close close-btn" data-dismiss="modal" aria-label="Close" id="close-btn"><span aria-hidden="true">x</span></button>
+		      </div>
+		      <form action="" class="form-inline">
+			      <div class="modal-bd">
+			        <div class="form-group">
+					    <label for="exampleInputName2" class="gcbclassnamel">品牌名称:</label>
+					    <input type="text" name='brandname' class="form-control gcbbrandnamei" >
+					</div>
+			      </div>
+			      <div class="modal-bo">
+			        <button type="button" class="btn btn-default cgsureaddbbtn" data-dismiss="modal">提交</button>
+			        <button type="button" class="btn btn-default btn-sm close-btn">关闭</button>
+			      </div>
+		      </form>
+		    </div><!-- /.modal-content -->
+		</div><!-- /.modal -->
+
+		<!-- Button trigger modal -->
+		<!-- Modal 添加子品牌-->
+		<div class="modal" id="myModaladdob">
+		    <div class="modalcon">
+		      <div class="modal-bt">
+		        <button type="button" class="close close-btn" data-dismiss="modal" aria-label="Close" id="close-btn"><span aria-hidden="true">x</span></button>
+		        <h4 class="modal-title size-title">添加子品牌</h4>
+		      </div>
+		      <form action="" class="form-inline">
+			      <div class="modal-bd">
+			        <div class="form-group">
+					    <label for="exampleInputName2" class="gcbclassnamel">品牌名称:</label>
+					    <input type="text" name='brandchildname' class="form-control gcbbrandnameis" >
+					</div>
+			      </div>
+			      <div class="modal-bo">
+			        <button type="button" class="btn btn-default btn-sm cgsureaddobbtn" data-dismiss="modal">提交</button>
+			        <button type="button" class="btn btn-default btn-sm close-btn cgcloseaddobbtn">关闭</button>
+			      </div>
+		      </form>
+		    </div><!-- /.modal-content -->
+		</div><!-- /.modal -->
+
+		<!-- Button trigger modal -->
+		<!-- Modal 子品牌删除-->
+		<div class="modal myModaldelb"><!-- id="myModaldel" -->
+		    <div class="modalcon">
+		      <div class="modal-bt">
+		        <button type="button" class="close close-btn" data-dismiss="modal" aria-label="Close" id="close-btn"><span aria-hidden="true">x</span></button>
+		        <h4 class="modal-title size-title">提示</h4>
+		      </div>
+		      <div class="modal-bd">
+		        <p>您确定删除所选品牌吗？</p>
+		      </div>
+		      <div class="modal-bo">
+		        <button type="button" class="btn btn-default btn-sm gbsuredelbbtn">确定</button>
+		        <button type="button" class="btn btn-default btn-sm close-btn">取消</button>
+		      </div>
+		    </div><!-- /.modal-content -->
+		</div><!-- /.modal -->
+
+		<!-- Button trigger modal -->
+		<!-- Modal 修改子品牌-->
+		<div class="modal" id="myModalmodsonb">
+		    <div class="modalcon">
+		      <div class="modal-bt">
+		        <button type="button" class="close close-btn" data-dismiss="modal" aria-label="Close" id="close-btn"><span aria-hidden="true">x</span></button>
+		        <h4 class="modal-title size-title">修改</h4>
+		      </div>
+		      <form action="" class="form-inline">
+			      <div class="modal-bd">
+			        <div class="form-group">
+					    <label for="exampleInputName2" class="gcbclassnamel">品牌名称:</label>
+					    <input type="text" name='editbrandname' class="form-control gcbbrandnameims" >
+					    <input type="hidden" name='editbrandid'>
+					</div>
+			      </div>
+			      <div class="modal-bo">
+			        <button type="button" class="btn btn-default cgsuremodbbtn btn-sm">提交</button>
+			        <button type="button" class="btn btn-default cgclosemodbbtn close-btn btn-sm">关闭</button>
+			      </div>
+		      </form>
+		    </div><!-- /.modal-content -->
+		</div><!-- /.modal -->
+
+		<!-- Button trigger modal -->
+		<!-- Modal 子品牌删除-->
+		<div class="modal myModaldelb2"><!-- id="myModaldel" -->
+		    <div class="modalcon">
+		      <div class="modal-bt">
+		        <button type="button" class="close close-btn" data-dismiss="modal" aria-label="Close" id="close-btn"><span aria-hidden="true">x</span></button>
+		        <h4 class="modal-title size-title">提示</h4>
+		      </div>
+		      <div class="modal-bd">
+		        <p>您确定删除所选品牌吗？</p>
+		      </div>
+		      <div class="modal-bo">
+		        <button type="button" class="btn btn-default gbsuredelbbtn1 btn-sm">确定</button>
+		        <button type="button" class="btn btn-default btn-sm close-btn">取消</button>
+		      </div>
+		    </div><!-- /.modal-content -->
+		</div><!-- /.modal -->
+
+		<!-- Button trigger modal -->
+		<!-- Modal -->
+		<div class="modal myModaldelbsure">
+		    <div class="modalcon">
+		    	<div class="modal-bt">
+			        <button type="button" class="close close-btn" data-dismiss="modal" aria-label="Close" id="close-btn"><span aria-hidden="true">x</span></button>
+			        <h4 class="modal-title size-title">提示</h4>
+			    </div>
+		        <div class="modal-bd">
+		            <p>当前品牌有子品牌，不能删除!</p>
+		        </div>
+		        <div class="modal-bo">
+		            <button type="button" class="btn btn-default cgsuredelbbtn close-btn" >确定</button>
+		        </div>
+		    </div><!-- /.modal-content -->
+		</div><!-- /.modal -->
+		<div class="push"></div>
+	</div>
+	{include file="../comfoot.html"}
+	<script src="/js/jquery-1.11.0.min.js" ></script>
+	<script src="/bootstrap/js/bootstrap.min.js"  ></script>
+	<script src="/js/util.js"  ></script>
+	<script src="/js/commontop.js"></script>
+	<script src="/js/mycom.js"></script>
+	<script src="/js/goods/goodscbrand_brand.js"></script>
+</body>
+</html>

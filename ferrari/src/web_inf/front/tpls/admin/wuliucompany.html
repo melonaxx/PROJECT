@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>米欢电商ERP</title>
+ 	<link href="/images/favicon.ico" rel="shortcut icon">
+	<link href="/bootstrap/css/bootstrap.min.css"  rel="stylesheet" media="screen">
+	<link href="/css/commontop.css"   rel="stylesheet" media="screen">
+	<link rel="stylesheet" type="text/css" href="/css/admin/wuliucompany.css"/>
+	<style>
+		{literal}
+		@media screen and (max-width: 1120px){ 
+			/*当屏幕尺寸小于1120px时，应用下面的CSS样式*/
+			.navbar-nav,#comtop-right{display: none;}
+		}
+		{/literal}
+	</style>
+</head>
+<body>
+	{include file="../commontop.html"}
+	<div class="container-fluid container1">
+		<div class="row ware-row">
+			<h5 class="col-md-12">您的位置： <a href="javascript:;">首页</a> » <a href="javascript:;">管理</a> »物流公司</h5>
+		</div>
+		<div class="row">
+			<ul class="nav nav-tabs col-md-12 wuliu-nav">
+				<li power="presentation" class="active">
+					<a href="/admin/wuliucompany.php">物流公司列表</a>
+				</li>
+				<li power="presentation">
+					<a href="/admin/addwuliu.php">添加物流</a>
+				</li>
+				<li power="presentation" style="display:none;">
+					<a href="/admin/editwuliu.php">编辑物流</a>
+				</li>
+			</ul>
+		</div>
+		<div class="row">
+			<table class="table wuliu-table">
+				<thead>
+					<tr class="active">
+						<td>序号</td>
+						<td>操作</td>
+						<td>物流名称</td>
+						<td>联系人</td>
+						<td>联系电话</td>
+						<td>详细地址</td>
+						<td>备注</td>
+					</tr>
+				</thead>
+				<tbody>
+				{foreach from=$list key=k item=row}
+					<tr>
+						<td>{$k+1}</td>
+						<td>
+							<a href="/admin/editwuliu.php?id={$row['id']}" class="wuliu-edit">编辑&nbsp;&nbsp;&nbsp;</a>
+							<a href="javascript:;" class="wuliu-del" uid="{$row['id']}">删除</a>
+						</td>
+						<td>{$row['name']}</td>
+						<td>{$row['contactname']}</td>
+						<td>{$row['mobile']}</td>
+						<td>{$row['address']}</td>
+						<td>{$row['comment']}</td>
+					</tr>
+				{/foreach}
+				</tbody>
+			</table>
+		</div>
+		<div class="row no-find">
+			<div class="no-record col-md-12"><img src="/images/empty.jpg"/><span>没有找到记录，请调整搜索条件。</span></div>
+		</div>
+		<!--删除 -->
+		<div class="modal modal-wuliu">
+			<div class="modalcon">
+				<div class="modal-bt">
+					<h4 class="modal-title size-title" id="myModalLabel">提示</h4>
+				    <button type="button" class="close close-btn" data-dismiss="modal" aria-label="Close" id="close-btn"><span aria-hidden="true">x</span></button>
+				</div>
+				<div class="modal-bd">
+				    <span>您确定要删除该物流吗?</span>
+				</div>
+				<div class="modal-bo">
+		        	<button type="button" class="btn btn-default btn-sm" id="del">确定</button>
+		        	<button type="button" class="btn btn-default btn-sm close-btn">取消</button>
+				</div>
+			</div>
+		</div>
+		
+		
+		<div class="push"></div>
+	</div>
+	{include file="../comfoot.html"}
+	<script type="text/javascript" src="/js/jquery-1.11.0.min.js"></script>
+	<script type="text/javascript" src="/js/commontop.js"></script>
+	<script type="text/javascript" src="/bootstrap/js/bootstrap.min.js" ></script>
+	<script type="text/javascript" src="/js/mycom.js"></script>
+	<script type="text/javascript" src="/js/admin/wuliucompany.js"></script>
+</body>
+</html>

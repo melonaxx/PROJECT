@@ -1,0 +1,221 @@
+.row .waregood-status{
+	width:78px;
+}
+.row .warestatus-nav{
+	width:1200px;
+	padding:0;
+	margin-left: 15px;
+}
+.row .warestatus-form{
+	width:1200px;
+	padding:0;
+	margin-left: 15px;
+}
+.warestatus-form .form-group{
+	margin-right:10px;
+	float: right;
+}
+.row .warestatus-table{
+	width:1200px;
+	padding:0;
+	margin-left: 15px;
+	table-layout:fixed;
+	word-wrap:break-word;
+}
+.warestatus-thead td{
+	font-weight:bold;
+}
+.warestatus-table thead td:nth-of-type(1){
+	width:46px;
+}
+.warestatus-table thead td:nth-of-type(2){
+	width:46px;
+}
+.warestatus-table thead td:nth-of-type(3){
+	width:182px;
+}
+.warestatus-table thead td:nth-of-type(4){
+	width:116px;
+}
+.warestatus-table thead td:nth-of-type(5){
+	width:110px;
+}
+.warestatus-table thead td:nth-of-type(6){
+	width:90px;
+}
+.warestatus-table thead td:nth-of-type(7){
+	width:90px;
+}
+.warestatus-table thead td:nth-of-type(8){
+	width:90px;
+}
+.warestatus-table thead td:nth-of-type(9){
+	width:90px;
+}
+.warestatus-table thead td:nth-of-type(10){
+	width:90px;
+}
+.warestatus-table thead td:nth-of-type(11){
+	width:90px;
+}
+.warestatus-table thead td:nth-of-type(12){
+	width:90px;
+}
+.warestatus-table thead td:nth-of-type(13){
+	width:70px;
+}
+
+.labelname{
+	font-weight:100;
+}
+.row .warestatus-form .warestatus-ware{
+	width:150px;
+}
+.row .warestatus-form .waregood-status{
+	width:150px;
+}
+.warestatus-detail{
+	cursor:pointer;
+}
+
+.status1{
+	display:none;
+}
+.warestatus-tbody-img{
+	position:relative;
+}
+.warestatus-tbody-img .img1{
+	width:20px;
+	height:20px;
+}
+.warestatus-tbody-img .img2{
+	display:none;
+	width:200px;
+	height:200px;
+	position:absolute;
+	right:-200px;
+	z-index: 999;
+	box-shadow: 3px 3px 20px #9edeff;
+	top:35px;
+}
+/*商品汇总*/
+.row .goodstatus-nav{
+	width:1200px;
+	padding:0;
+	margin-left: 15px;
+}
+.row .goodstatus-form{
+	width:1200px;
+	padding:0;
+	margin-left: 15px;
+}
+.row .goodstatus-form .form-group{
+	float:right;
+	margin-bottom: 15px;
+	margin-left: 15px;
+}
+.row .goodstatus-table{
+	width:1200px;
+	padding:0;
+	margin-left: 15px;
+	table-layout:fixed;
+	word-wrap:break-word;
+
+}
+.goodstatus-table thead td:nth-of-type(1){
+	width:46px;
+}
+.goodstatus-table thead td:nth-of-type(2){
+	width:46px;
+}
+.goodstatus-table thead td:nth-of-type(3){
+	width:300px;
+}
+.goodstatus-table thead td:nth-of-type(4){
+	width:388px;
+}
+.goodstatus-table thead td:nth-of-type(5){
+	width:150px;
+}
+.goodstatus-table thead td:nth-of-type(6){
+	width:100px;
+}
+.goodstatus-table thead td:nth-of-type(7){
+	width:100px;
+}
+.goodstatus-table thead td:nth-of-type(8){
+	width:70px;
+}
+
+/*模态窗*/
+.modal-waredetail .modalcon{
+	width:400px;
+	margin-left:-200px;
+}
+.modal-waredetail .status-num{
+	margin-right:10px;
+}
+.modal-waredetail .status-allnum{
+	margin-right:10px;
+}
+.modal-status-table0{
+	width:366px;
+}
+.modal-status-table0 .modal-status-num{
+	width:46px;
+}
+.modal-status-table0 .modal-status-ware{
+	width:100px;
+}
+.modal-status-table0 .modal-status-allnum{
+	width:120px;
+}
+.modal-status-table0 .modal-status-allprice{
+	width:100px;
+}
+
+.modal-detail .modalcon{
+	width:780px;
+	margin-left:-390px;
+}
+
+.modal-detail .modal-status-table{
+	width:746px;
+	margin-top:10px;
+}
+.modal-detail .modal-status-table .modal-status-num{
+	width:46px;
+}
+.modal-detail .modal-status-table .modal-status-ware{
+	width:100px;
+}
+.modal-detail .modal-status-table .modal-status-allnum{
+	width:120px;
+}
+.modal-detail .modal-status-table .modal-status-allnum1{
+	width:120px;
+}
+.modal-detail .modal-status-table .modal-status-allnum2{
+	width:120px;
+}
+.modal-detail .modal-status-table .modal-status-allnum3{
+	width:120px;
+}
+.modal-detail .modal-status-table .modal-status-allnum4{
+	width:120px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

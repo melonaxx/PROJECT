@@ -1,0 +1,44 @@
+/* html,body,div,form,input,a,span,label,textarea{
+	margin:0;
+	padding:0;
+	font-size:small;
+}
+h5{
+	font-size:small;
+}
+h6{
+	font-weight:600;
+	margin: 0 0 12px 0;
+    padding: 8px 0 0 0;
+    width:50px;
+    float:left;
+}
+#Body{
+	font-size: small;
+}
+.row{
+	width:90%;
+	height:auto;
+	margin:0 auto;
+	margin-top:10px;
+	margin-bottom:10px;
+}
+.form-control,.btn{
+	font-size: small;
+}
+.row-bold{
+	font-weight:600;
+	height:auto;
+}
+.datename{
+	font-weight:100;
+	width:70px;
+	
+}
+.table{
+	border-collapse: collapse;
+	border-spacing:0;
+}
+.table tr,.table td{
+	border:1px solid #ccc;
+} */

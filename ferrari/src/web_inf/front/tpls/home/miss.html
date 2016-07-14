@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>首页</title>
+		<link href="/bootstrap/css/bootstrap.min.css"  rel="stylesheet" media="screen">
+		<link href="/css/commontop.css"   rel="stylesheet" media="screen">
+		<link rel="stylesheet" type="text/css" href="/css/home/miss.css"/>
+		<style>
+			{literal}
+				@media screen and (max-width: 1120px){ 
+					/*当屏幕尺寸小于1120px时，应用下面的CSS样式*/
+				    .navbar-nav,#comtop-right{display: none;}
+				}
+			{/literal}
+		</style>
+	</head>
+	<body>
+		{include file="../commontop.html"}
+		<div class="container-fluid container1">
+			<div class="row ware-row">
+				<h5 class="home-nav">您的位置： <a href="javascript:;">首页</a></h5>
+			</div>
+			<div class="row">
+				<div class="misscon">
+					<p class="miss-p">您所访问的页面不存在了</p>
+					<p class="miss-p1">可能的原因：</p>
+					<p class="miss-p1">1.在地址栏中输入了错误的地址。</p>
+					<p class="miss-p1">2.您点击的某个链接已过期。</p>
+					<p class="miss-p1"><a href="javascript:;">返回首页</a></p>
+				</div>
+			</div>
+			
+			<div class="push"></div>
+		</div>
+		{include file="../comfoot.html"}
+		<script type="text/javascript" src="/js/jquery-1.11.0.min.js"></script>
+		<script type="text/javascript" src="/js/commontop.js"></script>
+		<script type="text/javascript" src="/bootstrap/js/bootstrap.min.js"></script>
+	</body>
+</html>

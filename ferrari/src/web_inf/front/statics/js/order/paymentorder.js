@@ -1,0 +1,36 @@
+$(function(){
+	//全选;
+	var flag=false;
+	$(".allcheck").on("click",function(){
+		if(this.checked){
+			$(".check[type='checkbox']").each(function(){
+				this.checked=true;
+				flag=true;
+			});
+		}else{
+			$(".check[type='checkbox']").each(function(){
+				this.checked=false;
+				flag=false;
+			});
+		}
+	});
+	if($(".ortbody tr").length==0){
+		$(".empty-img").show();
+	}else{
+		$(".empty-img").hide();
+	}
+	/*提交异常*/
+	$(".submit-statu").on("click",function(){
+		$(".check[type='checkbox']").each(function(){
+			if(this.checked==true){
+				flag=true;
+				$(".modal-abnormal").show();
+			}
+		});
+		if(flag){
+			$(".modal-abnormal").show();
+		}else{
+			$(".modal-tip").show();
+		}
+	});
+})

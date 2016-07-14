@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>米欢电商ERP</title>
+ 		<link href="/images/favicon.ico" rel="shortcut icon">
+		<link rel="stylesheet" type="text/css" href="/bootstrap/css/bootstrap-datetimepicker.min.css"/>
+		<link href="/bootstrap/css/bootstrap.min.css"  rel="stylesheet" media="screen">
+		<link href="/css/commontop.css"   rel="stylesheet" media="screen">
+		<link rel="stylesheet" type="text/css" href="/css/warehouse/enterorout.css"/>
+		<link rel="stylesheet" type="text/css" href="/css/warehouse/wareallocate.css"/>
+		<style>
+			{literal}
+				@media screen and (max-width: 1120px){
+					/*当屏幕尺寸小于1120px时，应用下面的CSS样式*/
+				    .navbar-nav,#comtop-right{display: none;}
+				}
+			{/literal}
+		</style>
+	</head>
+	<body>
+		{include file="../commontop.html"}
+		<div class="container-fluid container1">
+			<div class="row ware-row">
+				<h5 class="col-md-12">您的位置： <a href="javascript:;">首页</a> » <a href="javascript:;">库存</a> »库存调拨</h5>
+			</div>
+			<div class="row">
+				<ul class="nav nav-tabs col-md-12" style="width:1200px;margin-left: 15px;">
+				  <li role="presentation" class="active"><a href="wareallocate.php">调拨单</a></li>
+				  <li role="presentation"><a href="packinglist.php">调拨单记录</a></li>
+				</ul>
+			</div>
+			<div class="row">
+				<form class="form-inline wareallocate-form col-md-12">
+					<div class="form-group">
+				      	<input class="btn btn-default wareallocate-add" type="button" value="添加">
+				      	<input class="btn btn-default wareallocate-del" type="button" value="删除">
+			      	</div>
+					<!-- <div class="form-group" style="margin-left: 20px;">
+					    <label for="datetimepicker"class="labelname">日期：</label>
+					    <input type="text" class="form-control wareallocate-time"size="16" id="datetimepicker">
+					</div> -->
+
+			      	<table class="table table-hover wareallocate-table">
+			      		<thead class="enterorout-thead">
+			      			<tr class="active">
+			      				<td  class="enterorput-code">序号</td>
+			      				<td  class="enterorput-check">
+			      					<label class="checkbox-all"><input class="allcheck checkbox-choice" type="checkbox" value=""></label>
+			      				</td>
+			      				<td  class="enterorput-remark">调出库房</td>
+			      				<td  class="enterorput-search">搜索</td>
+			      				<td  class="enterorput-name">商品名称和规格</td>
+			      				<td>实际可用数量</td>
+			      				<td  class="enterorput-remark">调拨类型</td>
+			      				<td  class="enterorput-remark">调入库房</td>
+			      				<td  class="enterorput-num">数量</td>
+			      				<td  class="enterorput-remark">备注</td>
+			      			</tr>
+			      		</thead>
+			      		<tbody class="wareallocate-tbody">
+			      			<!-- <tr class="enterorout-tr">
+			      				<td class="enterorout-td">1</td>
+			      				<td>
+			      					<label class="checkbox-all">
+			      						<input class="checkbox-choice" type="checkbox" value="">
+			      					</label>
+			      				</td>
+			      				<td>
+			      					<select class="form-control">
+			      						<option>请选择</option>
+			      						<option>北京</option>
+			      						<option>东京一号仓</option>
+			      						<option>123</option>
+			      						<option>默认仓库</option>
+			      					</select>
+			      				</td>
+			      				<td>
+			      					<input type="text" class="form-control no-border">
+			      				</td>
+			      				<td>
+			      					<select class="form-control no-border">
+			      						<option>请选择商品</option>
+			      					</select>
+			      				</td>
+			      				<td>
+			      					<input class="form-control no-border">
+			      				</td>
+			      				<td>
+			      					<select class="form-control no-border">
+			      						<option>请选择</option>
+			      						<option>仅产品本身</option>
+			      						<option>和配件一起</option>
+			      					</select>
+			      				</td>
+			      				<td>
+			      					<select class="form-control">
+			      						<option>请选择</option>
+			      						<option>北京</option>
+			      						<option>东京一号仓</option>
+			      						<option>123</option>
+			      						<option>默认仓库</option>
+			      					</select>
+			      				</td>
+			      				<td><input type="text" class="form-control noborder"></td>
+			      				<td><input type="text" class="form-control noborder"></td>
+			      			</tr> -->
+			      		</tbody>
+			      	</table>
+					<div class="form-group">
+						<input class="btn btn-default btn-submit enterorout-sub" type="button" value="提交">
+						<input class="btn btn-default resetbtn" type="button" value="重置">
+					</div>
+				</form>
+			</div>
+
+
+			<div class="push"></div>
+		</div>
+		{include file="../comfoot.html"}
+		<script type="text/javascript" src="/js/jquery-1.11.0.min.js"></script>
+		<script type="text/javascript" src="/js/util.js"></script>
+		<script type="text/javascript" src="/js/commontop.js"></script>
+		<script type="text/javascript" src="/bootstrap/js/bootstrap.min.js"></script>
+		<script type="text/javascript" src="/bootstrap/js/bootstrap-datetimepicker.min.js"></script>
+		<script type="text/javascript" src="/bootstrap/js/bootstrap-datetimepicker.zh-CN.js"></script>
+		<script type="text/javascript" src="/js/warehouse/mycom.js"></script>
+		<script type="text/javascript" src="/js/warehouse/wareallocate.js"></script>
+		<script type="text/javascript">
+			$('#datetimepicker').datetimepicker({
+			    format: 'yyyy-mm-dd',
+			    autoclose: true,
+			    language:'zh-CN',
+			    minView:'year',
+			});
+		</script>
+	</body>
+</html>

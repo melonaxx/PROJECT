@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>米欢电商ERP</title>
+		<link href="/images/favicon.ico" rel="shortcut icon">
+		<link rel="stylesheet" type="text/css" href="/bootstrap/css/bootstrap-datetimepicker.min.css"/>
+		<link href="/bootstrap/css/bootstrap.min.css"  rel="stylesheet" media="screen">
+		<link href="/css/commontop.css"   rel="stylesheet" media="screen">
+		<link rel="stylesheet" type="text/css" href="/css/delivery/deliver_scanlist.css"/>
+		<style>
+			{literal}
+				@media screen and (max-width: 1120px){
+					/*当屏幕尺寸小于1120px时，应用下面的CSS样式*/
+				    .navbar-nav,#comtop-right{display: none;}
+				}
+			{/literal}
+		</style>
+	</head>
+	<body>
+		{include file="../commontop.html"}
+		<div class="container-fluid container1">
+			<div class="row ware-row">
+				<h5 class="col-md-12">您的位置： <a href="javascript:;">首页</a> » <a href="javascript:;">发货</a> »扫单发货</h5>
+			</div>
+			<div class="row">
+				<ul class="nav nav-tabs col-md-12 scanlist-nav">
+				  <li role="presentation" class="active">
+				  	<a href="/delivery/deliver_scanlist.php">扫单发货</a>
+				  </li>
+				  <li role="presentation">
+				  	<a href="/delivery/deliver_scanlist_handle.php">待处理</a>
+				  </li>
+				</ul>
+			</div>
+			<div class="row">
+				<div class="scanlist-left col-md-7">
+					<div class="row-bold scanlist-bt">订单信息</div>
+					<form class="form-inline scanlist-form1">
+						<div class="form-group">
+							<label for="exampleInputName2" class="labelname">订单编号：</label>
+							<span></span>
+						</div>
+						<br>
+						<div class="form-group">
+							<label for="exampleInputName2" class="labelname">快速物流：</label>
+							<span></span>
+						</div>
+						<br>
+						<div class="form-group">
+							<label for="exampleInputName2" class="labelname">买家信息：</label>
+							<span></span>
+						</div>
+						<br>
+						<div class="form-group">
+							<label for="exampleInputName2" class="labelname">买家留言：</label>
+							<span></span>
+						</div>
+						<br>
+						<div class="form-group">
+							<label for="exampleInputName2" class="labelname">卖家备注：</label>
+							<span></span>
+						</div>
+						<br>
+					</form>
+					<div class="row-bold scanlist-goodbt">商品信息</div>
+					<table class="table scanlist-table">
+						<thead>
+							<tr class="active">
+								<td>序号</td>
+								<td>提醒</td>
+								<td>图片</td>
+								<td>系统商品信息</td>
+								<!-- <td>线上商品信息</td> -->
+								<td>数量</td>
+							</tr>
+						</thead>
+						<tfoot>
+							<tr class="totalcount">
+								<td>合计</td>
+								<td colspan="3"></td>
+								<td></td>
+							</tr>
+						</tfoot>
+					</table>
+				</div>
+				<div class="scanlist-right col-md-5">
+					<p class="scanlisthandle">待处理<span class="scanlist-many">0</span>笔</p>
+					<form class="form-inline scanlist-form2">
+						<div class="form-group">
+						    <label for="exampleInputName2"class="labelname">查询条件：</label>
+						    <select class="form-control" id="exampleInputName2">
+						    	<option>订单编号</option>
+						    	<option>快递编号</option>
+						    </select>
+						</div>
+						<div class="form-group">
+						    <label for="exampleInputName2"class="labelname">编号输入：</label>
+						    <input class="form-control input-sm" id="exampleInputName2" type="text">
+						</div>
+						<div class="form-group">
+							<button type="button" class="btn btn-default btn-sm btn-fahuo">确认发货</button>
+							<div class="btn-group">
+								<button aria-expanded="false" data-toggle="dropdown" class="form-control input-sm" type="button"style="width:66px;">
+									打回
+									<span class="caret"></span>
+								</button>
+								<ul role="menu" class="dropdown-menu">
+								  <li style="float:left;">
+									<a class="shen" href="#" style="font-size:12px;">订单审核</a>
+								  </li>
+								  <li style="float:left;">
+								  	<a class="pei" href="#" style="font-size:12px;">打单配货</a>
+								  </li>
+								  <li style="float:left;">
+								  	<a class="pei" href="#" style="font-size:12px;">异常订单</a>
+								  </li>
+								  <li style="float:left;">
+								  	<a class="pei" href="#" style="font-size:12px;">验货</a>
+								  </li>
+								</ul>
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>
+			<!--提示 -->
+			<div class="modal modal-tip">
+				<div class="modalcon">
+					<div class="modal-bt">
+						<h4 class="modal-title size-title" id="myModalLabel">提示</h4>
+					    <button type="button" class="close close-btn" data-dismiss="modal" aria-label="Close" id="close-btn"><span aria-hidden="true">x</span></button>
+					</div>
+					<div class="modal-bd">
+					    <span>您还没有选择订单</span>
+					</div>
+					<div class="modal-bo">
+			        	<button type="button" class="btn btn-default btn-sm close-btn">确定</button>
+					</div>
+				</div>
+			</div>
+			<div class="push"></div>
+		</div>
+		{include file="../comfoot.html"}
+		<script type="text/javascript" src="/js/jquery-1.11.0.min.js"></script>
+		<script type="text/javascript" src="/js/commontop.js"></script>
+		<script type="text/javascript" src="/bootstrap/js/bootstrap.min.js" ></script>
+		<script type="text/javascript" src="/js/mycom.js"></script>
+		<script type="text/javascript" src="/js/delivery/deliver_scanlist.js"></script>
+	</body>
+</html>

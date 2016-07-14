@@ -1,0 +1,108 @@
+.row .scanlist-nav{
+	width:1200px;
+	margin-left:15px;
+	padding:0;
+}
+.row .scanlist-left{
+	width:780px;
+	float:left;
+	margin-left:15px;
+	padding:0;
+}
+.row .scanlist-right{
+	width:360px;
+	float:left;
+	margin-top:20px;
+}
+.row .scanlist-bt{
+	margin:10px 0 10px 0;
+}
+.row .scanlist-form1{
+	width:100%;
+}
+.row .scanlist-form1 .form-group{
+	margin-bottom:15px;
+	height:30px;
+	line-height:30px;
+}
+.row .scanlist-form1 .scanlist-input{
+	width:678px;
+	cursor:default;
+}
+.row .scanlist-table{
+	width:738px;
+	margin-top:10px;
+}
+.row .scanlist-table thead td{
+	text-align: center;
+	font-weight:600;
+}
+.row .scanlist-table tbody td{
+	text-align: center;
+}
+.row .scanlist-table thead td:nth-of-type(1){
+	width:46px;
+}
+.row .scanlist-table thead td:nth-of-type(2){
+	width:46px;
+}
+.row .scanlist-table thead td:nth-of-type(3){
+	width:46px;
+}
+.row .scanlist-table thead td:nth-of-type(4){
+	width:221px;
+}
+.row .scanlist-table thead td:nth-of-type(5){
+	width:221px;
+}
+.row .scanlist-table thead td:nth-of-type(6){
+	width:80px;
+}
+.row .scanlist-table .totalcount{
+	background:#fffae9;
+}
+.row .scanlist-right .scanlisthandle{
+	text-align: center;
+	margin:10px 0 10px 0;
+	font-size:18px;
+	height:30px;
+	font-weight:600;
+}
+.row .scanlist-right .scanlisthandle .scanlist-many{
+	color:red;
+	margin:0 2px 0 2px;
+}
+.row .scanlist-form2{
+	padding-left:10px;
+	padding-top:10px;
+	height:auto;
+	background:rgba(150,150,150,0.5);
+	box-shadow:0px 0px 20px #666;
+	border-radius: 5px;
+	border:1px solid #ccc;
+}
+.row .scanlist-form2 .form-group{
+	margin-bottom:15px;
+}
+.row .scanlist-form2 .form-control{
+	width:200px;
+}
+.row .barcode-form2 .form-group .open-barcode{
+	margin-left:65px;
+}
+.row .scanlist-form2 .dropdown-menu{
+	width:250px;
+}
+.row .scanlist-form2 .dropdown-menu>li>a{
+	padding:3px 10px;
+}
+.modal-tip .modalcon{
+	width:300px;
+	margin-left:-150px;
+}
+
+
+
+
+
+

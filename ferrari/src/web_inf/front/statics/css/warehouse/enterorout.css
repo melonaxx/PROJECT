@@ -1,0 +1,156 @@
+.row .enterorout-nav{
+	width:1200px;
+	padding:0;
+	margin-left: 15px;
+}
+.row .enterorout-form{
+	width:1200px;
+	padding:0;
+	margin-left: 15px;
+}
+
+.enterorout-form .enterorout-btn{
+	margin:10px 0 10px 0;
+}
+.enterorout-form .enterorout-status, .form-inline .enterorout-ware{
+	width:150px;
+	margin-right:10px;
+}
+.enterorout-form .enterorout-btn .enterorout-add{
+	margin-right:10px;
+}
+.enterorout-table label{
+	height:13px;
+}
+.row .enterorout-table{
+	width:1200px;
+	padding:0;
+}
+.enterorout-table thead td:nth-of-type(1){
+	width:46px;
+}
+.enterorout-table thead td:nth-of-type(2){
+	width:46px;
+}
+.enterorout-table thead td:nth-of-type(3){
+	width:120px;
+}
+.enterorout-table tbody td:nth-of-type(3) select{
+	width:110px;
+}
+.enterorout-table thead td:nth-of-type(4){
+	width:100px;
+}
+.enterorout-table tbody td:nth-of-type(4) input{
+	width:90px;
+}
+.enterorout-table thead td:nth-of-type(5){
+	width:278px;
+}
+.enterorout-table tbody td:nth-of-type(5) select{
+	width:268px;
+}
+.enterorout-table thead td:nth-of-type(6){
+	width:120px;
+}
+.enterorout-table tbody td:nth-of-type(6) input{
+	width:110px;
+}
+.enterorout-table thead td:nth-of-type(7){
+	width:120px;
+}
+.enterorout-table tbody td:nth-of-type(7) select{
+	width:110px;
+}
+.enterorout-table thead td:nth-of-type(8){
+	width:120px;
+}
+.enterorout-table tbody td:nth-of-type(8) select{
+	width:110px;
+}
+.enterorout-table thead td:nth-of-type(9){
+	width:100px;
+}
+.enterorout-table tbody td:nth-of-type(9) input{
+	width:90px;
+}
+.enterorout-table thead td:nth-of-type(10){
+	width:150px;
+}
+.enterorout-table tbody td:nth-of-type(10) input{
+	width:140px;
+}
+.no-border{
+	border:none;
+}
+.form-inline .error_color {
+    border: 1px solid #E74C3C;
+}
+.enterorout-form{
+	box-sizing:border-box;
+	padding-left:1030px;
+}
+.enterorout-thead>tr>td{
+	font-weight:bold;
+}
+.modal-storage .modalcon{
+	width:600px;
+	margin-left: -300px;
+}
+.modal-storage .modalcon .form-inline .form-group{
+	margin:0 15px 15px 0;
+}
+.modal-storage .modalcon .table{
+	width:568px;
+}
+.modal-storage .modalcon .table thead td:nth-of-type(1){
+	width:46px;
+}
+.modal-storage .modalcon .table thead td:nth-of-type(2){
+	width:210px;
+	text-align: left;
+}
+.modal-storage .modalcon .table tbody td:nth-of-type(2){
+	width:210px;
+	text-align: left;
+}
+
+.modal-storage .modalcon .table thead td:nth-of-type(3){
+	width:210px;
+}
+.modal-storage .modalcon .table thead td:nth-of-type(4){
+	width:100px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

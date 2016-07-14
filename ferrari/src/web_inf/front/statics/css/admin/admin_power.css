@@ -1,0 +1,77 @@
+.row .power-nav{
+	width:1200px;
+	padding:0;
+	margin-left:15px;
+}
+.row .power-btn{
+	width:1200px;
+	padding-left: 0;
+	margin-left: 15px;
+}
+.row .power-btn button{
+	margin-right: 15px;
+}
+.row .power-form{
+	width:1200px;
+	padding:0;
+	margin-left: 15px;
+}
+.row .power-form .form-group{
+	width:1200px;
+	height:auto;
+	margin:10px 0 10px 0;
+}
+.row .power-form .power-input,.row .power-form .power-input1{
+	margin-top: 10px;
+	width:20px;
+}
+.row .power-form .power-bt{
+	font-size:16px;
+}
+.row .power-form .power-input1{
+	float:left;
+}
+.row .power-form .power-bt1{
+	margin-top:5px;
+	width:190px;
+	display:block;
+	float:left;
+}
+.row .power-form  .power-list{
+	width:1200px;
+	min-height:50px;
+	height:auto!important;
+	height:50px;
+	margin-top:20px;
+}
+.row .power-form  .power-list li{
+	width:220px;
+	min-height:50px;
+	height:auto!important;
+	height:50px;
+	vertical-align: middle;
+	margin-left:20px;
+	float:left;
+}
+.row .power-form  .power-list li .power-input1{
+	margin-top:8px;
+	margin-right:10px;
+}
+.row .power-form  .sign{
+	font-size:10px;
+	cursor:pointer;
+}
+.row .power-form .power-list{
+	display:none;
+}
+
+
+
+
+
+
+
+
+
+
+

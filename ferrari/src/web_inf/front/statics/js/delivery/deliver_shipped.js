@@ -1,0 +1,32 @@
+$(function(){
+	//全选;
+	var flag=false;
+	$(".allcheck").on("click",function(){
+		if(this.checked){
+			$(".check[type='checkbox']").each(function(){
+				this.checked=true;
+				flag=true;
+			});
+		}else{
+			$(".check[type='checkbox']").each(function(){
+				this.checked=false;
+				flag=false;
+			});
+		}
+	});
+	//发送短信;
+	$(".send-message").click(function(){
+		$(".check[type='checkbox']").each(function(){
+			if(this.checked==true){
+				flag=true;
+				$(".modal-shipped").show();
+
+			}
+		});
+		if(flag){
+			$(".modal-shipped").show();
+		}else{
+			$(".modal-shipped1").show();
+		}
+	});
+})

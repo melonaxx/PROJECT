@@ -1,0 +1,36 @@
+$(function(){
+	//全选;
+	var flag=false;
+	$(".allcheck").on("click",function(){
+		if(this.checked){
+			$(".check[type='checkbox']").each(function(){
+				this.checked=true;
+				flag=true;
+			});
+		}else{
+			$(".check[type='checkbox']").each(function(){
+				this.checked=false;
+				flag=false;
+			});
+		}
+	});
+	if($(".ortbody tr").length==0){
+		$(".empty-img").show();
+	}else{
+		$(".empty-img").hide();
+	}
+	/*打回订单*/
+	$(".return-order").on("click",function(){
+		$(".check[type='checkbox']").each(function(){
+			if(this.checked==true){
+				flag=true;
+				$(".modal-returnorder").show();
+			}
+		});
+		if(flag){
+			$(".modal-returnorder").show();
+		}else{
+			$(".modal-tip").show();
+		}
+	});
+})

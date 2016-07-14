@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>收入科目</title>
+		<link rel="stylesheet" type="text/css" href="/bootstrap/css/bootstrap-datetimepicker.min.css"/>
+		<link href="/bootstrap/css/bootstrap.min.css"  rel="stylesheet" media="screen">
+		<link href="/css/commontop.css"   rel="stylesheet" media="screen">
+		<link rel="stylesheet" type="text/css" href="/css/money/moneywater.css"/>
+		<link rel="stylesheet" type="text/css" href="/css/money/moneyincome.css"/>
+		<style>
+		{literal}
+			@media screen and (max-width: 1120px){ 
+				/*当屏幕尺寸小于1120px时，应用下面的CSS样式*/
+			    .navbar-nav,#comtop-right{display: none;}
+			}
+		{/literal}
+		</style>
+	</head>
+	<body>
+		{include file="../commontop.html"}
+		<div class="container-fluid container1">
+			<div class="row ware-row">
+				<h5 class="col-xs-12">您的位置： <a href="javascript:;">首页</a> » <a href="javascript:;">财务</a> »收入科目</h5>
+			</div>
+			<div class="row">
+				<ul class="nav nav-tabs col-xs-12 moneywater-nav">
+				  <li role="presentation">
+				  	<a href="moneywater.php">资金流水</a>
+				  </li>
+				  <li role="presentation">
+				  	<a href="moneyincome.php">收入科目</a>
+				  </li>
+				  <li role="presentation" class="active">
+				  	<a href="moneyspending.php">支出科目</a>
+				  </li>
+				</ul>
+			</div>
+			<div class="row">
+				<div class="moneyincome-btn">
+					<button type="button" class="btn btn-default btn-sm spending-add">添加</button>
+				</div>
+			</div>
+			<div class="row">
+				<table class="table table-hover moneywater-table moneyincome-table col-md-12">
+				    <thead>
+				    	<tr class="active">
+				    		<td>序号</td>
+				    		<td>操作</td>
+				    		<td>收入科目</td>
+				    	</tr>
+				    </thead>
+				    <tbody class="spending-tbody">
+				    	<tr class="spending-tr">
+				    		<td class="spending-td">1</td>
+				    		<td>
+				    			<span class="moneyincome-change spending-change">
+				    				修改
+				    			</span>
+				    			<span class="moneyincome-del spending-del">
+				    				删除
+				    			</span>
+
+				    		</td>
+				    		<td class="spending-subname">办公支出</td>
+				    	</tr>
+				    	<tr class="spending-tr">
+				    		<td class="spending-td">2</td>
+				    		<td>
+				    			<span class="moneyincome-change spending-change">
+				    				修改
+				    			</span>
+				    			<span class="moneyincome-del spending-del">
+				    				删除
+				    			</span>
+
+				    		</td>
+				    		<td class="spending-subname">办公收入</td>
+				    	</tr>
+				    </tbody>
+				</table>
+			</div>
+			<!--添加-->
+			<div class="modal modal-moneyincome modal-spending">
+				<div class="modalcon">
+					<div class="modal-bt">
+						<h4 class="modal-title size-title" id="myModalLabel">添加支出科目</h4>
+					    <button type="button" class="close close-btn" data-dismiss="modal" aria-label="Close" id="close-btn"><span aria-hidden="true">x</span></button>
+					</div>
+					<div class="modal-bd">
+					    <form class="form-inline">
+							<div class="form-group">
+								<label class="labelname">上级科目：</label>
+								<select class="form-control input-sm spending-sjkm ">
+								    <option value="" class="none">--无--</option>
+								    <option value="">办公支出</option>
+								</select>
+							</div>
+							<div class="form-group">
+								<label class="labelname">科目名称：</label>
+								<input class="form-control input-sm spending-kmmc" required="required">
+							</div>
+						</form>
+					</div>
+					<div class="modal-bo">
+			        	<button type="button" class="btn btn-default btn-sm spending-sub">提交</button>
+			        	<button type="button" class="btn btn-default btn-sm close-btn">返回</button>
+					</div>
+				</div>
+			</div>
+			<!--修改-->
+			<div class="modal modal-moneyincome1 modal-spending1">
+				<div class="modalcon">
+					<div class="modal-bt">
+						<h4 class="modal-title size-title" id="myModalLabel">修改支出科目</h4>
+					    <button type="button" class="close close-btn close-btn1" data-dismiss="modal" aria-label="Close" id="close-btn"><span aria-hidden="true">x</span></button>
+					</div>
+					<div class="modal-bd">
+					    <form class="form-inline">
+							<div class="form-group">
+								<label class="labelname">上级科目：</label>
+								<select class="form-control input-sm spending-sjkm1">
+								    <option value="" class="none1">--无--</option>
+								    <option value="">办公支出</option>
+								</select>
+							</div>
+							<div class="form-group">
+								<label class="labelname">科目名称：</label>
+								<input class="form-control input-sm spending-kmmc1">
+							</div>
+						</form>
+					</div>
+					<div class="modal-bo">
+			        	<button type="button" class="btn btn-default btn-sm spending-sub1">提交</button>
+			        	<button type="button" class="btn btn-default btn-sm close-btn close-btn1">返回</button>
+					</div>
+				</div>
+			</div>
+			<!--删除 -->
+			<div class="modal modal-moneyincome2 modal-spending2">
+				<div class="modalcon">
+					<div class="modal-bt">
+						<h4 class="modal-title size-title" id="myModalLabel">提示</h4>
+					    <button type="button" class="close close-btn" data-dismiss="modal" aria-label="Close" id="close-btn"><span aria-hidden="true">x</span></button>
+					</div>
+					<div class="modal-bd">
+					    <span>您确定要删除该科目吗?</span>
+					</div>
+					<div class="modal-bo">
+			        	<button type="button" class="btn btn-default btn-sm spending-sure">确定</button>
+			        	<button type="button" class="btn btn-default btn-sm close-btn">取消</button>
+					</div>
+				</div>
+			</div>
+
+			<div class="push"></div>
+		</div>
+		{include file="../comfoot.html"}
+		<script type="text/javascript" src="/js/jquery-1.11.0.min.js"></script>
+		<script type="text/javascript" src="/js/commontop.js"></script>
+		<script type="text/javascript" src="/bootstrap/js/bootstrap.min.js" ></script>
+		<script type="text/javascript" src="/js/mycom.js"></script>
+		<script type="text/javascript" src="/js/money/moneyspending.js"></script>
+	</body>
+</html>

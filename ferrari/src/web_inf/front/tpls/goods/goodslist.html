@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>米欢电商ERP</title>
+		<link rel="stylesheet" type="text/css" href="/bootstrap/css/bootstrap.min.css"/>
+		<link href="/images/favicon.ico" rel="shortcut icon">
+		<link href="/css/commontop.css"   rel="stylesheet" media="screen">
+		<link rel="stylesheet" type="text/css" href="/css/goods/goodslist.css"/>
+	</head>
+	<body id="goodslistbody">
+		{include file="../commontop.html"}
+		<div class="container-fluid container1">
+			<div class="row ware-row">
+				<h5 class="col-md-12">您的位置： <a href="javascript:;">首页</a> » <a href="javascript:;">商品</a> »商品列表</h5>
+			</div>
+			<div class="row">
+				<form class="form-inline col-md-12 goodlist-form">
+					<div class="form-group" style="float:right;">
+				  		<div class="input-group">
+					      <input type="text" class="form-control gl-importgname searchproname" placeholder="输入商品名称">
+					      <span class="input-group-btn">
+					        <button class="btn btn-default btn-sm searchbtn" type="button">搜索</button>
+					      </span>
+					    </div>
+					</div>
+			  		<div class="form-group" style="float:right;margin-right:10px;
+			  		">
+					    <label for="exampleInputName2" class="labelname">商品状态:</label>
+					    <select class="form-control gl-goodsstatus  goodsstatus">
+						  <option value="-1">--请选择--</option>
+						  <option value="Onsale">在售</option>
+						  <option value="Soldout">下架</option>
+						  <option value="Stop">停产</option>
+						  <option value="Stockout">缺货</option>
+						</select>
+				  	</div>
+
+				</form>
+	  		</div>
+	  		<div class="row">
+	  			<table class="table table-bordered table-hover goodslist-table col-md-12" id="gl-table">
+					<thead>
+                		<tr class="glthead active" >
+	                    	<td class="glth1">序号</td>
+	                    	<td class="glth2"><input class="allCheck choice-all" type="checkbox" value=""></td>
+	                    	<td class="glth1">操作</td>
+	                    	<td class="glth1">图片</td>
+	                    	<td class="col-md-4">名称</td>
+	                    	<td class="col-md-2">规格</td>
+	                    	<td class="glth3" style="width:100px;">品牌</td>
+	                    	<td class="glth3" style="width:100px;">分类</td>
+	                    	<td class="glth3" style="width:100px;">售价</td>
+                		</tr>
+        			</thead>
+        			<tbody class="pstbody1">
+        				{foreach $prolist as $k=>$v}
+                        <tr class="glonetr">
+	                        <td class="gltd1 gltdcom proseqno">1</td>
+	                        <td class="gltd2 gltdcom"><input class="allCheck checkbox-choice" type="checkbox" value=""name=glcheckbox></td>
+	                        <td class="gltd3 gltdcom">
+	                        	<a href="javascript:void(0);" class="glonetrdel">删除</a>
+	                        	<a href="editgoodsinfo.php?productid={$v['productid']}" class="editproinfo">修改</a>
+	                        	<span style="display:none;" class="productid">{$v['productid']}</span>
+	                        </td>
+	                        <td class="gltd4">
+                        		<img class="glsmallpic" src="{$v['proimg']}"/>
+                        		<img class="glbigpic" src="{$v['proimg']}"/>
+	                        </td>
+	                        <td>
+	                        	<a href="goodsentry.php?productid={$v['productid']}" class="glgoodsname">{$v['proname']}</a>
+	                        </td>
+	                        <td>{$v['formats']}</td>
+	                        <td>{$v['brandname']}</td>
+	                        <td>{$v['categoryname']}</td>
+	                        <td>
+								<!-- <div class="input-group">
+							      <div class="input-group-addon">￥</div>
+							      <input type="text" class="form-control" id="exampleInputAmount">
+							    </div> -->
+	                        </td>
+                        </tr>
+                        {/foreach}
+                    </tbody>
+                </table>
+	  		</div>
+	  		{if count($porlist) lt 0}
+            <div class="row no-find" style="display:block;">
+				<div class="no-record col-md-12"><img src="/images/empty.jpg"/><span>没有找到记录，请调整搜索条件。</span></div>
+			</div>
+			{/if}
+            {$pages}
+			<!-- Modal -->
+			<div class="modal glmodal">
+			    <div class="modalcon">
+			      <div class="modal-bt">
+			        <h4 class="modal-title size-title" id="myModalLabel">提示</h4>
+			        <button type="button" class="close close-btn" data-dismiss="modal" aria-label="Close" id="close-btn"><span aria-hidden="true">x</span></button>
+			      </div>
+			      <div class="modal-bd">
+      					你确定要删除
+      					<span class="gldelnum"></span>
+      					条数据吗？(删除商品将会清空对应仓库，未处理完订单中的商品不能删除)
+			      </div>
+			      <div class="modal-bo">
+			      	<button type="button" class="btn btn-default glsuredel1 btn-sm">确定</button>
+			        <button type="button" class="btn btn-default close-btn btn-sm" data-dismiss="modal">取消</button>
+			      </div>
+			    </div>
+			</div>
+			<!-- Button trigger modal -->
+			<!-- Modal -->
+			<div class="modal" id="myModalgl2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+			  <div class="modal-dialog" role="document">
+			    <div class="modal-content">
+			      <div class="modal-body">
+      					成功删除
+      					<span class="gldelnum"></span>
+      					条数据，失败0条数据。
+			      </div>
+			      <div class="modal-footer">
+			      	<button type="button" class="btn btn-default glsuredel2" data-dismiss="modal">确定</button>
+			      </div>
+			    </div>
+			  </div>
+			</div>
+			<div class="push"></div>
+		</div>
+		{include file="../comfoot.html"}
+		<script src="/js/jquery-1.11.0.min.js" ></script>
+		<script src="/bootstrap/js/bootstrap.min.js"  ></script>
+		<script src="/js/commontop.js"></script>
+		<script src="/js/util.js"></script>
+		<script src="/js/warehouse/mycom.js"></script>
+		<script src="/js/goods/goodslist.js"></script>
+	</body>
+</html>

@@ -1,0 +1,120 @@
+.row .moneywater-nav{
+	width:1200px;
+	margin-left:15px;
+	margin-top:20px;
+	padding:0;
+}
+
+.row .moneywater-form{
+	width:1200px;
+	margin-left:15px;
+	margin-top:20px;
+	padding:0;
+}
+.row .moneywater-form .form-group{
+	float:right;
+	margin-left: 10px;
+}
+.row .moneywater-form .form-control{
+	width:150px;
+}
+.row .moneywater-form .form-group button:nth-of-type(2){
+	margin-left:10px;
+}
+.row .moneywater-form .newbtn{
+	float:left;
+	margin:0;
+}
+.row .moneywater-table{
+	width:1200px;
+	margin-left:15px;
+	padding:0;
+}
+.row .moneywater-table tbody td{
+   text-align: center;
+}
+.row .moneywater-table thead td{
+   text-align: center;
+   font-weight: 600;
+}
+.row .moneywater-table thead td:nth-of-type(1){
+   width:50px;
+}
+.row .moneywater-table thead td:nth-of-type(2){
+   width:90px;
+}
+.row .moneywater-table thead td:nth-of-type(3){
+   width:210px;
+}
+.row .moneywater-table thead td:nth-of-type(4){
+   width:210px;
+}
+.row .moneywater-table thead td:nth-of-type(5){
+   width:160px;
+}
+.row .moneywater-table thead td:nth-of-type(6){
+   width:160px;
+}
+.row .moneywater-table thead td:nth-of-type(7){
+   width:160px;
+}
+.row .moneywater-table thead td:nth-of-type(8){
+   width:160px;
+}
+.modal-moneywater .modalcon{
+	width:702px;
+	margin-left:-351px;
+}
+.modal-moneywater .form-inline .form-group{
+   margin-bottom:15px;
+   margin-right:10px;
+}
+.modal-moneywater .form-inline .form-control{
+	width:150px;
+}
+.modal-moneywater1 .modalcon{
+	width:702px;
+	margin-left:-351px;
+}
+.modal-moneywater1 .form-inline .form-group{
+   margin-bottom:15px;
+   margin-right:10px;
+}
+.modal-moneywater1 .form-inline .form-control{
+	width:150px;
+}
+.modal-moneywater2 .modalcon{
+	width:702px;
+	margin-left:-351px;
+}
+.modal-moneywater2 .form-inline .form-group{
+   margin-bottom:15px;
+   margin-right:10px;
+}
+.modal-moneywater2 .form-inline .form-control{
+	width:150px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

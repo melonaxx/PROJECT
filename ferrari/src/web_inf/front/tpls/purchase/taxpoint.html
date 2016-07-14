@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>米欢电商ERP</title>
+ 		<link href="/images/favicon.ico" rel="shortcut icon">
+		<link rel="stylesheet" type="text/css" href="/bootstrap/css/bootstrap-datetimepicker.min.css"/>
+		<link href="/bootstrap/css/bootstrap.min.css"  rel="stylesheet" media="screen">
+		<link href="/css/commontop.css"   rel="stylesheet" media="screen">
+		<link rel="stylesheet" type="text/css" href="/css/purchase/purbill.css"/>
+		<style>
+			{literal}
+				@media screen and (max-width: 1120px){ 
+					/*当屏幕尺寸小于1120px时，应用下面的CSS样式*/
+				    .navbar-nav,#comtop-right{display: none;}
+				}
+			{/literal}
+		</style>
+	</head>
+	<body>
+		{include file="../commontop.html"}
+		<div class="container-fluid container1">
+			<div class="row ware-row">
+				<h5 class="col-md-12">您的位置：<a href="javascript:;">首页</a> » <a href="javascript:;">采购</a> » 采购票据</h5>
+			</div>
+			<div class="row">
+				<ul class="nav nav-tabs col-md-12 purbill-nav">
+				   <li role="presentation">
+				  	<a href="/purchase/purbill.php">日常开票</a>
+				  </li>
+				  <li role="presentation">
+				  	<a href="/purchase/purbillrecord.php">开票记录</a>
+				  </li>
+				  <li role="presentation" class="active">
+				  	<a href="/purchase/taxpoint.php">补交税点(不含税)</a>
+				  </li>
+				  <li role="presentation">
+				  	<a href="/purchase/taxpointrecord.php">税点记录</a>
+				  </li>
+				</ul>
+			</div>
+			<div class="row">
+				<form action="/purchase/dotaxpoint.php" method="post" class="form-inline purbill-form" onsubmit="return fun()">
+					<div class="pubill-left col-md-7">
+						<div class="form-group">
+							<label for="" class="labelname">&nbsp;&nbsp;&nbsp;&nbsp;开票时间：</label>
+							<input type="text" class="form-control" id="datetimepicker1" name="time">
+						</div>
+						<br>
+						<div class="form-group">
+								<label for="" class="labelname">&nbsp;&nbsp;&nbsp;&nbsp;交易账号：</label>
+								<select class="form-control" name="bankid">
+									<option value="0">--请选择--</option>
+								{foreach from=$bank item=row}
+									<option value="{$row['id']}">{$row['name']}</option>
+								{/foreach}}
+								</select>
+							</div>
+						<div class="form-group piao-group">
+							<label class="labelname">票种：</label>
+							<label for="" class="labelname">
+								<input type="radio" name="radio" style="margin-right:5px;"checked="checked" value="S">专票
+							</label>
+							<label for="" class="labelname">
+								<input type="radio" name="radio" style="margin-right:5px;" value="G">普票
+							</label>
+						</div>
+						<br>
+						<div class="form-group">
+							<label for="" class="labelname">&nbsp;采购单编号：</label>
+							<input type="text" class="form-control many-code" placeholder="多个请用英文逗号隔开" name="purchasenumber" id="number">
+						</div>
+						<br>
+						<div class="form-group">
+							<label class="labelname">&nbsp;&nbsp;&nbsp;金额(含税)：</label>
+						    <div class="input-group">
+						      <div class="input-group-addon">￥</div>
+						      <input type="text" class="form-control" style="width:140px;" name="hanshui" id="hanshui">
+						    </div>
+						</div>
+						<div class="form-group">
+							<label for="" class="labelname">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;税率：</label>
+							<input type="text" class="form-control" name="shuilv" id="shuilv">
+						</div>
+						<br>
+						<div class="form-group">
+							<label class="labelname">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;税额：</label>
+						    <div class="input-group">
+						      <div class="input-group-addon">￥</div>
+						      <input type="text" class="form-control" style="width:140px;" name="shuie" id="shuie">
+						    </div>
+						</div>
+						<div class="form-group">
+							<label class="labelname">&nbsp;&nbsp;&nbsp;&nbsp;金额(不含税)：</label>
+						    <div class="input-group">
+						      <div class="input-group-addon">￥</div>
+						      <input type="text" class="form-control" style="width:140px;" name="noshui" id="noshui">
+						    </div>
+						</div>
+						<div class="form-group">
+							<label for="" class="labelname">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;备注：</label>
+							<textarea class="form-control purbill-mark" name="comment"></textarea>
+						</div>
+					</div>
+					<div class="moneysub col-md-5">
+						<div class="add-kemu1">
+							<button class="btn btn-sm btn-default add-sub1" style="margin-bottom:10px;" type="button">添加</button>
+							<br>
+							<div class="form-group">
+								<label for="" class="labelname">财务科目(借)：</label>
+								<select class="form-control kemu" name="jkemuid[]">
+								</select>
+								<label for="" class="labelname" style="margin-left: 30px;">金额：</label>
+								<div class="input-group">
+							      <div class="input-group-addon">￥</div>
+							      <input type="text" class="form-control" style="width:110px;" name="jkemujine[]">
+							    </div>
+								<a href="javascript:;" class="del-sub" style="margin-left: 30px;color:blue;">删除</a>
+							</div>
+
+						</div>
+						<br>
+						<div class="add-kemu2">
+							<button class="btn btn-sm btn-default add-sub2" style="margin-bottom:10px;"type="button">添加</button>
+							<br>
+							<div class="form-group">
+								<label for="" class="labelname">财务科目(贷)：</label>
+								<select class="form-control kemu" name="dkemuid[]">
+								</select>
+								<label for="" class="labelname" style="margin-left: 30px;">金额：</label>
+								<div class="input-group">
+							      <div class="input-group-addon">￥</div>
+							      <input type="text" class="form-control" style="width:110px;" name="dkemujine[]">
+							    </div>
+								<a href="javascript:;" class="del-sub" style="margin-left: 30px;color:blue;">删除</a>
+							</div>
+						</div>
+					</div>
+					<br>
+					<div class="pubill-btn col-md-12">
+						<div class="form-group" style="margin-top:30px;">
+							<button class="btn btn-default btn-sm" type="submit">提交</button>
+							<button class="btn btn-default btn-sm" type="reset">重置</button>
+						</div>
+					</div>
+				</form>
+			</div>
+			<div class="push"></div>
+		</div>
+		{include file="../comfoot.html"}
+		<script type="text/javascript" src="/js/jquery-1.11.0.min.js"></script>
+		<script type="text/javascript" src="/js/commontop.js"></script>
+		<script type="text/javascript" src="/bootstrap/js/bootstrap.min.js" ></script>
+		<script type="text/javascript" src="/bootstrap/js/bootstrap-datetimepicker.min.js"></script>
+		<script type="text/javascript" src="/bootstrap/js/bootstrap-datetimepicker.zh-CN.js"></script>
+		<script type="text/javascript" src="/js/purchase/taxpoint.js"></script>
+		<script type="text/javascript" src="/js/mycom.js"></script>
+		<script type="text/javascript">
+			$('#datetimepicker1').datetimepicker({
+			    format: 'yyyy-mm-dd hh:ii:ss',
+			    autoclose:true,
+			    language:'zh-CN',
+			    // minView:'year',
+			});
+		</script>
+	</body>
+</html>

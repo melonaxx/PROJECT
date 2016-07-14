@@ -1,0 +1,321 @@
+.container1 .row-bold .edit{
+	margin-left:635px;
+	font-weight:100;
+}
+.waredetail-form .float-left{
+	width:750px;
+	float:left;
+}
+.waredetail-form .float-right{
+	width:400px;
+	float:left;
+	height:200px;
+}
+.waredetail-form .form-group{
+	margin-top:10px;
+	margin-bottom:10px;
+	margin-right: 0;
+}
+.waredetail-form .form-group .form-control{
+	width:150px;
+	height:30px;
+	margin-right:20px;
+}
+.waredetail-form .input-group{
+	width:150px;
+	height:30px;
+	margin-right:20px;
+}
+.waredetail-form .input-group .form-control{
+	width:105px;
+	margin-right:0;
+}
+.waredetail-form .input-group .input-group-addon{
+	width:141px;
+}
+.waredetail-form .form-group .waregoods-detailname{
+	width:400px;
+	height:30px;
+}
+.goodsbrand{
+	width:150px;
+	height:30px;
+	margin-right:20px;
+}
+.row-textarea .form-control{
+	width:1200px;
+	margin-bottom:10px;
+}
+#waregoods-table-img{
+	width:270px;
+	height:270px;
+	border-spacing: 0;
+	border-collapse: collapse;
+}
+#warp{
+	width:270px;
+	height:270px;
+}
+#warp td{
+	width:130px;
+	height:130px;
+	float:left;
+	border:1px dashed #ccc;
+	border-spacing: 10px;
+	text-align:center;
+	vertical-align: middle;
+	cursor:pointer;
+	border-spacing: 0;
+}
+.row .waregooddetail-table{
+	width:1200px;
+	margin-bottom:10px;
+}
+.row .waregooddetail-table .form-control{
+	height:30px;
+	font-size:12px;
+}
+#tbody1 .form-control{
+	border:none;
+}
+#tbody2 .form-control{
+	border:none;
+}
+
+.waredetail-clear, .waredetail-operate{
+	text-align: center;
+	cursor:pointer;
+}
+.Upload-img{
+	position:relative;
+}
+.Upload-text{
+	position:absolute;
+	left:50%;
+	top:50%;
+	margin-left:-13px;
+	margin-top:-9px;
+	z-index:1;
+}
+.modal-div{
+	position:absolute;
+	left:0;
+	bottom:0;
+	width:100%;
+	height:20px;
+	background:#333;
+	display:none;
+}
+.modal-Edit{
+	position:absolute;
+	left:0;
+	bottom:0;
+	width:50%;
+	height:20px;
+	display:block;
+	color:#fff;
+}
+.modal-Del{
+	color:#fff;
+	position:absolute;
+	right:0;
+	bottom:0;
+	width:50%;
+	display:block;
+	height:20px;
+}
+.modalImg{
+	width:100%;
+	height:100%;
+	display:none;
+}
+.modal-upload .modalcon{
+	width:500px;
+	margin-left: -250px;
+}
+.modal-form{
+	margin:10px 0 10px 0;
+}
+.modal-bd .modal-form1{
+	display:none;
+}
+.modal-bd .form-control{
+	width:460px;
+	height:30px;
+}
+.modal-bd .modal-form1 .Imgsrc{
+	font-size:12px;
+}
+.modal .modal-bo{
+	border:none;
+}
+.modal-title1{
+	text-align: center;
+	font-size:12px;
+	font-weight:600;
+}
+.btn-close{
+	margin-left:20px;
+	float:left;
+}
+#model-table{
+	width:715px;margin-left:20px;
+}
+.modal-a{
+	margin:0 10px 10px 10px;
+	cursor:pointer;
+}
+.modal-addware .modalcon{
+	width:750px;
+	margin-left: -375px;
+}
+.modal-addware .modal-bd{
+	height:300px;
+	overflow: auto;
+}
+.changewarehouse .modalcon{
+	width:300px;
+	margin-left: -150px;
+}
+.changewarehouse .modal-bd .form-group{
+	margin-bottom: 10px;
+}
+
+.modal-check{
+	width:130px;
+	float:left;
+}
+.modal-check input{
+	float:left;
+	display:block;
+	width:13px;
+	height:13px;
+}
+.modal-span{
+	display:block;
+	float:left;
+	height:13px;
+	font-size:13px;
+	margin-left: 10px;
+}
+.modal-house{
+	width:210px;
+	height:34px;
+	line-height:30px;
+	margin:10px 10px 15px 0px;
+	float:left;
+	text-align: center;
+	border:1px solid #ddd;
+	overflow:auto;
+	cursor:pointer;
+	position:relative;
+}
+.modal-house-name{
+
+}
+.modal-housebtn{
+	position:absolute;
+	display:none;
+
+}
+.detail-house-del{
+	display:none;
+}
+.hover{
+	cursor:pointer;
+}
+.edit:hover{
+	color:#369;
+	text-decoration: none;
+}
+.edit:link{
+	color:#369;
+	text-decoration: none;
+}
+.edit:active{
+	color:#369;
+	text-decoration: none;
+}
+.check{
+	margin-left:60px;
+	display:block;
+	margin-top:5px;
+}
+.check:hover{
+	color:#369;
+	text-decoration: none;
+}
+.check:link{
+	color:#369;
+	text-decoration: none;
+}
+.check:active{
+	color:#369;
+	text-decoration: none;
+}
+.modal-manager .modalcon{
+	width:800px;
+	margin-left: -400px;
+}
+/*.modal-manager .modal-bd{
+	height:auto;
+	overflow: auto;
+}*/
+
+.modal-manager .modal-namebox{
+	margin-left:418px;
+}
+.modal-manager .modal-namebox .namebox{
+	width:150px;
+}
+.modal-manager .man-table{
+	width:715px;
+	margin:10px 0 0 0;
+}
+#myModal3 .housetype{
+	margin-top:20px;
+}
+#myModal3 .housetype .form-control{
+	width:150px;
+}
+
+.fileupload {
+	position: absolute;
+    top: 0;
+    left:-52px;
+    margin: 0;
+    border: solid transparent;
+    opacity: 0;
+    width:130px;
+    filter: alpha(opacity=0);
+    cursor: pointer;
+}
+.editbtn {
+	position: absolute;
+    top: 0;
+    left:8px;
+    margin: 0;
+    border: solid transparent;
+    opacity: 0;
+    width:50px;
+    filter: alpha(opacity=0);
+    cursor: pointer;
+}
+.modal-upload .modalcon{
+	height:250px;
+}
+.modal-upload .modalcon .Imgsrc-net{
+	margin-bottom: 45px;
+}
+.modalcon .uploadForm{
+	position: relative;
+
+}
+.modalcon .uploadForm .modal-btn{
+	position: absolute;
+	left:-10px;
+	top:70px;
+}
+.modalcon .uploadForm .modal-btn button:nth-of-type(1){
+	margin-right: 10px;
+}

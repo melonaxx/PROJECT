@@ -1,0 +1,159 @@
+.row .debttable-nav{
+	width:1200px;
+	padding:0;
+	margin-left: 15px;
+}
+.row .debttable-form{
+	width:1200px;
+	padding:0;
+	height:auto;
+	margin-left: 15px;
+}
+.row .debttable-form .form-group{
+	float:right;
+	margin-left: 15px;
+}
+.row .debt-title{
+	width:1200px;
+	padding:0;
+	margin-left: 15px;
+	height:30px;
+	float:left;
+	font-size:16px;
+	text-align: center;
+	vertical-align: middle;
+}
+
+.row .table-header{
+	width:1200px;
+	height:30px;
+	padding:0;
+	margin-left: 15px;
+	float:left;
+}
+.row .table-header .bianzhi{
+	width:500px;
+	float:left;
+	height:30px;
+	line-height:30px;
+}
+.row .table-header .time{
+	width:200px;
+	float:left;
+	text-align: center;
+	height:30px;
+	line-height:30px;
+}
+.row .table-header .time span:nth-of-type(1){
+	float:left;
+}
+.row .table-header .time span:nth-of-type(2){
+	float:right;
+}
+.row .table-header .danwei{
+	width:500px;
+	float:left;
+	height:30px;
+	line-height:30px;
+}
+.row .table-header .danwei span{
+	float:right;
+}
+.row .tableall{
+	width:1200px;
+	padding:0;
+	height:auto;
+}
+.row .table-left{
+	width:600px;
+	height:auto;
+}
+.table-left .table{
+	width:600px;
+	padding:0;
+	margin:0;
+}
+.table-left .table thead td:nth-of-type(1){
+	text-align: left;
+	width:200px;
+}
+.table-left .table tbody td:nth-of-type(1){
+	text-align: left;
+}
+
+.table-left .table thead td:nth-of-type(2){
+	text-align: left;
+	width:100px;
+}
+.table-left .table tbody td:nth-of-type(2){
+	text-align: left;
+}
+.table-left .table thead td:nth-of-type(3){
+	width:150px;
+}
+.table-left .table thead td:nth-of-type(4){
+	width:150px;
+}
+.table-left .table .heji td{
+	font-weight:600;
+}
+.table-left .table .he-tbody td{
+	font-weight:600;
+}
+
+.table-left .table tfoot td{
+	font-weight:600;
+}
+
+.table-left .table tbody{
+	border:none;
+}
+.table-right .table{
+	width:600px;
+	padding:0;
+	margin:0;
+}
+.table-right .table thead td:nth-of-type(1){
+	text-align: left;
+	width:200px;
+}
+.table-right .table tbody td:nth-of-type(1){
+	text-align: left;
+}
+
+.table-right .table thead td:nth-of-type(2){
+	text-align: left;
+	width:100px;
+}
+.table-right .table tbody td:nth-of-type(2){
+	text-align: left;
+}
+.table-right .table thead td:nth-of-type(3){
+	width:150px;
+}
+.table-right .table thead td:nth-of-type(4){
+	width:150px;
+}
+.table-right .table .heji td{
+	font-weight:600;
+}
+.table-right .table .he-tbody td{
+	font-weight:600;
+}
+
+.table-right .table tfoot td{
+	font-weight:600;
+}
+
+.table-right .table tbody{
+	border:none;
+}
+
+
+
+
+
+
+
+
+

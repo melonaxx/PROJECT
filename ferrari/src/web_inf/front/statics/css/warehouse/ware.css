@@ -1,0 +1,206 @@
+html,body,div,form,input,a,span,label,textarea{
+	margin:0;
+	padding:0;
+}
+.form-group .form-control{
+	height:30px;
+	font-size:12px;
+}
+h5{
+	font-size:12px;
+}
+h6{
+	font-weight:600;
+	margin: 0 0 12px 0;
+    padding: 8px 0 0 0;
+    width:50px;
+    float:left;
+}
+#Body{
+	font-size: 12px;
+}
+.container1 .row{
+	width:95%;
+	height:auto;
+	margin:0 auto;
+	margin-top:20px;
+	margin-bottom:10px;
+	padding-left:20px;
+	box-sizing:border-box;
+}
+.row .btn{
+	font-size: 12px;
+}
+.form-control,.btn{
+	font-size: 12px;
+}
+.row-bold{
+	font-weight:600;
+	height:auto;
+}
+.datename{
+	font-weight:100;
+	width:70px;
+	
+}
+.table{
+	border-collapse: collapse;
+	border-spacing:0;
+}
+.table thead tr td{
+	font-weight:600;
+	text-align: center;
+}
+.table tbody tr td{
+	text-align: center;
+}
+
+.table tr,.table td{
+	border:1px solid #ccc;
+}
+.modal{
+	position:fixed;
+	left:0;
+	top:0;
+	width:100%;
+	height:100%;
+	background:rgba(0,0,0,0.5);
+	display:none;
+}
+@-webkit-keyframes slide{
+	from{top:-20%;}
+	to{top:10%;}
+}
+.modalcon{
+	width:250px;
+	height:auto;
+	box-sizing: border-box;
+	background:white;
+	position:absolute;
+	left:50%;
+	margin-left:-125px;
+	top:10%;
+	border-radius:10px ;
+	animation: slide 0.2s linear both;
+}
+.modal-bt{
+	width:100%;
+	margin:0 auto;
+	height:auto;
+	font-size:12px;
+	padding:20px 0 20px 0;
+	box-sizing: border-box;
+	position:relative;
+	border-bottom:1px solid #e5e5e5;
+}
+.modal-bt h4{
+	text-align: center;
+	font-size:12px;
+	
+}
+#close-btn{
+	position:absolute;
+	right:20px;
+	top:10px;
+}
+.modal-bd{
+	font-size:12px;
+	height:auto;
+	padding:10px 0 10px 20px;
+	box-sizing: border-box;
+}
+.modal-bo{
+	font-size:12px;
+	height:auto;
+	padding:20px 0 20px 20px;
+	box-sizing: border-box;
+}
+.hover{
+	cursor:pointer;
+}
+.modal .modalcon{
+	width:750px;
+	height:auto;
+	box-sizing: border-box;
+	background:white;
+	position:absolute;
+	left:50%;
+	margin-left:-375px;
+	top:10%;
+	border-radius:10px ;
+	animation: slide 0.2s linear both;
+}
+.modal-title{
+	font-weight:600;
+}
+.radio{
+	margin-right:10px;
+}
+.labelname{
+	font-weight:100;
+}
+.modal2 .modalcon{
+	width:320px;
+	margin-left:-160px;
+}
+.modal4 .modalcon{
+	width:500px;
+	margin-left:-250px;
+}
+.modal5 .modalcon{
+	width:500px;
+	margin-left:-250px;
+}
+.modal6 .modalcon{
+	width:500px;
+	margin-left:-250px;
+}
+
+.modal7 .modalcon{
+	width:500px;
+	margin-left:-250px;
+}
+/*分页*/
+.warestatus-page{
+	list-style:none;
+	height:30px;
+}
+.warestatus-page li{
+	height:30px;
+	line-height:30px;
+	float:left;
+	margin-left:10px;
+} 
+.form-group .warestatus-page .form-control{
+	width:45px;
+}
+.warestatus-form1,.warestatus-form2,.warestatus-form3{
+	margin:10px 30px 10px 0;
+	box-sizing:border-box;
+	float:right;
+}
+.ware-row{
+	margin-top:30px;
+}
+.nav{
+	margin-top:20px;
+}
+.foot{
+	width:100%;
+	height:23px;
+	line-height:20px;
+	text-align: center;
+	position:absolute;
+	left:0;
+	bottom:15px;
+}
+.status1{
+	display:none;
+}
+.row .no-record {
+    width: 100%;
+    height: 90px;
+    line-height: 90px;
+    margin: 0 auto;
+    text-align: center;
+}

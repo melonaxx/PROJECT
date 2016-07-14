@@ -1,0 +1,72 @@
+.abnormalset-change{
+	float:left;
+	cursor: pointer;
+	margin-left: 10px;
+}
+.abnormalset-del{
+	float:right;
+	cursor: pointer;
+	margin-right: 10px;
+}
+.row .abnormalset-table thead td:nth-of-type(1){
+	width:46px;
+}
+.row .abnormalset-table thead td:nth-of-type(2){
+	width:91px;
+}
+.row .abnormalset-table thead td:nth-of-type(3){
+	width:412px;
+	text-align: left;
+}
+.row .abnormalset-table tbody td:nth-of-type(3){
+	text-align: left;
+}
+
+.row .abnormalset-table thead td:nth-of-type(4){
+	width:650px;
+	text-align: left;
+}
+.row .abnormalset-table tbody td:nth-of-type(4){
+	text-align: left;
+}
+.modal-addnormalset .modalcon{
+	width:456px;
+	margin-left:-228px;
+}
+.modal-addnormalset .modalcon .form-group{
+	margin-bottom:10px;
+}
+.modal-addnormalset .modalcon .form-control{
+	width:350px;
+}
+.modal-addnormalset .modalcon .normalset-mark{
+	width:350px;
+	height:60px;
+	resize:none;
+}
+.modal-addnormalset1 .modalcon{
+	width:456px;
+	margin-left:-228px;
+}
+.modal-addnormalset2 .modalcon{
+	width:300px;
+	margin-left:-150px;
+}
+.modal-addnormalset1 .modalcon .form-group{
+	margin-bottom:10px;
+}
+.modal-addnormalset1 .modalcon .form-control{
+	width:350px;
+}
+.modal-addnormalset1 .modalcon .normalset-mark1{
+	width:350px;
+	height:60px;
+	resize:none;
+}
+
+
+
+
+
+
+

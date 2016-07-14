@@ -1,0 +1,104 @@
+#propertybody button,#propertybody input,#propertybody select{height:30px;font-size: 12px;margin-right: 10px;}
+#propertybody button span{
+	font-size:20px;
+}
+#propertybody input,#propertybody select{width: 150px;}
+#propertybody .form-group label,#propertybody .form-group select{float:left;line-height:30px;}
+#propertybody .form-group label{width:64px;}
+#propertybody .form-group{margin-bottom: 10px;}
+#propertybody #input-weight{width:150px;}
+#propertybody table tbody{background: #fff;}
+thead{background:#d6d6d6; }
+.col-md-6{padding-right: 0;}
+a{color:#333;text-decoration: none;}
+#propertybody a:hover,#propertybody a:link,#propertybody a:visited,#propertybody a:actuve{color: #369;text-decoration: none; }
+.container-all{padding:0 60px;}
+.your-position{width:300px;height:50px;line-height: 50px;}
+.your-position .posp1{float:left;}
+.your-position .posa1{display:block;float:left;}
+.your-position .posp2{float:left;}
+/* ----------------规格管理-------------- */
+.gpspecify,.gpspevalue,.gpspecify2,.gpspevalue2{width:291px;float:left;margin:30px;border:1px solid #d6d6d6;}
+.gpstop,.gpsvtop,.gpstop2,.gpsvtop2{background: #ecedef;height:42px;width:291px;line-height: 42px;}
+.gpstopl,.gpsvtopl,.gpstopl2,.gpsvtopl2{float:left;font-size: 12px;margin-left: 10px;}
+.gpstopr,.gpsvtopr,.gpstopr2,.gpsvtopr2{float:right;margin-right: 10px;}
+.gspmainli,.gpsvmainli,.gspmainli2,.gpsvmainli2{height:32px;line-height: 32px;}
+.gsplil,.gpsvlil,.gsplil2,.gpsvlil2{float:left;width:228px;padding-left: 10px;}
+.gsplir,.gpsvlir,.gsplir2,.gpsvlir2{float:right;width:60px;height:32px;}
+.gpdelpic,.gpmodpic,.gpvmodpic,.gpmodpic2,.gpvmodpic2,.gpvdelpic,.gpdelpic2,.gpvdelpic2{margin-right:10px;display: inline-block;font-size:12px;}
+.glyphicon{
+	margin-right:5px;
+	margin-top:10px;
+}
+.gpliactive{background: #f5f5f5;}
+.gpliactive2{background: #f5f5f5;}
+.gpspevalue,.gpspevalue2{display: none;}
+.gpmodpic2{display: inline-block;}
+.gpaddunitp{cursor: pointer;color:#08c;}
+.gptd1,.gptd2{text-align: center;}
+.gptd2 a{margin:0 5px;}
+#Modaladdspe .modalcon{
+	width:300px;
+	margin-left: -150px;
+}
+.modaldelspe .modalcon{
+	width:300px;
+	margin-left: -150px;
+}
+#Modalmodspe .modalcon{
+	width:300px;
+	margin-left: -150px;
+}
+#Modalmodspev .modalcon{
+	width:300px;
+	margin-left: -150px;
+}
+
+#Modaldelspev .modalcon{
+	width:300px;
+	margin-left: -150px;
+}
+#Modalmodspevv .modalcon{
+	width:300px;
+	margin-left: -150px;
+}
+
+#Modaladdspe2 .modalcon{
+	width:300px;
+	margin-left: -150px;
+}
+.modaldelspe2 .modalcon{
+	width:300px;
+	margin-left: -150px;
+}
+#Modalmodspe2 .modalcon{
+	width:300px;
+	margin-left: -150px;
+}
+#Modalmodspev2 .modalcon{
+	width:300px;
+	margin-left: -150px;
+}
+#Modaldelspev2 .modalcon{
+	width:300px;
+	margin-left: -150px;
+}
+#Modalmodspevv2 .modalcon{
+	width:300px;
+	margin-left: -150px;
+}
+#Modaladdunit .modalcon{
+	width:300px;
+	margin-left: -150px;
+}
+#Modalmodunit .modalcon{
+	width:300px;
+	margin-left: -150px;
+}
+#Modaldelunit .modalcon{
+	width:300px;
+	margin-left: -150px;
+}
+
+
+

@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>米欢电商ERP</title>
+ 	<link href="/images/favicon.ico" rel="shortcut icon">
+	<link href="/bootstrap/css/bootstrap.min.css"  rel="stylesheet" media="screen">
+	<link href="/css/commontop.css"   rel="stylesheet" media="screen">
+	<link rel="stylesheet" type="text/css" href="/css/admin/admin_express.css"/>
+	<style>
+		{literal}
+		@media screen and (max-width: 1120px){ 
+			/*当屏幕尺寸小于1120px时，应用下面的CSS样式*/
+			.navbar-nav,#comtop-right{display: none;}
+		}
+		{/literal}
+	</style>
+</head>
+<body>
+	{include file="../commontop.html"}
+	<div class="container-fluid container1">
+		<div class="row ware-row">
+			<h5 class="col-md-12">您的位置： <a href="javascript:;">首页</a> » <a href="javascript:;">管理</a> »快递公司</h5>
+		</div>
+		<div class="row">
+			<ul class="nav nav-tabs col-md-12 express-nav">
+				<li power="presentation" class="active">
+					<a href="javascript:;">编辑</a>
+				</li>
+			</ul>
+		</div>
+		<div class="row">
+			<form action="" class="form-inline addbillweight-form">
+				<div class="form-group">
+					<label for="exampleInputName2" class="labelname">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;使用地区：</label>
+					<textarea class="form-control bill-text1" rows="2" disabled="disabled" id="address" cid="{$list['expressid']}" areaid="{$areaid}">{$list['areanamestr']}</textarea>
+					<a href="javascript:;" class="set-color billaddress-set">设置</a>
+					<input type="hidden" uid="{$list['id']}" id="uid">
+				</div>
+				<br>
+				<div class="form-group">
+					<label for="exampleInputName2" class="labelname">&nbsp;仓库(发货地)：</label>
+					<textarea class="form-control bill-text1" rows="2" disabled="disabled" id="store" storeid={$storeid}>{$list['storenamestr']}</textarea>
+					<a href="javascript:;" class="set-color billware-set">设置</a>
+				</div>
+				<br>
+				<div class="form-group">
+					<label for="exampleInputName2" class="labelname">运费计算规则：</label>
+					<textarea class="form-control bill-text1" rows="2" disabled="disabled" id="role" firstweight="{$firstweight}" firstprice="{$firstprice}" weightincrease="{$weightincrease}" priceincrease="{$priceincrease}" style="height:120px;">{$list['pricestr']}</textarea>
+					<a href="javascript:;" class="set-color billweight-set">设置</a>
+				</div>
+				<br>
+				<div class="form-group">
+					<button class="btn btn-sm btn-default"  type="button" id="subid">提交</button>
+					<button class="btn btn-sm btn-default" type="reset">重置</button>
+					<a class="btn btn-default btn-sm" href="/admin/billweight.php">返回</a>
+				</div>
+			</form>
+		</div>
+		<!--仓库设置 -->
+		<div class="modal modal-wareset">
+			<div class="modalcon">
+				<div class="modal-bt">
+					<h4 class="modal-title size-title" id="myModalLabel">设置仓库</h4>
+				    <button type="button" class="close close-btn" data-dismiss="modal" aria-label="Close" id="close-btn"><span aria-hidden="true">x</span></button>
+				</div>
+				<div class="modal-bd">
+				    <table class="table wareset-table">
+				    	<thead>
+				    		<tr class="active ck">
+				    			<td><input id="all_checked" type="checkbox"></td>
+				    			<td>仓库名称</td>
+				    		</tr>
+				    	</thead>
+				    	<tbody>
+				    	{foreach from=$store item=stores}
+				    		<tr>
+				    		<td><input class='check' type='checkbox' value="{$stores['id']}" {if $stores['storeflag'] eq 1}checked="checked"{/if}></td>
+				    		<td>{$stores['name']}</td>
+				    		</tr>
+				    	{/foreach}
+				    	</tbody>
+				    </table>
+				</div>
+				<div class="modal-bo">
+		        	<button type="button" class="btn btn-default btn-sm" id="store_confirm">确定</button>
+		        	<button type="button" class="btn btn-default btn-sm close-btn">取消</button>
+				</div>
+			</div>
+		</div>
+		<!-- 设置地区 -->
+		<div class="modal modal-address">
+			<div class="modalcon">
+				<div class="modal-bt">
+					<h4 class="modal-title size-title" id="myModalLabel">设置地区</h4>
+				    <button type="button" class="close close-btn" data-dismiss="modal" aria-label="Close" id="close-btn"><span aria-hidden="true">x</span></button>
+				</div>
+				<div class="modal-bd" style="height:300px;overflow: auto;">
+					{foreach from=$pro item=row}
+					<div class="dropdown" >
+						<div class="dropdown_header" >
+							<span class="car_left"><span class="caret"></span></span><label for="{$row['number']}"><input style="margin-right: 5px;" type="checkbox" class="checkbox" id="{$row['number']}" value="{$row['number']}" {if $row['proflag'] eq 1}checked="checked"{/if}/>{$row['name']}</label>
+						</div>
+						
+						<div class="dropdown_body">
+							{foreach from=$row['city'] item=res}
+							<label for="{$res['number']}" style="margin-right: 5px;"><input style="margin-right: 5px;" type="checkbox" class="checkbox" id="{$res['number']}" value="{$res['number']}" {if $res['cityflag'] eq 1}checked="checked"{/if}/>{$res['name']}</label>
+							{/foreach}
+						</div>
+						
+					</div>
+					{/foreach}
+				</div>
+				<div class="modal-bo">
+					<button class="btn btn-default btn-sm" data-dismiss="modal" id="area_confirm">确定</button>
+					<button class="btn btn-default btn-sm close-btn">取消</button>
+				</div>
+			</div>
+		</div>
+		<!--设置 -->
+		<div class="modal modal-billweightset">
+			<div class="modalcon">
+				<div class="modal-bt">
+					<h4 class="modal-title size-title" id="myModalLabel">设置运算规则</h4>
+				    <button type="button" class="close close-btn" data-dismiss="modal" aria-label="Close" id="close-btn"><span aria-hidden="true">x</span></button>
+				</div>
+				<div class="modal-bd">
+				   <h5>首重部分</h5>
+				   <br>
+				   <button class="btn btn-default first-add">新增</button>
+				   <br>
+				   <table class="table table-hover first_weight"border="0">
+						<thead>
+							<tr class="active">
+								<td rowspan="2" width="10%">操作</td>
+								<td colspan="2" width="60%">质量区间(kg)</td>
+								<td rowspan="2" width="30%">费用(元)</td>
+							</tr>
+							<tr class="active">
+								<td width="30%">从</td>
+								<td width="30%">到（包含）</td>
+							</tr>
+						</thead>
+						<tbody class="first-tbody">
+							<!-- <tr class="first-tr">
+								<td style="text-align: center">
+									<a href="javascript:;" class="delete_one">删除</a>
+								</td>
+								<td style="text-align: center">
+									<input class="form-control input-sm input-price input-all" value="0">
+									<span class="priceunit"></span>
+								</td>
+								<td style="text-align: center">
+									<input class="form-control input-sm input-price input-all" value="">
+									<span class="priceunit"></span>
+								</td>
+								<td style="text-align: center">
+									<span class="weightunit"></span>
+									<input class="form-control input-sm input-weight input-all" value="">
+								</td>
+							</tr> -->
+						</tbody>
+					</table>
+					<span class="labelname" style="display:block;float:left; margin-top:6px;font-weight:600;margin-right:20px;">续重部分</span>
+					<div class="form-group floow_weight" style="float:left;">
+						<label class="margin_left_0 labelname">重量每增加：</label>
+						<input class="form-control input-sm weight_text kg" style="width:20%;display:inline-block;margin-right: 15px;" true_value="1.00k" name="every_weight">
+						<label class="margin_left_2 labelname">增加运费：</label>
+						<input class="form-control input-sm weight_text money" style="width:20%;display:inline-block;" true_value="20.00" name="every_fee">
+					</div>
+				</div>
+				<div class="modal-bo">
+		        	<button type="button" class="btn btn-default btn-sm" id="weightre">确定</button>
+		        	<button type="button" class="btn btn-default btn-sm close-btn">取消</button>
+				</div>
+			</div>
+		</div>
+		<!--提示 -->
+		<div class="modal modal-tip">
+			<div class="modalcon">
+				<div class="modal-bt">
+					<h4 class="modal-title size-title" id="myModalLabel">提示</h4>
+				    <button type="button" class="close close-btn" data-dismiss="modal" aria-label="Close" id="close-btn"><span aria-hidden="true">x</span></button>
+				</div>
+				<div class="modal-bd">
+				    <span>请先填写地区或仓库</span>
+				</div>
+				<div class="modal-bo">
+		        	<button type="button" class="btn btn-default btn-sm">确定</button>
+		        	<button type="button" class="btn btn-default btn-sm close-btn">取消</button>
+				</div>
+			</div>
+		</div>
+		
+		<div class="push"></div>
+	</div>
+	{include file="../comfoot.html"}
+	<script type="text/javascript" src="/js/jquery-1.11.0.min.js"></script>
+	<script type="text/javascript" src="/js/commontop.js"></script>
+	<script type="text/javascript" src="/bootstrap/js/bootstrap.min.js" ></script>
+	<script type="text/javascript" src="/js/admin/editbillweight.js"></script>
+</body>
+</html>
+

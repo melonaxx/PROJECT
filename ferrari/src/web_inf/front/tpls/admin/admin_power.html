@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>米欢电商ERP</title>
+ 	<link href="/images/favicon.ico" rel="shortcut icon">
+	<link href="/bootstrap/css/bootstrap.min.css"  rel="stylesheet" media="screen">
+	<link href="/css/commontop.css"   rel="stylesheet" media="screen">
+	<link rel="stylesheet" type="text/css" href="/css/admin/admin_power.css"/>
+	<style>
+		{literal}
+		@media screen and (max-width: 1120px){ 
+			/*当屏幕尺寸小于1120px时，应用下面的CSS样式*/
+			.navbar-nav,#comtop-right{display: none;}
+		}
+		{/literal}
+	</style>
+</head>
+<body>
+	{include file="../commontop.html"}
+	<div class="container-fluid container1">
+		<div class="row ware-row">
+			<h5 class="col-md-12">您的位置： <a href="javascript:;">首页</a> » <a href="javascript:;">管理</a> »权限管理</h5>
+		</div>
+		<div class="row">
+			<ul class="nav nav-tabs col-md-12 power-nav">
+				<li power="presentation" class="active">
+					<a href="admin_power.php">分配权限</a>
+				</li>
+				<li power="presentation">
+					<a href="admin_seepower.php">查看权限</a>
+				</li>
+			</ul>
+		</div>
+		<div class="row">
+			<div class="power-btn col-md-12">
+				<button class="btn btn-sm open-power btn-default" type="button">展开</button>
+				<button class="btn btn-sm close-power btn-default" type="button">收起</button>
+			</div>
+			<form action="/admin/admin_doaddauth.php?id={$id}" class="form-inline power-form col-md-12" method="post">
+				{foreach from=$list key=k item=result }  
+				<div class="form-group">
+					<input type="checkbox" class="allcheck power-input" value={$result['value']}>
+					<label for="" class="labelname power-bt">
+						{$result['name']}
+						<span class="sign glyphicon glyphicon-plus"></span>
+					</label>
+					<ul class="power-list">
+						{foreach from=$result['qx'] key=kk item=row }  
+						<li>
+							<input type="checkbox" class="check power-input1" name="{$result['value']}[{$kk}]" value="{$row['value']}" {if $row['status'] eq 1}checked="checked"{/if}>
+							<label for="" class="labelname power-bt1">{$row['name']}</label>
+						</li>
+						{/foreach}
+					</ul>
+				</div>
+				<br>
+				{/foreach}
+				<div class="form-group">
+					<button class="btn btn-sm btn-default">提交</button>
+				</div>
+			</form>
+		</div>
+		
+		
+		<div class="push"></div>
+	</div>
+	{include file="../comfoot.html"}
+	<script type="text/javascript" src="/js/jquery-1.11.0.min.js"></script>
+	<script type="text/javascript" src="/js/commontop.js"></script>
+	<script type="text/javascript" src="/bootstrap/js/bootstrap.min.js" ></script>
+	<script type="text/javascript" src="/js/mycom.js"></script>
+	<script type="text/javascript" src="/js/admin/admin_power.js"></script>
+</body>
+</html>

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>米欢电商ERP</title>
+ 		<link href="/images/favicon.ico" rel="shortcut icon">
+		<link href="/bootstrap/css/bootstrap.min.css"  rel="stylesheet" media="screen">
+		<link href="/css/commontop.css"   rel="stylesheet" media="screen">
+		<link rel="stylesheet" type="text/css" href="/css/admin/admin_staff.css"/>
+		<style>
+			{literal}
+				@media screen and (max-width: 1120px){ 
+					/*当屏幕尺寸小于1120px时，应用下面的CSS样式*/
+				    .navbar-nav,#comtop-right{display: none;}
+				}
+			{/literal}
+		</style>
+	</head>
+	<body>
+		{include file="../commontop.html"}
+		<div class="container-fluid container1">
+			<div class="row ware-row">
+				<h5 class="col-md-12">您的位置： <a href="javascript:;">首页</a> » <a href="javascript:;">管理</a> »人员设置</h5>
+			</div>
+			<div class="row">
+				<ul class="nav nav-tabs col-md-12 staff-nav">
+				  <li role="presentation" class="active">
+				  	<a href="javascript:;">人员设置</a>
+				  </li>
+				</ul>
+			</div>
+			<div class="row">
+				<form class="form-inline col-md-12 changepassword-form" action="/admin/douserset.php"  method="post" onsubmit="return fun()">
+					<div class="form-group">
+						<label for="exampleInputName2" class="labelname">&nbsp;&nbsp;&nbsp;原密码：</label>
+						<input type="password" class="input-sm form-control" id="old"><span id="oldcuo" style="display:none;color:red">原密码不对</span>
+					</div>
+					<br>
+					<div class="form-group">
+						<label for="exampleInputName2" class="labelname">&nbsp;&nbsp;&nbsp;新密码：</label>
+						<input type="password" class="input-sm form-control" id="password" name="password"><span id="newcuo" style="display:none;color:red">密码必须为6-16位数字字母组合</span><span id="passkong" style="display:none;color:red">密码不能为空!</span>
+					</div>
+					<br>
+					<div class="form-group">
+						<label for="exampleInputName2" class="labelname">确认密码：</label>
+						<input type="password" class="input-sm form-control" id="repassword"><span id="recuo" style="display:none;color:red">两次密码不一致</span>
+						<input type="hidden" value="{$success}" id="success" >
+
+					</div>
+					<br>
+					<div class="form-group staff-btn">
+						<input type="submit" class="btn btn-default btn-sm custom-submit" value="提交" style="margin-right:10px;" id="sub">
+						<input type="reset" class="btn btn-default btn-sm" value="重置">
+					</div>
+				</form>
+			</div>
+			<div class="push"></div>
+			<!-- 提示-->
+			<div class="modal modal-success">
+				<div class="modalcon">
+					<div class="modal-bt">
+						<h4 class="modal-title size-title" id="myModalLabel">提示</h4>
+					    <button type="button" class="close close-btn" data-dismiss="modal" aria-label="Close" id="close-btn"><span aria-hidden="true">x</span></button>
+					</div>
+					<div class="modal-bd">
+					    <span id="tishi">修改成功</span>
+					</div>
+					<div class="modal-bo">
+			        	<button type="button" class="btn btn-default btn-sm close-btn queding">确定</button>
+					</div>
+				</div>
+			</div>
+		</div>
+		{include file="../comfoot.html"}
+		<script type="text/javascript" src="/js/jquery-1.11.0.min.js"></script>
+		<script type="text/javascript" src="/js/commontop.js"></script>
+		<script type="text/javascript" src="/bootstrap/js/bootstrap.min.js" ></script>
+		<script type="text/javascript" src="/js/mycom.js"></script>
+		<script type="text/javascript" src="/js/jsAddress.js"></script>
+		<script type="text/javascript" src="/js/admin/admin_editstaff.js"></script>
+		<script type="text/javascript" src="/js/admin/userset.js"></script>
+	</body>
+</html>

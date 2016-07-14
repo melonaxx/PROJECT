@@ -1,0 +1,244 @@
+.row .channel-tbody .noborder{
+	border:none;
+}
+
+.status .row .supplier1-left{
+	padding:0;
+	padding-left:15px;
+	margin-top:10px;
+	float:left;
+}
+.status .row .supplier1-right{
+	float:left;
+	height:200px;
+	padding:0;
+	padding-right:15px;
+	margin-top:10px;
+}
+.status .supplier1-form .form-group{
+	margin-right:10px;
+	margin-bottom:10px;
+}
+.status .supplier1-form .form-group .form-control{
+	width:150px;
+}
+.status .row .supply-bt{
+	margin-top:10px;
+	width:1200px;
+	margin-left:15px;
+	padding:0;
+	position:relative;
+}
+.status .row .supply-tip{
+	position:absolute;
+	display:block;
+	left:50px;
+	top:0;
+	width:16px;
+	height:18px;
+	cursor:pointer;
+	background:url(/images/doubt.png) no-repeat;
+}
+.status .row .custom-btn input{
+	float:right;
+	margin-top:40px;
+	margin-right: 50px;
+}
+.row .sup-search-table{
+	width:1200px;
+	padding:0;
+	margin-left: 15px;
+}
+.row .sup-search-table thead td:nth-of-type(1){
+	width:46px;
+}
+.row .sup-search-table thead td:nth-of-type(2){
+	width:454px;
+	text-align: left;
+}
+.row .sup-search-table tbody td:nth-of-type(2){
+	text-align: left;
+}
+
+.row .sup-search-table thead td:nth-of-type(3){
+	width:150px;
+}
+.row .sup-search-table thead td:nth-of-type(4){
+	width:150px;
+}
+.row .sup-search-table thead td:nth-of-type(5){
+	width:150px;
+}
+.row .sup-search-table thead td:nth-of-type(6){
+	width:150px;
+}
+
+.row .supplier1-table thead td:nth-of-type(1){
+	width:46px;
+	text-align: center;
+}
+.row .supplier1-table thead td:nth-of-type(2){
+	width:94px;
+	text-align: center;
+}
+.row .supplier1-table thead td:nth-of-type(3){
+	width:100px;
+	text-align: center;
+}
+.row .supplier1-table thead td:nth-of-type(4){
+	width:100px;
+}
+.row .supplier1-table thead td:nth-of-type(5){
+	width:100px;
+}
+.row .supplier1-table thead td:nth-of-type(6){
+	width:100px;
+}
+.row .supplier1-table thead td:nth-of-type(7){
+	width:100px;
+}
+.row .supplier1-table thead td:nth-of-type(8){
+	width:150px;
+}
+.row .supplier1-table thead td:nth-of-type(9){
+	width:400px;
+}
+/*供应商款项记录*/
+.row .payment-nav{
+	width:1200px;
+	padding:0;
+	margin-left: 15px;
+}
+.row .payment-form{
+	width:1200px;
+	padding:0;
+	margin-left: 15px;
+}
+.row .payment-form button{
+	margin-bottom:15px;
+}
+.row .payment-table{
+	width:1200px;
+	padding:0;
+	margin-left: 15px;
+}
+.row .payment-table thead td:nth-of-type(1){
+	width:46px;
+}
+.row .payment-table thead td:nth-of-type(2){
+	width:46px;
+}
+.row .payment-table thead td:nth-of-type(3){
+	width:154px;
+}
+.row .payment-table thead td:nth-of-type(4){
+	width:200px;
+}
+.row .payment-table thead td:nth-of-type(5){
+	width:200px;
+}
+.row .payment-table thead td:nth-of-type(6){
+	width:160px;
+}
+.row .payment-table thead td:nth-of-type(7){
+	width:80px;
+}
+.row .payment-table thead td:nth-of-type(8){
+	width:100px;
+}
+.row .payment-table thead td:nth-of-type(9){
+	width:214px;
+}
+.row .payment-table .payment-detail{
+	cursor:pointer;
+}
+.modal-payment .modalcon{
+	width:900px;
+	margin-left: -450px;
+}
+.modal-payment .modalcon .form-group{
+	margin:0 15px 15px 0;
+	height:30px;
+}
+.modal-payment .modalcon .form-control{
+	width:150px;
+}
+.modal-payment .modalcon .modal-bian{
+	width:560px;
+}
+.modal-payment .modalcon .form-supply-name{
+	width:200px;
+}
+.modal-payment .modalcon .modal-paymenttext{
+	width:800px;
+	height:60px;
+	resize:none;
+}
+.modal-payment .modalcon .modal-zhang,.modal-payment .modalcon .modal-ke{
+	width:360px;
+}
+.modal-paymentdetail .modalcon{
+	width:1000px;
+	margin-left: -500px;
+}
+.modal-paymentdetail .modalcon .table{
+	width:960px;
+}
+.modal-paymentdetail .modalcon .table thead td:nth-of-type(1){
+	width:310px;
+	text-align: left;
+}
+.modal-paymentdetail .modalcon .table tbody td:nth-of-type(1){
+	text-align: left;
+}
+.modal-paymentdetail .modalcon .table thead td:nth-of-type(2){
+	width:50px;
+}
+.modal-paymentdetail .modalcon .table thead td:nth-of-type(3){
+	width:100px;
+}
+.modal-paymentdetail .modalcon .table thead td:nth-of-type(4){
+	width:100px;
+}
+.modal-paymentdetail .modalcon .table thead td:nth-of-type(5){
+	width:100px;
+}
+.modal-paymentdetail .modalcon .table thead td:nth-of-type(6){
+	width:100px;
+}
+.modal-paymentdetail .modalcon .table thead td:nth-of-type(7){
+	width:100px;
+}
+.modal-paymentdetail .modalcon .table thead td:nth-of-type(8){
+	width:100px;
+}
+.sousou{
+	box-shadow: 0px 0px 10px pink;
+	border-color:red;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

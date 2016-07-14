@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>米欢电商ERP</title>
+ 	<link href="/images/favicon.ico" rel="shortcut icon">
+	<link href="/bootstrap/css/bootstrap.min.css"  rel="stylesheet" media="screen">
+	<link rel="stylesheet" type="text/css" href="/css/admin/designexpress.css"/>
+	<style>
+		{literal}
+		@media screen and (max-width: 1120px){ 
+			/*当屏幕尺寸小于1120px时，应用下面的CSS样式*/
+			.navbar-nav,#comtop-right{display: none;}
+		}
+		{/literal}
+	</style>
+</head>
+<body>
+	<div class="container-fluid">
+			<div class="row design-row">
+				<div class="design-left col-md-7">
+					<div style="height:30px" class="printdesign-btn">
+						<button type="button" class="btn btn-default btn-sm change-mould" id="savemodel">保存为新模板</button>
+						<button class="btn btn-default btn-sm del-select" type="button">删除选中项</button>
+						<button class="btn btn-default btn-sm del-all" type="button">删除全部</button>
+						<a class="btn btn-default btn-sm print-see" type="button" id="preview">预览</a>
+						<a href="/admin/adddesignexpress.php"><button class="btn btn-default btn-sm huaiyuan">还原默认</button></a>
+					</div>
+					<div class="loadloop">
+						 <object id="LODOP_OB" classid="clsid:2105C259-1E0C-4534-8141-A753534CB4CA" width=810 height=407 > 
+						 <param name="Caption" value="内嵌显示区域">
+						<embed id="LODOP_EM" type="application/x-print-lodop" width=868px height=600px pluginspage="/js/install_lodop32.exe"></embed>
+						</object>>
+					</div>
+				</div>
+				<div class="design-right col-md-5">
+					<div class="dropdown">
+						<div class="dropdown_header">
+							<span class="title">选择打印模板</span>
+							<span class="car_right">
+								<span class="caret"></span>
+							</span>
+						</div>
+						<div style="display: block;" class="dropdown_body">
+							<label class="margin_left_1">快递公司：</label>
+							<select style="display:inline-block;width:150px" class="form-control input-sm" id="company_express" name="company_express">
+								<option value="0" selected="selected">请选择快递公司</option>
+								{foreach from=$express_company item=temp}
+								<option value="{$temp['id']}">{$temp['name']}</option>
+								{/foreach}
+							</select>
+							<br>
+							<label express_id="0" id="template_id" class="margin_left_1">
+							模板名称：
+							</label>
+							<input id="template_name" aria-describedby="sizing-addon2" class="form-control input-sm" style="width:370px;display:inline;" type="text" placeholder="必填">
+						</div>
+					</div>
+					<div class="dropdown">
+						<div class="dropdown_header">
+							<span class="title">设计辅助配置-只在设计模板时使用</span>
+							<span class="car_right">
+								<span class="caret"></span>
+							</span>
+						</div>
+						<div class="dropdown_body">
+							<label class="margin_left_1">预览张数：</label>
+							<input id="preview_num"class="form-control input-sm" style="width:60px;display:inline;" type="text">　
+							<span>只在设计时使用！调整多张后，可用来测试连打效果</span>
+						</div>
+					</div>
+					<div class="dropdown">
+						<div class="dropdown_header">
+							<span class="title">上传图片-图片用作背景时不会打印，仅用于辅助调整打印项位置</span>
+							<span class="car_right">
+								<span class="caret"></span>
+							</span>
+						</div>
+						<div style="display: block;" class="dropdown_body">
+
+							<form action="/admin/adddesignexpress.php" enctype="multipart/form-data" method="post" src="{$hash}" id="bgform">
+									<div class="form-group" style="margin-top:15px;">
+										<label class="margin_left_1">上传图片：</label>
+										<input name="uploadFile" aria-describedby="sizing-addon2" id="bgimg" class="form-control input-sm" style="width:240px;display:inline;padding: 0px 5px; margin-right: 10px;" type="file">
+										<input type="submit" class="btn btn-sm btn-default" style="margin-bottom:3px;" value="上传图片">
+									</div>
+							</form>
+						</div>
+					</div>
+					<div class="dropdown">
+						<div class="dropdown_header">
+							<span class="title">纸张信息-打印时按此处设置的纸张大小进行打印</span>
+							<span class="car_right">
+								<span class="caret"></span>
+							</span>
+						</div>
+						<div style="display: block;" class="dropdown_body">
+							<label class="margin_left_1">纵向偏移：</label>
+							<input id="page_top" aria-describedby="sizing-addon2" value="" class="form-control input-sm" style="width:50px;display:inline;padding: 0 5px;" type="text">（单位：mm）　　　
+							<label class="margin_left_1">横向偏移：</label>
+							<input id="page_left" aria-describedby="sizing-addon2" value="" class="form-control input-sm" style="width:50px;display:inline;padding: 0 5px;" type="text">（单位：mm）
+							<br>
+							<label class="margin_left_1">模板尺寸：</label>
+							<select id="page_size" class="form-control input-sm" style="width:160px;display:inline;padding: 0 5px;">
+								<option value="230*142">自定义尺寸</option>
+								<option value="230*127">230*127</option>
+								<option value="217*140">217*140</option>
+							</select>
+							<label class="margin_left_2">宽：</label>
+							<input id="page_width" aria-describedby="sizing-addon2" value="230" class="form-control input-sm" style="width:50px;display:inline;padding: 0 5px;margin-right: 10px;" type="text"><label class="margin_left_1">高：</label>
+							<input id="page_height" aria-describedby="sizing-addon2" value="142" class="form-control input-sm" style="width:50px;display:inline;padding: 0 5px;" type="text"><br>
+							<label class="margin_left_2">打印机：</label>
+							<select class="form-control input-sm" style="width:160px;display:inline;padding: 0 5px;" name="printer">
+
+							</select>
+							<label class="margin_left_2">背景图（预览）：</label>
+							<label style="margin-right:15px;line-height:25px;">
+								<input checked="checked" style="margin:5px 3px" name="template_image" value="1" type="radio" onclick="bg()">
+							有</label>
+							<label style="margin-right:15px;line-height:25px;">
+								<input style="margin:5px 3px" name="template_image" value="0" type="radio" onclick="bg()">
+							无</label>
+						</div>
+					</div>
+					<div class="dropdown">
+						<div class="dropdown_header">
+							<span class="title">打印项-自动获取订单、店铺、买家信息等进行打印（自定义打印项除外）</span>
+							<span class="car_right">
+								<span class="caret"></span>
+							</span>
+						</div>
+						<div class="dropdown_body" style="padding:0;">
+							<div class="dropdown_body_header">
+								<span class="car_left car_left1">
+									<span class="caret"></span>
+								</span>
+								<span class="title" style="display:inline-block;">快递单内容</span>
+							</div>
+							<div class="dropdown_body_body">
+							{foreach from=$control item=temp}
+								<span>
+									<label for="{$temp['id']}p">
+										<input value="{$temp['name']}" autocomplete="off" class="form-control express_item" type="checkbox" id="{$temp['id']}p" autocomplete="off" item_top="" item_left="" item_width="" item_height="" font-size="">
+									</label>
+									<label for="{$temp['id']}p" class="margin_left_0">{$temp['name']}</label>
+								</span>
+							{/foreach}
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+	</div>
+	<script type="text/javascript" src="/js/jquery-1.11.0.min.js"></script>
+	<script type="text/javascript" src="/bootstrap/js/bootstrap.min.js" ></script>
+	<script type="text/javascript" src="/js/mycom.js"></script>
+	<script type="text/javascript" src="/js/admin/adddesignexpress.js"></script>
+	<script type="text/javascript" src="/js/lodop/addlodop.js"></script>
+	<script language="javascript" src="/js/LodopFuncs.js"></script>
+</body>
+</html>

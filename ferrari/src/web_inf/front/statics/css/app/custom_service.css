@@ -1,0 +1,246 @@
+.row .custom_service-nav{
+	width:1200px;
+	padding:0;
+	margin-left:15px;
+}
+.custom_service-row .custom_service-nav li,.custom_service-row .custom_service-nav a{
+	height:50px;
+}
+.row .custom-content{
+	width:1200px;
+	height:auto;
+	padding:0;
+	margin-left:15px;
+}
+.row .custom-content .row-left{
+	width:200px;
+	min-height:450px;
+	height:auto!important;
+	height:450px;
+	float:left;
+	background:#EfEfEf;
+}
+.row .custom-content .row-right{
+	width:990px;
+	min-height:450px;
+	height:auto!important;
+	height:450px;
+	margin-left: 10px;
+	float:left;
+	padding-left: 30px;
+	box-sizing:border-box;
+	background:#EfEfEf;
+
+}
+.custom-content .row-right .question-edit{
+	float:right;
+	display: block;
+	cursor: pointer;
+	margin-right: 20px;
+}
+.custom-content .row-right .question-del{
+	float:right;
+	display: block;
+	cursor: pointer;
+	margin-right: 20px;
+}
+.row .custom-content .row-left li{
+	width:200px;
+	height:50px;
+	font-size:16px;
+	line-height:50px;
+	text-align: center;
+	cursor: pointer;
+
+}
+.row .custom-content .row-left .li-color{
+	background:#1288D3;
+	color:white;
+}
+.row .row-right .service-search{
+	width:960px;
+	height:30px;
+	margin:10px 0 10px 0;
+}
+.row-right .service-search .form-control{
+	width:300px;
+	border-color:#1288D3;
+}
+.row-right .service-question{
+	width:960px;
+	height:auto;
+}
+.row-right .service-question li{
+	width:960px;
+	height:auto;
+	vertical-align: middle;
+	border-bottom:1px dashed #ccc;
+	
+}
+.service-question li .question-list{
+	width:960px;
+	height:42px;
+	line-height:42px;
+
+}
+.service-question li .question-list .question{
+	cursor: pointer;
+}
+.service-question .question-color{
+	color:#1288D3;
+}
+.service-question li .question-answer{
+	width:960px;
+	min-height:82px;
+	height:auto!important;
+	height:82px;
+	padding:0 150px 0 25px;
+	line-height:30px;
+	box-sizing:border-box;
+	border:1px solid #1288D3;
+	border-radius: 5px;
+	box-shadow:0 0 15px gray;
+	position:relative;
+	display:none;
+	background:white;
+}
+.service-question li .question-answer .copy-answer{
+	float:right;
+	position:absolute;
+	right:20px;
+	bottom:10px;
+}
+li .question-answer .answer-left{
+	width:700px;
+	line-height:30px;
+	float:left;
+}
+.row .addquestion-form{
+	width:1200px;
+	height:300px;
+	padding:0;
+	margin-left: 15px;
+}
+.row .addquestion-form .form-group{
+	margin:15px 0 15px 0;
+}
+.row .addquestion-form .form-group .form-control{
+	width:200px;
+}
+.row .addquestion-form .form-group .custom-question{
+	width:500px;
+	height:60px;
+	resize:none;
+}
+.row .addquestion-form .form-group .question-answer{
+	width:500px;
+	height:90px;
+	resize:none;
+}
+.row .answer-sub{
+	margin-left:85px;
+}
+.modal-question .modalcon{
+	width:700px;
+	margin-left:-350px;
+}
+.modal-question .modalcon .form-group{
+	margin:15px 0 15px 0 ;
+}
+.modal-question .modalcon .form-group .form-control{
+	width:300px;
+}
+.modal-question .modalcon .form-group .custom-question{
+	width:550px;
+	height:60px;
+	resize:none;
+}
+.modal-question .modalcon .form-group .question-answer{
+	width:550px;
+	height:90px;
+	resize:none;
+}
+.row .no-platform{
+	width:720px;
+	height:321px;
+	margin:0 auto;
+	background:url(/images/nopower.png) no-repeat;
+	text-align: center;
+	vertical-align: middle;
+	position:relative;
+	display:none;
+}
+.row .no-platform .platform-tip{
+	width:720px;
+	height:30px;
+	position:absolute;
+	left:50%;
+	top:50%;
+	margin-left:-360px;
+	margin-top:-15px; 
+	font-size:18px;
+	font-weight: bold;
+
+}
+.row .platform-table{
+	width:1200px;
+	padding:0;
+	margin-left: 15px;
+}
+.row .platform-table thead td:nth-of-type(1){
+	width:46px;
+}
+.row .platform-table thead td:nth-of-type(2){
+	width:94px;
+}
+.row .platform-table thead td:nth-of-type(3){
+	width:400px;
+}
+.row .platform-table thead td:nth-of-type(4){
+	width:660px;
+}
+.row .platform-table .platform-edit{
+	cursor: pointer;
+}
+.row .platform-table .platform-del{
+	cursor: pointer;
+}
+
+.modal-addplatform .modalcon{
+	width:600px;
+	margin-left: -300px;
+}
+.modal-addplatform .modalcon .form-group{
+	margin:15px 0 15px 0;
+}
+.modal-addplatform .modalcon .form-control{
+	width:300px;
+}
+.modal-addplatform .modalcon .platform-mark{
+	width:500px;
+	height:60px;
+	resize:none;
+}
+.modal-addplatform1 .modalcon{
+	width:600px;
+	margin-left: -300px;
+}
+.modal-addplatform1 .modalcon .form-group{
+	margin:15px 0 15px 0;
+}
+.modal-addplatform1 .modalcon .form-control{
+	width:300px;
+}
+.modal-addplatform1 .modalcon .platform-mark1{
+	width:500px;
+	height:60px;
+	resize:none;
+}
+.modal-delplatform .modalcon{
+	width:300px;
+	margin-left: -150px;
+}
+.modal-delquestion .modalcon{
+	width:300px;
+	margin-left: -150px;
+}
